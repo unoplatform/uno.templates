@@ -758,12 +758,12 @@
     "useMvux": {
       "type": "computed",
       "datatype": "bool",
-      "value": "architectureEvaluator == 'mvux'"
+      "value": "architectureEvaluator == 'mvux' && useExtensionsNavigation"
     },
     "useMvvm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "architectureEvaluator == 'mvvm'"
+      "value": "architectureEvaluator == 'mvvm' && useExtensionsNavigation"
     },
     "useGtk": {
       "type": "computed",

@@ -13,7 +13,6 @@ public class App : Application
 #endif
 	{
 		var builder = this.CreateBuilder(args)
-
 #if (useNavigationToolkit)
 			// Add navigation support for toolkit controls such as TabBar and NavigationView
 			.UseToolkitNavigation()
