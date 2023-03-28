@@ -440,13 +440,13 @@
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultUnoWinUIPackageVersion",
-      "replaces": "UnoWinUIPackageVersion"
+      "replaces": "$UnoWinUIPackageVersion$"
     },
     "unoExtensionsVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultUnoExtensionsPackageVersion",
-      "replaces": "UnoExtensionsPackageVersion"
+      "replaces": "$UnoExtensionsPackageVersion$"
     },
     "isVsix": {
       "displayName": "isVsix",

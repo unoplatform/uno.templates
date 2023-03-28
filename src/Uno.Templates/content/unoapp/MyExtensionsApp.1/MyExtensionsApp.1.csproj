@@ -95,7 +95,7 @@
 		<!--#if (useMaterial)-->
 		<PackageReference Include="Uno.Dsp.Tasks" Version="1.0.1" />
 		<!--#endif-->
-		<PackageReference Include="Uno.WinUI" Version="UnoWinUIPackageVersion" />
+		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIPackageVersion$" />
 		<PackageReference Include="Uno.Resizetizer" Version="1.0.2" />
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" Version="4.7.0-dev.20" />
@@ -108,21 +108,21 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<!--#endif -->
 		<!--#if (useConfiguration)-->
-		<PackageReference Include="Uno.Extensions.Configuration" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Http" Version="UnoExtensionsPackageVersion" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useLogging)-->
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useSerilog)-->
-		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="UnoExtensionsPackageVersion" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useMaterial)-->
 		<PackageReference Include="Uno.Material.WinUI" Version="2.5.3" />
@@ -140,27 +140,27 @@
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useLocalization)-->
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useExtensionsNavigation)-->
 		<!--#if (useNavigationToolkit)-->
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useMvux)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="UnoExtensionsPackageVersion" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
