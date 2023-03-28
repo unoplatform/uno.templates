@@ -1,0 +1,19 @@
+steps:
+  - task: UseDotNet@2
+    displayName: 'Use .NET runtime 7.0.100'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: runtime
+      version: 7.0.0
+      
+  - task: nventiveCanaryUpdater@5
+    condition: eq(variables['IsCanaryBranch'], true)
+    inputs:
+      solution: '$(build.sourcesdirectory)'
+      useNuGetOrg: true
+      usePrivateFeed: false
+      mergeBranch: true
+      branchToMerge: master
+      nugetUpdaterVersion: 2.3.0-alpha.35
+      packageAuthor: 'nventive,uno platform'
+      summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
