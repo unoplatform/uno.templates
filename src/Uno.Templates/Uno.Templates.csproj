@@ -75,15 +75,14 @@
 
 	<Target Name="ReplaceVersions" BeforeTargets="BeforeBuild" AfterTargets="PrepareTemplateFiles">
 		<ItemGroup>
-			<_AllCSProjFiles Include="$(IntermediateOutputPath)/content/**/*.csproj" />
-			<_AllCSProjFiles Include="$(IntermediateOutputPath)/content/**/Directory.Packages.props" />
+			<_TemplateJson Include="$(IntermediateOutputPath)/content/**/template.json" />
 		</ItemGroup>
-		<ReplaceFileText Filename="%(_AllCSProjFiles.Identity)"
-					MatchExpression="Version=&quot;DefaultUnoExtensionsPackageVersion&quot;"
-					ReplacementText="Version=&quot;$(UnoExtensionsVersion)&quot;" />
-		<ReplaceFileText Filename="%(_AllCSProjFiles.Identity)"
-					MatchExpression="Version=&quot;DefaultUnoWinUIPackageVersion&quot;"
-					ReplacementText="Version=&quot;$(UnoVersion)&quot;" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)"
+					MatchExpression="DefaultUnoExtensionsPackageVersion"
+					ReplacementText="$(UnoExtensionsVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)"
+					MatchExpression="DefaultUnoWinUIPackageVersion"
+					ReplacementText="$(UnoVersion)" />
 	</Target>
 
 	<Target Name="DownloadTemplatePackages" BeforeTargets="BeforeBuild;PrepareTemplateFiles">
