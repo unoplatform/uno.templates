@@ -93,16 +93,16 @@
 	<!--#else-->
 	<ItemGroup>
 		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Dsp.Tasks" Version="1.0.1" />
+		<PackageReference Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
 		<!--#endif-->
 		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIPackageVersion$" />
-		<PackageReference Include="Uno.Resizetizer" Version="1.0.2" />
+		<PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.WinUI.Markup" Version="4.7.0-dev.20" />
+		<PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
 		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI.Markup" Version="2.5.3" />
+		<PackageReference Include="Uno.Material.WinUI.Markup" Version="$UnoThemesVersion$" />
 		<!--#endif-->
-		<PackageReference Include="Uno.Themes.WinUI.Markup" Version="2.5.3" />
+		<PackageReference Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
 		<!--#endif-->
 		<!--#if (useMvvm) -->
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
@@ -125,18 +125,18 @@
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI" Version="2.5.3" />
+		<PackageReference Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
 		<!--#if (useToolkit)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="2.5.5" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
 		<!--#endif-->
 		<!--#elif (useCupertino)-->
-		<PackageReference Include="Uno.Cupertino.WinUI" Version="2.5.3" />
+		<PackageReference Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
 		<!--#endif-->
 		<!--#if (useToolkit)-->
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="2.5.5" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitVersion$" />
 		<!--#else-->
-		<PackageReference Include="Uno.Toolkit.WinUI" Version="2.5.5" />
+		<PackageReference Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useAuthentication)-->

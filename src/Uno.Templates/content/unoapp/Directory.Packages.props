@@ -25,13 +25,13 @@
     <PackageVersion Include="Serilog.AspNetCore" Version="6.1.0" />
     <!--#endif-->
     <!--#if (useSkia)-->
-    <PackageVersion Include="SkiaSharp.Skottie" Version="2.88.3" />
-    <PackageVersion Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.3" />
+    <PackageVersion Include="SkiaSharp.Skottie" Version="$SkiaSharpPackageVersion$" />
+    <PackageVersion Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpPackageVersion$" />
     <!--#endif-->
     <!--#if (server)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#endif-->
-    <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
+    <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
     <!--#if (useAuthentication)-->
     <PackageVersion Include="Uno.Extensions.Authentication" Version="$UnoExtensionsPackageVersion$" />
     <PackageVersion Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
@@ -52,10 +52,10 @@
     <PackageVersion Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useMobile)-->
-    <PackageVersion Include="Uno.Extensions.Logging.OSLog" Version="1.4.0" />
+    <PackageVersion Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingPackageVersion$" />
     <!--#endif-->
     <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.4.0" />
+    <PackageVersion Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingPackageVersion$" />
     <!--#endif-->
     <!--#if (useSerilog)-->
     <PackageVersion Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsPackageVersion$" />
@@ -80,30 +80,30 @@
     <PackageVersion Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Material.WinUI" Version="2.5.3" />
-    <PackageVersion Include="Uno.Dsp.Tasks" Version="1.0.1" />
+    <PackageVersion Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
+    <PackageVersion Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
     <!--#elif (useCupertino)-->
-    <PackageVersion Include="Uno.Cupertino.WinUI" Version="2.5.3" />
+    <PackageVersion Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
     <!--#endif-->
     <!--#if (useToolkit)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI" Version="2.5.5" />
+    <PackageVersion Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
     <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI.Material" Version="2.5.5" />
+    <PackageVersion Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
     <!--#endif-->
     <!--#endif-->
-    <PackageVersion Include="Uno.Resizetizer" Version="1.0.2" />
+    <PackageVersion Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
     <PackageVersion Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIPackageVersion$" />
-    <PackageVersion Include="Uno.UniversalImageLoader" Version="1.9.36" />
+    <PackageVersion Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
     <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.Wasm.Bootstrap" Version="7.0.19" />
-    <PackageVersion Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.19" />
-    <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="7.0.19" />
+    <PackageVersion Include="Uno.Wasm.Bootstrap" Version="$UnoWasmBootstrapVersion$" />
+    <PackageVersion Include="Uno.Wasm.Bootstrap.DevServer" Version="$UnoWasmBootstrapVersion$" />
+    <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
     <!--#endif-->
     <PackageVersion Include="Uno.WinUI" Version="$UnoWinUIPackageVersion$" />
     <!--#if (useCsharpMarkup)-->
-    <PackageVersion Include="Uno.WinUI.Markup" Version="4.7.0-dev.20" />
+    <PackageVersion Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
     <!--#if (useToolkit)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI.Markup" Version="2.5.5" />
+    <PackageVersion Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitVersion$" />
     <!--#endif-->
     <!--#if (useExtensionsNavigation)-->
     <PackageVersion Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
@@ -112,9 +112,9 @@
     <PackageVersion Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Material.WinUI.Markup" Version="2.5.3" />
+    <PackageVersion Include="Uno.Material.WinUI.Markup" Version="$UnoThemesVersion$" />
     <!--#endif-->
-    <PackageVersion Include="Uno.Themes.WinUI.Markup" Version="2.5.3" />
+    <PackageVersion Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
     <!--#endif-->
     <PackageVersion Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIPackageVersion$" />
     <!--#if (useGtk)-->
@@ -133,7 +133,7 @@
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.8.0" />
     <!--#endif-->
     <!--#if (useUITests)-->
-    <PackageVersion Include="Uno.UITest.Helpers" Version="1.1.0-dev.32" />
+    <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
     <PackageVersion Include="Xamarin.UITest" Version="4.1.2" />
     <!--#endif-->
     <!--#if (includeNet6DataContractReferences)-->
