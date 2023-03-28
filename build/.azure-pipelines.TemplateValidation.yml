@@ -75,19 +75,7 @@ jobs:
 
   - template: templates/dotnet7-install-windows.yml
   - template: templates/canary-updater.yml
-
-  - task: gitversion/setup@0
-    retryCountOnTaskFailure: 3
-    inputs:
-      versionSpec: '5.10.3'
-
-  - task: gitversion/execute@0
-    retryCountOnTaskFailure: 3
-    inputs:
-      useConfigFile: true
-      configFilePath: build/ci/gitversion.yml
-    displayName: Use GitVersion
-
+  
   - template: templates/install-windows-sdk.yml
     parameters:
       sdkVersion: 18362
@@ -98,10 +86,10 @@ jobs:
 
   - script: |
         md $(Build.SourcesDirectory)\src\PackageCache
-        copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\nuget\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
+        copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
     displayName: Copy Artifacts to PackageCache
 
-  - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\nuget\Uno.Templates*.nupkg"
+  - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
     displayName: Install Project Templates
 
   - powershell: |

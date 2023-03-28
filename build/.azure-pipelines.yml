@@ -1,0 +1,147 @@
+trigger:
+  branches:
+    include:
+      - main
+      - release/*
+
+pr: 
+  branches:
+    include:
+      - main
+      - release/*
+
+variables:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+stages:
+- stage: Build
+  jobs:
+  - template: .azure-pipelines.TemplateValidation.yml
+  - job: Packages
+
+    pool:
+      vmImage: 'windows-2022'
+
+    steps:
+    - checkout: self
+      clean: 'true'
+      fetchDepth: 0
+
+    - template: templates/canary-updater.yml
+
+    - task: gitversion/setup@0
+      retryCountOnTaskFailure: 3
+      inputs:
+        versionSpec: '5.10.3'
+
+    - task: gitversion/execute@0
+      retryCountOnTaskFailure: 3
+      inputs:
+        useConfigFile: true
+        configFilePath: build/gitversion.yml
+      displayName: Use GitVersion
+
+    - powershell: |
+        $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
+        # Build first so that templates are downloaded properly
+        & dotnet build src\uno.templates\uno.templates.csproj -v:m -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-build.binlog -o $(build.artifactstagingdirectory)
+        # Pack separately to avoid NU5017
+        & dotnet pack src\uno.templates\uno.templates.csproj -v:m -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
+
+      displayName: Pack Uno.Templates
+
+    - task: PublishBuildArtifacts@1
+      condition: always()
+      retryCountOnTaskFailure: 3
+      inputs:
+        PathtoPublish: $(build.artifactstagingdirectory)
+        ArtifactName: $(Build.DefinitionName)
+        ArtifactType: Container
+
+
+- stage: Prepare
+  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
+  jobs:
+  - job: Sign
+  
+    pool:
+      vmImage: 'windows-2022'
+
+    steps:
+    - task: DownloadBuildArtifacts@0
+      displayName: Download build artifact
+      inputs:
+        artifactName: Drop
+        downloadPath: '$(Agent.WorkFolder)'
+
+    - task: CopyFiles@2
+      displayName: Copy built packages
+      inputs:
+        SourceFolder: $(Agent.WorkFolder)/Drop
+        Contents: |
+          *.nupkg
+          *.vsix
+        TargetFolder: $(build.artifactstagingdirectory)
+        CleanTargetFolder: false
+        OverWrite: false
+        flattenFolders: false
+
+    - task: PowerShell@2
+      displayName: Authenticode Sign Packages
+      inputs:
+        filePath: build/Sign-Package.ps1
+      env:
+        SignClientUser: $(SignClientUser)
+        SignClientSecret: $(SignClientSecret)
+        SignPackageName: "Uno Platform Templates"
+        SignPackageDescription: "Uno Platform Templates"
+        ArtifactDirectory: $(build.artifactstagingdirectory)
+      condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['SignClientSecret'], '')), not(eq(variables['SignClientUser'], '')))
+
+    - task: PublishBuildArtifacts@1
+      condition: always()
+      retryCountOnTaskFailure: 3
+      inputs:
+        PathtoPublish: $(build.artifactstagingdirectory)
+        ArtifactName: Drop-Signed
+        ArtifactType: Container
+
+- stage: Publish_Dev
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'), not(eq(variables['build.reason'], 'PullRequest')))
+  dependsOn: Prepare
+  jobs:
+  - deployment: 'Nuget'
+    displayName: 'Nuget Publish Dev'
+    environment: 'Uno Templates Development'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - template: templates/nuget-publish-dev.yml
+          - template: templates/nuget-publish-public.yml
+
+- stage: Publish_Prod_Dev
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'), not(eq(variables['build.reason'], 'PullRequest')))
+  dependsOn: Prepare
+  jobs:
+  - deployment: 'Nuget_Prod_Dev'
+    displayName: 'Nuget Publish Prod Dev'
+    environment: 'Uno Templates Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - template: templates/nuget-publish-dev.yml
+  
+- stage: Publish_Prod_Public
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'), not(eq(variables['build.reason'], 'PullRequest')))
+  dependsOn: Publish_Prod_Dev
+  jobs:
+  - deployment: 'Nuget_Prod_Nuget_Org'
+    displayName: 'Nuget Publish Prod NuGet.org'
+    environment: 'Uno Templates Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - template: templates/nuget-publish-public.yml
