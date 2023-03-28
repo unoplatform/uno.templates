@@ -436,6 +436,18 @@
       "description": "If specified, skips the automatic restore of the project on create.",
       "defaultValue": "false"
     },
+    "unoWinUIVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoWinUIPackageVersion",
+      "replaces": "UnoWinUIPackageVersion"
+    },
+    "unoExtensionsVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoExtensionsPackageVersion",
+      "replaces": "UnoExtensionsPackageVersion"
+    },
     "isVsix": {
       "displayName": "isVsix",
       "type": "parameter",

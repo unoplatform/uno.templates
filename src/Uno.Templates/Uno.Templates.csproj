@@ -79,10 +79,10 @@
 			<_AllCSProjFiles Include="$(IntermediateOutputPath)/content/**/Directory.Packages.props" />
 		</ItemGroup>
 		<ReplaceFileText Filename="%(_AllCSProjFiles.Identity)"
-					MatchExpression="Version=&quot;UnoExtensionsPackageVersion&quot;"
+					MatchExpression="Version=&quot;DefaultUnoExtensionsPackageVersion&quot;"
 					ReplacementText="Version=&quot;$(UnoExtensionsVersion)&quot;" />
 		<ReplaceFileText Filename="%(_AllCSProjFiles.Identity)"
-					MatchExpression="Version=&quot;UnoWinUIPackageVersion&quot;"
+					MatchExpression="Version=&quot;DefaultUnoWinUIPackageVersion&quot;"
 					ReplacementText="Version=&quot;$(UnoVersion)&quot;" />
 	</Target>
 

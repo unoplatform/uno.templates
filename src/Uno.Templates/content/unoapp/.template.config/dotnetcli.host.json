@@ -84,6 +84,12 @@
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
+    },
+    "unoWinUIVersion": {
+      "isHidden": true
+    },
+    "unoExtensionsVersion": {
+      "isHidden": true
     }
   }
 }
