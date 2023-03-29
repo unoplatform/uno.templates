@@ -64,6 +64,9 @@ jobs:
       Net6:
         createdProjectName: UnoAppNet6
         templateArgs: '-tfm net6.0'
+      Issue22:
+        createdProjectName: UnoAppIssue22
+        templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests "" -vscode false -pwa false -di true -nav regions -log none -theme material'
 
   variables:
     - name: UseDotNetNativeToolchain
