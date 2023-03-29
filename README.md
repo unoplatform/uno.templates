@@ -5,3 +5,26 @@ This repository contains the main template for Uno Platform Apps that's availabl
 [![NuGet](https://badgen.net/nuget/v/Uno.Templates)](https://www.nuget.org/packages/Uno.Templates)
 
 To get started with Uno Platform, [follow our guides](https://aka.platform.uno/get-started)! 
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
