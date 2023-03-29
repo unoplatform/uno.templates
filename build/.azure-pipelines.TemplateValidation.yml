@@ -74,7 +74,6 @@ jobs:
     clean: 'true'
 
   - template: templates/dotnet7-install-windows.yml
-  - template: templates/canary-updater.yml
   
   - template: templates/install-windows-sdk.yml
     parameters:
@@ -107,6 +106,11 @@ jobs:
             throw "Exit code must be zero."
         }
 
+    displayName: Create template app
+
+  - template: templates/canary-updater.yml
+
+  - powershell: |
         cd $env:createdProjectName
 
         & $msbuild /r /m $env:createdProjectName.sln
