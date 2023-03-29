@@ -12,6 +12,7 @@ pr:
 
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
 
 stages:
 - stage: Build
@@ -60,7 +61,7 @@ stages:
 
 
 - stage: Prepare
-  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')))
+  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
   jobs:
   - job: Sign
   
