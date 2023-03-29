@@ -13,5 +13,4 @@ To get started with Uno Platform, [follow our guides](https://aka.platform.uno/g
 6
 7
 8
-9
 
