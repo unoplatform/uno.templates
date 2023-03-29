@@ -72,13 +72,13 @@ stages:
     - task: DownloadBuildArtifacts@0
       displayName: Download build artifact
       inputs:
-        artifactName: Drop
+        artifactName: $(Build.DefinitionName)
         downloadPath: '$(Agent.WorkFolder)'
 
     - task: CopyFiles@2
       displayName: Copy built packages
       inputs:
-        SourceFolder: $(Agent.WorkFolder)/Drop
+        SourceFolder: $(Agent.WorkFolder)/$(Build.DefinitionName)
         Contents: |
           *.nupkg
           *.vsix
@@ -104,7 +104,7 @@ stages:
       retryCountOnTaskFailure: 3
       inputs:
         PathtoPublish: $(build.artifactstagingdirectory)
-        ArtifactName: Drop-Signed
+        ArtifactName: '$(Build.DefinitionName)-Signed'
         ArtifactType: Container
 
 - stage: Publish_Dev
