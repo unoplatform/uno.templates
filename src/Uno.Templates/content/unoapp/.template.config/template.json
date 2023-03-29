@@ -1033,28 +1033,10 @@
       "dataType": "bool",
       "value": "(tfm == 'net6.0' && useHttp)"
     },
-    "langVersion": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$langVersion$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net6.0')",
-            "value": "10"
-          },
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "11"
-          },
-          {
-            "condition": "(tfm == 'net8.0')",
-            "value": "12"
-          }
-        ]
-      }
+    "useLangVersion": {
+      "type": "computed",
+      "dataType": "bool",
+      "value": "(tfm == 'net6.0')"
     },
     "libraryBaseTargetFramework": {
       "type": "generated",
