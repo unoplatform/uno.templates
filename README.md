@@ -7,4 +7,3 @@ This repository contains the main template for Uno Platform Apps that's availabl
 To get started with Uno Platform, [follow our guides](https://aka.platform.uno/get-started)! 
 44
 45
-46
