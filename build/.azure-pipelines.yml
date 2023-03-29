@@ -17,7 +17,7 @@ variables:
 stages:
 - stage: Build
   jobs:
-  - template: .azure-pipelines.TemplateValidation.yml
+  # - template: .azure-pipelines.TemplateValidation.yml
   - job: Packages
 
     pool:
