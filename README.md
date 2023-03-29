@@ -8,4 +8,3 @@ To get started with Uno Platform, [follow our guides](https://aka.platform.uno/g
 44
 45
 46
-47
