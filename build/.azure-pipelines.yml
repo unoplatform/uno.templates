@@ -17,7 +17,7 @@ variables:
 stages:
 - stage: Build
   jobs:
-  # - template: .azure-pipelines.TemplateValidation.yml
+  - template: .azure-pipelines.TemplateValidation.yml
   - job: Packages
 
     pool:
@@ -61,7 +61,7 @@ stages:
 
 
 - stage: Prepare
-  # condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
+  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
   jobs:
   - job: Sign
   
