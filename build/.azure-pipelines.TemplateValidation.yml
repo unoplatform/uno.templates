@@ -108,7 +108,7 @@ jobs:
         $ErrorActionPreference = 'Stop'
 
         # Create app with defaults
-        Invoke-Expression -Command "dotnet new unoapp -o $env:createdProjectName $env:templateArgs"
+        dotnet new unoapp -o $env:createdProjectName $env:templateArgs
         if ($LASTEXITCODE -ne 0)
         {
             throw "Exit code must be zero."
