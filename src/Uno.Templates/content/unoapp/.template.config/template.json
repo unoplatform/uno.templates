@@ -742,7 +742,7 @@
           },
           {
             "condition": "(preset == 'blank')",
-            "value": "none"
+            "value": "mvvm"
           }
         ]
       }
