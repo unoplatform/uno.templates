@@ -8,64 +8,44 @@ jobs:
   strategy:
     matrix:
       DefaultArguments:
-        createdProjectName: UnoApp01
         templateArgs: ''
       BlankApp:
-        createdProjectName: UnoAppBlank01
         templateArgs: '-preset blank'
       SkiaOnlyHeads:
-        createdProjectName: UnoAppSkiaOnlyHeads01
         templateArgs: '-platforms gtk wpf linux-fb'
       MobileOnlyHeads:
-        createdProjectName: UnoAppMobileOnlyHeads01
         templateArgs: '-platforms android ios maccatalyst'
     #   BlankMarkupApp:
-    #     createdProjectName: UnoAppBlank01
     #     templateArgs: '-preset blank -markup csharp'
       BlankAppCpm:
-        createdProjectName: UnoAppBlank01
         templateArgs: '-preset blank --cpm true'
       MVVM:
-        createdProjectName: UnoAppNoReactive01
         templateArgs: '-presentation mvvm'
       CentralPackageManagement:
-        createdProjectName: UnoAppCPM01
         templateArgs: '--cpm true'
     #   CSharpMarkup:
-    #     createdProjectName: UnoAppCSharpMarkup01
     #     templateArgs: '-markup csharp'
       NoAppHosting:
-        createdProjectName: UnoAppNoAppHosting01
         templateArgs: '-di false'
       HostingOnly:
-        createdProjectName: UnoAppHostingOnly01
         templateArgs: '-config false -loc false -http false -log none --navigation blank'
       NoConfiguration:
-        createdProjectName: UnoAppNoConfiguration01
         templateArgs: '-config false'
       NoLocalization:
-        createdProjectName: UnoAppNoLocalization01
         templateArgs: '-loc false'
       NoHttp:
-        createdProjectName: UnoAppNoHttp01
         templateArgs: '-http false'
       NoSerilog:
-        createdProjectName: UnoAppNoSerilog01
         templateArgs: '-log default'
       NoServer:
-        createdProjectName: UnoAppNoServer01
         templateArgs: '-server false'
       NoServerNoHttp:
-        createdProjectName: UnoAppNoServerNoHttp01
         templateArgs: '-server false -http false'
       FrameNavigation:
-        createdProjectName: UnoAppFrameNavigation01
         templateArgs: '--navigation blank'
       Net6:
-        createdProjectName: UnoAppNet6
         templateArgs: '-tfm net6.0'
       Issue22:
-        createdProjectName: UnoAppIssue22
         templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests "" -vscode false -pwa false -di true -nav regions -log none -theme material'
 
   variables:
@@ -73,62 +53,6 @@ jobs:
       value: false
 
   steps:
-  - checkout: self
-    clean: 'true'
-
-  - template: templates/dotnet7-install-windows.yml
-  
-  - template: templates/install-windows-sdk.yml
+  - template: templates/package-validation.yml
     parameters:
-      sdkVersion: 18362
-
-  - task: DownloadBuildArtifacts@0
-    inputs:
-      artifactName: $(Build.DefinitionName)
-
-  - powershell: |
-        & choco install vswhere
-        $msbuildpath=(vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe -nologo)
-        echo "##vso[task.setvariable variable=msbuildpath]$msbuildpath"
-    displayName: Set MSBUILDPATH
-
-  - script: |
-        md $(Build.SourcesDirectory)\src\PackageCache
-        copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
-    displayName: Copy Artifacts to PackageCache
-
-  - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
-    displayName: Install Project Templates
-
-  - powershell: |
-        dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
-        dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-
-        Set-PSDebug -Trace 1
-        $ErrorActionPreference = 'Stop'
-
-        # Create app with defaults
-        dotnet new unoapp -o $env:createdProjectName $env:templateArgs
-        if ($LASTEXITCODE -ne 0)
-        {
-            throw "Exit code must be zero."
-        }
-
-    displayName: Create template app
-
-  - template: templates/canary-updater.yml
-
-  - powershell: |
-        Set-PSDebug -Trace 1
-        $ErrorActionPreference = 'Stop'
-
-        cd $env:createdProjectName
-
-        & $env:msbuildpath /r /m $env:createdProjectName.sln
-        if ($LASTEXITCODE -ne 0)
-        {
-            throw "Exit code must be zero."
-        }
-        cd ..
-
-    displayName: Build template app
+      arguments: ${{ parameters.templateArgs }}
