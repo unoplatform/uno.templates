@@ -50,7 +50,7 @@ global using Uno.Extensions.Navigation;
 #if (useHttp)
 global using Refit;
 #endif
-#if (useRecommendedAppTemplate)
+#if (useDependencyInjection)
 global using Uno.Extensions;
 #endif
 #if (useConfiguration)
