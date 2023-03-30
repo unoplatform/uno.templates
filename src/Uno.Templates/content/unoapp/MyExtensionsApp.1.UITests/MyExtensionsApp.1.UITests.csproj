@@ -2,6 +2,9 @@
 
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
+		<!--#if (!useLangVersion)-->
+		<LangVersion>latest</LangVersion>
+		<!--#endif-->
 	</PropertyGroup>
 
 	<ItemGroup>

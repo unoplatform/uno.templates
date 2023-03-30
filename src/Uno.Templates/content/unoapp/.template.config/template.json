@@ -498,8 +498,34 @@
     },
     "unoWasmBootstrapVersion": {
       "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "7.0.19",
+      "datatype": "text"
+    },    
+    "unoWasmBootstrapVersionDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$WasmBootstrapServer$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
+            "value": "7.0.19"
+          },
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "8.0.0-dev.114"
+          }
+        ]
+      }
+    },
+    "unoWasmBootstrapVersionEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "unoWasmBootstrapVersion",
+        "fallbackVariableName": "unoWasmBootstrapVersionDefault"
+      },
       "replaces": "$UnoWasmBootstrapVersion$"
     },
     "unoMarkupVersion": {
@@ -1033,28 +1059,10 @@
       "dataType": "bool",
       "value": "(tfm == 'net6.0' && useHttp)"
     },
-    "langVersion": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$langVersion$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net6.0')",
-            "value": "10"
-          },
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "11"
-          },
-          {
-            "condition": "(tfm == 'net8.0')",
-            "value": "12"
-          }
-        ]
-      }
+    "useLangVersion": {
+      "type": "computed",
+      "dataType": "bool",
+      "value": "(tfm == 'net6.0')"
     },
     "libraryBaseTargetFramework": {
       "type": "generated",
@@ -1367,7 +1375,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.1.23110.8"
+            "value": "8.0.0-preview.2.23128.3"
           }
         ]
       }
@@ -1390,7 +1398,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.1.23110.8"
+            "value": "8.0.0-preview.2.23128.3"
           }
         ]
       }
