@@ -47,7 +47,7 @@ steps:
 
   displayName: Create template app
 
-- template: templates/canary-updater.yml
+- template: canary-updater.yml
 
 - powershell: |
       Set-PSDebug -Trace 1
