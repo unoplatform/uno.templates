@@ -26,4 +26,4 @@ jobs:
   steps:
   - template: templates/package-validation-unix.yml
     parameters:
-      arguments: ${{ parameters.presetArgs }} ${{ parameters.platforms }}
+      arguments: $(presetArgs) ${{ parameters.platforms }}
