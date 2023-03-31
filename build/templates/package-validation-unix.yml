@@ -20,7 +20,9 @@ steps:
   displayName: Copy Artifacts to PackageCache
   workingDirectory: '$(System.ArtifactsDirectory)/$(Build.DefinitionName)'
 
-- bash: dotnet new install "$SYSTEM_ARTIFACTSDIRECTORY/$BUILD_DEFINITIONNAME/Uno.Templates*.nupkg"
+- bash: |
+      filename=$(ls "$SYSTEM_ARTIFACTSDIRECTORY/$BUILD_DEFINITIONNAME/Uno.Templates*.nupkg" | head -n 1)
+      dotnet new install $filename
   displayName: Install Project Templates
 
 - powershell: |
