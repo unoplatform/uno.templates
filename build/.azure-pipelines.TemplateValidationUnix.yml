@@ -1,4 +1,7 @@
 parameters:
+- name: jobName
+  type: string
+  default: ''
 - name: vmImage
   type: string
   default: ''
@@ -7,7 +10,7 @@ parameters:
   default: ''
 
 jobs:
-- job: Packages_Validation_Unix
+- job: ${{ parameters.jobName }}
 
   pool:
     vmImage: ${{ parameters.vmImage }}

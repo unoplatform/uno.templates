@@ -64,11 +64,13 @@ stages:
 
   - template: .azure-pipelines.TemplateValidationUnix.yml
     parameters:
+      jobName: 'TemplateValidationMac'
       vmImage: 'macOS-12'
       platforms: '-platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb'
 
   - template: .azure-pipelines.TemplateValidationUnix.yml
     parameters:
+      jobName: 'TemplateValidationLinux'
       vmImage: 'ubuntu-latest'
       platforms: '-platforms android -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb'
 
