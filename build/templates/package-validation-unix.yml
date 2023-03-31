@@ -1,0 +1,55 @@
+parameters:
+- name: arguments
+  type: string
+  default: ''
+
+steps:
+- checkout: self
+  clean: 'true'
+
+- template: dotnet7-install-mac.yml
+
+- task: DownloadBuildArtifacts@0
+  inputs:
+    artifactName: $(Build.DefinitionName)
+
+- bash: |
+      mkdir $BUILD_SOURCESDIRECTORY\src\PackageCache
+      cp "$SYSTEM_ARTIFACTSDIRECTORY\$BUILD_DEFINITIONNAME\*.nupkg" $BUILD_SOURCESDIRECTORY\src\PackageCache
+  displayName: Copy Artifacts to PackageCache
+
+- bash: dotnet new install "$SYSTEM_ARTIFACTSDIRECTORY\$BUILD_DEFINITIONNAME\Uno.Templates*.nupkg"
+  displayName: Install Project Templates
+
+- powershell: |
+      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
+      dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
+
+      Set-PSDebug -Trace 1
+      $ErrorActionPreference = 'Stop'
+
+      # Create app with defaults
+      dotnet new unoapp -o UnoApp1 ${{ parameters.arguments }}
+      if ($LASTEXITCODE -ne 0)
+      {
+          throw "Exit code must be zero."
+      }
+
+  displayName: Create template app
+
+- template: canary-updater.yml
+
+- powershell: |
+      Set-PSDebug -Trace 1
+      $ErrorActionPreference = 'Stop'
+
+      cd UnoApp1
+
+      & $env:msbuildpath /r /m UnoApp1.sln
+      if ($LASTEXITCODE -ne 0)
+      {
+          throw "Exit code must be zero."
+      }
+      cd ..
+
+  displayName: Build template app

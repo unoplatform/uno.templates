@@ -17,7 +17,6 @@ variables:
 stages:
 - stage: Build
   jobs:
-  - template: .azure-pipelines.TemplateValidation.yml
   - job: Packages
 
     pool:
@@ -58,6 +57,20 @@ stages:
         PathtoPublish: $(build.artifactstagingdirectory)
         ArtifactName: $(Build.DefinitionName)
         ArtifactType: Container
+
+- stage: Test
+  jobs:
+  - template: .azure-pipelines.TemplateValidation.yml
+
+  - template: .azure-pipelines.TemplateValidationUnix.yml
+    parameters:
+      vmImage: 'macOS-12'
+      platforms: '-platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb'
+
+  - template: .azure-pipelines.TemplateValidationUnix.yml
+    parameters:
+      vmImage: 'ubuntu-latest'
+      platforms: '-platforms android -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb'
 
 
 - stage: Prepare
