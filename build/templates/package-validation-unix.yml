@@ -14,15 +14,15 @@ steps:
     artifactName: $(Build.DefinitionName)
 
 - bash: |
-      mkdir $BUILD_SOURCESDIRECTORY\src\PackageCache
-      cp "$SYSTEM_ARTIFACTSDIRECTORY\$BUILD_DEFINITIONNAME\*.nupkg" $BUILD_SOURCESDIRECTORY\src\PackageCache
+      mkdir $BUILD_SOURCESDIRECTORY/src/PackageCache
+      cp "$SYSTEM_ARTIFACTSDIRECTORY/$BUILD_DEFINITIONNAME/*.nupkg" $BUILD_SOURCESDIRECTORY/src/PackageCache
   displayName: Copy Artifacts to PackageCache
 
-- bash: dotnet new install "$SYSTEM_ARTIFACTSDIRECTORY\$BUILD_DEFINITIONNAME\Uno.Templates*.nupkg"
+- bash: dotnet new install "$SYSTEM_ARTIFACTSDIRECTORY/$BUILD_DEFINITIONNAME/Uno.Templates*.nupkg"
   displayName: Install Project Templates
 
 - powershell: |
-      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
+      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)/src/PackageCache
       dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
 
       Set-PSDebug -Trace 1
