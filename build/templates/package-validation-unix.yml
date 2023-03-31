@@ -47,7 +47,7 @@ steps:
 
       cd UnoApp1
 
-      dotnet build UnoApp1.sln /m 
+      dotnet build UnoApp1.sln /m -p:EnableWindowsTargeting=true
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
