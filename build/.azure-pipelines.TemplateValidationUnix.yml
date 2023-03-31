@@ -7,7 +7,7 @@ parameters:
   default: ''
 
 jobs:
-- job: Packages_Validation
+- job: Packages_Validation_Unix
 
   pool:
     vmImage: ${{ parameters.vmImage }}
