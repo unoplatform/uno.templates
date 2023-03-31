@@ -47,7 +47,7 @@ steps:
 
       cd UnoApp1
 
-      & $env:msbuildpath /r /m UnoApp1.sln
+      dotnet build UnoApp1.sln /m 
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
