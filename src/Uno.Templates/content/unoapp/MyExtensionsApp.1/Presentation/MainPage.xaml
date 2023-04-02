@@ -6,7 +6,6 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	xmlns:uen="using:Uno.Extensions.Navigation.UI"$toolkitNamespace$
-	xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	NavigationCacheMode="Required"
 	Background="{ThemeResource $themeBackgroundBrush$}">
 
@@ -28,7 +27,7 @@
 					 PlaceholderText="Enter your name:"
 					 Margin="8" />
 			<Button Content="Go to Second Page"
-					not_skia:AutomationProperties.AutomationId="SecondPageButton"
+					AutomationProperties.AutomationId="SecondPageButton"
 					Command="{Binding GoToSecond}" />
 		</StackPanel>
 	</Grid>
