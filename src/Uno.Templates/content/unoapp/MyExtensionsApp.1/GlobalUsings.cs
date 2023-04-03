@@ -10,10 +10,12 @@ global using Microsoft.Extensions.Localization;
 #endif
 global using Microsoft.Extensions.Logging;
 global using Microsoft.UI.Xaml;
-global using Microsoft.UI.Xaml.Controls;
 #if (useCsharpMarkup)
 global using Microsoft.UI.Xaml.Automation;
+global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Data;
+#else
+global using Microsoft.UI.Xaml.Controls;
 #endif
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Navigation;
