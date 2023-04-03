@@ -8,7 +8,11 @@ public sealed partial class SecondPage : Page
 #if useCsharpMarkup
 		this.DataContext<$secondDataContext$>((page, vm) => page
 			.Background(Theme.Brushes.Background.Default)
-			.Content(new Grid().Children(
+			.Content(new Grid()
+#if useToolkit					
+				.SafeArea(SafeArea.InsetMask.All)
+#endif
+				.Children(
 #if useToolkit				
 				new NavigationBar()
 					.Content("Second Page")

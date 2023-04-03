@@ -10,6 +10,9 @@ public sealed partial class MainPage : Page
 			.NavigationCacheMode(NavigationCacheMode.Required)
 			.Background(Theme.Brushes.Background.Default)
 			.Content(new Grid()
+#if useToolkit					
+				.SafeArea(SafeArea.InsetMask.All)
+#endif
 				.RowDefinitions<Grid>("Auto,*")
 				.Children(
 #if useToolkit					
