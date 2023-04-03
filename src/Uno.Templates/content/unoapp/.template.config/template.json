@@ -1204,6 +1204,24 @@
         ]
       }
     },
+    "toolkitSafeArea":{
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$toolkitSafeArea$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useToolkit)",
+            "value": " utu:SafeArea.Insets=\"All\""
+          },
+          {
+            "condition": "(!useToolkit)",
+            "value": ""
+          }
+        ]
+      }
+    },
     "shellRouteViewModel":{
       "type": "generated",
       "generator": "switch",
