@@ -10,7 +10,7 @@
 	NavigationCacheMode="Required"
 	Background="{ThemeResource $themeBackgroundBrush$}">
 
-	<Grid>
+	<Grid$toolkitSafeArea$>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
