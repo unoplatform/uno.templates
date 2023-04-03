@@ -10,12 +10,10 @@ global using Microsoft.Extensions.Localization;
 #endif
 global using Microsoft.Extensions.Logging;
 global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
 #if (useCsharpMarkup)
 global using Microsoft.UI.Xaml.Automation;
-global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Data;
-#else
-global using Microsoft.UI.Xaml.Controls;
 #endif
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Navigation;
@@ -73,10 +71,8 @@ global using Uno.Toolkit.UI.Material;
 #endif
 #endif
 global using Windows.ApplicationModel;
-global using Application = Microsoft.UI.Xaml.Application;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
-global using Button = Microsoft.UI.Xaml.Controls.Button;
 global using Color = Windows.UI.Color;
 #endif
 //-:cnd:noEmit
