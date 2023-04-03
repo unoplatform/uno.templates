@@ -130,11 +130,11 @@
           "choice": "xaml",
           "description": "Use XAML for the UI",
           "displayName": "XAML"
-        // },
-        // {
-        //   "choice": "csharp",
-        //   "description": "Use C# Markup for the UI",
-        //   "displayName": "C# Markup"
+        },
+        {
+          "choice": "csharp",
+          "description": "Use C# Markup for the UI",
+          "displayName": "C# Markup"
         }
       ],
       "defaultValue": "xaml"
@@ -544,11 +544,11 @@
         "cases": [
           {
             "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
-            "value": "7.0.19"
+            "value": "7.0.20"
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-dev.114"
+            "value": "8.0.0-dev.122"
           }
         ]
       }
@@ -565,7 +565,7 @@
     "unoMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "4.7.0-dev.20",
+      "defaultValue": "4.8.0-dev.30",
       "replaces": "$UnoMarkupVersion$"
     },
     "unoUITestHelpersVersion": {
@@ -621,9 +621,14 @@
             "condition": "(markup == 'xaml')",
             "value": "Xaml"
           },
+          // NOTE: DSP currently doesn't support C# Markup
+          // {
+          //   "condition": "(markup == 'csharp')",
+          //   "value": "CSharp"
+          // }
           {
             "condition": "(markup == 'csharp')",
-            "value": "CSharp"
+            "value": "Xaml"
           }
         ]
       }
