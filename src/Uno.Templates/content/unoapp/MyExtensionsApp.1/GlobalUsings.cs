@@ -1,11 +1,5 @@
 ﻿//-:cnd:noEmit
-global using System;
-global using System.Collections.Generic;
 global using System.Collections.Immutable;
-global using System.Linq;
-global using System.Net.Http;
-global using System.Threading;
-global using System.Threading.Tasks;
 global using Microsoft.Extensions.DependencyInjection;
 //+:cnd:noEmit
 #if (useDependencyInjection)
@@ -79,10 +73,8 @@ global using Uno.Toolkit.UI.Material;
 #endif
 #endif
 global using Windows.ApplicationModel;
-global using Application = Microsoft.UI.Xaml.Application;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
-global using Button = Microsoft.UI.Xaml.Controls.Button;
 global using Color = Windows.UI.Color;
 #endif
 //-:cnd:noEmit
