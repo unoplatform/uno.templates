@@ -13,9 +13,6 @@
 		<item name="android:windowSplashScreenBackground">@color/uno_splash_color</item>
 		<item name="android:windowBackground">@drawable/uno_splash_image</item>
 		<item name="android:windowSplashScreenAnimatedIcon">@drawable/uno_splash_image</item>
-		<!-- Image at the footer -->
-		<item name="android:windowSplashScreenBrandingImage">@drawable/uno_splash_image</item>
-
 	</style>
 	<style name="Theme.AppCompat.Translucent">
 		<item name="android:windowIsTranslucent">true</item>
