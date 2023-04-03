@@ -1,10 +1,10 @@
 <Project>
-	<ItemGroup>
 	<!--#if (useCPM)-->
+	<ItemGroup>
 		<PackageReference Include="Uno.Resizetizer" />
-	<!--#endif-->
 	</ItemGroup>
 
+	<!--#endif-->
 	<ItemGroup>
 		<None Include="$(MSBuildThisFileDirectory)AppHead.xaml" />
 		<ApplicationDefinition Include="$(MSBuildThisFileDirectory)AppHead.xaml"
