@@ -77,4 +77,12 @@ global using ApplicationExecutionState = Windows.ApplicationModel.Activation.App
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;
 #endif
+#if (useMvux)
+global using Uno.Extensions.Reactive;
+#endif
+#if (useMvvm)
+global using System.Windows.Input;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+#endif
 //-:cnd:noEmit

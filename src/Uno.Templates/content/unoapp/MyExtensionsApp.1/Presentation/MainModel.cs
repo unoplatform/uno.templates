@@ -1,6 +1,4 @@
 //-:cnd:noEmit
-using Uno.Extensions.Reactive;
-
 namespace MyExtensionsApp._1.Presentation;
 
 public partial record MainModel
