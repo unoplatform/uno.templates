@@ -64,6 +64,50 @@ public class App : Application
 						.AddSingleton<IWeatherCache, WeatherCache>()
 						.AddRefitClient<IApiClient>(context))
 #endif
+#if useAuthentication
+                .UseAuthentication(auth =>
+#if useCustomAuthentication 
+    auth.AddCustom(custom =>
+            custom
+                .Login((sp, dispatcher, credentials, cancellationToken) =>
+                {
+                    // TODO: Write code to process credentials that are passed into the LoginAsync method
+                    if (credentials?.TryGetValue(nameof(LoginModel.Username), out var username) ?? false &&
+                           !username.IsNullOrEmpty())
+                    {
+                        // Return IDictionary containing any tokens used by service calls or in the app
+                        credentials ??= new Dictionary<string, string>();
+                        credentials[TokenCacheExtensions.AccessTokenKey] = "SampleToken";
+                        credentials[TokenCacheExtensions.RefreshTokenKey] = "RefreshToken";
+                        credentials["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+                        return ValueTask.FromResult<IDictionary<string, string>?>(credentials);
+                    }
+
+                    // Return null/default to fail the LoginAsync method
+                    return ValueTask.FromResult<IDictionary<string, string>?>(default);
+                })
+                .Refresh((sp, tokenDictionary, cancellationToken) =>
+                {
+                    // TODO: Write code to refresh tokens using the currently stored tokens
+                    if ((tokenDictionary?.TryGetValue(TokenCacheExtensions.RefreshTokenKey, out var refreshToken) ?? false) &&
+                           !refreshToken.IsNullOrEmpty() &&
+                           (tokenDictionary?.TryGetValue("Expiry", out var expiry) ?? false) &&
+                           DateTime.TryParse(expiry, out var tokenExpiry) &&
+                           tokenExpiry > DateTime.Now)
+                    {
+                        // Return IDictionary containing any tokens used by service calls or in the app
+                        tokenDictionary ??= new Dictionary<string, string>();
+                        tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
+                        tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+                        return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
+                    }
+
+                    // Return null/default to fail the Refresh method
+                    return ValueTask.FromResult<IDictionary<string, string>?>(default);
+                }), name: "Custom")
+#endif
+				)
+#endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services
 					//services.AddSingleton<IMyService, MyService>();
@@ -102,7 +146,24 @@ public class App : Application
 		_window.Activate();
 //+:cnd:noEmit
 #else
+#if (!useAuthentication)
 		Host = await builder.NavigateAsync<Shell>();
+#else
+        Host = await builder.NavigateAsync<Shell>(initialNavigate:
+            async (services, navigator) =>
+            {
+                var auth = services.GetRequiredService<IAuthenticationService>();
+                var authenticated = await auth.RefreshAsync();
+                if (authenticated)
+                {
+                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+                }
+                else
+                {
+                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+                }
+            });
+#endif
 #endif
 	}
 #if (useExtensionsNavigation)
@@ -112,6 +173,9 @@ public class App : Application
 #if (useRegionsNav)
 		views.Register(
 			new ViewMap(ViewModel: typeof($shellRouteViewModel$)),
+#if (useAuthentication)
+			new ViewMap<LoginPage, $loginRouteViewModel$>(),
+#endif
 			new ViewMap<MainPage, $mainRouteViewModel$>(),
 			new DataViewMap<SecondPage, $secondRouteViewModel$, Entity>()
 		);
@@ -120,6 +184,9 @@ public class App : Application
 			new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
 				Nested: new RouteMap[]
 				{
+#if (useAuthentication)
+					new RouteMap("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
+#endif
 					new RouteMap("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
 					new RouteMap("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
 				}
