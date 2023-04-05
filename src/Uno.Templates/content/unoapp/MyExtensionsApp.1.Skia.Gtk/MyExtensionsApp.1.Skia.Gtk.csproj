@@ -3,9 +3,11 @@
 		<OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
 		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Package.appxmanifest" />
+		<Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
 	<!--#if (useCPM)-->

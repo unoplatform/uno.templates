@@ -4,6 +4,7 @@
 		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
 		<TargetFramework>$baseTargetFramework$-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
 	<ItemGroup Label="AssemblyInfo">
 		<AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
@@ -18,6 +19,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Package.appxmanifest" />
+		<Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
 	<!--#if (useCPM)-->
