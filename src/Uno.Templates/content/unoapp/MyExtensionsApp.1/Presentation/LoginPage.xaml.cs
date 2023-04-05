@@ -1,8 +1,8 @@
 ﻿namespace MyExtensionsApp._1.Presentation;
 
-public sealed partial class MainPage : Page
+public sealed partial class LoginPage : Page
 {
-	public MainPage()
+	public LoginPage()
 	{
 //+:cnd:noEmit
 #if useCsharpMarkup
@@ -26,22 +26,21 @@ public sealed partial class MainPage : Page
 						.Grid(row: 1)
 						.HorizontalAlignment(HorizontalAlignment.Center)
 						.VerticalAlignment(VerticalAlignment.Center)
+						.Width(200)
 						.Spacing(16)
 						.Children(
 							new TextBox()
 								.Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay))
-								.PlaceholderText("Enter your name:"),
-							new Button()
-								.Content("Go to Second Page")
-								.AutomationProperties(automationId: "SecondPageButton")
-								.Command(() => vm.GoToSecond)
-#if useAuthentication
-							new Button()
-								.Content("Logout")
-								.AutomationProperties(automationId: "LogoutButton")
-								.Command(() => vm.Logout)
-#endif								
-								))));
+								.PlaceholderText("Username")
+								.HorizontalAlignment(HorizontalAlignment.Stretch),
+                            new PasswordBox()
+                                .Password(x => x.Bind(() => vm.Password).Mode(BindingMode.TwoWay))
+                                .PlaceholderText("Password")
+                                .HorizontalAlignment(HorizontalAlignment.Stretch),
+                            new Button()
+								.Content("Login")
+                                .HorizontalAlignment(HorizontalAlignment.Stretch)
+                                .Command(() => vm.Login)))));
 #else
 		this.InitializeComponent();
 #endif

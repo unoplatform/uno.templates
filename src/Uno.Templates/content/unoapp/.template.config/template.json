@@ -408,6 +408,39 @@
         }
       ]
     },
+    "authentication": {
+      "displayName": "Authentication",
+      "description": "Configures authentication support in the application",
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "none",
+          "description": "No authentication",
+          "displayName": "None"
+        },
+        {
+          "choice": "custom",
+          "description": "Application uses custom logic to authenticate user",
+          "displayName": "Custom"
+        }
+        // {
+        //   "choice": "msal",
+        //   "description": "Application uses MSAL to authenticate user",
+        //   "displayName": "MSAL"
+        // },
+        // {
+        //   "choice": "oidc",
+        //   "description": "Application uses OpenID Connect to authenticate user",
+        //   "displayName": "OIDC"
+        // },
+        // {
+        //   "choice": "Web",
+        //   "description": "Application uses web based authentication to authenticate user",
+        //   "displayName": "Web"
+        // }
+      ]
+    },
     "cpm": {
       "displayName": "Central Package Management",
       "type": "parameter",
@@ -861,11 +894,6 @@
       "datatype": "bool",
       "value": "(platforms == wpf || platforms == gtk || platforms == linux-fb)"
     },
-    "useAuthentication": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(preset == 'recommended')"
-    },
     "presetConfigurationDefault": {
       "type": "generated",
       "generator": "switch",
@@ -1276,6 +1304,24 @@
         ]
       }
     },
+    "loginRouteViewModel":{
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$loginRouteViewModel$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(architectureEvaluator == 'mvux')",
+            "value": "LoginModel"
+          },
+          {
+            "condition": "(architectureEvaluator == 'mvvm')",
+            "value": "LoginViewModel"
+          }
+        ]
+      }
+    },
     "mainDataContext":{
       "type": "generated",
       "generator": "switch",
@@ -1339,6 +1385,57 @@
         "sourceVariableName": "navigation",
         "fallbackVariableName": "presetNavigationDefault"
       }
+    },
+    "presetAuthenticationDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "datatype": "string",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "none"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "none"
+          }
+        ]
+      }
+    },
+    "authenticationEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "authentication",
+        "fallbackVariableName": "presetAuthenticationDefault"
+      }
+    },
+    "useAuthentication": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useDependencyInjection && authenticationEvaluator != 'none'"
+    },
+    "useCustomAuthentication": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useAuthentication && authenticationEvaluator == 'custom'"
+    },
+    "useMsalAuthentication": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useAuthentication && authenticationEvaluator == 'msal'"
+    },
+    "useOidcAuthentication": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useAuthentication && authenticationEvaluator == 'oidc'"
+    },
+    "useWebAuthentication": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useAuthentication && authenticationEvaluator == 'web'"
     },
     "useExtensionsNavigation": {
       "type": "computed",
@@ -1614,6 +1711,7 @@
         {
           "condition": "(useMvvm)",
           "exclude": [
+            "MyExtensionsApp.1/Presentation/LoginModel.cs",
             "MyExtensionsApp.1/Presentation/MainModel.cs",
             "MyExtensionsApp.1/Presentation/SecondModel.cs",
             "MyExtensionsApp.1/Presentation/ShellModel.cs"
@@ -1622,9 +1720,16 @@
         {
           "condition": "(useMvux)",
           "exclude": [
+            "MyExtensionsApp.1/Presentation/LoginViewModel.cs",
             "MyExtensionsApp.1/Presentation/MainViewModel.cs",
             "MyExtensionsApp.1/Presentation/SecondViewModel.cs",
             "MyExtensionsApp.1/Presentation/ShellViewModel.cs"
+          ]
+        },
+        {
+          "condition": "(!useAuthentication)",
+          "exclude": [
+            "MyExtensionsApp.1/Presentation/Login*.*"
           ]
         },
         {

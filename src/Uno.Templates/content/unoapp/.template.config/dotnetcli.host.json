@@ -73,6 +73,10 @@
       "longName": "navigation",
       "shortName": "nav"
     },
+    "authentication": {
+      "longName": "authentication",
+      "shortName": "auth"
+    },
     "cpm": {
       "longName": "cpm",
       "shortName": "cpm"

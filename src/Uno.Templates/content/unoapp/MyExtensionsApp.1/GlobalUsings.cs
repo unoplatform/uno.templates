@@ -47,6 +47,9 @@ global using Refit;
 #if (useDependencyInjection)
 global using Uno.Extensions;
 #endif
+#if (useAuthentication)
+global using Uno.Extensions.Authentication;
+#endif
 #if (useConfiguration)
 global using Uno.Extensions.Configuration;
 #endif
