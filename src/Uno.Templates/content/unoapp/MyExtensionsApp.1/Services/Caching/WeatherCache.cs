@@ -1,7 +1,3 @@
-using Uno.Extensions.Serialization;
-using Windows.Networking.Connectivity;
-using Windows.Storage;
-
 namespace MyExtensionsApp._1.Services.Caching;
 
 public sealed class WeatherCache : IWeatherCache

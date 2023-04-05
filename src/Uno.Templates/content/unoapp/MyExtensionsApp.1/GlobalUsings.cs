@@ -1,6 +1,9 @@
 ﻿//-:cnd:noEmit
 global using System.Collections.Immutable;
 global using Microsoft.Extensions.DependencyInjection;
+global using Uno.Extensions.Serialization;
+global using Windows.Networking.Connectivity;
+global using Windows.Storage;
 //+:cnd:noEmit
 #if (useDependencyInjection)
 global using Microsoft.Extensions.Hosting;

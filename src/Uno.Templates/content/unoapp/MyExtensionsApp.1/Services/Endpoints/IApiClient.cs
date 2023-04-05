@@ -1,6 +1,3 @@
-using System.Collections.Immutable;
-using MyExtensionsApp._1.DataContracts;
-
 namespace MyExtensionsApp._1.Services.Endpoints;
 
 [Headers("Content-Type: application/json")]
