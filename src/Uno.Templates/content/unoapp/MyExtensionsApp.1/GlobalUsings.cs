@@ -1,7 +1,6 @@
 ﻿//-:cnd:noEmit
 global using System.Collections.Immutable;
 global using Microsoft.Extensions.DependencyInjection;
-global using Uno.Extensions.Serialization;
 global using Windows.Networking.Connectivity;
 global using Windows.Storage;
 //+:cnd:noEmit
@@ -40,6 +39,7 @@ global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
 global using Uno.Extensions.Http;
+global using Uno.Extensions.Serialization;
 #endif
 #if (useExtensionsNavigation)
 global using Uno.Extensions.Navigation;
