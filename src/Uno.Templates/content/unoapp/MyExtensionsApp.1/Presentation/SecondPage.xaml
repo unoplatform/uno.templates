@@ -8,6 +8,10 @@
 	Background="{ThemeResource $themeBackgroundBrush$}">
 
 	<Grid$toolkitSafeArea$>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
 <!--#if (useToolkit)-->
 		<utu:NavigationBar Content="Second Page">
 			<utu:NavigationBar.MainCommand>
@@ -21,10 +25,21 @@
 <!--#else-->
 		<TextBlock Text="Second Page" HorizontalAlignment="Center" />
 <!--#endif-->
+		<StackPanel Grid.Row="1"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center">
+			<TextBlock Text="{Binding Entity.Name}"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Margin="8" />
+<!--#if (!useToolkit)-->
+			<Button Content="Back to Main Page"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				AutomationProperties.AutomationId="BackButton"
+				uen:Navigation.Request="-"/>
+<!--#endif-->	
+		</StackPanel>
 
-		<TextBlock Text="{Binding Entity.Name}"
-				   HorizontalAlignment="Center"
-				   VerticalAlignment="Center"
-				   />
 	</Grid>
 </Page>
