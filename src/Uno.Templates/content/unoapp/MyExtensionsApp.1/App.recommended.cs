@@ -145,8 +145,7 @@ public class App : Application
 		// Ensure the current window is active
 		_window.Activate();
 //+:cnd:noEmit
-#else
-#if (!useAuthentication)
+#elif (!useAuthentication)
 		Host = await builder.NavigateAsync<Shell>();
 #else
         Host = await builder.NavigateAsync<Shell>(initialNavigate:
@@ -163,7 +162,6 @@ public class App : Application
                     await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
                 }
             });
-#endif
 #endif
 	}
 #if (useExtensionsNavigation)
