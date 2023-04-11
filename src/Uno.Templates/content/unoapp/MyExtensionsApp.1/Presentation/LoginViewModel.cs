@@ -29,10 +29,10 @@ public partial class LoginViewModel : ObservableObject
 
 	private async Task DoLogin()
 	{
-        var success = await Authentication.LoginAsync(new Dictionary<string, string> { { nameof(Username), Username }, { nameof(Password), Password } });
+        var success = await _authentication.LoginAsync(new Dictionary<string, string> { { nameof(Username), Username ?? string.Empty }, { nameof(Password), Password ?? string.Empty } });
         if (success)
         {
-            await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack);
+            await _navigator.NavigateViewModelAsync<MainViewModel>(this, qualifier: Qualifiers.ClearBackStack);
         }
 	}
 

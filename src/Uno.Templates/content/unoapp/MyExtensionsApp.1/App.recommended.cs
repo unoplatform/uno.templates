@@ -72,7 +72,7 @@ public class App : Application
                 .Login((sp, dispatcher, credentials, cancellationToken) =>
                 {
                     // TODO: Write code to process credentials that are passed into the LoginAsync method
-                    if (credentials?.TryGetValue(nameof(LoginModel.Username), out var username) ?? false &&
+                    if (credentials?.TryGetValue(nameof($loginRouteViewModel$.Username), out var username) ?? false &&
                            !username.IsNullOrEmpty())
                     {
                         // Return IDictionary containing any tokens used by service calls or in the app
