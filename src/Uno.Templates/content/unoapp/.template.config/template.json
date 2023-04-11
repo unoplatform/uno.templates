@@ -413,6 +413,7 @@
       "description": "Configures authentication support in the application",
       "type": "parameter",
       "datatype": "choice",
+      "defaultValue": "none",
       "choices": [
         {
           "choice": "none",
@@ -1386,56 +1387,30 @@
         "fallbackVariableName": "presetNavigationDefault"
       }
     },
-    "presetAuthenticationDefault": {
-      "type": "generated",
-      "generator": "switch",
-      "datatype": "string",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(preset == 'recommended')",
-            "value": "none"
-          },
-          {
-            "condition": "(preset == 'blank')",
-            "value": "none"
-          }
-        ]
-      }
-    },
-    "authenticationEvaluator": {
-      "type": "generated",
-      "generator": "coalesce",
-      "parameters": {
-        "sourceVariableName": "authentication",
-        "fallbackVariableName": "presetAuthenticationDefault"
-      }
-    },
     "useAuthentication": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useDependencyInjection && authenticationEvaluator != 'none'"
+      "value": "useDependencyInjection && authentication != 'none'"
     },
     "useCustomAuthentication": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useAuthentication && authenticationEvaluator == 'custom'"
+      "value": "useAuthentication && authentication == 'custom'"
     },
     "useMsalAuthentication": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useAuthentication && authenticationEvaluator == 'msal'"
+      "value": "useAuthentication && authentication == 'msal'"
     },
     "useOidcAuthentication": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useAuthentication && authenticationEvaluator == 'oidc'"
+      "value": "useAuthentication && authentication == 'oidc'"
     },
     "useWebAuthentication": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useAuthentication && authenticationEvaluator == 'web'"
+      "value": "useAuthentication && authentication == 'web'"
     },
     "useExtensionsNavigation": {
       "type": "computed",
