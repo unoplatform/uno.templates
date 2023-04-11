@@ -5,31 +5,33 @@ public partial record MainModel
 {
 	public string? Title { get; }
 
-	public IState<string> Name { get; }
+	public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
 //+:cnd:noEmit
+	public MainModel(
 #if useLocalization
-	public MainModel(
-		INavigator navigator,
-		IStringLocalizer localizer)
+		IStringLocalizer localizer,
+#endif
+#if useConfiguration
+		IOptions<AppConfig> appInfo,
+#endif
+#if useAuthentication
+		IAuthenticationService authentication,
+#endif
+		INavigator navigator)
 	{
 		_navigator = navigator;
-		Title = $"Main - {localizer["ApplicationName"]}";
-#elif useConfiguration
-	public MainModel(
-		INavigator navigator,
-		IOptions<AppConfig> appInfo)
-	{
-		_navigator = navigator;
-		Title = $"Main - {appInfo?.Value?.Title}";
-#else
-	public MainModel(INavigator navigator)
-	{
-		_navigator = navigator;
-		Title = "Main - MyExtensionsApp";
+#if useAuthentication
+		_authentication = authentication;
+#endif
+		Title = "Main";
+#if useLocalization
+		Title += $" - {localizer["ApplicationName"]}";
+#endif
+#if useConfiguration
+		Title += $" - {appInfo?.Value?.Environment}";
 #endif
 //-:cnd:noEmit
-		Name = State<string>.Value(this, () => string.Empty);
 	}
 
 	public async Task GoToSecond()
@@ -37,6 +39,17 @@ public partial record MainModel
 		var name = await Name;
 		await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
 	}
+
+//+:cnd:noEmit
+#if useAuthentication
+	public async ValueTask Logout(CancellationToken token)
+	{
+		await _authentication.LogoutAsync(token);
+	}
+
+	private IAuthenticationService _authentication;
+#endif
+//-:cnd:noEmit
 
 	private INavigator _navigator;
 }
