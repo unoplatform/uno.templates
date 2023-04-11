@@ -423,7 +423,7 @@
           "choice": "custom",
           "description": "Application uses custom logic to authenticate user",
           "displayName": "Custom"
-        }
+        // },
         // {
         //   "choice": "msal",
         //   "description": "Application uses MSAL to authenticate user",
@@ -438,7 +438,7 @@
         //   "choice": "Web",
         //   "description": "Application uses web based authentication to authenticate user",
         //   "displayName": "Web"
-        // }
+        }
       ]
     },
     "cpm": {
