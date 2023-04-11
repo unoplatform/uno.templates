@@ -1,6 +1,8 @@
 ﻿//-:cnd:noEmit
 global using System.Collections.Immutable;
 global using Microsoft.Extensions.DependencyInjection;
+global using Windows.Networking.Connectivity;
+global using Windows.Storage;
 //+:cnd:noEmit
 #if (useDependencyInjection)
 global using Microsoft.Extensions.Hosting;
@@ -37,6 +39,7 @@ global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
 global using Uno.Extensions.Http;
+global using Uno.Extensions.Serialization;
 #endif
 #if (useExtensionsNavigation)
 global using Uno.Extensions.Navigation;
@@ -76,5 +79,13 @@ global using Windows.ApplicationModel;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;
+#endif
+#if (useMvux)
+global using Uno.Extensions.Reactive;
+#endif
+#if (useMvvm)
+global using System.Windows.Input;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
 #endif
 //-:cnd:noEmit
