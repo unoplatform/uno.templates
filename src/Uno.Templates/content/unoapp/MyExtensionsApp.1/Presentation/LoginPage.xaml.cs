@@ -34,7 +34,7 @@ public sealed partial class LoginPage : Page
 								.PlaceholderText("Username")
 								.HorizontalAlignment(HorizontalAlignment.Stretch),
                             new PasswordBox()
-                                .Password(x => x.Bind(() => vm.Password).Mode(BindingMode.TwoWay))
+                                .Password(x => x.Bind(() => vm.Password).TwoWay())
                                 .PlaceholderText("Password")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch),
                             new Button()
