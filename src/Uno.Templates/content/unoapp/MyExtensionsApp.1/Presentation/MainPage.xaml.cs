@@ -34,8 +34,10 @@ public sealed partial class MainPage : Page
 							new Button()
 								.Content("Go to Second Page")
 								.AutomationProperties(automationId: "SecondPageButton")
+#if !useAuthentication
 								.Command(() => vm.GoToSecond)
-#if useAuthentication
+#else
+								.Command(() => vm.GoToSecond),
 							new Button()
 								.Content("Logout")
 								.AutomationProperties(automationId: "LogoutButton")
