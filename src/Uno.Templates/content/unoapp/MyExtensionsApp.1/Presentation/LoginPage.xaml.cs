@@ -30,7 +30,7 @@ public sealed partial class LoginPage : Page
 						.Spacing(16)
 						.Children(
 							new TextBox()
-								.Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay))
+								.Text(x => x.Bind(() => vm.Name).TwoWay())
 								.PlaceholderText("Username")
 								.HorizontalAlignment(HorizontalAlignment.Stretch),
                             new PasswordBox()
