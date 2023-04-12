@@ -6,7 +6,9 @@ namespace MyExtensionsApp._1.Presentation;
 
 public partial class LoginViewModel : ObservableObject
 {
-	public string Title { get; } = "Login";
+	private IAuthenticationService _authentication;
+
+	private INavigator _navigator;
 
 	[ObservableProperty]
 	private string? _username;
@@ -14,10 +16,6 @@ public partial class LoginViewModel : ObservableObject
 	[ObservableProperty]
 	private string? _password;
 
-	public ICommand Login { get; }
-
-//+:cnd:noEmit
-#if useLocalization
 	public LoginViewModel(
 		INavigator navigator,
 		IAuthenticationService authentication)
@@ -36,6 +34,7 @@ public partial class LoginViewModel : ObservableObject
         }
 	}
 
-	private INavigator _navigator;
-	private IAuthenticationService _authentication;
+	public string Title { get; } = "Login";
+
+	public ICommand Login { get; }
 }

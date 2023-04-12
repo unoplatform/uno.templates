@@ -3,6 +3,8 @@ namespace MyExtensionsApp._1.Presentation;
 
 public class ShellModel
 {
+	private readonly INavigator _navigator;
+
 	public ShellModel(
 //+:cnd:noEmit
 #if useAuthentication
@@ -32,6 +34,4 @@ public class ShellModel
 	}
 #endif
 //-:cnd:noEmit
-
-	private readonly INavigator _navigator;
 }

@@ -35,7 +35,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
 				.VerticalContentAlignment(VerticalAlignment.Stretch)
 #endif
 			);
-		Splash = splash;
+		ContentControl = splash;
 #else
 		this.InitializeComponent();
 #endif
@@ -44,13 +44,9 @@ public sealed partial class Shell : UserControl, IContentControlProvider
 //+:cnd:noEmit
 #if useCsharpMarkup
 
-#if useToolkit
-	private ExtendedSplashScreen Splash { get; }
+	public ContentControl ContentControl { get; }
 #else
-	private ContentControl Splash { get; }
-#endif
+	public ContentControl ContentControl => Splash;
 #endif
 //-:cnd:noEmit
-
-	public ContentControl ContentControl => Splash;
 }

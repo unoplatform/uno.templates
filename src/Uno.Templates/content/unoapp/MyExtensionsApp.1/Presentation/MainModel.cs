@@ -3,9 +3,7 @@ namespace MyExtensionsApp._1.Presentation;
 
 public partial record MainModel
 {
-	public string? Title { get; }
-
-	public IState<string> Name => State<string>.Value(this, () => string.Empty);
+	private INavigator _navigator;
 
 //+:cnd:noEmit
 	public MainModel(
@@ -34,6 +32,10 @@ public partial record MainModel
 //-:cnd:noEmit
 	}
 
+	public string? Title { get; }
+
+	public IState<string> Name => State<string>.Value(this, () => string.Empty);
+
 	public async Task GoToSecond()
 	{
 		var name = await Name;
@@ -50,6 +52,4 @@ public partial record MainModel
 	private IAuthenticationService _authentication;
 #endif
 //-:cnd:noEmit
-
-	private INavigator _navigator;
 }

@@ -2,18 +2,18 @@ namespace MyExtensionsApp._1.Presentation;
 
 public partial class MainViewModel : ObservableObject
 {
-	public string? Title { get; }
+//+:cnd:noEmit
+#if useAuthentication
+	private IAuthenticationService _authentication;
+
+#endif
+//-:cnd:noEmit
+	private INavigator _navigator;
 
 	[ObservableProperty]
 	private string? name;
 
-	public ICommand GoToSecond { get; }
-
 //+:cnd:noEmit
-#if useAuthentication
-	public ICommand Logout { get; }
-
-#endif
 	public MainViewModel(
 #if useLocalization
 		IStringLocalizer localizer,
@@ -43,6 +43,16 @@ public partial class MainViewModel : ObservableObject
 #endif
 //-:cnd:noEmit
 	}
+	public string? Title { get; }
+
+	public ICommand GoToSecond { get; }
+
+//+:cnd:noEmit
+#if useAuthentication
+	public ICommand Logout { get; }
+
+#endif
+//-:cnd:noEmit
 
 	private async Task GoToSecondView()
 	{
@@ -55,10 +65,6 @@ public partial class MainViewModel : ObservableObject
 	{
 		await _authentication.LogoutAsync(token);
 	}
-
-	private IAuthenticationService _authentication;
 #endif
 //-:cnd:noEmit
-
-	private INavigator _navigator;
 }
