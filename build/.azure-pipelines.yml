@@ -19,12 +19,19 @@ stages:
   jobs:
 
   - job: Permutation
+    pool:
+      vmImage: 'windows-2022'
+
+    steps:
+    - checkout: self
+      clean: 'true'
 
     - powershell: |
         $json = '{
           "preset":["blank","recommended"],
           "appId":["test1","test2"],
-          "tfm":["net6.0","net7.0","net8.0"]
+          "tfm":["net6.0","net7.0","net8.0"],
+          "architecture":["mvvm", "mvux"]
         }'
 
         $symbols = $json | ConvertFrom-Json
@@ -59,6 +66,7 @@ stages:
             }
         }
         echo $combinations
+      displayName: Generate Combinations
 
   - template: .azure-pipelines.TemplateValidation.yml
   - job: Packages
