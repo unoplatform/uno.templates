@@ -1,3 +1,4 @@
+//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
 public class App : Application
