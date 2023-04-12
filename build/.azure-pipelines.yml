@@ -17,6 +17,49 @@ variables:
 stages:
 - stage: Build
   jobs:
+
+  - job: Permutation
+
+    - powershell: |
+        $json = '{
+          "preset":["blank","recommended"],
+          "appId":["test1","test2"],
+          "tfm":["net6.0","net7.0","net8.0"]
+        }'
+
+        $symbols = $json | ConvertFrom-Json
+
+        #$command = 'dotnet new unoapp'
+
+        #Dictionary to store each symbol
+        $dict = New-Object 'System.Collections.Generic.Dictionary[String,Collections.Generic.List[String]]'
+
+        foreach($symbol in ($symbols | Get-Member -MemberType NoteProperty)) {
+          $list = New-Object Collections.Generic.List[String]
+          $commandProp = ' -' + $symbol.Name
+          
+          foreach($value in $symbols.($symbol.Name)) {
+            $list.Add("$commandProp $value")
+          }
+          $dict.Add($symbol.Name, $list)
+        }
+
+        $combinations = @()
+        $dict.Values | ForEach-Object {
+            if ($combinations.Count -eq 0) {
+                $combinations = $_
+            } else {
+                $new_combinations = @()
+                foreach ($value in $_) {
+                    foreach ($combination in $combinations) {
+                        $new_combinations += "$combination $value"
+                    }
+                }
+                $combinations = $new_combinations
+            }
+        }
+        echo $combinations
+
   - template: .azure-pipelines.TemplateValidation.yml
   - job: Packages
 
