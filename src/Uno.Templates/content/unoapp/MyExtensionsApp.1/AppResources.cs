@@ -1,3 +1,4 @@
+//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
 public sealed class AppResources : ResourceDictionary

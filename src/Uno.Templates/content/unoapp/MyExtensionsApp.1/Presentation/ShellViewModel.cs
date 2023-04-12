@@ -3,6 +3,15 @@ namespace MyExtensionsApp._1.Presentation;
 
 public class ShellViewModel
 {
+//+:cnd:noEmit
+#if useAuthentication
+	private readonly IAuthenticationService _authentication;
+
+
+#endif
+//-:cnd:noEmit
+	private readonly INavigator _navigator;
+
 	public ShellViewModel(
 //+:cnd:noEmit
 #if useAuthentication
@@ -20,8 +29,6 @@ public class ShellViewModel
     {
         await _navigator.NavigateViewModelAsync<LoginViewModel>(this, qualifier: Qualifiers.ClearBackStack);
     }
-
-	private readonly IAuthenticationService _authentication;
 #else
 		_ = Start();
 	}
@@ -32,5 +39,4 @@ public class ShellViewModel
 	}
 #endif
 //-:cnd:noEmit
-	private readonly INavigator _navigator;
 }

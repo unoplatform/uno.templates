@@ -1,4 +1,5 @@
-﻿namespace MyExtensionsApp._1.Presentation;
+﻿//-:cnd:noEmit
+namespace MyExtensionsApp._1.Presentation;
 
 public sealed partial class SecondPage : Page
 {

@@ -1,4 +1,5 @@
-﻿namespace MyExtensionsApp._1.Presentation;
+﻿//-:cnd:noEmit
+namespace MyExtensionsApp._1.Presentation;
 
 public sealed partial class Shell : UserControl, IContentControlProvider
 {
@@ -36,7 +37,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
 #endif
 				).Background(Theme.Brushes.Background.Default)
 			);
-		Splash = splash;
+		ContentControl = splash;
 #else
 		this.InitializeComponent();
 #endif
@@ -45,13 +46,9 @@ public sealed partial class Shell : UserControl, IContentControlProvider
 //+:cnd:noEmit
 #if useCsharpMarkup
 
-#if useToolkit
-	private ExtendedSplashScreen Splash { get; }
+	public ContentControl ContentControl { get; }
 #else
-	private ContentControl Splash { get; }
-#endif
+	public ContentControl ContentControl => Splash;
 #endif
 //-:cnd:noEmit
-
-	public ContentControl ContentControl => Splash;
 }

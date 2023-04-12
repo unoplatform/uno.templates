@@ -5,6 +5,7 @@ internal class DebugHttpHandler : DelegatingHandler
 {
 #if (useLogging)
 	private readonly ILogger _logger;
+	
 	public DebugHttpHandler(ILogger<DebugHttpHandler> logger, HttpMessageHandler? innerHandler = null)
 		: base(innerHandler ?? new HttpClientHandler())
 	{
