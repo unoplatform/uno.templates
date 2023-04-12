@@ -1,7 +1,4 @@
 //-:cnd:noEmit
-using Uno.Extensions.Reactive;
-using Uno.Extensions.Authentication;
-
 namespace MyExtensionsApp._1.Presentation;
 
 public partial record LoginModel(INavigator Navigator, IAuthenticationService Authentication)
