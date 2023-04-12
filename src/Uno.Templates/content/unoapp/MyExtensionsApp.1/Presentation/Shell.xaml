@@ -7,36 +7,37 @@
 	mc:Ignorable="d"
 	d:DesignHeight="300"
 	d:DesignWidth="400">
-
+	<Border Background="{ThemeResource $themeBackgroundBrush$}">
 <!--#if (useToolkit)-->
-	<utu:ExtendedSplashScreen x:Name="Splash"
-							  HorizontalAlignment="Stretch"
-							  VerticalAlignment="Stretch"
-							  HorizontalContentAlignment="Stretch"
-							  VerticalContentAlignment="Stretch">
-		<utu:ExtendedSplashScreen.LoadingContentTemplate>
-			<DataTemplate>
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="2*" />
-						<RowDefinition />
-					</Grid.RowDefinitions>
+		<utu:ExtendedSplashScreen x:Name="Splash"
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Stretch"
+								HorizontalContentAlignment="Stretch"
+								VerticalContentAlignment="Stretch">
+			<utu:ExtendedSplashScreen.LoadingContentTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="2*" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
 
-					<ProgressRing IsActive="True"
-								  Grid.Row="1"
-								  VerticalAlignment="Center"
-								  HorizontalAlignment="Center"
-								  Height="100"
-								  Width="100" />
-				</Grid>
-			</DataTemplate>
-		</utu:ExtendedSplashScreen.LoadingContentTemplate>
-	</utu:ExtendedSplashScreen>
+						<ProgressRing IsActive="True"
+									Grid.Row="1"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									Height="100"
+									Width="100" />
+					</Grid>
+				</DataTemplate>
+			</utu:ExtendedSplashScreen.LoadingContentTemplate>
+		</utu:ExtendedSplashScreen>
 <!--#else-->
-	<ContentControl x:Name="Splash"
-							  HorizontalAlignment="Stretch"
-							  VerticalAlignment="Stretch"
-							  HorizontalContentAlignment="Stretch"
-							  VerticalContentAlignment="Stretch" />
+		<ContentControl x:Name="Splash"
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Stretch"
+								HorizontalContentAlignment="Stretch"
+								VerticalContentAlignment="Stretch" />
 <!--#endif-->
+	</Border>
 </UserControl>
