@@ -8,6 +8,7 @@ public sealed class AppResources : ResourceDictionary
 		// Load WinUI Resources
 		this.Build(r => r.Merged(
 			new XamlControlsResources()));
+//+:cnd:noEmit
 #if useMaterial
 
 #if useToolkit
@@ -30,5 +31,6 @@ public sealed class AppResources : ResourceDictionary
 		this.Build(r => r.Merged(
 			new ToolkitResources()));
 #endif
+//-:cnd:noEmit
 	}
 }
