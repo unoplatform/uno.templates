@@ -818,7 +818,7 @@
     "useMvux": {
       "type": "computed",
       "datatype": "bool",
-      "value": "architectureEvaluator == 'mvux' && useExtensionsNavigation"
+      "value": "architectureEvaluator == 'mvux'"
     },
     "useMvvm": {
       "type": "computed",
