@@ -1,5 +1,6 @@
 ﻿//-:cnd:noEmit
 global using System.Collections.Immutable;
+global using System.Windows.Input;
 global using Microsoft.Extensions.DependencyInjection;
 global using Windows.Networking.Connectivity;
 global using Windows.Storage;
@@ -15,6 +16,7 @@ global using Microsoft.UI.Xaml;
 #if (useCsharpMarkup)
 global using Microsoft.UI.Xaml.Automation;
 global using Microsoft.UI.Xaml.Controls;
+global using Microsoft.UI.Xaml.Controls.Primitives;
 global using Microsoft.UI.Xaml.Data;
 #else
 global using Microsoft.UI.Xaml.Controls;
@@ -87,7 +89,6 @@ global using Color = Windows.UI.Color;
 global using Uno.Extensions.Reactive;
 #endif
 #if (useMvvm)
-global using System.Windows.Input;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 #endif
