@@ -87,6 +87,7 @@
     <!--#endif-->
     <!--#if (useToolkit)-->
     <PackageVersion Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
+    <PackageVersion Include="Uno.Extensions.Toolkit.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#if (useMaterial)-->
     <PackageVersion Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
     <!--#endif-->

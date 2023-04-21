@@ -621,14 +621,9 @@
             "condition": "(markup == 'xaml')",
             "value": "Xaml"
           },
-          // NOTE: DSP currently doesn't support C# Markup
-          // {
-          //   "condition": "(markup == 'csharp')",
-          //   "value": "CSharp"
-          // }
           {
             "condition": "(markup == 'csharp')",
-            "value": "Xaml"
+            "value": "CSharp"
           }
         ]
       }
@@ -823,7 +818,7 @@
     "useMvux": {
       "type": "computed",
       "datatype": "bool",
-      "value": "architectureEvaluator == 'mvux' && useExtensionsNavigation"
+      "value": "architectureEvaluator == 'mvux'"
     },
     "useMvvm": {
       "type": "computed",
