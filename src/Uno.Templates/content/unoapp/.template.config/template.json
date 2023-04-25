@@ -1704,7 +1704,8 @@
         {
           "condition": "(!useAuthentication)",
           "exclude": [
-            "MyExtensionsApp.1/Presentation/Login*.*"
+            "MyExtensionsApp.1/Presentation/Login*.*",
+            "MyExtensionsApp.1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
           ]
         },
         {

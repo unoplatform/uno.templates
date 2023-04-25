@@ -15,16 +15,3 @@ namespace MyExtensionsApp._1.Droid;
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
 }
-//+:cnd:noEmit
-#if useWebAuthentication
-
-[Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = true)]
-[IntentFilter(
-	new[] { Android.Content.Intent.ActionView },
-	Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
-	DataScheme = "myprotocol")]
-public class WebAuthenticationBrokerActivity : Uno.AuthenticationBroker.WebAuthenticationBrokerActivityBase
-{
-}
-#endif
-//-:cnd:noEmit
