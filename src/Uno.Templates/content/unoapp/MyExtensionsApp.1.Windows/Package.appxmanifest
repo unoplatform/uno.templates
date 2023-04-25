@@ -34,7 +34,7 @@
         Description="MyExtensionsApp._1">
         <uap:SplashScreen BackgroundColor="#086AD1"/>
       </uap:VisualElements>
-<!--#if (useWebAuthentication)-->
+//#if (useWebAuthentication)
       <Extensions>
 			<uap:Extension Category="windows.protocol">
 				<uap:Protocol Name="myprotocol">
@@ -42,7 +42,7 @@
 				</uap:Protocol>
 			</uap:Extension>
 		</Extensions>
-<!--#endif-->
+//#endif
     </Application>
   </Applications>
 
