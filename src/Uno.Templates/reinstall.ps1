@@ -1,9 +1,12 @@
 ﻿param(
+    # Version of published Uno.Templates packages
+    [string]$TemplatesVersion = "255.255.255.255",
+
     # Version of published Uno.Extensions packages
-    [string]$ExtensionsVersion = "2.3.2",
+    [string]$ExtensionsVersion = "2.4.0-dev.203",
 
     # Version of published Uno.WinUI packages
-    [string]$UnoVersion = "4.8.15"
+    [string]$UnoVersion = "4.8.24"
 )
 
 function RemoveNuGetPackage {
@@ -26,10 +29,10 @@ RemoveNuGetPackage -PackageName "Uno.ProjectTemplates.Dotnet"
 # Remove artifacts from previous builds
 Get-ChildItem .\ -Include bin,obj -Recurse | ForEach-Object ($_) { Remove-Item $_.Fullname -Force -Recurse }
 
-dotnet build -p:Version=$UnoVersion -p:UnoVersion=$UnoVersion -p:UnoExtensionsVersion=$ExtensionsVersion -c Release
+dotnet build -p:Version=$TemplatesVersion -p:UnoExtensionsVersion=$ExtensionsVersion -c Release
 if($LASTEXITCODE -ne 0) {
     Write-Error "Building NuGet Package failed."
     exit $LASTEXITCODE
 }
-dotnet new install $PSScriptRoot\bin\Release\Uno.Templates.$UnoVersion.nupkg
+dotnet new install $PSScriptRoot\bin\Release\Uno.Templates.$TemplatesVersion.nupkg
 

@@ -5,16 +5,24 @@ public partial record LoginModel(INavigator Navigator, IAuthenticationService Au
 {
 	public string Title { get; } = "Login";
 
-    public IState<string> Username => State<string>.Value(this, () => string.Empty);
+ //+:cnd:noEmit
+#if useCustomAuthentication
+   public IState<string> Username => State<string>.Value(this, () => string.Empty);
 
     public IState<string> Password => State<string>.Value(this, () => string.Empty);
+#endif
 
     public async ValueTask Login(CancellationToken token)
     {
+#if useCustomAuthentication
         var username = await Username ?? string.Empty;
         var password = await Password ?? string.Empty;
 
         var success = await Authentication.LoginAsync(new Dictionary<string, string> { { nameof(Username), username }, { nameof(Password), password } });
+#else
+        var success = await Authentication.LoginAsync();
+#endif
+//-:cnd:noEmit
         if (success)
         {
             await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack);

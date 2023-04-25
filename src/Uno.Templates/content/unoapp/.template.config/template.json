@@ -434,11 +434,11 @@
         //   "choice": "oidc",
         //   "description": "Application uses OpenID Connect to authenticate user",
         //   "displayName": "OIDC"
-        // },
-        // {
-        //   "choice": "Web",
-        //   "description": "Application uses web based authentication to authenticate user",
-        //   "displayName": "Web"
+        },
+        {
+          "choice": "Web",
+          "description": "Application uses web based authentication to authenticate user",
+          "displayName": "Web"
         }
       ]
     },

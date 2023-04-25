@@ -67,7 +67,9 @@ public class App : Application
 #endif
 #if useAuthentication
                 .UseAuthentication(auth =>
-#if useCustomAuthentication 
+#if useWebAuthentication
+	auth.AddWeb(name: "WebAuth")
+#elif useCustomAuthentication 
     auth.AddCustom(custom =>
             custom
                 .Login((sp, dispatcher, credentials, cancellationToken) =>
@@ -105,7 +107,7 @@ public class App : Application
 
                     // Return null/default to fail the Refresh method
                     return ValueTask.FromResult<IDictionary<string, string>?>(default);
-                }), name: "Custom")
+                }), name: "CustomAuth")
 #endif
 				)
 #endif
