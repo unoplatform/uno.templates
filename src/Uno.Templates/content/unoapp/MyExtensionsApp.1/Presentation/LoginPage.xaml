@@ -25,12 +25,14 @@
 					VerticalAlignment="Center"
 					Width="200"
 					Spacing="16">
+<!--#if (useCustomAuthentication)-->
 			<TextBox Text="{Binding Username}"
 					PlaceholderText="Username"
 					HorizontalAlignment="Stretch" />
 			<PasswordBox Password="{Binding Username}"
 						PlaceholderText="Password"
 						HorizontalAlignment="Stretch" />
+<!--#endif-->
 			<Button Content="Login"
 					Command="{Binding Login}"
 					HorizontalAlignment="Stretch" />

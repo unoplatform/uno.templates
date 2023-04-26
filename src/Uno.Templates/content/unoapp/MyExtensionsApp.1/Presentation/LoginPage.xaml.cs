@@ -30,6 +30,7 @@ public sealed partial class LoginPage : Page
 						.Width(200)
 						.Spacing(16)
 						.Children(
+#if useCustomAuthentication
 							new TextBox()
 								.Text(x => x.Bind(() => vm.Name).TwoWay())
 								.PlaceholderText("Username")
@@ -38,7 +39,8 @@ public sealed partial class LoginPage : Page
                                 .Password(x => x.Bind(() => vm.Password).TwoWay())
                                 .PlaceholderText("Password")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch),
-                            new Button()
+#endif
+							new Button()
 								.Content("Login")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch)
                                 .Command(() => vm.Login)))));

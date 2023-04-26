@@ -1,3 +1,4 @@
+//-:cnd:noEmit
 using Android.App;
 using Android.Widget;
 using Android.OS;

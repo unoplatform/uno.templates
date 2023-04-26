@@ -47,5 +47,11 @@
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
 		-->
+<!--#if (useWebAuthentication)-->
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>myprotocol</string>
+		</array>
+<!--#endif-->
 	</dict>
 </plist>
