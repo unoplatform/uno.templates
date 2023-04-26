@@ -19,7 +19,7 @@ try
 #endif
 	var builder = WebApplication.CreateBuilder(args);
 #if (useSerilog)
-	builder.Host.UseSerilog();
+	SerilogHostBuilderExtensions.UseSerilog(builder.Host);
 #endif
 
 #if (useHttp)
