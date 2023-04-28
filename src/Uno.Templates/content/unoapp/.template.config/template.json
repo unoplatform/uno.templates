@@ -585,16 +585,6 @@
       "datatype": "bool",
       "value": "cpm"
     },
-    "useBlankAppTemplate": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "preset == 'blank'"
-    },
-    "useRecommendedAppTemplate": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "preset == 'recommended'"
-    },
     "useTestSolutionFolder": {
       "type": "computed",
       "datatype": "bool",
@@ -878,7 +868,7 @@
     "useDataContracts": {
       "type": "computed",
       "dataType": "bool",
-      "value": "((useDependencyInjection && useHttp) || (server && useRecommendedAppTemplate))"
+      "value": "(useDependencyInjection && useHttp)"
     },
     "useUnitTests": {
       "type": "computed",
