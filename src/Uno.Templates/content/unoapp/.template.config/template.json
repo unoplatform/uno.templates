@@ -883,12 +883,12 @@
     "useUnitTests": {
       "type": "computed",
       "dataType": "bool",
-      "value": "(preset == 'recommended' &&  tests == unit)"
+      "value": "(tests == unit)"
     },
     "useUITests": {
       "type": "computed",
       "dataType": "bool",
-      "value": "(preset == 'recommended' && tests == ui)"
+      "value": "(tests == ui)"
     },
     "useSkia": {
       "type": "computed",

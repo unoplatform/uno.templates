@@ -12,6 +12,9 @@ public class Given_MainPage : TestBase
 
 //+:cnd:noEmit
 #if (useExtensionsNavigation)
+		// Add delay to allow for the splash screen to disappear
+		await Task.Delay(5000);
+
 		// Query for the SecondPageButton and then tap it
 		Query xamlButton = q => q.All().Marked("SecondPageButton");
 		App.WaitForElement(xamlButton);
@@ -21,7 +24,7 @@ public class Given_MainPage : TestBase
 		TakeScreenshot("After tapped");
 #else
 		// Query for the MainPage Text Block
-		Query textBlock = q => q.All().Marked("Hello Uno Platform");
+		Query textBlock = q => q.All().Marked("HelloTextBlock");
 		App.WaitForElement(textBlock);
 
 		// Take a screenshot and add it to the test results
