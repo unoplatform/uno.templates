@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
 		<IsPackable>false</IsPackable>
+		<AssemblyName>MyExtensionsApp._1.Tests</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -4,6 +4,7 @@
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
+		<AssemblyName>MyExtensionsApp._1.Server</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

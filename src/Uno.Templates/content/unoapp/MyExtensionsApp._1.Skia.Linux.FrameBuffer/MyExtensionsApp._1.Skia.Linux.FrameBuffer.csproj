@@ -3,6 +3,7 @@
 		<OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
 		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
+		<AssemblyName>MyExtensionsApp._1.Skia.Linux.FrameBuffer</AssemblyName>		
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Package.appxmanifest" />

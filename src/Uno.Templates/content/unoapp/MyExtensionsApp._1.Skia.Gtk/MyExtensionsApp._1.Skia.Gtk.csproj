@@ -4,6 +4,7 @@
 		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AssemblyName>MyExtensionsApp._1.Skia.Gtk</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Package.appxmanifest" />

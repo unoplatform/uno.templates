@@ -13,6 +13,7 @@
 
 		<!-- Ensures the .xr.xml files are generated in a proper layout folder -->
 		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+		<AssemblyName>MyExtensionsApp._1</AssemblyName>
 	</PropertyGroup>
 
 	<!--#if (useCPM)-->

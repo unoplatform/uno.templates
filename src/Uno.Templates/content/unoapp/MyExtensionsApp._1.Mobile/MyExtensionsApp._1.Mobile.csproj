@@ -23,6 +23,7 @@
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'">True</UseInterpreter>
 		<IsUnoHead>true</IsUnoHead>
+		<AssemblyName>MyExtensionsApp._1.Mobile</AssemblyName>
 	</PropertyGroup>
 
 	<!--#if (useCPM)-->

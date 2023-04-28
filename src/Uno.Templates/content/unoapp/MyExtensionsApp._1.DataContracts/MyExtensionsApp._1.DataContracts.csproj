@@ -4,6 +4,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- Suppress Compiler warnings for elements without XML Docs -->
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
+		<AssemblyName>MyExtensionsApp._1.DataContracts</AssemblyName>
 	</PropertyGroup>
 	<!--#if (includeIsExternalInit)-->
 

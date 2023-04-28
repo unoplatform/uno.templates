@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>$baseTargetFramework$</TargetFramework>
+		<AssemblyName>MyExtensionsApp._1.UITests</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -5,6 +5,7 @@
 		<TargetFramework>$baseTargetFramework$-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AssemblyName>MyExtensionsApp._1.Skia.WPF</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup Label="AssemblyInfo">
 		<AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
