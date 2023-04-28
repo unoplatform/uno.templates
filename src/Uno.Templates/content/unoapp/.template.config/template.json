@@ -598,7 +598,7 @@
     "useTestSolutionFolder": {
       "type": "computed",
       "datatype": "bool",
-      "value": "preset == 'recommended' && (tests == 'ui' || tests == 'unit')"
+      "value": "(tests == 'ui' || tests == 'unit')"
     },
     "useCsharpMarkup": {
       "type": "computed",
