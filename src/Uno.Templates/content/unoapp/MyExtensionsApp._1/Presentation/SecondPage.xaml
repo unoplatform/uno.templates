@@ -1,0 +1,45 @@
+<Page x:Class="MyExtensionsApp._1.Presentation.SecondPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:MyExtensionsApp._1.Presentation"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:uen="using:Uno.Extensions.Navigation.UI"$toolkitNamespace$
+	Background="{ThemeResource $themeBackgroundBrush$}">
+
+	<Grid$toolkitSafeArea$>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+<!--#if (useToolkit)-->
+		<utu:NavigationBar Content="Second Page">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<AppBarButton.Icon>
+						<BitmapIcon UriSource="ms-appx:///MyExtensionsApp._1/Assets/Icons/back.png" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+<!--#else-->
+		<TextBlock Text="Second Page" HorizontalAlignment="Center" />
+<!--#endif-->
+		<StackPanel Grid.Row="1"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center">
+			<TextBlock Text="{Binding Entity.Name}"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Margin="8" />
+<!--#if (!useToolkit)-->
+			<Button Content="Back to Main Page"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				AutomationProperties.AutomationId="BackButton"
+				uen:Navigation.Request="-"/>
+<!--#endif-->	
+		</StackPanel>
+
+	</Grid>
+</Page>
