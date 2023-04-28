@@ -227,8 +227,33 @@
           "description": "Include a project for authoring UI tests using the Uno.UITest framework",
           "displayName": "UI Tests"
         }
-      ],
-      "defaultValue": "unit|ui"
+      ]
+    },
+    "presetTestsDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "unit|ui"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "testsEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "tests",
+        "fallbackVariableName": "presetTestsDefault"
+      }
     },
     "server": {
       "displayName": "Server",
@@ -588,7 +613,7 @@
     "useTestSolutionFolder": {
       "type": "computed",
       "datatype": "bool",
-      "value": "preset == 'recommended' && (tests == 'ui' || tests == 'unit')"
+      "value": "(testsEvaluator != '')"
     },
     "useCsharpMarkup": {
       "type": "computed",
@@ -871,14 +896,22 @@
       "value": "(useDependencyInjection && useHttp)"
     },
     "useUnitTests": {
-      "type": "computed",
+      "type": "generated",
+      "generator": "regexMatch",
       "dataType": "bool",
-      "value": "(preset == 'recommended' &&  tests == unit)"
+      "parameters": {
+      "source": "testsEvaluator",
+      "pattern": ".*unit.*"
+      }
     },
     "useUITests": {
-      "type": "computed",
+      "type": "generated",
+      "generator": "regexMatch",
       "dataType": "bool",
-      "value": "(preset == 'recommended' && tests == ui)"
+      "parameters": {
+      "source": "testsEvaluator",
+      "pattern": ".*ui.*"
+      }
     },
     "useSkia": {
       "type": "computed",
