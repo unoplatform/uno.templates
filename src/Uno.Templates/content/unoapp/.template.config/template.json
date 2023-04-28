@@ -623,7 +623,7 @@
     "useTestSolutionFolder": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(testsEvaluator == 'ui' || testsEvaluator == 'unit' || testsEvaluator == 'unit|ui' || testsEvaluator == 'ui|unit')"
+      "value": "(testsEvaluator != '')"
     },
     "useCsharpMarkup": {
       "type": "computed",
@@ -906,14 +906,22 @@
       "value": "((useDependencyInjection && useHttp) || (server && useRecommendedAppTemplate))"
     },
     "useUnitTests": {
-      "type": "computed",
+      "type": "generated",
+      "generator": "regexMatch",
       "dataType": "bool",
-      "value": "(testsEvaluator == 'unit' || testsEvaluator == 'unit|ui' || testsEvaluator == 'ui|unit')"
+      "parameters": {
+      "source": "testsEvaluator",
+      "pattern": ".*unit.*"
+      }
     },
     "useUITests": {
-      "type": "computed",
+      "type": "generated",
+      "generator": "regexMatch",
       "dataType": "bool",
-      "value": "(testsEvaluator == 'ui' || testsEvaluator == 'unit|ui' || testsEvaluator == 'ui|unit')"
+      "parameters": {
+      "source": "testsEvaluator",
+      "pattern": ".*ui.*"
+      }
     },
     "useSkia": {
       "type": "computed",
