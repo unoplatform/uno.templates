@@ -17,12 +17,12 @@ jobs:
         templateArgs: '-platforms android ios maccatalyst'
       BlankMarkupApp:
         templateArgs: '-preset blank -markup csharp'
-      BlankAppCpm:
-        templateArgs: '-preset blank --cpm true'
+      BlankAppNoCpm:
+        templateArgs: '-preset blank --cpm false'
       MVVM:
         templateArgs: '-presentation mvvm'
-      CentralPackageManagement:
-        templateArgs: '--cpm true'
+      NoCentralPackageManagement:
+        templateArgs: '--cpm false'
       CSharpMarkup:
         templateArgs: '-markup csharp'
       NoAppHosting:

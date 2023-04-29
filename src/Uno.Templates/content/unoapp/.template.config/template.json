@@ -471,7 +471,7 @@
       "displayName": "Central Package Management",
       "type": "parameter",
       "dataType": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Use Central Package Management where package versions are via central Directory.Packages.props file"
     },
     "vscode": {
