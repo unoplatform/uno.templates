@@ -1,5 +1,5 @@
 //-:cnd:noEmit
-namespace MyExtensionsApp._1;
+namespace MyExtensionsApp._1.Styles;
 
 public sealed partial class ColorPaletteOverride : ResourceDictionary
 {
