@@ -47,7 +47,7 @@
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
 		-->
-<!--#if (useWebAuthentication)-->
+<!--#if (useProtocolRedirect)-->
 		<key>CFBundleURLSchemes</key>
 		<array>
 			<string>myprotocol</string>

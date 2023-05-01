@@ -1435,6 +1435,11 @@
       "datatype": "bool",
       "value": "useAuthentication && authentication == 'web'"
     },
+    "useProtocolRedirect": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useWebAuthentication || useOidcAuthentication || useMsalAuthentication"
+    },
     "useExtensionsNavigation": {
       "type": "computed",
       "datatype": "bool",
