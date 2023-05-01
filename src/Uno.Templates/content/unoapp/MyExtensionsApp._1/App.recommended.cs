@@ -68,7 +68,7 @@ public class App : Application
 #if useAuthentication
                 .UseAuthentication(auth =>
 #if useWebAuthentication
-	auth.AddWeb(name: "WebAuth")
+	auth.AddWeb(name: "WebAuthentication")
 #elif useCustomAuthentication 
     auth.AddCustom(custom =>
             custom
