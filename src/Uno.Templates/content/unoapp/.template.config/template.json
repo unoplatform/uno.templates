@@ -1724,8 +1724,19 @@
         {
           "condition": "(!useAuthentication)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/Login*.*",
+            "MyExtensionsApp._1/Presentation/Login*.*"
+          ]
+        },
+        {
+          "condition": "(!useWebAuthentication && !useOidcAuthentication)",
+          "exclude": [
             "MyExtensionsApp._1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
+          ]
+        },
+        {
+          "condition": "(!useMsalAuthentication)",
+          "exclude": [
+            "MyExtensionsApp._1.Mobile/Android/MsalActivity.Android.cs"
           ]
         },
         {

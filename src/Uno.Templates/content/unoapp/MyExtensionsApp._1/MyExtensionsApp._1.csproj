@@ -71,6 +71,7 @@
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Microsoft.Identity.Client" />
 		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
 		<!--#endif-->
 		<!--#endif-->
@@ -153,6 +154,7 @@
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.53.0" />
 		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#endif-->
