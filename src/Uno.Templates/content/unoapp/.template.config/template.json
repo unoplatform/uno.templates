@@ -449,11 +449,11 @@
           "choice": "custom",
           "description": "Application uses custom logic to authenticate user",
           "displayName": "Custom"
-        // },
-        // {
-        //   "choice": "msal",
-        //   "description": "Application uses MSAL to authenticate user",
-        //   "displayName": "MSAL"
+        },
+        {
+          "choice": "msal",
+          "description": "Application uses MSAL to authenticate user",
+          "displayName": "MSAL"
         },
         {
           "choice": "oidc",

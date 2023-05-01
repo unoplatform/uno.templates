@@ -59,6 +59,9 @@
 		<!--#if (useOidcAuthentication)-->
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
 		<!--#endif-->
+		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
+		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
@@ -138,6 +141,9 @@
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#if (useOidcAuthentication)-->
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<!--#endif-->
+		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
