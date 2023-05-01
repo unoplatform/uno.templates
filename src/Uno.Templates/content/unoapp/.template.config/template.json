@@ -540,7 +540,7 @@
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.0-dev.15",
+      "defaultValue": "2.6.0-dev.40",
       "replaces": "$UnoToolkitVersion$"
     },
     "unoResizetizerVersion": {
