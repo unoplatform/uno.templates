@@ -35,6 +35,9 @@
     <!--#if (useAuthentication)-->
     <PackageVersion Include="Uno.Extensions.Authentication" Version="$UnoExtensionsPackageVersion$" />
     <PackageVersion Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
+    <!--#if (useOidcAuthentication)-->
+    <PackageVersion Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
+    <!--#endif-->
     <!--#endif-->
     <!--#if (useConfiguration)-->
     <PackageVersion Include="Uno.Extensions.Configuration" Version="$UnoExtensionsPackageVersion$" />

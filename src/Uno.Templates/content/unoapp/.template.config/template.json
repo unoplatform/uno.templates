@@ -454,11 +454,11 @@
         //   "choice": "msal",
         //   "description": "Application uses MSAL to authenticate user",
         //   "displayName": "MSAL"
-        // },
-        // {
-        //   "choice": "oidc",
-        //   "description": "Application uses OpenID Connect to authenticate user",
-        //   "displayName": "OIDC"
+        },
+        {
+          "choice": "oidc",
+          "description": "Application uses OpenID Connect to authenticate user",
+          "displayName": "OIDC"
         },
         {
           "choice": "Web",

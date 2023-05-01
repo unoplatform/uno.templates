@@ -69,6 +69,8 @@ public class App : Application
                 .UseAuthentication(auth =>
 #if useWebAuthentication
 	auth.AddWeb(name: "WebAuthentication")
+#elif useOidcAuthentication
+	auth.AddOidc(name: "OidcAuthentication")
 #elif useCustomAuthentication 
     auth.AddCustom(custom =>
             custom
