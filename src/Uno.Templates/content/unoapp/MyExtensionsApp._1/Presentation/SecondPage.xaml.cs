@@ -8,7 +8,11 @@ public sealed partial class SecondPage : Page
 //+:cnd:noEmit
 #if useCsharpMarkup
 		this.DataContext<$secondDataContext$>((page, vm) => page
+#if useMaterial
 			.Background(Theme.Brushes.Background.Default)
+#else
+		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
+#endif
 			.Content(new Grid()
 #if useToolkit					
 				.SafeArea(SafeArea.InsetMask.All)

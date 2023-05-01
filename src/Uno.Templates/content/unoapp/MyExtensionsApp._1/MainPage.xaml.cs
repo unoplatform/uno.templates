@@ -7,7 +7,13 @@ public sealed partial class MainPage : Page
 	{
 //+:cnd:noEmit
 #if useCsharpMarkup
-		this.Content(new StackPanel()
+		this
+#if useMaterial
+			.Background(Theme.Brushes.Background.Default)
+#else
+		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
+#endif
+			.Content(new StackPanel()
 			.VerticalAlignment(VerticalAlignment.Center)
 			.HorizontalAlignment(HorizontalAlignment.Center)
 			.Children(

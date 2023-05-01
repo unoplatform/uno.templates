@@ -3,7 +3,7 @@
     [string]$TemplatesVersion = "255.255.255.255",
 
     # Version of published Uno.Extensions packages
-    [string]$ExtensionsVersion = "2.4.0-dev.203",
+    [string]$ExtensionsVersion = "2.4.0-dev.274",
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "4.8.24"
