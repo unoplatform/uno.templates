@@ -7,7 +7,10 @@ public sealed partial class MainPage : Page
 	{
 //+:cnd:noEmit
 #if useCsharpMarkup
-		this.Background(Theme.Brushes.Background.Default)
+		this
+#if useMaterial
+			.Background(Theme.Brushes.Background.Default)
+#endif
 			.Content(new StackPanel()
 			.VerticalAlignment(VerticalAlignment.Center)
 			.HorizontalAlignment(HorizontalAlignment.Center)
