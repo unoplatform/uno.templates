@@ -10,6 +10,8 @@ public sealed partial class SecondPage : Page
 		this.DataContext<$secondDataContext$>((page, vm) => page
 #if useMaterial
 			.Background(Theme.Brushes.Background.Default)
+#else
+		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
 			.Content(new Grid()
 #if useToolkit					

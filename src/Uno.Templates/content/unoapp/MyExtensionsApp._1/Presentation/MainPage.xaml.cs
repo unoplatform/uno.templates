@@ -11,6 +11,8 @@ public sealed partial class MainPage : Page
 			.NavigationCacheMode(NavigationCacheMode.Required)
 #if useMaterial
 			.Background(Theme.Brushes.Background.Default)
+#else
+		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
 			.Content(new Grid()
 #if useToolkit					

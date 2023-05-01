@@ -10,6 +10,8 @@ public sealed partial class MainPage : Page
 		this
 #if useMaterial
 			.Background(Theme.Brushes.Background.Default)
+#else
+		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
 			.Content(new StackPanel()
 			.VerticalAlignment(VerticalAlignment.Center)
