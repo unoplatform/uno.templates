@@ -38,10 +38,10 @@
     <!--#if (useOidcAuthentication)-->
     <PackageVersion Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
-		<!--#if (useMsalAuthentication)-->
-		<PackageVersion Include="Microsoft.Identity.Client" Version="4.53.0" />
-		<PackageVersion Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
-		<!--#endif-->
+    <!--#if (useMsalAuthentication)-->
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.53.0" />
+    <PackageVersion Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
+    <!--#endif-->
     <!--#endif-->
     <!--#if (useConfiguration)-->
     <PackageVersion Include="Uno.Extensions.Configuration" Version="$UnoExtensionsPackageVersion$" />
