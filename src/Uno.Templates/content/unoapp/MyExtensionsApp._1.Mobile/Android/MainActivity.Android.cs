@@ -6,7 +6,7 @@ using Android.Content.PM;
 using Android.Views;
  //+:cnd:noEmit
 #if useMsalAuthentication
-using Uno.AuthenticationBroker;
+using Microsoft.Identity.Client;
 #endif
 
 namespace MyExtensionsApp._1.Droid;
