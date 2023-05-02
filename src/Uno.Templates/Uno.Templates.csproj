@@ -20,9 +20,9 @@
 
 	<PropertyGroup>
 		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
-		<Authors>uno platform</Authors>
+		<Authors>Uno Platform</Authors>
 		<PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
-		<!-- <PackageIcon>logo.png</PackageIcon> -->
+		<PackageIconUrl>https://nv-assets.azurewebsites.net/logos/uno.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/unoplatform/uno.templates</RepositoryUrl>
 		<Description>Templates for creating Uno Platform apps and libraries</Description>
 		<Copyright>Copyright (C) 2015-$([System.DateTime]::Now.ToString(`yyyy`)) Uno Platform inc. - all rights reserved</Copyright>
