@@ -1982,5 +1982,24 @@
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
       "continueOnError": true
     }
-  ]
+  ],
+  "SpecialCustomOperations": {
+    "**.appxmanifest": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": [ "#if", "<!--#if" ],
+            "endif": [ "#endif", "<!--#endif" ],
+            "actionableIf": [ "<!--#if" ],
+            "actionableElse": [ "#else", "<!--#else" ],
+            "actionableElseif": [ "#elseif", "<!--#elseif", "#elif", "<!--#elif" ],
+            "trim": true,
+            "wholeLine": true,
+            "evaluator": "C++"
+          }
+        }
+      ]
+    }
+  }
 }
