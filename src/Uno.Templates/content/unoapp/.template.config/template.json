@@ -449,16 +449,16 @@
           "choice": "custom",
           "description": "Application uses custom logic to authenticate user",
           "displayName": "Custom"
-        // },
-        // {
-        //   "choice": "msal",
-        //   "description": "Application uses MSAL to authenticate user",
-        //   "displayName": "MSAL"
-        // },
-        // {
-        //   "choice": "oidc",
-        //   "description": "Application uses OpenID Connect to authenticate user",
-        //   "displayName": "OIDC"
+        },
+        {
+          "choice": "msal",
+          "description": "Application uses MSAL to authenticate user",
+          "displayName": "MSAL"
+        },
+        {
+          "choice": "oidc",
+          "description": "Application uses OpenID Connect to authenticate user",
+          "displayName": "OIDC"
         },
         {
           "choice": "Web",
@@ -1435,6 +1435,11 @@
       "datatype": "bool",
       "value": "useAuthentication && authentication == 'web'"
     },
+    "useProtocolRedirect": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useWebAuthentication || useOidcAuthentication || useMsalAuthentication"
+    },
     "useExtensionsNavigation": {
       "type": "computed",
       "datatype": "bool",
@@ -1724,8 +1729,19 @@
         {
           "condition": "(!useAuthentication)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/Login*.*",
+            "MyExtensionsApp._1/Presentation/Login*.*"
+          ]
+        },
+        {
+          "condition": "(!useWebAuthentication && !useOidcAuthentication)",
+          "exclude": [
             "MyExtensionsApp._1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
+          ]
+        },
+        {
+          "condition": "(!useMsalAuthentication)",
+          "exclude": [
+            "MyExtensionsApp._1.Mobile/Android/MsalActivity.Android.cs"
           ]
         },
         {

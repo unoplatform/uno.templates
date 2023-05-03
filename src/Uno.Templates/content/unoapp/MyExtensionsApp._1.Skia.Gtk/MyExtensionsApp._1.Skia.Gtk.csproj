@@ -58,6 +58,13 @@
 		<!--#endif-->
 		<!--#if (useAuthentication)-->
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" />
+		<!--#if (useOidcAuthentication)-->
+		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
+		<!--#endif-->
+		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Microsoft.Identity.Client" />
+		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
+		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
@@ -135,6 +142,13 @@
 		<!--#endif-->
 		<!--#if (useAuthentication)-->
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<!--#if (useOidcAuthentication)-->
+		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<!--#endif-->
+		<!--#if (useMsalAuthentication)-->
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.53.0" />
+		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsPackageVersion$" />

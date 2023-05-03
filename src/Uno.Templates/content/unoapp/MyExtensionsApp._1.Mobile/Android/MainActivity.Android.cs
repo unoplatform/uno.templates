@@ -4,6 +4,10 @@ using Android.Widget;
 using Android.OS;
 using Android.Content.PM;
 using Android.Views;
+ //+:cnd:noEmit
+#if useMsalAuthentication
+using Microsoft.Identity.Client;
+#endif
 
 namespace MyExtensionsApp._1.Droid;
 
@@ -14,4 +18,11 @@ namespace MyExtensionsApp._1.Droid;
 )]
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
+#if useMsalAuthentication
+	protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
+	{
+		base.OnActivityResult(requestCode, resultCode, data);
+		AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+	}
+#endif
 }

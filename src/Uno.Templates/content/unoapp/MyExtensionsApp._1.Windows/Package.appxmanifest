@@ -34,7 +34,7 @@
         Description="MyExtensionsApp._1">
         <uap:SplashScreen BackgroundColor="#086AD1"/>
       </uap:VisualElements>
-//#if (useWebAuthentication)
+//#if (useProtocolRedirect)
       <Extensions>
 			<uap:Extension Category="windows.protocol">
 				<uap:Protocol Name="myprotocol">

@@ -52,6 +52,18 @@ jobs:
         templateArgs: '-preset=recommended -auth=custom'
       CustomAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
+      WebAuthMvux:
+        templateArgs: '-preset=recommended -auth=web'
+      WebAuthMvvm:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=web'
+      OidcAuthMvux:
+        templateArgs: '-preset=recommended -auth=oidc'
+      OidcAuthMvvm:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
+      MsalAuthMvux:
+        templateArgs: '-preset=recommended -auth=msal'
+      MsalAuthMvvm:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
 
   variables:
     - name: UseDotNetNativeToolchain
