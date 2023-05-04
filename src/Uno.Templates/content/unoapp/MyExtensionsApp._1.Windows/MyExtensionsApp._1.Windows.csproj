@@ -10,12 +10,13 @@
 		<PublishProfile>win10-$(Platform).pubxml</PublishProfile>
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
+		<!-- Uncomment for Unpackaged builds -->
+		<!-- <WindowsPackageType>None</WindowsPackageType> -->
 	</PropertyGroup>
 	<PropertyGroup>
 		<!-- Bundles the WinAppSDK binaries (Uncomment for unpackaged builds) -->
 		<!-- <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> -->
-		<!-- This bundles the .NET Core libraries (Uncomment for packaged builds)  -->
-		<SelfContained>true</SelfContained>
+		<!-- <SelfContained>true</SelfContained> -->
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -213,6 +214,24 @@
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
 		<!--#endif-->
 	</ItemGroup>
+
+	<!-- 
+		Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+		Tools extension to be activated for this project even if the Windows App SDK Nuget
+		package has not yet been restored.
+	-->
+	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<ProjectCapability Include="Msix"/>
+	</ItemGroup>
+
+	<!-- 
+		Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+		Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+		the Windows App SDK Nuget package has not yet been restored.
+	-->
+	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+	</PropertyGroup>
 
 	<Import Project="..\MyExtensionsApp._1.Base\base.props" />
 </Project>
