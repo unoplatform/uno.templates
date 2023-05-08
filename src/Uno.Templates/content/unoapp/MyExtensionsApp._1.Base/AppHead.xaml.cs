@@ -2,12 +2,9 @@
 #if (useLoggingFallback)
 using System;
 using Microsoft.Extensions.Logging;
-using Microsoft.UI.Xaml;
-
-#elif (useCsharpMarkup)
-using Microsoft.UI.Xaml;
-
 #endif
+using Microsoft.UI.Xaml;
+
 namespace MyExtensionsApp._1;
 
 public sealed partial class AppHead : App
@@ -25,7 +22,6 @@ public sealed partial class AppHead : App
 	{
 		this.InitializeComponent();
 	}
-#if useCsharpMarkup
 
 	/// <summary>
 	/// Invoked when the application is launched normally by the end user.  Other entry points
@@ -34,12 +30,15 @@ public sealed partial class AppHead : App
 	/// <param name="args">Details about the launch request and process.</param>
 	protected override void OnLaunched(LaunchActivatedEventArgs args)
 	{
+#if useCsharpMarkup
 		Resources.Build(r => r.Merged(
 			new AppResources()));
 
-		base.OnLaunched(args);
-	}
 #endif
+		base.OnLaunched(args);
+
+		SetWindowsIcon();
+	}
 #if (useLoggingFallback)
 
 	/// <summary>
@@ -113,4 +112,23 @@ public sealed partial class AppHead : App
 //+:cnd:noEmit
 	}
 #endif
+
+	private void SetWindowsIcon()
+	{
+//-:cnd:noEmit
+#if WINDOWS
+		var hWnd =
+			WinRT.Interop.WindowNative.GetWindowHandle(MainWindow);
+
+		// Retrieve the WindowId that corresponds to hWnd.
+		Microsoft.UI.WindowId windowId =
+        Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+
+		// Lastly, retrieve the AppWindow for the current (XAML) WinUI 3 window.
+		Microsoft.UI.Windowing.AppWindow appWindow =
+			Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+		appWindow.SetIcon("iconapp.ico");
+#endif
+//+:cnd:noEmit
+	}
 }
