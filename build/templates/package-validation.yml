@@ -48,6 +48,8 @@ steps:
   displayName: Create template app
 
 - template: canary-updater.yml
+  parameters:
+    MergeBranch: false
 
 - powershell: |
       Set-PSDebug -Trace 1

@@ -1,3 +1,6 @@
+parameters:
+  MergeBranch: true
+
 steps:
   - task: UseDotNet@2
     displayName: 'Use .NET runtime 7.0.100'
@@ -12,7 +15,7 @@ steps:
       solution: '$(build.sourcesdirectory)'
       useNuGetOrg: true
       usePrivateFeed: false
-      mergeBranch: true
+      mergeBranch: ${{ parameters.MergeBranch }}
       branchToMerge: main
       nugetUpdaterVersion: 2.3.0-alpha.42
       packageAuthor: 'nventive,Uno Platform'
