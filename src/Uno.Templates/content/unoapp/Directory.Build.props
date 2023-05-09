@@ -23,6 +23,9 @@
 		<IsMac>false</IsMac>
 		<IsMacCatalyst>false</IsMacCatalyst>
 		<IsWinAppSdk>false</IsWinAppSdk>
+
+		<!-- This allows dotnet restore to work on macOS -->
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	</PropertyGroup>
 
 	<Choose>
