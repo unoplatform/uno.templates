@@ -36,7 +36,7 @@
 		<key>UILaunchImageSize</key>
 		<string>{320, 568}</string>
 		<key>XSAppIconAssets</key>
-		<string>Media.xcassets/iconapp.appiconset</string>
+		<string>Assets.xcassets/iconapp.appiconset</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 
