@@ -29,12 +29,6 @@
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
-		<key>UILaunchImageMinimumOSVersion</key>
-		<string>9.0</string>
-		<key>UILaunchImageOrientation</key>
-		<string>Portrait</string>
-		<key>UILaunchImageSize</key>
-		<string>{320, 568}</string>
 		<key>XSAppIconAssets</key>
 		<string>Assets.xcassets/iconapp.appiconset</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
