@@ -5,6 +5,8 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:MyExtensionsApp._1.WPF"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="450" Width="800">
-	<ContentControl x:Name="root"/>
+		Title="MainWindow" 
+		Height="450" 
+		Width="800" >
+	<ContentControl x:Name="root" />
 </Window>
