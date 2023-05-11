@@ -546,7 +546,7 @@
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.1.0-dev.50",
+      "defaultValue": "1.1.0-dev.82",
       "replaces": "$UnoResizetizerVersion$"
     },
     "unoUniversalImageLoaderVersion": {
