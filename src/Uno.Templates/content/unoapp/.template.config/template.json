@@ -218,6 +218,11 @@
       "enableQuotelessLiterals": true,
       "choices": [
         {
+          "choice": "none",
+          "description": "Disable testing",
+          "displayName": "None"
+        },
+        {
           "choice": "unit",
           "description": "Include a project for authoring traditional unit tests",
           "displayName": "Unit Tests"
@@ -242,7 +247,7 @@
           },
           {
             "condition": "(preset == 'blank')",
-            "value": ""
+            "value": "none"
           }
         ]
       }
