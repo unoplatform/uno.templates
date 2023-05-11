@@ -1529,11 +1529,20 @@
     "HostIdentifier": {
       "type": "bind",
       "binding": "HostIdentifier"
+    },
+    "OS": {
+      "type": "bind",
+      "binding": "OS"
+    },
+    "canWindowsRestore": {
+      "type": "computed",
+      "value": "(HostIdentifier == \"dotnetcli\" && OS == \"Windows\")",
+      "datatype": "bool"
     }
   },
   "primaryOutputs": [
     {
-      "condition": "!isVsix",
+      "condition": "!isVsix && canWindowsRestore",
       "path": "MyExtensionsApp._1.sln"
     },
     {
@@ -1564,7 +1573,7 @@
       "path": "MyExtensionsApp._1.Mobile\\MyExtensionsApp._1.Mobile.csproj"
     },
     {
-      "condition": "useWinAppSdk",
+      "condition": "useWinAppSdk && canWindowsRestore",
       "path": "MyExtensionsApp._1.Windows\\MyExtensionsApp._1.Windows.csproj"
     },
     {
