@@ -1,6 +1,6 @@
 namespace MyExtensionsApp._1.Server.Apis;
 
-public static class WeatherForecastApi
+internal static class WeatherForecastApi
 {
 	private const string Tag = "Weather";
 	private static readonly string[] Summaries = new[]
@@ -8,7 +8,7 @@ public static class WeatherForecastApi
 		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 	};
 
-	public static WebApplication MapWeatherApi(this WebApplication app)
+	internal static WebApplication MapWeatherApi(this WebApplication app)
 	{
 		app.MapGet("/api/weatherforecast", GetForecast)
 			.WithTags(Tag)
