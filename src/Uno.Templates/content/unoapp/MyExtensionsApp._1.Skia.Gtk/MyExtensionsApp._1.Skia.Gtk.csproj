@@ -105,7 +105,7 @@
 		<PackageReference Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
 		<!--#endif-->
 		<!--#if (useMvvm) -->
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
 		<!--#endif -->
 		<!--#if (useConfiguration)-->
 		<PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsPackageVersion$" />
