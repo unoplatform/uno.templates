@@ -574,11 +574,11 @@
         "cases": [
           {
             "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
-            "value": "7.0.20"
+            "value": "7.0.23"
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-dev.122"
+            "value": "8.0.0-dev.152"
           }
         ]
       }
@@ -1498,7 +1498,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.2.23128.3"
+            "value": "8.0.0-preview.3.23174.8"
           }
         ]
       }
@@ -1521,7 +1521,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.2.23128.3"
+            "value": "8.0.0-preview.3.23174.8"
           }
         ]
       }
