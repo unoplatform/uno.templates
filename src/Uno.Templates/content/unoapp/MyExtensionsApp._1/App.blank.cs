@@ -3,25 +3,25 @@ namespace MyExtensionsApp._1;
 
 public class App : Application
 {
-	public static Window? AppWindow { get; private set; }
+	public static Window? MainWindow { get; private set; }
 
 	protected override void OnLaunched(LaunchActivatedEventArgs args)
 	{
 #if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
-		AppWindow = new Window();
+		MainWindow = new Window();
 #else
-		AppWindow = Microsoft.UI.Xaml.Window.Current;
+		MainWindow = Microsoft.UI.Xaml.Window.Current;
 #endif
 
 		// Do not repeat app initialization when the Window already has content,
 		// just ensure that the window is active
-		if (AppWindow.Content is not Frame rootFrame)
+		if (MainWindow.Content is not Frame rootFrame)
 		{
 			// Create a Frame to act as the navigation context and navigate to the first page
 			rootFrame = new Frame();
 
 			// Place the frame in the current Window
-			AppWindow.Content = rootFrame;
+			MainWindow.Content = rootFrame;
 
 			rootFrame.NavigationFailed += OnNavigationFailed;
 		}
@@ -35,7 +35,7 @@ public class App : Application
 		}
 
 		// Ensure the current window is active
-		AppWindow.Activate();
+		MainWindow.Activate();
 	}
 
 	/// <summary>

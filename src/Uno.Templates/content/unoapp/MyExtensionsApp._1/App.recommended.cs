@@ -3,7 +3,7 @@ namespace MyExtensionsApp._1;
 
 public class App : Application
 {
-	public static Window? AppWindow { get; private set; }
+	public static Window? MainWindow { get; private set; }
 	public static IHost? Host { get; private set; }
 
 //+:cnd:noEmit
@@ -125,7 +125,7 @@ public class App : Application
 				.UseNavigation(RegisterRoutes)
 #endif
 			);
-		AppWindow = builder.Window;
+		MainWindow = builder.Window;
 
 #if useFrameNav
 //-:cnd:noEmit
@@ -133,13 +133,13 @@ public class App : Application
 
 		// Do not repeat app initialization when the Window already has content,
 		// just ensure that the window is active
-		if (AppWindow.Content is not Frame rootFrame)
+		if (MainWindow.Content is not Frame rootFrame)
 		{
 			// Create a Frame to act as the navigation context and navigate to the first page
 			rootFrame = new Frame();
 
 			// Place the frame in the current Window
-			AppWindow.Content = rootFrame;
+			MainWindow.Content = rootFrame;
 		}
 
 		if (rootFrame.Content == null)
@@ -150,7 +150,7 @@ public class App : Application
 			rootFrame.Navigate(typeof(MainPage), args.Arguments);
 		}
 		// Ensure the current window is active
-		AppWindow.Activate();
+		MainWindow.Activate();
 //+:cnd:noEmit
 #elif (!useAuthentication)
 		Host = await builder.NavigateAsync<Shell>();
