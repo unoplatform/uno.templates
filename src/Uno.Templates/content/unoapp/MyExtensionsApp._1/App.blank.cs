@@ -3,7 +3,7 @@ namespace MyExtensionsApp._1;
 
 public class App : Application
 {
-	public static Window? MainWindow { get; private set; }
+	protected Window? MainWindow { get; private set; }
 
 	protected override void OnLaunched(LaunchActivatedEventArgs args)
 	{

@@ -3,8 +3,8 @@ namespace MyExtensionsApp._1;
 
 public class App : Application
 {
-	public static Window? MainWindow { get; private set; }
-	public static IHost? Host { get; private set; }
+	protected Window? MainWindow { get; private set; }
+	protected IHost? Host { get; private set; }
 
 //+:cnd:noEmit
 #if useFrameNav
