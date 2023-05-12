@@ -1536,7 +1536,7 @@
     },
     "canWindowsRestore": {
       "type": "computed",
-      "value": "(HostIdentifier == \"dotnetcli\" && OS == \"Windows\")",
+      "value": "(OS == \"Windows\")",
       "datatype": "bool"
     }
   },
