@@ -34,5 +34,7 @@ if($LASTEXITCODE -ne 0) {
     Write-Error "Building NuGet Package failed."
     exit $LASTEXITCODE
 }
-dotnet new install $PSScriptRoot\bin\Release\Uno.Templates.$TemplatesVersion.nupkg
+
+$nugetPath = Join-Path -Path $PSScriptRoot -ChildPath 'bin' -AdditionalChildPath @('Release',"Uno.Templates.$TemplatesVersion.nupkg") 
+dotnet new install $nugetPath
 
