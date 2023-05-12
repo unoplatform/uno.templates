@@ -117,17 +117,7 @@ public sealed partial class AppHead : App
 	{
 //-:cnd:noEmit
 #if WINDOWS
-		var hWnd =
-			WinRT.Interop.WindowNative.GetWindowHandle(MainWindow);
-
-		// Retrieve the WindowId that corresponds to hWnd.
-		Microsoft.UI.WindowId windowId =
-        Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-
-		// Lastly, retrieve the AppWindow for the current (XAML) WinUI 3 window.
-		Microsoft.UI.Windowing.AppWindow appWindow =
-			Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-		appWindow.SetIcon("iconapp.ico");
+		Uno.Resizetizer.WindowExtensions.SetWindowIcon(MainWindow);
 #endif
 //+:cnd:noEmit
 	}
