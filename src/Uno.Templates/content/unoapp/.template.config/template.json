@@ -477,7 +477,7 @@
       "type": "parameter",
       "dataType": "bool",
       "defaultValue": "true",
-      "description": "Use Central Package Management where package versions are via central Directory.Packages.props file"
+      "description": "NuGet package versions are centrally managed"
     },
     "vscode": {
       "displayName": "Visual Studio Code Debugging",
