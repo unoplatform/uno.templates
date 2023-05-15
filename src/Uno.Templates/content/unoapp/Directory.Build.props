@@ -8,7 +8,6 @@
 
 		<DebugType>portable</DebugType>
 		<DebugSymbols>True</DebugSymbols>
-		<SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
 		<!--#if (cpm)-->
 
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
