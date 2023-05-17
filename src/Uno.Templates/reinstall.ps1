@@ -6,7 +6,7 @@ param(
     [string]$ExtensionsVersion = "2.4.0-dev.297",
 
     # Version of published Uno.WinUI packages
-    [string]$UnoVersion = "4.9.0-dev.1029"
+    [string]$UnoVersion = "4.9.0-dev.1113"
 )
 
 function RemoveNuGetPackage {

@@ -2,12 +2,10 @@
 #if (useLoggingFallback)
 using System;
 using Microsoft.Extensions.Logging;
-using Microsoft.UI.Xaml;
-
-#elif (useCsharpMarkup)
-using Microsoft.UI.Xaml;
-
 #endif
+using Microsoft.UI.Xaml;
+using Uno.Resizetizer;
+
 namespace MyExtensionsApp._1;
 
 public sealed partial class AppHead : App
@@ -25,7 +23,6 @@ public sealed partial class AppHead : App
 	{
 		this.InitializeComponent();
 	}
-#if useCsharpMarkup
 
 	/// <summary>
 	/// Invoked when the application is launched normally by the end user.  Other entry points
@@ -34,12 +31,15 @@ public sealed partial class AppHead : App
 	/// <param name="args">Details about the launch request and process.</param>
 	protected override void OnLaunched(LaunchActivatedEventArgs args)
 	{
+#if useCsharpMarkup
 		Resources.Build(r => r.Merged(
 			new AppResources()));
 
-		base.OnLaunched(args);
-	}
 #endif
+		base.OnLaunched(args);
+
+		MainWindow.SetWindowIcon();
+	}
 #if (useLoggingFallback)
 
 	/// <summary>
