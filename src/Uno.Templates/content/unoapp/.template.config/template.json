@@ -618,7 +618,7 @@
     "useTestSolutionFolder": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(testsEvaluator != '')"
+      "value": "(testsEvaluator != 'none')"
     },
     "useCsharpMarkup": {
       "type": "computed",
