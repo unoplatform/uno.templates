@@ -9,6 +9,7 @@
 		<WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
 		<!--#endif -->
 		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
