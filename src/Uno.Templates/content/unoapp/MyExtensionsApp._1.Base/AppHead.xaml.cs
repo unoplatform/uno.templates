@@ -4,6 +4,7 @@ using System;
 using Microsoft.Extensions.Logging;
 #endif
 using Microsoft.UI.Xaml;
+using Uno.Resizetizer;
 
 namespace MyExtensionsApp._1;
 
@@ -37,7 +38,7 @@ public sealed partial class AppHead : App
 #endif
 		base.OnLaunched(args);
 
-		SetWindowsIcon();
+		MainWindow.SetWindowIcon();
 	}
 #if (useLoggingFallback)
 
@@ -112,13 +113,4 @@ public sealed partial class AppHead : App
 //+:cnd:noEmit
 	}
 #endif
-
-	private void SetWindowsIcon()
-	{
-//-:cnd:noEmit
-#if WINDOWS
-		Uno.Resizetizer.WindowExtensions.SetWindowIcon(MainWindow);
-#endif
-//+:cnd:noEmit
-	}
 }
