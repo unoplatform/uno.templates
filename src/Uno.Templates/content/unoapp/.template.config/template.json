@@ -68,13 +68,59 @@
         }
       ]
     },
+    "sanitizedName": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "sourceVariableName": "name",
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z\\d:]+",
+            "replacement": "-"
+          }
+        ]
+      }
+    },
     "appId": {
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "replaces": "com.companyname.myextensionsapp",
       "description": "The application identifier (e.g. com.mycompany.myapp)",
-      "defaultValue": "com.companyname.myextensionsapp"
+    },
+    "appIdDefault": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "const",
+            "value": "com.companyname."
+          },
+          {
+            "type": "ref",
+            "value": "sanitizedName"
+          }
+        ]
+      }
+    },
+    "appIdDefaultLower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"appIdDefault",
+        "toLower": true
+      }
+    },
+    "appIdEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "appId",
+        "fallbackVariableName": "appIdDefaultLower"
+      },
+      "replaces": "com.companyname.myextensionsapp"
+    },
     "publisher": {
       "displayName": "Publisher",
       "type": "parameter",
