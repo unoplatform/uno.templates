@@ -7,8 +7,8 @@
 	IgnorableNamespaces="uap rescap">
 
 	<Identity
-		Name="E2821155-50B7-468D-A15B-E0EAF55DAC2B"
-		Publisher="O=MyExtensionsApp._1"
+		Name="MyExtensionsApp._1"
+		Publisher="$appPublisher$"
 		Version="1.0.0.0" />
 
 	<Properties>

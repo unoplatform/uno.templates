@@ -9,6 +9,10 @@
       "longName": "app-id",
       "shortName": "id"
     },
+    "publisher": {
+      "longName": "publisher",
+      "shortName": "pub"
+    },
     "tfm": {
       "longName": "tfm",
       "shortName": "tfm"

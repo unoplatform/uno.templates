@@ -75,6 +75,35 @@
       "replaces": "com.companyname.myextensionsapp",
       "description": "The application identifier (e.g. com.mycompany.myapp)",
       "defaultValue": "com.companyname.myextensionsapp"
+    "publisher": {
+      "displayName": "Publisher",
+      "type": "parameter",
+      "datatype": "string"
+    },
+    "publisherDefault":{
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "const",
+            "value": "O="
+          },
+          {
+            "type": "ref",
+            "value": "name"
+          }
+        ]
+      }
+    },
+    "publisherEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "publisher",
+        "fallbackVariableName": "publisherDefault"
+      },
+      "replaces": "$appPublisher$"
     },
     "tfm": {
       "displayName": "Target Framework",
