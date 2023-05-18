@@ -9,6 +9,11 @@
 		<WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
 		<!--#endif -->
 		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<!--
+			Supports Deep Linking Routes
+			https://aka.platform.uno/wasm-deeplink
+		-->
+		<WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
