@@ -71,7 +71,6 @@
       "type": "generated",
       "generator": "regex",
       "parameters": {
-        "sourceVariableName": "name",
         "source": "name",
         "steps": [
           {
@@ -79,7 +78,8 @@
             "replacement": "-"
           }
         ]
-      }
+      },
+      "replaces": "$sanitizedProjectName$"
     },
     "appId": {
       "displayName": "Application ID",
@@ -161,6 +161,19 @@
       "parameters": {
         "sourceVariableName": "publisher",
         "fallbackVariableName": "publisherDefault"
+      }
+    },
+    "publisherEvaluatorSanitizer": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "publisherEvaluator",
+        "steps": [
+          {
+            "regex": "&",
+            "replacement": "&amp;"
+          }
+        ]
       },
       "replaces": "$appPublisher$"
     },
