@@ -7,7 +7,7 @@
 	IgnorableNamespaces="uap rescap">
 
 	<Identity
-		Name="MyExtensionsApp._1"
+		Name="$identityName$"
 		Publisher="$appPublisher$"
 		Version="1.0.0.0" />
 

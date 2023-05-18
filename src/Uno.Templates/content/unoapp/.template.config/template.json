@@ -120,6 +120,20 @@
       },
       "replaces": "com.companyname.myextensionsapp"
     },
+    "identityName": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z\\d\\.:]+",
+            "replacement": "-"
+          }
+        ]
+      },
+      "replaces": "$identityName$"
+    },
     "publisher": {
       "displayName": "Publisher",
       "type": "parameter",
