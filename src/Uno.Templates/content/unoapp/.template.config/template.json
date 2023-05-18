@@ -44,7 +44,6 @@
     "7EF70027-9874-4112-A14F-33F02169CF8A", // Tests Solution folder
     "EB3EB846-D5CB-4140-834F-1CC40A0FD6D0", // Tests
     "7229D034-7DBE-4FD7-B0E4-38D617571F93", // UITests
-    "E2821155-50B7-468D-A15B-E0EAF55DAC2B", // WINDOWS - Package.appxmanifest Identity.Name
     "F5EAE47C-F7DF-4D61-8A30-92251720AC4B", // Mobile Application Id
     "5ED31500-DF01-462D-9436-EC2EDCAA1965" // DataContracts
   ],
@@ -68,13 +67,115 @@
         }
       ]
     },
+    "sanitizedName": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z\\d:]+",
+            "replacement": "-"
+          }
+        ]
+      },
+      "replaces": "$sanitizedProjectName$"
+    },
     "appId": {
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "replaces": "com.companyname.myextensionsapp",
       "description": "The application identifier (e.g. com.mycompany.myapp)",
-      "defaultValue": "com.companyname.myextensionsapp"
+    },
+    "appIdDefault": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "const",
+            "value": "com.companyname."
+          },
+          {
+            "type": "ref",
+            "value": "sanitizedName"
+          }
+        ]
+      }
+    },
+    "appIdDefaultLower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"appIdDefault",
+        "toLower": true
+      }
+    },
+    "appIdEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "appId",
+        "fallbackVariableName": "appIdDefaultLower"
+      },
+      "replaces": "com.companyname.myextensionsapp"
+    },
+    "identityName": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z\\d\\.:]+",
+            "replacement": "-"
+          }
+        ]
+      },
+      "replaces": "$identityName$"
+    },
+    "publisher": {
+      "displayName": "Publisher",
+      "type": "parameter",
+      "datatype": "string"
+    },
+    "publisherDefault":{
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "const",
+            "value": "O="
+          },
+          {
+            "type": "ref",
+            "value": "name"
+          }
+        ]
+      }
+    },
+    "publisherEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "publisher",
+        "fallbackVariableName": "publisherDefault"
+      }
+    },
+    "publisherEvaluatorSanitizer": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "publisherEvaluator",
+        "steps": [
+          {
+            "regex": "&",
+            "replacement": "&amp;"
+          }
+        ]
+      },
+      "replaces": "$appPublisher$"
     },
     "tfm": {
       "displayName": "Target Framework",
