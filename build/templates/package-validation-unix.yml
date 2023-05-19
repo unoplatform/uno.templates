@@ -48,7 +48,17 @@ steps:
 
       cd UnoApp1
 
-      dotnet build UnoApp1.sln /m
+      $argumentString = "${{ parameters.arguments }}"
+      $args = $argumentString.Split(" ")
+
+      $binlogName = ""
+      foreach ($arg in $args) {
+          $arg = $arg.Replace("-", "")
+          $arg = $arg.Substring(0, 1).ToUpper() + $arg.Substring(1)
+          $binlogName += $arg
+      }
+
+      dotnet build UnoApp1.sln /m /bl:$binlogName.binlog
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
@@ -56,3 +66,11 @@ steps:
       cd ..
 
   displayName: Build template app
+
+- task: PublishBuildArtifacts@1
+  condition: always()
+  retryCountOnTaskFailure: 3
+  inputs:
+    PathtoPublish: 'UnoApp1/*.binlog'
+    ArtifactName: $(Build.DefinitionName)
+    ArtifactType: Container
