@@ -210,6 +210,11 @@
       "datatype": "choice",
       "choices": [
         {
+          "choice": "none",
+          "description": "No additional presentation framework",
+          "displayName": "None"
+        },
+        {
           "choice": "mvvm",
           "description": "Use the Model-View-ViewModel (MVVM) design pattern",
           "displayName": "MVVM"
@@ -923,7 +928,7 @@
           },
           {
             "condition": "(preset == 'blank')",
-            "value": "mvvm"
+            "value": "none"
           }
         ]
       }
@@ -944,7 +949,7 @@
     "useMvvm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "architectureEvaluator == 'mvvm' && useExtensionsNavigation"
+      "value": "architectureEvaluator == 'mvvm' || (architectureEvaluator == 'none' && useExtensionsNavigation)"
     },
     "useGtk": {
       "type": "computed",
