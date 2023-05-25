@@ -1574,7 +1574,7 @@
     "useFrameNav": {
       "type": "computed",
       "datatype": "bool",
-      "value": "!useDependencyInjection || navigationEvaluator == 'blank'"
+      "value": "useDependencyInjection != 'true' || navigationEvaluator == 'blank'"
     },
     "useInfrastructureNamespace": {
       "type": "computed",
