@@ -7,15 +7,15 @@ steps:
 - checkout: self
   clean: 'true'
 
-- ${{ if contains(parameters.arguments, 'net8.0') }}
-- template: dotnet-install-windows.yml
-  parameters:
-    DotNetVersion: 8.0.100-preview.4.23260.5
-    UnoCheck_Version: 1.13.0-dev.7
-    UnoCheck_Manifest: https://raw.githubusercontent.com/unoplatform/uno.check/d26f9772669da46e1fb0db6ad205ff30842ab5ef/manifests/uno.ui-preview-major.manifest.json
+- ${{ if contains(parameters.arguments, 'net8.0') }}:
+  - template: dotnet-install-windows.yml
+    parameters:
+      DotNetVersion: 8.0.100-preview.4.23260.5
+      UnoCheck_Version: 1.13.0-dev.7
+      UnoCheck_Manifest: https://raw.githubusercontent.com/unoplatform/uno.check/d26f9772669da46e1fb0db6ad205ff30842ab5ef/manifests/uno.ui-preview-major.manifest.json
 
-- ${{ if not(contains(parameters.arguments, 'net8.0')) }}
-- template: dotnet-install-windows.yml
+- ${{ if not(contains(parameters.arguments, 'net8.0')) }}:
+  - template: dotnet-install-windows.yml
 
 - template: install-windows-sdk.yml
   parameters:
