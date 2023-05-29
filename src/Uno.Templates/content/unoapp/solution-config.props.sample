@@ -1,0 +1,7 @@
+<Project>
+
+    <PropertyGroup>
+        <OverrideTargetFrameworks>$baseTargetFramework$-ios</OverrideTargetFrameworks>
+    </PropertyGroup>
+
+</Project>

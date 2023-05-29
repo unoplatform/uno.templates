@@ -10,6 +10,7 @@
 		<!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
 		<!--<TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$-macos</TargetFrameworks>-->
 		<!--#endif -->
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
 
 		<!-- Ensures the .xr.xml files are generated in a proper layout folder -->
 		<GenerateLibraryLayout>true</GenerateLibraryLayout>

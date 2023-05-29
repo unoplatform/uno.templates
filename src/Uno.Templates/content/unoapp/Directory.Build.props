@@ -1,4 +1,17 @@
 <Project>
+
+	<!--
+		If working on a single target framework, uncomment the following line to
+		adjust an Uno Solution for a faster build with Visual Studio 2022. Be sure to remove the 
+		`.sample` extension from `solution-config.props.sample`, and update the file with the Target
+		Framework you want to target. See the following article for more information:
+
+		https://platform.uno/docs/articles/guides/solution-building-single-targetframework.html 
+	-->
+	<!--
+	<Import Project="solution-config.props" Condition="exists('solution-config.props')" />
+	-->
+
 	<PropertyGroup>
 		<!--#if (useLangVersion)-->
 		<LangVersion>10</LangVersion>
@@ -57,4 +70,5 @@
 			</PropertyGroup>
 		</When>
 	</Choose>
+
 </Project>
