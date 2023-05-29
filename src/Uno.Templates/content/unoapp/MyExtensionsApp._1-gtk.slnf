@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "path": "MyExtensionsApp._1.sln",
+    "projects": [
+#//#if (useUnitTests)
+      "MyExtensionsApp._1.Tests\\MyExtensionsApp._1.Tests.csproj",
+#//#endif
+#//#if (useUITests)
+      "MyExtensionsApp._1.UITests\\MyExtensionsApp._1.UITests.csproj",
+#//#endif
+      "MyExtensionsApp._1.Skia.Gtk\\MyExtensionsApp._1.Skia.Gtk.csproj",
+#//#if (useDataContracts)
+      "MyExtensionsApp._1.DataContracts\\MyExtensionsApp._1.DataContracts.csproj",
+#//#endif
+      "MyExtensionsApp._1\\MyExtensionsApp._1.csproj"
+    ]
+  }
+}

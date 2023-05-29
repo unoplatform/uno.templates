@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
 		<!--#if (useWinAppSdk) -->
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'=='' and $([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'==''">$(TargetFrameworks);$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
 		<!--#else -->
-		<TargetFrameworks>$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'==''">$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
 		<!--#endif -->
 		<!--#if (useMacOS)-->
 		<!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->

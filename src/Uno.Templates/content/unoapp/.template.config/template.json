@@ -1751,19 +1751,22 @@
         {
           "condition": "(!useMobile)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/**/*"
+            "MyExtensionsApp._1.Mobile/**/*",
+            "MyExtensionsApp._1-mobile.slnf"
           ]
         },
         {
           "condition": "(!useWasm)",
           "exclude": [
-            "MyExtensionsApp._1.Wasm**/*"
+            "MyExtensionsApp._1.Wasm**/*",
+            "MyExtensionsApp._1-wasm.slnf"
           ]
         },
         {
           "condition": "(!useGtk)",
           "exclude": [
-            "MyExtensionsApp._1.Skia.Gtk/**/*"
+            "MyExtensionsApp._1.Skia.Gtk/**/*",
+            "MyExtensionsApp._1-gtk.slnf"
           ]
         },
         {
@@ -1781,7 +1784,9 @@
         {
           "condition": "(!useWinAppSdk)",
           "exclude": [
-            "MyExtensionsApp._1.Windows/**/*"
+            "MyExtensionsApp._1.Windows/**/*",
+            "MyExtensionsApp._1-windows.slnf",
+            "debug-windows.bat"
           ]
         },
         {
