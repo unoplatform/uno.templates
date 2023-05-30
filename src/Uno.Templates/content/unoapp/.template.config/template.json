@@ -1640,9 +1640,17 @@
       "type": "bind",
       "binding": "OS"
     },
+    "osLower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"OS",
+        "toLower": true
+      }
+    },
     "canWindowsRestore": {
       "type": "computed",
-      "value": "(OS == \"Windows\")",
+      "value": "(osLower == 'windows' || osLower == 'windows_nt')",
       "datatype": "bool"
     }
   },
