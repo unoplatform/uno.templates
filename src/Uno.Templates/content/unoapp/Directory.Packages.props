@@ -5,11 +5,11 @@
     <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
-    <PackageVersion Include="coverlet.collector" Version="3.2.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
     <PackageVersion Include="FluentAssertions" Version="6.11.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.1" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
@@ -41,7 +41,7 @@
     <PackageVersion Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useMsalAuthentication)-->
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.54.0" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.54.1" />
     <PackageVersion Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#endif-->
@@ -140,11 +140,11 @@
     <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIPackageVersion$" />
     <!--#endif-->
     <!--#if (useAndroid)-->
-    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.8.0" />
+    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.1" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
-    <PackageVersion Include="Xamarin.UITest" Version="4.1.3" />
+    <PackageVersion Include="Xamarin.UITest" Version="4.1.4" />
     <!--#endif-->
     <!--#if (includeNet6DataContractReferences)-->
     <PackageVersion Include="System.Collections.Immutable" Version="6.0.0" />
