@@ -158,7 +158,7 @@
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.53.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.54.1" />
 		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#endif-->
