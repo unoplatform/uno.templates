@@ -13,6 +13,12 @@
 		<PackageReference Include="NUnit3TestAdapter" />
 		<PackageReference Include="Uno.UITest.Helpers" />
 		<PackageReference Include="Xamarin.UITest" />
+		<!--#if (useGitHubActions)-->
+		<PackageReference Include="GitHubActionsTestLogger">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<!--#endif-->
 		<!--#else-->
 		<PackageReference Include="FluentAssertions" Version="6.11.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.1" />
@@ -21,6 +27,12 @@
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
 		<PackageReference Include="Xamarin.UITest" Version="4.1.4" />
+		<!--#if (useGitHubActions)-->
+		<PackageReference Include="GitHubActionsTestLogger" Version="2.3.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<!--#endif-->
 		<!--#endif-->
 	</ItemGroup>
 </Project>

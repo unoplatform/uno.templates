@@ -12,12 +12,24 @@
 		<PackageReference Include="NUnit" />
 		<PackageReference Include="NUnit3TestAdapter" />
 		<PackageReference Include="coverlet.collector" />
+		<!--#if (useGitHubActions)-->
+		<PackageReference Include="GitHubActionsTestLogger">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<!--#endif-->
 		<!--#else-->
 		<PackageReference Include="FluentAssertions" Version="6.11.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.1" />
 		<PackageReference Include="NUnit" Version="3.13.3" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="coverlet.collector" Version="6.0.0" />
+		<!--#if (useGitHubActions)-->
+		<PackageReference Include="GitHubActionsTestLogger" Version="2.3.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<!--#endif-->
 		<!--#endif-->
 	</ItemGroup>
 
