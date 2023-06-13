@@ -1,4 +1,14 @@
 <Project>
+
+	<!--
+		If working on a single target framework, copy solution-config.props.sample to solution-config.props
+		and uncomment the appropriate lines in solution-config.props to build for the desired platforms only.
+
+		https://platform.uno/docs/articles/guides/solution-building-single-targetframework.html 
+	-->
+	<Import Project="solution-config.props" Condition="exists('solution-config.props')" />
+	
+
 	<PropertyGroup>
 		<!--#if (useLangVersion)-->
 		<LangVersion>10</LangVersion>
@@ -57,4 +67,5 @@
 			</PropertyGroup>
 		</When>
 	</Choose>
+
 </Project>
