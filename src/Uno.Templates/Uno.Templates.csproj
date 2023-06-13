@@ -138,7 +138,8 @@
 				<![CDATA[
 					File.AppendAllText(
 						Filename,
-						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props"
+						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props" +
+						Environment.NewLine + "# Windows Publish Profiles" + Environment.NewLine + "!**/*.Windows/Properties/PublishProfiles/*.pubxml" 
 						);
 				]]>
 			</Code>
