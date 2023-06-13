@@ -10,6 +10,9 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.1" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
+    <!--#if (useGitHubActions)-->
+    <PackageVersion Include="GitHubActionsTestLogger" Version="2.3.2" />
+    <!--#endif-->
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
