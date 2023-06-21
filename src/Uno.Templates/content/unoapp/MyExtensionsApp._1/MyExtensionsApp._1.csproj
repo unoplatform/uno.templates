@@ -48,6 +48,7 @@
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" />
+		<PackageReference Include="Uno.Extensions.Http.WinUI" />
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
 		<!--#endif-->
 		<!--#if (useMaterial)-->
