@@ -45,8 +45,6 @@ jobs:
         templateArgs: '-tests none'
       FrameNavigation:
         templateArgs: '--navigation blank'
-      Net6:
-        templateArgs: '-tfm net6.0'
       # TODO: Evaluate why we are not able to get net8 installing in CI
       # Net8:
       #   templateArgs: '-tfm net8.0'

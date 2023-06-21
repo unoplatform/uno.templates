@@ -187,11 +187,6 @@
       "description": "Select the .NET version of your solution",
       "choices": [
         {
-          "choice": "net6.0",
-          "displayName": ".NET 6.0",
-          "description": "Target .NET 6.0 (Long Term Support)"
-        },
-        {
           "choice": "net7.0",
           "displayName": ".NET 7.0",
           "description": "Target .NET 7.0 (Standard Term Support)"
@@ -703,12 +698,12 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
+            "condition": "(tfm == 'net7.0')",
             "value": "7.0.23"
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-dev.152"
+            "value": "8.0.0-dev.214"
           }
         ]
       }
@@ -1270,10 +1265,6 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net6.0')",
-            "value": "netstandard2.1"
-          },
-          {
             "condition": "(tfm == 'net7.0')",
             "value": "net7.0"
           },
@@ -1292,21 +1283,13 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net6.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "net6.0-ios;net6.0-android;net6.0-maccatalyst"
-          },
-          {
+         {
             "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net8.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net8.0-ios;net8.0-android;net8.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net6.0' && platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "net6.0-ios;net6.0-android"
           },
           {
             "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms != maccatalyst)",
@@ -1317,20 +1300,12 @@
             "value": "net8.0-ios;net8.0-android"
           },
           {
-            "condition": "(tfm == 'net6.0' && platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "net6.0-ios;net6.0-maccatalyst"
-          },
-          {
             "condition": "(tfm == 'net7.0' && platforms != android && platforms == ios && platforms == maccatalyst)",
             "value": "net7.0-ios;net7.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net8.0' && platforms != android && platforms == ios && platforms == maccatalyst)",
             "value": "net8.0-ios;net8.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net6.0' && platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "net6.0-android;net6.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net7.0' && platforms == android && platforms != ios && platforms == maccatalyst)",
@@ -1341,10 +1316,6 @@
             "value": "net8.0-android;net8.0-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net6.0' && platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "net6.0-android"
-          },
-          {
             "condition": "(tfm == 'net7.0' && platforms == android && platforms != ios && platforms != maccatalyst)",
             "value": "net7.0-android"
           },
@@ -1353,20 +1324,12 @@
             "value": "net8.0-android"
           },
           {
-            "condition": "(tfm == 'net6.0' && platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "net6.0-ios"
-          },
-          {
             "condition": "(tfm == 'net7.0' && platforms != android && platforms == ios && platforms != maccatalyst)",
             "value": "net7.0-ios"
           },
           {
             "condition": "(tfm == 'net8.0' && platforms != android && platforms == ios && platforms != maccatalyst)",
             "value": "net8.0-ios"
-          },
-          {
-            "condition": "(tfm == 'net6.0' && platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "net6.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net7.0' && platforms != android && platforms != ios && platforms == maccatalyst)",
@@ -1629,10 +1592,6 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net6.0')",
-            "value": "6.0.0"
-          },
-          {
             "condition": "(tfm == 'net7.0')",
             "value": "7.0.0"
           },
@@ -1651,10 +1610,6 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net6.0')",
-            "value": "6.0.3"
-          },
           {
             "condition": "(tfm == 'net7.0')",
             "value": "7.0.0"
