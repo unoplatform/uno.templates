@@ -121,6 +121,7 @@
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Http.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useLogging)-->

@@ -55,6 +55,7 @@
     <!--#endif-->
     <!--#if (useHttp)-->
     <PackageVersion Include="Uno.Extensions.Http" Version="$UnoExtensionsPackageVersion$" />
+    <PackageVersion Include="Uno.Extensions.Http.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <PackageVersion Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useLocalization)-->
