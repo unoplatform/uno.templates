@@ -663,7 +663,7 @@
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.0-dev.17",
+      "defaultValue": "2.6.1",
       "replaces": "$UnoThemesVersion$"
     },
     "unoDspTasksVersion": {
@@ -675,7 +675,7 @@
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.0-dev.40",
+      "defaultValue": "3.0.4",
       "replaces": "$UnoToolkitVersion$"
     },
     "unoResizetizerVersion": {
