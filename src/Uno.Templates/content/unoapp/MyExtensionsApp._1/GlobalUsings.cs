@@ -40,29 +40,6 @@ global using MyExtensionsApp._1.DataContracts;
 global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
-global using Uno.Extensions.Http;
-global using Uno.Extensions.Serialization;
-#endif
-#if (useExtensionsNavigation)
-global using Uno.Extensions.Navigation;
-#endif
-#if (useDependencyInjection)
-global using Uno.Extensions;
-#endif
-#if (useAuthentication)
-global using Uno.Extensions.Authentication;
-#endif
-#if (useConfiguration)
-global using Uno.Extensions.Configuration;
-#endif
-#if (useDependencyInjection)
-global using Uno.Extensions.Hosting;
-#endif
-#if (useLocalization)
-global using Uno.Extensions.Localization;
-#endif
-#if (useLogging)
-global using Uno.Extensions.Logging;
 #endif
 #if (useCsharpMarkup)
 global using Uno.Extensions.Markup;
@@ -81,9 +58,6 @@ global using Windows.ApplicationModel;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;
-#endif
-#if (useMvux)
-global using Uno.Extensions.Reactive;
 #endif
 #if (useMvvm)
 global using CommunityToolkit.Mvvm.ComponentModel;
