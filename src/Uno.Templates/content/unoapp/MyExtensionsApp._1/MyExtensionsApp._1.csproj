@@ -48,6 +48,7 @@
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" />
+		<PackageReference Include="Uno.Extensions.Http.WinUI" />
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
 		<!--#endif-->
 		<!--#if (useMaterial)-->
@@ -121,6 +122,7 @@
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Http.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useLogging)-->

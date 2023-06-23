@@ -65,7 +65,7 @@ steps:
 
       cd UnoApp1
 
-      & $env:msbuildpath /r /m UnoApp1.sln
+      & $env:msbuildpath /r /m UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
@@ -73,3 +73,11 @@ steps:
       cd ..
 
   displayName: Build template app
+
+- task: PublishBuildArtifacts@1
+  condition: always()
+  retryCountOnTaskFailure: 3
+  inputs:
+    PathtoPublish: $(build.artifactstagingdirectory)
+    ArtifactName: logs
+    ArtifactType: Container
