@@ -46,9 +46,6 @@ global using Uno.Extensions.Serialization;
 #if (useExtensionsNavigation)
 global using Uno.Extensions.Navigation;
 #endif
-#if (useHttp)
-global using Refit;
-#endif
 #if (useDependencyInjection)
 global using Uno.Extensions;
 #endif

@@ -1,4 +1,6 @@
 //-:cnd:noEmit
+using Refit;
+
 namespace MyExtensionsApp._1.Services.Endpoints;
 
 [Headers("Content-Type: application/json")]
