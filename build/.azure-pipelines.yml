@@ -3,12 +3,14 @@ trigger:
     include:
       - main
       - release/*
+      - legacy/*
 
 pr: 
   branches:
     include:
       - main
       - release/*
+      - legacy/*
 
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
