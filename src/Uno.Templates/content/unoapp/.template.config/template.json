@@ -658,7 +658,7 @@
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.1",
+      "defaultValue": "3.0.0-dev.252",
       "replaces": "$UnoThemesVersion$"
     },
     "unoDspTasksVersion": {
@@ -670,7 +670,7 @@
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "3.0.4",
+      "defaultValue": "3.1.0-dev.24",
       "replaces": "$UnoToolkitVersion$"
     },
     "unoResizetizerVersion": {
@@ -703,7 +703,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-dev.214"
+            "value": "8.0.0-dev.218"
           }
         ]
       }
