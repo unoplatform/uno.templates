@@ -110,7 +110,7 @@ stages:
         ArtifactType: Container
 
 - stage: Publish_Dev
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'), not(eq(variables['build.reason'], 'PullRequest')))
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), eq(variables['Build.SourceBranch'], 'refs/heads/legacy/4x')), not(eq(variables['build.reason'], 'PullRequest')))
   dependsOn: Prepare
   jobs:
   - deployment: 'Nuget'
