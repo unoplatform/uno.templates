@@ -14,8 +14,8 @@
 		<!-- Disable package generation for WinUI converted build -->
 		<IsPackable Condition="'$(UNO_UWP_BUILD)'=='false'">false</IsPackable>
 		<NoWarn>$(NoWarn);NU5128</NoWarn>
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.0-dev.177</UnoExtensionsVersion>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.1160</UnoVersion>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.1936</UnoExtensionsVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.1223</UnoVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>

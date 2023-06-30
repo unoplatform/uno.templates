@@ -658,7 +658,7 @@
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "3.0.0-dev.252",
+      "defaultValue": "3.0.0-dev.254",
       "replaces": "$UnoThemesVersion$"
     },
     "unoDspTasksVersion": {
@@ -670,7 +670,7 @@
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "3.1.0-dev.24",
+      "defaultValue": "4.0.0-dev.27",
       "replaces": "$UnoToolkitVersion$"
     },
     "unoResizetizerVersion": {
@@ -699,7 +699,7 @@
         "cases": [
           {
             "condition": "(tfm == 'net7.0')",
-            "value": "7.0.23"
+            "value": "7.0.24"
           },
           {
             "condition": "(tfm == 'net8.0')",
@@ -720,13 +720,13 @@
     "unoMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "4.8.0-dev.30",
+      "defaultValue": "4.8.0-dev.43",
       "replaces": "$UnoMarkupVersion$"
     },
     "unoUITestHelpersVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.1.0-dev.55",
+      "defaultValue": "1.1.0-dev.59",
       "replaces": "$UnoUITestHelpersVersion$"
     },
     "isVsix": {
