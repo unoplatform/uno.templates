@@ -664,7 +664,7 @@
     "unoDspTasksVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.0.1",
+      "defaultValue": "1.1.0",
       "replaces": "$UnoDspTasksVersion$"
     },
     "unoToolkitVersion": {
@@ -676,7 +676,7 @@
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.1.0",
+      "defaultValue": "1.2.0-dev.19",
       "replaces": "$UnoResizetizerVersion$"
     },
     "unoUniversalImageLoaderVersion": {
