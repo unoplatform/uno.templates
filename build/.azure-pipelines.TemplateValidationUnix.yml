@@ -1,0 +1,32 @@
+parameters:
+- name: jobName
+  type: string
+  default: ''
+- name: vmImage
+  type: string
+  default: ''
+- name: platforms
+  type: string
+  default: ''
+
+jobs:
+- job: ${{ parameters.jobName }}
+
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+
+  strategy:
+    matrix:
+      DefaultArguments:
+        presetArgs: ''
+      BlankApp:
+        presetArgs: '-preset blank'
+
+  variables:
+    - name: UseDotNetNativeToolchain
+      value: false
+
+  steps:
+  - template: templates/package-validation-unix.yml
+    parameters:
+      arguments: $(presetArgs) ${{ parameters.platforms }}
