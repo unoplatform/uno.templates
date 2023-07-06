@@ -673,6 +673,12 @@
       "defaultValue": "4.0.0-dev.27",
       "replaces": "$UnoToolkitVersion$"
     },
+    "unoToolkitMarkupVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "2.6.0-dev.58",
+      "replaces": "$UnoToolkitMarkupVersion$"
+    },   
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",

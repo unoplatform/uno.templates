@@ -117,6 +117,9 @@
     "unoToolkitVersion": {
       "isHidden": true
     },
+    "unoToolkitMarkupVersion": {
+      "isHidden": true
+    },
     "unoResizetizerVersion": {
       "isHidden": true
     },

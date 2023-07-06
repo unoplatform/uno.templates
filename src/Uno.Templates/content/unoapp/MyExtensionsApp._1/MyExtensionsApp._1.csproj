@@ -146,7 +146,7 @@
 		<!--#if (useToolkit)-->
 		<PackageReference Include="Uno.Extensions.Toolkit.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitVersion$" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
 		<!--#else-->
 		<PackageReference Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
 		<!--#endif-->
