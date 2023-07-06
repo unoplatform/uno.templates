@@ -15,16 +15,16 @@ jobs:
         templateArgs: '-platforms gtk wpf linux-fb'
       MobileOnlyHeads:
         templateArgs: '-platforms android ios maccatalyst'
-      # BlankMarkupApp:
-      #   templateArgs: '-preset blank -markup csharp'
+      BlankMarkupApp:
+        templateArgs: '-preset blank -markup csharp'
       BlankAppNoCpm:
         templateArgs: '-preset blank --cpm false'
       MVVM:
         templateArgs: '-presentation mvvm'
       NoCentralPackageManagement:
         templateArgs: '--cpm false'
-      # CSharpMarkup:
-      #   templateArgs: '-markup csharp'
+      CSharpMarkup:
+        templateArgs: '-markup csharp'
       NoAppHosting:
         templateArgs: '-di false'
       HostingOnly:

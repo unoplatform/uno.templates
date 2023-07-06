@@ -231,11 +231,11 @@
           "choice": "xaml",
           "description": "Use XAML for the UI",
           "displayName": "XAML"
-        // },
-        // {
-        //   "choice": "csharp",
-        //   "description": "Use C# Markup for the UI",
-        //   "displayName": "C# Markup"
+        },
+        {
+          "choice": "csharp",
+          "description": "Use C# Markup for the UI",
+          "displayName": "C# Markup"
         }
       ],
       "defaultValue": "xaml"
@@ -673,6 +673,12 @@
       "defaultValue": "4.0.0-dev.27",
       "replaces": "$UnoToolkitVersion$"
     },
+    "unoToolkitMarkupVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "2.6.0-dev.58",
+      "replaces": "$UnoToolkitMarkupVersion$"
+    },   
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
