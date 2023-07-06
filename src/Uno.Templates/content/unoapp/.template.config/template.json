@@ -231,11 +231,11 @@
           "choice": "xaml",
           "description": "Use XAML for the UI",
           "displayName": "XAML"
-        // },
-        // {
-        //   "choice": "csharp",
-        //   "description": "Use C# Markup for the UI",
-        //   "displayName": "C# Markup"
+        },
+        {
+          "choice": "csharp",
+          "description": "Use C# Markup for the UI",
+          "displayName": "C# Markup"
         }
       ],
       "defaultValue": "xaml"
