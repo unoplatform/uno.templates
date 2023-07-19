@@ -12,7 +12,7 @@ on:
       - $DefaultBranchName$
       - release/**
 env:
-  STEP_TIMEOUT: 60
+  STEP_TIMEOUT_MINUTES: 60
 
 jobs:
   smoke_test:
@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Dependencies
-        timeout-minutes: ${{ fromJSON(env.STEP_TIMEOUT) }}
+        timeout-minutes: ${{ fromJSON(env.STEP_TIMEOUT_MINUTES) }}
         uses: "./.github/workflows/steps/install_dependencies"
         with:
           dotnet-version: 'true'
