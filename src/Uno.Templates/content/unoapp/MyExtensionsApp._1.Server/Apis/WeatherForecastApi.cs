@@ -31,22 +31,11 @@ internal static class WeatherForecastApi
 		logger.LogDebug("Getting Weather Forecast.");
 
 		return Enumerable.Range(1, 5).Select(index =>
-//+:cnd:noEmit
-		#if (includeNet6DataContractReferences)
-			new WeatherForecast
-			{
-				Date = DateTime.Now.AddDays(index),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			}
-		#else
 			new WeatherForecast(
 				DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
 				Random.Shared.Next(-20, 55),
 				Summaries[Random.Shared.Next(Summaries.Length)]
 			)
-		#endif
-//-:cnd:noEmit
 		)
 		.Select(x =>
 		{

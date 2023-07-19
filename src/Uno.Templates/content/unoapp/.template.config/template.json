@@ -1255,21 +1255,6 @@
       "datatype": "bool",
       "value": "cultures == 'zh-Hant'"
     },
-    "includeIsExternalInit": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0')"
-    },
-    "includeNet6DataContractReferences": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0' && useHttp)"
-    },
-    "useLangVersion": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0')"
-    },
     "libraryBaseTargetFramework": {
       "type": "generated",
       "generator": "switch",
@@ -1297,10 +1282,6 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net6.0')",
-            "value": "6.0.x"
-          },
           {
             "condition": "(tfm == 'net7.0')",
             "value": "7.0.x"
@@ -1750,12 +1731,6 @@
           "exclude": [
             "MyExtensionsApp._1.sln",
             "MyExtensionsApp._1-vsmac.slnf"
-          ]
-        },
-        {
-          "condition": "(!includeIsExternalInit)",
-          "exclude": [
-            "**/IsExternalInit.cs"
           ]
         },
         {
