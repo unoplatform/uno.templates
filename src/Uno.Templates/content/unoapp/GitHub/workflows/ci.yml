@@ -31,20 +31,20 @@ jobs:
 
       # Setup the versioning for the app
       - name: Setup GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.9
+        uses: gittools/actions/gitversion/setup@v0.10.2
         with:
           versionSpec: '1.0.x'
 
       - name: GitVersion
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.9
+        uses: gittools/actions/gitversion/execute@v0.10.2
         with:
           useConfigFile: true
           configFilePath: ./.github/workflows/config/gitversion.yml
 
       # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
       - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v1.3.1
 
       - name: Build
         shell: pwsh
@@ -59,20 +59,20 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.9
+        uses: gittools/actions/gitversion/setup@v0.10.2
         with:
           versionSpec: '5.x'
 
       - name: GitVersion
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.9
+        uses: gittools/actions/gitversion/execute@v0.10.2
         with:
           useConfigFile: true
           configFilePath: ./.github/workflows/config/gitversion.yml
 
       # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
       - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v1.3.1
 
       - name: Build
         shell: pwsh
