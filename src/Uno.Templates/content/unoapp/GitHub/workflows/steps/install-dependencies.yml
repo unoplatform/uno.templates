@@ -70,7 +70,7 @@ runs:
         ~/.dotnet/tools/uno-check --ci --non-interactive --fix --target ios --target android --target macos --manifest ${{ inputs.unocheck-manifest }}
 
     - name: Install ${{ inputs.target-platform }} Workloads
-      if: ${{ inputs.target-platform != 'linux' && !contains( inputs.target-platform, 'skiagtk')}}
+      if: ${{ inputs.target-platform == 'default' }}
       shell: pwsh
       run: |
         dotnet tool install -g uno.check
