@@ -10,9 +10,6 @@
 	
 
 	<PropertyGroup>
-		<!--#if (useLangVersion)-->
-		<LangVersion>10</LangVersion>
-		<!--#endif-->
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 

@@ -589,13 +589,21 @@
         //   "choice": "azure",
         //   "description": "Azure Pipelines",
         //   "displayName": "Azure Pipelines"
-        // },
-        // {
-        //   "choice": "github",
-        //   "description": "GitHub Actions",
-        //   "displayName": "GitHub Actions"
+        },
+        {
+          "choice": "github",
+          "description": "GitHub Actions",
+          "displayName": "GitHub Actions"
         }
       ]
+    },
+    "defaultBranchName": {
+      "displayName": "Default Branch Name",
+      "datatype": "text",
+      "description": "The name of the default branch for the repository",
+      "type": "parameter",
+      "defaultValue": "main",
+      "replaces": "$DefaultBranchName$"
     },
     "cpm": {
       "displayName": "Central Package Management",
@@ -1247,21 +1255,6 @@
       "datatype": "bool",
       "value": "cultures == 'zh-Hant'"
     },
-    "includeIsExternalInit": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0')"
-    },
-    "includeNet6DataContractReferences": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0' && useHttp)"
-    },
-    "useLangVersion": {
-      "type": "computed",
-      "dataType": "bool",
-      "value": "(tfm == 'net6.0')"
-    },
     "libraryBaseTargetFramework": {
       "type": "generated",
       "generator": "switch",
@@ -1277,6 +1270,25 @@
           {
             "condition": "(tfm == 'net8.0')",
             "value": "net8.0"
+          }
+        ]
+      }
+    },
+    "ciTargetDotNetVersion": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$ciTargetDotNetVersion$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net7.0')",
+            "value": "7.0.x"
+          },
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "8.0.x"
           }
         ]
       }
@@ -1722,12 +1734,6 @@
           ]
         },
         {
-          "condition": "(!includeIsExternalInit)",
-          "exclude": [
-            "**/IsExternalInit.cs"
-          ]
-        },
-        {
           "condition": "(platforms != android)",
           "exclude": [
             "MyExtensionsApp._1.Mobile/Android/**/*"
@@ -2030,12 +2036,18 @@
         //     "AzurePipelines/**"
         //   ]
         // },
-        // {
-        //   "condition": "(!useGitHubActions)",
-        //   "exclude": [
-        //     ".github/**"
-        //   ]
-        // },
+        {
+          "condition": "(useGitHubActions)",
+          "rename": {
+            "GitHub": ".github"
+          }
+        },
+        {
+          "condition": "(!useGitHubActions)",
+          "exclude": [
+            "GitHub/**"
+          ]
+        },
         {
           "condition": "(!cpm)",
           "exclude": [

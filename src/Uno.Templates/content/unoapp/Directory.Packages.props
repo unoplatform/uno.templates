@@ -150,9 +150,5 @@
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
     <PackageVersion Include="Xamarin.UITest" Version="4.1.4" />
     <!--#endif-->
-    <!--#if (includeNet6DataContractReferences)-->
-    <PackageVersion Include="System.Collections.Immutable" Version="6.0.0" />
-    <PackageVersion Include="System.Text.Json" Version="6.0.0" />
-    <!--#endif-->
   </ItemGroup>
 </Project>

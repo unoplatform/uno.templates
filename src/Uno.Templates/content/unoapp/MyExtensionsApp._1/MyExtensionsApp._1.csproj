@@ -251,10 +251,6 @@
 												Generator="$DspGenerator$" />
 		<!--#endif-->
 		<UnoImage Include="Assets\**\*.svg" />
-		<!--#if (includeIsExternalInit)-->
-		<Compile Include="..\MyExtensionsApp._1.Base\IsExternalInit.cs"
-						 Visible="false" />
-		<!--#endif-->
 		<!--#if (useConfiguration)-->
 		<EmbeddedResource Include="appsettings.json" />
 		<EmbeddedResource Include="appsettings.*.json"

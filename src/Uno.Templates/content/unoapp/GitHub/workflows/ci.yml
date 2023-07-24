@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - $DefaultBranchName$
+      - release/**
+
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - $DefaultBranchName$
+      - release/**
+env:
+  STEP_TIMEOUT_MINUTES: 60
+
+jobs:
+  smoke_test:
+    name: Smoke Test (Debug Build of MyExtensionsApp._1)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        timeout-minutes: ${{ fromJSON(env.STEP_TIMEOUT_MINUTES) }}
+        uses: "./.github/steps/install_dependencies"
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: Build MyExtensionsApp._1 (Debug)
+        shell: pwsh
+        run: msbuild ./MyExtensionsApp._1/MyExtensionsApp._1.csproj /r
+#if (useUnitTests)
+
+  unit_test:
+    name: Unit Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        timeout-minutes: ${{ fromJSON(env.STEP_TIMEOUT_MINUTES) }}
+        uses: "./.github/steps/install_dependencies"
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: Build MyExtensionsApp._1.Tests (Release)
+        shell: pwsh
+        run: msbuild ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFrameworks=$libraryBaseTargetFramework$ /r
+
+      - name: Run Unit Tests
+        shell: pwsh
+        run: dotnet test ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+#endif

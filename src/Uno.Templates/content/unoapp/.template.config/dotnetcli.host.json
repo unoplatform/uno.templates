@@ -93,6 +93,14 @@
       "longName": "skip-restore",
       "shortName": "skip"
     },
+    "continuousIntegration": {
+      "longName": "continuous-integration",
+      "shortName": "ci"
+    },
+    "defaultBranchName": {
+      "longName": "default-branch-name",
+      "shortName": "branch"
+    },
     "unoWinUIVersion": {
       "isHidden": true
     },
