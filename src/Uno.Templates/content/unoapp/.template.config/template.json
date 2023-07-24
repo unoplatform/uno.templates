@@ -2039,7 +2039,7 @@
         {
           "condition": "(useGitHubActions)",
           "rename": {
-            "GitHub/**": ".github/**"
+            "GitHub": ".github"
           }
         },
         {
