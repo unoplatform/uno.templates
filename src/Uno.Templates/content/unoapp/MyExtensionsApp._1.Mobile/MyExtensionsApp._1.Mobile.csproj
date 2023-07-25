@@ -65,7 +65,6 @@
 		<PackageReference Include="Uno.Cupertino.WinUI" />
 		<!--#endif-->
 		<!--#if (useToolkit)-->
-		<PackageReference Include="Uno.Extensions.Toolkit.WinUI"/>
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.Toolkit.WinUI.Markup" />
 		<!--#else-->
@@ -148,7 +147,6 @@
 		<PackageReference Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
 		<!--#endif-->
 		<!--#if (useToolkit)-->
-		<PackageReference Include="Uno.Extensions.Toolkit.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
 		<!--#else-->
