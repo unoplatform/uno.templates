@@ -142,7 +142,7 @@
     <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIPackageVersion$" />
     <!--#endif-->
     <!--#if (useAndroid)-->
-    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.1" />
+    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
