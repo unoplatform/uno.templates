@@ -198,13 +198,9 @@
 			<ItemGroup>
 				<!--#if (useCPM)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" />
-				<!-- Required to avoid warnings in 1.9.0.1 of Android.Material - https://github.com/xamarin/AndroidX/issues/727 -->
-				<PackageReference Include="Xamarin.AndroidX.Annotation" />
 				<PackageReference Include="Uno.UniversalImageLoader" />
 				<!--#else-->
-				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.1" />
-				<!-- Required to avoid warnings in 1.9.0.1 of Android.Material - https://github.com/xamarin/AndroidX/issues/727 -->
-				<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.6.0.3" />
+				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
 				<PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
 				<!--#endif-->
 			</ItemGroup>
