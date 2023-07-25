@@ -143,8 +143,6 @@
     <!--#endif-->
     <!--#if (useAndroid)-->
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.1" />
-    <!-- Required to avoid warnings in 1.9.0.1 of Android.Material - https://github.com/xamarin/AndroidX/issues/727 -->
-    <PackageVersion Include="Xamarin.AndroidX.Annotation" Version="1.6.0.3" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
