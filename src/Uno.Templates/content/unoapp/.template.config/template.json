@@ -626,6 +626,13 @@
       "datatype": "bool",
       "defaultValue": "true"
     },
+    "mauiEmbedding": {
+      "displayName": "MAUI Embedding",
+      "description": "Configures application to embed MAUI controls",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",
@@ -997,12 +1004,12 @@
     "useGtk": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == gtk)"
+      "value": "(platforms == gtk && !mauiEmbedding)"
     },
     "useLinuxFb": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == linux-fb)"
+      "value": "(platforms == linux-fb && !mauiEmbedding)"
     },
     "useAndroid": {
       "type": "computed",
@@ -1032,7 +1039,7 @@
     "useWasm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wasm)"
+      "value": "(platforms == wasm && !mauiEmbedding)"
     },
     "useWinAppSdk": {
       "type": "computed",
@@ -1042,7 +1049,7 @@
     "useWpf": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf)"
+      "value": "(platforms == wpf && !mauiEmbedding)"
     },
     "useDataContracts": {
       "type": "computed",
@@ -1071,6 +1078,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == wpf || platforms == gtk || platforms == linux-fb)"
+    },
+    "useServer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(server && (platforms == wasm || http) && !mauiEmbedding)"
     },
     "presetConfigurationDefault": {
       "type": "generated",
@@ -1676,7 +1688,7 @@
       "path": "MyExtensionsApp._1\\MyExtensionsApp._1.csproj"
     },
     {
-      "condition": "server",
+      "condition": "useServer",
       "path": "MyExtensionsApp._1.Server\\MyExtensionsApp._1.Server.csproj"
     },
     {
@@ -1800,7 +1812,7 @@
           ]
         },
         {
-          "condition": "(!server)",
+          "condition": "(!useServer)",
           "exclude": [
             "MyExtensionsApp._1.Server/**/*"
           ]
