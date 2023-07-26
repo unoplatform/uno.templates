@@ -46,6 +46,9 @@
 		<!--#if (useSerilog)-->
 		<PackageReference Include="Uno.Extensions.Logging.Serilog" />
 		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Uno.Extensions.Maui.WinUI" />
+		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" />
 		<PackageReference Include="Uno.Extensions.Http.WinUI" />
@@ -130,6 +133,9 @@
 		<!--#endif-->
 		<!--#if (useSerilog)-->
 		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsPackageVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
@@ -218,24 +224,24 @@
 		<Otherwise>
 			<ItemGroup>
 				<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif"  Exclude="bin\**;obj\**" />
+				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 				<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 				<Compile Update="**\*.xaml.cs">
 					<DependentUpon>%(Filename)</DependentUpon>
 				</Compile>
-				<PRIResource Include ="**\*.resw" />
+				<PRIResource Include="**\*.resw" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
 	<!--#else-->
 	<ItemGroup>
 		<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif"  Exclude="bin\**;obj\**" />
+		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 		<Compile Update="**\*.xaml.cs">
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<PRIResource Include ="**\*.resw" />
+		<PRIResource Include="**\*.resw" />
 	</ItemGroup>
 	<!--#endif-->
 	<!--#if (useHttp)-->

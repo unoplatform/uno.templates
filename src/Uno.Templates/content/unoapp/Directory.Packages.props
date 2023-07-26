@@ -31,7 +31,7 @@
     <PackageVersion Include="SkiaSharp.Skottie" Version="$SkiaSharpVersion$" />
     <PackageVersion Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpVersion$" />
     <!--#endif-->
-    <!--#if (server)-->
+    <!--#if (useServer)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#endif-->
     <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
@@ -73,6 +73,9 @@
     <!--#endif-->
     <!--#if (useLogging)-->
     <PackageVersion Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (mauiEmbedding)-->
+    <PackageVersion Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsPackageVersion$" />
     <!--#endif-->
     <!--#if (useExtensionsNavigation)-->
     <PackageVersion Include="Uno.Extensions.Navigation" Version="$UnoExtensionsVersion$" />

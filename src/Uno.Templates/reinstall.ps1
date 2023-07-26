@@ -3,7 +3,11 @@ param(
     [string]$TemplatesVersion = "255.255.255.255",
 
     # Version of published Uno.Extensions packages
+<<<<<<< HEAD
     [string]$ExtensionsVersion = "2.5.0-dev.148",
+=======
+    [string]$ExtensionsVersion = "3.0.0-dev.2083",
+>>>>>>> 00454d2 (chore: Adding maui library reference)
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "4.9.20"

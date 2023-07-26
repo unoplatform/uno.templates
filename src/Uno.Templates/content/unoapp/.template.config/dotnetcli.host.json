@@ -89,6 +89,10 @@
       "longName": "vscode",
       "shortName": "vscode"
     },
+    "mauiEmbedding": {
+      "longName": "maui-embedding",
+      "shortName": "maui"
+    },
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
