@@ -1,5 +1,5 @@
 using WpfApp = System.Windows.Application;
-using Uno.UI.Skia.Platform;
+using Uno.UI.Runtime.Skia.Wpf;
 
 namespace MyExtensionsApp._1.WPF;
 
