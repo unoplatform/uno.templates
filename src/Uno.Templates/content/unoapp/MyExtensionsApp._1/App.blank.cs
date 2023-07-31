@@ -20,7 +20,7 @@ public class App : Application
 
 //+:cnd:noEmit
 #if mauiEmbedding
-		Uno.Extensions.Maui.MauiEmbedding.UseMauiEmbedding(this, maui => maui
+		this.UseMauiEmbedding(maui => maui
 					.UseMauiCommunityToolkit());
 #endif
 //-:cnd:noEmit

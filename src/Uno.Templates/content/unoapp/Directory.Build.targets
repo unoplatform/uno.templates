@@ -3,11 +3,4 @@
 		<!-- Removes native usings to avoid Ambiguous reference -->
 		<Using Remove="@(Using->HasMetadata('Platform'))" />
 	</ItemGroup>
-
-	<!--#if (mauiEmbedding)-->
-	<!-- TODO: Remove once issue fixed: https://github.com/unoplatform/uno.extensions-private/issues/79 -->
-	<ItemGroup Condition=" '$(TargetFramework)' == '$libraryBaseTargetFramework$' ">
-		<Using Remove="Uno.Extensions.Maui" />
-	</ItemGroup>
-	<!--#endif-->
 </Project>
