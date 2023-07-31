@@ -51,11 +51,6 @@ public sealed partial class MainPage : Page
 								))));
 #else
 		this.InitializeComponent();
-//-:cnd:noEmit
-#if MAUI_EMBEDDING
-        MauiHostElement.MauiContent = new EmbeddedControl();
-#endif
-//+:cnd:noEmit
 #endif
 	}
 }
