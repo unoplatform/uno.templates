@@ -2039,7 +2039,8 @@
         {
           "condition": "(useGitHubActions)",
           "rename": {
-            "GitHub": ".github"
+            "GitHub": ".github",
+            "GitHub/Install-WindowsSdkISO.cips": ".github/Install-WindowsSdkISO.ps1"
           }
         },
         {
