@@ -1,3 +1,8 @@
+//+:cnd:noEmit
+#if mauiEmbedding
+using CommunityToolkit.Maui;
+
+#endif
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
@@ -12,6 +17,13 @@ public class App : Application
 #else
 		MainWindow = Microsoft.UI.Xaml.Window.Current;
 #endif
+
+//+:cnd:noEmit
+#if mauiEmbedding
+		Uno.Extensions.Maui.MauiEmbedding.UseMauiEmbedding(this, maui => maui
+					.UseMauiCommunityToolkit());
+#endif
+//-:cnd:noEmit
 
 		// Do not repeat app initialization when the Window already has content,
 		// just ensure that the window is active

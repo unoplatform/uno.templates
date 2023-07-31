@@ -4,6 +4,7 @@ param(
 
     # Version of published Uno.Extensions packages
 <<<<<<< HEAD
+<<<<<<< HEAD
     [string]$ExtensionsVersion = "2.5.0-dev.148",
 =======
     [string]$ExtensionsVersion = "3.0.0-dev.2083",
@@ -11,6 +12,12 @@ param(
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "4.9.20"
+=======
+    [string]$ExtensionsVersion = "3.0.0-dev.2102",
+
+    # Version of published Uno.WinUI packages
+    [string]$UnoVersion = "5.0.0-dev.1732"
+>>>>>>> fe9e68d (feat: Adding Maui content to app)
 )
 
 function RemoveNuGetPackage {

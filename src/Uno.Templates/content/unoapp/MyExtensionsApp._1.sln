@@ -61,15 +61,19 @@ EndProject
 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BADA71DC-7FFD-4EDC-9F28-FB74AEADC713}"
 	ProjectSection(SolutionItems) = preProject
-		solution-config.props.sample = solution-config.props.sample
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		solution-config.props.sample = solution-config.props.sample
 #//#if (cpm)
 		Directory.Packages.props = Directory.Packages.props
 #//#endif
 	EndProjectSection
 EndProject
+#//#if (mauiEmbedding)
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp._1.MauiControls", "MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj", "{85978B6F-B8F7-4FFC-A392-37A1FD49E0C2}"
+EndProject
+#//#endif
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -486,6 +490,9 @@ Global
 #//#endif
 #//#if (useUITests)
 		{7229D034-7DBE-4FD7-B0E4-38D617571F93} = {7EF70027-9874-4112-A14F-33F02169CF8A}
+#//#endif
+#//#if (mauiEmbedding)
+		{85978B6F-B8F7-4FFC-A392-37A1FD49E0C2} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
 #//#endif
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

@@ -45,7 +45,8 @@
     "EB3EB846-D5CB-4140-834F-1CC40A0FD6D0", // Tests
     "7229D034-7DBE-4FD7-B0E4-38D617571F93", // UITests
     "F5EAE47C-F7DF-4D61-8A30-92251720AC4B", // Mobile Application Id
-    "5ED31500-DF01-462D-9436-EC2EDCAA1965" // DataContracts
+    "5ED31500-DF01-462D-9436-EC2EDCAA1965", // DataContracts
+    "85978B6F-B8F7-4FFC-A392-37A1FD49E0C2" // MauiControls
   ],
   "symbols": {
     "preset": {
@@ -1001,12 +1002,12 @@
     "useGtk": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == gtk && !mauiEmbedding)"
+      "value": "(platforms == gtk)"
     },
     "useLinuxFb": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == linux-fb && !mauiEmbedding)"
+      "value": "(platforms == linux-fb)"
     },
     "useAndroid": {
       "type": "computed",
@@ -1036,7 +1037,7 @@
     "useWasm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wasm && !mauiEmbedding)"
+      "value": "(platforms == wasm)"
     },
     "useWinAppSdk": {
       "type": "computed",
@@ -1046,7 +1047,7 @@
     "useWpf": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf && !mauiEmbedding)"
+      "value": "(platforms == wpf)"
     },
     "useDataContracts": {
       "type": "computed",
@@ -1079,7 +1080,12 @@
     "useServer": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(server && (platforms == wasm || http) && !mauiEmbedding)"
+      "value": "(server && (platforms == wasm || http))"
+    },
+    "useAndroidMaterial": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useAndroid && !mauiEmbedding)"
     },
     "presetConfigurationDefault": {
       "type": "generated",
@@ -2169,6 +2175,12 @@
             "MyExtensionsApp._1/Business/Models/AppConfig.cs",
             "MyExtensionsApp._1/appsettings.*",
             "MyExtensionsApp._1.Tests/AppInfoTests.cs"
+          ]
+        },
+        {
+          "condition": "(!mauiEmbedding)",
+          "exclude": [
+            "MyExtensionsApp._1.MauiControls/**"
           ]
         }
       ]
