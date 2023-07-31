@@ -1002,12 +1002,12 @@
     "useGtk": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == gtk)"
+      "value": "((!mauiEmbedding) && platforms == gtk)"
     },
     "useLinuxFb": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == linux-fb)"
+      "value": "((!mauiEmbedding) && platforms == linux-fb)"
     },
     "useAndroid": {
       "type": "computed",
@@ -1022,7 +1022,7 @@
     "useMacOS": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == macos)"
+      "value": "((!mauiEmbedding) && platforms == macos)"
     },
     "useMacCatalyst": {
       "type": "computed",
@@ -1037,7 +1037,7 @@
     "useWasm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wasm)"
+      "value": "((!mauiEmbedding) && platforms == wasm)"
     },
     "useWinAppSdk": {
       "type": "computed",
@@ -1047,7 +1047,7 @@
     "useWpf": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf)"
+      "value": "((!mauiEmbedding) && platforms == wpf)"
     },
     "useDataContracts": {
       "type": "computed",
@@ -1075,7 +1075,7 @@
     "useSkia": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf || platforms == gtk || platforms == linux-fb)"
+      "value": "((!mauiEmbedding) && (platforms == wpf || platforms == gtk || platforms == linux-fb))"
     },
     "useServer": {
       "type": "computed",
