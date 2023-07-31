@@ -41,6 +41,9 @@ global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
 #endif
+#if (mauiEmbedding)
+global using MyExtensionsApp._1.MauiControls;
+#endif
 #if (useCsharpMarkup)
 global using Uno.Extensions.Markup;
 #if (useMaterial)

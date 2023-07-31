@@ -24,6 +24,11 @@
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'">True</UseInterpreter>
 		<IsUnoHead>true</IsUnoHead>
+
+		<!--#if (mauiEmbedding)-->
+		<!-- Hot restart not working well with Maui Embedding -->
+		<UnoDisableHotRestartHelperGeneration>true</UnoDisableHotRestartHelperGeneration>
+		<!--#endif-->
 	</PropertyGroup>
 
 	<!--#if (useCPM)-->
@@ -195,10 +200,14 @@
 		<When Condition="$(IsAndroid)">
 			<ItemGroup>
 				<!--#if (useCPM)-->
+				<!--#if (useAndroidMaterial)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" />
+				<!--#endif-->
 				<PackageReference Include="Uno.UniversalImageLoader" />
 				<!--#else-->
+				<!--#if (useAndroidMaterial)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
+				<!--#endif-->
 				<PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
 				<!--#endif-->
 			</ItemGroup>

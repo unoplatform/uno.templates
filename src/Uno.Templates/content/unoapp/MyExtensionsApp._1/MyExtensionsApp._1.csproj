@@ -101,6 +101,9 @@
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="CommunityToolkit.Maui" />
+		<!--#endif-->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
@@ -187,6 +190,9 @@
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+		<!--#endif-->
 	</ItemGroup>
 	<!--#endif-->
 
@@ -209,6 +215,7 @@
 				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 				<!--#endif-->
 			</PropertyGroup>
+			<!--#if (!mauiEmbedding)-->
 			<ItemGroup>
 				<!--#if (useCPM)-->
 				<PackageReference Include="Microsoft.WindowsAppSDK" />
@@ -218,6 +225,7 @@
 				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
 				<!--#endif-->
 			</ItemGroup>
+			<!--#endif-->
 		</When>
 		<Otherwise>
 			<ItemGroup>
@@ -246,6 +254,13 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
+	</ItemGroup>
+	<!--#endif-->
+
+	<!--#if (mauiEmbedding)-->
+
+	<ItemGroup>
+		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
 	</ItemGroup>
 	<!--#endif-->
 
