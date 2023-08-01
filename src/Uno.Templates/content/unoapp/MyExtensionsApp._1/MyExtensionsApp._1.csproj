@@ -138,7 +138,7 @@
 		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (mauiEmbedding)-->
-		<PackageReference Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
