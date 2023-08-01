@@ -80,7 +80,7 @@
     <PackageVersion Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (mauiEmbedding)-->
-    <PackageVersion Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsPackageVersion$" />
+    <PackageVersion Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (useExtensionsNavigation)-->
     <PackageVersion Include="Uno.Extensions.Navigation" Version="$UnoExtensionsVersion$" />
