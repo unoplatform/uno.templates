@@ -154,9 +154,9 @@
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="$MsftWindowsCompatibilityVersion$" />
 		<PackageReference Include="Uno.Wasm.Bootstrap" Version="$UnoWasmBootstrapVersion$" />
 		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="$UnoWasmBootstrapVersion$" />
-		<PackageReference Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIPackageVersion$" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIPackageVersion$" Condition="'$(Configuration)'=='Debug'" />
-		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIPackageVersion$" />
+		<PackageReference Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIVersion$" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
 		<!--#if (useMaterial)-->
@@ -168,22 +168,22 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
 		<!--#endif -->
 		<!--#if (useConfiguration)-->
-		<PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsPackageVersion$" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsVersion$" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
-		<PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingVersion$" />
 		<!--#if (useLogging)-->
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useSerilog)-->
-		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsPackageVersion$" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useMaterial)-->
 		<PackageReference Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
@@ -201,34 +201,34 @@
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#if (useOidcAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.54.1" />
-		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useDependencyInjection)-->
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useLocalization)-->
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useExtensionsNavigation)-->
 		<!--#if (useNavigationToolkit)-->
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<!--#if (useMvux)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsPackageVersion$" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
