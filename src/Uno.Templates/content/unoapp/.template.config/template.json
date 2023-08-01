@@ -85,7 +85,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp)",
+      "description": "The application identifier (e.g. com.mycompany.myapp)"
     },
     "appIdDefault": {
       "type": "generated",
@@ -103,11 +103,11 @@
         ]
       }
     },
-    "appIdDefaultLower":{
+    "appIdDefaultLower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"appIdDefault",
+        "source": "appIdDefault",
         "toLower": true
       }
     },
@@ -139,7 +139,7 @@
       "type": "parameter",
       "datatype": "string"
     },
-    "publisherDefault":{
+    "publisherDefault": {
       "type": "generated",
       "generator": "join",
       "parameters": {
@@ -584,11 +584,11 @@
           "choice": "none",
           "description": "No continuous integration",
           "displayName": "None"
-        // },
-        // {
-        //   "choice": "azure",
-        //   "description": "Azure Pipelines",
-        //   "displayName": "Azure Pipelines"
+          // },
+          // {
+          //   "choice": "azure",
+          //   "description": "Azure Pipelines",
+          //   "displayName": "Azure Pipelines"
         },
         {
           "choice": "github",
@@ -702,7 +702,7 @@
     "unoWasmBootstrapVersion": {
       "type": "parameter",
       "datatype": "text"
-    },    
+    },
     "unoWasmBootstrapVersionDefault": {
       "type": "generated",
       "generator": "switch",
@@ -838,7 +838,7 @@
       "datatype": "bool",
       "value": "(appTheme == 'cupertino')"
     },
-    "themeBackgroundBrush":{
+    "themeBackgroundBrush": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$themeBackgroundBrush$",
@@ -1054,8 +1054,8 @@
       "generator": "regexMatch",
       "dataType": "bool",
       "parameters": {
-      "source": "testsEvaluator",
-      "pattern": ".*unit.*"
+        "source": "testsEvaluator",
+        "pattern": ".*unit.*"
       }
     },
     "useUITests": {
@@ -1063,8 +1063,8 @@
       "generator": "regexMatch",
       "dataType": "bool",
       "parameters": {
-      "source": "testsEvaluator",
-      "pattern": ".*ui.*"
+        "source": "testsEvaluator",
+        "pattern": ".*ui.*"
       }
     },
     "useSkia": {
@@ -1301,7 +1301,7 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-         {
+          {
             "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
           },
@@ -1364,7 +1364,7 @@
         ]
       }
     },
-    "toolkitNamespace":{
+    "toolkitNamespace": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$toolkitNamespace$",
@@ -1382,7 +1382,7 @@
         ]
       }
     },
-    "toolkitSafeArea":{
+    "toolkitSafeArea": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$toolkitSafeArea$",
@@ -1400,7 +1400,7 @@
         ]
       }
     },
-    "shellRouteViewModel":{
+    "shellRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$shellRouteViewModel$",
@@ -1418,7 +1418,7 @@
         ]
       }
     },
-    "mainRouteViewModel":{
+    "mainRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$mainRouteViewModel$",
@@ -1436,7 +1436,7 @@
         ]
       }
     },
-    "secondRouteViewModel":{
+    "secondRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$secondRouteViewModel$",
@@ -1454,7 +1454,7 @@
         ]
       }
     },
-    "loginRouteViewModel":{
+    "loginRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$loginRouteViewModel$",
@@ -1472,7 +1472,7 @@
         ]
       }
     },
-    "mainDataContext":{
+    "mainDataContext": {
       "type": "generated",
       "generator": "switch",
       "datatype": "string",
@@ -1491,7 +1491,7 @@
         ]
       }
     },
-    "secondDataContext":{
+    "secondDataContext": {
       "type": "generated",
       "generator": "switch",
       "datatype": "string",
@@ -1560,6 +1560,12 @@
       "type": "computed",
       "datatype": "bool",
       "value": "useAuthentication && authentication == 'web'"
+    },
+    // MSAL causes an error when used with WinAppSdk when self-contained 
+    "useWinAppSdkSelfContained": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "authentication != 'msal'"
     },
     "useProtocolRedirect": {
       "type": "computed",
@@ -1647,11 +1653,11 @@
       "type": "bind",
       "binding": "OS"
     },
-    "osLower":{
+    "osLower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"OS",
+        "source": "OS",
         "toLower": true
       }
     },
