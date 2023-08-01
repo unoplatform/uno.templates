@@ -67,6 +67,10 @@ jobs:
         templateArgs: '-preset=recommended -auth=msal'
       MsalAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
+      MauiBlankApp:
+        templateArgs: '-preset=blank -maui'
+      MauiRecommendedApp:
+        templateArgs: '-preset=recommended -maui'
 
   variables:
     - name: UseDotNetNativeToolchain
