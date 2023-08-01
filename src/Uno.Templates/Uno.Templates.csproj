@@ -14,10 +14,30 @@
 		<!-- Disable package generation for WinUI converted build -->
 		<IsPackable Condition="'$(UNO_UWP_BUILD)'=='false'">false</IsPackable>
 		<NoWarn>$(NoWarn);NU5128</NoWarn>
+<<<<<<< HEAD
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.0-dev.148</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">4.9.20</UnoVersion>
+=======
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.1984</UnoExtensionsVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.1728</UnoVersion>
+		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
+		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.3</SkiaSharpVersion>
+		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">3.0.0>-dev.254</UnoThemesVersion>
+		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">4.0.0-dev.27</UnoToolkitVersion>
+		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
+		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0-dev.19</UnoResizetizerVersion>
+		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
+		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.24</UnoWasmBootstrapVersionNet7>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.218</UnoWasmBootstrapVersionNet8>
+		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">4.8.0-dev.43</UnoMarkupVersion>
+		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.59</UnoUITestHelpersVersion>
+	</PropertyGroup>
 	<PropertyGroup>
 		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
 		<PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
@@ -32,12 +52,12 @@
 		<MergeTemplatePackage Include="Uno.ProjectTemplates.Dotnet" Version="$(UnoVersion)">
 			<FileExists>false</FileExists>
 		</MergeTemplatePackage>
-		
+
 		<!-- Workaround for NU5017-->
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="content\" />
+		<Folder Include="content\" />
 	</ItemGroup>
 
 	<Target Name="PrepareTemplateFiles" BeforeTargets="ReplaceVersions" AfterTargets="DownloadTemplatePackages;ExtractPackages">
@@ -49,8 +69,8 @@
 
 		<!-- Ensure we keep the .gitignore up to date with the latest changes to the official VisualStudio.gitignore -->
 		<DownloadFile
-			DestinationFolder="$(TemplateContentFolder)/unoapp" 
-			DestinationFileName=".gitignore" 
+			DestinationFolder="$(TemplateContentFolder)/unoapp"
+			DestinationFileName=".gitignore"
 			SourceUrl="https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
@@ -72,6 +92,19 @@
 		</ItemGroup>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoExtensionsPackageVersion" ReplacementText="$(UnoExtensionsVersion)" />
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWinUIPackageVersion" ReplacementText="$(UnoVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultSkiaSharpVersion" ReplacementText="$(SkiaSharpVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoCoreExtensionsLoggingVersion" ReplacementText="$(UnoCoreExtensionsLoggingVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoThemesVersion" ReplacementText="$(UnoThemesVersion)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoDspTasksVersion" ReplacementText="$(UnoDspTasksVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoToolkitVersion" ReplacementText="$(UnoToolkitVersion)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoToolkitMarkupVersion" ReplacementText="$(UnoToolkitMarkupVersion)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoResizetizerVersion" ReplacementText="$(UnoResizetizerVersion)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet7" ReplacementText="$(UnoWasmBootstrapVersionNet7)" />
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
 	</Target>
 
 	<Target Name="DownloadTemplatePackages" BeforeTargets="BeforeBuild;PrepareTemplateFiles">
@@ -96,9 +129,9 @@
 
 		<!-- Create an ItemGroup containing the file names of the downloaded packages -->
 		<ItemGroup>
-		<_TemplatePackages Include="$(TemplateDownloadFolder)/%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg">
-			<FileExists>%(MergeTemplatePackage.FileExists)</FileExists>
-		</_TemplatePackages>
+			<_TemplatePackages Include="$(TemplateDownloadFolder)/%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg">
+				<FileExists>%(MergeTemplatePackage.FileExists)</FileExists>
+			</_TemplatePackages>
 		</ItemGroup>
 
 	</Target>

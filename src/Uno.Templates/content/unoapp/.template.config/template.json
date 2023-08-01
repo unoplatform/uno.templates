@@ -645,36 +645,45 @@
     "unoExtensionsLoggingVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.4.0",
+      "defaultValue": "DefaultUnoExtensionsLoggingVersion",
       "replaces": "$UnoExtensionsLoggingPackageVersion$"
     },
     "skiaSharpVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.88.3",
+      "defaultValue": "DefaultSkiaSharpVersion",
       "replaces": "$SkiaSharpPackageVersion$"
     },
     "unoCoreExtensionsLoggingVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "4.0.1",
+      "defaultValue": "DefaultUnoCoreExtensionsLoggingVersion",
       "replaces": "$UnoCoreExtensionsLoggingVersion$"
     },
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
+<<<<<<< HEAD
       "defaultValue": "2.6.1",
+=======
+      "defaultValue": "DefaultUnoThemesVersion",
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
       "replaces": "$UnoThemesVersion$"
     },
     "unoDspTasksVersion": {
       "type": "parameter",
       "datatype": "text",
+<<<<<<< HEAD
       "defaultValue": "1.0.1",
+=======
+      "defaultValue": "DefaultUnoDspTasksVersion",
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
       "replaces": "$UnoDspTasksVersion$"
     },
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
+<<<<<<< HEAD
       "defaultValue": "3.0.4",
       "replaces": "$UnoToolkitVersion$"
     },
@@ -682,12 +691,27 @@
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "1.1.0",
+=======
+      "defaultValue": "DefaultUnoToolkitVersion",
+      "replaces": "$UnoToolkitVersion$"
+    },
+    "unoToolkitMarkupVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoToolkitMarkupVersion",
+      "replaces": "$UnoToolkitMarkupVersion$"
+    },
+    "unoResizetizerVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoResizetizerVersion",
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
       "replaces": "$UnoResizetizerVersion$"
     },
     "unoUniversalImageLoaderVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.9.36",
+      "defaultValue": "DefaultUnoUniversalImageLoaderVersion",
       "replaces": "$UnoUniversalImageLoaderVersion$"
     },
     "unoWasmBootstrapVersion": {
@@ -703,12 +727,21 @@
         "datatype": "string",
         "cases": [
           {
+<<<<<<< HEAD
             "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
             "value": "7.0.23"
           },
           {
             "condition": "(tfm == 'net8.0')",
             "value": "8.0.0-dev.152"
+=======
+            "condition": "(tfm == 'net7.0')",
+            "value": "DefaultUnoWasmBootstrapVersionNet7"
+          },
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "DefaultUnoWasmBootstrapVersionNet8"
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
           }
         ]
       }
@@ -725,13 +758,21 @@
     "unoMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
+<<<<<<< HEAD
       "defaultValue": "4.8.0-dev.30",
+=======
+      "defaultValue": "DefaultUnoMarkupVersion",
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
       "replaces": "$UnoMarkupVersion$"
     },
     "unoUITestHelpersVersion": {
       "type": "parameter",
       "datatype": "text",
+<<<<<<< HEAD
       "defaultValue": "1.1.0-dev.55",
+=======
+      "defaultValue": "DefaultUnoUITestHelpersVersion",
+>>>>>>> 971be79 (feat: Extracting package versions to csproj so updater will work)
       "replaces": "$UnoUITestHelpersVersion$"
     },
     "isVsix": {
