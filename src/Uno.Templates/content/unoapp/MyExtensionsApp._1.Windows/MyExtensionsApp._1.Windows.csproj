@@ -10,13 +10,10 @@
 		<PublishProfile>win10-$(Platform).pubxml</PublishProfile>
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
-		<!-- Uncomment for Unpackaged builds -->
-		<!-- <WindowsPackageType>None</WindowsPackageType> -->
-    	<!-- For Unpackaged builds, change version of SDK to previous stable release https://github.com/microsoft/WindowsAppSDK/issues/3591 -->
 	</PropertyGroup>
 	<PropertyGroup>
-		<!-- Bundles the WinAppSDK binaries (Uncomment for unpackaged builds) -->
-		<!-- <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> -->
+		<!-- Bundles the WinAppSDK binaries -->
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 		<!-- <SelfContained>true</SelfContained> -->
 	</PropertyGroup>
 
