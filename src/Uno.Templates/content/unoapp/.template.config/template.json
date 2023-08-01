@@ -85,7 +85,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp)",
+      "description": "The application identifier (e.g. com.mycompany.myapp)"
     },
     "appIdDefault": {
       "type": "generated",
@@ -103,11 +103,11 @@
         ]
       }
     },
-    "appIdDefaultLower":{
+    "appIdDefaultLower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"appIdDefault",
+        "source": "appIdDefault",
         "toLower": true
       }
     },
@@ -139,7 +139,7 @@
       "type": "parameter",
       "datatype": "string"
     },
-    "publisherDefault":{
+    "publisherDefault": {
       "type": "generated",
       "generator": "join",
       "parameters": {
@@ -589,6 +589,7 @@
           "choice": "none",
           "description": "No continuous integration",
           "displayName": "None"
+<<<<<<< HEAD
         // },
         // {
         //   "choice": "azure",
@@ -599,6 +600,18 @@
         //   "choice": "github",
         //   "description": "GitHub Actions",
         //   "displayName": "GitHub Actions"
+=======
+          // },
+          // {
+          //   "choice": "azure",
+          //   "description": "Azure Pipelines",
+          //   "displayName": "Azure Pipelines"
+        },
+        {
+          "choice": "github",
+          "description": "GitHub Actions",
+          "displayName": "GitHub Actions"
+>>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
         }
       ]
     },
@@ -678,6 +691,15 @@
       "defaultValue": "3.0.4",
       "replaces": "$UnoToolkitVersion$"
     },
+<<<<<<< HEAD
+=======
+    "unoToolkitMarkupVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "2.6.0-dev.58",
+      "replaces": "$UnoToolkitMarkupVersion$"
+    },
+>>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
@@ -693,7 +715,7 @@
     "unoWasmBootstrapVersion": {
       "type": "parameter",
       "datatype": "text"
-    },    
+    },
     "unoWasmBootstrapVersionDefault": {
       "type": "generated",
       "generator": "switch",
@@ -829,7 +851,7 @@
       "datatype": "bool",
       "value": "(appTheme == 'cupertino')"
     },
-    "themeBackgroundBrush":{
+    "themeBackgroundBrush": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$themeBackgroundBrush$",
@@ -1045,8 +1067,8 @@
       "generator": "regexMatch",
       "dataType": "bool",
       "parameters": {
-      "source": "testsEvaluator",
-      "pattern": ".*unit.*"
+        "source": "testsEvaluator",
+        "pattern": ".*unit.*"
       }
     },
     "useUITests": {
@@ -1054,8 +1076,8 @@
       "generator": "regexMatch",
       "dataType": "bool",
       "parameters": {
-      "source": "testsEvaluator",
-      "pattern": ".*ui.*"
+        "source": "testsEvaluator",
+        "pattern": ".*ui.*"
       }
     },
     "useSkia": {
@@ -1293,10 +1315,13 @@
         "datatype": "string",
         "cases": [
           {
+<<<<<<< HEAD
             "condition": "(tfm == 'net6.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net6.0-ios;net6.0-android;net6.0-maccatalyst"
           },
           {
+=======
+>>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
             "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
           },
@@ -1383,7 +1408,7 @@
         ]
       }
     },
-    "toolkitNamespace":{
+    "toolkitNamespace": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$toolkitNamespace$",
@@ -1401,7 +1426,7 @@
         ]
       }
     },
-    "toolkitSafeArea":{
+    "toolkitSafeArea": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$toolkitSafeArea$",
@@ -1419,7 +1444,7 @@
         ]
       }
     },
-    "shellRouteViewModel":{
+    "shellRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$shellRouteViewModel$",
@@ -1437,7 +1462,7 @@
         ]
       }
     },
-    "mainRouteViewModel":{
+    "mainRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$mainRouteViewModel$",
@@ -1455,7 +1480,7 @@
         ]
       }
     },
-    "secondRouteViewModel":{
+    "secondRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$secondRouteViewModel$",
@@ -1473,7 +1498,7 @@
         ]
       }
     },
-    "loginRouteViewModel":{
+    "loginRouteViewModel": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$loginRouteViewModel$",
@@ -1491,7 +1516,7 @@
         ]
       }
     },
-    "mainDataContext":{
+    "mainDataContext": {
       "type": "generated",
       "generator": "switch",
       "datatype": "string",
@@ -1510,7 +1535,7 @@
         ]
       }
     },
-    "secondDataContext":{
+    "secondDataContext": {
       "type": "generated",
       "generator": "switch",
       "datatype": "string",
@@ -1579,6 +1604,12 @@
       "type": "computed",
       "datatype": "bool",
       "value": "useAuthentication && authentication == 'web'"
+    },
+    // MSAL causes an error when used with WinAppSdk when self-contained 
+    "useWinAppSdkSelfContained": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "authentication != 'msal'"
     },
     "useProtocolRedirect": {
       "type": "computed",
@@ -1674,11 +1705,11 @@
       "type": "bind",
       "binding": "OS"
     },
-    "osLower":{
+    "osLower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"OS",
+        "source": "OS",
         "toLower": true
       }
     },
