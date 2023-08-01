@@ -105,6 +105,10 @@
 		<!--#if (mauiEmbedding)-->
 		<PackageReference Include="CommunityToolkit.Maui" />
 		<!--#endif-->
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
@@ -195,6 +199,10 @@
 		<!--#if (mauiEmbedding)-->
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<!--#endif-->
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#endif-->
 

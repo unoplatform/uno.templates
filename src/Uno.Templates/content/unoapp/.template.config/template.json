@@ -754,6 +754,11 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "useMauiPackageReference": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(mauiEmbedding && tfm != 'net7.0')"
+    },
     "useAzurePipelines": {
       "type": "computed",
       "datatype": "bool",
