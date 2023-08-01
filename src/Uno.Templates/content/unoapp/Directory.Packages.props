@@ -6,6 +6,10 @@
     <!--#if (mauiEmbedding)-->
     <PackageVersion Include="CommunityToolkit.Maui" Version="5.2.0"/>
     <!--#endif-->
+    <!--#if (useMauiPackageReference)-->
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />

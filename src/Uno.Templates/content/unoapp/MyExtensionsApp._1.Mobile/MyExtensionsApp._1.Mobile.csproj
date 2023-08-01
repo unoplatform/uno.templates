@@ -111,6 +111,10 @@
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Condition="'$(Configuration)'=='Debug'" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
@@ -193,6 +197,10 @@
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#endif-->
 	<Choose>
