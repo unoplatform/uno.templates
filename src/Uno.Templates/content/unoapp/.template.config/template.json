@@ -633,26 +633,26 @@
     "unoWinUIVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoWinUIPackageVersion",
-      "replaces": "$UnoWinUIPackageVersion$"
+      "defaultValue": "DefaultUnoWinUIVersion",
+      "replaces": "$UnoWinUIVersion$"
     },
     "unoExtensionsVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoExtensionsPackageVersion",
-      "replaces": "$UnoExtensionsPackageVersion$"
+      "defaultValue": "DefaultUnoExtensionsVersion",
+      "replaces": "$UnoExtensionsVersion$"
     },
     "unoExtensionsLoggingVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultUnoExtensionsLoggingVersion",
-      "replaces": "$UnoExtensionsLoggingPackageVersion$"
+      "replaces": "$UnoExtensionsLoggingVersion$"
     },
     "skiaSharpVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultSkiaSharpVersion",
-      "replaces": "$SkiaSharpPackageVersion$"
+      "replaces": "$SkiaSharpVersion$"
     },
     "unoCoreExtensionsLoggingVersion": {
       "type": "parameter",
