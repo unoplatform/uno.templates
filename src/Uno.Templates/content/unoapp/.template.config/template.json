@@ -585,11 +585,11 @@
           "choice": "none",
           "description": "No continuous integration",
           "displayName": "None"
-          // },
-          // {
-          //   "choice": "azure",
-          //   "description": "Azure Pipelines",
-          //   "displayName": "Azure Pipelines"
+        },
+        {
+          "choice": "azure",
+          "description": "Azure Pipelines",
+          "displayName": "Azure Pipelines"
         },
         {
           "choice": "github",
@@ -2065,19 +2065,20 @@
             "MyExtensionsApp._1.UITests/**/*"
           ]
         },
-        // {
-        //   "condition": "(useAzurePipelines)",
-        //   "rename": {
-        //     "AzurePipelines/**": "build/**"
-        //   }
-        // },
-        // {
-        //   "condition": "(!useAzurePipelines)",
-        //   "exclude": [
-        //     "azure-pipelines.yml",
-        //     "AzurePipelines/**"
-        //   ]
-        // },
+        {
+          "condition": "(useAzurePipelines)",
+          "rename": {
+            "AzurePipelines": "build",
+            "AzurePipelines/Install-WindowsSdkISO.cips": "build/Install-WindowsSdkISO.ps1"
+          }
+        },
+        {
+          "condition": "(!useAzurePipelines)",
+          "exclude": [
+            "azure-pipelines.yml",
+            "AzurePipelines/**"
+          ]
+        },
         {
           "condition": "(useGitHubActions)",
           "rename": {

@@ -1,0 +1,49 @@
+parameters:
+  #The platform to install dependencies for. #See available values at https://platform.uno/docs/articles/external/uno.check/doc/using-uno-check.html
+  # For GTK depending on which OS you are planning to use, supported values are skiagtk_macos and skiagtk_win 
+- name: targetPlatform
+  type: string
+  default: 'all'
+- name: dotnetVersion
+  type: string
+  default: '$ciTargetDotNetVersion$'
+- name: installWindowsSdk
+  type: boolean
+  default: true
+- name: sdkVersion
+  type: string
+  default: '19041'
+
+steps:
+  # Install .NET
+  - task: UseDotNet@2
+    displayName: 'Use DotNet ${{ parameters.dotnetVersion }}'
+    inputs:
+      version: '${{ parameters.dotnetVersion }}'
+
+  # Install Windows SDK
+  - task: PowerShell@2
+    condition: eq(${{ parameters.installWindowsSdk }}, true)
+    displayName: 'Install Windows SDK ${{ parameters.sdkVersion }}'
+    inputs:
+      filePath: '$(System.DefaultWorkingDirectory)/build/Install-WindowsSdkISO.ps1'
+      arguments: ${{ parameters.sdkVersion }}
+      failOnStderr: true
+      showWarnings: true
+      pwsh: true
+
+  # Run Uno.Check
+  - powershell: |
+      dotnet tool install -g uno.check
+      $targets = ("${{ parameters.targetPlatform }}".Split(' ') | ForEach-Object { "--target $_".Replace("_win", "").Replace("_macos", "") }) -join ' '
+      if ($targets.Contains("all")) {
+          $targets = "--target all"
+      }
+
+      $arguments = @(
+          $targets, "-v", "--ci", "--non-interactive", "--fix", 
+          "--skip vsmac", "--skip vswin", "--skip xcode", "--skip vswinworkloads", "--skip androidemulator", "--skip dotnetnewunotemplates"
+      ) -join " "
+
+      Invoke-Expression -Command "uno-check $arguments"
+    displayName: 'Run Uno.Check'

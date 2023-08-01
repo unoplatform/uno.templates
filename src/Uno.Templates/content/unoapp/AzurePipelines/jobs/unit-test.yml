@@ -1,0 +1,28 @@
+jobs:
+- job: unit_test
+  displayName: Unit Tests
+  pool:
+    vmImage: $(windowsAgent)
+  steps:
+    - checkout: self
+      fetchDepth: 0
+
+    - template: ../steps/install-dependencies.yml
+
+    - task: MSBuild@1
+      inputs:
+        solution: ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj
+        configuration: 'Release'
+        msbuildArguments: '/p:OverrideTargetFrameworks=$libraryBaseTargetFramework$ /r'
+
+    - task: VSTest@3
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\MyExtensionsApp._1.Tests.dll
+          !**\*TestAdapter.dll
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        runTestsInIsolation: true
+        codeCoverageEnabled: true
+        rerunFailedTests: true

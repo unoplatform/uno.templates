@@ -1,0 +1,75 @@
+###################################################
+#                    IMPORTANT                    #
+# Please make sure  GitTools is installed in your #
+# project. Otherwise all jobs will fail           #
+# See how to install new extensions here:         #
+# https://learn.microsoft.com/en-us/azure/devops  #
+#/marketplace/install-extension                   #
+###################################################
+
+trigger:
+- master
+- release
+
+# trigger this pipeline if there's a PR to any of these branches
+pr:
+- master
+- release/**
+
+#if (useAndroid || useIOS || useWinAppSdk)
+#REQUIRED PARAMETERS FOR SIGNING
+parameters:
+#endif
+#if (useWinAppSdk)
+- name: pfx_certificate
+  type: string
+  default: 'CERTIFICATE.pfx'      #.pfx certificate stored in secureFiles
+#endif 
+#if (useAndroid)
+- name: jks_certificate
+  type: string
+  default: 'CERTIFICATE.jks'      #.jks certificate stored in secureFiles
+- name: jks_certificate_password
+  type: string
+  default: 'contoso'              #your secure certificate password  
+- name: certificate_alias
+  type: string
+  default: 'contoso'              #.jks certificate alias used when creating the certificate
+#endif
+#if (useIOS)
+- name: p12_certificate
+  type: string
+  default: 'CERTIFICATE.p12'      #.p12 certificate stored in secureFiles
+- name: p12_certificate_password
+  type: string
+  default: 'contoso'              #your secure certificate password  
+- name: provisioning_profile
+  type: string
+  default: 'MyExtensionsApp.1.mobileprovision'  #.mobileprovision file stored in secureFiles
+- name: codesign_provision
+  type: string
+  default: 'MyExtensionsApp.1'      #The provisioning profile name. This is the name you entered in the Apple Developer portal when creating your provisioning profile.  
+- name: codesign_key
+  type: string
+  default: 'Apple Development: Contoso Contoso (752234A22L)'    #The name of the distribution/development certificate
+#endif
+
+variables:
+- name: jobTimeout
+  value: '60'
+
+# For the latest available agents see:
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml&&WT.mc_id=DT-MVP-5002924
+- name: windowsAgent
+  value: 'windows-2022'
+
+- name: macAgent
+  value: 'macOS-13'
+
+stages:
+  - stage: tests
+    displayName: Tests
+    jobs:
+      - template: build/jobs/smoke-test.yml
+
+      - template: build/jobs/unit-test.yml
