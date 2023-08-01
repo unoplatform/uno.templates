@@ -25,10 +25,10 @@
 					VerticalAlignment="Center"
 					Spacing="16">
 <!--#if (mauiEmbedding)-->
-		<embed:MauiHost x:Name="MauiHostElement"
-					xmlns:embed="using:Uno.Extensions.Maui">
-					<controls:EmbeddedControl xmlns:controls="using:MyExtensionsApp._1.MauiControls" />
-		</embed:MauiHost>
+			<embed:MauiHost x:Name="MauiHostElement"
+							xmlns:embed="using:Uno.Extensions.Maui">
+				<controls:EmbeddedControl xmlns:controls="using:MyExtensionsApp._1.MauiControls" />
+			</embed:MauiHost>
 <!--#endif-->
 			<TextBox Text="{Binding Name, Mode=TwoWay}"
 					 PlaceholderText="Enter your name:" />
