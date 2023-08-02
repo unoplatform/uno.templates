@@ -1648,7 +1648,7 @@
     "coreProjectHasProjectReferences": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(mauiEmbedding && useHttp)"
+      "value": "(mauiEmbedding || useHttp)"
     },
     "useInfrastructureNamespace": {
       "type": "computed",
