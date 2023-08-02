@@ -1645,6 +1645,11 @@
       "datatype": "bool",
       "value": "useDependencyInjection != 'true' || navigationEvaluator == 'blank'"
     },
+    "coreProjectHasProjectReferences": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(mauiEmbedding && useHttp)"
+    },
     "useInfrastructureNamespace": {
       "type": "computed",
       "datatype": "bool",

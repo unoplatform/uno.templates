@@ -260,24 +260,21 @@
 		<PRIResource Include="**\*.resw" />
 	</ItemGroup>
 	<!--#endif-->
-	<!--#if (useHttp)-->
+	<!--#if (coreProjectHasProjectReferences)-->
 
 	<ItemGroup>
+		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
-	</ItemGroup>
-	<!--#endif-->
-
-	<!--#if (mauiEmbedding)-->
-
-	<ItemGroup>
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
+		<!--#endif-->
 	</ItemGroup>
 	<!--#endif-->
 
 	<ItemGroup>
 		<!--#if (useMaterial)-->
-		<UnoDspImportColors Include="Styles\*.zip"
-												Generator="$DspGenerator$" />
+		<UnoDspImportColors Include="Styles\*.zip" Generator="$DspGenerator$" />
 		<!--#endif-->
 		<UnoImage Include="Assets\**\*.svg" />
 		<!--#if (includeIsExternalInit)-->
@@ -286,8 +283,7 @@
 		<!--#endif-->
 		<!--#if (useConfiguration)-->
 		<EmbeddedResource Include="appsettings.json" />
-		<EmbeddedResource Include="appsettings.*.json"
-											DependentUpon="appsettings.json" />
+		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<!--#endif-->
 		<!--#if (useXaml)-->
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
