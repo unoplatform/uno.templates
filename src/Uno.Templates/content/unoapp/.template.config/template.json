@@ -589,7 +589,6 @@
           "choice": "none",
           "description": "No continuous integration",
           "displayName": "None"
-<<<<<<< HEAD
         // },
         // {
         //   "choice": "azure",
@@ -600,18 +599,6 @@
         //   "choice": "github",
         //   "description": "GitHub Actions",
         //   "displayName": "GitHub Actions"
-=======
-          // },
-          // {
-          //   "choice": "azure",
-          //   "description": "Azure Pipelines",
-          //   "displayName": "Azure Pipelines"
-        },
-        {
-          "choice": "github",
-          "description": "GitHub Actions",
-          "displayName": "GitHub Actions"
->>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
         }
       ]
     },
@@ -691,15 +678,12 @@
       "defaultValue": "3.0.4",
       "replaces": "$UnoToolkitVersion$"
     },
-<<<<<<< HEAD
-=======
     "unoToolkitMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "2.6.0-dev.58",
       "replaces": "$UnoToolkitMarkupVersion$"
     },
->>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
@@ -1315,13 +1299,10 @@
         "datatype": "string",
         "cases": [
           {
-<<<<<<< HEAD
             "condition": "(tfm == 'net6.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net6.0-ios;net6.0-android;net6.0-maccatalyst"
           },
           {
-=======
->>>>>>> d1eab82 (chore: Fix build for when MSAL is selected - can't use self contained as causes duplicate files with same name)
             "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
             "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
           },
