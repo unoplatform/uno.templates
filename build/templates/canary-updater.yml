@@ -17,13 +17,7 @@ steps:
       usePrivateFeed: false
       mergeBranch: ${{ parameters.MergeBranch }}
       branchToMerge: main
-<<<<<<< HEAD
-      nugetUpdaterVersion: 2.3.0-alpha.46
-      packageAuthor: 'nventive,Uno Platform'
-      summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
-=======
       nugetUpdaterVersion: 2.3.0-alpha.55
       packageAuthor: 'nventive,unoplatform,uno platform'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       projectProperties: 'propertiesToUpdate.json'
->>>>>>> 2522dac (fix: Updating canary updater)
