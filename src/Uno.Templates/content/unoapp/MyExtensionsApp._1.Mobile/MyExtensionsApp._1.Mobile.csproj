@@ -106,6 +106,10 @@
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Condition="'$(Configuration)'=='Debug'" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
@@ -188,6 +192,10 @@
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#endif-->
 	<Choose>
@@ -195,10 +203,14 @@
 		<When Condition="$(IsAndroid)">
 			<ItemGroup>
 				<!--#if (useCPM)-->
+				<!--#if (useAndroidMaterial)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" />
+				<!--#endif-->
 				<PackageReference Include="Uno.UniversalImageLoader" />
 				<!--#else-->
+				<!--#if (useAndroidMaterial)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
+				<!--#endif-->
 				<PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
 				<!--#endif-->
 			</ItemGroup>
@@ -251,6 +263,9 @@
 		<ProjectReference Include="..\MyExtensionsApp._1\MyExtensionsApp._1.csproj" />
 		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
 		<!--#endif-->
 	</ItemGroup>
 	<Import Project="..\MyExtensionsApp._1.Base\base.props" />

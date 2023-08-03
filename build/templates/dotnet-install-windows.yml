@@ -2,6 +2,7 @@ parameters:
   DotNetVersion: '7.0.x'
   UnoCheck_Version: '1.11.0-dev.2'
   UnoCheck_Manifest: 'https://raw.githubusercontent.com/unoplatform/uno.check/146b0b4b23d866bef455494a12ad7ffd2f6f2d20/manifests/uno.ui.manifest.json'
+  InstallMauiWorkloads: false
 
 steps:
 
@@ -31,4 +32,10 @@ steps:
     displayName: Install .NET Workloads
     errorActionPreference: continue
     ignoreLASTEXITCODE: true
+    retryCountOnTaskFailure: 3
+
+  - powershell: |
+      dotnet workload install maui --source https://api.nuget.org/v3/index.json
+      dotnet workload install android ios maccatalyst tvos macos maui wasm-tools --source https://api.nuget.org/v3/index.json
+    displayName: Maui workloads
     retryCountOnTaskFailure: 3

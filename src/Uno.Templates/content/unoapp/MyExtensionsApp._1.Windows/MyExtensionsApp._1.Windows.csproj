@@ -31,8 +31,10 @@
 	<!--#if (useCPM)-->
 	<ItemGroup>
 		<PackageReference Include="Uno.WinUI" />
+		<!--#if (!mauiEmbedding)-->
 		<PackageReference Include="Microsoft.WindowsAppSDK" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+		<!--#endif-->
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" />
 		<!--#if (useMaterial)-->
@@ -109,13 +111,19 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
 		<PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
 		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+		<!--#if (!mauiEmbedding)-->
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230602002" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+		<!--#endif-->
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
 		<!--#if (useMaterial)-->
@@ -192,6 +200,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#endif-->
 
@@ -214,6 +226,9 @@
 		<ProjectReference Include="..\MyExtensionsApp._1\MyExtensionsApp._1.csproj" />
 		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
 		<!--#endif-->
 	</ItemGroup>
 

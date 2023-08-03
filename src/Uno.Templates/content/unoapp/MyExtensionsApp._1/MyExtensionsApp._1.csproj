@@ -46,6 +46,9 @@
 		<!--#if (useSerilog)-->
 		<PackageReference Include="Uno.Extensions.Logging.Serilog" />
 		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Uno.Extensions.Maui.WinUI" />
+		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" />
 		<PackageReference Include="Uno.Extensions.Http.WinUI" />
@@ -98,6 +101,13 @@
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="CommunityToolkit.Maui" />
+		<!--#endif-->
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
@@ -129,6 +139,9 @@
 		<!--#endif-->
 		<!--#if (useSerilog)-->
 		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useHttp)-->
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
@@ -181,6 +194,13 @@
 		<!--#endif-->
 		<!--#endif-->
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+		<!--#endif-->
+		<!--#if (useMauiPackageReference)-->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#endif -->
 	</ItemGroup>
 	<!--#endif-->
 
@@ -203,6 +223,7 @@
 				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 				<!--#endif-->
 			</PropertyGroup>
+			<!--#if (!mauiEmbedding)-->
 			<ItemGroup>
 				<!--#if (useCPM)-->
 				<PackageReference Include="Microsoft.WindowsAppSDK" />
@@ -212,47 +233,51 @@
 				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
 				<!--#endif-->
 			</ItemGroup>
+			<!--#endif-->
 		</When>
 		<Otherwise>
 			<ItemGroup>
 				<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif"  Exclude="bin\**;obj\**" />
+				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 				<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 				<Compile Update="**\*.xaml.cs">
 					<DependentUpon>%(Filename)</DependentUpon>
 				</Compile>
-				<PRIResource Include ="**\*.resw" />
+				<PRIResource Include="**\*.resw" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
 	<!--#else-->
 	<ItemGroup>
 		<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif"  Exclude="bin\**;obj\**" />
+		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 		<Compile Update="**\*.xaml.cs">
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<PRIResource Include ="**\*.resw" />
+		<PRIResource Include="**\*.resw" />
 	</ItemGroup>
 	<!--#endif-->
-	<!--#if (useHttp)-->
+	<!--#if (coreProjectHasProjectReferences)-->
 
 	<ItemGroup>
+		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
+		<!--#endif-->
+		<!--#if (mauiEmbedding)-->
+		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
+		<!--#endif-->
 	</ItemGroup>
 	<!--#endif-->
 
 	<ItemGroup>
 		<!--#if (useMaterial)-->
-		<UnoDspImportColors Include="Styles\*.zip"
-												Generator="$DspGenerator$" />
+		<UnoDspImportColors Include="Styles\*.zip" Generator="$DspGenerator$" />
 		<!--#endif-->
 		<UnoImage Include="Assets\**\*.svg" />
 		<!--#if (useConfiguration)-->
 		<EmbeddedResource Include="appsettings.json" />
-		<EmbeddedResource Include="appsettings.*.json"
-											DependentUpon="appsettings.json" />
+		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<!--#endif-->
 		<!--#if (useXaml)-->
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />

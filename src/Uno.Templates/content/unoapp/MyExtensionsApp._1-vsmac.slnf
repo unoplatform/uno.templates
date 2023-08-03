@@ -17,7 +17,7 @@
 #//#if (useWasm)
       "MyExtensionsApp._1.Wasm\\MyExtensionsApp._1.Wasm.csproj",
 #//#endif
-#//#if (server)
+#//#if (useServer)
       "MyExtensionsApp._1.Server\\MyExtensionsApp._1.Server.csproj",
 #//#endif
 #//#if (useDataContracts)
