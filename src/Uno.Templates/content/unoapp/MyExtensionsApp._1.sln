@@ -18,6 +18,8 @@ EndProject
 
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp._1", "MyExtensionsApp._1\MyExtensionsApp._1.csproj", "{BACDD33A-304C-46C4-9B00-AC166978D7E0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp._1.Base", "MyExtensionsApp._1.Base\MyExtensionsApp._1.Base.csproj", "{2189102C-8698-4760-A2C5-ADED686F84E2}"
+EndProject
 #//#if (useMobile)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp._1.Mobile", "MyExtensionsApp._1.Mobile\MyExtensionsApp._1.Mobile.csproj", "{24D56E12-2373-4CBD-9AD4-5C931D15FB0D}"
 EndProject
@@ -487,6 +489,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BACDD33A-304C-46C4-9B00-AC166978D7E0} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
+		{2189102C-8698-4760-A2C5-ADED686F84E2} = {339C569C-EE23-445E-B908-743673EE5BC9}
 //#if (useDataContracts)
 		{5ED31500-DF01-462D-9436-EC2EDCAA1965} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
 //#endif
