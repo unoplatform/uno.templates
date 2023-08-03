@@ -74,6 +74,15 @@ steps:
 
   displayName: Build template app
 
+- task: CmdLine@2
+  inputs:
+    workingDirectory: $(build.artifactstagingdirectory)
+    script: |
+      dotnet tool install --global Basic.CompilerLog
+      # Adjust project name for the project you want to get compiler log for.
+      complog create --projectName=$(Agent.JobName).binlog
+  condition: always()
+
 - task: PublishBuildArtifacts@1
   condition: always()
   retryCountOnTaskFailure: 3
@@ -81,3 +90,12 @@ steps:
     PathtoPublish: $(build.artifactstagingdirectory)
     ArtifactName: logs
     ArtifactType: Container
+
+    - task: PublishBuildArtifacts@1
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      PathtoPublish: UnoApp1
+      ArtifactName: App-$(Agent.JobName)
+      ArtifactType: Container
+  
