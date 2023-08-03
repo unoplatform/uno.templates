@@ -3,6 +3,13 @@
     <!--#if (useMvvm)-->
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <!--#endif-->
+    <!--#if (mauiEmbedding)-->
+    <PackageVersion Include="CommunityToolkit.Maui" Version="5.2.0"/>
+    <!--#endif-->
+    <!--#if (useMauiPackageReference)-->
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
@@ -20,9 +27,11 @@
     <!--#if (useWasm)-->
     <PackageVersion Include="Microsoft.Windows.Compatibility" Version="$MsftWindowsCompatibilityVersion$" />
     <!--#endif-->
+    <!--#if (!mauiEmbedding)-->
     <!--#if (useWinAppSdk)-->
     <PackageVersion Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.3.230602002" />
+    <!--#endif-->
     <!--#endif-->
     <!--#if (useAspNetCoreSerilogPackage)-->
     <PackageVersion Include="Serilog.AspNetCore" Version="7.0.0" />
@@ -31,7 +40,7 @@
     <PackageVersion Include="SkiaSharp.Skottie" Version="$SkiaSharpVersion$" />
     <PackageVersion Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpVersion$" />
     <!--#endif-->
-    <!--#if (server)-->
+    <!--#if (useServer)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#endif-->
     <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
@@ -73,6 +82,9 @@
     <!--#endif-->
     <!--#if (useLogging)-->
     <PackageVersion Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (mauiEmbedding)-->
+    <PackageVersion Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (useExtensionsNavigation)-->
     <PackageVersion Include="Uno.Extensions.Navigation" Version="$UnoExtensionsVersion$" />
@@ -141,7 +153,7 @@
     <!--#if (useWasm)-->
     <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIVersion$" />
     <!--#endif-->
-    <!--#if (useAndroid)-->
+    <!--#if (useAndroidMaterial)-->
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
     <!--#endif-->
     <!--#if (useUITests)-->

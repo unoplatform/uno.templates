@@ -1,3 +1,8 @@
+//+:cnd:noEmit
+#if mauiEmbedding
+using CommunityToolkit.Maui;
+
+#endif
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
@@ -136,6 +141,10 @@ public class App : Application
                 }), name: "CustomAuth")
 #endif
 				)
+#endif
+#if mauiEmbedding
+				.UseMauiEmbedding(this, maui => maui
+					.UseMauiCommunityToolkit())
 #endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services
