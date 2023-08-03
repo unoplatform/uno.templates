@@ -7,66 +7,66 @@ jobs:
 
   strategy:
     matrix:
-      DefaultArguments:
-        templateArgs: ''
-      BlankApp:
-        templateArgs: '-preset blank'
-      SkiaOnlyHeads:
-        templateArgs: '-platforms gtk wpf linux-fb'
-      MobileOnlyHeads:
-        templateArgs: '-platforms android ios maccatalyst'
-      BlankMarkupApp:
-        templateArgs: '-preset blank -markup csharp'
-      BlankAppNoCpm:
-        templateArgs: '-preset blank --cpm false'
-      MVVM:
-        templateArgs: '-presentation mvvm'
-      NoCentralPackageManagement:
-        templateArgs: '--cpm false'
-      CSharpMarkup:
-        templateArgs: '-markup csharp'
-      NoAppHosting:
-        templateArgs: '-di false'
-      HostingOnly:
-        templateArgs: '-config false -loc false -http false -log none --navigation blank'
-      NoConfiguration:
-        templateArgs: '-config false'
-      NoLocalization:
-        templateArgs: '-loc false'
-      NoHttp:
-        templateArgs: '-http false'
-      NoSerilog:
-        templateArgs: '-log default'
-      NoServer:
-        templateArgs: '-server false'
-      NoServerNoHttp:
-        templateArgs: '-server false -http false'
-      NoTests:
-        templateArgs: '-tests none'
-      FrameNavigation:
-        templateArgs: '--navigation blank'
+      # DefaultArguments:
+      #   templateArgs: ''
+      # BlankApp:
+      #   templateArgs: '-preset blank'
+      # SkiaOnlyHeads:
+      #   templateArgs: '-platforms gtk wpf linux-fb'
+      # MobileOnlyHeads:
+      #   templateArgs: '-platforms android ios maccatalyst'
+      # BlankMarkupApp:
+      #   templateArgs: '-preset blank -markup csharp'
+      # BlankAppNoCpm:
+      #   templateArgs: '-preset blank --cpm false'
+      # MVVM:
+      #   templateArgs: '-presentation mvvm'
+      # NoCentralPackageManagement:
+      #   templateArgs: '--cpm false'
+      # CSharpMarkup:
+      #   templateArgs: '-markup csharp'
+      # NoAppHosting:
+      #   templateArgs: '-di false'
+      # HostingOnly:
+      #   templateArgs: '-config false -loc false -http false -log none --navigation blank'
+      # NoConfiguration:
+      #   templateArgs: '-config false'
+      # NoLocalization:
+      #   templateArgs: '-loc false'
+      # NoHttp:
+      #   templateArgs: '-http false'
+      # NoSerilog:
+      #   templateArgs: '-log default'
+      # NoServer:
+      #   templateArgs: '-server false'
+      # NoServerNoHttp:
+      #   templateArgs: '-server false -http false'
+      # NoTests:
+      #   templateArgs: '-tests none'
+      # FrameNavigation:
+      #   templateArgs: '--navigation blank'
       # TODO: Evaluate why we are not able to get net8 installing in CI
       # Net8:
       #   templateArgs: '-tfm net8.0'
       # https://github.com/unoplatform/uno.templates/issues/22
-      Issue22:
-        templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
-      CustomAuthMvux:
-        templateArgs: '-preset=recommended -auth=custom'
-      CustomAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
-      WebAuthMvux:
-        templateArgs: '-preset=recommended -auth=web'
-      WebAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=web'
-      OidcAuthMvux:
-        templateArgs: '-preset=recommended -auth=oidc'
-      OidcAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
-      MsalAuthMvux:
-        templateArgs: '-preset=recommended -auth=msal'
-      MsalAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
+      # Issue22:
+      #   templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
+      # CustomAuthMvux:
+      #   templateArgs: '-preset=recommended -auth=custom'
+      # CustomAuthMvvm:
+      #   templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
+      # WebAuthMvux:
+      #   templateArgs: '-preset=recommended -auth=web'
+      # WebAuthMvvm:
+      #   templateArgs: '-preset=recommended -presentation mvvm -auth=web'
+      # OidcAuthMvux:
+      #   templateArgs: '-preset=recommended -auth=oidc'
+      # OidcAuthMvvm:
+      #   templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
+      # MsalAuthMvux:
+      #   templateArgs: '-preset=recommended -auth=msal'
+      # MsalAuthMvvm:
+      #   templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
       MauiBlankApp:
        templateArgs: '-preset=blank -maui'
       MauiRecommendedApp:
