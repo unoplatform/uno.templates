@@ -709,7 +709,7 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net7.0')",
+            "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
             "value": "DefaultUnoWasmBootstrapVersionNet7"
           },
           {
