@@ -23,6 +23,7 @@
 #//#if (useDataContracts)
       "MyExtensionsApp._1.DataContracts\\MyExtensionsApp._1.DataContracts.csproj",
 #//#endif
+      "MyExtensionsApp._1.Base\\MyExtensionsApp._1.Base.csproj",
       "MyExtensionsApp._1\\MyExtensionsApp._1.csproj"
     ]
   }
