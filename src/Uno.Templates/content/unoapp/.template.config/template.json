@@ -633,67 +633,67 @@
     "unoWinUIVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoWinUIPackageVersion",
-      "replaces": "$UnoWinUIPackageVersion$"
+      "defaultValue": "DefaultUnoWinUIVersion",
+      "replaces": "$UnoWinUIVersion$"
     },
     "unoExtensionsVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoExtensionsPackageVersion",
-      "replaces": "$UnoExtensionsPackageVersion$"
+      "defaultValue": "DefaultUnoExtensionsVersion",
+      "replaces": "$UnoExtensionsVersion$"
     },
     "unoExtensionsLoggingVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.4.0",
-      "replaces": "$UnoExtensionsLoggingPackageVersion$"
+      "defaultValue": "DefaultUnoExtensionsLoggingVersion",
+      "replaces": "$UnoExtensionsLoggingVersion$"
     },
     "skiaSharpVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.88.3",
-      "replaces": "$SkiaSharpPackageVersion$"
+      "defaultValue": "DefaultSkiaSharpVersion",
+      "replaces": "$SkiaSharpVersion$"
     },
     "unoCoreExtensionsLoggingVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "4.0.1",
+      "defaultValue": "DefaultUnoCoreExtensionsLoggingVersion",
       "replaces": "$UnoCoreExtensionsLoggingVersion$"
     },
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.1",
+      "defaultValue": "DefaultUnoThemesVersion",
       "replaces": "$UnoThemesVersion$"
     },
     "unoDspTasksVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.0.1",
+      "defaultValue": "DefaultUnoDspTasksVersion",
       "replaces": "$UnoDspTasksVersion$"
     },
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "3.0.4",
+      "defaultValue": "DefaultUnoToolkitVersion",
       "replaces": "$UnoToolkitVersion$"
     },
     "unoToolkitMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "2.6.0-dev.58",
+      "defaultValue": "DefaultUnoToolkitMarkupVersion",
       "replaces": "$UnoToolkitMarkupVersion$"
     },
     "unoResizetizerVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.1.0",
+      "defaultValue": "DefaultUnoResizetizerVersion",
       "replaces": "$UnoResizetizerVersion$"
     },
     "unoUniversalImageLoaderVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.9.36",
+      "defaultValue": "DefaultUnoUniversalImageLoaderVersion",
       "replaces": "$UnoUniversalImageLoaderVersion$"
     },
     "unoWasmBootstrapVersion": {
@@ -710,11 +710,11 @@
         "cases": [
           {
             "condition": "(tfm == 'net6.0' || tfm == 'net7.0')",
-            "value": "7.0.23"
+            "value": "DefaultUnoWasmBootstrapVersionNet7"
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-dev.152"
+            "value": "DefaultUnoWasmBootstrapVersionNet8"
           }
         ]
       }
@@ -731,13 +731,13 @@
     "unoMarkupVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "4.8.0-dev.30",
+      "defaultValue": "DefaultUnoMarkupVersion",
       "replaces": "$UnoMarkupVersion$"
     },
     "unoUITestHelpersVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "1.1.0-dev.55",
+      "defaultValue": "DefaultUnoUITestHelpersVersion",
       "replaces": "$UnoUITestHelpersVersion$"
     },
     "isVsix": {
