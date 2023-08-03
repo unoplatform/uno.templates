@@ -757,10 +757,11 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    // TODO: change this to != net7.0 when we don't have backport concerns
     "useMauiPackageReference": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(mauiEmbedding && tfm != 'net7.0')"
+      "value": "(mauiEmbedding && tfm == 'net8.0')"
     },
     "useAzurePipelines": {
       "type": "computed",
