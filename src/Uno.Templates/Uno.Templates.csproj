@@ -72,6 +72,7 @@
 		<AppendSingleTargetIgnore Filename="$(TemplateContentFolder)/unoapp/.gitignore" />
 
 		<Copy SourceFiles="@(TemplateFile)" DestinationFiles="$(TemplateContentFolder)/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="content/unoapp/GitHub/Install-WindowsSdkISO.cips" DestinationFiles="$(TemplateContentFolder)/unoapp/AzurePipelines/Install-WindowsSdkISO.cips" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Server/WeatherForecast.cs" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Skia.Gtk/Package.appxmanifest" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Skia.Linux.FrameBuffer/Package.appxmanifest" SkipUnchangedFiles="false" />

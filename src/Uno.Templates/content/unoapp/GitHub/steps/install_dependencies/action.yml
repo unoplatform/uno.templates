@@ -5,7 +5,7 @@ inputs:
   target-platform:
     description: 'The platform to install dependencies for. #See available values at https://platform.uno/docs/articles/external/uno.check/doc/using-uno-check.html'
     required: false
-    default: 'default'
+    default: 'all'
   dotnet-version:
     description: 'Installs and sets the .NET SDK Version'
     required: false
