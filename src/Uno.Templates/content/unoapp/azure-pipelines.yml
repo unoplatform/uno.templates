@@ -1,10 +1,10 @@
 trigger:
-- master
+- $DefaultBranchName$
 - release
 
 # trigger this pipeline if there's a PR to any of these branches
 pr:
-- master
+- $DefaultBranchName$
 - release/**
 
 variables:
