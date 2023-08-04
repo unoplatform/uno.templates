@@ -14,7 +14,7 @@ variables:
 # For the latest available agents see:
 # https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml&&WT.mc_id=DT-MVP-5002924
 - name: windowsAgent
-  value: 'windows-2022'
+  value: 'windows-latest'
 
 stages:
   - stage: tests
