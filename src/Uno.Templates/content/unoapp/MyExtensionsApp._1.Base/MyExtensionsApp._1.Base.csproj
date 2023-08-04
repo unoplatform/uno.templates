@@ -7,6 +7,6 @@
 
 	<ItemGroup>
 		<None Include="**\*" Exclude="obj\**;bin\**;*.csproj" />
-		<None Include="AppHead.xaml.cs" DependentUpon="AppHead.xaml" />
+		<None Update="AppHead.xaml.cs" DependentUpon="AppHead.xaml" />
 	</ItemGroup>
 </Project>
