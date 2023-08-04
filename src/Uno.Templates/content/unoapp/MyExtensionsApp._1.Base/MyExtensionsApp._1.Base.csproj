@@ -2,10 +2,11 @@
 	<PropertyGroup>
 		<!-- NOTE: The TargetFramework is required by MSBuild but not used as this project is not built. -->
 		<TargetFramework>$libraryBaseTargetFramework$</TargetFramework>
+		<EnableDefaultItems>false</EnableDefaultItems>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- NOTE: The AppHead is accessible in the Platform heads -->
-		<None Remove="AppHead.*" />
+		<None Include="**\*" Exclude="obj\**;bin\**;*.csproj" />
+		<None Update="AppHead.xaml.cs" DependentUpon="AppHead.xaml" />
 	</ItemGroup>
 </Project>

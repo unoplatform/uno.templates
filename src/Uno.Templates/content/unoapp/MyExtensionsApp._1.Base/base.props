@@ -24,5 +24,9 @@
 			Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
 			BaseSize="128,128"
 			Color="#086AD1" />
+		<!-- NOTE: Files explicitly linked to display in the head projects for clarity. -->
+		<None Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg" Link="Icons\iconapp.svg" />
+		<None Include="$(MSBuildThisFileDirectory)Icons\appconfig.svg" Link="Icons\appconfig.svg" />
+		<None Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg" Link="Splash\splash_screen.svg" />
 	</ItemGroup>
 </Project>
