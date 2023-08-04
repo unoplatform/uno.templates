@@ -1746,6 +1746,10 @@
       "path": "MyExtensionsApp._1.DataContracts\\MyExtensionsApp._1.DataContracts.csproj"
     },
     {
+      "condition": "mauiEmbedding",
+      "path": "MyExtensionsApp._1.MauiControls\\MyExtensionsApp._1.MauiControls.csproj"
+    },
+    {
       "condition": "useUnitTests",
       "path": "MyExtensionsApp._1.Tests\\MyExtensionsApp._1.Tests.csproj"
     },
