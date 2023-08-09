@@ -83,7 +83,6 @@
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
-		<PackageReference Include="Microsoft.Identity.Client" />
 		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
 		<!--#endif-->
 		<!--#endif-->
@@ -121,7 +120,7 @@
 		<PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
 		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
 		<!--#if (!mauiEmbedding)-->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230602002" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230724000" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
 		<!--#endif-->
 		<!--#if (useCsharpMarkup)-->
@@ -172,7 +171,6 @@
 		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#if (useMsalAuthentication)-->
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.54.1" />
 		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
 		<!--#endif-->
 		<!--#endif-->
