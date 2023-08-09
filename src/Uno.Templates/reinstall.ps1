@@ -35,6 +35,8 @@ if($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
-$nugetPath = Join-Path -Path $PSScriptRoot -ChildPath 'bin' -AdditionalChildPath @('Release',"Uno.Templates.$TemplatesVersion.nupkg") 
+$nugetPath = Join-Path -Path $PSScriptRoot -ChildPath 'bin'
+$nugetPath = Join-Path -Path $nugetPath -ChildPath 'Release'
+$nugetPath = Join-Path -Path $nugetPath -ChildPath ("Uno.Templates.$TemplatesVersion.nupkg")
 dotnet new install $nugetPath
 
