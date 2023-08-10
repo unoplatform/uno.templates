@@ -1,8 +1,3 @@
-//+:cnd:noEmit
-#if mauiEmbedding
-using CommunityToolkit.Maui;
-
-#endif
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
@@ -143,7 +138,8 @@ public class App : Application
 				)
 #endif
 #if mauiEmbedding
-				.UseMauiEmbedding(this, maui => maui.UseMauiControls())
+				.UseMauiEmbedding(this, maui => maui.UseMauiControls()
+					.UseMauiEmbeddingResources<MauiControls.Styles>())
 #endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services

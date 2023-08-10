@@ -1,11 +1,13 @@
 //-:cnd:noEmit
-namespace MyExtensionsApp._1.MauiControls;
+using CommunityToolkit.Maui;
+
+namespace MyExtensionsApp._1;
 
 public static class AppBuilderExtensions
 {
-    public static MauiAppBuilder UseMauiControls(this MauiAppBuilder builder)
-    {
-        builder.UseMauiCommunityToolkit();
-        return builder;
-    }
+	public static MauiAppBuilder UseMauiControls(this MauiAppBuilder builder)
+	{
+		builder.UseMauiCommunityToolkit();
+		return builder;
+	}
 }
