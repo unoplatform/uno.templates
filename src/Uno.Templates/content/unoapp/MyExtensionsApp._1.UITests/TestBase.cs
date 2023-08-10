@@ -14,6 +14,7 @@ public class TestBase
 		AppInitializer.TestEnvironment.AndroidAppName = Constants.AndroidAppName;
 		AppInitializer.TestEnvironment.iOSDeviceNameOrId = Constants.iOSDeviceNameOrId;
 		AppInitializer.TestEnvironment.CurrentPlatform = Constants.CurrentPlatform;
+		AppInitializer.TestEnvironment.WebAssemblyBrowser = Constants.WebAssemblyBrowser;
 
 #if DEBUG
 		AppInitializer.TestEnvironment.WebAssemblyHeadless = false;
