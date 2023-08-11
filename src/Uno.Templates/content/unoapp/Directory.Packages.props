@@ -1,10 +1,10 @@
 <Project ToolsVersion="15.0">
   <ItemGroup>
     <!--#if (useMvvm)-->
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <!--#endif-->
     <!--#if (mauiEmbedding)-->
-    <PackageVersion Include="CommunityToolkit.Maui" Version="5.2.0"/>
+    <PackageVersion Include="CommunityToolkit.Maui" Version="5.3.0"/>
     <!--#endif-->
     <!--#if (useMauiPackageReference)-->
     <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
