@@ -1650,7 +1650,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.6.23329.7"
+            "value": "8.0.0-preview.7.23375.6"
           }
         ]
       }
@@ -1669,7 +1669,7 @@
           },
           {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.0-preview.6.23329.4"
+            "value": "8.0.0-preview.7.23376.1"
           }
         ]
       }
