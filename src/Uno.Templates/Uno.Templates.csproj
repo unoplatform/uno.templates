@@ -28,7 +28,7 @@
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.1.2</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.24</UnoWasmBootstrapVersionNet7>
+		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.27</UnoWasmBootstrapVersionNet7>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.218</UnoWasmBootstrapVersionNet8>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">4.8.0-dev.43</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.59</UnoUITestHelpersVersion>
