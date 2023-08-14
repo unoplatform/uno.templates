@@ -43,22 +43,22 @@ public class App : Application
 						// Default filters for core Uno Platform namespaces
 						.CoreLogLevel(LogLevel.Warning);
 
-                    // Uno Platform namespace filter groups
-                    // Uncomment individual methods to see more detailed logging
-                    //// Generic Xaml events
-                    //logBuilder.XamlLogLevel(LogLevel.Debug);
-                    //// Layouter specific messages
-                    //logBuilder.XamlLayoutLogLevel(LogLevel.Debug);
-                    //// Storage messages
-                    //logBuilder.StorageLogLevel(LogLevel.Debug);
-                    //// Binding related messages
-                    //logBuilder.XamlBindingLogLevel(LogLevel.Debug);
-                    //// Binder memory references tracking
-                    //logBuilder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
-                    //// RemoteControl and HotReload related
-                    //logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
-                    //// Debug JS interop
-                    //logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
+					// Uno Platform namespace filter groups
+					// Uncomment individual methods to see more detailed logging
+					//// Generic Xaml events
+					//logBuilder.XamlLogLevel(LogLevel.Debug);
+					//// Layout specific messages
+					//logBuilder.XamlLayoutLogLevel(LogLevel.Debug);
+					//// Storage messages
+					//logBuilder.StorageLogLevel(LogLevel.Debug);
+					//// Binding related messages
+					//logBuilder.XamlBindingLogLevel(LogLevel.Debug);
+					//// Binder memory references tracking
+					//logBuilder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
+					//// RemoteControl and HotReload related
+					//logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
+					//// Debug JS interop
+					//logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
 
 				}, enableUnoLogging: true)
 #endif
@@ -85,15 +85,15 @@ public class App : Application
 					// Register HttpClient
 //-:cnd:noEmit
 #if DEBUG
-						// DelegatingHandler will be automatically injected into Refit Client
-						.AddTransient<DelegatingHandler, DebugHttpHandler>()
+					// DelegatingHandler will be automatically injected into Refit Client
+					.AddTransient<DelegatingHandler, DebugHttpHandler>()
 #endif
 //+:cnd:noEmit
-						.AddSingleton<IWeatherCache, WeatherCache>()
-						.AddRefitClient<IApiClient>(context))
+					.AddSingleton<IWeatherCache, WeatherCache>()
+					.AddRefitClient<IApiClient>(context))
 #endif
 #if useAuthentication
-                .UseAuthentication(auth =>
+				.UseAuthentication(auth =>
 #if useWebAuthentication
 	auth.AddWeb(name: "WebAuthentication")
 #elif useOidcAuthentication
@@ -101,44 +101,44 @@ public class App : Application
 #elif useMsalAuthentication
 	auth.AddMsal(name: "MsalAuthentication")
 #elif useCustomAuthentication 
-    auth.AddCustom(custom =>
-            custom
-                .Login((sp, dispatcher, credentials, cancellationToken) =>
-                {
-                    // TODO: Write code to process credentials that are passed into the LoginAsync method
-                    if (credentials?.TryGetValue(nameof($loginRouteViewModel$.Username), out var username) ?? false &&
-                           !username.IsNullOrEmpty())
-                    {
-                        // Return IDictionary containing any tokens used by service calls or in the app
-                        credentials ??= new Dictionary<string, string>();
-                        credentials[TokenCacheExtensions.AccessTokenKey] = "SampleToken";
-                        credentials[TokenCacheExtensions.RefreshTokenKey] = "RefreshToken";
-                        credentials["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
-                        return ValueTask.FromResult<IDictionary<string, string>?>(credentials);
-                    }
+	auth.AddCustom(custom =>
+			custom
+				.Login((sp, dispatcher, credentials, cancellationToken) =>
+				{
+					// TODO: Write code to process credentials that are passed into the LoginAsync method
+					if (credentials?.TryGetValue(nameof($loginRouteViewModel$.Username), out var username) ?? false &&
+						!username.IsNullOrEmpty())
+					{
+						// Return IDictionary containing any tokens used by service calls or in the app
+						credentials ??= new Dictionary<string, string>();
+						credentials[TokenCacheExtensions.AccessTokenKey] = "SampleToken";
+						credentials[TokenCacheExtensions.RefreshTokenKey] = "RefreshToken";
+						credentials["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+						return ValueTask.FromResult<IDictionary<string, string>?>(credentials);
+					}
 
-                    // Return null/default to fail the LoginAsync method
-                    return ValueTask.FromResult<IDictionary<string, string>?>(default);
-                })
-                .Refresh((sp, tokenDictionary, cancellationToken) =>
-                {
-                    // TODO: Write code to refresh tokens using the currently stored tokens
-                    if ((tokenDictionary?.TryGetValue(TokenCacheExtensions.RefreshTokenKey, out var refreshToken) ?? false) &&
-                           !refreshToken.IsNullOrEmpty() &&
-                           (tokenDictionary?.TryGetValue("Expiry", out var expiry) ?? false) &&
-                           DateTime.TryParse(expiry, out var tokenExpiry) &&
-                           tokenExpiry > DateTime.Now)
-                    {
-                        // Return IDictionary containing any tokens used by service calls or in the app
-                        tokenDictionary ??= new Dictionary<string, string>();
-                        tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
-                        tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
-                        return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
-                    }
+					// Return null/default to fail the LoginAsync method
+					return ValueTask.FromResult<IDictionary<string, string>?>(default);
+				})
+				.Refresh((sp, tokenDictionary, cancellationToken) =>
+				{
+					// TODO: Write code to refresh tokens using the currently stored tokens
+					if ((tokenDictionary?.TryGetValue(TokenCacheExtensions.RefreshTokenKey, out var refreshToken) ?? false) &&
+						!refreshToken.IsNullOrEmpty() &&
+						(tokenDictionary?.TryGetValue("Expiry", out var expiry) ?? false) &&
+						DateTime.TryParse(expiry, out var tokenExpiry) &&
+						tokenExpiry > DateTime.Now)
+					{
+						// Return IDictionary containing any tokens used by service calls or in the app
+						tokenDictionary ??= new Dictionary<string, string>();
+						tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
+						tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+						return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
+					}
 
-                    // Return null/default to fail the Refresh method
-                    return ValueTask.FromResult<IDictionary<string, string>?>(default);
-                }), name: "CustomAuth")
+					// Return null/default to fail the Refresh method
+					return ValueTask.FromResult<IDictionary<string, string>?>(default);
+				}), name: "CustomAuth")
 #endif
 				)
 #endif
@@ -186,20 +186,20 @@ public class App : Application
 #elif (!useAuthentication)
 		Host = await builder.NavigateAsync<Shell>();
 #else
-        Host = await builder.NavigateAsync<Shell>(initialNavigate:
-            async (services, navigator) =>
-            {
-                var auth = services.GetRequiredService<IAuthenticationService>();
-                var authenticated = await auth.RefreshAsync();
-                if (authenticated)
-                {
-                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.Nested);
-                }
-                else
-                {
-                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
-                }
-            });
+		Host = await builder.NavigateAsync<Shell>(initialNavigate:
+			async (services, navigator) =>
+			{
+				var auth = services.GetRequiredService<IAuthenticationService>();
+				var authenticated = await auth.RefreshAsync();
+				if (authenticated)
+				{
+					await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+				}
+				else
+				{
+					await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+				}
+			});
 #endif
 	}
 #if (useExtensionsNavigation)
