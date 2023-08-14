@@ -21,7 +21,8 @@ public class App : Application
 //+:cnd:noEmit
 #if mauiEmbedding
 		this.UseMauiEmbedding(maui => maui
-					.UseMauiCommunityToolkit());
+					.UseMauiControls()
+					.UseMauiEmbeddingResources<MauiControls.Styles>());
 #endif
 //-:cnd:noEmit
 
