@@ -233,6 +233,12 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
+				<!--#if (useCPM)-->
+				<PackageReference Include="Uno.WinUI.Lottie" />
+				<!--#else-->
+				<PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
+				<!--#endif-->
+
 				<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
 				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**;**\*.svg" />
 				<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
@@ -245,6 +251,12 @@
 	</Choose>
 	<!--#else-->
 	<ItemGroup>
+		<!--#if (useCPM)-->
+		<PackageReference Include="Uno.WinUI.Lottie" />
+		<!--#else-->
+		<PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
+		<!--#endif-->
+
 		<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
 		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
