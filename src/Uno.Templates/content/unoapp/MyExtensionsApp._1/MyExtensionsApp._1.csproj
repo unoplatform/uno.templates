@@ -22,6 +22,9 @@
 		<PackageReference Include="Uno.Dsp.Tasks" />
 		<!--#endif-->
 		<PackageReference Include="Uno.WinUI" />
+		<!--#if (!useWinAppSdk) -->
+		<PackageReference Include="Uno.WinUI.Lottie" />
+		<!--#endif-->
 		<PackageReference Include="Uno.Resizetizer" />
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" />
@@ -112,6 +115,9 @@
 		<PackageReference Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
 		<!--#endif-->
 		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+		<!--#if (!useWinAppSdk) -->
+		<PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
+		<!--#endif-->
 		<PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
 		<!--#if (useCsharpMarkup)-->
 		<PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
@@ -249,12 +255,6 @@
 	</Choose>
 	<!--#else-->
 	<ItemGroup>
-		<!--#if (useCPM)-->
-		<PackageReference Include="Uno.WinUI.Lottie" />
-		<!--#else-->
-		<PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
-		<!--#endif-->
-
 		<!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
 		<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**" />
 		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
