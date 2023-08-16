@@ -124,6 +124,7 @@
     <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
     <!--#endif-->
     <PackageVersion Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
     <!--#if (useCsharpMarkup)-->
     <PackageVersion Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
     <!--#if (useToolkit)-->
