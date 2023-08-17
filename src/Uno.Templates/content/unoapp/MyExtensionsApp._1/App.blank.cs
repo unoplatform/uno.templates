@@ -20,9 +20,8 @@ public class App : Application
 
 //+:cnd:noEmit
 #if mauiEmbedding
-		this.UseMauiEmbedding(maui => maui
-					.UseMauiControls()
-					.UseMauiEmbeddingResources<MauiControls.Styles>());
+		this.UseMauiEmbedding<MauiControls.App>(maui => maui
+					.UseMauiControls());
 #endif
 //-:cnd:noEmit
 

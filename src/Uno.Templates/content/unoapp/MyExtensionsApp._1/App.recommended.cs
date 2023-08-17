@@ -138,9 +138,8 @@ public class App : Application
 				)
 #endif
 #if mauiEmbedding
-				.UseMauiEmbedding(this, maui => maui
-					.UseMauiControls()
-					.UseMauiEmbeddingResources<MauiControls.Styles>())
+				.UseMauiEmbedding<MauiControls.App>(this, maui => maui
+					.UseMauiControls())
 #endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services
