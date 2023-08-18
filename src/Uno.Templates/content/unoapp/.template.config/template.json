@@ -2167,6 +2167,8 @@
         {
           "condition": "(!mauiEmbedding)",
           "exclude": [
+            "MyExtensionsApp._1/Assets/Fonts/**",
+            "MyExtensionsApp._1/Assets/Images/**",
             "MyExtensionsApp._1.MauiControls/**"
           ]
         }
