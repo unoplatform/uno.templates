@@ -4,10 +4,14 @@ param(
 
     # Version of published Uno.Extensions packages
 <<<<<<< HEAD
+<<<<<<< HEAD
     [string]$ExtensionsVersion = "2.5.0-dev.148",
 =======
     [string]$ExtensionsVersion = "3.0.0-dev.2178",
 >>>>>>> 3c9bb56 (chore: Bumping extensions version number for maui fixes)
+=======
+    [string]$ExtensionsVersion = "3.0.0-dev.2180",
+>>>>>>> 231f0fe (chore(deps): Bump extensions version)
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "4.9.20"

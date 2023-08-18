@@ -18,10 +18,14 @@
 
 	<PropertyGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.2</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.2</UnoVersion>
 =======
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2178</UnoExtensionsVersion>
+=======
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2180</UnoExtensionsVersion>
+>>>>>>> 231f0fe (chore(deps): Bump extensions version)
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.1734</UnoVersion>
 >>>>>>> 3c9bb56 (chore: Bumping extensions version number for maui fixes)
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
