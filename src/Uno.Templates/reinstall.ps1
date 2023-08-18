@@ -3,7 +3,7 @@ param(
     [string]$TemplatesVersion = "255.255.255.255",
 
     # Version of published Uno.Extensions packages
-    [string]$ExtensionsVersion = "3.0.0-dev.2178",
+    [string]$ExtensionsVersion = "3.0.0-dev.2180",
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "5.0.0-dev.1732"
