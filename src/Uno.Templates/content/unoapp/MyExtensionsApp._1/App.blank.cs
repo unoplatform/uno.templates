@@ -1,8 +1,3 @@
-//+:cnd:noEmit
-#if mauiEmbedding
-using CommunityToolkit.Maui;
-
-#endif
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 

@@ -8,13 +8,18 @@ public partial class MainViewModel : ObservableObject
 	private IAuthenticationService _authentication;
 
 #endif
-//-:cnd:noEmit
 	private INavigator _navigator;
 
 	[ObservableProperty]
 	private string? name;
+#if mauiEmbedding
 
-//+:cnd:noEmit
+	private int count = 0;
+
+	[ObservableProperty]
+	private string counterText = "Press Me";
+#endif
+
 	public MainViewModel(
 #if useLocalization
 		IStringLocalizer localizer,
@@ -39,28 +44,41 @@ public partial class MainViewModel : ObservableObject
 		Title += $" - {appInfo?.Value?.Environment}";
 #endif
 		GoToSecond = new AsyncRelayCommand(GoToSecondView);
+#if mauiEmbedding
+		Counter = new RelayCommand(OnCount);
+#endif
 #if useAuthentication
 		Logout = new AsyncRelayCommand(DoLogout);
 #endif
-//-:cnd:noEmit
 	}
 	public string? Title { get; }
 
 	public ICommand GoToSecond { get; }
+#if mauiEmbedding
 
-//+:cnd:noEmit
+	public ICommand Counter { get; }
+#endif
+
 #if useAuthentication
 	public ICommand Logout { get; }
 
 #endif
-//-:cnd:noEmit
-
 	private async Task GoToSecondView()
 	{
 		await _navigator.NavigateViewModelAsync<SecondViewModel>(this, data: new Entity(Name!));
 	}
 
-//+:cnd:noEmit
+#if mauiEmbedding
+
+	private void OnCount()
+	{
+		CounterText = ++count switch
+		{
+			1 => "Pressed Once!",
+			_ => $"Pressed {count} times!"
+		};
+	}
+#endif
 #if useAuthentication
 	public async Task DoLogout(CancellationToken token)
 	{
