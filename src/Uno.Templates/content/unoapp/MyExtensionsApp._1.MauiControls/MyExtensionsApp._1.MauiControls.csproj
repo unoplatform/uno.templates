@@ -7,24 +7,22 @@
 		<!--#else -->
 		<TargetFrameworks>$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
 		<!--#endif -->
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
 
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 	</PropertyGroup>
+	<!--#if (useMauiPackageReference)-->
 
 	<ItemGroup>
 		<!--#if (useCPM)-->
-		<PackageReference Include="CommunityToolkit.Maui" />
-		<!--#if (useMauiPackageReference)-->
 		<PackageReference Include="Microsoft.Maui.Controls" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-		<!--#endif -->
 		<!--#else -->
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
-		<!--#if (useMauiPackageReference)-->
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<!--#endif -->
-		<!--#endif -->
 	</ItemGroup>
+	<!--#endif -->
+
 </Project>
