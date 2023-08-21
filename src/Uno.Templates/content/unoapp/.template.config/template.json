@@ -1005,6 +1005,11 @@
       "datatype": "bool",
       "value": "architectureEvaluator == 'mvvm' || (architectureEvaluator == 'none' && useExtensionsNavigation)"
     },
+    "useMvvmOrMvux": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useMvux || useMvvm"
+    },
     "useGtk": {
       "type": "computed",
       "datatype": "bool",

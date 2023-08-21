@@ -36,19 +36,17 @@ public partial record MainModel
 	public IState<string> Name => State<string>.Value(this, () => string.Empty);
 #if mauiEmbedding
 
-	private int _currentCount = 0;
+	public IState<int> Count => State<int>.Value(this, () => 0);
 
-	public IState<string> CounterText => State<string>.Value(this, () => "Press Me");
-
-	public async Task Counter()
+	public IFeed<string> CounterText => Count.Select(_currentCount => _currentCount switch
 	{
-		var message = ++_currentCount switch
-		{
-			1 => "Pressed Once!",
-			_ => $"Pressed {_currentCount} times!"
-		};
-		await CounterText.Set(message, default);
-	}
+		0 => "Press Me",
+		1 => "Pressed Once!",
+		_ => $"Pressed {_currentCount} times!"
+	});
+
+	public async Task Counter(CancellationToken ct) =>
+		await Count.Update(x => ++x, ct);
 #endif
 
 	public async Task GoToSecond()
