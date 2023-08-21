@@ -7,7 +7,7 @@ public static class AppBuilderExtensions
 		builder
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("MyExtensionsApp._1/Assets/Fonts/OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("MyExtensionsApp._1/Assets/Fonts/OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("MyExtensionsApp._1/Assets/Fonts/OpenSansRegular.ttf", "OpenSansRegular");
+				fonts.AddFont("MyExtensionsApp._1/Assets/Fonts/OpenSansSemibold.ttf", "OpenSansSemibold");
 			});
 }
