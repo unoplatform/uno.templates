@@ -1,12 +1,13 @@
-//+:cnd:noEmit
-#if mauiEmbedding
-using CommunityToolkit.Maui;
-
-#endif
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
+//+:cnd:noEmit
+#if mauiEmbedding
+public class App : EmbeddingApplication
+#else
 public class App : Application
+#endif
+//-:cnd:noEmit
 {
 	protected Window? MainWindow { get; private set; }
 
@@ -20,9 +21,8 @@ public class App : Application
 
 //+:cnd:noEmit
 #if mauiEmbedding
-		this.UseMauiEmbedding(maui => maui
-					.UseMauiControls()
-					.UseMauiEmbeddingResources<MauiControls.Styles>());
+		this.UseMauiEmbedding<MauiControls.App>(maui => maui
+					.UseMauiControls());
 #endif
 //-:cnd:noEmit
 

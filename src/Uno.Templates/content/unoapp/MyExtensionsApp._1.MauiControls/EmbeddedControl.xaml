@@ -5,19 +5,45 @@
 			 x:Class="MyExtensionsApp._1.MauiControls.EmbeddedControl"
 			 HorizontalOptions="Fill"
 			 VerticalOptions="Fill">
-	<VerticalStackLayout>
-		<toolkit:AvatarView HeightRequest="100"
-							WidthRequest="100">
-			<toolkit:AvatarView.ImageSource>
-				<toolkit:GravatarImageSource x:Name="Source"
-											 CacheValidity="1"
-											 CachingEnabled="True"
-											 Email="info@platform.uno"
-											 Image="MonsterId" />
-			</toolkit:AvatarView.ImageSource>
-		</toolkit:AvatarView>
-		<Label Text="Embedded MAUI Content"
-			   VerticalOptions="Center"
-			   HorizontalOptions="Center" />
+	<VerticalStackLayout
+		Spacing="25"
+		Padding="30,0"
+		VerticalOptions="Center">
+
+		<Image
+			Source="MyExtensionsApp._1/Assets/Images/dotnet_bot.png"
+			SemanticProperties.Description="Cute dot net bot waving hi to you!"
+			HeightRequest="200"
+			HorizontalOptions="Center" />
+
+		<Label
+			Text="Hello, World!"
+			SemanticProperties.HeadingLevel="Level1"
+			FontSize="32"
+			HorizontalOptions="Center" />
+
+		<Label
+			Text="Welcome to .NET Multi-platform App UI"
+			SemanticProperties.HeadingLevel="Level2"
+			SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+			FontSize="18"
+			HorizontalOptions="Center" />
+
+<!--#if (useMvvmOrMvux)-->
+		<Button
+			Text="{Binding CounterText}"
+			SemanticProperties.Hint="Counts the number of times you click"
+			Command="{Binding Counter}"
+			HorizontalOptions="Center" />
+<!--#else-->
+		<Button
+			x:Name="CounterButton"
+			Text="Press Me"
+			SemanticProperties.Hint="Counts the number of times you click"
+			Clicked="CounterClicked"
+			Command="{Binding Counter}"
+			HorizontalOptions="Center" />
+<!--#endif-->
+
 	</VerticalStackLayout>
 </ContentView>
