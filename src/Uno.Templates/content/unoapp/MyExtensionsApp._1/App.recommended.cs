@@ -1,7 +1,13 @@
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
+//+:cnd:noEmit
+#if mauiEmbedding
+public class App : EmbeddingApplication
+#else
 public class App : Application
+#endif
+//-:cnd:noEmit
 {
 	protected Window? MainWindow { get; private set; }
 	protected IHost? Host { get; private set; }
@@ -138,9 +144,8 @@ public class App : Application
 				)
 #endif
 #if mauiEmbedding
-				.UseMauiEmbedding(this, maui => maui
-					.UseMauiControls()
-					.UseMauiEmbeddingResources<MauiControls.Styles>())
+				.UseMauiEmbedding<MauiControls.App>(this, maui => maui
+					.UseMauiControls())
 #endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services

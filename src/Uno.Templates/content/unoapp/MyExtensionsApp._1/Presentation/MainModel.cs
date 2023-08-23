@@ -29,12 +29,25 @@ public partial record MainModel
 #if useConfiguration
 		Title += $" - {appInfo?.Value?.Environment}";
 #endif
-//-:cnd:noEmit
 	}
 
 	public string? Title { get; }
 
 	public IState<string> Name => State<string>.Value(this, () => string.Empty);
+#if mauiEmbedding
+
+	public IState<int> Count => State<int>.Value(this, () => 0);
+
+	public IFeed<string> CounterText => Count.Select(_currentCount => _currentCount switch
+	{
+		0 => "Press Me",
+		1 => "Pressed Once!",
+		_ => $"Pressed {_currentCount} times!"
+	});
+
+	public async Task Counter(CancellationToken ct) =>
+		await Count.Update(x => ++x, ct);
+#endif
 
 	public async Task GoToSecond()
 	{
@@ -42,7 +55,6 @@ public partial record MainModel
 		await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
 	}
 
-//+:cnd:noEmit
 #if useAuthentication
 	public async ValueTask Logout(CancellationToken token)
 	{
