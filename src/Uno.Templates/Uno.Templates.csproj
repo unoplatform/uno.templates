@@ -20,7 +20,11 @@
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.2</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.2</UnoVersion>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
+<<<<<<< HEAD
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.4</SkiaSharpVersion>
+=======
+		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.5</SkiaSharpVersion>
+>>>>>>> f6388b7 (chore(deps): Update skiasharp dependency)
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
 		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">2.7.0</UnoThemesVersion>
 		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
