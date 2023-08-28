@@ -18,7 +18,7 @@
 
 	<PropertyGroup>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.2</UnoExtensionsVersion>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.2</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.5</UnoVersion>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.5</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
