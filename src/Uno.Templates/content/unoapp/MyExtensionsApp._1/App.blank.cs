@@ -21,7 +21,7 @@ public class App : Application
 
 //+:cnd:noEmit
 #if mauiEmbedding
-		this.UseMauiEmbedding<MauiControls.App>(maui => maui
+		this.UseMauiEmbedding<MauiControls.App>(MainWindow, maui => maui
 					.UseMauiControls());
 #endif
 //-:cnd:noEmit
