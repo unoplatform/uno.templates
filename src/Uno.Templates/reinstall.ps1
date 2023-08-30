@@ -3,10 +3,10 @@ param(
     [string]$TemplatesVersion = "255.255.255.255",
 
     # Version of published Uno.Extensions packages
-    [string]$ExtensionsVersion = "3.0.0-dev.2192",
+    [string]$ExtensionsVersion = "3.0.0-dev.2239",
 
     # Version of published Uno.WinUI packages
-    [string]$UnoVersion = "5.0.0-dev.1732"
+    [string]$UnoVersion = "5.0.0-dev.2280"
 )
 
 function RemoveNuGetPackage {

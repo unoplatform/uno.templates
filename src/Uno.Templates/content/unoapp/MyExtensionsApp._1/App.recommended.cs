@@ -24,6 +24,10 @@ public class App : Application
 			// Add navigation support for toolkit controls such as TabBar and NavigationView
 			.UseToolkitNavigation()
 #endif
+#if mauiEmbedding
+			.UseMauiEmbedding<MauiControls.App>(maui => maui
+				.UseMauiControls())
+#endif
 //-:cnd:noEmit
 			.Configure(host => host
 #if DEBUG
@@ -142,10 +146,6 @@ public class App : Application
 				}), name: "CustomAuth")
 #endif
 				)
-#endif
-#if mauiEmbedding
-				.UseMauiEmbedding<MauiControls.App>(this, maui => maui
-					.UseMauiControls())
 #endif
 				.ConfigureServices((context, services) => {
 					// TODO: Register your services
