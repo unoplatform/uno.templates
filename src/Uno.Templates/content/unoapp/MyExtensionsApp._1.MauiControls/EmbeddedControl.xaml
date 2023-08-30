@@ -11,7 +11,8 @@
 		VerticalOptions="Center">
 
 		<Image
-			Source="MyExtensionsApp._1/Assets/Images/dotnet_bot.png"
+			BindingContext="MyExtensionsApp._1/Assets/Images/dotnet_bot.png"
+			Source="{Binding Converter={StaticResource UnoImageConverter}}"
 			SemanticProperties.Description="Cute dot net bot waving hi to you!"
 			HeightRequest="200"
 			HorizontalOptions="Center" />
