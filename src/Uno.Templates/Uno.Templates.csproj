@@ -18,13 +18,13 @@
 
 	<PropertyGroup>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.8</UnoExtensionsVersion>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.5</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.9</UnoVersion>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.5</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">2.7.0</UnoThemesVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">3.0.40</UnoThemesVersion>
 		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">3.1.3</UnoToolkitVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">4.2.11</UnoToolkitVersion>
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.1.2</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
