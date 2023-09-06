@@ -625,8 +625,8 @@
       "defaultValue": "true"
     },
     "mauiEmbedding": {
-      "displayName": "MAUI Embedding",
-      "description": "Configures application to embed MAUI controls",
+      "displayName": ".NET MAUI Embedding",
+      "description": "Configures application to embed .NET MAUI controls",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
