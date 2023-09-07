@@ -17,8 +17,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+<<<<<<< HEAD
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">2.5.10</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">4.10.9</UnoVersion>
+=======
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2246</UnoExtensionsVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.2352</UnoVersion>
+>>>>>>> b8077f7 (chore: Version bump and maui validations)
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.5</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>

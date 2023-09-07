@@ -32,6 +32,12 @@
 		<IsMac>false</IsMac>
 		<IsMacCatalyst>false</IsMacCatalyst>
 		<IsWinAppSdk>false</IsWinAppSdk>
+		<!--#if (mauiEmbedding)-->
+
+		<MauiVersion Condition=" '$(MauiVersion)' == '' ">$DefaultMauiVersion$</MauiVersion>
+		<AndroidMaterialVersion  Condition=" '$(AndroidMaterialVersion)' == '' ">1.9.0.2</AndroidMaterialVersion>
+		<AndroidXNavigationVersion  Condition=" '$(AndroidXNavigationVersion)' == '' ">2.6.0.1</AndroidXNavigationVersion>
+		<!--#endif-->
 	</PropertyGroup>
 
 	<Choose>
@@ -65,6 +71,7 @@
 				<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
 				<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+				<EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
 			</PropertyGroup>
 		</When>
 	</Choose>
