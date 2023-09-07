@@ -9,15 +9,15 @@ jobs:
     matrix:
       DefaultArguments:
         templateArgs: ''
-      BlankApp:
+      Blank:
         templateArgs: '-preset blank'
       SkiaOnlyHeads:
         templateArgs: '-platforms gtk wpf linux-fb'
       MobileOnlyHeads:
         templateArgs: '-platforms android ios maccatalyst'
-      BlankMarkupApp:
+      BlankMarkup:
         templateArgs: '-preset blank -markup csharp'
-      BlankAppNoCpm:
+      BlankNoCpm:
         templateArgs: '-preset blank --cpm false'
       MVVM:
         templateArgs: '-presentation mvvm'
@@ -25,7 +25,7 @@ jobs:
         templateArgs: '--cpm false'
       CSharpMarkup:
         templateArgs: '-markup csharp'
-      NoAppHosting:
+      NoHosting:
         templateArgs: '-di false'
       HostingOnly:
         templateArgs: '-config false -loc false -http false -log none --navigation blank'
@@ -45,9 +45,8 @@ jobs:
         templateArgs: '-tests none'
       FrameNavigation:
         templateArgs: '--navigation blank'
-      # TODO: Evaluate why we are not able to get net8 installing in CI
-      # Net8:
-      #   templateArgs: '-tfm net8.0'
+      Net8:
+        templateArgs: '-tfm net8.0'
       # https://github.com/unoplatform/uno.templates/issues/22
       Issue22:
         templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
@@ -67,10 +66,12 @@ jobs:
         templateArgs: '-preset=recommended -auth=msal'
       MsalAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
-      #MauiBlankApp:
-      #  templateArgs: '-preset=blank -maui'
-      #MauiRecommendedApp:
-      #  templateArgs: '-preset=recommended -maui'
+      MauiBlank:
+       templateArgs: '-preset=blank -maui'
+      MauiRecommended:
+       templateArgs: '-preset=recommended -maui'
+      MauiRecommendedNet8:
+       templateArgs: '-preset=recommended -maui -tfm net8.0'
 
   variables:
     - name: UseDotNetNativeToolchain
