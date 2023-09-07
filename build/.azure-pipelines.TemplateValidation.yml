@@ -15,29 +15,17 @@ jobs:
         templateArgs: '-platforms gtk wpf linux-fb'
       MobileOnlyHeads:
         templateArgs: '-platforms android ios maccatalyst'
-<<<<<<< HEAD
       # BlankMarkupApp:
       #   templateArgs: '-preset blank -markup csharp'
       BlankAppNoCpm:
-=======
-      BlankMarkup:
-        templateArgs: '-preset blank -markup csharp'
-      BlankNoCpm:
->>>>>>> b8077f7 (chore: Version bump and maui validations)
         templateArgs: '-preset blank --cpm false'
       MVVM:
         templateArgs: '-presentation mvvm'
       NoCentralPackageManagement:
         templateArgs: '--cpm false'
-<<<<<<< HEAD
       # CSharpMarkup:
       #   templateArgs: '-markup csharp'
       NoAppHosting:
-=======
-      CSharpMarkup:
-        templateArgs: '-markup csharp'
-      NoHosting:
->>>>>>> b8077f7 (chore: Version bump and maui validations)
         templateArgs: '-di false'
       HostingOnly:
         templateArgs: '-config false -loc false -http false -log none --navigation blank'
@@ -57,16 +45,8 @@ jobs:
         templateArgs: '-tests none'
       FrameNavigation:
         templateArgs: '--navigation blank'
-<<<<<<< HEAD
-      Net6:
-        templateArgs: '-tfm net6.0'
-      # TODO: Evaluate why we are not able to get net8 installing in CI
-      # Net8:
-      #   templateArgs: '-tfm net8.0'
-=======
       Net8:
         templateArgs: '-tfm net8.0'
->>>>>>> b8077f7 (chore: Version bump and maui validations)
       # https://github.com/unoplatform/uno.templates/issues/22
       Issue22:
         templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
