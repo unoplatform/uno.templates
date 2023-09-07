@@ -711,6 +711,25 @@
       "type": "parameter",
       "datatype": "text"
     },
+    "mauiVersion": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$DefaultMauiVersion$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "text",
+        "cases": [
+          {
+            "condition": "(tfm == 'net7.0')",
+            "value": "7.0.92"
+          },
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "8.0.0-preview.7.8842"
+          }
+        ]
+      }
+    },
     "unoWasmBootstrapVersionDefault": {
       "type": "generated",
       "generator": "switch",

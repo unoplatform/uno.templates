@@ -3,6 +3,7 @@ parameters:
 
 steps:
   - task: UseDotNet@2
+    condition: eq(variables['IsCanaryBranch'], true)
     displayName: 'Use .NET runtime 7.0.100'
     retryCountOnTaskFailure: 3
     inputs:

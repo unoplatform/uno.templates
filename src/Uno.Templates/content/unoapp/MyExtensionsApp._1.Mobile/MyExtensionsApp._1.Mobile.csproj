@@ -200,6 +200,14 @@
 		<!--#if (useAndroid)-->
 		<When Condition="$(IsAndroid)">
 			<ItemGroup>
+				<!--#if (mauiEmbedding)-->
+				<PackageReference Include="Xamarin.Google.Android.Material" VersionOverride="$(AndroidMaterialVersion)" />
+				<PackageReference Include="Xamarin.AndroidX.Navigation.UI" VersionOverride="$(AndroidXNavigationVersion)" />
+				<PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
+				<PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
+				<PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
+				<!--#endif-->
+				
 				<!--#if (useCPM)-->
 				<!--#if (useAndroidMaterial)-->
 				<PackageReference Include="Xamarin.Google.Android.Material" />
