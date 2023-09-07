@@ -108,6 +108,10 @@
 		<!--#if (useMauiPackageReference)-->
 		<PackageReference Include="Microsoft.Maui.Controls" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<!--#else -->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Microsoft.Maui.Graphics" VersionOverride="$(MauiVersion)" />
+		<!--#endif-->
 		<!--#endif -->
 	</ItemGroup>
 	<!--#else-->
@@ -202,7 +206,21 @@
 		<!--#if (useMauiPackageReference)-->
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<!--#else -->
+		<!--#if (mauiEmbedding)-->
+		<PackageReference Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
+		<!--#endif-->
 		<!--#endif -->
+	</ItemGroup>
+	<!--#endif-->
+
+	<!--#if (mauiEmbedding)-->
+	<ItemGroup Condition="$(IsAndroid)">
+		<PackageReference Include="Xamarin.Google.Android.Material" VersionOverride="$(AndroidMaterialVersion)" />
+		<PackageReference Include="Xamarin.AndroidX.Navigation.UI" VersionOverride="$(AndroidXNavigationVersion)" />
+		<PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
+		<PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
+		<PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
 	</ItemGroup>
 	<!--#endif-->
 
