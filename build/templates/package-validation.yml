@@ -7,15 +7,22 @@ steps:
 - checkout: self
   clean: 'true'
 
-- ${{ if contains(parameters.arguments, 'net8.0') }}:
-  - template: dotnet-install-windows.yml
-    parameters:
-      DotNetVersion: 8.0.100-preview.4.23260.5
-      UnoCheck_Version: 1.13.0-dev.7
-      UnoCheck_Manifest: https://raw.githubusercontent.com/unoplatform/uno.check/d26f9772669da46e1fb0db6ad205ff30842ab5ef/manifests/uno.ui-preview-major.manifest.json
+- powershell: |
+    $templateArgs = '${{ parameters.arguments }}'
+    Write-Host "TemplateArgs = '$templateArgs'"
+    $dotnetVersion = '7.0.306'
 
-- ${{ if not(contains(parameters.arguments, 'net8.0')) }}:
-  - template: dotnet-install-windows.yml
+    if ($templateArgs.Contains('net8')) {
+      $dotnetVersion = '8.0.100-preview.7.23376.3'
+    }
+
+    Write-Host "DotNetVersion = $dotnetVersion"
+    Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
+  displayName: Evaluate Template Args
+
+- template: dotnet-install-windows.yml
+  parameters:
+    DotNetVersion: $(DotNetVersion)
 
 - template: install-windows-sdk.yml
   parameters:
@@ -24,12 +31,6 @@ steps:
 - task: DownloadBuildArtifacts@0
   inputs:
     artifactName: $(Build.DefinitionName)
-
-- powershell: |
-      & choco install vswhere
-      $msbuildpath=(vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe -nologo)
-      echo "##vso[task.setvariable variable=msbuildpath]$msbuildpath"
-  displayName: Set MSBUILDPATH
 
 - script: |
       md $(Build.SourcesDirectory)\src\PackageCache
@@ -47,7 +48,7 @@ steps:
       $ErrorActionPreference = 'Stop'
 
       # Create app with defaults
-      dotnet new unoapp -o UnoApp1 ${{ parameters.arguments }}
+      dotnet new unoapp -skip -o UnoApp1 ${{ parameters.arguments }}
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
@@ -65,7 +66,8 @@ steps:
 
       cd UnoApp1
 
-      & $env:msbuildpath /r /m UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
+      & dotnet workload restore
+      & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
