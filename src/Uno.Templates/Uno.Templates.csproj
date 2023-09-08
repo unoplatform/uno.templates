@@ -22,14 +22,14 @@
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.5</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">2.6.1</UnoThemesVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">3.0.40</UnoThemesVersion>
 		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">3.0.5</UnoToolkitVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">4.2.22</UnoToolkitVersion>
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.1.2</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.27</UnoWasmBootstrapVersionNet7>
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.218</UnoWasmBootstrapVersionNet8>
+		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.29</UnoWasmBootstrapVersionNet7>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.270</UnoWasmBootstrapVersionNet8>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">4.8.0-dev.43</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 	</PropertyGroup>
