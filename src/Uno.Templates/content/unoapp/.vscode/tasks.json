@@ -1,6 +1,7 @@
 {
   "version": "2.0.0",
   "tasks": [
+//#if (useWasm)
     {
       "label": "build-wasm",
       "command": "dotnet",
@@ -25,6 +26,8 @@
       ],
       "problemMatcher": "$msCompile"
     },
+//#endif
+//#if (useGtk)
     {
       "label": "build-skia-gtk",
       "command": "dotnet",
@@ -49,5 +52,6 @@
       ],
       "problemMatcher": "$msCompile"
     }
+//#endif
   ]
 }
