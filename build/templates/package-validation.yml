@@ -10,14 +10,18 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.306'
+    $dotnetVersion = '7.0.400'
+    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json'
 
     if ($templateArgs.Contains('net8')) {
       $dotnetVersion = '8.0.100-preview.7.23376.3'
+      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-preview.7.8842.json'
     }
 
     Write-Host "DotNetVersion = $dotnetVersion"
     Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
+    Write-Host "WorkloadRestore = $workloadRestore"
+    Write-Output "##vso[task.setvariable variable=WorkloadRestore]$workloadRestore"
   displayName: Evaluate Template Args
 
 - template: dotnet-install-windows.yml
@@ -43,7 +47,8 @@ steps:
 - powershell: |
       dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
       dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-
+      dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
+      dotnet nuget add source -n ApiLocal "https://api.nuget.org/v3/index.json"
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
@@ -66,7 +71,7 @@ steps:
 
       cd UnoApp1
 
-      & dotnet workload restore
+      & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
       & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
