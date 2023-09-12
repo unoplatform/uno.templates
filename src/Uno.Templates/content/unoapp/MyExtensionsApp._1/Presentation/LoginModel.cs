@@ -1,7 +1,7 @@
 //-:cnd:noEmit
 namespace MyExtensionsApp._1.Presentation;
 
-public partial record LoginModel(INavigator Navigator, IAuthenticationService Authentication)
+public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, IAuthenticationService Authentication)
 {
 	public string Title { get; } = "Login";
 
@@ -18,9 +18,9 @@ public partial record LoginModel(INavigator Navigator, IAuthenticationService Au
         var username = await Username ?? string.Empty;
         var password = await Password ?? string.Empty;
 
-        var success = await Authentication.LoginAsync(new Dictionary<string, string> { { nameof(Username), username }, { nameof(Password), password } });
+        var success = await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { nameof(Username), username }, { nameof(Password), password } });
 #else
-        var success = await Authentication.LoginAsync();
+        var success = await Authentication.LoginAsync(Dispatcher);
 #endif
 //-:cnd:noEmit
         if (success)
