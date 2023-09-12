@@ -66,7 +66,7 @@ steps:
 
       cd UnoApp1
 
-      & dotnet workload restore
+      & dotnet workload restore --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json
       & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
