@@ -366,8 +366,33 @@
       "displayName": "Server",
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "true",
       "description": "Includes a Server project for an API & host for the WebAssembly project"
+    },
+    "presetServerDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "true"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "serverEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "server",
+        "fallbackVariableName": "presetServerDefault"
+      }
     },
     "toolkit": {
       "displayName": "Toolkit",
@@ -989,7 +1014,7 @@
     "useAspNetCoreSerilogPackage": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(server && useSerilog)"
+      "value": "(serverEvaluator && useSerilog)"
     },
     "presetArchitectureDefault": {
       "type": "generated",
@@ -1113,7 +1138,7 @@
     "useServer": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(server && (platforms == wasm || http))"
+      "value": "(serverEvaluator && (platforms == wasm || http))"
     },
     "useAndroidMaterial": {
       "type": "computed",
