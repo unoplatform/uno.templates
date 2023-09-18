@@ -10,17 +10,17 @@
 		<PublishProfile>win-$(Platform).pubxml</PublishProfile>
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
-	</PropertyGroup>
-	<PropertyGroup>
-<!--#if (useWinAppSdkSelfContained)-->
+
+		<!--#if (useWinAppSdkSelfContained)-->
 		<!-- Bundles the WinAppSDK binaries -->
 		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-<!--#else-->
+		<!--#else-->
 		<!-- Bundles the WinAppSDK binaries (Uncomment for unpackaged builds) -->
 		<!-- <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> -->
-<!--#endif-->
+		<!--#endif-->
 
 		<!-- <SelfContained>true</SelfContained> -->
+		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 
 	<ItemGroup>
