@@ -9,6 +9,7 @@
 					Text="Hello Uno Platform" 
 					HorizontalAlignment="Center" />
 <!--#if (mauiEmbedding)-->
+<!--#if (useNonMauiPlatforms)-->
 		<maui:Grid>
 			<embed:MauiHost x:Name="MauiHostElement"
 							xmlns:embed="using:Uno.Extensions.Maui"
@@ -20,6 +21,12 @@
 				   Text="Alternative content for Non-Maui targets"
 				   HorizontalAlignment="Center" />
 		</not_maui:Grid>
+<!--#else-->
+		<embed:MauiHost x:Name="MauiHostElement"
+						xmlns:embed="using:Uno.Extensions.Maui"
+						xmlns:controls="using:MyExtensionsApp._1.MauiControls"
+						Source="controls:EmbeddedControl" />
+<!--#endif-->
 <!--#endif-->
 	</StackPanel>
 </Page>
