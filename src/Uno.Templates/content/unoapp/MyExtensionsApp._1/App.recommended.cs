@@ -24,9 +24,14 @@ public class App : Application
 			// Add navigation support for toolkit controls such as TabBar and NavigationView
 			.UseToolkitNavigation()
 #endif
+//+:cnd:noEmit
 #if mauiEmbedding
+//-:cnd:noEmit
+#if MAUI_EMBEDDING
 			.UseMauiEmbedding<MauiControls.App>(maui => maui
 				.UseMauiControls())
+#endif
+//+:cnd:noEmit
 #endif
 //-:cnd:noEmit
 			.Configure(host => host

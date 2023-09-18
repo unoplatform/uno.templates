@@ -23,7 +23,11 @@
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<!--#endif-->
 
+		<!--#if (mauiEmbedding)-->
+		<NoWarn>$(NoWarn);CA1416;NU1507;NETSDK1023</NoWarn>
+		<!--#else-->
 		<NoWarn>$(NoWarn);CA1416;NU1507</NoWarn>
+		<!--#endif-->
 
 		<DefaultLanguage>en</DefaultLanguage>
 
