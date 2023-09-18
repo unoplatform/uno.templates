@@ -1,4 +1,7 @@
 //+:cnd:noEmit
+#if (useHttp)
+using System.Text.Json.Serialization.Metadata;
+#endif
 #if (useSerilog)
 using Serilog;
 #endif
