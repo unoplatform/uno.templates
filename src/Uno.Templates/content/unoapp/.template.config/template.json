@@ -1100,7 +1100,7 @@
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb)"
+      "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos)"
     },
     "useDataContracts": {
       "type": "computed",
