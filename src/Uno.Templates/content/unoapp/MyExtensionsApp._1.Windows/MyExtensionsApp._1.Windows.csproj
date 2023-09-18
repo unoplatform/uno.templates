@@ -225,9 +225,6 @@
 		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
 		<!--#endif-->
-		<!--#if (mauiEmbedding)-->
-		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
-		<!--#endif-->
 	</ItemGroup>
 
 	<!-- 

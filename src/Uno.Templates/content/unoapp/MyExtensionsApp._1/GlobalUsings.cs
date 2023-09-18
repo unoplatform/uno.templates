@@ -42,7 +42,11 @@ global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
 #endif
 #if (mauiEmbedding)
+//-:cnd:noEmit
+#if MAUI_EMBEDDING
 global using MyExtensionsApp._1.MauiControls;
+#endif
+//+:cnd:noEmit
 #endif
 #if (useCsharpMarkup)
 global using Uno.Extensions.Markup;

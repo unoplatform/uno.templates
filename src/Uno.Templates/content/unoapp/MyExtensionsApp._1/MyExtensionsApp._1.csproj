@@ -288,11 +288,23 @@
 		<!--#if (useHttp)-->
 		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
 		<!--#endif-->
-		<!--#if (mauiEmbedding)-->
-		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
-		<!--#endif-->
 	</ItemGroup>
 	<!--#endif-->
+
+	<!--#if (mauiEmbedding)-->
+	<ItemGroup Condition="'$(IsMauiEmbedding)'=='True'">
+		<IncludeXamlNamespaces Include="maui" />
+		<ExcludeXamlNamespaces Include="not_maui" />
+		<ProjectReference Include="..\MyExtensionsApp._1.MauiControls\MyExtensionsApp._1.MauiControls.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(IsMauiEmbedding)'!='True'">
+		<IncludeXamlNamespaces Include="not_maui" />
+		<ExcludeXamlNamespaces Include="maui" />
+	</ItemGroup>
+	<!--#endif-->
+
+
 
 	<ItemGroup>
 		<!--#if (useMaterial)-->
