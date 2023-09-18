@@ -25,7 +25,9 @@ try
 #if (useHttp)
 	// Configure the JsonOptions to use the generated WeatherForecastContext
 	builder.Services.Configure<JsonOptions>(options =>
-		options.JsonSerializerOptions.AddContext<WeatherForecastContext>());
+		options.JsonSerializerOptions.TypeInfoResolver = JsonTypeInfoResolver.Combine(
+			WeatherForecastContext.Default
+		));
 #endif
 	// Configure the RouteOptions to use lowercase URLs
 	builder.Services.Configure<RouteOptions>(options =>
