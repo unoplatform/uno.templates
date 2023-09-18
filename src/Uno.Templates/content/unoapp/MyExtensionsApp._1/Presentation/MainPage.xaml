@@ -22,6 +22,7 @@
 					VerticalAlignment="Center"
 					Spacing="16">
 <!--#if (mauiEmbedding)-->
+<!--#if (useNonMauiPlatforms)-->
 			<maui:Grid>
 				<embed:MauiHost x:Name="MauiHostElement"
 								xmlns:embed="using:Uno.Extensions.Maui"
@@ -33,6 +34,12 @@
 					Text="Alternative content for Non-Maui targets"
 					HorizontalAlignment="Center" />
 			</not_maui:Grid>
+<!--#else-->
+			<embed:MauiHost x:Name="MauiHostElement"
+							xmlns:embed="using:Uno.Extensions.Maui"
+							xmlns:controls="using:MyExtensionsApp._1.MauiControls"
+							Source="controls:EmbeddedControl" />
+<!--#endif-->
 <!--#endif-->
 			<TextBox Text="{Binding Name, Mode=TwoWay}"
 					PlaceholderText="Enter your name:" />

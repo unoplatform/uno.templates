@@ -898,11 +898,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "!(mauiEmbedding)",
+            "condition": "!(mauiEmbedding) || !(useNonMauiPlatforms)",
             "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\txmlns:maui=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n\txmlns:not_maui=\"http://notmaui\"\n\tmc:Ignorable=\"d not_maui\""
           },
           {
-            "condition": "(mauiEmbedding)",
+            "condition": "(mauiEmbedding && useNonMauiPlatforms)",
             "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\tmc:Ignorable=\"d\""
           }
         ]
@@ -1096,6 +1096,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == wpf)"
+    },
+    "useNonMauiPlatforms": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb)"
     },
     "useDataContracts": {
       "type": "computed",
