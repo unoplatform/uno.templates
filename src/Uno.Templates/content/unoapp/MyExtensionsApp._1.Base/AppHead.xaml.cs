@@ -97,8 +97,8 @@ public sealed partial class AppHead : App
 			// Binder memory references tracking
 			// builder.AddFilter("Uno.UI.DataBinding.BinderReferenceHolder", LogLevel.Debug );
 
-			// RemoteControl and HotReload related
-			// builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Information);
+			// DevServer and HotReload related
+			// builder.AddFilter("Uno.UI.DevServer", LogLevel.Information);
 
 			// Debug JS interop
 			// builder.AddFilter("Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug );

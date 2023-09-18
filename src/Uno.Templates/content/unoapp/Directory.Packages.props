@@ -137,7 +137,7 @@
     <!--#endif-->
     <PackageVersion Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
     <!--#endif-->
-    <PackageVersion Include="Uno.WinUI.RemoteControl" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" />
     <!--#if (useGtk)-->
     <PackageVersion Include="Uno.WinUI.Skia.Gtk" Version="$UnoWinUIVersion$" />
     <!--#endif-->
