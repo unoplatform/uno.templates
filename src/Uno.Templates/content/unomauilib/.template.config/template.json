@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [
+    "Uno Platform",
+    "Android",
+    "iOS",
+    "Mac Catalyst",
+    "Windows",
+    "WinUI"
+  ],
+  "name": "Uno Maui Embedding Class Library",
+  "identity": "Uno.Platform.UnoApp.WinUI.mauiembeddingclasslibrary.CSharp",
+  "groupIdentity": "Uno.Platform.UnoApp.WinUI.mauiembeddingclasslibrary",
+  "description": "Project template for creating .NET MAUI Controls to embed within your Uno Platform app.",
+  "precedence": "99",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "unomauilib",
+  "sourceName": "MyExtensionsApp._1",
+  "defaultName": "UnoMauiLibrary",
+  "placeholderFilename": "template-ignore",
+  "preferNameDirectory": true,
+  "symbols": {
+    "tfm": {
+      "displayName": "Target Framework",
+      "type": "parameter",
+      "datatype": "choice",
+      "enableQuotelessLiterals": true,
+      "replaces": "$baseTargetFramework$",
+      "defaultValue": "net7.0",
+      "description": "Select the .NET version of your solution",
+      "choices": [
+        {
+          "choice": "net7.0",
+          "displayName": ".NET 7.0",
+          "description": "Target .NET 7.0 (Standard Term Support)"
+        },
+        {
+          "choice": "net8.0",
+          "displayName": ".NET 8.0",
+          "description": "Target .NET 8.0 (Preview)"
+        }
+      ]
+    },
+    "cpm": {
+      "displayName": "Central Package Management",
+      "description": "Use Central Package Management",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "useAndroid": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Include Android as a target platform",
+      "displayName": "Android"
+    },
+    "useiOS": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Include iOS as a target platform",
+      "displayName": "iOS"
+    },
+    "useMacCatalyst": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Include MacCatalyst as a target platform",
+      "displayName": "MacCatalyst"
+    },
+    "useWinAppSdk": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Include WinUI as a target platform",
+      "displayName": "WinUI"
+    },
+    "unoMauiClassLibrary": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "datatype": "bool",
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(1 == 1)",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    "useStandaloneCPM": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(cpm == true)",
+            "value": "true"
+          },
+          {
+            "condition": "(cpm == false)",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "libraryBaseTargetFramework": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$libraryBaseTargetFramework$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net7.0')",
+            "value": "net7.0"
+          },
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "net8.0"
+          }
+        ]
+      }
+    },
+    "mobileTargetFrameworks": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$mobileTargetFrameworks$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net7.0' && useAndroid && useiOS && useMacCatalyst)",
+            "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && useAndroid && useiOS && useMacCatalyst)",
+            "value": "net8.0-ios;net8.0-android;net8.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && useAndroid && useiOS && !useMacCatalyst)",
+            "value": "net7.0-ios;net7.0-android"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && useAndroid && useiOS && !useMacCatalyst)",
+            "value": "net8.0-ios;net8.0-android"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && !useAndroid && useiOS && useMacCatalyst)",
+            "value": "net7.0-ios;net7.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && !useAndroid && useiOS && useMacCatalyst)",
+            "value": "net8.0-ios;net8.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && useAndroid && !useiOS && useMacCatalyst)",
+            "value": "net7.0-android;net7.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && useAndroid && !useiOS && useMacCatalyst)",
+            "value": "net8.0-android;net8.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && useAndroid && !useiOS && !useMacCatalyst)",
+            "value": "net7.0-android"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && useAndroid && !useiOS && !useMacCatalyst)",
+            "value": "net8.0-android"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && !useAndroid && useiOS && !useMacCatalyst)",
+            "value": "net7.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && !useAndroid && useiOS && !useMacCatalyst)",
+            "value": "net8.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net7.0' && !useAndroid && !useiOS && useMacCatalyst)",
+            "value": "net7.0-maccatalyst"
+          },
+          {
+            "condition": "(tfm == 'net8.0' && !useAndroid && !useiOS && useMacCatalyst)",
+            "value": "net8.0-maccatalyst"
+          },
+          {
+            "condition": "(!useAndroid && !useiOS && !useMacCatalyst)",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "useMauiPackageReference": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(tfm != 'net7.0')"
+    }
+  }
+}
