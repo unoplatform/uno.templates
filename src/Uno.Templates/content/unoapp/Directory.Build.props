@@ -21,8 +21,17 @@
 		<!--#endif-->
 
 		<!--#if (mauiEmbedding)-->
-		<NoWarn>$(NoWarn);CA1416;NU1507;NETSDK1023</NoWarn>
+		<!-- 
+			Adding NoWarn to remove build warnings
+			NU1507: Warning when there are multiple package sources when using CPM with no source mapping 
+			NETSDK1023:	Microsoft.Maui.Graphics reference required to avoid build error causes warning because it's already implicitly referenced by Maui SDK
+		-->
+		<NoWarn>$(NoWarn);NU1507;NETSDK1023</NoWarn>
 		<!--#else-->
+		<!-- 
+			Adding NoWarn to remove build warnings
+			NU1507: Warning when there are multiple package sources when using CPM with no source mapping 
+		-->
 		<NoWarn>$(NoWarn);CA1416;NU1507</NoWarn>
 		<!--#endif-->
 
