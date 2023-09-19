@@ -20,7 +20,6 @@
 		<!--#endif-->
 
 		<!-- <SelfContained>true</SelfContained> -->
-		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 
 	<ItemGroup>
