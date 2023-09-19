@@ -69,6 +69,7 @@
 				<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 				<EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
+				<UseRidGraph>true</UseRidGraph>
 			</PropertyGroup>
 		</When>
 	</Choose>
