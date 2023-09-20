@@ -1032,12 +1032,12 @@
     "useGtk": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && platforms == gtk)"
+      "value": "(platforms == gtk)"
     },
     "useLinuxFb": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && platforms == linux-fb)"
+      "value": "(platforms == linux-fb)"
     },
     "useAndroid": {
       "type": "computed",
@@ -1052,7 +1052,7 @@
     "useMacOS": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && platforms == macos)"
+      "value": "(platforms == macos)"
     },
     "useMacCatalyst": {
       "type": "computed",
@@ -1067,7 +1067,7 @@
     "useWasm": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && platforms == wasm)"
+      "value": "(platforms == wasm)"
     },
     "useWinAppSdk": {
       "type": "computed",
@@ -1077,7 +1077,32 @@
     "useWpf": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && platforms == wpf)"
+      "value": "(platforms == wpf)"
+    },
+    "useNonMauiPlatforms": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos)"
+    },
+    "xamlNamespaces": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$xamlNamespaces$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            // Can't use useNonMauiPlatforms here as we can't rely on computed values
+            "condition": "(mauiEmbedding && (platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos))",
+            "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\txmlns:maui=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n\txmlns:not_maui=\"http://notmaui\"\n\tmc:Ignorable=\"d not_maui\""
+          },
+          {
+            "condition": "!(mauiEmbedding && (platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos))",
+            "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\tmc:Ignorable=\"d\""
+          }
+        ]
+      }
     },
     "useDataContracts": {
       "type": "computed",
@@ -1105,7 +1130,7 @@
     "useSkia": {
       "type": "computed",
       "datatype": "bool",
-      "value": "((!mauiEmbedding) && (platforms == wpf || platforms == gtk || platforms == linux-fb))"
+      "value": "(platforms == wpf || platforms == gtk || platforms == linux-fb)"
     },
     "useServer": {
       "type": "computed",
