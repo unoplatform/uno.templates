@@ -20,7 +20,20 @@
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<!--#endif-->
 
-		<NoWarn>$(NoWarn);CA1416;NU1507</NoWarn>
+		<!--#if (mauiEmbedding)-->
+		<!-- 
+			Adding NoWarn to remove build warnings
+			NU1507: Warning when there are multiple package sources when using CPM with no source mapping 
+			NETSDK1023:	Microsoft.Maui.Graphics reference required to avoid build error causes warning because it's already implicitly referenced by Maui SDK
+		-->
+		<NoWarn>$(NoWarn);NU1507;NETSDK1023</NoWarn>
+		<!--#else-->
+		<!-- 
+			Adding NoWarn to remove build warnings
+			NU1507: Warning when there are multiple package sources when using CPM with no source mapping 
+		-->
+		<NoWarn>$(NoWarn);NU1507</NoWarn>
+		<!--#endif-->
 
 		<DefaultLanguage>en</DefaultLanguage>
 
@@ -67,7 +80,7 @@
 				<IsWinAppSdk>true</IsWinAppSdk>
 				<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
 				<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+				<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 				<EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
 			</PropertyGroup>
 		</When>

@@ -237,9 +237,6 @@
 				must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 				-->
 				<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
-				<!--#if (useMsalAuthentication)-->
-				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-				<!--#endif-->
 			</PropertyGroup>
 			<!--#if (!mauiEmbedding)-->
 			<ItemGroup>
