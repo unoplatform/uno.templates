@@ -65,7 +65,7 @@ public class App : Application
 					//logBuilder.XamlBindingLogLevel(LogLevel.Debug);
 					//// Binder memory references tracking
 					//logBuilder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
-					//// RemoteControl and HotReload related
+					//// DevServer and HotReload related
 					//logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
 					//// Debug JS interop
 					//logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
