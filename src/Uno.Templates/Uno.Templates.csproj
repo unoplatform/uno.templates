@@ -26,7 +26,7 @@
 		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
 		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">4.0.0-dev.27</UnoToolkitVersion>
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
-		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0-dev.19</UnoResizetizerVersion>
+		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0-dev.39</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.27</UnoWasmBootstrapVersionNet7>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.218</UnoWasmBootstrapVersionNet8>
