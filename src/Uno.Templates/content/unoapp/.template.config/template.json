@@ -599,6 +599,38 @@
         }
       ]
     },
+    "dspGenerator": {
+      "displayName": "Use the DSP Generator",
+      "description": "When enabled this will include a DSP file and the DSP Generator NuGet package",
+      "type": "parameter",
+      "datatype": "bool"
+    },
+    "presetDspDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "true"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "dspGeneratorEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "dspGenerator",
+        "fallbackVariableName": "presetDspDefault"
+      }
+    },
     "continuousIntegration": {
       "displayName": "Continuous Integration",
       "description": "Configures continuous integration support for the solution",
@@ -880,6 +912,11 @@
         "sourceVariableName": "appTheme",
         "fallbackVariableName": "presetAppThemeDefault"
       }
+    },
+    "useDspGenerator":{
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(dspGeneratorEvaluator && appThemeEvaluator == 'material')"
     },
     "useMaterial": {
       "type": "computed",
@@ -2244,6 +2281,12 @@
             "MyExtensionsApp._1/Assets/Fonts/**",
             "MyExtensionsApp._1/Assets/Images/**",
             "MyExtensionsApp._1.MauiControls/**"
+          ]
+        },
+        {
+          "condition": "(!useDspGenerator)",
+          "exclude": [
+            "MyExtensionsApp._1/Styles/ColorPaletteOverride.zip"
           ]
         }
       ]

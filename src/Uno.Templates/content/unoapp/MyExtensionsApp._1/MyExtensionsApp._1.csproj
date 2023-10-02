@@ -18,9 +18,6 @@
 
 	<!--#if (useCPM)-->
 	<ItemGroup>
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Dsp.Tasks" />
-		<!--#endif-->
 		<PackageReference Include="Uno.WinUI" />
 		<!--#if (!useWinAppSdk) -->
 		<PackageReference Include="Uno.WinUI.Lottie" />
@@ -59,6 +56,9 @@
 		<!--#endif-->
 		<!--#if (useMaterial)-->
 		<PackageReference Include="Uno.Material.WinUI" />
+		<!--#if (useDspGenerator)-->
+		<PackageReference Include="Uno.Dsp.Tasks" />
+		<!--#endif-->
 		<!--#if (useToolkit)-->
 		<PackageReference Include="Uno.Toolkit.WinUI.Material" />
 		<!--#endif-->
@@ -115,9 +115,6 @@
 	</ItemGroup>
 	<!--#else-->
 	<ItemGroup>
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
-		<!--#endif-->
 		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
 		<!--#if (!useWinAppSdk) -->
 		<PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
@@ -156,6 +153,9 @@
 		<!--#endif-->
 		<!--#if (useMaterial)-->
 		<PackageReference Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
+		<!--#if (useDspGenerator)-->
+		<PackageReference Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
+		<!--#endif-->
 		<!--#if (useToolkit)-->
 		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
 		<!--#endif-->
@@ -292,7 +292,7 @@
 	<!--#endif-->
 
 	<ItemGroup>
-		<!--#if (useMaterial)-->
+		<!--#if (useDspGenerator)-->
 		<UnoDspImportColors Include="Styles\*.zip" Generator="$DspGenerator$" />
 		<!--#endif-->
 		<UnoImage Include="Assets\**\*.svg" />

@@ -101,7 +101,9 @@
     <!--#endif-->
     <!--#if (useMaterial)-->
     <PackageVersion Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
+    <!--#if (useDspGenerator)-->
     <PackageVersion Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
+    <!--#endif-->
     <!--#elif (useCupertino)-->
     <PackageVersion Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
     <!--#endif-->
