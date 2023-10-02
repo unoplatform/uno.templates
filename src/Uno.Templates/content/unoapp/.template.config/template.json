@@ -623,7 +623,7 @@
         ]
       }
     },
-    "useDspGenerator": {
+    "dspGeneratorEvaluator": {
       "type": "generated",
       "generator": "coalesce",
       "parameters": {
@@ -912,6 +912,11 @@
         "sourceVariableName": "appTheme",
         "fallbackVariableName": "presetAppThemeDefault"
       }
+    },
+    "useDspGenerator":{
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(dspGeneratorEvaluator && appThemeEvaluator == 'material')"
     },
     "useMaterial": {
       "type": "computed",
