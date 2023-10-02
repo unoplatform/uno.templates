@@ -975,6 +975,7 @@
     },
     "useDependencyInjection": {
       "type": "generated",
+      "datatype": "bool",
       "generator": "coalesce",
       "parameters": {
         "sourceVariableName": "dependencyInjection",
@@ -1149,21 +1150,21 @@
       "datatype": "bool",
       "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos)"
     },
-    "xamlNamespaces": {
+    "mauiNamespaces": {
       "type": "generated",
       "generator": "switch",
-      "replaces": "$xamlNamespaces$",
+      "replaces": "$mauiNamespaces$",
       "parameters": {
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
           {
-            // Can't use useNonMauiPlatforms here as we can't rely on computed values
-            "condition": "(mauiEmbedding && (platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos))",
+            // This works.... don't try to optimize it!
+            "condition": "(platforms == wpf && mauiEmbedding || platforms == wasm && mauiEmbedding || platforms == gtk  && mauiEmbedding || platforms == linux-fb  && mauiEmbedding || platforms == macos  && mauiEmbedding)",
             "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\txmlns:maui=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n\txmlns:not_maui=\"http://notmaui\"\n\tmc:Ignorable=\"d not_maui\""
           },
           {
-            "condition": "!(mauiEmbedding && (platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos))",
+            "condition": "true", 
             "value": "\n\txmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n\txmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n\tmc:Ignorable=\"d\""
           }
         ]
@@ -1511,7 +1512,25 @@
             "value": "\n\txmlns:utu=\"using:Uno.Toolkit.UI\""
           },
           {
-            "condition": "(!useToolkit)",
+            "condition": "true",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "materialNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$materialNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useMaterial)",
+            "value": "\n\txmlns:um=\"using:Uno.Material\""
+          },
+          {
+            "condition": "true",
             "value": ""
           }
         ]
@@ -1669,6 +1688,24 @@
       "parameters": {
         "sourceVariableName": "navigation",
         "fallbackVariableName": "presetNavigationDefault"
+      }
+    },
+    "navigationNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$navigationNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(navigationEvaluator == 'regions')",
+            "value": "\n\txmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
       }
     },
     "useAuthentication": {
