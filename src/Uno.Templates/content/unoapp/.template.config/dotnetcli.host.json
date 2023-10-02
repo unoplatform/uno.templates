@@ -97,6 +97,10 @@
       "longName": "skip-restore",
       "shortName": "skip"
     },
+    "dspGenerator": {
+      "longName": "dsp",
+      "shortName": "dsp"
+    },
     "continuousIntegration": {
       "longName": "continuous-integration",
       "shortName": "ci"
