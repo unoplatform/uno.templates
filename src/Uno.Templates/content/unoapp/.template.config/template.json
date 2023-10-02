@@ -938,6 +938,7 @@
     },
     "useDependencyInjection": {
       "type": "generated",
+      "datatype": "bool",
       "generator": "coalesce",
       "parameters": {
         "sourceVariableName": "dependencyInjection",
@@ -1498,24 +1499,6 @@
         ]
       }
     },
-    "navigationNamespace": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$navigationNamespace$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(navigationEvaluator == 'regions' && useDependencyInjection)",
-            "value": "\n\txmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
-          },
-          {
-            "condition": "true",
-            "value": ""
-          }
-        ]
-      }
-    },
     "toolkitSafeArea": {
       "type": "generated",
       "generator": "switch",
@@ -1668,6 +1651,24 @@
       "parameters": {
         "sourceVariableName": "navigation",
         "fallbackVariableName": "presetNavigationDefault"
+      }
+    },
+    "navigationNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$navigationNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(navigationEvaluator == 'regions')",
+            "value": "\n\txmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
       }
     },
     "useAuthentication": {
