@@ -1474,7 +1474,7 @@
             "value": "\n\txmlns:utu=\"using:Uno.Toolkit.UI\""
           },
           {
-            "condition": "(!useToolkit)",
+            "condition": "true",
             "value": ""
           }
         ]
@@ -1492,7 +1492,7 @@
             "value": "\n\txmlns:um=\"using:Uno.Material\""
           },
           {
-            "condition": "(!useMaterial)",
+            "condition": "true",
             "value": ""
           }
         ]
@@ -1506,11 +1506,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useExtensionsNavigation)",
+            "condition": "(navigationEvaluator == 'regions' && useDependencyInjection)",
             "value": "\n\txmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
           },
           {
-            "condition": "(!useExtensionsNavigation)",
+            "condition": "true",
             "value": ""
           }
         ]
