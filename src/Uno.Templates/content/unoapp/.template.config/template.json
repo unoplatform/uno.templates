@@ -1507,6 +1507,60 @@
         ]
       }
     },
+    "toolkitMaterialStyleNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$toolkitMaterialStyleNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useToolkit)",
+            "value": "\n      xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "materialStyleNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$materialStyleNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useMaterial)",
+            "value": "\n                    xmlns:um=\"using:Uno.Material\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "cupertinoStyleNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$cupertinoStyleNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useMaterial)",
+            "value": "\n                    xmlns:uc=\"using:Uno.Cupertino\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
+      }
+    },
     "toolkitSafeArea": {
       "type": "generated",
       "generator": "switch",
