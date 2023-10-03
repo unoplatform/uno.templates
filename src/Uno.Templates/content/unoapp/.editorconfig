@@ -10,6 +10,7 @@ root = true
 
 [*]
 indent_style = space
+end_of_line = crlf
 insert_final_newline = true
 charset = utf-8
 
@@ -70,6 +71,7 @@ indent_size = 2
 end_of_line = lf
 
 [*.cs]
+end_of_line = unset
 tab_width = 4
 indent_size = 4
 
