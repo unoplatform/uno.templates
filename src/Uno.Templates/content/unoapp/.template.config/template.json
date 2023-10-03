@@ -1526,7 +1526,7 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useMaterial)",
+            "condition": "(appThemeEvaluator == 'material')",
             "value": "\n\txmlns:um=\"using:Uno.Material\""
           },
           {
