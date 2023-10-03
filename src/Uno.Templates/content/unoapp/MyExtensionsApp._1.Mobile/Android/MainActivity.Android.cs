@@ -1,9 +1,9 @@
 //-:cnd:noEmit
 using Android.App;
-using Android.Widget;
-using Android.OS;
 using Android.Content.PM;
+using Android.OS;
 using Android.Views;
+using Android.Widget;
  //+:cnd:noEmit
 #if useMsalAuthentication
 using Microsoft.Identity.Client;

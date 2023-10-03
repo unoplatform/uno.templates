@@ -26,33 +26,39 @@ internal class DebugHttpHandler : DelegatingHandler
 //-:cnd:noEmit
 #if DEBUG
 //+:cnd:noEmit
-        if(!response.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode)
         {
 #if (useLogging)
             _logger.LogDebugMessage("Unsuccessful API Call");
-            if(request.RequestUri is not null)
+            if (request.RequestUri is not null)
+            {
                 _logger.LogDebugMessage($"{request.RequestUri} ({request.Method})");
-            foreach((var key, var values) in request.Headers.ToDictionary(x => x.Key, x => string.Join(", ", x.Value)))
+            }
+            
+            foreach ((var key, var values) in request.Headers.ToDictionary(x => x.Key, x => string.Join(", ", x.Value)))
             {
                 _logger.LogDebugMessage($"{key}: {values}");
             }
 
             var content = request.Content is not null ? await request.Content.ReadAsStringAsync() : null;
-            if(!string.IsNullOrEmpty(content))
+            if (!string.IsNullOrEmpty(content))
             {
                 _logger.LogDebugMessage(content);
             }
 #else
             Console.Error.WriteLine("Unsuccessful API Call");
-            if(request.RequestUri is not null)
+            if (request.RequestUri is not null)
+            {
                 Console.Error.WriteLine($"{request.RequestUri} ({request.Method})");
-            foreach((var key, var values) in request.Headers.ToDictionary(x => x.Key, x => string.Join(", ", x.Value)))
+            }
+
+            foreach ((var key, var values) in request.Headers.ToDictionary(x => x.Key, x => string.Join(", ", x.Value)))
             {
                 Console.Error.WriteLine($"  {key}: {values}");
             }
 
             var content = request.Content is not null ? await request.Content.ReadAsStringAsync() : null;
-            if(!string.IsNullOrEmpty(content))
+            if (!string.IsNullOrEmpty(content))
             {
                 Console.Error.WriteLine(content);
             }

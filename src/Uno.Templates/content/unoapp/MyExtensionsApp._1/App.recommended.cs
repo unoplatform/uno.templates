@@ -152,7 +152,8 @@ public class App : Application
 #endif
                 )
 #endif
-                .ConfigureServices((context, services) => {
+                .ConfigureServices((context, services) =>
+                {
                     // TODO: Register your services
                     //services.AddSingleton<IMyService, MyService>();
                 })

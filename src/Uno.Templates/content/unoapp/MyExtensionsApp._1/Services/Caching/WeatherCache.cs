@@ -33,7 +33,7 @@ public sealed class WeatherCache : IWeatherCache
             return _serializer.FromString<ImmutableArray<WeatherForecast>>(weatherText);
         }
 
-        if(!IsConnected)
+        if (!IsConnected)
         {
 #if (useLogging)
             _logger.LogWarning("App is offline and cannot connect to the API.");
@@ -72,7 +72,7 @@ public sealed class WeatherCache : IWeatherCache
 
         // Reuse latest cache file if offline
         // or if the file is less than 5 minutes old
-        if(IsConnected || DateTimeOffset.Now.AddMinutes(-5) > properties.DateModified)
+        if (IsConnected || DateTimeOffset.Now.AddMinutes(-5) > properties.DateModified)
         {
             return null;
         }
