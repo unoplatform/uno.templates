@@ -1545,7 +1545,7 @@
         "cases": [
           {
             "condition": "(useToolkit)",
-            "value": " utu:SafeArea.Insets=\"All\""
+            "value": " utu:SafeArea.Insets=\"VisibleBounds\""
           },
           {
             "condition": "(!useToolkit)",
