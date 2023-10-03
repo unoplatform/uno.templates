@@ -3,35 +3,35 @@ namespace MyExtensionsApp._1.Presentation;
 
 public class ShellModel
 {
-	private readonly INavigator _navigator;
+    private readonly INavigator _navigator;
 
-	public ShellModel(
+    public ShellModel(
 //+:cnd:noEmit
 #if useAuthentication
-        IAuthenticationService authentication, 
+        IAuthenticationService authentication,
 #endif
-		INavigator navigator)
-	{
-		_navigator = navigator;
+        INavigator navigator)
+    {
+        _navigator = navigator;
 #if useAuthentication
-		_authentication = authentication;
+        _authentication = authentication;
         _authentication.LoggedOut += LoggedOut;
-	}
+    }
 
-	private async void LoggedOut(object? sender, EventArgs e)
+    private async void LoggedOut(object? sender, EventArgs e)
     {
         await _navigator.NavigateViewModelAsync<LoginModel>(this, qualifier: Qualifiers.ClearBackStack);
     }
 
-	private readonly IAuthenticationService _authentication;
+    private readonly IAuthenticationService _authentication;
 #else
-		_ = Start();
-	}
+        _ = Start();
+    }
 
-	public async Task Start()
-	{
-		await _navigator.NavigateViewModelAsync<MainModel>(this);
-	}
+    public async Task Start()
+    {
+        await _navigator.NavigateViewModelAsync<MainModel>(this);
+    }
 #endif
 //-:cnd:noEmit
 }

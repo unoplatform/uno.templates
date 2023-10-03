@@ -3,53 +3,53 @@ namespace MyExtensionsApp._1.Presentation;
 
 public sealed partial class LoginPage : Page
 {
-	public LoginPage()
-	{
+    public LoginPage()
+    {
 //+:cnd:noEmit
 #if useCsharpMarkup
-		this.DataContext<$mainDataContext$>((page, vm) => page
-			.NavigationCacheMode(NavigationCacheMode.Required)
+        this.DataContext<$mainDataContext$>((page, vm) => page
+            .NavigationCacheMode(NavigationCacheMode.Required)
 #if useMaterial
-			.Background(Theme.Brushes.Background.Default)
+            .Background(Theme.Brushes.Background.Default)
 #else
-		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
+            .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
-			.Content(new Grid()
-#if useToolkit					
-				.SafeArea(SafeArea.InsetMask.All)
+            .Content(new Grid()
+#if useToolkit
+                .SafeArea(SafeArea.InsetMask.All)
 #endif
-				.RowDefinitions<Grid>("Auto,*")
-				.Children(
-#if useToolkit					
-					new NavigationBar().Content(() => vm.Title),
+                .RowDefinitions<Grid>("Auto,*")
+                .Children(
+#if useToolkit
+                    new NavigationBar().Content(() => vm.Title),
 #else
-				new TextBlock()
-					.Text(() => vm.Title)
-					.HorizontalAlignment(HorizontalAlignment.Center)
+                new TextBlock()
+                    .Text(() => vm.Title)
+                    .HorizontalAlignment(HorizontalAlignment.Center)
 #endif
-					new StackPanel()
-						.Grid(row: 1)
-						.HorizontalAlignment(HorizontalAlignment.Center)
-						.VerticalAlignment(VerticalAlignment.Center)
-						.Width(200)
-						.Spacing(16)
-						.Children(
+                    new StackPanel()
+                        .Grid(row: 1)
+                        .HorizontalAlignment(HorizontalAlignment.Center)
+                        .VerticalAlignment(VerticalAlignment.Center)
+                        .Width(200)
+                        .Spacing(16)
+                        .Children(
 #if useCustomAuthentication
-							new TextBox()
-								.Text(x => x.Bind(() => vm.Name).TwoWay())
-								.PlaceholderText("Username")
-								.HorizontalAlignment(HorizontalAlignment.Stretch),
+                            new TextBox()
+                                .Text(x => x.Bind(() => vm.Name).TwoWay())
+                                .PlaceholderText("Username")
+                                .HorizontalAlignment(HorizontalAlignment.Stretch),
                             new PasswordBox()
                                 .Password(x => x.Bind(() => vm.Password).TwoWay())
                                 .PlaceholderText("Password")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch),
 #endif
-							new Button()
-								.Content("Login")
+                            new Button()
+                                .Content("Login")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch)
                                 .Command(() => vm.Login)))));
 #else
-		this.InitializeComponent();
+        this.InitializeComponent();
 #endif
-	}
+    }
 }

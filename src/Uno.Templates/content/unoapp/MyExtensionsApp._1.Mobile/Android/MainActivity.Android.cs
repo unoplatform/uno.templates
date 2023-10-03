@@ -1,9 +1,9 @@
 //-:cnd:noEmit
 using Android.App;
-using Android.Widget;
-using Android.OS;
 using Android.Content.PM;
+using Android.OS;
 using Android.Views;
+using Android.Widget;
  //+:cnd:noEmit
 #if useMsalAuthentication
 using Microsoft.Identity.Client;
@@ -12,17 +12,17 @@ using Microsoft.Identity.Client;
 namespace MyExtensionsApp._1.Droid;
 
 [Activity(
-	MainLauncher = true,
-	ConfigurationChanges = global::Uno.UI.ActivityHelper.AllConfigChanges,
-	WindowSoftInputMode = SoftInput.AdjustNothing | SoftInput.StateHidden
+    MainLauncher = true,
+    ConfigurationChanges = global::Uno.UI.ActivityHelper.AllConfigChanges,
+    WindowSoftInputMode = SoftInput.AdjustNothing | SoftInput.StateHidden
 )]
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
 #if useMsalAuthentication
-	protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
-	{
-		base.OnActivityResult(requestCode, resultCode, data);
-		AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
-	}
+    protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
+    {
+        base.OnActivityResult(requestCode, resultCode, data);
+        AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+    }
 #endif
 }

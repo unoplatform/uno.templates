@@ -3,7 +3,7 @@ namespace MyExtensionsApp._1.Presentation;
 
 public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, IAuthenticationService Authentication)
 {
-	public string Title { get; } = "Login";
+    public string Title { get; } = "Login";
 
  //+:cnd:noEmit
 #if useCustomAuthentication

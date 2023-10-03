@@ -3,39 +3,39 @@ namespace MyExtensionsApp._1.Presentation;
 
 public sealed partial class SecondPage : Page
 {
-	public SecondPage()
-	{
+    public SecondPage()
+    {
 //+:cnd:noEmit
 #if useCsharpMarkup
-		this.DataContext<$secondDataContext$>((page, vm) => page
+        this.DataContext<$secondDataContext$>((page, vm) => page
 #if useMaterial
-			.Background(Theme.Brushes.Background.Default)
+            .Background(Theme.Brushes.Background.Default)
 #else
-		    .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
+            .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
-			.Content(new Grid()
-#if useToolkit					
-				.SafeArea(SafeArea.InsetMask.All)
+            .Content(new Grid()
+#if useToolkit
+                .SafeArea(SafeArea.InsetMask.All)
 #endif
-				.Children(
-#if useToolkit				
-				new NavigationBar()
-					.Content("Second Page")
-					.MainCommand(new AppBarButton()
-						.Icon(new BitmapIcon().UriSource(new Uri("ms-appx:///MyExtensionsApp._1/Assets/Icons/back.png")))
-					),
+                .Children(
+#if useToolkit
+                new NavigationBar()
+                    .Content("Second Page")
+                    .MainCommand(new AppBarButton()
+                        .Icon(new BitmapIcon().UriSource(new Uri("ms-appx:///MyExtensionsApp._1/Assets/Icons/back.png")))
+                    ),
 #else
-				new TextBlock()
-					.Text("Second Page")
-					.HorizontalAlignment(HorizontalAlignment.Center)
+                new TextBlock()
+                    .Text("Second Page")
+                    .HorizontalAlignment(HorizontalAlignment.Center)
 #endif
-				new TextBlock()
-					.Text(() => vm.Entity.Name)
-					.HorizontalAlignment(HorizontalAlignment.Center)
-					.VerticalAlignment(VerticalAlignment.Center))));
+                new TextBlock()
+                    .Text(() => vm.Entity.Name)
+                    .HorizontalAlignment(HorizontalAlignment.Center)
+                    .VerticalAlignment(VerticalAlignment.Center))));
 #else
-		this.InitializeComponent();
+        this.InitializeComponent();
 #endif
-	}
+    }
 }
 
