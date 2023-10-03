@@ -141,19 +141,19 @@
         "cases": [
           {
             "condition": "(tfm == 'net7.0' && useAndroid && useiOS && useMacCatalyst)",
-            "value": "net7.0-ios;net7.0-android;net7.0-maccatalyst"
+            "value": "net7.0-android;net7.0-ios;net7.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net8.0' && useAndroid && useiOS && useMacCatalyst)",
-            "value": "net8.0-ios;net8.0-android;net8.0-maccatalyst"
+            "value": "net8.0-android;net8.0-ios;net8.0-maccatalyst"
           },
           {
             "condition": "(tfm == 'net7.0' && useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net7.0-ios;net7.0-android"
+            "value": "net7.0-android;net7.0-ios"
           },
           {
             "condition": "(tfm == 'net8.0' && useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net8.0-ios;net8.0-android"
+            "value": "net8.0-android;net8.0-ios"
           },
           {
             "condition": "(tfm == 'net7.0' && !useAndroid && useiOS && useMacCatalyst)",
