@@ -1,275 +1,275 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
-		<!--#if (useMacOS)-->
-		<!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-		<!-- <TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$-macos</TargetFrameworks> -->
-		<!--#endif-->
-		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
-		<SingleProject>true</SingleProject>
-		<OutputType>Exe</OutputType>
-		<!-- Display name -->
-		<ApplicationTitle>MyExtensionsApp._1</ApplicationTitle>
-		<!-- App Identifier -->
-		<ApplicationId>com.companyname.myextensionsapp</ApplicationId>
-		<ApplicationIdGuid>F5EAE47C-F7DF-4D61-8A30-92251720AC4B</ApplicationIdGuid>
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+  <PropertyGroup>
+    <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
+    <!--#if (useMacOS)-->
+    <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
+    <!-- <TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$-macos</TargetFrameworks> -->
+    <!--#endif-->
+    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+    <SingleProject>true</SingleProject>
+    <OutputType>Exe</OutputType>
+    <!-- Display name -->
+    <ApplicationTitle>MyExtensionsApp._1</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.myextensionsapp</ApplicationId>
+    <ApplicationIdGuid>F5EAE47C-F7DF-4D61-8A30-92251720AC4B</ApplicationIdGuid>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
 
-		<AndroidManifest>Android\AndroidManifest.xml</AndroidManifest>
+    <AndroidManifest>Android\AndroidManifest.xml</AndroidManifest>
 
-		<!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 -->
-		<!-- <MtouchExtraArgs Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> -->
-		<!-- Required for C# Hot Reload -->
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'">True</UseInterpreter>
-		<IsUnoHead>true</IsUnoHead>
-	</PropertyGroup>
+    <!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 -->
+    <!-- <MtouchExtraArgs Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> -->
+    <!-- Required for C# Hot Reload -->
+    <UseInterpreter Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'">True</UseInterpreter>
+    <IsUnoHead>true</IsUnoHead>
+  </PropertyGroup>
 
-	<!--#if (useCPM)-->
-	<ItemGroup>
-		<PackageReference Include="Uno.WinUI" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.WinUI.Markup" />
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI.Markup" />
-		<!--#endif-->
-		<PackageReference Include="Uno.Themes.WinUI.Markup" />
-		<!--#endif-->
-		<!--#if (useMvvm) -->
-		<PackageReference Include="CommunityToolkit.Mvvm" />
-		<!--#endif -->
-		<!--#if (useConfiguration)-->
-		<PackageReference Include="Uno.Extensions.Configuration" />
-		<!--#endif-->
-		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Http" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" />
-		<!--#endif-->
-		<!--#if (useLogging)-->
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" />
-		<!--#endif-->
-		<!--#if (useSerilog)-->
-		<PackageReference Include="Uno.Extensions.Logging.Serilog" />
-		<!--#endif-->
-		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Serialization.Http" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
-		<!--#endif-->
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI" />
-		<!--#if (useToolkit)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" />
-		<!--#endif-->
-		<!--#elif (useCupertino)-->
-		<PackageReference Include="Uno.Cupertino.WinUI" />
-		<!--#endif-->
-		<!--#if (useToolkit)-->
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Markup" />
-		<!--#else-->
-		<PackageReference Include="Uno.Toolkit.WinUI" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" />
-		<!--#if (useOidcAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
-		<!--#endif-->
-		<!--#if (useMsalAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useDependencyInjection)-->
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
-		<!--#endif-->
-		<!--#if (useLocalization)-->
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" />
-		<!--#endif-->
-		<!--#if (useExtensionsNavigation)-->
-		<!--#if (useNavigationToolkit)-->
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" />
-		<!--#endif-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useMvux)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" />
-		<!--#endif-->
-		<!--#endif-->
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
-		<PackageReference Include="Uno.Extensions.Logging.OSLog" />
-		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
-		<PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
-		<!--#if (useMauiPackageReference)-->
-		<PackageReference Include="Microsoft.Maui.Controls" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-		<!--#endif -->
-	</ItemGroup>
-	<!--#else-->
-	<ItemGroup>
-		<PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-		<PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI.Markup" Version="$UnoThemesVersion$" />
-		<!--#endif-->
-		<PackageReference Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
-		<!--#endif-->
-		<!--#if (useMvvm) -->
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<!--#endif -->
-		<!--#if (useConfiguration)-->
-		<PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsVersion$" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useLogging)-->
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useSerilog)-->
-		<PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useHttp)-->
-		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useMaterial)-->
-		<PackageReference Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
-		<!--#if (useToolkit)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
-		<!--#endif-->
-		<!--#elif (useCupertino)-->
-		<PackageReference Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
-		<!--#endif-->
-		<!--#if (useToolkit)-->
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
-		<!--#else-->
-		<PackageReference Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#if (useOidcAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useMsalAuthentication)-->
-		<PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useDependencyInjection)-->
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useLocalization)-->
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#if (useExtensionsNavigation)-->
-		<!--#if (useNavigationToolkit)-->
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#endif-->
-		<!--#if (useMvux)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsVersion$" />
-		<!--#if (useCsharpMarkup)-->
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsVersion$" />
-		<!--#endif-->
-		<!--#endif-->
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
-		<PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
-		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
-		<PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
-		<!--#if (useMauiPackageReference)-->
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<!--#endif -->
-	</ItemGroup>
-	<!--#endif-->
-	<Choose>
-		<!--#if (useAndroid)-->
-		<When Condition="$(IsAndroid)">
-			<ItemGroup>
-				<!--#if (mauiEmbedding)-->
-				<PackageReference Include="Xamarin.Google.Android.Material" VersionOverride="$(AndroidMaterialVersion)" />
-				<PackageReference Include="Xamarin.AndroidX.Navigation.UI" VersionOverride="$(AndroidXNavigationVersion)" />
-				<PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
-				<PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
-				<PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
-				<!--#endif-->
-				
-				<!--#if (useCPM)-->
-				<!--#if (useAndroidMaterial)-->
-				<PackageReference Include="Xamarin.Google.Android.Material" />
-				<!--#endif-->
-				<PackageReference Include="Uno.UniversalImageLoader" />
-				<!--#else-->
-				<!--#if (useAndroidMaterial)-->
-				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
-				<!--#endif-->
-				<PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
-				<!--#endif-->
-			</ItemGroup>
-			<ItemGroup>
-				<AndroidEnvironment Include="Android/environment.conf" />
-			</ItemGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useIOS)-->
-		<When Condition="$(IsIOS)">
-			<PropertyGroup>
-				<MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
-				<!-- See https://github.com/unoplatform/uno/issues/9430 for more details. -->
-				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static</MtouchExtraArgs>
-				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">iossimulator-x64</RuntimeIdentifier>
-			</PropertyGroup>
-			<PropertyGroup Condition="'$(Configuration)'=='Release'">
-				<!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
-				<MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useMacCatalyst)-->
-		<When Condition="$(IsMacCatalyst)">
-			<PropertyGroup>
-				<!-- Configure the GC -->
-				<MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
-				<!-- Required for unknown crash as of .NET 6 Mobile Preview 13 -->
-				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static</MtouchExtraArgs>
-				<!-- Full globalization is required for Uno -->
-				<InvariantGlobalization>false</InvariantGlobalization>
-				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">maccatalyst-x64</RuntimeIdentifier>
-			</PropertyGroup>
-			<PropertyGroup Condition="'$(Configuration)'=='Release'">
-				<!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
-				<MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useMacOS)-->
-		<When Condition="$(IsMac)">
-			<PropertyGroup>
-				<TrimMode Condition="'$(Configuration)'=='Release'">link</TrimMode>
-				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">osx-x64</RuntimeIdentifier>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-	</Choose>
-	<ItemGroup>
-		<ProjectReference Include="..\MyExtensionsApp._1\MyExtensionsApp._1.csproj" />
-		<!--#if (useHttp)-->
-		<ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
-		<!--#endif-->
-	</ItemGroup>
-	<Import Project="..\MyExtensionsApp._1.Base\base.props" />
+  <!--#if (useCPM)-->
+  <ItemGroup>
+    <PackageReference Include="Uno.WinUI" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.WinUI.Markup" />
+    <!--#if (useMaterial)-->
+    <PackageReference Include="Uno.Material.WinUI.Markup" />
+    <!--#endif-->
+    <PackageReference Include="Uno.Themes.WinUI.Markup" />
+    <!--#endif-->
+    <!--#if (useMvvm) -->
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <!--#endif -->
+    <!--#if (useConfiguration)-->
+    <PackageReference Include="Uno.Extensions.Configuration" />
+    <!--#endif-->
+    <!--#if (useHttp)-->
+    <PackageReference Include="Uno.Extensions.Http" />
+    <PackageReference Include="Uno.Extensions.Http.Refit" />
+    <!--#endif-->
+    <!--#if (useLogging)-->
+    <PackageReference Include="Uno.Extensions.Logging.WinUI" />
+    <!--#endif-->
+    <!--#if (useSerilog)-->
+    <PackageReference Include="Uno.Extensions.Logging.Serilog" />
+    <!--#endif-->
+    <!--#if (useHttp)-->
+    <PackageReference Include="Uno.Extensions.Serialization.Http" />
+    <PackageReference Include="Uno.Extensions.Serialization.Refit" />
+    <!--#endif-->
+    <!--#if (useMaterial)-->
+    <PackageReference Include="Uno.Material.WinUI" />
+    <!--#if (useToolkit)-->
+    <PackageReference Include="Uno.Toolkit.WinUI.Material" />
+    <!--#endif-->
+    <!--#elif (useCupertino)-->
+    <PackageReference Include="Uno.Cupertino.WinUI" />
+    <!--#endif-->
+    <!--#if (useToolkit)-->
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Toolkit.WinUI.Markup" />
+    <!--#else-->
+    <PackageReference Include="Uno.Toolkit.WinUI" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.WinUI" />
+    <!--#if (useOidcAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" />
+    <!--#endif-->
+    <!--#if (useMsalAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useDependencyInjection)-->
+    <PackageReference Include="Uno.Extensions.Hosting.WinUI" />
+    <!--#endif-->
+    <!--#if (useLocalization)-->
+    <PackageReference Include="Uno.Extensions.Localization.WinUI" />
+    <!--#endif-->
+    <!--#if (useExtensionsNavigation)-->
+    <!--#if (useNavigationToolkit)-->
+    <PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" />
+    <!--#endif-->
+    <PackageReference Include="Uno.Extensions.Navigation.WinUI" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useMvux)-->
+    <PackageReference Include="Uno.Extensions.Reactive.WinUI" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" />
+    <!--#endif-->
+    <!--#endif-->
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    <PackageReference Include="Uno.Extensions.Logging.OSLog" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
+    <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
+    <!--#if (useMauiPackageReference)-->
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+    <!--#endif -->
+  </ItemGroup>
+  <!--#else-->
+  <ItemGroup>
+    <PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
+    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
+    <!--#if (useMaterial)-->
+    <PackageReference Include="Uno.Material.WinUI.Markup" Version="$UnoThemesVersion$" />
+    <!--#endif-->
+    <PackageReference Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
+    <!--#endif-->
+    <!--#if (useMvvm) -->
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <!--#endif -->
+    <!--#if (useConfiguration)-->
+    <PackageReference Include="Uno.Extensions.Configuration" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useHttp)-->
+    <PackageReference Include="Uno.Extensions.Http" Version="$UnoExtensionsVersion$" />
+    <PackageReference Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useLogging)-->
+    <PackageReference Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useSerilog)-->
+    <PackageReference Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useHttp)-->
+    <PackageReference Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
+    <PackageReference Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useMaterial)-->
+    <PackageReference Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
+    <!--#if (useToolkit)-->
+    <PackageReference Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
+    <!--#endif-->
+    <!--#elif (useCupertino)-->
+    <PackageReference Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
+    <!--#endif-->
+    <!--#if (useToolkit)-->
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
+    <!--#else-->
+    <PackageReference Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#if (useOidcAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useMsalAuthentication)-->
+    <PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useDependencyInjection)-->
+    <PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useLocalization)-->
+    <PackageReference Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useExtensionsNavigation)-->
+    <!--#if (useNavigationToolkit)-->
+    <PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#endif-->
+    <!--#if (useMvux)-->
+    <PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#if (useCsharpMarkup)-->
+    <PackageReference Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#endif-->
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
+    <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+    <!--#if (useMauiPackageReference)-->
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif -->
+  </ItemGroup>
+  <!--#endif-->
+  <Choose>
+    <!--#if (useAndroid)-->
+    <When Condition="$(IsAndroid)">
+      <ItemGroup>
+        <!--#if (mauiEmbedding)-->
+        <PackageReference Include="Xamarin.Google.Android.Material" VersionOverride="$(AndroidMaterialVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.UI" VersionOverride="$(AndroidXNavigationVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
+        <!--#endif-->
+
+        <!--#if (useCPM)-->
+        <!--#if (useAndroidMaterial)-->
+        <PackageReference Include="Xamarin.Google.Android.Material" />
+        <!--#endif-->
+        <PackageReference Include="Uno.UniversalImageLoader" />
+        <!--#else-->
+        <!--#if (useAndroidMaterial)-->
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
+        <!--#endif-->
+        <PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
+        <!--#endif-->
+      </ItemGroup>
+      <ItemGroup>
+        <AndroidEnvironment Include="Android/environment.conf" />
+      </ItemGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useIOS)-->
+    <When Condition="$(IsIOS)">
+      <PropertyGroup>
+        <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
+        <!-- See https://github.com/unoplatform/uno/issues/9430 for more details. -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static</MtouchExtraArgs>
+        <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">iossimulator-x64</RuntimeIdentifier>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useMacCatalyst)-->
+    <When Condition="$(IsMacCatalyst)">
+      <PropertyGroup>
+        <!-- Configure the GC -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
+        <!-- Required for unknown crash as of .NET 6 Mobile Preview 13 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static</MtouchExtraArgs>
+        <!-- Full globalization is required for Uno -->
+        <InvariantGlobalization>false</InvariantGlobalization>
+        <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">maccatalyst-x64</RuntimeIdentifier>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useMacOS)-->
+    <When Condition="$(IsMac)">
+      <PropertyGroup>
+        <TrimMode Condition="'$(Configuration)'=='Release'">link</TrimMode>
+        <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">osx-x64</RuntimeIdentifier>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+  </Choose>
+  <ItemGroup>
+    <ProjectReference Include="..\MyExtensionsApp._1\MyExtensionsApp._1.csproj" />
+    <!--#if (useHttp)-->
+    <ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
+    <!--#endif-->
+  </ItemGroup>
+  <Import Project="..\MyExtensionsApp._1.Base\base.props" />
 </Project>

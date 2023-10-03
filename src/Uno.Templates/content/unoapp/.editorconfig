@@ -13,6 +13,7 @@ indent_style = space
 end_of_line = CRLF
 trim_trailing_whitespace = true
 insert_final_newline = true
+charset = utf-8
 
 ##########################################
 # File Extension Settings
@@ -36,6 +37,7 @@ indent_size = 2
 
 [*.xaml]
 indent_size = 2
+charset = utf-8-bom
 
 [*.plist]
 indent_size = 2

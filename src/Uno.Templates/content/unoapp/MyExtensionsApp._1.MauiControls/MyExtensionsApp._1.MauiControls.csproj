@@ -1,67 +1,67 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<!--#if (useWinAppSdk) -->
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
-		<!--#else -->
-		<TargetFrameworks>$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
-		<!--#endif -->
-		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+  <PropertyGroup>
+    <!--#if (useWinAppSdk) -->
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
+    <!--#else -->
+    <TargetFrameworks>$libraryBaseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
+    <!--#endif -->
+    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
 
-		<UseMaui>true</UseMaui>
-		<SingleProject>true</SingleProject>
-	</PropertyGroup>
-	<!--#if (unoMauiClassLibrary)-->
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+  </PropertyGroup>
+  <!--#if (unoMauiClassLibrary)-->
 
-	<Choose>
-		<!--#if (useAndroid)-->
-		<When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-			<PropertyGroup>
-				<SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useiOS)-->
-		<When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-			<PropertyGroup>
-				<SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useMacCatalyst)-->
-		<When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-			<PropertyGroup>
-				<SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-		<!--#if (useWinAppSdk)-->
-		<When Condition="$(TargetFramework.Contains('windows10'))">
-			<PropertyGroup>
-				<SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
-				<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-				<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-				<EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
-			</PropertyGroup>
-		</When>
-		<!--#endif-->
-	</Choose>
-	<!--#endif-->
-	<!--#if (useMauiPackageReference)-->
+  <Choose>
+    <!--#if (useAndroid)-->
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+      <PropertyGroup>
+        <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useiOS)-->
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+      <PropertyGroup>
+        <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useMacCatalyst)-->
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
+      <PropertyGroup>
+        <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+    <!--#if (useWinAppSdk)-->
+    <When Condition="$(TargetFramework.Contains('windows10'))">
+      <PropertyGroup>
+        <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+        <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+        <EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
+      </PropertyGroup>
+    </When>
+    <!--#endif-->
+  </Choose>
+  <!--#endif-->
+  <!--#if (useMauiPackageReference)-->
 
-	<ItemGroup>
-		<!--#if (useCPM)-->
-		<PackageReference Include="Microsoft.Maui.Controls" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-		<!--#elif (useStandaloneCPM)-->
-		<PackageReference Include="Microsoft.Maui.Controls" VersionOverride="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" VersionOverride="$(MauiVersion)" />
-		<!--#else -->
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<!--#endif -->
-	</ItemGroup>
-	<!--#endif -->
+  <ItemGroup>
+    <!--#if (useCPM)-->
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+    <!--#elif (useStandaloneCPM)-->
+    <PackageReference Include="Microsoft.Maui.Controls" VersionOverride="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" VersionOverride="$(MauiVersion)" />
+    <!--#else -->
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif -->
+  </ItemGroup>
+  <!--#endif -->
 
 </Project>
