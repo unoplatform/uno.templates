@@ -3,7 +3,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:local="using:MyExtensionsApp._1"$toolkitNamespace$$materialNamespace$$mauiNamespaces$
   Background="{ThemeResource $themeBackgroundBrush$}">
-  <StackPanel HorizontalAlignment="Center"
+  <StackPanel$toolkitSafeArea$
+        HorizontalAlignment="Center"
         VerticalAlignment="Center">
     <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
           Text="Hello Uno Platform"

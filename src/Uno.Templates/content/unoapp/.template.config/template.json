@@ -1526,7 +1526,7 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useMaterial)",
+            "condition": "(appThemeEvaluator == 'material')",
             "value": "\n\txmlns:um=\"using:Uno.Material\""
           },
           {
@@ -1545,7 +1545,7 @@
         "cases": [
           {
             "condition": "(useToolkit)",
-            "value": " utu:SafeArea.Insets=\"All\""
+            "value": " utu:SafeArea.Insets=\"VisibleBounds\""
           },
           {
             "condition": "(!useToolkit)",
