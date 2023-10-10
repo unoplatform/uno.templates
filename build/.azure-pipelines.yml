@@ -17,7 +17,7 @@ variables:
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
 
 stages:
-- stage: Packaging
+- stage: Build
   jobs:
   - job: Packages
 
@@ -61,13 +61,13 @@ stages:
         ArtifactType: Container
 
 - stage: Template_validations
-  dependsOn: Packaging
+  dependsOn: Build
   jobs:
   - template: .azure-pipelines.TemplateValidation.yml
 
 - stage: Prepare
   condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
-  dependsOn: Packaging
+  dependsOn: Build
   jobs:
   - job: Sign
   
