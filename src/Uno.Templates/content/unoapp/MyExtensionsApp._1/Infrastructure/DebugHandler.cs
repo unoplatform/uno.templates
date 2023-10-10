@@ -34,7 +34,7 @@ internal sealed class DebugHttpHandler : DelegatingHandler
             {
                 _logger.LogDebugMessage($"{request.RequestUri} ({request.Method})");
             }
-            
+
             foreach ((var key, var values) in request.Headers.ToDictionary(x => x.Key, x => string.Join(", ", x.Value)))
             {
                 _logger.LogDebugMessage($"{key}: {values}");
