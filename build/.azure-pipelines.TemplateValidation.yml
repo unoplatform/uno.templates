@@ -1,6 +1,5 @@
 jobs:
 - job: Packages_Validation
-  dependsOn: Packages
 
   pool:
     vmImage: 'windows-2022'
