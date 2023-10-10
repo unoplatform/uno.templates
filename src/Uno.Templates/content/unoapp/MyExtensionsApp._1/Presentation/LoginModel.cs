@@ -25,7 +25,7 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 //-:cnd:noEmit
         if (success)
         {
-            await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, token);
+            await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: token);
         }
     }
 }
