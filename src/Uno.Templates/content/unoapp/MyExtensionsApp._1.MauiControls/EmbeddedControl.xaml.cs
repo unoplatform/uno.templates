@@ -10,7 +10,7 @@ public partial class EmbeddedControl : ContentView
 
 //+:cnd:noEmit
 #if (!useMvvmOrMvux)
-    private int count=0;
+    private int count;
     public void CounterClicked(object sender, EventArgs e)
     {
         CounterButton.Text = ++count switch
