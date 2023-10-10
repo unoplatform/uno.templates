@@ -65,7 +65,7 @@ public sealed class WeatherCache : IWeatherCache
     private static async ValueTask<StorageFile> GetFile(CreationCollisionOption option) =>
         await ApplicationData.Current.TemporaryFolder.CreateFileAsync("weather.json", option);
 
-    private async ValueTask<string?> GetCachedWeather()
+    private static async ValueTask<string?> GetCachedWeather()
     {
         var file = await GetFile(CreationCollisionOption.OpenIfExists);
         var properties = await file.GetBasicPropertiesAsync();
@@ -84,6 +84,6 @@ public sealed class WeatherCache : IWeatherCache
     {
         var weatherText = _serializer.ToString(weather);
         var file = await GetFile(CreationCollisionOption.ReplaceExisting);
-        await File.WriteAllTextAsync(file.Path, weatherText);
+        await File.WriteAllTextAsync(file.Path, weatherText, token);
     }
 }
