@@ -14,13 +14,13 @@ public sealed class AppResources : ResourceDictionary
 #if useToolkit
         // Load Uno.UI.Toolkit and Material Resources
         this.Build(r => r.Merged(
-            new  MaterialToolkitTheme(
+            new MaterialToolkitTheme(
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #else
         // Load Uno.UI.Toolkit and Material Resources
         this.Build(r => r.Merged(
-            new  MaterialTheme(
+            new MaterialTheme(
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #endif
