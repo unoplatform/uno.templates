@@ -1,4 +1,6 @@
 //-:cnd:noEmit
+using System.Globalization;
+
 namespace MyExtensionsApp._1;
 
 //+:cnd:noEmit
@@ -123,7 +125,7 @@ public class App : Application
                         credentials ??= new Dictionary<string, string>();
                         credentials[TokenCacheExtensions.AccessTokenKey] = "SampleToken";
                         credentials[TokenCacheExtensions.RefreshTokenKey] = "RefreshToken";
-                        credentials["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+                        credentials["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g", DateTimeFormatInfo.InvariantInfo);
                         return ValueTask.FromResult<IDictionary<string, string>?>(credentials);
                     }
 
@@ -142,7 +144,7 @@ public class App : Application
                         // Return IDictionary containing any tokens used by service calls or in the app
                         tokenDictionary ??= new Dictionary<string, string>();
                         tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
-                        tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
+                        tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g", DateTimeFormatInfo.InvariantInfo);
                         return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
                     }
 
