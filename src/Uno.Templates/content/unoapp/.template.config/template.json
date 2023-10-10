@@ -406,6 +406,13 @@
       "type": "parameter",
       "datatype": "bool"
     },
+    "analyzers": {
+      "displayName": "Analyzers",
+      "description": "Enable C# analyzers",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
     "configuration": {
       "displayName": "Configuration",
       "description": "Load configuration information from appsettings.json",

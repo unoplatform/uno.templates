@@ -53,6 +53,10 @@
       "longName": "dependency-injection",
       "shortName": "di"
     },
+    "analyzers": {
+      "longName": "analyzers",
+      "shortName": "analyzers"
+    },
     "configuration": {
       "longName": "configuration",
       "shortName": "config"

@@ -52,6 +52,13 @@
     <AndroidMaterialVersion  Condition=" '$(AndroidMaterialVersion)' == '' ">1.9.0.2</AndroidMaterialVersion>
     <AndroidXNavigationVersion  Condition=" '$(AndroidXNavigationVersion)' == '' ">2.6.0.1</AndroidXNavigationVersion>
     <!--#endif-->
+    <!--#if (analyzers)-->
+
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!--#endif-->
   </PropertyGroup>
 
   <Choose>
