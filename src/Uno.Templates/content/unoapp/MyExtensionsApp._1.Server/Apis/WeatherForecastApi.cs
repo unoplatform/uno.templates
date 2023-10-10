@@ -41,7 +41,6 @@ internal static class WeatherForecastApi
         {
             logger.LogInformation("Weather forecast for {Date} is a {Summary} {TemperatureC}°C", x.Date, x.Summary, x.TemperatureC);
             return x;
-        })
-        .ToArray();
+        });
     }
 }
