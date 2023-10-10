@@ -66,18 +66,21 @@ steps:
     MergeBranch: false
 
 - powershell: |
+    cd UnoApp1
+    & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
+  displayName: Restore workloads
+
+- powershell: |
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
       cd UnoApp1
 
-      & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
       & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
       }
-      cd ..
 
   displayName: Build template app
 
