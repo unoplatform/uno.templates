@@ -58,6 +58,10 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>Recommended</AnalysisMode>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- CA1010: Type 'MainPage' directly or indirectly inherits 'IEnumerable' without implementing 'IEnumerable<T>' -->
+    <!-- CA1848: For improved performance, use the LoggerMessage delegates -->
+    <NoWarn>$(NoWarn);CA1010;CA1848</NoWarn>
     <!--#endif-->
   </PropertyGroup>
 

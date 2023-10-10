@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>$baseTargetFramework$</TargetFramework>
+    <!--#if (analyzers)-->
+
+    <!-- CA1707: Remove the underscores from type name -->
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
+    <!--#endif-->
+
   </PropertyGroup>
 
   <ItemGroup>

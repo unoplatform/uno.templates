@@ -23,7 +23,7 @@ public sealed class WeatherCache : IWeatherCache
     }
 #endif
 
-    private bool IsConnected => NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+    private static bool IsConnected => NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
     public async ValueTask<IImmutableList<WeatherForecast>> GetForecast(CancellationToken token)
     {
@@ -38,7 +38,7 @@ public sealed class WeatherCache : IWeatherCache
 #if (useLogging)
             _logger.LogWarning("App is offline and cannot connect to the API.");
 #endif
-            throw new Exception("No internet connection");
+            throw new InvalidOperationException("No internet connection");
         }
 
         var response = await _api.GetWeather(token);
@@ -62,7 +62,7 @@ public sealed class WeatherCache : IWeatherCache
         }
     }
 
-    private async ValueTask<StorageFile> GetFile(CreationCollisionOption option) =>
+    private static async ValueTask<StorageFile> GetFile(CreationCollisionOption option) =>
         await ApplicationData.Current.TemporaryFolder.CreateFileAsync("weather.json", option);
 
     private async ValueTask<string?> GetCachedWeather()
