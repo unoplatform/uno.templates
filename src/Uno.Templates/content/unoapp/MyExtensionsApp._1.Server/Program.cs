@@ -1,4 +1,7 @@
 //+:cnd:noEmit
+#if (useSerilog)
+using System.Globalization;
+#endif
 #if (useHttp)
 using System.Text.Json.Serialization.Metadata;
 #endif
@@ -16,8 +19,8 @@ try
 {
 #if (useSerilog)
     Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .WriteTo.File(Path.Combine("App_Data", "Logs", "log.txt"))
+            .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
+            .WriteTo.File(Path.Combine("App_Data", "Logs", "log.txt"), formatProvider: CultureInfo.InvariantCulture)
             .CreateLogger();
 #endif
     var builder = WebApplication.CreateBuilder(args);
