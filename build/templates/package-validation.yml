@@ -24,7 +24,7 @@ steps:
     Write-Host "WorkloadRestore = $workloadRestore"
     Write-Output "##vso[task.setvariable variable=WorkloadRestore]$workloadRestore"
   displayName: Evaluate Template Args
-  condition: and(succeeded(), eq('${{ parameters.arguments }}', 'PLACEHOLDER'))
+  condition: and(succeeded(), ne('${{ parameters.arguments }}', 'PLACEHOLDER'))
 
 - template: dotnet-install-windows.yml
   parameters:
