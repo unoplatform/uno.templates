@@ -6,71 +6,65 @@ jobs:
 
   strategy:
     matrix:
-      DefaultArguments:
-        templateArgs: ''
-      Blank:
-        templateArgs: '-preset blank'
-      SkiaOnlyHeads:
-        templateArgs: '-platforms gtk wpf linux-fb'
-      MobileOnlyHeads:
-        templateArgs: '-platforms android ios maccatalyst'
-      BlankMarkup:
-        templateArgs: '-preset blank -markup csharp'
-      BlankNoCpm:
-        templateArgs: '-preset blank --cpm false'
-      MVVM:
-        templateArgs: '-presentation mvvm'
-      NoCentralPackageManagement:
-        templateArgs: '--cpm false'
-      CSharpMarkup:
-        templateArgs: '-markup csharp'
-      NoHosting:
-        templateArgs: '-di false'
-      HostingOnly:
-        templateArgs: '-config false -loc false -http false -log none --navigation blank'
-      NoConfiguration:
-        templateArgs: '-config false'
-      NoLocalization:
-        templateArgs: '-loc false'
-      NoHttp:
-        templateArgs: '-http false'
-      NoSerilog:
-        templateArgs: '-log default'
-      NoServer:
-        templateArgs: '-server false'
-      NoServerNoHttp:
-        templateArgs: '-server false -http false'
-      NoTests:
-        templateArgs: '-tests none'
-      FrameNavigation:
-        templateArgs: '--navigation blank'
-      Net8:
-        templateArgs: '-tfm net8.0'
+      DefaultArguments_And_Blank:
+        templateArgs1: ''
+        templateArgs2: '-preset blank'
+
+      SkiaOnlyHeads_And_MobileOnlyHeads:
+        templateArgs1: '-platforms gtk wpf linux-fb'
+        templateArgs2: '-platforms android ios maccatalyst'
+
+      BlankMarkup_And_BlankNoCpm:
+        templateArgs1: '-preset blank -markup csharp'
+        templateArgs2: '-preset blank --cpm false'
+      MVVM_And_NoCentralPackageManagement:
+        templateArgs1: '-presentation mvvm'
+        templateArgs2: '--cpm false'
+      CSharpMarkup_And_NoHosting:
+        templateArgs1: '-markup csharp'
+        templateArgs2: '-di false'
+      HostingOnly_And_NoConfiguration:
+        templateArgs1: '-config false -loc false -http false -log none --navigation blank'
+        templateArgs2: '-config false'
+      NoLocalization_And_NoHttp:
+        templateArgs1: '-loc false'
+        templateArgs2: '-http false'
+      NoSerilog_And_NoServer:
+        templateArgs1: '-log default'
+        templateArgs2: '-server false'
+      NoServerNoHttp_And_NoTests:
+        templateArgs1: '-server false -http false'
+        templateArgs2: '-tests none'
+      FrameNavigation_And_Net8:
+        templateArgs1: '--navigation blank'
+        templateArgs2: '-tfm net8.0'
       # https://github.com/unoplatform/uno.templates/issues/22
-      Issue22:
-        templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
-      CustomAuthMvux:
-        templateArgs: '-preset=recommended -auth=custom'
-      CustomAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
-      WebAuthMvux:
-        templateArgs: '-preset=recommended -auth=web'
-      WebAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=web'
-      OidcAuthMvux:
-        templateArgs: '-preset=recommended -auth=oidc'
-      OidcAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
-      MsalAuthMvux:
-        templateArgs: '-preset=recommended -auth=msal'
-      MsalAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
-      MauiBlank:
-       templateArgs: '-preset=blank -maui'
-      MauiRecommended:
-       templateArgs: '-preset=recommended -maui'
-      MauiRecommendedNet8:
-       templateArgs: '-preset=recommended -maui -tfm net8.0'
+      Issue22_And_CustomAuthMvux:
+        templateArgs1: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
+        templateArgs2: '-preset=recommended -auth=custom'
+      CustomAuthMvvm_And_WebAuthMvux:
+        templateArgs1: '-preset=recommended -presentation mvvm -auth=custom'
+        templateArgs2: '-preset=recommended -auth=web'
+      WebAuthMvvm_And_OidcAuthMvux:
+        templateArgs1: '-preset=recommended -presentation mvvm -auth=web'
+        templateArgs2: '-preset=recommended -auth=oidc'
+      OidcAuthMvvm_And_MsalAuthMvux:
+        templateArgs1: '-preset=recommended -presentation mvvm -auth=oidc'
+        templateArgs2: '-preset=recommended -auth=msal'
+      MsalAuthMvvm_And_MauiBlank:
+        templateArgs1: '-preset=recommended -presentation mvvm -auth=msal'
+        templateArgs2: '-preset=blank -maui'
+      MauiRecommended_And_MauiRecommendedNet8:
+        templateArgs1: '-preset=recommended -maui'
+        templateArgs2: '-preset=recommended -maui -tfm net8.0'
+      # We run two validations per CI machine.
+      # When adding a new validation:
+      # - If it makes the number of validations odds:
+      #    - Add the new validation to templateArgs1, and use the value PLACEHOLDER for templateArgs2
+      #    - Note that the value PLACEHOLDER is special cased below to not actually run.
+      # - If it makes the number of validations even:
+      #    - There should already be an existing templateArgs2 with value PLACEHOLDER
+      #    - So, replace the PLACEHOLDER with the arguments to test.
 
   variables:
     - name: UseDotNetNativeToolchain
@@ -79,4 +73,12 @@ jobs:
   steps:
   - template: templates/package-validation.yml
     parameters:
-      arguments: $(templateArgs)
+      arguments: $(templateArgs1)
+      projectName: 'UnoApp1'
+
+  - template: templates/package-validation.yml
+    parameters:
+      arguments: $(templateArgs2)
+      projectName: 'UnoApp2'
+    condition: and(succeeded(), eq(variables.templateArgs2, 'PLACEHOLDER'))
+
