@@ -12,6 +12,7 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
+    Write-Output "##vso[task.setvariable variable=TemplateArgs]$templateArgs"
   displayName: Evaluate Template Args
 
 - powershell: |
