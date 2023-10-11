@@ -45,5 +45,5 @@ steps:
           throw "Exit code must be zero."
       }
 
-  condition: and(succeeded(), ne('${{ parameters.arguments }}', 'PLACEHOLDER'))
+  condition: and(succeeded(), ne(variables['TemplateArgs'], 'PLACEHOLDER'))
   displayName: Build template app
