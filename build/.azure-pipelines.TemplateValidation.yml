@@ -61,7 +61,7 @@ jobs:
       # When adding a new validation:
       # - If it makes the number of validations odds:
       #    - Add the new validation to templateArgs1, and use the value PLACEHOLDER for templateArgs2
-      #    - Note that the value PLACEHOLDER is special cased below to not actually run.
+      #    - Note that the value PLACEHOLDER is special cased to not actually run.
       # - If it makes the number of validations even:
       #    - There should already be an existing templateArgs2 with value PLACEHOLDER
       #    - So, replace the PLACEHOLDER with the arguments to test.
@@ -71,6 +71,18 @@ jobs:
       value: false
 
   steps:
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      artifactName: $(Build.DefinitionName)
+
+  - script: |
+        md $(Build.SourcesDirectory)\src\PackageCache
+        copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
+    displayName: Copy Artifacts to PackageCache
+
+  - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
+    displayName: Install Project Templates
+
   - template: templates/package-validation.yml
     parameters:
       arguments: $(templateArgs1)
@@ -80,5 +92,11 @@ jobs:
     parameters:
       arguments: $(templateArgs2)
       projectName: 'UnoApp2'
-    condition: and(succeeded(), eq(variables.templateArgs2, 'PLACEHOLDER'))
 
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: logs
+      ArtifactType: Container
