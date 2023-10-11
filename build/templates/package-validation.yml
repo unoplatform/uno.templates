@@ -8,47 +8,8 @@ parameters:
   default: ''
 
 steps:
-- checkout: self
-  clean: 'true'
 
 - powershell: |
-    $templateArgs = '${{ parameters.templateArgs }}'
-    Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.400'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json'
-
-    if ($templateArgs.Contains('net8')) {
-      $dotnetVersion = '8.0.100-rc.1.23463.5'
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json'
-    }
-
-    Write-Host "DotNetVersion = $dotnetVersion"
-    Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
-    Write-Host "WorkloadRestore = $workloadRestore"
-    Write-Output "##vso[task.setvariable variable=WorkloadRestore]$workloadRestore"
-  displayName: Evaluate Template Args
-
-- template: dotnet-install-windows.yml
-  parameters:
-    DotNetVersion: $(DotNetVersion)
-
-- task: DownloadBuildArtifacts@0
-  inputs:
-    artifactName: $(Build.DefinitionName)
-
-- script: |
-      md $(Build.SourcesDirectory)\src\PackageCache
-      copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
-  displayName: Copy Artifacts to PackageCache
-
-- script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
-  displayName: Install Project Templates
-
-- powershell: |
-      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
-      dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-      dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
-      dotnet nuget add source -n ApiLocal "https://api.nuget.org/v3/index.json"
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
@@ -59,16 +20,11 @@ steps:
           throw "Exit code must be zero."
       }
 
-  displayName: Create template app
+  displayName: Create template app ${{ parameters.projectName }}
 
 - template: canary-updater.yml
   parameters:
     MergeBranch: false
-
-- powershell: |
-    cd ${{ parameters.projectName }}
-    & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
-  displayName: Restore workloads
 
 - powershell: |
       Set-PSDebug -Trace 1
@@ -76,18 +32,10 @@ steps:
 
       cd ${{ parameters.projectName }}
 
-      & dotnet build ${{ parameters.projectName }}.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
+      & dotnet build ${{ parameters.projectName }}.sln "/bl:$(build.artifactstagingdirectory)\${{ parameters.projectName }}.binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
       }
 
-  displayName: Build template app
-
-- task: PublishBuildArtifacts@1
-  condition: always()
-  retryCountOnTaskFailure: 3
-  inputs:
-    PathtoPublish: $(build.artifactstagingdirectory)
-    ArtifactName: logs
-    ArtifactType: Container
+  displayName: Build template app ${{ parameters.projectName }}
