@@ -25,7 +25,7 @@ steps:
           throw "Exit code must be zero."
       }
 
-  condition: and(succeeded(), ne(variables['TemplateArgs'], 'PLACEHOLDER'))
+  condition: and(succeeded(), ne('$(TemplateArgs)', 'PLACEHOLDER'))
   displayName: Create template app
 
 - template: canary-updater.yml
