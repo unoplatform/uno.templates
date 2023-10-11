@@ -10,11 +10,11 @@ jobs:
 
   steps:
 
-  - template: dotnet-install-windows.yml
+  - template: templates/dotnet-install-windows.yml
     parameters:
       DotNetVersion: '7.0.400'
 
-  - template: dotnet-install-windows.yml
+  - template: templates/dotnet-install-windows.yml
     parameters:
       DotNetVersion: '8.0.100-rc.1.23463.5'
 
