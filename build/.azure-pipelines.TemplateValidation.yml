@@ -71,6 +71,8 @@ jobs:
       value: false
 
   steps:
+  - checkout: none
+
   - task: DownloadBuildArtifacts@0
     inputs:
       artifactName: $(Build.DefinitionName)

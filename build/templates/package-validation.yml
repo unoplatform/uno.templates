@@ -8,8 +8,6 @@ parameters:
   default: ''
 
 steps:
-- checkout: none
-
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
