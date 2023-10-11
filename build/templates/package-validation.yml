@@ -66,13 +66,14 @@ steps:
     & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
   displayName: Restore workloads
 
+# Enabling hard links should result in faster builds. See https://github.com/dotnet/msbuild/issues/3788
 - powershell: |
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
       cd UnoApp1
 
-      & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
+      & dotnet build UnoApp1.sln -p:CreateHardLinksForCopyFilesToOutputDirectoryIfPossible=true -p:CreateHardLinksForCopyAdditionalFilesIfPossible=true -p:CreateHardLinksForCopyLocalIfPossible=true -p:CreateHardLinksForPublishFilesIfPossible=true "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
