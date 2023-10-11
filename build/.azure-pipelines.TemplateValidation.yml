@@ -158,9 +158,15 @@ jobs:
     parameters:
       arguments: $(templateArgs1)
       projectName: 'UnoApp1'
+      net7_workloads: $(net7_workloads)
+      net8_workloads: $(net8_workloads)
+      install_net7: $(install_net7)
+      install_net8: $(install_net8)
 
   - template: templates/package-validation.yml
     parameters:
+      # Intentionally not passing net7_workloads, net8_workloads, install_net7, and install_net8 values here.
+      # These are supposed to be installed once and is done in the previous step.
       arguments: $(templateArgs2)
       projectName: 'UnoApp2'
 
