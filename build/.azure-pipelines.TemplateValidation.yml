@@ -154,19 +154,35 @@ jobs:
     # TODO: Maybe we shouldn't add these feeds for non-canary builds.
     displayName: Add NuGet feeds
 
+  - task: UseDotNet@2
+    displayName: 'Use .NET 7 SDK'
+    inputs:
+      version: '7.0.400'
+    condition: and(succeeded(), eq(variables['install_net7'], 'true'))
+
+  - task: UseDotNet@2
+    displayName: 'Use .NET 8 SDK'
+    inputs:
+      version: '8.0.100-rc.1.23463.5'
+    condition: and(succeeded(), eq(variables['install_net8'], 'true'))
+
+  - powershell: |
+      & dotnet workload install $(net7_workloads) --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json --skip-sign-check
+    condition: and(succeeded(), ne(variables['net7_workloads'], ''))
+    displayName: Install .NET 7 workloads
+
+  - powershell: |
+      & dotnet workload install $(net8_workloads) --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json --skip-sign-check
+    condition: and(succeeded(), ne(variables['net8_workloads'], ''))
+    displayName: Install .NET 8 workloads
+
   - template: templates/package-validation.yml
     parameters:
       arguments: $(templateArgs1)
       projectName: 'UnoApp1'
-      net7_workloads: $(net7_workloads)
-      net8_workloads: $(net8_workloads)
-      install_net7: $(install_net7)
-      install_net8: $(install_net8)
 
   - template: templates/package-validation.yml
     parameters:
-      # Intentionally not passing net7_workloads, net8_workloads, install_net7, and install_net8 values here.
-      # These are supposed to be installed once and is done in the previous step.
       arguments: $(templateArgs2)
       projectName: 'UnoApp2'
 
