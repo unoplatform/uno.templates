@@ -9,54 +9,116 @@ jobs:
       DefaultArguments_And_Blank:
         templateArgs1: ''
         templateArgs2: '-preset blank'
-
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       SkiaOnlyHeads_And_MobileOnlyHeads:
         templateArgs1: '-platforms gtk wpf linux-fb'
         templateArgs2: '-platforms android ios maccatalyst'
-
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       BlankMarkup_And_BlankNoCpm:
         templateArgs1: '-preset blank -markup csharp'
         templateArgs2: '-preset blank --cpm false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       MVVM_And_NoCentralPackageManagement:
         templateArgs1: '-presentation mvvm'
         templateArgs2: '--cpm false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       CSharpMarkup_And_NoHosting:
         templateArgs1: '-markup csharp'
         templateArgs2: '-di false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       HostingOnly_And_NoConfiguration:
         templateArgs1: '-config false -loc false -http false -log none --navigation blank'
         templateArgs2: '-config false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       NoLocalization_And_NoHttp:
         templateArgs1: '-loc false'
         templateArgs2: '-http false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       NoSerilog_And_NoServer:
         templateArgs1: '-log default'
         templateArgs2: '-server false'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       NoServerNoHttp_And_NoTests:
         templateArgs1: '-server false -http false'
         templateArgs2: '-tests none'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       FrameNavigation_And_Net8:
         templateArgs1: '--navigation blank'
         templateArgs2: '-tfm net8.0'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: 'android ios maccatalyst'
+        install_net7: true
+        install_net8: true
       # https://github.com/unoplatform/uno.templates/issues/22
       Issue22_And_CustomAuthMvux:
         templateArgs1: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
         templateArgs2: '-preset=recommended -auth=custom'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       CustomAuthMvvm_And_WebAuthMvux:
         templateArgs1: '-preset=recommended -presentation mvvm -auth=custom'
         templateArgs2: '-preset=recommended -auth=web'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       WebAuthMvvm_And_OidcAuthMvux:
         templateArgs1: '-preset=recommended -presentation mvvm -auth=web'
         templateArgs2: '-preset=recommended -auth=oidc'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       OidcAuthMvvm_And_MsalAuthMvux:
         templateArgs1: '-preset=recommended -presentation mvvm -auth=oidc'
         templateArgs2: '-preset=recommended -auth=msal'
+        net7_workloads: 'android ios maccatalyst'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       MsalAuthMvvm_And_MauiBlank:
         templateArgs1: '-preset=recommended -presentation mvvm -auth=msal'
         templateArgs2: '-preset=blank -maui'
+        net7_workloads: 'android ios maccatalyst maui'
+        net8_workloads: ''
+        install_net7: true
+        install_net8: false
       MauiRecommended_And_MauiRecommendedNet8:
         templateArgs1: '-preset=recommended -maui'
         templateArgs2: '-preset=recommended -maui -tfm net8.0'
+        net7_workloads: 'android ios maccatalyst maui'
+        net8_workloads: 'android ios maccatalyst maui'
+        install_net7: true
+        install_net8: true
       # We run two validations per CI machine.
       # When adding a new validation:
       # - If it makes the number of validations odds:
@@ -84,6 +146,13 @@ jobs:
 
   - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
     displayName: Install Project Templates
+
+  - powershell: |
+        dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
+        dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
+        dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
+    # TODO: Maybe we shouldn't add these feeds for non-canary builds.
+    displayName: Add NuGet feeds
 
   - template: templates/package-validation.yml
     parameters:

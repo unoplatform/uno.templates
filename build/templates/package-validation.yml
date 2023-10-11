@@ -7,34 +7,47 @@ parameters:
   type: string
   default: ''
 
+- name: net7_workloads
+  type: string
+  default: ''
+
+- name: net8_workloads
+  type: string
+  default: ''
+
+- name: install_net7
+  type: boolean
+  default: false
+
+- name: install_net8
+  type: boolean
+  default: false
+
 steps:
-- powershell: |
-    $templateArgs = '${{ parameters.arguments }}'
-    Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.400'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json'
 
-    if ($templateArgs.Contains('net8')) {
-      $dotnetVersion = '8.0.100-rc.1.23463.5'
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json'
-    }
+- task: UseDotNet@2
+  displayName: 'Use .NET 7 SDK'
+  inputs:
+    version: '7.0.400'
+  condition: and(succeeded(), eq(${{ parameters.install_net7 }}, true))
 
-    Write-Host "DotNetVersion = $dotnetVersion"
-    Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
-    Write-Host "WorkloadRestore = $workloadRestore"
-    Write-Output "##vso[task.setvariable variable=WorkloadRestore]$workloadRestore"
-  displayName: Evaluate Template Args
-  condition: and(succeeded(), ne('${{ parameters.arguments }}', 'PLACEHOLDER'))
-
-- template: dotnet-install-windows.yml
-  parameters:
-    DotNetVersion: $(DotNetVersion)
+- task: UseDotNet@2
+  displayName: 'Use .NET 8 SDK'
+  inputs:
+    version: '8.0.100-rc.1.23463.5'
+  condition: and(succeeded(), eq(${{ parameters.install_net8 }}, true))
 
 - powershell: |
-      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
-      dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-      dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
-      dotnet nuget add source -n ApiLocal "https://api.nuget.org/v3/index.json"
+    & dotnet workload install ${{ parameters.net7_workloads }} --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json --skip-sign-check
+  condition: and(succeeded(), ne('${{ parameters.net7_workloads }}', ''))
+  displayName: Install .NET 7 workloads
+
+- powershell: |
+    & dotnet workload install ${{ parameters.net8_workloads }} --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json --skip-sign-check
+  condition: and(succeeded(), ne('${{ parameters.net8_workloads }}', ''))
+  displayName: Install .NET 8 workloads
+
+- powershell: |
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
@@ -50,11 +63,6 @@ steps:
 - template: canary-updater.yml
   parameters:
     MergeBranch: false
-
-- powershell: |
-    cd ${{ parameters.projectName }}
-    & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
-  displayName: Restore workloads
 
 # Enabling hard links should result in faster builds. See https://github.com/dotnet/msbuild/issues/3788
 - powershell: |
