@@ -4,74 +4,6 @@ jobs:
   pool:
     vmImage: 'windows-2022'
 
-  strategy:
-    matrix:
-      DefaultArguments:
-        templateArgs: ''
-      Blank:
-        templateArgs: '-preset blank'
-      SkiaOnlyHeads:
-        templateArgs: '-platforms gtk wpf linux-fb'
-      MobileOnlyHeads:
-        templateArgs: '-platforms android ios maccatalyst'
-      BlankMarkup:
-        templateArgs: '-preset blank -markup csharp'
-      BlankNoCpm:
-        templateArgs: '-preset blank --cpm false'
-      MVVM:
-        templateArgs: '-presentation mvvm'
-      NoCentralPackageManagement:
-        templateArgs: '--cpm false'
-      CSharpMarkup:
-        templateArgs: '-markup csharp'
-      NoHosting:
-        templateArgs: '-di false'
-      HostingOnly:
-        templateArgs: '-config false -loc false -http false -log none --navigation blank'
-      NoConfiguration:
-        templateArgs: '-config false'
-      NoLocalization:
-        templateArgs: '-loc false'
-      NoHttp:
-        templateArgs: '-http false'
-      NoSerilog:
-        templateArgs: '-log default'
-      NoServer:
-        templateArgs: '-server false'
-      NoServerNoHttp:
-        templateArgs: '-server false -http false'
-      NoTests:
-        templateArgs: '-tests none'
-      FrameNavigation:
-        templateArgs: '--navigation blank'
-      Net8:
-        templateArgs: '-tfm net8.0'
-      # https://github.com/unoplatform/uno.templates/issues/22
-      Issue22:
-        templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
-      CustomAuthMvux:
-        templateArgs: '-preset=recommended -auth=custom'
-      CustomAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
-      WebAuthMvux:
-        templateArgs: '-preset=recommended -auth=web'
-      WebAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=web'
-      OidcAuthMvux:
-        templateArgs: '-preset=recommended -auth=oidc'
-      OidcAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
-      MsalAuthMvux:
-        templateArgs: '-preset=recommended -auth=msal'
-      MsalAuthMvvm:
-        templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
-      MauiBlank:
-       templateArgs: '-preset=blank -maui'
-      MauiRecommended:
-       templateArgs: '-preset=recommended -maui'
-      MauiRecommendedNet8:
-       templateArgs: '-preset=recommended -maui -tfm net8.0'
-
   variables:
     - name: UseDotNetNativeToolchain
       value: false
@@ -79,4 +11,130 @@ jobs:
   steps:
   - template: templates/package-validation.yml
     parameters:
-      arguments: $(templateArgs)
+        templateArgs: ''
+        projectName: 'DefaultArguments'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset blank'
+        projectName: 'Blank'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-platforms gtk wpf linux-fb'
+        projectName: 'SkiaOnlyHeads'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-platforms android ios maccatalyst'
+        projectName: 'MobileOnlyHeads'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset blank -markup csharp'
+        projectName: 'BlankMarkup'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset blank --cpm false'
+        projectName: 'BlankNoCpm'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-presentation mvvm'
+        projectName: 'MVVM'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '--cpm false'
+        projectName: 'NoCentralPackageManagement'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-markup csharp'
+        projectName: 'CSharpMarkup'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-di false'
+        projectName: 'NoHosting'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-config false -loc false -http false -log none --navigation blank'
+        projectName: 'HostingOnly'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-config false'
+        projectName: 'NoConfiguration'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-loc false'
+        projectName: 'NoLocalization'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-http false'
+        projectName: 'NoHttp'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-log default'
+        projectName: 'NoSerilog'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-server false'
+        projectName: 'NoServer'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-server false -http false'
+        projectName: 'NoServerNoHttp'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-tests none'
+        projectName: 'NoTests'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '--navigation blank'
+        projectName: 'FrameNavigation'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-tfm net8.0'
+        projectName: 'Net8'
+      # https://github.com/unoplatform/uno.templates/issues/22
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
+        projectName: 'Issue22'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -auth=custom'
+        projectName: 'CustomAuthMvux'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
+        projectName: 'CustomAuthMvvm'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -auth=web'
+        projectName: 'WebAuthMvux'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=web'
+        projectName: 'WebAuthMvvm'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -auth=oidc'
+        projectName: 'OidcAuthMvux'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
+        projectName: 'OidcAuthMvvm'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -auth=msal'
+        projectName: 'MsalAuthMvux'
+  - template: templates/package-validation.yml
+    parameters:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
+        projectName: 'MsalAuthMvvm'
+  - template: templates/package-validation.yml
+    parameters:
+       templateArgs: '-preset=blank -maui'
+       projectName: 'MauiBlank'
+  - template: templates/package-validation.yml
+    parameters:
+       templateArgs: '-preset=recommended -maui'
+       projectName: 'MauiRecommended'
+  - template: templates/package-validation.yml
+    parameters:
+       templateArgs: '-preset=recommended -maui -tfm net8.0'
+       projectName: 'MauiRecommendedNet8'
