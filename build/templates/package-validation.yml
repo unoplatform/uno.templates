@@ -32,10 +32,15 @@ steps:
 
       cd ${{ parameters.projectName }}
 
-      & dotnet build ${{ parameters.projectName }}.sln "/bl:$(build.artifactstagingdirectory)\${{ parameters.projectName }}.binlog"
+      & dotnet build ${{ parameters.projectName }}.sln -p:PublishTrimmed=false "/bl:$(build.artifactstagingdirectory)\${{ parameters.projectName }}.binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
       }
 
   displayName: Build template app ${{ parameters.projectName }}
+
+- powershell: |
+      Remove-Item -Recurse -Force ${{ parameters.projectName }}
+
+  displayName: Delete project ${{ parameters.projectName }}
