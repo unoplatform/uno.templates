@@ -11,7 +11,6 @@ steps:
 
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
-    Write-Host "TemplateArgs = '$templateArgs'"
     Write-Output "##vso[task.setvariable variable=TemplateArgs]$templateArgs"
   displayName: Evaluate Template Args
 
@@ -26,7 +25,7 @@ steps:
           throw "Exit code must be zero."
       }
 
-  condition: and(succeeded(), ne('$(TemplateArgs)', 'PLACEHOLDER'))
+  condition: and(succeeded(), ne(variables['TemplateArgs'], 'PLACEHOLDER'))
   displayName: Create template app
 
 - template: canary-updater.yml
