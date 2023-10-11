@@ -38,11 +38,11 @@ jobs:
   - script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
     displayName: Install Project Templates
 
+  # Attempting to add https://api.nuget.org/v3/index.json will produce error: The source specified has already been added to the list of available package sources. Provide a unique source.
   - powershell: |
         dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
         dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
         dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
-        dotnet nuget add source -n ApiLocal "https://api.nuget.org/v3/index.json"
 
     displayName: Add NuGet sources
 
