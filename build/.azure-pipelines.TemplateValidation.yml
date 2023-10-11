@@ -4,6 +4,21 @@ jobs:
   pool:
     vmImage: 'windows-2022'
 
+  # We run two validations per CI machine.
+  # When adding a new validation:
+  # - If it makes the number of validations odds:
+  #    - Add the new validation to templateArgs1, and use the value PLACEHOLDER for templateArgs2
+  #    - Note that the value PLACEHOLDER is special cased to not actually run.
+  # - If it makes the number of validations even:
+  #    - There should already be an existing templateArgs2 with value PLACEHOLDER
+  #    - So, replace the PLACEHOLDER with the arguments to test.
+  # Notes:
+  # 1. We name the matrix elements as "TestCase1_And_TestCase2"
+  # 2. Whenever we have an odd number of cases and are using PLACEHOLDER for the second, you can name it as "TestCase1",
+  #    But whenever the PLACEHOLDER is replaced with a new test case, don't forget to rename it to "TestCase1_And_TestCase2"
+  # 3. It's always best to have a good grouping of test cases to reduce the work done in CI. For example,
+  #    always try to group net7 test cases together, and net8 test cases together (same goes for maui and non-maui), etc..
+  #    This is to reduce the amount of restore work needs to be done in a single job (running on a single CI machine).
   strategy:
     matrix:
       DefaultArguments_And_Blank:
@@ -112,21 +127,23 @@ jobs:
         net8_workloads: ''
         install_net7: true
         install_net8: false
-      MauiRecommended_And_MauiRecommendedNet8:
+      # Combining MauiRecommended and MauiRecommendedNet8 is causing build failures in CI:
+      # C:\hostedtoolcache\windows\dotnet\sdk\8.0.100-rc.1.23463.5\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets(485,5): error NETSDK1112: The runtime pack for Microsoft.Maui.Core.Runtime.android was not downloaded. Try running a NuGet restore with the RuntimeIdentifier 'android'. [D:\a\1\s\UnoApp1\UnoApp1.Mobile\UnoApp1.Mobile.csproj::TargetFramework=net7.0-android]
+      # They are split for now. When adding a new validation, try to plug it in one of these two PLACEHOLDERs
+      MauiRecommended:
         templateArgs1: '-preset=recommended -maui'
-        templateArgs2: '-preset=recommended -maui -tfm net8.0'
+        templateArgs2: 'PLACEHOLDER'
         net7_workloads: 'android ios maccatalyst maui'
-        net8_workloads: 'android ios maccatalyst maui'
+        net8_workloads: ''
         install_net7: true
+        install_net8: false
+      MauiRecommendedNet8:
+        templateArgs1: '-preset=recommended -maui -tfm net8.0'
+        templateArgs2: 'PLACEHOLDER'
+        net7_workloads: ''
+        net8_workloads: 'android ios maccatalyst maui'
+        install_net7: false
         install_net8: true
-      # We run two validations per CI machine.
-      # When adding a new validation:
-      # - If it makes the number of validations odds:
-      #    - Add the new validation to templateArgs1, and use the value PLACEHOLDER for templateArgs2
-      #    - Note that the value PLACEHOLDER is special cased to not actually run.
-      # - If it makes the number of validations even:
-      #    - There should already be an existing templateArgs2 with value PLACEHOLDER
-      #    - So, replace the PLACEHOLDER with the arguments to test.
 
   variables:
     - name: UseDotNetNativeToolchain

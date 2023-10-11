@@ -20,6 +20,7 @@ steps:
           throw "Exit code must be zero."
       }
 
+  condition: and(succeeded(), ne('${{ parameters.arguments }}', 'PLACEHOLDER'))
   displayName: Create template app
 
 - template: canary-updater.yml
@@ -39,4 +40,5 @@ steps:
           throw "Exit code must be zero."
       }
 
+  condition: and(succeeded(), ne('${{ parameters.arguments }}', 'PLACEHOLDER'))
   displayName: Build template app
