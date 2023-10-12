@@ -148,6 +148,10 @@ jobs:
   variables:
     - name: UseDotNetNativeToolchain
       value: false
+    - name: Net7_Rollback_File
+      value: 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json'
+    - name: Net8_Rollback_File
+      value: 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json'
 
   steps:
   - checkout: none
@@ -178,12 +182,12 @@ jobs:
     condition: and(succeeded(), eq(variables['install_net8'], 'true'))
 
   - powershell: |
-      & dotnet workload install $(net7_workloads) --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json --skip-sign-check
+      & dotnet workload install $(net7_workloads) --from-rollback-file $(Net7_Rollback_File) --skip-sign-check
     condition: and(succeeded(), ne(variables['net7_workloads'], ''))
     displayName: Install .NET 7 workloads
 
   - powershell: |
-      & dotnet workload install $(net8_workloads) --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.1.9171.json --skip-sign-check
+      & dotnet workload install $(net8_workloads) --from-rollback-file $(Net8_Rollback_File) --skip-sign-check
     condition: and(succeeded(), ne(variables['net8_workloads'], ''))
     displayName: Install .NET 8 workloads
 
