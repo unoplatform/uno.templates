@@ -28,10 +28,6 @@ steps:
   parameters:
     DotNetVersion: $(DotNetVersion)
 
-- template: install-windows-sdk.yml
-  parameters:
-    sdkVersion: 18362
-
 - task: DownloadBuildArtifacts@0
   inputs:
     artifactName: $(Build.DefinitionName)
