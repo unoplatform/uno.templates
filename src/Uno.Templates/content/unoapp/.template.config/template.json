@@ -600,8 +600,8 @@
       ]
     },
     "dspGenerator": {
-      "displayName": "Use the DSP Generator",
-      "description": "When enabled this will include a DSP file and the DSP Generator NuGet package",
+      "displayName": "Import DSP",
+      "description": "Import a Design System Package (DSP) to override Material colors",
       "type": "parameter",
       "datatype": "bool"
     },
