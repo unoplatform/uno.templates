@@ -1828,7 +1828,8 @@
     },
     "OS": {
       "type": "bind",
-      "binding": "OS"
+      "binding": "OS",
+      "defaultValue": "not_windows"
     },
     "osLower": {
       "type": "generated",
