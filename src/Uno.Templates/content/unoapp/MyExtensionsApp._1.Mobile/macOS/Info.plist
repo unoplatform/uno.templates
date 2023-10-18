@@ -17,7 +17,7 @@
 		<key>NSPrincipalClass</key>
 		<string>NSApplication</string>
 		<key>XSAppIconAssets</key>
-		<string>Assets.xcassets/iconapp.appiconset</string>
+		<string>Assets.xcassets/icon.appiconset</string>
 		<key>ATSApplicationFontsPath</key>
 		<string>Fonts</string>
 

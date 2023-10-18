@@ -16,8 +16,8 @@
         XamlRuntime="WinUI"
         DependentUpon="AppHead.xaml"
         Link="AppHead.xaml.cs" />
-    <UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-        ForegroundFile="$(MSBuildThisFileDirectory)Icons\appconfig.svg"
+    <UnoIcon Include="$(MSBuildThisFileDirectory)Icons\icon.svg"
+        ForegroundFile="$(MSBuildThisFileDirectory)Icons\icon_foreground.svg"
         ForegroundScale="0.65"
         Color="#00000000" />
     <UnoSplashScreen
@@ -25,8 +25,8 @@
       BaseSize="128,128"
       Color="#FFFFFF" />
     <!-- NOTE: Files explicitly linked to display in the head projects for clarity. -->
-    <None Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg" Link="Icons\iconapp.svg" />
-    <None Include="$(MSBuildThisFileDirectory)Icons\appconfig.svg" Link="Icons\appconfig.svg" />
+    <None Include="$(MSBuildThisFileDirectory)Icons\icon.svg" Link="Icons\icon.svg" />
+    <None Include="$(MSBuildThisFileDirectory)Icons\icon_foreground.svg" Link="Icons\icon_foreground.svg" />
     <None Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg" Link="Splash\splash_screen.svg" />
   </ItemGroup>
 </Project>
