@@ -41,6 +41,9 @@
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#endif-->
     <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
+    <!--#if (themeService)-->
+    <PackageVersion Include="Uno.Extensions.Core.WinUI" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
     <!--#if (useAuthentication)-->
     <PackageVersion Include="Uno.Extensions.Authentication" Version="$UnoExtensionsVersion$" />
     <PackageVersion Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />
