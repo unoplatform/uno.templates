@@ -15,7 +15,7 @@ namespace MyExtensionsApp._1.Droid;
 
 [global::Android.App.ApplicationAttribute(
     Label = "@string/ApplicationName",
-    Icon = "@mipmap/iconapp",
+    Icon = "@mipmap/icon",
     LargeHeap = true,
     HardwareAccelerated = true,
     Theme = "@style/AppTheme"
