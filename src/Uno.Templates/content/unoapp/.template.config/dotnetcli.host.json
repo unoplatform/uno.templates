@@ -99,7 +99,7 @@
     },  
     "themeService": {
       "longName": "theme-service",
-      "shortName": "theme"
+      "shortName": "theme-service"
     },
     "dspGenerator": {
       "longName": "dsp",

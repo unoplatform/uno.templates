@@ -72,7 +72,7 @@ jobs:
       MauiRecommendedNet8:
        templateArgs: '-preset=recommended -maui -tfm net8.0'
       ThemeService:
-       templateArgs: '-theme'
+       templateArgs: '-theme-service'
 
   variables:
     - name: UseDotNetNativeToolchain
