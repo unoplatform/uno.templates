@@ -1919,8 +1919,7 @@
         {
           "condition": "(isVsix)",
           "exclude": [
-            "MyExtensionsApp._1.sln",
-            "MyExtensionsApp._1-vsmac.slnf"
+            "MyExtensionsApp._1.sln"
           ]
         },
         {
