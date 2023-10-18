@@ -96,6 +96,10 @@
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
+    },  
+    "themeService": {
+      "longName": "theme-service",
+      "shortName": "theme"
     },
     "dspGenerator": {
       "longName": "dsp",
