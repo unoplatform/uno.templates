@@ -72,6 +72,9 @@
     <PackageReference Include="Uno.Toolkit.WinUI" />
     <!--#endif-->
     <!--#endif-->
+    <!--#if (themeService)-->
+    <PackageReference Include="Uno.Extensions.Core.WinUI" />
+    <!--#endif-->
     <!--#if (useAuthentication)-->
     <PackageReference Include="Uno.Extensions.Authentication.WinUI" />
     <!--#if (useOidcAuthentication)-->
@@ -168,6 +171,9 @@
     <!--#else-->
     <PackageReference Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
     <!--#endif-->
+    <!--#endif-->
+    <!--#if (themeService)-->
+    <PackageReference Include="Uno.Extensions.Core.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (useAuthentication)-->
     <PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />

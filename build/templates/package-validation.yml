@@ -10,8 +10,8 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.400'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.92.json'
+    $dotnetVersion = '7.0.402'
+    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.96.json'
 
     if ($templateArgs.Contains('net8')) {
       $dotnetVersion = '8.0.100-rc.1.23463.5'

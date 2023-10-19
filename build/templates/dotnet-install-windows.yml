@@ -1,8 +1,5 @@
 parameters:
   DotNetVersion: '7.0.400'
-  DotNetWorkloads: 'android ios maccatalyst'
-  UnoCheck_Version: '1.14.1'
-  UnoCheck_Manifest: 'https://raw.githubusercontent.com/unoplatform/uno.check/c3b289d7bb16a2a2df7f7f7f848d76fe1e74036d/manifests/uno.ui.manifest.json'
 
 steps:
 
@@ -14,19 +11,3 @@ steps:
       version: ${{ parameters.DotNetVersion }}
 
   - template: jdk-setup.yml
-
-  # - powershell: |
-  #     & dotnet tool update --global uno.check --version ${{ parameters.UnoCheck_Version }} --add-source https://api.nuget.org/v3/index.json
-  #     & uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip vsmac --skip androidsdk --skip androidemulator
-  #     #  --skip dotnet --manifest ${{ parameters.UnoCheck_Manifest }}
-  #   displayName: Install .NET Workloads
-  #   errorActionPreference: continue
-  #   ignoreLASTEXITCODE: true
-  #   retryCountOnTaskFailure: 3
-
-  # - powershell: |
-  #     Invoke-Expression -Command "dotnet workload install $($env:DotNetWorkloads) --source https://api.nuget.org/v3/index.json"
-  #   displayName: Install .NET workloads
-  #   retryCountOnTaskFailure: 3
-  #   env:
-  #     DotNetWorkloads: ${{ parameters.DotNetWorkloads }}
