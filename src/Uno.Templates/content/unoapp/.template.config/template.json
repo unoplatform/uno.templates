@@ -785,7 +785,7 @@
         "cases": [
           {
             "condition": "(tfm == 'net7.0')",
-            "value": "7.0.92"
+            "value": "7.0.96"
           },
           {
             "condition": "(tfm == 'net8.0')",
