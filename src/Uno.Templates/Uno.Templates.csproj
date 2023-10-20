@@ -17,20 +17,20 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2296</UnoExtensionsVersion>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.2770</UnoVersion>
-		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.4.0</UnoExtensionsLoggingVersion>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2335</UnoExtensionsVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.0-dev.3568</UnoVersion>
+		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.6.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">3.0.0-dev.254</UnoThemesVersion>
-		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.1.0</UnoDspTasksVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">4.0.0-dev.27</UnoToolkitVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.0.0-dev.180</UnoThemesVersion>
+		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.0-dev.34</UnoDspTasksVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.0.0-dev.120</UnoToolkitVersion>
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">2.6.0-dev.58</UnoToolkitMarkupVersion>
-		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0-dev.39</UnoResizetizerVersion>
+		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0-dev.79</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.27</UnoWasmBootstrapVersionNet7>
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.218</UnoWasmBootstrapVersionNet8>
-		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">4.8.0-dev.43</UnoMarkupVersion>
+		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.31</UnoWasmBootstrapVersionNet7>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0-dev.306</UnoWasmBootstrapVersionNet8>
+		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.0-dev.501</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 	</PropertyGroup>
 	<PropertyGroup>
