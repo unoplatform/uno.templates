@@ -270,7 +270,7 @@
         <Compile Update="**\*.xaml.cs">
           <DependentUpon>%(Filename)</DependentUpon>
         </Compile>
-        <PRIResource Include="**\*.resw" />
+        <PRIResource Include="**\*.resw" Exclude="bin\**\*.resw;obj\**\*.resw" />
       </ItemGroup>
     </Otherwise>
   </Choose>
