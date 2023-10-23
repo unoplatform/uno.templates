@@ -265,12 +265,12 @@
         <!--#endif-->
 
         <!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-        <Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**;**\*.svg" />
-        <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+        <Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);**\*.svg" />
+        <Page Include="**\*.xaml" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
         <Compile Update="**\*.xaml.cs">
           <DependentUpon>%(Filename)</DependentUpon>
         </Compile>
-        <PRIResource Include="**\*.resw" Exclude="bin\**\*.resw;obj\**\*.resw" />
+        <PRIResource Include="**\*.resw" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
       </ItemGroup>
     </Otherwise>
   </Choose>
