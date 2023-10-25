@@ -10,12 +10,12 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
-    <PackageVersion Include="FluentAssertions" Version="6.11.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <!--#if (useGitHubActions)-->
-    <PackageVersion Include="GitHubActionsTestLogger" Version="2.3.2" />
+    <PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
     <!--#endif-->
     <!--#endif-->
     <!--#if (useUITests)-->
@@ -51,7 +51,7 @@
     <PackageVersion Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (useMsalAuthentication)-->
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.55.0" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.57.0" />
     <PackageVersion Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#endif-->
@@ -156,11 +156,11 @@
     <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIVersion$" />
     <!--#endif-->
     <!--#if (useAndroidMaterial)-->
-    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
+    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.10.0.1" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
-    <PackageVersion Include="Xamarin.UITest" Version="4.2.0" />
+    <PackageVersion Include="Xamarin.UITest" Version="4.3.0" />
     <!--#endif-->
   </ItemGroup>
 </Project>
