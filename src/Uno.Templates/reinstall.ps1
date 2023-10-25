@@ -3,7 +3,11 @@ param(
     [string]$TemplatesVersion = "255.255.255.255",
 
     # Version of published Uno.Extensions packages
+<<<<<<< HEAD
     [string]$ExtensionsVersion = "3.0.8",
+=======
+    [string]$ExtensionsVersion = "3.0.0-dev.2341",
+>>>>>>> 481c784 (chore: template dependencies update)
 
     # Version of published Uno.WinUI packages
     [string]$UnoVersion = "5.0.13"
