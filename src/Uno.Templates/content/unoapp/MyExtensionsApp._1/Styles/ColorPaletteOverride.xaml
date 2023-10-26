@@ -9,7 +9,7 @@
       <Color x:Key="SecondaryColor">#6B4EA2</Color>
       <Color x:Key="OnSecondaryColor">#FFFFFF</Color>
       <Color x:Key="SecondaryContainerColor">#EBDDFF</Color>
-      <Color x:Key="OnSecondaryContainerColor">#1F182B</Color>
+      <Color x:Key="OnSecondaryContainerColor">#220555</Color>
       <Color x:Key="TertiaryColor">#0061A4</Color>
       <Color x:Key="OnTertiaryColor">#FFFFFF</Color>
       <Color x:Key="TertiaryContainerColor">#CFE4FF</Color>
@@ -22,7 +22,7 @@
       <Color x:Key="OnBackgroundColor">#1C1B1F</Color>
       <Color x:Key="SurfaceColor">#FFFFFF</Color>
       <Color x:Key="OnSurfaceColor">#1C1B1F</Color>
-      <Color x:Key="SurfaceVariantColor">#F3EFF5</Color>
+      <Color x:Key="SurfaceVariantColor">#F2EFF5</Color>
       <Color x:Key="OnSurfaceVariantColor">#8B8494</Color>
       <Color x:Key="OutlineColor">#79747E</Color>
       <Color x:Key="OnSurfaceInverseColor">#F4EFF4</Color>
@@ -39,10 +39,10 @@
       <Color x:Key="SecondaryColor">#CDC2DC</Color>
       <Color x:Key="OnSecondaryColor">#332D41</Color>
       <Color x:Key="SecondaryContainerColor">#433C52</Color>
-      <Color x:Key="OnSecondaryContainerColor">#EBDDFF</Color>
+      <Color x:Key="OnSecondaryContainerColor">#EDDFFF</Color>
       <Color x:Key="TertiaryColor">#9FCAFF</Color>
       <Color x:Key="OnTertiaryColor">#003258</Color>
-      <Color x:Key="TertiaryContainerColor">#00497E</Color>
+      <Color x:Key="TertiaryContainerColor">#00497D</Color>
       <Color x:Key="OnTertiaryContainerColor">#D1E4FF</Color>
       <Color x:Key="ErrorColor">#FFB4AB</Color>
       <Color x:Key="ErrorContainerColor">#93000A</Color>
@@ -50,7 +50,7 @@
       <Color x:Key="OnErrorContainerColor">#FFDAD6</Color>
       <Color x:Key="BackgroundColor">#1C1B1F</Color>
       <Color x:Key="OnBackgroundColor">#E5E1E6</Color>
-      <Color x:Key="SurfaceColor">#302D38</Color>
+      <Color x:Key="SurfaceColor">#302D37</Color>
       <Color x:Key="OnSurfaceColor">#E6E1E5</Color>
       <Color x:Key="SurfaceVariantColor">#47464F</Color>
       <Color x:Key="OnSurfaceVariantColor">#C9C5D0</Color>
@@ -58,7 +58,7 @@
       <Color x:Key="OnSurfaceInverseColor">#1C1B1F</Color>
       <Color x:Key="SurfaceInverseColor">#E6E1E5</Color>
       <Color x:Key="PrimaryInverseColor">#2A009F</Color>
-      <Color x:Key="SurfaceTintColor">#544794</Color>
+      <Color x:Key="SurfaceTintColor">#C7BFFF</Color>
       <Color x:Key="OutlineVariantColor">#57545D</Color>
     </ResourceDictionary>
   </ResourceDictionary.ThemeDictionaries>
