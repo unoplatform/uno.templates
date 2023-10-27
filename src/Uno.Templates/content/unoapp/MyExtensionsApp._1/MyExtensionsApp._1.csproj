@@ -260,8 +260,10 @@
       <ItemGroup>
         <!--#if (useCPM)-->
         <PackageReference Include="Uno.WinUI.Lottie" />
+        <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
         <!--#else-->
         <PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
+        <PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
         <!--#endif-->
 
         <!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
