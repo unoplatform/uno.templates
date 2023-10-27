@@ -21,7 +21,7 @@
       "name": "Debug (Chrome, WebAssembly)",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:5000",
+      "url": "http://localhost:5001",
       "webRoot": "${workspaceFolder}/MyExtensionsApp._1.Wasm",
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "timeout": 30000,
