@@ -1,10 +1,10 @@
 {
-  "profiles": {
-	"MyExtensionsApp._1.Windows (Unpackaged)": {
-		"commandName": "Project"
-	  },
-	  "MyExtensionsApp._1.Windows (Package)": {
-	  "commandName": "MsixPackage"
+	"profiles": {
+		"MyExtensionsApp._1.Windows (Unpackaged)": {
+			"commandName": "Project"
+		},
+		"MyExtensionsApp._1.Windows (Package)": {
+			"commandName": "MsixPackage"
+		}
 	}
-  }
 }
