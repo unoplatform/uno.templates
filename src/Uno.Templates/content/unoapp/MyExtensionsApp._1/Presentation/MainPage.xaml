@@ -2,6 +2,9 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:MyExtensionsApp._1.Presentation"$navigationNamespace$$toolkitNamespace$$materialNamespace$$mauiNamespaces$
+<!--#if (mauiEmbedding)-->
+      xmlns:controls="using:MyExtensionsApp._1.MauiControls"
+<!--#endif-->
       NavigationCacheMode="Required"
       Background="{ThemeResource $themeBackgroundBrush$}">
 
@@ -25,7 +28,6 @@
       <maui:Grid>
         <embed:MauiHost x:Name="MauiHostElement"
                 xmlns:embed="using:Uno.Extensions.Maui"
-                xmlns:controls="using:MyExtensionsApp._1.MauiControls"
                 Source="controls:EmbeddedControl" />
       </maui:Grid>
       <not_maui:Grid>
@@ -36,7 +38,6 @@
 <!--#else-->
       <embed:MauiHost x:Name="MauiHostElement"
               xmlns:embed="using:Uno.Extensions.Maui"
-              xmlns:controls="using:MyExtensionsApp._1.MauiControls"
               Source="controls:EmbeddedControl" />
 <!--#endif-->
 <!--#endif-->
