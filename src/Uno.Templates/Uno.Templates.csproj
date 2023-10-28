@@ -19,10 +19,14 @@
 	<PropertyGroup>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.0-dev.2335</UnoExtensionsVersion>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.13</UnoVersion>
 =======
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.1.0-dev.52</UnoVersion>
 >>>>>>> e279cb7 (feat: Enabling Hot Reload)
+=======
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.13</UnoVersion>
+>>>>>>> b5a33df (chore: Update uno version)
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.6.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
