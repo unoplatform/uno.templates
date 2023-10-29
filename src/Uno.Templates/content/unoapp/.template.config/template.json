@@ -647,17 +647,17 @@
       "choices": [
         {
           "choice": "none",
-          "description": "No continuous integration",
+          "description": "No continuous integration files generated",
           "displayName": "None"
         },
         {
           "choice": "azure",
-          "description": "Azure Pipelines",
+          "description": "Continuous integration files generated for Azure Pipelines",
           "displayName": "Azure Pipelines"
         },
         {
           "choice": "github",
-          "description": "GitHub Actions",
+          "description": "Continuous integration files generated for GitHub Actions",
           "displayName": "GitHub Actions"
         }
       ]

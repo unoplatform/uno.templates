@@ -19,6 +19,10 @@ public class App : Application
         MainWindow = Microsoft.UI.Xaml.Window.Current;
 #endif
 
+#if DEBUG
+        MainWindow.EnableHotReload();
+#endif
+
 //+:cnd:noEmit
 #if mauiEmbedding
 //-:cnd:noEmit

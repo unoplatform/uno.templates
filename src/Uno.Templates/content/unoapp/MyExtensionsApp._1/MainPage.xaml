@@ -1,8 +1,17 @@
+﻿<!--#if (mauiEmbedding)-->
 <Page x:Class="MyExtensionsApp._1.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:MyExtensionsApp._1"$toolkitNamespace$$materialNamespace$$mauiNamespaces$
+      xmlns:controls="using:MyExtensionsApp._1.MauiControls"
       Background="{ThemeResource $themeBackgroundBrush$}">
+<!--#else-->
+<Page x:Class="MyExtensionsApp._1.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:MyExtensionsApp._1"$toolkitNamespace$$materialNamespace$
+      Background="{ThemeResource $themeBackgroundBrush$}">
+<!--#endif-->
   <StackPanel$toolkitSafeArea$
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
@@ -14,7 +23,6 @@
     <maui:Grid>
       <embed:MauiHost x:Name="MauiHostElement"
               xmlns:embed="using:Uno.Extensions.Maui"
-              xmlns:controls="using:MyExtensionsApp._1.MauiControls"
               Source="controls:EmbeddedControl" />
     </maui:Grid>
     <not_maui:Grid>
@@ -25,7 +33,6 @@
 <!--#else-->
     <embed:MauiHost x:Name="MauiHostElement"
             xmlns:embed="using:Uno.Extensions.Maui"
-            xmlns:controls="using:MyExtensionsApp._1.MauiControls"
             Source="controls:EmbeddedControl" />
 <!--#endif-->
 <!--#endif-->
