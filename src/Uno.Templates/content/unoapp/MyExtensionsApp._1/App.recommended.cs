@@ -165,6 +165,12 @@ public class App : Application
             );
         MainWindow = builder.Window;
 
+//-:cnd:noEmit
+#if DEBUG
+        MainWindow.EnableHotReload();
+#endif
+//+:cnd:noEmit
+
 #if useFrameNav
 //-:cnd:noEmit
         Host = builder.Build();

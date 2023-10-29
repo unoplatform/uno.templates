@@ -48,6 +48,7 @@ global using MyExtensionsApp._1.MauiControls;
 #endif
 //+:cnd:noEmit
 #endif
+global using Uno.UI;
 #if (useCsharpMarkup)
 global using Uno.Extensions.Markup;
 #if (useMaterial)
