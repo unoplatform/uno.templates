@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>$baseTargetFramework$</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!--#if (useCsharpMarkup)-->
+    <EnableUnoCSMUsings>false</EnableUnoCSMUsings>
+    <!--#endif-->
   </PropertyGroup>
 
   <ItemGroup>
