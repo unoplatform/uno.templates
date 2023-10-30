@@ -227,8 +227,8 @@
     <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
     <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
     <PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
-    <PackageReference Include="Xamarin.AndroidX.Collection" Version="$(AndroidXCollectionVersion)" />
-    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="$(AndroidXCollectionVersion)" />    
+    <PackageReference Include="Xamarin.AndroidX.Collection" VersionOverride="$(AndroidXCollectionVersion)" />
+    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />    
   </ItemGroup>
   <!--#endif-->
 
