@@ -206,6 +206,8 @@
         <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
         <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
         <PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Collection" VersionOverride="$(AndroidXCollectionVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />    
         <!--#endif-->
 
         <!--#if (useCPM)-->
@@ -215,7 +217,7 @@
         <PackageReference Include="Uno.UniversalImageLoader" />
         <!--#else-->
         <!--#if (useAndroidMaterial)-->
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.10.0.1" />
         <!--#endif-->
         <PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
         <!--#endif-->

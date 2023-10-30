@@ -183,7 +183,7 @@
     <PackageReference Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#if (useMsalAuthentication)-->
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.55.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.57.0" />
     <PackageReference Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
     <!--#endif-->
     <!--#endif-->
@@ -227,6 +227,8 @@
     <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" VersionOverride="$(AndroidXNavigationVersion)" />
     <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
     <PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
+    <PackageReference Include="Xamarin.AndroidX.Collection" VersionOverride="$(AndroidXCollectionVersion)" />
+    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />    
   </ItemGroup>
   <!--#endif-->
 
