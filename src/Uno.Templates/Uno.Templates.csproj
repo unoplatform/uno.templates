@@ -17,20 +17,20 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.8</UnoExtensionsVersion>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.9</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.19</UnoVersion>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.0.2</UnoThemesVersion>
-		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.4</UnoDspTasksVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.0.12</UnoToolkitVersion>
-		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">5.0.12</UnoToolkitMarkupVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.0.3</UnoThemesVersion>
+		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.7</UnoDspTasksVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.0.13</UnoToolkitVersion>
+		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">5.0.13</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.31</UnoWasmBootstrapVersionNet7>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.0</UnoWasmBootstrapVersionNet8>
-		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.8</UnoMarkupVersion>
+		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.9</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 	</PropertyGroup>
 	<PropertyGroup>
