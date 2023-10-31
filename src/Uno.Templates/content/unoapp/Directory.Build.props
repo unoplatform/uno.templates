@@ -1,8 +1,8 @@
 ﻿<Project>
 
   <!--
-    If working on a single target framework, open solution-config.props and uncomment the 
-    appropriate lines in solution-config.props to build for the desired platforms only.
+    If working on a single target framework, copy solution-config.props.sample to solution-config.props
+    and uncomment the appropriate lines in solution-config.props to build for the desired platforms only.
 
     https://platform.uno/docs/articles/guides/solution-building-single-targetframework.html
   -->
