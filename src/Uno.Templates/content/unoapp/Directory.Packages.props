@@ -128,6 +128,7 @@
     <PackageVersion Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
     <!--#if (useCsharpMarkup)-->
     <PackageVersion Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
+    <PackageVersion Include="Uno.Extensions.Markup.Generators" Version="$UnoMarkupVersion$" />
     <!--#if (useToolkit)-->
     <PackageVersion Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
     <!--#endif-->
