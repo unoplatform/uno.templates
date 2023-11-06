@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
@@ -17,8 +17,10 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<!-- If you update Extensions or Uno version, make sure you update the versions in the reinstall.ps1 file too !-->
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.10</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.19</UnoVersion>
+		
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
