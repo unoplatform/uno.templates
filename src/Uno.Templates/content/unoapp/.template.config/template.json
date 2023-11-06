@@ -54,7 +54,7 @@
       "type": "parameter",
       "datatype": "choice",
       "defaultValue": "recommended",
-      "description": "Selects setup type",
+      "description": "Selects whether to use the recommended or blank app defaults for the template",
       "choices": [
         {
           "choice": "recommended",
@@ -86,7 +86,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp)"
+      "description": "The application identifier (e.g. com.mycompany.myapp), used by the Android, iOS, and Mac targets."
     },
     "appIdDefault": {
       "type": "generated",
@@ -137,6 +137,7 @@
     },
     "publisher": {
       "displayName": "Publisher",
+      "description": "This sets the Identity Publisher of the Package.appxmanifest file. This should match the subject of the signing certificate and will be used for the default development certificate. (e.g. O=Uno Platform)",
       "type": "parameter",
       "datatype": "string"
     },
@@ -275,39 +276,48 @@
       "choices": [
         {
           "choice": "android",
-          "displayName": "Android"
+          "displayName": "Android",
+          "description": "Enables Android as a target platform"
         },
         {
           "choice": "ios",
-          "displayName": "iOS"
+          "displayName": "iOS",
+          "description": "Enables iOS as a target platform"
         },
         {
           "choice": "maccatalyst",
-          "displayName": "macOS (Catalyst)"
+          "displayName": "macOS (Catalyst)",
+          "description": "Enables macOS (Catalyst) as a target platform"
         },
         {
           "choice": "macos",
-          "displayName": "macOS (AppKit)"
+          "displayName": "macOS (AppKit)",
+          "description": "Enables macOS (AppKit) as a target platform"
         },
         {
           "choice": "windows",
-          "displayName": "Windows"
+          "displayName": "Windows",
+          "description": "Enables Windows with WinAppSdk (WinUI 3) as a target platform"
         },
         {
           "choice": "wasm",
-          "displayName": "WebAssembly"
+          "displayName": "WebAssembly",
+          "description": "Enables WebAssembly as a target platform"
         },
         {
           "choice": "gtk",
-          "displayName": "GTK"
+          "displayName": "GTK",
+          "description": "Enables GTK as a target platform"
         },
         {
           "choice": "wpf",
-          "displayName": "WPF"
+          "displayName": "WPF",
+          "description": "Enables Windows with WPF as a target platform"
         },
         {
           "choice": "linux-fb",
-          "displayName": "Linux Framebuffer"
+          "displayName": "Linux Framebuffer",
+          "description": "Enables Linux Framebuffer as a target platform"
         }
       ]
     },
