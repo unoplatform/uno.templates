@@ -73,6 +73,9 @@ jobs:
        templateArgs: '-preset=recommended -maui -tfm net8.0'
       ThemeService:
        templateArgs: '-theme-service'
+      # https://github.com/unoplatform/uno.templates/issues/396
+      Issue396:
+       templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
 
   variables:
     - name: UseDotNetNativeToolchain
