@@ -18,7 +18,7 @@ public sealed partial class MainPage : Page
 #if useToolkit
                 .SafeArea(SafeArea.InsetMask.All)
 #endif
-                .RowDefinitions<Grid>("Auto,*")
+                .RowDefinitions("Auto,*")
                 .Children(
 #if useToolkit
                     new NavigationBar().Content(() => vm.Title),
