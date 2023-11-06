@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 
   <!--
     If working on a single target framework, copy solution-config.props.sample to solution-config.props
@@ -72,6 +72,16 @@
         <IsIOS>true</IsIOS>
         <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
       </PropertyGroup>
+
+      <!--
+      Eagerly define capabilities for iOS to avoid VS 2022 to ask for
+      project reload, and ninitialize the debugger toolbar faster.
+      -->
+      <ItemGroup>
+        <ProjectCapability Include="XamarinStaticLaunchProfiles" />
+        <ProjectCapability Include="Maui" />
+        <ProjectCapability Include="MauiCore" />
+      </ItemGroup>
     </When>
     <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
       <PropertyGroup>
