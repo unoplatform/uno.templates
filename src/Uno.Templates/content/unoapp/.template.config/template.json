@@ -185,7 +185,7 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net7.0",
+      "defaultValue": "net8.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
