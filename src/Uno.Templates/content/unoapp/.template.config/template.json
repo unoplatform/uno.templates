@@ -1681,6 +1681,25 @@
         ]
       }
     },
+    "loginDataContext": {
+      "type": "generated",
+      "generator": "switch",
+      "datatype": "string",
+      "replaces": "$loginDataContext$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(architectureEvaluator == 'mvux')",
+            "value": "BindableLoginModel"
+          },
+          {
+            "condition": "(architectureEvaluator == 'mvvm')",
+            "value": "LoginViewModel"
+          }
+        ]
+      }
+    },
     "presetNavigationDefault": {
       "type": "generated",
       "generator": "switch",
