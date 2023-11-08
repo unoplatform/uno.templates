@@ -73,6 +73,15 @@ jobs:
        templateArgs: '-preset=recommended -maui -tfm net8.0'
       ThemeService:
        templateArgs: '-theme-service'
+<<<<<<< HEAD
+=======
+      # https://github.com/unoplatform/uno.templates/issues/396
+      Issue396:
+       templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
+      # https://github.com/unoplatform/uno.templates/issues/414
+      Issue414:
+       templateArgs: '-auth msal -markup csharp'
+>>>>>>> 93552c9 (fix: Correcting login datacontext)
 
   variables:
     - name: UseDotNetNativeToolchain
