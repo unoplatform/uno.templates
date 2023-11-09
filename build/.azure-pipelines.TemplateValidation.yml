@@ -44,6 +44,7 @@ jobs:
         templateArgs: '-tests none'
       FrameNavigation:
         templateArgs: '--navigation blank'
+      # net8 is the default for tfm, so validating net7.0
       Net7:
         templateArgs: '-tfm net7.0'
       # https://github.com/unoplatform/uno.templates/issues/22
