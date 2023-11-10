@@ -1890,7 +1890,7 @@
       "path": "MyExtensionsApp._1\\MyExtensionsApp._1.csproj"
     },
     {
-      "path": "MyExtensionsApp._1.Base\\MyExtensionsApp._1.Base.csproj"
+      "path": "MyExtensionsApp._1.Shared\\MyExtensionsApp._1.Shared.csproj"
     },
     {
       "condition": "useServer",

@@ -178,5 +178,5 @@
     <ProjectReference Include="..\MyExtensionsApp._1.DataContracts\MyExtensionsApp._1.DataContracts.csproj" />
     <!--#endif-->
   </ItemGroup>
-  <Import Project="..\MyExtensionsApp._1.Base\base.props" />
+  <Import Project="..\MyExtensionsApp._1.Shared\base.props" />
 </Project>
