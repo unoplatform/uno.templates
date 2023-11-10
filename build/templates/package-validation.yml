@@ -10,12 +10,12 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.402'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.96.json'
+    $dotnetVersion = '7.0.403'
+    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.101.json'
 
-    if ($templateArgs.Contains('net8')) {
+    if (!$templateArgs.Contains('net7')) {
       $dotnetVersion = '8.0.100-rc.2.23502.2'
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.2.9373.json'
+      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.2.9511.json'
     }
 
     Write-Host "DotNetVersion = $dotnetVersion"
@@ -44,12 +44,11 @@ steps:
       dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
       dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
       dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
-      dotnet nuget add source -n ApiLocal "https://api.nuget.org/v3/index.json"
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
       # Create app with defaults
-      dotnet new unoapp -skip -o UnoApp1 ${{ parameters.arguments }}
+      dotnet new unoapp -skip -d -v diagnostic -o UnoApp1 ${{ parameters.arguments }}
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
