@@ -12,11 +12,11 @@
     <PropertyGroup>
         <!-- Uncomment each line for each platform that you want to build: -->
 
-        <!-- <OverrideTargetFrameworks Condition="''!='hint: Windows App Sdk (WinUI)'">$(OverrideTargetFrameworks);$baseTargetFramework$-windows10.0.19041.0</OverrideTargetFrameworks> -->
-        <!-- <OverrideTargetFrameworks Condition="''!='hint: WASM, Skia'">$(OverrideTargetFrameworks);$baseTargetFramework$</OverrideTargetFrameworks> -->
-        <!-- <OverrideTargetFrameworks Condition="''!='hint: .NET 6.0 iOS'">$(OverrideTargetFrameworks);$baseTargetFramework$-ios</OverrideTargetFrameworks> -->
-        <!-- <OverrideTargetFrameworks Condition="''!='hint: .NET 6.0 Android'">$(OverrideTargetFrameworks);$baseTargetFramework$-android</OverrideTargetFrameworks> -->
-        <!-- <OverrideTargetFrameworks Condition="''!='hint: .NET 6.0 macOS Catalyst'">$(OverrideTargetFrameworks);$baseTargetFramework$-maccatalyst</OverrideTargetFrameworks> -->
+        <!-- <WindowsOverrideTargetFramework Condition="''!='hint: Windows App Sdk (WinUI)' and ($([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true')">$baseTargetFramework$-windows10.0.19041.0</WindowsOverrideTargetFramework>  -->
+        <!-- <NeutralOverrideTargetFramework Condition="''!='hint: WASM, Skia'">$baseTargetFramework$</NeutralOverrideTargetFramework>  -->
+        <!-- <MobileOverrideTargetFrameworks Condition="''!='hint: $baseTargetFramework$ iOS'">$(MobileOverrideTargetFrameworks);$baseTargetFramework$-ios</MobileOverrideTargetFrameworks>  -->
+        <!-- <MobileOverrideTargetFrameworks Condition="''!='hint: $baseTargetFramework$ Android'">$(MobileOverrideTargetFrameworks);$baseTargetFramework$-android</MobileOverrideTargetFrameworks>  -->
+        <!-- <MobileOverrideTargetFrameworks Condition="''!='hint: $baseTargetFramework$ macOS Catalyst'">$(MobileOverrideTargetFrameworks);$baseTargetFramework$-maccatalyst</MobileOverrideTargetFrameworks>  -->
     </PropertyGroup>
 
 </Project>
