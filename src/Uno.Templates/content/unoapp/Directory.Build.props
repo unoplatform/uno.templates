@@ -10,6 +10,7 @@
 
 
   <PropertyGroup>
+    <DotNetVersion>$libraryBaseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
