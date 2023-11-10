@@ -197,7 +197,7 @@
         {
           "choice": "net8.0",
           "displayName": ".NET 8.0",
-          "description": "Target .NET 8.0 (Preview)"
+          "description": "Target .NET 8.0 (Long Term Support)"
         }
       ]
     },
