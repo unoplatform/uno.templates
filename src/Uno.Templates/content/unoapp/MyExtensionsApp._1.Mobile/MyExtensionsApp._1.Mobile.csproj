@@ -5,7 +5,7 @@
     <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
     <!-- <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
     <!--#endif-->
-    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="'$(MobileOverrideTargetFrameworks)'!=''">$(MobileOverrideTargetFrameworks)</TargetFrameworks>
     <SingleProject>true</SingleProject>
     <OutputType>Exe</OutputType>
     <!-- Display name -->

@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 
   <!--
     If working on a single target framework, copy solution-config.props.sample to solution-config.props
@@ -8,6 +8,24 @@
   -->
   <Import Project="solution-config.props" Condition="exists('solution-config.props')" />
 
+  <PropertyGroup>
+      <!-- Don't modify these. To adjust overrides, use the solution-config.props file -->
+        <OverrideTargetFrameworks Condition="'$(WindowsOverrideTargetFramework)'!=''">$(OverrideTargetFrameworks);$(WindowsOverrideTargetFramework)</OverrideTargetFrameworks> 
+        <OverrideTargetFrameworks Condition="'$(NeutralOverrideTargetFramework)'!=''">$(OverrideTargetFrameworks);$(NeutralOverrideTargetFramework)</OverrideTargetFrameworks> 
+        <OverrideTargetFrameworks Condition="'$(MobileOverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks);$(MobileOverrideTargetFrameworks)</OverrideTargetFrameworks> 
+  </PropertyGroup>
+
+  <Target Name="ValidateOverrides" BeforeTargets="Restore">
+    <Error
+        Text="OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing 'WindowsOverrideTargetFramework'. Either set WindowsOverrideTargetFramework in solution-config.props, or skip building this project"
+        Condition="$(TargetFramework.Contains('windows10')) and '$(OverrideTargetFrameworks)' != '' and '$(WindowsOverrideTargetFramework)' == '' " />
+    <Error
+        Text="OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing 'MobileOverrideTargetFrameworks'. Either set MobileOverrideTargetFrameworks in solution-config.props, or skip building this project"
+        Condition="($(TargetFrameworks.Contains('android')) or $(TargetFrameworks.Contains('ios')) or $(TargetFrameworks.Contains('macos')) or $(TargetFrameworks.Contains('maccatalyst'))) and '$(OverrideTargetFrameworks)' != '' and '$(MobileOverrideTargetFrameworks)' == '' " />
+    <Error
+        Text="OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing 'NeutralOverrideTargetFramework'. Either set NeutralOverrideTargetFramework in solution-config.props, or skip building this project"
+        Condition="!(($(TargetFramework.Contains('windows10')) or $(TargetFrameworks.Contains('windows10'))) or $(TargetFrameworks.Contains('android')) or $(TargetFrameworks.Contains('ios')) or $(TargetFrameworks.Contains('macos')) or $(TargetFrameworks.Contains('maccatalyst'))) and '$(OverrideTargetFrameworks)' != '' and '$(NeutralOverrideTargetFramework)' == '' " />
+  </Target>
 
   <PropertyGroup>
     <DotNetVersion>$libraryBaseTargetFramework$</DotNetVersion>
