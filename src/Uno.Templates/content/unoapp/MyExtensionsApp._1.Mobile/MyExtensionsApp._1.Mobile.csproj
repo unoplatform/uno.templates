@@ -3,7 +3,7 @@
     <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
     <!--#if (useMacOS)-->
     <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-    <!-- <TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$-macos</TargetFrameworks> -->
+    <!-- <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
     <!--#endif-->
     <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
     <SingleProject>true</SingleProject>
@@ -207,7 +207,7 @@
         <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" VersionOverride="$(AndroidXNavigationVersion)" />
         <PackageReference Include="Xamarin.AndroidX.Navigation.Common" VersionOverride="$(AndroidXNavigationVersion)" />
         <PackageReference Include="Xamarin.AndroidX.Collection" VersionOverride="$(AndroidXCollectionVersion)" />
-        <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />    
+        <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />
         <!--#endif-->
 
         <!--#if (useCPM)-->

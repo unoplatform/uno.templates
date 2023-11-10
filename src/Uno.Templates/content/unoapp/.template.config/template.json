@@ -1455,60 +1455,32 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "net7.0-android;net7.0-ios;net7.0-maccatalyst"
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net8.0' && platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "net8.0-android;net8.0-ios;net8.0-maccatalyst"
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
           },
           {
-            "condition": "(tfm == 'net7.0' && platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "net7.0-android;net7.0-ios"
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net8.0' && platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "net8.0-android;net8.0-ios"
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net7.0' && platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "net7.0-ios;net7.0-maccatalyst"
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android"
           },
           {
-            "condition": "(tfm == 'net8.0' && platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "net8.0-ios;net8.0-maccatalyst"
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-ios"
           },
           {
-            "condition": "(tfm == 'net7.0' && platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "net7.0-android;net7.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "net8.0-android;net8.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "net7.0-android"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "net8.0-android"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "net7.0-ios"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "net8.0-ios"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "net7.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "net8.0-maccatalyst"
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-maccatalyst"
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
