@@ -8,45 +8,45 @@ jobs:
     matrix:
       DefaultArguments:
         templateArgs: ''
-      Blank:
-        templateArgs: '-preset blank'
+      Recommended:
+        templateArgs: '-preset recommended'
       SkiaOnlyHeads:
         templateArgs: '-platforms gtk wpf linux-fb'
       MobileOnlyHeads:
         templateArgs: '-platforms android ios maccatalyst'
-      BlankMarkup:
-        templateArgs: '-preset blank -markup csharp'
-      BlankNoCpm:
-        templateArgs: '-preset blank --cpm false'
+      RecommendedMarkup:
+        templateArgs: '-preset recommended -markup csharp'
+      RecommendNoCpm:
+        templateArgs: '-preset recommended --cpm false'
       MVVM:
-        templateArgs: '-presentation mvvm'
+        templateArgs: '-preset recommended -presentation mvvm'
       NoCentralPackageManagement:
         templateArgs: '--cpm false'
       CSharpMarkup:
         templateArgs: '-markup csharp'
       NoHosting:
-        templateArgs: '-di false'
+        templateArgs: '-preset recommended -di false'
       HostingOnly:
-        templateArgs: '-config false -loc false -http false -log none --navigation blank'
+        templateArgs: '-preset recommended -config false -loc false -http false -log none --navigation blank'
       NoConfiguration:
-        templateArgs: '-config false'
+        templateArgs: '-preset recommended -config false'
       NoLocalization:
-        templateArgs: '-loc false'
+        templateArgs: '-preset recommended -loc false'
       NoHttp:
-        templateArgs: '-http false'
+        templateArgs: '-preset recommended -http false'
       NoSerilog:
-        templateArgs: '-log default'
+        templateArgs: '-preset recommended -log default'
       NoServer:
-        templateArgs: '-server false'
+        templateArgs: '-preset recommended -server false'
       NoServerNoHttp:
-        templateArgs: '-server false -http false'
+        templateArgs: '-preset recommended -server false -http false'
       NoTests:
-        templateArgs: '-tests none'
+        templateArgs: '-preset recommended -tests none'
       FrameNavigation:
-        templateArgs: '--navigation blank'
+        templateArgs: '-preset recommended --navigation blank'
       # net8 is the default for tfm, so validating net7.0
       Net7:
-        templateArgs: '-tfm net7.0'
+        templateArgs: '-preset recommended -tfm net7.0'
       # https://github.com/unoplatform/uno.templates/issues/22
       Issue22:
         templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
@@ -77,7 +77,7 @@ jobs:
        templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
       # https://github.com/unoplatform/uno.templates/issues/414
       Issue414:
-       templateArgs: '-auth msal -markup csharp'
+       templateArgs: '-preset recommended -auth msal -markup csharp'
 
   variables:
     - name: UseDotNetNativeToolchain
