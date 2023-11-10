@@ -13,6 +13,7 @@
     "WebAssembly",
     "WinUI"
   ],
+  "generatorVersions": "[1.0.0.0-*)",
   "name": "Uno Platform App",
   "identity": "Uno.Platform.UnoApp.WinUI.netcoremobile.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.netcoremobile",
