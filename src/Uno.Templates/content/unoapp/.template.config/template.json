@@ -54,7 +54,7 @@
       "displayName": "Preset",
       "type": "parameter",
       "datatype": "choice",
-      "defaultValue": "recommended",
+      "defaultValue": "blank",
       "description": "Selects whether to use the recommended or blank app defaults for the template",
       "choices": [
         {
