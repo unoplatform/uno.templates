@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
-    <!--#if (useMacOS)-->
-    <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-    <!-- <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
-    <!--#endif-->
-    <TargetFrameworks Condition="'$(MobileOverrideTargetFrameworks)'!=''">$(MobileOverrideTargetFrameworks)</TargetFrameworks>
+	  <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
+	  <!--#if (useMacOS)-->
+	  <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
+	  <!-- <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
+	  <!--#endif-->
+	  <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
     <SingleProject>true</SingleProject>
     <OutputType>Exe</OutputType>
     <!-- Display name -->

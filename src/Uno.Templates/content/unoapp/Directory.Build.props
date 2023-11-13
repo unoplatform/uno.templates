@@ -9,6 +9,7 @@
   <Import Project="solution-config.props" Condition="exists('solution-config.props')" />
 
   <PropertyGroup>
+<<<<<<< HEAD
       <!-- Don't modify these. To adjust overrides, use the solution-config.props file -->
         <OverrideTargetFrameworks Condition="'$(WindowsOverrideTargetFramework)'!=''">$(OverrideTargetFrameworks);$(WindowsOverrideTargetFramework)</OverrideTargetFrameworks> 
         <OverrideTargetFrameworks Condition="'$(NeutralOverrideTargetFramework)'!=''">$(OverrideTargetFrameworks);$(NeutralOverrideTargetFramework)</OverrideTargetFrameworks> 
@@ -28,7 +29,7 @@
   </Target>
 
   <PropertyGroup>
-    <DotNetVersion>$libraryBaseTargetFramework$</DotNetVersion>
+    <DotNetVersion>$baseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 

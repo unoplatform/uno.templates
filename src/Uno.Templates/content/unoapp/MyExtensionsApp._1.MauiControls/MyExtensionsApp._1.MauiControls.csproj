@@ -7,7 +7,10 @@
     <!--#else -->
     <TargetFrameworks>$(DotNetVersion);$mobileTargetFrameworks$</TargetFrameworks>
     <!--#endif -->
-    <TargetFrameworks Condition="'$(MobileOverrideTargetFrameworks)'!=''">$(MobileOverrideTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('ios'))">$(TargetFrameworks);$(DotNetVersion)-ios</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('android'))">$(TargetFrameworks);$(DotNetVersion)-android</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('maccatalyst'))">$(TargetFrameworks);$(DotNetVersion)-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('macos'))">$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks>
 
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>

@@ -54,7 +54,7 @@ jobs:
 
       - name: Build MyExtensionsApp._1.Tests (Release)
         shell: pwsh
-        run: msbuild ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFrameworks=$libraryBaseTargetFramework$ /r
+        run: msbuild ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFrameworks=$baseTargetFramework$ /r
 
       - name: Run Unit Tests
         shell: pwsh
