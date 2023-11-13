@@ -3,4 +3,22 @@
     <!-- Removes native usings to avoid Ambiguous reference -->
     <Using Remove="@(Using->HasMetadata('Platform'))" />
   </ItemGroup>
+
+  <Target Name="ValidateOverrides" BeforeTargets="Restore;_CheckForUnsupportedTargetFramework" Condition="'$(OverrideTargetFrameworks)' != ''">
+    <Error
+        Text="OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing Windows target. Either add $baseTargetFramework$-windows10.0.19041.0 to OverrideTargetFrameworks in solution-config.props, or skip building this project (eg unload the project in Visual Studio)"
+        Condition="$(TargetFramework.Contains('windows10')) and !$(OverrideTargetFrameworks.Contains('windows'))" />
+    <Error
+        Text="$(TargetFramework) OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing iOS. Either add $baseTargetFramework$-ios to OverrideTargetFrameworks in solution-config.props, or skip building this project (eg unload the project in Visual Studio)"
+        Condition="('$(TargetFramework)'=='' and '$(TargetFrameworks)'=='') or ( $(TargetFrameworks.Contains('ios')) and !$(OverrideTargetFrameworks.Contains('ios')) )"/>
+    <Error
+        Text="$(TargetFramework) OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing Android. Either add $baseTargetFramework$-android to OverrideTargetFrameworks in solution-config.props, or skip building this project (eg unload the project in Visual Studio)"
+        Condition="('$(TargetFramework)'=='' and '$(TargetFrameworks)'=='') or ( $(TargetFrameworks.Contains('android')) and !$(OverrideTargetFrameworks.Contains('android')) )"/>
+    <Error
+        Text="$(TargetFramework) OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing MacOS. Either add $baseTargetFramework$-macos to OverrideTargetFrameworks in solution-config.props, or skip building this project (eg unload the project in Visual Studio)"
+        Condition="('$(TargetFramework)'=='' and '$(TargetFrameworks)'=='') or ( $(TargetFrameworks.Contains('macos')) and !$(OverrideTargetFrameworks.Contains('macos')) )"/>
+    <Error
+        Text="$(TargetFramework) OverrideTargetFrameworks set to '$(OverrideTargetFrameworks)' is missing MacCatalyst. Either add $baseTargetFramework$-maccatalyst to OverrideTargetFrameworks in solution-config.props, or skip building this project (eg unload the project in Visual Studio)"
+        Condition="('$(TargetFramework)'=='' and '$(TargetFrameworks)'=='') or ( $(TargetFrameworks.Contains('maccatalyst')) and !$(OverrideTargetFrameworks.Contains('maccatalyst')) )"/>
+  </Target>
 </Project>

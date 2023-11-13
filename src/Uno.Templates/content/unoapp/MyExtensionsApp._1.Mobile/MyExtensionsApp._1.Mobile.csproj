@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'==''">$mobileTargetFrameworks$</TargetFrameworks>
     <!--#if (useMacOS)-->
     <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-    <!-- <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
+    <!-- <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'==''">$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks> -->
     <!--#endif-->
-    <TargetFrameworks Condition="'$(MobileOverrideTargetFrameworks)'!=''">$(MobileOverrideTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('ios'))">$(TargetFrameworks);$(DotNetVersion)-ios</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('android'))">$(TargetFrameworks);$(DotNetVersion)-android</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('maccatalyst'))">$(TargetFrameworks);$(DotNetVersion)-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$(OverrideTargetFrameworks.Contains('macos'))">$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks>
     <SingleProject>true</SingleProject>
     <OutputType>Exe</OutputType>
     <!-- Display name -->

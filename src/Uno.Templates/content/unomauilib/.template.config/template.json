@@ -112,25 +112,7 @@
         ]
       }
     },
-    "libraryBaseTargetFramework": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$libraryBaseTargetFramework$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "net7.0"
-          },
-          {
-            "condition": "(tfm == 'net8.0')",
-            "value": "net8.0"
-          }
-        ]
-      }
-    },
+    // TODO: Should we be using $(DotNetVersion) instead of explicitly defining each tfm?
     "mobileTargetFrameworks": {
       "type": "generated",
       "generator": "switch",
