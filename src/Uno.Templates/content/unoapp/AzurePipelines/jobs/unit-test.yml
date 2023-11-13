@@ -13,7 +13,7 @@ jobs:
       inputs:
         solution: ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj
         configuration: 'Release'
-        msbuildArguments: '/p:OverrideTargetFrameworks=$libraryBaseTargetFramework$ /r'
+        msbuildArguments: '/p:OverrideTargetFramework=$baseTargetFramework$ /r'
 
     - task: VSTest@3
       inputs:

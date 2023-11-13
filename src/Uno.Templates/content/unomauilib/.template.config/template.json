@@ -112,25 +112,6 @@
         ]
       }
     },
-    "libraryBaseTargetFramework": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$libraryBaseTargetFramework$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "net7.0"
-          },
-          {
-            "condition": "(tfm == 'net8.0')",
-            "value": "net8.0"
-          }
-        ]
-      }
-    },
     "mobileTargetFrameworks": {
       "type": "generated",
       "generator": "switch",
@@ -140,63 +121,35 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net7.0' && useAndroid && useiOS && useMacCatalyst)",
-            "value": "net7.0-android;net7.0-ios;net7.0-maccatalyst"
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net8.0' && useAndroid && useiOS && useMacCatalyst)",
-            "value": "net8.0-android;net8.0-ios;net8.0-maccatalyst"
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
           },
           {
-            "condition": "(tfm == 'net7.0' && useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net7.0-android;net7.0-ios"
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net8.0' && useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net8.0-android;net8.0-ios"
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net7.0' && !useAndroid && useiOS && useMacCatalyst)",
-            "value": "net7.0-ios;net7.0-maccatalyst"
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android"
           },
           {
-            "condition": "(tfm == 'net8.0' && !useAndroid && useiOS && useMacCatalyst)",
-            "value": "net8.0-ios;net8.0-maccatalyst"
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-ios"
           },
           {
-            "condition": "(tfm == 'net7.0' && useAndroid && !useiOS && useMacCatalyst)",
-            "value": "net7.0-android;net7.0-maccatalyst"
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(tfm == 'net8.0' && useAndroid && !useiOS && useMacCatalyst)",
-            "value": "net8.0-android;net8.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && useAndroid && !useiOS && !useMacCatalyst)",
-            "value": "net7.0-android"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && useAndroid && !useiOS && !useMacCatalyst)",
-            "value": "net8.0-android"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && !useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net7.0-ios"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && !useAndroid && useiOS && !useMacCatalyst)",
-            "value": "net8.0-ios"
-          },
-          {
-            "condition": "(tfm == 'net7.0' && !useAndroid && !useiOS && useMacCatalyst)",
-            "value": "net7.0-maccatalyst"
-          },
-          {
-            "condition": "(tfm == 'net8.0' && !useAndroid && !useiOS && useMacCatalyst)",
-            "value": "net8.0-maccatalyst"
-          },
-          {
-            "condition": "(!useAndroid && !useiOS && !useMacCatalyst)",
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
             "value": ""
           }
         ]
