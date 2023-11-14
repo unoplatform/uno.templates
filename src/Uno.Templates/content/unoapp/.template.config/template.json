@@ -1551,7 +1551,7 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useMaterial)",
+            "condition": "(useCupertino)",
             "value": "\n                    xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
