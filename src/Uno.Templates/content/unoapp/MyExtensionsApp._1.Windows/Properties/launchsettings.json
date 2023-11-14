@@ -1,8 +1,10 @@
 {
 	"profiles": {
+//#if (!useMsalAuthentication)
 		"MyExtensionsApp._1.Windows (Unpackaged)": {
 			"commandName": "Project"
 		},
+//#endif
 		"MyExtensionsApp._1.Windows (Package)": {
 			"commandName": "MsixPackage"
 		}
