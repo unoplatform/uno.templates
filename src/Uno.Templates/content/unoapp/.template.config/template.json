@@ -887,7 +887,7 @@
       "datatype": "bool",
       "value": "(markup == 'xaml')"
     },
-    "DspGenerator": {
+    "dspGeneratorOutputType": {
       "type": "generated",
       "generator": "switch",
       "replaces": "$DspGenerator$",
