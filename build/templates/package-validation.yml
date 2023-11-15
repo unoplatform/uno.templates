@@ -13,19 +13,9 @@ steps:
     $dotnetVersion = '7.0.402'
     $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.96.json'
 
-<<<<<<< HEAD
-    if ($templateArgs.Contains('net8')) {
-      $dotnetVersion = '8.0.100-rc.2.23502.2'
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0-rc.2.9373.json'
-=======
     if (!$templateArgs.Contains('net7')) {
       $dotnetVersion = '8.0.100'
-<<<<<<< HEAD
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.0.json'
->>>>>>> 6e58d0b (feat: .net8 rtm)
-=======
       $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.3.json'
->>>>>>> c7d15e4 (chore: Updating rollback for workload restore)
     }
 
     Write-Host "DotNetVersion = $dotnetVersion"
