@@ -1,6 +1,6 @@
 jobs:
 - job: smoke_test
-  displayName: Smoke Test (Debug Build of MyExtensionsApp._1)
+  displayName: Smoke Test (Debug Build of MyExtensionsApp.1)
   pool:
     vmImage: $(windowsAgent)
   steps:
@@ -13,5 +13,5 @@ jobs:
 
     - task: MSBuild@1
       inputs:
-        solution: ./MyExtensionsApp._1/MyExtensionsApp._1.csproj
+        solution: ./MyExtensionsApp.1/MyExtensionsApp.1.csproj
         msbuildArguments: '/r'

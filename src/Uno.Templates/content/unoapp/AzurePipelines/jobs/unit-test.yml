@@ -11,7 +11,7 @@ jobs:
 
     - task: MSBuild@1
       inputs:
-        solution: ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj
+        solution: ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj
         configuration: 'Release'
         msbuildArguments: '/p:OverrideTargetFramework=$baseTargetFramework$ /r'
 
@@ -19,7 +19,7 @@ jobs:
       inputs:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
-          **\MyExtensionsApp._1.Tests.dll
+          **\MyExtensionsApp.1.Tests.dll
           !**\*TestAdapter.dll
           !**\obj\**
         searchFolder: '$(System.DefaultWorkingDirectory)'
