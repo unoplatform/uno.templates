@@ -1507,6 +1507,32 @@
         ]
       }
     },
+    "resourceStyleThemeNamespace": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$useThemesResourceNamespace$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(appThemeEvaluator == 'material' && useToolkit == 'true')",
+            "value": "\n                    xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
+          },
+          {
+            "condition": "(appThemeEvaluator == 'material')",
+            "value": "\n                    xmlns:um=\"using:Uno.Material\""
+          },
+          {
+            "condition": "(appThemeEvaluator == 'cupertino')",
+            "value": "\n                    xmlns:uc=\"using:Uno.Cupertino\""
+          },
+          {
+            "condition": "true",
+            "value": ""
+          }
+        ]
+      }
+    },
     "toolkitSafeArea": {
       "type": "generated",
       "generator": "switch",
@@ -1811,10 +1837,6 @@
           }
         ]
       }
-    },
-    "HostIdentifier": {
-      "type": "bind",
-      "binding": "HostIdentifier"
     },
     "OS": {
       "type": "bind",
