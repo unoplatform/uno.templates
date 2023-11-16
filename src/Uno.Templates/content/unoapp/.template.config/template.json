@@ -13,6 +13,7 @@
     "WebAssembly",
     "WinUI"
   ],
+  "generatorVersions": "[1.0.0.0-*)",
   "name": "Uno Platform App",
   "identity": "Uno.Platform.UnoApp.WinUI.netcoremobile.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.netcoremobile",
@@ -185,7 +186,7 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net7.0",
+      "defaultValue": "net8.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
@@ -196,7 +197,7 @@
         {
           "choice": "net8.0",
           "displayName": ".NET 8.0",
-          "description": "Target .NET 8.0 (Preview)"
+          "description": "Target .NET 8.0 (Long Term Support)"
         }
       ]
     },
