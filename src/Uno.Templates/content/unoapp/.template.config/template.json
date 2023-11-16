@@ -2264,6 +2264,7 @@
           ],
           "rename": {
             "MyExtensionsApp._1/MainPage.xaml.cs": "MyExtensionsApp._1/MainPage.cs",
+            "MyExtensionsApp._1/Presentation/LoginPage.xaml.cs": "MyExtensionsApp._1/Presentation/LoginPage.cs",
             "MyExtensionsApp._1/Presentation/MainPage.xaml.cs": "MyExtensionsApp._1/Presentation/MainPage.cs",
             "MyExtensionsApp._1/Presentation/SecondPage.xaml.cs": "MyExtensionsApp._1/Presentation/SecondPage.cs",
             "MyExtensionsApp._1/Presentation/Shell.xaml.cs": "MyExtensionsApp._1/Presentation/Shell.cs"
