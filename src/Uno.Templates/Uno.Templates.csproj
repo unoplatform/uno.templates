@@ -19,7 +19,7 @@
 	<PropertyGroup>
 		<!-- If you update Extensions or Uno version, make sure you update the versions in the reinstall.ps1 file too !-->
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.11</UnoExtensionsVersion>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.41</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.0.48</UnoVersion>
 		
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
@@ -31,7 +31,7 @@
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.31</UnoWasmBootstrapVersionNet7>
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.3</UnoWasmBootstrapVersionNet8>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.4</UnoWasmBootstrapVersionNet8>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.13</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 	</PropertyGroup>
