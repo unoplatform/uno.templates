@@ -709,6 +709,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "wasmMultiThreading": {
+      "displayName": "WASM Multi-Threading",
+      "description": "Configures application to use multi-threading in WebAssembly",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",
@@ -1112,6 +1119,12 @@
       "type": "computed",
       "datatype": "bool",
       "value": "useMvux || useMvvm"
+    },
+    "useWasmMultiThreading": {
+      "type": "computed",
+      "datatype": "bool",
+      // NOTE: This doesn't work well in net7.0
+      "value": "(tfm != 'net7.0' && wasmMultiThreading)"
     },
     "useGtk": {
       "type": "computed",

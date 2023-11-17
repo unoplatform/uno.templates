@@ -14,6 +14,17 @@
       https://aka.platform.uno/wasm-deeplink
     -->
     <WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
+    <!--#if (useWasmMultiThreading)-->
+
+    <!--
+      Enable WebAssembly Threads
+      https://platform.uno/docs/articles/external/uno.wasm.bootstrap/doc/features-threading.html
+
+      NOTE: This feature is still considered experimental by the dotnet team
+    -->
+    <WasmShellEnableThreads>true</WasmShellEnableThreads>
+    <WasmShellPThreadsPoolSize>8</WasmShellPThreadsPoolSize>
+    <!--#endif-->
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
