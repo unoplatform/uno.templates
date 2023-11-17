@@ -16,7 +16,7 @@ env:
 
 jobs:
   smoke_test:
-    name: Smoke Test (Debug Build of MyExtensionsApp._1)
+    name: Smoke Test (Debug Build of MyExtensionsApp.1)
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,9 +31,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
-      - name: Build MyExtensionsApp._1 (Debug)
+      - name: Build MyExtensionsApp.1 (Debug)
         shell: pwsh
-        run: msbuild ./MyExtensionsApp._1/MyExtensionsApp._1.csproj /r
+        run: msbuild ./MyExtensionsApp.1/MyExtensionsApp.1.csproj /r
 #if (useUnitTests)
 
   unit_test:
@@ -52,11 +52,11 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
-      - name: Build MyExtensionsApp._1.Tests (Release)
+      - name: Build MyExtensionsApp.1.Tests (Release)
         shell: pwsh
-        run: msbuild ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFramework=$baseTargetFramework$ /r
+        run: msbuild ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFramework=$baseTargetFramework$ /r
 
       - name: Run Unit Tests
         shell: pwsh
-        run: dotnet test ./MyExtensionsApp._1.Tests/MyExtensionsApp._1.Tests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        run: dotnet test ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 #endif

@@ -45,7 +45,7 @@
 
 	<ItemGroup>
 		<TemplateFile Include="content/**/*" Exclude="**/obj/**;**/bin/**" />
-		<MauiControlsTemplateFile Include="content/unoapp/MyExtensionsApp._1.MauiControls/**/*" Exclude="**/obj/**;**/bin/**" />
+		<MauiControlsTemplateFile Include="content/unoapp/MyExtensionsApp.1.MauiControls/**/*" Exclude="**/obj/**;**/bin/**" />
 		<UpToDateCheckInput Include="@(TemplateFile)" />
 		<MergeTemplatePackage Include="Uno.ProjectTemplates.Dotnet" Version="$(UnoVersion)">
 			<FileExists>false</FileExists>
@@ -76,10 +76,10 @@
 
 		<Copy SourceFiles="@(TemplateFile)" DestinationFiles="$(TemplateContentFolder)/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/GitHub/Install-WindowsSdkISO.cips" DestinationFiles="$(TemplateContentFolder)/unoapp/AzurePipelines/Install-WindowsSdkISO.cips" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Server/WeatherForecast.cs" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Skia.Gtk/Package.appxmanifest" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Skia.Linux.FrameBuffer/Package.appxmanifest" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp._1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp._1.Skia.WPF/Package.appxmanifest" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Server/WeatherForecast.cs" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Skia.Gtk/Package.appxmanifest" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Skia.Linux.FrameBuffer/Package.appxmanifest" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Skia.WPF/Package.appxmanifest" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(MauiControlsTemplateFile)" DestinationFiles="$(TemplateContentFolder)/unomauilib/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<ItemGroup>
 			<_PackageFiles Include="$(TemplateContentFolder)/**/*" PackagePath="content" />
@@ -106,7 +106,7 @@
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
-		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp\._1\.MauiControls" ReplacementText="MyExtensionsApp._1" />
+		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp\._1\.MauiControls" ReplacementText="MyExtensionsApp.1" />
 	</Target>
 
 	<Target Name="DownloadTemplatePackages" BeforeTargets="BeforeBuild;PrepareTemplateFiles">
