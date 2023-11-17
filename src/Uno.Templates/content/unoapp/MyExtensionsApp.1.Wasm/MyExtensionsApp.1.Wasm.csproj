@@ -18,7 +18,7 @@
 
     <!--
       Enable WebAssembly Threads
-      https://platform.uno/docs/articles/external/uno.wasm.bootstrap/doc/features-threading.html
+      https://aka.platform.uno/wasm-threading
 
       NOTE: This feature is still considered experimental by the dotnet team
     -->
