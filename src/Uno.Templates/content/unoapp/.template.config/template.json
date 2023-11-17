@@ -25,7 +25,7 @@
     "editorTreatAs": "solution"
   },
   "shortName": "unoapp",
-  "sourceName": "MyExtensionsApp._1",
+  "sourceName": "MyExtensionsApp.1",
   "defaultName": "UnoApp",
   "placeholderFilename": "template-ignore",
   "preferNameDirectory": true,
@@ -1860,33 +1860,33 @@
   "primaryOutputs": [
     {
       "condition": "!isVsix && canWindowsRestore",
-      "path": "MyExtensionsApp._1.sln"
+      "path": "MyExtensionsApp.1.sln"
     },
     {
-      "path": "MyExtensionsApp._1\\MyExtensionsApp._1.csproj"
+      "path": "MyExtensionsApp.1\\MyExtensionsApp.1.csproj"
     },
     {
-      "path": "MyExtensionsApp._1.Shared\\MyExtensionsApp._1.Shared.csproj"
+      "path": "MyExtensionsApp.1.Shared\\MyExtensionsApp.1.Shared.csproj"
     },
     {
       "condition": "useServer",
-      "path": "MyExtensionsApp._1.Server\\MyExtensionsApp._1.Server.csproj"
+      "path": "MyExtensionsApp.1.Server\\MyExtensionsApp.1.Server.csproj"
     },
     {
       "condition": "useDataContracts",
-      "path": "MyExtensionsApp._1.DataContracts\\MyExtensionsApp._1.DataContracts.csproj"
+      "path": "MyExtensionsApp.1.DataContracts\\MyExtensionsApp.1.DataContracts.csproj"
     },
     {
       "condition": "mauiEmbedding",
-      "path": "MyExtensionsApp._1.MauiControls\\MyExtensionsApp._1.MauiControls.csproj"
+      "path": "MyExtensionsApp.1.MauiControls\\MyExtensionsApp.1.MauiControls.csproj"
     },
     {
       "condition": "useUnitTests",
-      "path": "MyExtensionsApp._1.Tests\\MyExtensionsApp._1.Tests.csproj"
+      "path": "MyExtensionsApp.1.Tests\\MyExtensionsApp.1.Tests.csproj"
     },
     {
       "condition": "useUITests",
-      "path": "MyExtensionsApp._1.UITests\\MyExtensionsApp._1.UITests.csproj"
+      "path": "MyExtensionsApp.1.UITests\\MyExtensionsApp.1.UITests.csproj"
     },
     {
       "condition": "cpm",
@@ -1894,27 +1894,27 @@
     },
     {
       "condition": "useMobile",
-      "path": "MyExtensionsApp._1.Mobile\\MyExtensionsApp._1.Mobile.csproj"
+      "path": "MyExtensionsApp.1.Mobile\\MyExtensionsApp.1.Mobile.csproj"
     },
     {
       "condition": "useWinAppSdk && canWindowsRestore",
-      "path": "MyExtensionsApp._1.Windows\\MyExtensionsApp._1.Windows.csproj"
+      "path": "MyExtensionsApp.1.Windows\\MyExtensionsApp.1.Windows.csproj"
     },
     {
       "condition": "useWasm",
-      "path": "MyExtensionsApp._1.Wasm\\MyExtensionsApp._1.Wasm.csproj"
+      "path": "MyExtensionsApp.1.Wasm\\MyExtensionsApp.1.Wasm.csproj"
     },
     {
       "condition": "useGtk",
-      "path": "MyExtensionsApp._1.Skia.Gtk\\MyExtensionsApp._1.Skia.Gtk.csproj"
+      "path": "MyExtensionsApp.1.Skia.Gtk\\MyExtensionsApp.1.Skia.Gtk.csproj"
     },
     {
       "condition": "useWpf",
-      "path": "MyExtensionsApp._1.Skia.WPF\\MyExtensionsApp._1.Skia.Wpf.csproj"
+      "path": "MyExtensionsApp.1.Skia.WPF\\MyExtensionsApp.1.Skia.Wpf.csproj"
     },
     {
       "condition": "useLinuxFb",
-      "path": "MyExtensionsApp._1.Skia.Linux.FrameBuffer\\MyExtensionsApp._1.Skia.Linux.FrameBuffer.csproj"
+      "path": "MyExtensionsApp.1.Skia.Linux.FrameBuffer\\MyExtensionsApp.1.Skia.Linux.FrameBuffer.csproj"
     }
   ],
   "sources": [
@@ -1932,297 +1932,297 @@
         {
           "condition": "(isVsix)",
           "exclude": [
-            "MyExtensionsApp._1.sln"
+            "MyExtensionsApp.1.sln"
           ]
         },
         {
           "condition": "(platforms != android)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/Android/**/*"
+            "MyExtensionsApp.1.Mobile/Android/**/*"
           ]
         },
         {
           "condition": "(platforms != ios)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/iOS/**/*"
+            "MyExtensionsApp.1.Mobile/iOS/**/*"
           ]
         },
         {
           "condition": "(platforms != macos)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/macOS/**/*"
+            "MyExtensionsApp.1.Mobile/macOS/**/*"
           ]
         },
         {
           "condition": "(platforms != maccatalyst)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/MacCatalyst/**/*"
+            "MyExtensionsApp.1.Mobile/MacCatalyst/**/*"
           ]
         },
         {
           "condition": "(!useMobile)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/**/*"
+            "MyExtensionsApp.1.Mobile/**/*"
           ]
         },
         {
           "condition": "(!useWasm)",
           "exclude": [
-            "MyExtensionsApp._1.Wasm**/*"
+            "MyExtensionsApp.1.Wasm**/*"
           ]
         },
         {
           "condition": "(!useGtk)",
           "exclude": [
-            "MyExtensionsApp._1.Skia.Gtk/**/*"
+            "MyExtensionsApp.1.Skia.Gtk/**/*"
           ]
         },
         {
           "condition": "(!useWpf)",
           "exclude": [
-            "MyExtensionsApp._1.Skia.WPF/**/*"
+            "MyExtensionsApp.1.Skia.WPF/**/*"
           ]
         },
         {
           "condition": "(!useLinuxFb)",
           "exclude": [
-            "MyExtensionsApp._1.Skia.Linux.FrameBuffer/**/*"
+            "MyExtensionsApp.1.Skia.Linux.FrameBuffer/**/*"
           ]
         },
         {
           "condition": "(!useWinAppSdk)",
           "exclude": [
-            "MyExtensionsApp._1.Windows/**/*"
+            "MyExtensionsApp.1.Windows/**/*"
           ]
         },
         {
           "condition": "(!useServer)",
           "exclude": [
-            "MyExtensionsApp._1.Server/**/*"
+            "MyExtensionsApp.1.Server/**/*"
           ]
         },
         {
           "condition": "(useDependencyInjection)",
           "exclude": [
-            "MyExtensionsApp._1/App.blank.cs"
+            "MyExtensionsApp.1/App.blank.cs"
           ],
           "rename": {
-            "MyExtensionsApp._1/App.recommended.cs": "MyExtensionsApp._1/App.cs"
+            "MyExtensionsApp.1/App.recommended.cs": "MyExtensionsApp.1/App.cs"
           }
         },
         {
           "condition": "(!useDependencyInjection)",
           "exclude": [
-            "MyExtensionsApp._1/App.recommended.cs",
-            "MyExtensionsApp._1/Business/**",
-            "MyExtensionsApp._1/Presentation/**"
+            "MyExtensionsApp.1/App.recommended.cs",
+            "MyExtensionsApp.1/Business/**",
+            "MyExtensionsApp.1/Presentation/**"
           ],
           "rename": {
-            "MyExtensionsApp._1/App.blank.cs": "MyExtensionsApp._1/App.cs"
+            "MyExtensionsApp.1/App.blank.cs": "MyExtensionsApp.1/App.cs"
           }
         },
         {
           "condition": "(useFrameNav)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/**"
+            "MyExtensionsApp.1/Presentation/**"
           ]
         },
         {
           "condition": "(useDataContracts)",
           "exclude": [
-            "MyExtensionsApp._1.Server/WeatherForecast.cs"
+            "MyExtensionsApp.1.Server/WeatherForecast.cs"
           ]
         },
         {
           "condition": "(!useDataContracts)",
           "exclude": [
-            "MyExtensionsApp._1.DataContracts/**/*"
+            "MyExtensionsApp.1.DataContracts/**/*"
           ]
         },
         {
           "condition": "(useMvvm)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/LoginModel.cs",
-            "MyExtensionsApp._1/Presentation/MainModel.cs",
-            "MyExtensionsApp._1/Presentation/SecondModel.cs",
-            "MyExtensionsApp._1/Presentation/ShellModel.cs"
+            "MyExtensionsApp.1/Presentation/LoginModel.cs",
+            "MyExtensionsApp.1/Presentation/MainModel.cs",
+            "MyExtensionsApp.1/Presentation/SecondModel.cs",
+            "MyExtensionsApp.1/Presentation/ShellModel.cs"
           ]
         },
         {
           "condition": "(useMvux)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/LoginViewModel.cs",
-            "MyExtensionsApp._1/Presentation/MainViewModel.cs",
-            "MyExtensionsApp._1/Presentation/SecondViewModel.cs",
-            "MyExtensionsApp._1/Presentation/ShellViewModel.cs"
+            "MyExtensionsApp.1/Presentation/LoginViewModel.cs",
+            "MyExtensionsApp.1/Presentation/MainViewModel.cs",
+            "MyExtensionsApp.1/Presentation/SecondViewModel.cs",
+            "MyExtensionsApp.1/Presentation/ShellViewModel.cs"
           ]
         },
         {
           "condition": "(!useAuthentication)",
           "exclude": [
-            "MyExtensionsApp._1/Presentation/Login*.*"
+            "MyExtensionsApp.1/Presentation/Login*.*"
           ]
         },
         {
           "condition": "(!useWebAuthentication && !useOidcAuthentication)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
+            "MyExtensionsApp.1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
           ]
         },
         {
           "condition": "(!useMsalAuthentication)",
           "exclude": [
-            "MyExtensionsApp._1.Mobile/Android/MsalActivity.Android.cs"
+            "MyExtensionsApp.1.Mobile/Android/MsalActivity.Android.cs"
           ]
         },
         {
           "condition": "(!useLocalization)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/ar/*",
-            "MyExtensionsApp._1/Strings/cs/*",
-            "MyExtensionsApp._1/Strings/da/*",
-            "MyExtensionsApp._1/Strings/de/*",
-            "MyExtensionsApp._1/Strings/es/*",
-            "MyExtensionsApp._1/Strings/fr/*",
-            "MyExtensionsApp._1/Strings/it/*",
-            "MyExtensionsApp._1/Strings/ja/*",
-            "MyExtensionsApp._1/Strings/ko/*",
-            "MyExtensionsApp._1/Strings/nl/*",
-            "MyExtensionsApp._1/Strings/pt-BR/*",
-            "MyExtensionsApp._1/Strings/ru/*",
-            "MyExtensionsApp._1/Strings/sv/*",
-            "MyExtensionsApp._1/Strings/tr/*",
-            "MyExtensionsApp._1/Strings/uk/*",
-            "MyExtensionsApp._1/Strings/vi/*",
-            "MyExtensionsApp._1/Strings/zh-Hans/*",
-            "MyExtensionsApp._1/Strings/zh-Hant/*"
+            "MyExtensionsApp.1/Strings/ar/*",
+            "MyExtensionsApp.1/Strings/cs/*",
+            "MyExtensionsApp.1/Strings/da/*",
+            "MyExtensionsApp.1/Strings/de/*",
+            "MyExtensionsApp.1/Strings/es/*",
+            "MyExtensionsApp.1/Strings/fr/*",
+            "MyExtensionsApp.1/Strings/it/*",
+            "MyExtensionsApp.1/Strings/ja/*",
+            "MyExtensionsApp.1/Strings/ko/*",
+            "MyExtensionsApp.1/Strings/nl/*",
+            "MyExtensionsApp.1/Strings/pt-BR/*",
+            "MyExtensionsApp.1/Strings/ru/*",
+            "MyExtensionsApp.1/Strings/sv/*",
+            "MyExtensionsApp.1/Strings/tr/*",
+            "MyExtensionsApp.1/Strings/uk/*",
+            "MyExtensionsApp.1/Strings/vi/*",
+            "MyExtensionsApp.1/Strings/zh-Hans/*",
+            "MyExtensionsApp.1/Strings/zh-Hant/*"
           ]
         },
         {
           "condition": "(!useArabic)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/ar/*"
+            "MyExtensionsApp.1/Strings/ar/*"
           ]
         },
         {
           "condition": "(!useCzech)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/cs/*"
+            "MyExtensionsApp.1/Strings/cs/*"
           ]
         },
         {
           "condition": "(!useDanish)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/da/*"
+            "MyExtensionsApp.1/Strings/da/*"
           ]
         },
         {
           "condition": "(!useGerman)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/de/*"
+            "MyExtensionsApp.1/Strings/de/*"
           ]
         },
         {
           "condition": "(!useSpanish)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/es/*"
+            "MyExtensionsApp.1/Strings/es/*"
           ]
         },
         {
           "condition": "(!useFrench)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/fr/*"
+            "MyExtensionsApp.1/Strings/fr/*"
           ]
         },
         {
           "condition": "(!useItalian)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/it/*"
+            "MyExtensionsApp.1/Strings/it/*"
           ]
         },
         {
           "condition": "(!useJapanese)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/ja/*"
+            "MyExtensionsApp.1/Strings/ja/*"
           ]
         },
         {
           "condition": "(!useKorean)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/ko/*"
+            "MyExtensionsApp.1/Strings/ko/*"
           ]
         },
         {
           "condition": "(!useDutch)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/nl/*"
+            "MyExtensionsApp.1/Strings/nl/*"
           ]
         },
         {
           "condition": "(!usePortuguese)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/pt-BR/*"
+            "MyExtensionsApp.1/Strings/pt-BR/*"
           ]
         },
         {
           "condition": "(!useRussian)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/ru/*"
+            "MyExtensionsApp.1/Strings/ru/*"
           ]
         },
         {
           "condition": "(!useSwedish)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/sv/*"
+            "MyExtensionsApp.1/Strings/sv/*"
           ]
         },
         {
           "condition": "(!useTurkish)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/tr/*"
+            "MyExtensionsApp.1/Strings/tr/*"
           ]
         },
         {
           "condition": "(!useUkrainian)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/uk/*"
+            "MyExtensionsApp.1/Strings/uk/*"
           ]
         },
         {
           "condition": "(!useVietnamese)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/vi/*"
+            "MyExtensionsApp.1/Strings/vi/*"
           ]
         },
         {
           "condition": "(!useChineseSimplified)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/zh-Hans/*"
+            "MyExtensionsApp.1/Strings/zh-Hans/*"
           ]
         },
         {
           "condition": "(!useChineseTraditional)",
           "exclude": [
-            "MyExtensionsApp._1/Strings/zh-Hant/*"
+            "MyExtensionsApp.1/Strings/zh-Hant/*"
           ]
         },
         {
           "condition": "(!useHttp)",
           "exclude": [
-            "MyExtensionsApp._1/Infrastructure/DebugHandler.cs",
-            "MyExtensionsApp._1/Services/**"
+            "MyExtensionsApp.1/Infrastructure/DebugHandler.cs",
+            "MyExtensionsApp.1/Services/**"
           ]
         },
         {
           "condition": "(!useUnitTests)",
           "exclude": [
-            "MyExtensionsApp._1.Tests/**/*"
+            "MyExtensionsApp.1.Tests/**/*"
           ]
         },
         {
           "condition": "(!useUITests)",
           "exclude": [
-            "MyExtensionsApp._1.UITests/**/*"
+            "MyExtensionsApp.1.UITests/**/*"
           ]
         },
         {
@@ -2267,76 +2267,76 @@
         {
           "condition": "(!wasmPwaManifest)",
           "exclude": [
-            "MyExtensionsApp._1.Wasm/manifest.json",
-            "MyExtensionsApp._1.Wasm/Assets/AppIcon-*"
+            "MyExtensionsApp.1.Wasm/manifest.json",
+            "MyExtensionsApp.1.Wasm/Assets/AppIcon-*"
           ]
         },
         {
           "condition": "(!useCsharpMarkup)",
           "exclude": [
-            "MyExtensionsApp._1/AppResources.cs",
-            "MyExtensionsApp._1/Styles/*.cs"
+            "MyExtensionsApp.1/AppResources.cs",
+            "MyExtensionsApp.1/Styles/*.cs"
           ]
         },
         {
           "condition": "(useCsharpMarkup)",
           "exclude": [
-            "MyExtensionsApp._1/**/*.xaml",
-            "MyExtensionsApp._1/Styles/.gitignore"
+            "MyExtensionsApp.1/**/*.xaml",
+            "MyExtensionsApp.1/Styles/.gitignore"
           ],
           "rename": {
-            "MyExtensionsApp._1/MainPage.xaml.cs": "MyExtensionsApp._1/MainPage.cs",
-            "MyExtensionsApp._1/Presentation/LoginPage.xaml.cs": "MyExtensionsApp._1/Presentation/LoginPage.cs",
-            "MyExtensionsApp._1/Presentation/MainPage.xaml.cs": "MyExtensionsApp._1/Presentation/MainPage.cs",
-            "MyExtensionsApp._1/Presentation/SecondPage.xaml.cs": "MyExtensionsApp._1/Presentation/SecondPage.cs",
-            "MyExtensionsApp._1/Presentation/Shell.xaml.cs": "MyExtensionsApp._1/Presentation/Shell.cs"
+            "MyExtensionsApp.1/MainPage.xaml.cs": "MyExtensionsApp.1/MainPage.cs",
+            "MyExtensionsApp.1/Presentation/LoginPage.xaml.cs": "MyExtensionsApp.1/Presentation/LoginPage.cs",
+            "MyExtensionsApp.1/Presentation/MainPage.xaml.cs": "MyExtensionsApp.1/Presentation/MainPage.cs",
+            "MyExtensionsApp.1/Presentation/SecondPage.xaml.cs": "MyExtensionsApp.1/Presentation/SecondPage.cs",
+            "MyExtensionsApp.1/Presentation/Shell.xaml.cs": "MyExtensionsApp.1/Presentation/Shell.cs"
           }
         },
         {
           "condition": "(!useRegionsNav)",
           "exclude": [
-            "MyExtensionsApp._1/Business/Models/Entity.cs"
+            "MyExtensionsApp.1/Business/Models/Entity.cs"
           ]
         },
         {
           "condition": "(!useMaterial)",
           "exclude": [
-            "MyExtensionsApp._1/Styles/**"
+            "MyExtensionsApp.1/Styles/**"
           ]
         },
         {
           "condition": "(useExtensionsNavigation && useDependencyInjection)",
           "exclude": [
-            "MyExtensionsApp._1/MainPage.xaml",
-            "MyExtensionsApp._1/MainPage.xaml.cs"
+            "MyExtensionsApp.1/MainPage.xaml",
+            "MyExtensionsApp.1/MainPage.xaml.cs"
           ]
         },
         {
           "condition": "(useConfiguration)",
           "exclude": [
-            "MyExtensionsApp._1.Tests/UnitTest1.cs"
+            "MyExtensionsApp.1.Tests/UnitTest1.cs"
           ]
         },
         {
           "condition": "(!useConfiguration)",
           "exclude": [
-            "MyExtensionsApp._1/Business/Models/AppConfig.cs",
-            "MyExtensionsApp._1/appsettings.*",
-            "MyExtensionsApp._1.Tests/AppInfoTests.cs"
+            "MyExtensionsApp.1/Business/Models/AppConfig.cs",
+            "MyExtensionsApp.1/appsettings.*",
+            "MyExtensionsApp.1.Tests/AppInfoTests.cs"
           ]
         },
         {
           "condition": "(!mauiEmbedding)",
           "exclude": [
-            "MyExtensionsApp._1/Assets/Fonts/**",
-            "MyExtensionsApp._1/Assets/Images/**",
-            "MyExtensionsApp._1.MauiControls/**"
+            "MyExtensionsApp.1/Assets/Fonts/**",
+            "MyExtensionsApp.1/Assets/Images/**",
+            "MyExtensionsApp.1.MauiControls/**"
           ]
         },
         {
           "condition": "(!useDspGenerator)",
           "exclude": [
-            "MyExtensionsApp._1/Styles/ColorPaletteOverride.zip"
+            "MyExtensionsApp.1/Styles/ColorPaletteOverride.zip"
           ]
         }
       ]
