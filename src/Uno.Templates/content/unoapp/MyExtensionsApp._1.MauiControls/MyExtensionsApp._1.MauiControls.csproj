@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!--#if (unoMauiClassLibrary)-->
+    <DotNetVersion Condition="'$(DotNetVersion)'==''">$baseTargetFramework$</DotNetVersion>
+
+    <!--#endif-->
     <!--#if (useWinAppSdk) -->
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
     <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion);$mobileTargetFrameworks$</TargetFrameworks>
     <!--#else -->
     <TargetFrameworks>$(DotNetVersion);$mobileTargetFrameworks$</TargetFrameworks>
     <!--#endif -->
-    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
 
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
