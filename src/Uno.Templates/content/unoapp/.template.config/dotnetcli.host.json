@@ -96,7 +96,7 @@
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
-    },  
+    },
     "themeService": {
       "longName": "theme-service",
       "shortName": "theme-service"
@@ -112,6 +112,10 @@
     "defaultBranchName": {
       "longName": "default-branch-name",
       "shortName": "branch"
+    },
+    "wasmMultiThreading": {
+      "longName": "wasm-multi-threading",
+      "shortName": "wasm-multi-threading"
     },
     "unoWinUIVersion": {
       "isHidden": true
