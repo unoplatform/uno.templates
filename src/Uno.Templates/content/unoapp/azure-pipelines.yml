@@ -21,5 +21,8 @@ stages:
     displayName: Tests
     jobs:
       - template: build/jobs/smoke-test.yml
+#if (useUnitTests)
 
       - template: build/jobs/unit-test.yml
+#else
+#endif
