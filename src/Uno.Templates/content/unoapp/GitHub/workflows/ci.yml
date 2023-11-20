@@ -59,4 +59,5 @@ jobs:
       - name: Run Unit Tests
         shell: pwsh
         run: dotnet test ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+#else
 #endif
