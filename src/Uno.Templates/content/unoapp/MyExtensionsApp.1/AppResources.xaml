@@ -6,7 +6,7 @@
     <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
 <!--#if (useMaterial)-->
 <!--#if (useToolkit)-->
-    <utum:MaterialToolkitTheme xmlns="using:Uno.Toolkit.UI.Material"
+    <utum:MaterialToolkitTheme
       ColorOverrideSource="ms-appx:///MyExtensionsApp._1/Styles/ColorPaletteOverride.xaml">
       <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
       <!-- <utum:MaterialToolkitTheme.FontOverrideDictionary>
@@ -18,7 +18,7 @@
       </utum:MaterialToolkitTheme.FontOverrideDictionary> -->
     </utum:MaterialToolkitTheme>
 <!--#else-->
-    <um:MaterialTheme  xmlns="using:Uno.Material"
+    <um:MaterialTheme
       ColorOverrideSource="ms-appx:///MyExtensionsApp._1/Styles/ColorPaletteOverride.xaml">
       <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
       <!-- <um:MaterialTheme.FontOverrideDictionary>
