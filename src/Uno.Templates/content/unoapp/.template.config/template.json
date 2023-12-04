@@ -1115,10 +1115,10 @@
       "datatype": "bool",
       "value": "architectureEvaluator == 'mvvm' || (architectureEvaluator == 'none' && useExtensionsNavigation)"
     },
-    "useMvvmOrMvux": {
+    "useMauiMvvmOrMvux": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useMvux || useMvvm"
+      "value": "(navigationEvaluator != 'blank' && (useMvux || useMvvm))"
     },
     "useWasmMultiThreading": {
       "type": "computed",

@@ -29,7 +29,7 @@
       FontSize="18"
       HorizontalOptions="Center" />
 
-<!--#if (useMvvmOrMvux)-->
+<!--#if (useMauiMvvmOrMvux)-->
     <Button
       Text="{Binding CounterText}"
       SemanticProperties.Hint="Counts the number of times you click"
@@ -41,7 +41,6 @@
       Text="Press Me"
       SemanticProperties.Hint="Counts the number of times you click"
       Clicked="CounterClicked"
-      Command="{Binding Counter}"
       HorizontalOptions="Center" />
 <!--#endif-->
 
