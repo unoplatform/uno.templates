@@ -87,6 +87,7 @@
     </When>
     <When Condition="$(TargetFramework.Contains('windows10'))">
       <PropertyGroup>
+        <UseRidGraph>true</UseRidGraph>
         <IsWinAppSdk>true</IsWinAppSdk>
         <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
