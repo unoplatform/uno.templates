@@ -852,6 +852,12 @@
       "defaultValue": "DefaultUnoUITestHelpersVersion",
       "replaces": "$UnoUITestHelpersVersion$"
     },
+    // Developer Mode will only be enabled via Visual Studio
+    "enableDeveloperMode": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "isVsix": {
       "displayName": "isVsix",
       "type": "parameter",

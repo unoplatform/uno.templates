@@ -163,5 +163,8 @@
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
     <PackageVersion Include="Xamarin.UITest" Version="4.3.0" />
     <!--#endif-->
+    <!--#if (enableDeveloperMode)-->
+    $$EnableDeveloperMode_CPM_PackageVersion$$
+    <!--#endif-->
   </ItemGroup>
 </Project>
