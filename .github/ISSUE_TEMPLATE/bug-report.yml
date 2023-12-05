@@ -1,0 +1,93 @@
+name: 🐞 Bug
+title: '[Bug] <title>'
+description: Report a bug encountered while using the Uno Templates
+labels: ["kind/bug", "triage/untriaged"]
+assignees: []
+body:
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current behavior
+      placeholder: |
+        Describe how the issue manifests.
+      description:  Please provide a clear and concise description of what behavior the bug is currently causing.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      placeholder: |
+        Describe what the desired behavior would be.
+      description: Please provide a clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Affected platforms
+      description: Please select the platforms that are affected by this bug.
+      multiple: true
+      options:
+        - iOS
+        - Android
+        - MacCatalyst
+        - WebAssembly
+        - Gtk
+        - Linux Framebuffer
+        - Wpf
+        - Windows (WinAppSdk)
+        - Server
+  - type: dropdown
+    id: template-platform
+    attributes:
+      label: Template Host
+      description: How did you create your project?
+      multiple: true
+      options:
+        - dotnet new
+        - Visual Studio
+    validations:
+      required: true
+  - type: dropdown
+    id: host-os
+    attributes:
+      label: Host OS
+      description: What OS are you running on?
+      multiple: true
+      options:
+        - macOS
+        - Windows
+        - Linux
+    validations:
+      required: true
+  - type: textarea
+    id: template-options
+    attributes:
+      label: Template Options
+      description: What options did you pass to the template?
+      placeholder: |
+        If using Visual Studio please provide a list of the options you selected.
+
+        If using dotnet new please provide the command you used to create the project
+        (e.g. dotnet new unoapp -id com.contoso.awesomeapp -presentation mvvm -markup csharp)
+    validations:
+      required: true
+  - type: textarea
+    id: template-version
+    attributes:
+      label: Template Version
+      description: What version of the template are you using?
+      placeholder: |
+        If using Visual Studio add the version of the Uno Platform Extension.
+        If using dotnet new please paste the output of `dotnet new details Uno.Templates`.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Anything else we need to know?
+      description: Please provide any additional information that may be helpful in reproducing the issue.
+      placeholder: |
+        Any additional information that you think might help us in solving this issue or workarounds that you found.
