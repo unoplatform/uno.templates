@@ -158,6 +158,9 @@
     },
     "unoUITestHelpersVersion": {
       "isHidden": true
+    },
+    "enableDeveloperMode": {
+      "isHidden": true
     }
   }
 }

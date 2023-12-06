@@ -120,6 +120,9 @@
     <PackageReference Include="Microsoft.Maui.Graphics" VersionOverride="$(MauiVersion)" />
     <!--#endif-->
     <!--#endif -->
+    <!--#if (enableDeveloperMode)-->
+    $$EnableDeveloperMode_CPM_PackageReference$$
+    <!--#endif-->
   </ItemGroup>
   <!--#else-->
   <ItemGroup>
@@ -225,6 +228,9 @@
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
     <!--#endif-->
     <!--#endif -->
+    <!--#if (enableDeveloperMode)-->
+    $$EnableDeveloperMode_PackageReference$$
+    <!--#endif-->
   </ItemGroup>
   <!--#endif-->
 
@@ -262,12 +268,12 @@
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
         <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231115000" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
         <!--#endif-->
       <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="1.4.231008000" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="10.0.22621.756" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="1.4.231115000" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="10.0.22621.2428" />
       <!--#endif-->
       </ItemGroup>
     </When>
