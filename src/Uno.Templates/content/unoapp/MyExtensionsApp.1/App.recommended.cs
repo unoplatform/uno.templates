@@ -182,8 +182,14 @@ public class App : Application
             // Create a Frame to act as the navigation context and navigate to the first page
             rootFrame = new Frame();
 
+//+:cnd:noEmit
+#if (!enableDeveloperMode)
             // Place the frame in the current Window
             MainWindow.Content = rootFrame;
+#else
+$$EnableDeveloperMode_Frame_MainWindowContent$$
+#endif
+//-:cnd:noEmit
         }
 
         if (rootFrame.Content == null)
@@ -197,10 +203,19 @@ public class App : Application
         MainWindow.Activate();
 //+:cnd:noEmit
 #elif (!useAuthentication)
+#if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<Shell>();
 #else
-        Host = await builder.NavigateAsync<Shell>(initialNavigate:
-            async (services, navigator) =>
+$$EnableDeveloperMode_Region_Navigate$$
+            ();
+#endif
+#else
+#if (!enableDeveloperMode)
+        Host = await builder.NavigateAsync<Shell>
+#else
+$$EnableDeveloperMode_Region_Navigate$$
+#endif
+            (initialNavigate: async (services, navigator) =>
             {
                 var auth = services.GetRequiredService<IAuthenticationService>();
                 var authenticated = await auth.RefreshAsync();

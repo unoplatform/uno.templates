@@ -1949,6 +1949,12 @@
           ]
         },
         {
+          "condition": "(!enableDeveloperMode)",
+          "exclude": [
+            "nuget.config"
+          ]
+        },
+        {
           "condition": "(isVsix)",
           "exclude": [
             "MyExtensionsApp.1.sln"

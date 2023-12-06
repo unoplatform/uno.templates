@@ -41,8 +41,14 @@ public class App : Application
             // Create a Frame to act as the navigation context and navigate to the first page
             rootFrame = new Frame();
 
+//+:cnd:noEmit
+#if (!enableDeveloperMode)
             // Place the frame in the current Window
             MainWindow.Content = rootFrame;
+#else
+$$EnableDeveloperMode_Frame_MainWindowContent$$
+#endif
+//-:cnd:noEmit
 
             rootFrame.NavigationFailed += OnNavigationFailed;
         }
