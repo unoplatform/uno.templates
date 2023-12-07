@@ -78,6 +78,9 @@ jobs:
       # https://github.com/unoplatform/uno.templates/issues/414
       Issue414:
        templateArgs: '-preset recommended -auth msal -markup csharp'
+      # https://github.com/unoplatform/uno.templates/issues/477
+      Issue477:
+       templateArgs: '-preset recommended -theme material -toolkit'
 
   variables:
     - name: UseDotNetNativeToolchain
