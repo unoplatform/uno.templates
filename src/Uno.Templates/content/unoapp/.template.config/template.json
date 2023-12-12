@@ -1528,7 +1528,7 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(appThemeEvaluator == 'material' && useToolkit == 'true')",
+            "condition": "(appThemeEvaluator == 'material' && (useToolkit == 'true' || useToolkit == true))",
             "value": "\n                    xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
           },
           {
