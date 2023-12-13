@@ -7,7 +7,7 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 
  //+:cnd:noEmit
 #if useCustomAuthentication
-   public IState<string> Username => State<string>.Value(this, () => string.Empty);
+    public IState<string> Username => State<string>.Value(this, () => string.Empty);
 
     public IState<string> Password => State<string>.Value(this, () => string.Empty);
 #endif
