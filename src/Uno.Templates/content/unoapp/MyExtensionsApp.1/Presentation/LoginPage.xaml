@@ -25,10 +25,10 @@
           Width="200"
           Spacing="16">
 <!--#if (useCustomAuthentication)-->
-      <TextBox Text="{Binding Username}"
+      <TextBox Text="{Binding Username, Mode=TwoWay}"
           PlaceholderText="Username"
           HorizontalAlignment="Stretch" />
-      <PasswordBox Password="{Binding Username}"
+      <PasswordBox Password="{Binding Password, Mode=TwoWay}"
             PlaceholderText="Password"
             HorizontalAlignment="Stretch" />
 <!--#endif-->
