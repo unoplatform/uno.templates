@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DotNetVersion)</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>UnoCrossRuntimeLib</RootNamespace>
+    <AssemblyName>UnoCrossRuntimeLib</AssemblyName>
+    <UnoRuntimeIdentifier>skia</UnoRuntimeIdentifier>
+    <DefineConstants>$(DefineConstants);WINUI;__SKIA__</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+  </ItemGroup>
+</Project>

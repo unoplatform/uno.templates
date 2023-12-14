@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DotNetVersion)</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>UnoCrossRuntimeLib</RootNamespace>
+    <AssemblyName>UnoCrossRuntimeLib</AssemblyName>
+    <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Uno.WinUI.Runtime.WebAssembly" Version="$UnoWinUIVersion$" />
+  </ItemGroup>
+</Project>
