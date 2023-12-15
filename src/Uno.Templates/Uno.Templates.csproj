@@ -34,6 +34,16 @@
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.4</UnoWasmBootstrapVersionNet8>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.13</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
+		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdk)' == ''">17.8.0</MicrosoftTestSdkVersion>
+		<NUnitVersion Condition="'$(NUnitVersion)' == ''">4.0.1</NUnitVersion>
+		<NUnit3TestAdapterVersion Condition="'$(NUnit3TestAdapterVersion)' == ''">4.5.0</NUnit3TestAdapterVersion>
+		<FluentAssertionsVersion Condition="'$(FluentAssertionsVersion)' == ''">6.12.0</FluentAssertionsVersion>
+		<CoverletCollectorVersion Condition="'$(CoverletCollectorVersion)' == ''">6.0.0</CoverletCollectorVersion>
+		<NewtonsoftJsonVersion Condition="'$(NewtonsoftJsonVersion)' == ''">13.0.3</NewtonsoftJsonVersion>
+		<XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.3</XamarinUITestVersion>
+		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.2428</MicrosoftWindowsSDKBuildToolsVersion>
+		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.4.231115000</MicrosoftWindowsAppSDKVersion>
+		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
@@ -90,6 +100,7 @@
 		<ItemGroup>
 			<_TemplateJson Include="$(IntermediateOutputPath)/content/**/template.json" />
 			<_MauiLibTemplateFile Include="$(TemplateContentFolder)/unomauilib/**" />
+			<_PackageReferenceFile Include="$(TemplateContentFolder)/**/*.csproj;$(TemplateContentFolder)/**/Directory.Packages.props" />
 		</ItemGroup>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoExtensionsVersion" ReplacementText="$(UnoExtensionsVersion)" />
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWinUIVersion" ReplacementText="$(UnoVersion)" />
@@ -107,59 +118,16 @@
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
 		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp\._1\.MauiControls" ReplacementText="MyExtensionsApp.1" />
-	</Target>
-
-	<Target Name="DownloadTemplatePackages" BeforeTargets="BeforeBuild;PrepareTemplateFiles">
-		<!-- Define download directory and make sure it exists-->
-		<PropertyGroup>
-			<_TemplatesFolder>$([System.IO.Path]::Combine($(IntermediateOutputPath), 'templates'))</_TemplatesFolder>
-			<TemplateDownloadFolder>$([System.IO.Path]::Combine($(_TemplatesFolder), 'download'))</TemplateDownloadFolder>
-		</PropertyGroup>
-		<MakeDir Directories="$(TemplateDownloadFolder)" />
-
-		<ItemGroup>
-			<MergeTemplatePackage Update="@(MergeTemplatePackage)" Condition="Exists('$(TemplateDownloadFolder)\%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg')">
-				<FileExists>true</FileExists>
-			</MergeTemplatePackage>
-			<OldTemplatePackages Include="$(TemplateDownloadFolder)\%(MergeTemplatePackage.Identity).*" Exclude="$(TemplateDownloadFolder)\%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg" />
-		</ItemGroup>
-
-		<Delete Files="@(OldTemplatePackages)" />
-
-		<DownloadFile Condition="!%(MergeTemplatePackage.FileExists)" DestinationFolder="$(TemplateDownloadFolder)" DestinationFileName="%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg" SourceUrl="https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/%(MergeTemplatePackage.Identity)/versions/%(MergeTemplatePackage.Version)/content" SkipUnchangedFiles="true" />
-		<!-- Timeout="10000" /> -->
-
-		<!-- Create an ItemGroup containing the file names of the downloaded packages -->
-		<ItemGroup>
-			<_TemplatePackages Include="$(TemplateDownloadFolder)/%(MergeTemplatePackage.Identity).%(MergeTemplatePackage.Version).nupkg">
-				<FileExists>%(MergeTemplatePackage.FileExists)</FileExists>
-			</_TemplatePackages>
-		</ItemGroup>
-
-	</Target>
-
-	<Target Name="ExtractPackages" AfterTargets="DownloadTemplatePackages" BeforeTargets="BeforeBuild;PrepareTemplateFiles">
-		<!-- Define and make sure the extract folder exists -->
-		<PropertyGroup>
-			<TemplateUnzipFolder>$([System.IO.Path]::Combine($(_TemplatesFolder), 'extract'))</TemplateUnzipFolder>
-		</PropertyGroup>
-
-		<RemoveDir Directories="$(TemplateUnzipFolder)" Condition="!%(MergeTemplatePackage.FileExists)" />
-
-		<PropertyGroup>
-			<UnzipAll>false</UnzipAll>
-			<UnzipAll Condition="!Exists('$(TemplateUnzipFolder)')">true</UnzipAll>
-		</PropertyGroup>
-
-		<MakeDir Directories="$(TemplateUnzipFolder)" />
-
-		<!-- Unzip each of the downloade packages -->
-		<Unzip SourceFiles="%(_TemplatePackages.Identity)" DestinationFolder="$(TemplateUnzipFolder)" Condition="!%(_TemplatePackages.FileExists) or $(UnzipAll)" />
-
-		<ItemGroup>
-			<_ExternalTemplateExcludes Include="$(TemplateUnzipFolder)/content/unoapp-winui/**" />
-			<TemplateFile Include="$(TemplateUnzipFolder)/content/**/*" Exclude="@(_ExternalTemplateExcludes)" />
-		</ItemGroup>
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftTestSdk$" ReplacementText="$(MicrosoftTestSdkVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsSDKBuildTools$" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsAppSDK$" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
+		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$XamarinGoogleAndroidMaterial$" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
 	</Target>
 
 	<UsingTask TaskName="AppendSingleTargetIgnore" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
@@ -196,7 +164,7 @@
 				<![CDATA[
 					File.WriteAllText(
 						Filename,
-						Regex.Replace(File.ReadAllText(Filename), MatchExpression, ReplacementText)
+						Regex.Replace(File.ReadAllText(Filename), Regex.Escape(MatchExpression), ReplacementText)
 						);
 				]]>
 			</Code>

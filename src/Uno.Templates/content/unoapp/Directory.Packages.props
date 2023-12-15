@@ -9,25 +9,25 @@
     <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
-    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
-    <PackageVersion Include="NUnit" Version="3.13.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
+    <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
+    <PackageVersion Include="NUnit" Version="$NUnit$" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="$NUnit3TestAdapter$" />
     <!--#if (useGitHubActions)-->
     <PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
     <!--#endif-->
     <!--#endif-->
     <!--#if (useUITests)-->
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Newtonsoft.Json" Version="$NewtonsoftJson$" />
     <!--#endif-->
     <!--#if (useWasm)-->
     <PackageVersion Include="Microsoft.Windows.Compatibility" Version="$MsftWindowsCompatibilityVersion$" />
     <!--#endif-->
     <!--#if (!mauiEmbedding)-->
     <!--#if (useWinAppSdk)-->
-    <PackageVersion Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
-    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.4.231115000" />
+    <PackageVersion Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
+    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
     <!--#endif-->
     <!--#endif-->
     <!--#if (useAspNetCoreSerilogPackage)-->
@@ -157,11 +157,11 @@
     <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIVersion$" />
     <!--#endif-->
     <!--#if (useAndroidMaterial)-->
-    <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.10.0.1" />
+    <PackageVersion Include="Xamarin.Google.Android.Material" Version="$XamarinGoogleAndroidMaterial$" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
-    <PackageVersion Include="Xamarin.UITest" Version="4.3.0" />
+    <PackageVersion Include="Xamarin.UITest" Version="$XamarinUITest$" />
     <!--#endif-->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageVersion$$

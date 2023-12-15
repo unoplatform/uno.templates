@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <DotNetVersion Condition=" $(DotNetVersion) == '' ">net8.0</DotNetVersion>
+    <TargetFramework>$(DotNetVersion)</TargetFramework>
+    <IsTestProject>true</IsTestProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" VersionOverride="$FluentAssertions$" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="$MicrosoftTestSdk$" />
+    <PackageReference Include="Newtonsoft.Json" VersionOverride="$NewtonsoftJson$" />
+    <PackageReference Include="NUnit" VersionOverride="$NUnit$" />
+    <PackageReference Include="NUnit3TestAdapter" VersionOverride="$NUnit3TestAdapter$" />
+    <PackageReference Include="Uno.UITest.Helpers" VersionOverride="$UnoUITestHelpersVersion$" />
+    <PackageReference Include="Xamarin.UITest" VersionOverride="$XamarinUITest$" />
+  </ItemGroup>
+
+</Project>

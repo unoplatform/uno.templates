@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "unoplatform.vscode"
+  ],
+  "unwantedRecommendations": [
+    "ms-dotnettools.csdevkit"
+  ],
+}

@@ -268,12 +268,12 @@
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
         <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231115000" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
         <!--#endif-->
       <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="1.4.231115000" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="10.0.22621.2428" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="$MicrosoftWindowsAppSDK$" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="$MicrosoftWindowsSDKBuildTools$" />
       <!--#endif-->
       </ItemGroup>
     </When>
