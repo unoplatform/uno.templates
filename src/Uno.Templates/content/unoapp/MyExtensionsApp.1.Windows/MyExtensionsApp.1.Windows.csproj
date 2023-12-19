@@ -9,6 +9,7 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
 
     <!--#if (useWinAppSdkSelfContained)-->
     <!-- Bundles the WinAppSDK binaries -->
