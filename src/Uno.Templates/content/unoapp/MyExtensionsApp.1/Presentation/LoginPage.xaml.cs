@@ -23,9 +23,9 @@ public sealed partial class LoginPage : Page
 #if useToolkit
                     new NavigationBar().Content(() => vm.Title),
 #else
-                new TextBlock()
-                    .Text(() => vm.Title)
-                    .HorizontalAlignment(HorizontalAlignment.Center)
+                    new TextBlock()
+                        .Text(() => vm.Title)
+                        .HorizontalAlignment(HorizontalAlignment.Center),
 #endif
                     new StackPanel()
                         .Grid(row: 1)
