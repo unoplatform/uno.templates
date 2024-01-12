@@ -77,7 +77,13 @@ jobs:
        templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
       # https://github.com/unoplatform/uno.templates/issues/414
       Issue414:
-       templateArgs: '-auth msal -markup csharp'
+       templateArgs: '-preset recommended -auth msal -markup csharp'
+      # https://github.com/unoplatform/uno.templates/issues/477
+      Issue477:
+       templateArgs: '-preset recommended -theme material -toolkit'
+      # https://github.com/unoplatform/uno.templates/issues/500
+      Issue500:
+       templateArgs: '-preset blank -tfm net8.0 -markup csharp -presentation mvux -theme material -di -config -http -nav regions -log default -server -auth msal'
 
   variables:
     - name: UseDotNetNativeToolchain

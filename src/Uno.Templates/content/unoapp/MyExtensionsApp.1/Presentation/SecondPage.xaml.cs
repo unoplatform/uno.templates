@@ -27,7 +27,7 @@ public sealed partial class SecondPage : Page
 #else
                 new TextBlock()
                     .Text("Second Page")
-                    .HorizontalAlignment(HorizontalAlignment.Center)
+                    .HorizontalAlignment(HorizontalAlignment.Center),
 #endif
                 new TextBlock()
                     .Text(() => vm.Entity.Name)
