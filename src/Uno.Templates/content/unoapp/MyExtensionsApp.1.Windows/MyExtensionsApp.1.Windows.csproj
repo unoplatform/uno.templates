@@ -112,7 +112,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
     <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
-    <!--#if (useMauiPackageReference)-->
+    <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
     <!--#endif -->
@@ -203,7 +203,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
-    <!--#if (useMauiPackageReference)-->
+    <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <!--#endif -->

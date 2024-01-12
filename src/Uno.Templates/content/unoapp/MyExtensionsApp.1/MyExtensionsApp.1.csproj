@@ -112,13 +112,10 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
-    <!--#if (useMauiPackageReference)-->
+    <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-    <!--#else -->
-    <!--#if (mauiEmbedding)-->
-    <PackageReference Include="Microsoft.Maui.Graphics" VersionOverride="$(MauiVersion)" />
-    <!--#endif-->
+    <PackageReference Include="Microsoft.Maui.Graphics" />
     <!--#endif -->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageReference$$
@@ -220,7 +217,7 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
-    <!--#if (useMauiPackageReference)-->
+    <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <!--#else -->

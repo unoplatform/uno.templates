@@ -10,7 +10,6 @@
   { "PropertyName": "UnoToolkitMarkupVersion", "PackageId": "Uno.Toolkit.WinUI.Markup" }, 
   { "PropertyName": "UnoResizetizerVersion", "PackageId": "Uno.Resizetizer" }, 
   { "PropertyName": "UnoUniversalImageLoaderVersion", "PackageId": "Uno.UniversalImageLoader" }, 
-  { "PropertyName": "UnoWasmBootstrapVersionNet7", "PackageId": "Uno.Wasm.Bootstrap" }, 
   { "PropertyName": "UnoWasmBootstrapVersionNet8", "PackageId": "Uno.Wasm.Bootstrap" }, 
   { "PropertyName": "UnoMarkupVersion", "PackageId": "Uno.WinUI.Markup" }, 
   { "PropertyName": "UnoUITestHelpersVersion", "PackageId": "Uno.UITest.Helpers" }

@@ -3,9 +3,10 @@
     <!--#if (useMvvm)-->
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <!--#endif-->
-    <!--#if (useMauiPackageReference)-->
+    <!--#if (mauiEmbedding)-->
     <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
     <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->

@@ -31,18 +31,13 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net7.0",
+      "defaultValue": "net8.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
-          "choice": "net7.0",
-          "displayName": ".NET 7.0",
-          "description": "Target .NET 7.0 (Standard Term Support)"
-        },
-        {
           "choice": "net8.0",
           "displayName": ".NET 8.0",
-          "description": "Target .NET 8.0 (Preview)"
+          "description": "Target .NET 8.0 (Long Term Support)"
         }
       ]
     },
@@ -155,11 +150,6 @@
           }
         ]
       }
-    },
-    "useMauiPackageReference": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(tfm != 'net7.0')"
     }
   }
 }
