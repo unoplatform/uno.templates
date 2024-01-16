@@ -18,7 +18,7 @@
 
 	<PropertyGroup>
 		<!-- If you update Extensions or Uno version, make sure you update the versions in the reinstall.ps1 file too !-->
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.11</UnoExtensionsVersion>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.0.0-dev.212</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.1.0-dev.768</UnoVersion>
 		
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
