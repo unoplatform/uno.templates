@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <!--#if (useWinAppSdk) -->
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
@@ -123,10 +123,10 @@
   </ItemGroup>
   <!--#else-->
   <ItemGroup>
-    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
     <!--#if (!useWinAppSdk) -->
-    <PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
-    <PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
     <!--#endif-->
     <PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
     <!--#if (useCsharpMarkup)-->
@@ -280,8 +280,8 @@
         <PackageReference Include="Uno.WinUI.Lottie" />
         <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
         <!--#else-->
-        <PackageReference Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
-        <PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+        <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
+        <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
         <!--#endif-->
 
         <!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->

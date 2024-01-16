@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFramework>$(DotNetVersion)</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -7,6 +7,6 @@
     <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.WinUI.Runtime.WebAssembly" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI.Runtime.WebAssembly" Version="$(UnoVersion)" />
   </ItemGroup>
 </Project>

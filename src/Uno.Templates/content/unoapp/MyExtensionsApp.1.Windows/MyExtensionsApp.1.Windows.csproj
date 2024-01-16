@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(DotNetVersion)-windows10.0.19041.0</TargetFramework>
@@ -120,7 +120,7 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
     <!--#if (!mauiEmbedding)-->
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
@@ -202,7 +202,7 @@
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$(UnoVersion)" />
     <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />

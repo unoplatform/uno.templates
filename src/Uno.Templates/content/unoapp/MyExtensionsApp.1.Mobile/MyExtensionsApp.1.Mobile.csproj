@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>$mobileTargetFrameworks$</TargetFrameworks>
     <!--#if (useMacOS)-->
@@ -113,7 +113,7 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
     <!--#if (useCsharpMarkup)-->
     <PackageReference Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
     <!--#if (useMaterial)-->
@@ -188,8 +188,8 @@
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
-    <PackageReference Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$(UnoVersion)" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
     <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
