@@ -52,18 +52,34 @@ jobs:
         templateArgs: '-preset=recommended -auth=custom'
       CustomAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=custom'
+      CustomAuthMvuxCSharp:
+        templateArgs: '-preset=recommended -auth=custom -markup csharp'
+      CustomAuthMvvmCSharp:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=custom -markup csharp'
       WebAuthMvux:
         templateArgs: '-preset=recommended -auth=web'
       WebAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=web'
+      WebAuthMvuxCSharp:
+        templateArgs: '-preset=recommended -auth=web -markup csharp'
+      WebAuthMvvmCSharp:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=web -markup csharp'
       OidcAuthMvux:
         templateArgs: '-preset=recommended -auth=oidc'
       OidcAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=oidc'
+      OidcAuthMvuxCSharp:
+        templateArgs: '-preset=recommended -auth=oidc -markup csharp'
+      OidcAuthMvvmCSharp:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=oidc -markup csharp'
       MsalAuthMvux:
         templateArgs: '-preset=recommended -auth=msal'
       MsalAuthMvvm:
         templateArgs: '-preset=recommended -presentation mvvm -auth=msal'
+      MsalAuthMvuxCSharp:
+        templateArgs: '-preset=recommended -auth=msal -markup csharp'
+      MsalAuthMvvmCSharp:
+        templateArgs: '-preset=recommended -presentation mvvm -auth=msal -markup csharp'
       MauiBlank:
        templateArgs: '-preset=blank -maui'
       MauiRecommended:
