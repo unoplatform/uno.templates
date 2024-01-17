@@ -52,7 +52,7 @@
     <!--#endif-->
   </Choose>
   <!--#endif-->
-  <!--#if (useMauiPackageReference)-->
+  <!--#if (mauiEmbedding)-->
 
   <ItemGroup>
     <!--#if (useCPM)-->

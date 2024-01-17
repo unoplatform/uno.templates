@@ -190,11 +190,6 @@
       "description": "Select the .NET version of your solution",
       "choices": [
         {
-          "choice": "net7.0",
-          "displayName": ".NET 7.0",
-          "description": "Target .NET 7.0 (Standard Term Support)"
-        },
-        {
           "choice": "net8.0",
           "displayName": ".NET 8.0",
           "description": "Target .NET 8.0 (Long Term Support)"
@@ -802,12 +797,8 @@
         "datatype": "text",
         "cases": [
           {
-            "condition": "(tfm == 'net7.0')",
-            "value": "7.0.101"
-          },
-          {
             "condition": "(tfm == 'net8.0')",
-            "value": "8.0.3"
+            "value": "8.0.5"
           }
         ]
       }
@@ -820,10 +811,6 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "DefaultUnoWasmBootstrapVersionNet7"
-          },
           {
             "condition": "(tfm == 'net8.0')",
             "value": "DefaultUnoWasmBootstrapVersionNet8"
@@ -863,12 +850,6 @@
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
-    },
-    // TODO: change this to != net7.0 when we don't have backport concerns
-    "useMauiPackageReference": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(mauiEmbedding && tfm == 'net8.0')"
     },
     "useAzurePipelines": {
       "type": "computed",
@@ -1129,8 +1110,7 @@
     "useWasmMultiThreading": {
       "type": "computed",
       "datatype": "bool",
-      // NOTE: This doesn't work well in net7.0
-      "value": "(tfm != 'net7.0' && wasmMultiThreading)"
+      "value": "(wasmMultiThreading)"
     },
     "useGtk": {
       "type": "computed",
@@ -1436,10 +1416,6 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "7.0.x"
-          },
           {
             "condition": "(tfm == 'net8.0')",
             "value": "8.0.x"
@@ -1828,10 +1804,6 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net7.0')",
-            "value": "7.0.0"
-          },
-          {
             "condition": "(tfm == 'net8.0')",
             "value": "8.0.0"
           }
@@ -1846,10 +1818,6 @@
         "evaluator": "C++",
         "datatype": "string",
         "cases": [
-          {
-            "condition": "(tfm == 'net7.0')",
-            "value": "7.0.5"
-          },
           {
             "condition": "(tfm == 'net8.0')",
             "value": "8.0.0"

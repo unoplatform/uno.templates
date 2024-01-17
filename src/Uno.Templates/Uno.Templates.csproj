@@ -18,7 +18,7 @@
 
 	<PropertyGroup>
 		<!-- If you update Extensions or Uno version, make sure you update the versions in the reinstall.ps1 file too !-->
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">3.0.11</UnoExtensionsVersion>
+		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.0.0-dev.212</UnoExtensionsVersion>
 		<UnoVersion Condition="'$(UnoVersion)' == ''">5.1.0-dev.768</UnoVersion>
 		
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
@@ -30,7 +30,6 @@
 		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">5.0.17</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<UnoWasmBootstrapVersionNet7 Condition="'$(UnoWasmBootstrapVersionNet7)' == ''">7.0.31</UnoWasmBootstrapVersionNet7>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.4</UnoWasmBootstrapVersionNet8>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.0.13</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
@@ -113,7 +112,6 @@
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoToolkitMarkupVersion" ReplacementText="$(UnoToolkitMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoResizetizerVersion" ReplacementText="$(UnoResizetizerVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet7" ReplacementText="$(UnoWasmBootstrapVersionNet7)" />
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>

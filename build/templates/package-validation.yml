@@ -10,13 +10,8 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '7.0.403'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/7.0.101.json'
-
-    if (!$templateArgs.Contains('net7')) {
-      $dotnetVersion = '8.0.100'
-      $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.3.json'
-    }
+    $dotnetVersion = '8.0.100'
+    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.3.json'
 
     Write-Host "DotNetVersion = $dotnetVersion"
     Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
