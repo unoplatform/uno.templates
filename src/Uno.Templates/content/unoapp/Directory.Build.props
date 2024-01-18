@@ -43,8 +43,8 @@
 
   <Choose>
     <!--
-      Defaults are provided by the Uno.Sdk. Uncomment these and provide the SupportedOSPlatformVersion if you need to customize
-      the supported OS version for a specific platform for your application.
+      Defaults are provided by the Uno.Sdk. In the event you need to override the default minimum supported OS
+      Version, uncomment the appropriate platform and set the value to the desired minimum version.
     -->
     <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
       <PropertyGroup>
@@ -61,18 +61,12 @@
         <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
       </PropertyGroup>
     </When> -->
-    <When Condition="$(TargetFramework.Contains('windows10'))">
+    <!-- <When Condition="$(TargetFramework.Contains('windows10'))">
       <PropertyGroup>
-        <!--
-          Defaults are provided by the Uno.Sdk. Uncomment these and provide the SupportedOSPlatformVersion and/or the
-          TargetPlatformMinVersion if you need to customize the supported OS version for your application.
-        -->
-        <!-- <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion> -->
-        <!-- <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion> -->
-        <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-        <EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
+        <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
       </PropertyGroup>
-    </When>
+    </When> -->
   </Choose>
 
   <!--
