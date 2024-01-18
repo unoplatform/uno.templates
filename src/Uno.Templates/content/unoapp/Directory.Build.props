@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
   <PropertyGroup>
     <DotNetVersion>$baseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -29,14 +29,6 @@
     -->
     <NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
     <!--#endif-->
-
-    <DefaultLanguage>en</DefaultLanguage>
-
-    <IsAndroid>false</IsAndroid>
-    <IsIOS>false</IsIOS>
-    <IsMac>false</IsMac>
-    <IsMacCatalyst>false</IsMacCatalyst>
-    <IsWinAppSdk>false</IsWinAppSdk>
     <!--#if (mauiEmbedding)-->
 
     <MauiVersion Condition=" '$(MauiVersion)' == '' ">$DefaultMauiVersion$</MauiVersion>
@@ -50,46 +42,33 @@
   </PropertyGroup>
 
   <Choose>
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <!--
+      Defaults are provided by the Uno.Sdk. Uncomment these and provide the SupportedOSPlatformVersion if you need to customize
+      the supported OS version for a specific platform for your application.
+    -->
+    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
       <PropertyGroup>
-        <IsAndroid>true</IsAndroid>
         <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
       </PropertyGroup>
-    </When>
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    </When> -->
+    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
       <PropertyGroup>
-        <IsIOS>true</IsIOS>
         <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
       </PropertyGroup>
-
-      <!--
-      Eagerly define capabilities for iOS to avoid VS 2022 to ask for
-      project reload, and ninitialize the debugger toolbar faster.
-      See https://github.com/unoplatform/uno/issues/14303.
-      -->
-      <ItemGroup>
-        <ProjectCapability Include="XamarinStaticLaunchProfiles" />
-        <ProjectCapability Include="Maui" />
-        <ProjectCapability Include="MauiCore" />
-      </ItemGroup>
-    </When>
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
+    </When> -->
+    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
       <PropertyGroup>
-        <IsMac>true</IsMac>
-        <SupportedOSPlatformVersion>10.14</SupportedOSPlatformVersion>
-      </PropertyGroup>
-    </When>
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-      <PropertyGroup>
-        <IsMacCatalyst>true</IsMacCatalyst>
         <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
       </PropertyGroup>
-    </When>
+    </When> -->
     <When Condition="$(TargetFramework.Contains('windows10'))">
       <PropertyGroup>
-        <IsWinAppSdk>true</IsWinAppSdk>
-        <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
-        <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+        <!--
+          Defaults are provided by the Uno.Sdk. Uncomment these and provide the SupportedOSPlatformVersion and/or the
+          TargetPlatformMinVersion if you need to customize the supported OS version for your application.
+        -->
+        <!-- <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion> -->
+        <!-- <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion> -->
         <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
         <EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
       </PropertyGroup>
