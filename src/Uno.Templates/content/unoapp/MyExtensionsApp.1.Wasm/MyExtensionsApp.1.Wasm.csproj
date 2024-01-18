@@ -1,5 +1,5 @@
-<Project Sdk="Uno.Sdk">
-  <Sdk Name="Microsoft.NET.Sdk.Web" />
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Sdk Name="Uno.Sdk" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
