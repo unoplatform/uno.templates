@@ -14,11 +14,26 @@
 
     <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <!--#if (useWinAppSdk) -->
+    <!--
+      If you encounter this error message:
+
+        error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+        Please update to a newer .NET SDK in order to reference this assembly.
+
+      This means that the two packages below must be aligned with the "build" version number of
+      the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+      must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+    -->
+    <!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+    <!--#endif-->
   </PropertyGroup>
 
   <!--#if (useCPM)-->
   <ItemGroup>
     <PackageReference Include="Uno.WinUI" />
+    <PackageReference Include="Uno.WinUI.Lottie" Condition="!$(IsWinAppSdk)" />
+    <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug' AND !$(IsWinAppSdk)" />
     <!--#if (!useWinAppSdk) -->
     <PackageReference Include="Uno.WinUI.Lottie" />
     <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
@@ -116,6 +131,11 @@
     <PackageReference Include="Microsoft.Maui.Controls" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
     <PackageReference Include="Microsoft.Maui.Graphics" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="$MicrosoftWindowsAppSDK$" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="$MicrosoftWindowsSDKBuildTools$" Condition="$(IsWinAppSdk)" />
+    <!--#else-->
+    <PackageReference Include="Microsoft.WindowsAppSDK" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Condition="$(IsWinAppSdk)" />
     <!--#endif -->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageReference$$
@@ -124,6 +144,8 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug' AND !$(IsWinAppSdk)" />
     <!--#if (!useWinAppSdk) -->
     <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
     <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
@@ -220,11 +242,11 @@
     <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-    <!--#else -->
-    <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
+    <!--#else -->
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" Condition="$(IsWinAppSdk)" />
     <!--#endif-->
-    <!--#endif -->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_PackageReference$$
     <!--#endif-->
@@ -243,68 +265,6 @@
   </ItemGroup>
   <!--#endif-->
 
-  <!--#if (useWinAppSdk) -->
-  <Choose>
-    <When Condition="$(IsWinAppSdk)">
-      <PropertyGroup>
-        <!--
-        If you encounter this error message:
-
-          error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
-          Please update to a newer .NET SDK in order to reference this assembly.
-
-        This means that the two packages below must be aligned with the "build" version number of
-        the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
-        must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
-        -->
-        <!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
-      </PropertyGroup>
-      <ItemGroup>
-      <!--#if (!mauiEmbedding)-->
-        <!--#if (useCPM)-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
-        <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
-        <!--#endif-->
-      <!--#else-->
-        <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="$MicrosoftWindowsAppSDK$" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="$MicrosoftWindowsSDKBuildTools$" />
-      <!--#endif-->
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="Uno.WinUI.Lottie" />
-        <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
-        <!--#else-->
-        <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
-        <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
-        <!--#endif-->
-
-        <!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-        <Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);**\*.svg" />
-        <Page Include="**\*.xaml" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-        <Compile Update="**\*.xaml.cs">
-          <DependentUpon>%(Filename)</DependentUpon>
-        </Compile>
-        <PRIResource Include="**\*.resw" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
-  <!--#else-->
-  <ItemGroup>
-    <!-- Include all images by default - matches the __WindowsAppSdkDefaultImageIncludes property in the WindowsAppSDK -->
-    <Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="bin\**;obj\**;**\*.svg" />
-    <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
-    <Compile Update="**\*.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <PRIResource Include="**\*.resw" />
-  </ItemGroup>
-  <!--#endif-->
   <!--#if (coreProjectHasProjectReferences)-->
 
   <ItemGroup>
@@ -321,13 +281,9 @@
     <!--#if (useDspGenerator)-->
     <UnoDspImportColors Include="Styles\*.zip" Generator="$DspGenerator$" />
     <!--#endif-->
-    <UnoImage Include="Assets\**\*.svg" />
     <!--#if (useConfiguration)-->
     <EmbeddedResource Include="appsettings.json" />
     <EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
-    <!--#endif-->
-    <!--#if (useXaml)-->
-    <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
     <!--#endif-->
   </ItemGroup>
 </Project>

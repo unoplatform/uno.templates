@@ -41,34 +41,6 @@
     <IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)'=='Debug'">false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
-  <Choose>
-    <!--
-      Defaults are provided by the Uno.Sdk. In the event you need to override the default minimum supported OS
-      Version, uncomment the appropriate platform and set the value to the desired minimum version.
-    -->
-    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-      <PropertyGroup>
-        <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
-      </PropertyGroup>
-    </When> -->
-    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-      <PropertyGroup>
-        <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
-      </PropertyGroup>
-    </When> -->
-    <!-- <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-      <PropertyGroup>
-        <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
-      </PropertyGroup>
-    </When> -->
-    <!-- <When Condition="$(TargetFramework.Contains('windows10'))">
-      <PropertyGroup>
-        <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
-        <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-      </PropertyGroup>
-    </When> -->
-  </Choose>
-
   <!--
     If working on a single target framework, copy solution-config.props.sample to solution-config.props
     and uncomment the appropriate lines in solution-config.props to build for the desired platforms only.
