@@ -264,7 +264,6 @@
     <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />
   </ItemGroup>
   <!--#endif-->
-
   <!--#if (coreProjectHasProjectReferences)-->
 
   <ItemGroup>
@@ -276,6 +275,7 @@
     <!--#endif-->
   </ItemGroup>
   <!--#endif-->
+  <!--#if (useDspGenerator || useConfiguration)-->
 
   <ItemGroup>
     <!--#if (useDspGenerator)-->
@@ -286,4 +286,5 @@
     <EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
     <!--#endif-->
   </ItemGroup>
+  <!--#endif-->
 </Project>

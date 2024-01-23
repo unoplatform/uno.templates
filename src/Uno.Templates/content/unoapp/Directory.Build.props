@@ -3,9 +3,6 @@
     <DotNetVersion>$baseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <DebugType>portable</DebugType>
-    <DebugSymbols>True</DebugSymbols>
     <!--#if (cpm)-->
 
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
@@ -40,12 +37,4 @@
     <!-- Required for Hot Reload (See https://github.com/dotnet/sdk/issues/36666) -->
     <IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)'=='Debug'">false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
-
-  <!--
-    If working on a single target framework, copy solution-config.props.sample to solution-config.props
-    and uncomment the appropriate lines in solution-config.props to build for the desired platforms only.
-
-    https://platform.uno/docs/articles/guides/solution-building-single-targetframework.html
-  -->
-  <Import Project="solution-config.props" Condition="exists('solution-config.props')" />
 </Project>
