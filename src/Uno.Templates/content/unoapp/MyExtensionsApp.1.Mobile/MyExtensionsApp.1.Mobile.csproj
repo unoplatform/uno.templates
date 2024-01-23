@@ -196,7 +196,7 @@
   <!--#endif-->
   <Choose>
     <!--#if (useAndroid)-->
-    <When Condition="$(IsAndroid)">
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
       <ItemGroup>
         <!--#if (mauiEmbedding)-->
         <PackageReference Include="Xamarin.Google.Android.Material" VersionOverride="$(AndroidMaterialVersion)" />
@@ -223,7 +223,7 @@
     </When>
     <!--#endif-->
     <!--#if (useIOS)-->
-    <When Condition="$(IsIOS)">
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
       <PropertyGroup>
         <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
         <!-- See https://github.com/unoplatform/uno/issues/9430 for more details. -->
@@ -237,7 +237,7 @@
     </When>
     <!--#endif-->
     <!--#if (useMacCatalyst)-->
-    <When Condition="$(IsMacCatalyst)">
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
       <PropertyGroup>
         <!-- Configure the GC -->
         <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
@@ -254,7 +254,7 @@
     </When>
     <!--#endif-->
     <!--#if (useMacOS)-->
-    <When Condition="$(IsMac)">
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
       <PropertyGroup>
         <TrimMode Condition="'$(Configuration)'=='Release'">link</TrimMode>
         <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">osx-x64</RuntimeIdentifier>
