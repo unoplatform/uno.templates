@@ -3,6 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(DotNetVersion)-windows10.0.19041.0</TargetFramework>
     <RootNamespace>MyExtensionsApp.1.Windows</RootNamespace>
+    <Platforms>x86;x64;arm64</Platforms>
 
 
     <!--#if (useWinAppSdkSelfContained)-->
