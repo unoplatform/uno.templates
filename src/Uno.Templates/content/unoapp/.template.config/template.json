@@ -60,7 +60,7 @@
         {
           "choice": "recommended",
           "description": "Recommended set of options to create a production-ready app targeting multiple platforms",
-          "displayName": "Default"
+          "displayName": "Recommended"
         },
         {
           "choice": "blank",
