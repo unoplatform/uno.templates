@@ -854,6 +854,11 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "visualStudioSdkWorkaround": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "isVsix": {
       "displayName": "isVsix",
       "type": "parameter",
@@ -1930,6 +1935,18 @@
           "exclude": [
             "nuget.config"
           ]
+        },
+        {
+          "condition": "(!visualStudioSdkWorkaround || enableDeveloperMode)",
+          "exclude": [
+            "vs-workaround.config"
+          ]
+        },
+        {
+          "condition": "(visualStudioSdkWorkaround)",
+          "rename": {
+            "vs-workaround.config": "nuget.config"
+          }
         },
         {
           "condition": "(isVsix)",
