@@ -36,6 +36,12 @@
     "2B1FDFB6-C93C-4CA1-A6AB-528C4B3654B9" // UWP
   ],
   "symbols": {
+    "unoWinUIVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoWinUIVersion",
+      "replaces": "$UnoWinUIVersion$"
+    }
   },
   "primaryOutputs": [
     {

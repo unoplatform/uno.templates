@@ -1,15 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(DotNetVersion)-windows10.0.19041.0</TargetFramework>
     <RootNamespace>MyExtensionsApp.1.Windows</RootNamespace>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
-    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-    <UseWinUI>true</UseWinUI>
-    <EnableMsixTooling>true</EnableMsixTooling>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+
 
     <!--#if (useWinAppSdkSelfContained)-->
     <!-- Bundles the WinAppSDK binaries -->
@@ -21,11 +16,6 @@
 
     <!-- <SelfContained>true</SelfContained> -->
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="Images\**" />
-    <Manifest Include="$(ApplicationManifest)" />
-  </ItemGroup>
 
   <!--#if (useCPM)-->
   <ItemGroup>
@@ -120,7 +110,7 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-    <PackageReference Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
     <!--#if (!mauiEmbedding)-->
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
@@ -202,7 +192,7 @@
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$(UnoVersion)" />
     <!--#if (mauiEmbedding)-->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
@@ -231,24 +221,6 @@
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />
     <!--#endif-->
   </ItemGroup>
-
-  <!--
-    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
-    Tools extension to be activated for this project even if the Windows App SDK Nuget
-    package has not yet been restored.
-  -->
-  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix"/>
-  </ItemGroup>
-
-  <!--
-    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
-    Explorer "Package and Publish" context menu entry to be enabled for this project even if
-    the Windows App SDK Nuget package has not yet been restored.
-  -->
-  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
-  </PropertyGroup>
 
   <Import Project="..\MyExtensionsApp.1.Shared\base.props" />
 

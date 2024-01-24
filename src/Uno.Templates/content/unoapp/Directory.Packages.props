@@ -118,15 +118,15 @@
     <!--#endif-->
     <!--#endif-->
     <PackageVersion Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-    <PackageVersion Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$(UnoVersion)" />
     <PackageVersion Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
     <!--#if (useWasm)-->
     <PackageVersion Include="Uno.Wasm.Bootstrap" Version="$UnoWasmBootstrapVersion$" />
     <PackageVersion Include="Uno.Wasm.Bootstrap.DevServer" Version="$UnoWasmBootstrapVersion$" />
     <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
     <!--#endif-->
-    <PackageVersion Include="Uno.WinUI" Version="$UnoWinUIVersion$" />
-    <PackageVersion Include="Uno.WinUI.Lottie" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI" Version="$(UnoVersion)" />
+    <PackageVersion Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
     <!--#if (useCsharpMarkup)-->
     <PackageVersion Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
     <PackageVersion Include="Uno.Extensions.Markup.Generators" Version="$UnoMarkupVersion$" />
@@ -144,18 +144,18 @@
     <!--#endif-->
     <PackageVersion Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
     <!--#endif-->
-    <PackageVersion Include="Uno.WinUI.DevServer" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" />
     <!--#if (useGtk)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Gtk" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.Skia.Gtk" Version="$(UnoVersion)" />
     <!--#endif-->
     <!--#if (useLinuxFb)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="$(UnoVersion)" />
     <!--#endif-->
     <!--#if (useWpf)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Wpf" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.Skia.Wpf" Version="$(UnoVersion)" />
     <!--#endif-->
     <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$UnoWinUIVersion$" />
+    <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$(UnoVersion)" />
     <!--#endif-->
     <!--#if (useAndroidMaterial)-->
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="$XamarinGoogleAndroidMaterial$" />

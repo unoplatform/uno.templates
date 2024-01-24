@@ -1,0 +1,6 @@
+{
+  "msbuild-sdks": {
+    "Uno.Sdk": "$UnoWinUIVersion$",
+    "Microsoft.Build.NoTargets": "3.7.56"
+  }
+}
