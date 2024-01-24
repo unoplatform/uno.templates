@@ -32,8 +32,8 @@
   <!--#if (useCPM)-->
   <ItemGroup>
     <PackageReference Include="Uno.WinUI" />
-    <PackageReference Include="Uno.WinUI.Lottie" Condition="!$(IsWinAppSdk)" />
-    <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug' AND !$(IsWinAppSdk)" />
+    <PackageReference Include="Uno.WinUI.Lottie" Condition="!$(TargetFramework.Contains('windows10'))" />
+    <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug' AND !$(TargetFramework.Contains('windows10'))" />
     <!--#if (!useWinAppSdk) -->
     <PackageReference Include="Uno.WinUI.Lottie" />
     <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
@@ -131,11 +131,11 @@
     <PackageReference Include="Microsoft.Maui.Controls" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
     <PackageReference Include="Microsoft.Maui.Graphics" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="$MicrosoftWindowsAppSDK$" Condition="$(IsWinAppSdk)" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="$MicrosoftWindowsSDKBuildTools$" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" VersionOverride="$MicrosoftWindowsAppSDK$" Condition="$(TargetFramework.Contains('windows10'))" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" VersionOverride="$MicrosoftWindowsSDKBuildTools$" Condition="$(TargetFramework.Contains('windows10'))" />
     <!--#else-->
-    <PackageReference Include="Microsoft.WindowsAppSDK" Condition="$(IsWinAppSdk)" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Condition="$(TargetFramework.Contains('windows10'))" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Condition="$(TargetFramework.Contains('windows10'))" />
     <!--#endif -->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageReference$$
@@ -144,8 +144,8 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
-    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" Condition="!$(IsWinAppSdk)" />
-    <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug' AND !$(IsWinAppSdk)" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" Condition="!$(TargetFramework.Contains('windows10'))" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug' AND !$(TargetFramework.Contains('windows10'))" />
     <!--#if (!useWinAppSdk) -->
     <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
     <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />
@@ -244,8 +244,8 @@
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
     <!--#else -->
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" Condition="$(IsWinAppSdk)" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" Condition="$(IsWinAppSdk)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" Condition="$(TargetFramework.Contains('windows10'))" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" Condition="$(TargetFramework.Contains('windows10'))" />
     <!--#endif-->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_PackageReference$$
