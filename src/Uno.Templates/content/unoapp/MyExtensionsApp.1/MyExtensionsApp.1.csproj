@@ -144,7 +144,7 @@
   <!--#else-->
   <ItemGroup>
     <PackageReference Include="Uno.WinUI" Version="$(UnoVersion)" />
-    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" Condition="!$(IsWinAppSdk)" />
     <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug' AND !$(IsWinAppSdk)" />
     <!--#if (!useWinAppSdk) -->
     <PackageReference Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
