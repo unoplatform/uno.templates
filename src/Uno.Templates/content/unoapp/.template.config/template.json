@@ -83,6 +83,15 @@
       },
       "replaces": "$sanitizedProjectName$"
     },
+    "failBuildOnInvalidProjectName": {
+      "type": "generated",
+      "generator": "regexMatch",
+      "datatype": "bool",
+      "parameters": {
+        "source": "name",
+        "pattern": "\\s"
+      }
+    },
     "appId": {
       "displayName": "Application ID",
       "type": "parameter",
