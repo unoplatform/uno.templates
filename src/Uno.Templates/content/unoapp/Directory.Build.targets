@@ -1,3 +1,8 @@
 ﻿<Project>
-
+<!--#if (failBuildOnInvalidProjectName)-->
+  <Target Name="InvalidProjectName"
+          BeforeTargets="BeforeBuild">
+    <Error Text="The project name 'MyExtensionsApp.1' is invalid. Your project name may not contain spaces as this will break various .NET Source Generators and MSBuild targets." />
+  </Target>
+<!--#endif-->
 </Project>
