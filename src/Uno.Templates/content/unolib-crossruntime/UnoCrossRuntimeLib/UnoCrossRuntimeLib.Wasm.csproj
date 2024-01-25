@@ -4,6 +4,7 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>UnoCrossRuntimeLib</RootNamespace>
     <AssemblyName>UnoCrossRuntimeLib</AssemblyName>
+    <UnoRuntimeIdentifier>Wasm</UnoRuntimeIdentifier>
     <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
