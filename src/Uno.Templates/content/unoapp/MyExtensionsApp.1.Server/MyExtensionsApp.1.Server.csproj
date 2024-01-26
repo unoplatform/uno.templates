@@ -28,7 +28,7 @@
     <!--#endif -->
     <!--#else-->
     <!--#if (useSerilog)-->
-    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
     <!--#endif-->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#if (useWasm)-->
