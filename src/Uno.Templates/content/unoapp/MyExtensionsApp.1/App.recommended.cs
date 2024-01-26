@@ -1,13 +1,7 @@
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
-//+:cnd:noEmit
-#if mauiEmbedding
-public class App : EmbeddingApplication
-#else
 public class App : Application
-#endif
-//-:cnd:noEmit
 {
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
