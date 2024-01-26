@@ -22,8 +22,7 @@
       <ItemGroup>
         <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
-      </ItemGroup>
-      <ItemGroup>
+
         <!--
         If you encounter this error message:
 
@@ -38,18 +37,5 @@
         <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Content Include="Assets\**" />
-        <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
-        <Compile Update="**\*.xaml.cs">
-          <DependentUpon>%(Filename)</DependentUpon>
-        </Compile>
-        <PriResource Include="**\*.resw" />
-      </ItemGroup>
-    </Otherwise>
   </Choose>
-  <ItemGroup>
-    <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
-  </ItemGroup>
 </Project>
