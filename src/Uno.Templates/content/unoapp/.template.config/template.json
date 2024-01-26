@@ -861,7 +861,7 @@
       // Default value is true to avoid an unknown SDK resolution
       // issue when the global feeds are not used in some scenarios
       // like `dotnet workload update` or VSIX nuget template expansion.
-      // Fixed in VS 17.9
+      // Fixed in VS 17.9 / 8.0.200
       "defaultValue": "true"
     },
     "isVsix": {
