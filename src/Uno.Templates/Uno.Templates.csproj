@@ -24,10 +24,10 @@
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<SkiaSharpVersion Condition="'$(SkiaSharpVersion)' == ''">2.88.6</SkiaSharpVersion>
 		<UnoCoreExtensionsLoggingVersion Condition="'$(UnoCoreExtensionsLoggingVersion)' == ''">4.0.1</UnoCoreExtensionsLoggingVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.1.0</UnoThemesVersion>
+		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.1.1</UnoThemesVersion>
 		<UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.7</UnoDspTasksVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.1.3</UnoToolkitVersion>
-		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">5.1.3</UnoToolkitMarkupVersion>
+		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.1.5</UnoToolkitVersion>
+		<UnoToolkitMarkupVersion Condition="'$(UnoToolkitMarkupVersion)' == ''">5.1.5</UnoToolkitMarkupVersion>
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.8</UnoWasmBootstrapVersionNet8>
