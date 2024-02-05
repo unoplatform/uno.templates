@@ -31,7 +31,7 @@
 		<UnoResizetizerVersion Condition="'$(UnoResizetizerVersion)' == ''">1.2.0</UnoResizetizerVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.8</UnoWasmBootstrapVersionNet8>
-		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.1.4</UnoMarkupVersion>
+		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.1.5</UnoMarkupVersion>
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdk)' == ''">17.8.0</MicrosoftTestSdkVersion>
 		<NUnitVersion Condition="'$(NUnitVersion)' == ''">4.0.1</NUnitVersion>
