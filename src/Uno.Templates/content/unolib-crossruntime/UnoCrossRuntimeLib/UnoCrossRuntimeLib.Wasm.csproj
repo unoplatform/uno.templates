@@ -2,8 +2,6 @@
   <PropertyGroup>
     <TargetFramework>$(DotNetVersion)</TargetFramework>
     <IsPackable>false</IsPackable>
-    <RootNamespace>UnoCrossRuntimeLib</RootNamespace>
-    <AssemblyName>UnoCrossRuntimeLib</AssemblyName>
     <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
