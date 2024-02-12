@@ -17,4 +17,13 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <_DirectoryBuildPropsFile Condition="'$(_DirectoryBuildPropsFile)' == ''">Directory.Build.props</_DirectoryBuildPropsFile>
+    <_ParentDirectory>$([MSBuild]::NormizePath($(MSBuildThisFileDirectory)\..))</_ParentDirectory>
+    <_ParentDirectoryBuildPropsBasePath Condition="'$(_ParentDirectoryBuildPropsBasePath)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(_ParentDirectory), '$(_DirectoryBuildPropsFile)'))</_ParentDirectoryBuildPropsBasePath>
+    <ParentDirectoryBuildPropsPath Condition="'$(_ParentDirectoryBuildPropsBasePath)' != '' and '$(_DirectoryBuildPropsFile)' != ''">$([System.IO.Path]::Combine('$(_ParentDirectoryBuildPropsBasePath)', '$(_DirectoryBuildPropsFile)'))</ParentDirectoryBuildPropsPath>
+  </PropertyGroup>
+
+  <Import Project="$(ParentDirectoryBuildPropsPath)" Condition="exists('$(ParentDirectoryBuildPropsPath)')"/>
+
 </Project>
