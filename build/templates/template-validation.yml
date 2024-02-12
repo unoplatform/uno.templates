@@ -5,6 +5,9 @@ parameters:
 - name: arguments
   type: string
   default: ''
+- name: projectPath
+  type: string
+  default: 'UnoTemplateValidation1.sln'
 
 steps:
 - template: dotnet-install-windows.yml
@@ -55,7 +58,7 @@ steps:
 
       cd UnoTemplateValidation1
 
-      & dotnet build UnoTemplateValidation1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
+      & dotnet build ${{ parameters.projectPath }} "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
