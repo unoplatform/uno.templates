@@ -12,3 +12,4 @@ jobs:
   - template: templates/template-validation.yml
     parameters:
       templateName: 'unomauilib'
+      projectPath: 'UnoTemplateValidation1.MauiControls.csproj'
