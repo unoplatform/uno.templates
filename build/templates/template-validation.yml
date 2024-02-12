@@ -31,7 +31,7 @@ steps:
       $ErrorActionPreference = 'Stop'
 
       # Create app with defaults
-      dotnet new ${{ parameters.templateName }} -skip -d -v diagnostic -o UnoApp1 ${{ parameters.arguments }}
+      dotnet new ${{ parameters.templateName }} -d -v diagnostic -o UnoTemplateValidation1 ${{ parameters.arguments }}
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
@@ -44,7 +44,7 @@ steps:
     MergeBranch: false
 
 - powershell: |
-    cd UnoApp1
+    cd UnoTemplateValidation1
     & dotnet workload restore --skip-sign-check
   displayName: Restore workloads
 
@@ -52,9 +52,9 @@ steps:
       Set-PSDebug -Trace 1
       $ErrorActionPreference = 'Stop'
 
-      cd UnoApp1
+      cd UnoTemplateValidation1
 
-      & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
+      & dotnet build UnoTemplateValidation1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       if ($LASTEXITCODE -ne 0)
       {
           throw "Exit code must be zero."
