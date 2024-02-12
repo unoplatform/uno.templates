@@ -9,7 +9,7 @@ parameters:
 steps:
 - template: dotnet-install-windows.yml
   parameters:
-    DotNetVersion: $(DotNetVersion)
+    DotNetVersion: '8.0.100'
 
 - task: DownloadBuildArtifacts@0
   inputs:
