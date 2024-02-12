@@ -1,5 +1,5 @@
 jobs:
-- job: UnoMauiLib_Validation
+- job: UnoUI_Validation
 
   pool:
     vmImage: 'windows-2022'
