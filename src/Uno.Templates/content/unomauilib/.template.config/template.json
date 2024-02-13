@@ -76,6 +76,20 @@
       "description": "Include WinUI as a target platform",
       "displayName": "WinUI"
     },
+    "mauiEmbedding": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "datatype": "bool",
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(1 == 1)",
+            "value": "true"
+          }
+        ]
+      }
+    },
     "unoMauiClassLibrary": {
       "type": "generated",
       "generator": "switch",

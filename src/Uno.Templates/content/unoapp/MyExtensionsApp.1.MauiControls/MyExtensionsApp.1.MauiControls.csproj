@@ -3,6 +3,8 @@
   <PropertyGroup>
     <!--#if (unoMauiClassLibrary)-->
     <DotNetVersion Condition="'$(DotNetVersion)'==''">$baseTargetFramework$</DotNetVersion>
+    <ImplicitUsings Condition="$(ImplicitUsings) == ''">enable</ImplicitUsings>
+    <Nullable Condition="$(Nullable) == ''">enable</Nullable>
 
     <!--#endif-->
     <!--#if (useWinAppSdk) -->
