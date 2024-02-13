@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <DotNetVersion>net8.0</DotNetVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
 
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
