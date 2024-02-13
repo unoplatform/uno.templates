@@ -3,6 +3,7 @@
     <TargetFramework>$(DotNetVersion)</TargetFramework>
     <IsPackable>false</IsPackable>
     <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Uno.WinUI.Runtime.WebAssembly" Version="$(UnoVersion)" />
