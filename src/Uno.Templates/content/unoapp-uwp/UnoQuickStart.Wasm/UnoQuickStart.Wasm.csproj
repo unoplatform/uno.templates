@@ -3,29 +3,29 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>$(DotNetVersion)</TargetFramework>
     <NoWarn>NU1701</NoWarn>
-		<!--#if (wasm-pwa-manifest)
-		<WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
+    <!--#if (wasm-pwa-manifest)
+    <WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
 #endif -->
-	</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
     <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <!--
-		IL Linking is disabled in Debug configuration.
-		When building in Release, see https://platform.uno/docs/articles/features/using-il-linker-webassembly.html
-		-->
+        IL Linking is disabled in Debug configuration.
+        When building in Release, see https://platform.uno/docs/articles/features/using-il-linker-webassembly.html
+    -->
     <WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.png" />
-		<!--#if (wasm-pwa-manifest)
-		
-		<Content Include="manifest.webmanifest" /><Content Include="Assets\AppIcon-*.png" />
-		
+    <!--#if (wasm-pwa-manifest)
+
+    <Content Include="manifest.webmanifest" /><Content Include="Assets\AppIcon-*.png" />
+
 #endif -->
-	</ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <UpToDateCheckInput Include="..\UnoQuickStart.Shared\**\*.xaml" />
   </ItemGroup>
