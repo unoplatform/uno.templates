@@ -37,14 +37,14 @@
     <LinkerDescriptor Include="LinkerConfig.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingVersion$" />
     <PackageReference Include="Uno.UI.WebAssembly" Version="$UnoWinUIVersion$" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="7.0.20" />
-    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.20" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="$WasmBootstrapServer$" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="$WasmBootstrapServer$" />
   </ItemGroup>
   <Import Project="..\UnoQuickStart.Shared\UnoQuickStart.Shared.projitems" Label="Shared" />
 </Project>
