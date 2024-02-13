@@ -12,4 +12,3 @@ jobs:
   - template: templates/template-validation.yml
     parameters:
       templateName: 'unolib'
-      projectPath: 'UnoTemplateValidation1.csproj'
