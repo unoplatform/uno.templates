@@ -1,4 +1,5 @@
 {
+  // To update the version of Uno please update the version of the Uno.Sdk here.
   "msbuild-sdks": {
     "Uno.Sdk": "$UnoWinUIVersion$",
     "Microsoft.Build.NoTargets": "3.7.56"
