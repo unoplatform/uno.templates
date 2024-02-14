@@ -44,7 +44,7 @@ steps:
     MergeBranch: false
 
 - powershell: |
-    dotnet tool install --global Uno.Check --version 1.19.0
+    dotnet tool install --global Uno.Check --version 1.20.0-dev.7
     cd UnoTemplateValidation1
     & uno-check --fix --non-interactive --ci
   displayName: Uno Check
