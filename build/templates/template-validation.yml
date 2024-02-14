@@ -44,9 +44,8 @@ steps:
     MergeBranch: false
 
 - powershell: |
-    dotnet tool install --global Uno.Check --version 1.20.0-dev.7
     cd UnoTemplateValidation1
-    & uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac
+    dotnet workload restore
   displayName: Uno Check
 
 - powershell: |
