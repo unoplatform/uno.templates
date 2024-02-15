@@ -1,0 +1,14 @@
+jobs:
+- job: UnoUI_Validation
+
+  pool:
+    vmImage: 'windows-2022'
+
+  variables:
+    - name: UseDotNetNativeToolchain
+      value: false
+
+  steps:
+  - template: templates/template-validation.yml
+    parameters:
+      templateName: 'unoapp-uwp'

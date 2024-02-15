@@ -155,6 +155,21 @@
       "datatype": "text",
       "defaultValue": "8.0.0",
       "replaces": "$MsftExtensionsLoggingConsoleVersion$"
+    },
+    "unoWasmBootstrapVersionDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$WasmBootstrapServer$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "('true' == 'true')",
+            "value": "DefaultUnoWasmBootstrapVersionNet8"
+          }
+        ]
+      }
     }
   },
   "primaryOutputs": [
