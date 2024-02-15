@@ -2,30 +2,30 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>$(DotNetVersion)</TargetFramework>
-    <NoWarn>NU1701</NoWarn>
-		<!--#if (wasm-pwa-manifest)
-		<WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
+    <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
+    <!--#if (wasm-pwa-manifest)
+    <WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
 #endif -->
-	</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
     <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <!--
-		IL Linking is disabled in Debug configuration.
-		When building in Release, see https://platform.uno/docs/articles/features/using-il-linker-webassembly.html
-		-->
+        IL Linking is disabled in Debug configuration.
+        When building in Release, see https://platform.uno/docs/articles/features/using-il-linker-webassembly.html
+    -->
     <WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.png" />
-		<!--#if (wasm-pwa-manifest)
-		
-		<Content Include="manifest.webmanifest" /><Content Include="Assets\AppIcon-*.png" />
-		
+    <!--#if (wasm-pwa-manifest)
+
+    <Content Include="manifest.webmanifest" /><Content Include="Assets\AppIcon-*.png" />
+
 #endif -->
-	</ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <UpToDateCheckInput Include="..\UnoQuickStart.Shared\**\*.xaml" />
   </ItemGroup>
@@ -37,14 +37,14 @@
     <LinkerDescriptor Include="LinkerConfig.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingVersion$" />
     <PackageReference Include="Uno.UI.WebAssembly" Version="$UnoWinUIVersion$" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="$UnoWinUIVersion$" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$UnoWinUIVersion$" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="7.0.20" />
-    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.20" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="$WasmBootstrapServer$" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="$WasmBootstrapServer$" />
   </ItemGroup>
   <Import Project="..\UnoQuickStart.Shared\UnoQuickStart.Shared.projitems" Label="Shared" />
 </Project>

@@ -90,6 +90,8 @@
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Skia.Linux.FrameBuffer/Package.appxmanifest" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.Windows/Package.appxmanifest" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Skia.WPF/Package.appxmanifest" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(MauiControlsTemplateFile)" DestinationFiles="$(TemplateContentFolder)/unomauilib/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" DestinationFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.csproj" SkipUnchangedFiles="false" />
+		<Delete Files="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" />
 		<ItemGroup>
 			<_PackageFiles Include="$(TemplateContentFolder)/**/*" PackagePath="content" />
 		</ItemGroup>
@@ -115,7 +117,8 @@
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
-		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp\._1\.MauiControls" ReplacementText="MyExtensionsApp.1" />
+		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp._1.MauiControls" ReplacementText="MyExtensionsApp._1" />
+		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp.1.MauiControls" ReplacementText="MyExtensionsApp.1" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftTestSdk$" ReplacementText="$(MicrosoftTestSdkVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
