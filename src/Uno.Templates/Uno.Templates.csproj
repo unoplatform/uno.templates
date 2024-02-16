@@ -41,7 +41,7 @@
 		<NewtonsoftJsonVersion Condition="'$(NewtonsoftJsonVersion)' == ''">13.0.3</NewtonsoftJsonVersion>
 		<XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.3</XamarinUITestVersion>
 		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.2428</MicrosoftWindowsSDKBuildToolsVersion>
-		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.4.231219000</MicrosoftWindowsAppSDKVersion>
+		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.4.240211001</MicrosoftWindowsAppSDKVersion>
 		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
 	</PropertyGroup>
 	<PropertyGroup>
