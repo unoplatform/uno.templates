@@ -10,8 +10,8 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '8.0.100'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.3.json'
+    $dotnetVersion = '8.0.200'
+    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.7.json'
 
     Write-Host "DotNetVersion = $dotnetVersion"
     Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
