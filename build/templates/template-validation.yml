@@ -9,7 +9,7 @@ parameters:
 steps:
 - template: dotnet-install-windows.yml
   parameters:
-    DotNetVersion: '8.0.x'
+    DotNetVersion: $(ValidationDotNetVersion)
 
 - task: DownloadBuildArtifacts@0
   inputs:
@@ -44,10 +44,12 @@ steps:
     MergeBranch: false
 
 - powershell: |
-    dotnet tool install --global Uno.Check --version 1.20.0
+    & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     cd UnoTemplateValidation1
     uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
   displayName: Uno Check
+  env:
+    ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
 
 - powershell: |
       Set-PSDebug -Trace 1

@@ -10,14 +10,17 @@ steps:
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     Write-Host "TemplateArgs = '$templateArgs'"
-    $dotnetVersion = '8.0.100'
-    $workloadRestore = 'https://maui.blob.core.windows.net/metadata/rollbacks/8.0.3.json'
+    $dotnetVersion = $env:TargetDotNetVersion
+    if ($templateArgs -match 'net9.0')
+    {
+        $dotnetVersion = '9.0.100-preview.1'
+    }
 
     Write-Host "DotNetVersion = $dotnetVersion"
     Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
-    Write-Host "WorkloadRestore = $workloadRestore"
-    Write-Output "##vso[task.setvariable variable=WorkloadRestore]$workloadRestore"
   displayName: Evaluate Template Args
+  env:
+    TargetDotNetVersion: $(ValidationDotNetVersion)
 
 - template: dotnet-install-windows.yml
   parameters:
@@ -56,9 +59,12 @@ steps:
     MergeBranch: false
 
 - powershell: |
+    & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     cd UnoApp1
-    & dotnet workload restore --from-rollback-file $(WorkloadRestore) --skip-sign-check
-  displayName: Restore workloads
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
+  displayName: Uno Check
+  env:
+    ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
 
 - powershell: |
       Set-PSDebug -Trace 1
