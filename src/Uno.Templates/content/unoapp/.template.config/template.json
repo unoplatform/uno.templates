@@ -1204,6 +1204,11 @@
       "datatype": "bool",
       "value": "(platforms == linux-fb || platforms == gtk)"
     },
+    "useSkiaNativeAssets": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == android || platforms == ios || platforms == maccatalyst || platforms == macos || platforms == windows)"
+    },
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
