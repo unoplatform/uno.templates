@@ -315,7 +315,8 @@
       </ItemGroup>
     </When>
     <!--#endif-->
-    <!--#if (useWinAppSdk)-->
+    <!--#if (false)-->
+    <!--Note: This will be available with SkiaSharp 3.0 -->
     <When Condition="$(TargetFramework.Contains('windows10'))">
       <ItemGroup>
         <!--#if (useCPM)-->
