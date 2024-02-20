@@ -270,6 +270,7 @@
     <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />
   </ItemGroup>
   <!--#endif-->
+  <!--#if (useSkiaNativeAssets)-->
   <Choose>
     <!--#if (useAndroid)-->
     <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
@@ -328,6 +329,7 @@
     </When>
     <!--#endif-->
   </Choose>
+  <!--#endif-->
   <!--#if (coreProjectHasProjectReferences)-->
 
   <ItemGroup>
