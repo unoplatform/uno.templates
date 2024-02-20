@@ -46,13 +46,13 @@
     <!--#if (useIOS)-->
     <PackageVersion Include="SkiaSharp.NativeAssets.iOS" Version="$SkiaSharpVersion$" />
     <!--#endif-->
-    <!--#if (useLinuxFb)-->
+    <!--#if (useLinuxFbOrGtk)-->
     <PackageVersion Include="SkiaSharp.NativeAssets.Linux" Version="$SkiaSharpVersion$" />
     <!--#endif-->
     <!--#if (useMacCatalyst)-->
     <PackageVersion Include="SkiaSharp.NativeAssets.MacCatalyst" Version="$SkiaSharpVersion$" />
     <!--#endif-->
-    <!--#if (useMacOS)-->
+    <!--#if (useMacOsOrGtk)-->
     <PackageVersion Include="SkiaSharp.NativeAssets.macOS" Version="$SkiaSharpVersion$" />
     <!--#endif-->
     <!--#if (useWasm)-->

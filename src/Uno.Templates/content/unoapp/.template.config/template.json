@@ -1181,6 +1181,16 @@
       "datatype": "bool",
       "value": "(platforms == wpf)"
     },
+    "useMacOsOrGtk": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == macos || platforms == gtk)"
+    },
+    "useLinuxFbOrGtk": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == linux-fb || platforms == gtk)"
+    },
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
