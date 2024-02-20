@@ -58,7 +58,8 @@
     <!--#if (useWasm)-->
     <PackageVersion Include="SkiaSharp.NativeAssets.WebAssembly" Version="$SkiaSharpVersion$" />
     <!--#endif-->
-    <!--#if (useWinAppSdk)-->
+    <!--#if (false)-->
+    <!-- NOTE: This will be available in SkiaSharp 3.0 -->
     <PackageVersion Include="SkiaSharp.NativeAssets.WinUI" Version="$SkiaSharpVersion$" />
     <!--#endif-->
     <!--#if (useWpf)-->
