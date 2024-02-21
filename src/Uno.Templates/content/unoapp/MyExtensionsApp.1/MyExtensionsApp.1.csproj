@@ -138,8 +138,6 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Condition="$(TargetFramework.Contains('windows10'))" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Condition="$(TargetFramework.Contains('windows10'))" />
     <!--#endif -->
-    <PackageReference Include="SkiaSharp.Skottie" />
-    <PackageReference Include="SkiaSharp.Views.Uno.WinUI" />
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageReference$$
     <!--#endif-->
@@ -251,8 +249,6 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" Condition="$(TargetFramework.Contains('windows10'))" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" Condition="$(TargetFramework.Contains('windows10'))" />
     <!--#endif-->
-    <PackageReference Include="SkiaSharp.Skottie" Version="$SkiaSharpVersion$" />
-    <PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpVersion$" />
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_PackageReference$$
     <!--#endif-->
@@ -269,66 +265,6 @@
     <PackageReference Include="Xamarin.AndroidX.Collection" VersionOverride="$(AndroidXCollectionVersion)" />
     <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" VersionOverride="$(AndroidXCollectionVersion)" />
   </ItemGroup>
-  <!--#endif-->
-  <!--#if (useSkiaNativeAssets)-->
-  <Choose>
-    <!--#if (useAndroid)-->
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="SkiaSharp.NativeAssets.Android" />
-        <!--#else-->
-        <PackageReference Include="SkiaSharp.NativeAssets.Android" Version="$SkiaSharpVersion$" />
-        <!--#endif-->
-      </ItemGroup>
-    </When>
-    <!--#endif-->
-    <!--#if (useIOS)-->
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="SkiaSharp.NativeAssets.iOS" />
-        <!--#else-->
-        <PackageReference Include="SkiaSharp.NativeAssets.iOS" Version="$SkiaSharpVersion$" />
-        <!--#endif-->
-      </ItemGroup>
-    </When>
-    <!--#endif-->
-    <!--#if (useMacCatalyst)-->
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="SkiaSharp.NativeAssets.MacCatalyst" />
-        <!--#else-->
-        <PackageReference Include="SkiaSharp.NativeAssets.MacCatalyst" Version="$SkiaSharpVersion$" />
-        <!--#endif-->
-      </ItemGroup>
-    </When>
-    <!--#endif-->
-    <!--#if (useMacOS)-->
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="SkiaSharp.NativeAssets.MacOS" />
-        <!--#else-->
-        <PackageReference Include="SkiaSharp.NativeAssets.MacOS" Version="$SkiaSharpVersion$" />
-        <!--#endif-->
-      </ItemGroup>
-    </When>
-    <!--#endif-->
-    <!--#if (false)-->
-    <!--Note: This will be available with SkiaSharp 3.0 -->
-    <When Condition="$(TargetFramework.Contains('windows10'))">
-      <ItemGroup>
-        <!--#if (useCPM)-->
-        <PackageReference Include="SkiaSharp.NativeAssets.WinUI" />
-        <!--#else-->
-        <PackageReference Include="SkiaSharp.NativeAssets.WinUI" Version="$SkiaSharpVersion$" />
-        <!--#endif-->
-      </ItemGroup>
-    </When>
-    <!--#endif-->
-  </Choose>
   <!--#endif-->
   <!--#if (coreProjectHasProjectReferences)-->
 
