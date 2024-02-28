@@ -1,13 +1,13 @@
+//+:cnd:noEmit
 #if (useLoggingFallback)
 using System;
 using Microsoft.Extensions.Logging;
 #endif
 using Uno.Resizetizer;
 
-//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
-public class App : Application
+public partial class App : Application
 {
 #if (useLoggingFallback)
     static App() =>
@@ -32,10 +32,11 @@ public class App : Application
             new AppResources()));
 
 #endif
+//-:cnd:noEmit
 #if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
         MainWindow = new Window();
 #else
-        MainWindow = Microsoft.UI.Xaml.Window.Current;
+        MainWindow = Microsoft.UI.Xaml.Window.Current ?? new Window();
 #endif
 
 #if DEBUG
@@ -94,6 +95,7 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
     {
         throw new InvalidOperationException($"Failed to load {e.SourcePageType.FullName}: {e.Exception}");
     }
+//+:cnd:noEmit
 #if (useLoggingFallback)
 
     /// <summary>

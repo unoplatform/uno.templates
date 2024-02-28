@@ -744,63 +744,17 @@
       "defaultValue": "DefaultUnoExtensionsVersion",
       "replaces": "$UnoExtensionsVersion$"
     },
-    "unoExtensionsLoggingVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoExtensionsLoggingVersion",
-      "replaces": "$UnoExtensionsLoggingVersion$"
-    },
-    "skiaSharpVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultSkiaSharpVersion",
-      "replaces": "$SkiaSharpVersion$"
-    },
-    "unoCoreExtensionsLoggingVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoCoreExtensionsLoggingVersion",
-      "replaces": "$UnoCoreExtensionsLoggingVersion$"
-    },
     "unoThemesVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultUnoThemesVersion",
       "replaces": "$UnoThemesVersion$"
     },
-    "unoDspTasksVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoDspTasksVersion",
-      "replaces": "$UnoDspTasksVersion$"
-    },
     "unoToolkitVersion": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "DefaultUnoToolkitVersion",
       "replaces": "$UnoToolkitVersion$"
-    },
-    "unoToolkitMarkupVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoToolkitMarkupVersion",
-      "replaces": "$UnoToolkitMarkupVersion$"
-    },
-    "unoResizetizerVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoResizetizerVersion",
-      "replaces": "$UnoResizetizerVersion$"
-    },
-    "unoUniversalImageLoaderVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoUniversalImageLoaderVersion",
-      "replaces": "$UnoUniversalImageLoaderVersion$"
-    },
-    "unoWasmBootstrapVersion": {
-      "type": "parameter",
-      "datatype": "text"
     },
     "mauiVersion": {
       "type": "generated",
@@ -820,34 +774,6 @@
           }
         ]
       }
-    },
-    "unoWasmBootstrapVersionDefault": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$WasmBootstrapServer$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net8.0')",
-            "value": "DefaultUnoWasmBootstrapVersionNet8"
-          },
-          {
-            "condition": "(tfm == 'net9.0')",
-            "value": "DefaultUnoWasmBootstrapVersionNet8"
-          }
-        ]
-      }
-    },
-    "unoWasmBootstrapVersionEvaluator": {
-      "type": "generated",
-      "generator": "coalesce",
-      "parameters": {
-        "sourceVariableName": "unoWasmBootstrapVersion",
-        "fallbackVariableName": "unoWasmBootstrapVersionDefault"
-      },
-      "replaces": "$UnoWasmBootstrapVersion$"
     },
     "unoMarkupVersion": {
       "type": "parameter",
@@ -2107,7 +2033,7 @@
             "MyExtensionsApp.1/App.blank.cs"
           ],
           "rename": {
-            "MyExtensionsApp.1/App.recommended.cs": "MyExtensionsApp.1/App.cs"
+            "MyExtensionsApp.1/App.recommended.cs": "MyExtensionsApp.1/App.xaml.cs"
           }
         },
         {
@@ -2118,7 +2044,7 @@
             "MyExtensionsApp.1/Presentation/**"
           ],
           "rename": {
-            "MyExtensionsApp.1/App.blank.cs": "MyExtensionsApp.1/App.cs"
+            "MyExtensionsApp.1/App.blank.cs": "MyExtensionsApp.1/App.xaml.cs"
           }
         },
         {
@@ -2166,13 +2092,13 @@
         {
           "condition": "(!useWebAuthentication && !useOidcAuthentication)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/Android/WebAuthenticationBrokerActivity.Android.cs"
+            "MyExtensionsApp.1/Platforms/Android/WebAuthenticationBrokerActivity.Android.cs"
           ]
         },
         {
           "condition": "(!useMsalAuthentication)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/Android/MsalActivity.Android.cs"
+            "MyExtensionsApp.1/Platforms/Android/MsalActivity.Android.cs"
           ]
         },
         {
@@ -2367,8 +2293,8 @@
         {
           "condition": "(!wasmPwaManifest)",
           "exclude": [
-            "MyExtensionsApp.1.Wasm/manifest.json",
-            "MyExtensionsApp.1.Wasm/Assets/AppIcon-*"
+            "MyExtensionsApp/Platforms/Wasm/manifest.json",
+            "MyExtensionsApp/Platforms/Wasm/Assets/AppIcon-*"
           ]
         },
         {

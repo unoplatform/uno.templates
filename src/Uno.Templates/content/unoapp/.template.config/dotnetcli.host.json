@@ -123,34 +123,10 @@
     "unoExtensionsVersion": {
       "isHidden": true
     },
-    "unoExtensionsLoggingVersion": {
-      "isHidden": true
-    },
-    "skiaSharpVersion": {
-      "isHidden": true
-    },
-    "unoCoreExtensionsLoggingVersion": {
-      "isHidden": true
-    },
     "unoThemesVersion": {
       "isHidden": true
     },
-    "unoDspTasksVersion": {
-      "isHidden": true
-    },
     "unoToolkitVersion": {
-      "isHidden": true
-    },
-    "unoToolkitMarkupVersion": {
-      "isHidden": true
-    },
-    "unoResizetizerVersion": {
-      "isHidden": true
-    },
-    "unoUniversalImageLoaderVersion": {
-      "isHidden": true
-    },
-    "unoWasmBootstrapVersion": {
       "isHidden": true
     },
     "unoMarkupVersion": {

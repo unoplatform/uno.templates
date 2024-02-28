@@ -3,7 +3,7 @@ using Uno.Resizetizer;
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
-public class App : Application
+public partial class App : Application
 {
     /// <summary>
     /// Initializes the singleton application object. This is the first line of authored code

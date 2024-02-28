@@ -5,13 +5,6 @@
 
     See https://aka.platform.uno/upgrade-uno-packages for more information.
   -->
-  <PropertyGroup>
-    <UnoExtensionsVersion>$UnoExtensionsVersion$</UnoExtensionsVersion>
-    <UnoToolkitVersion>$UnoToolkitVersion$</UnoToolkitVersion>
-    <UnoThemesVersion>$UnoThemesVersion$</UnoThemesVersion>
-    <UnoCSharpMarkupVersion>$UnoMarkupVersion$</UnoCSharpMarkupVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />

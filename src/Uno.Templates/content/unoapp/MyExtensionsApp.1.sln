@@ -5,8 +5,6 @@ MinimumVisualStudioVersion = 15.0.26124.0
 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{FAA2C1DE-F859-4053-9573-6245F7E832EF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{339C569C-EE23-445E-B908-743673EE5BC9}"
-EndProject
 //#if (useServer)
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{BA1ACE40-623E-4F42-94BB-11CF4D52C445}"
 EndProject
@@ -17,8 +15,6 @@ EndProject
 #//#endif
 
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp.1", "MyExtensionsApp.1\MyExtensionsApp.1.csproj", "{BACDD33A-304C-46C4-9B00-AC166978D7E0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp.1.Shared", "MyExtensionsApp.1.Shared\MyExtensionsApp.1.Shared.csproj", "{2189102C-8698-4760-A2C5-ADED686F84E2}"
 EndProject
 #//#if (useServer)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExtensionsApp.1.Server", "MyExtensionsApp.1.Server\MyExtensionsApp.1.Server.csproj", "{1ADD4B1D-2758-4ED5-963A-FE3F4206BF20}"
@@ -255,11 +251,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BACDD33A-304C-46C4-9B00-AC166978D7E0} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
-		{2189102C-8698-4760-A2C5-ADED686F84E2} = {339C569C-EE23-445E-B908-743673EE5BC9}
 //#if (useDataContracts)
 		{5ED31500-DF01-462D-9436-EC2EDCAA1965} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
 //#endif
-		{339C569C-EE23-445E-B908-743673EE5BC9} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
 //#if (useServer)
 		{BA1ACE40-623E-4F42-94BB-11CF4D52C445} = {FAA2C1DE-F859-4053-9573-6245F7E832EF}
 //#endif
