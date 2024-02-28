@@ -5,16 +5,14 @@
 
     See https://aka.platform.uno/upgrade-uno-packages for more information.
   -->
+  <PropertyGroup>
+    <UnoExtensionsVersion>$UnoExtensionsVersion$</UnoExtensionsVersion>
+    <UnoToolkitVersion>$UnoToolkitVersion$</UnoToolkitVersion>
+    <UnoThemesVersion>$UnoThemesVersion$</UnoThemesVersion>
+    <UnoCSharpMarkupVersion>$UnoMarkupVersion$</UnoCSharpMarkupVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <!--#if (useMvvm)-->
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <!--#endif-->
-    <!--#if (mauiEmbedding)-->
-    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-    <PackageVersion Include="Microsoft.Maui.Graphics" Version="$(MauiVersion)" />
-    <!--#endif-->
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
     <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
@@ -28,166 +26,11 @@
     <!--#if (useUITests)-->
     <PackageVersion Include="Newtonsoft.Json" Version="$NewtonsoftJson$" />
     <!--#endif-->
-    <!--#if (useWasm)-->
-    <PackageVersion Include="Microsoft.Windows.Compatibility" Version="$MsftWindowsCompatibilityVersion$" />
-    <!--#endif-->
-    <!--#if (!mauiEmbedding)-->
-    <!--#if (useWinAppSdk)-->
-    <PackageVersion Include="Microsoft.Windows.SDK.BuildTools" Version="$MicrosoftWindowsSDKBuildTools$" />
-    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="$MicrosoftWindowsAppSDK$" />
-    <!--#endif-->
-    <!--#endif-->
     <!--#if (useAspNetCoreSerilogPackage)-->
     <PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
     <!--#endif-->
-    <!--#if (useAndroid)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.Android" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useIOS)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.iOS" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useLinuxFbOrGtk)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.Linux" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useMacCatalyst)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.MacCatalyst" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useMacOsOrGtk)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.macOS" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useWasm)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.WebAssembly" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (false)-->
-    <!-- NOTE: This will be available in SkiaSharp 3.0 -->
-    <PackageVersion Include="SkiaSharp.NativeAssets.WinUI" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <!--#if (useWpf)-->
-    <PackageVersion Include="SkiaSharp.NativeAssets.Win32" Version="$SkiaSharpVersion$" />
-    <!--#endif-->
-    <PackageVersion Include="SkiaSharp.Skottie" Version="$SkiaSharpVersion$" />
-    <PackageVersion Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpVersion$" />
     <!--#if (useServer)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <!--#endif-->
-    <PackageVersion Include="Uno.Core.Extensions.Logging.Singleton" Version="$UnoCoreExtensionsLoggingVersion$" />
-    <!--#if (themeService)-->
-    <PackageVersion Include="Uno.Extensions.Core.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useAuthentication)-->
-    <PackageVersion Include="Uno.Extensions.Authentication" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Authentication.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#if (useOidcAuthentication)-->
-    <PackageVersion Include="Uno.Extensions.Authentication.Oidc.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMsalAuthentication)-->
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.59.0" />
-    <PackageVersion Include="Uno.Extensions.Authentication.MSAL.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#endif-->
-    <!--#if (useConfiguration)-->
-    <PackageVersion Include="Uno.Extensions.Configuration" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useDependencyInjection)-->
-    <PackageVersion Include="Uno.Extensions.Hosting" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Hosting.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useHttp)-->
-    <PackageVersion Include="Uno.Extensions.Http" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Http.WinUI" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Http.Refit" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useLocalization)-->
-    <PackageVersion Include="Uno.Extensions.Localization" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Localization.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMobile)-->
-    <PackageVersion Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
-    <!--#endif-->
-    <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.Extensions.Logging.WebAssembly.Console" Version="$UnoExtensionsLoggingVersion$" />
-    <!--#endif-->
-    <!--#if (useSerilog)-->
-    <PackageVersion Include="Uno.Extensions.Logging.Serilog" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useLogging)-->
-    <PackageVersion Include="Uno.Extensions.Logging.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (mauiEmbedding)-->
-    <PackageVersion Include="Uno.Extensions.Maui.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useExtensionsNavigation)-->
-    <PackageVersion Include="Uno.Extensions.Navigation" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Navigation.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useNavigationToolkit)-->
-    <PackageVersion Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMvux)-->
-    <PackageVersion Include="Uno.Extensions.Reactive" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Reactive.WinUI" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useHttp)-->
-    <PackageVersion Include="Uno.Extensions.Serialization" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Serialization.Http" Version="$UnoExtensionsVersion$" />
-    <PackageVersion Include="Uno.Extensions.Serialization.Refit" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Material.WinUI" Version="$UnoThemesVersion$" />
-    <!--#if (useDspGenerator)-->
-    <PackageVersion Include="Uno.Dsp.Tasks" Version="$UnoDspTasksVersion$" />
-    <!--#endif-->
-    <!--#elif (useCupertino)-->
-    <PackageVersion Include="Uno.Cupertino.WinUI" Version="$UnoThemesVersion$" />
-    <!--#endif-->
-    <!--#if (useToolkit)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI" Version="$UnoToolkitVersion$" />
-    <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI.Material" Version="$UnoToolkitVersion$" />
-    <!--#endif-->
-    <!--#endif-->
-    <PackageVersion Include="Uno.Resizetizer" Version="$UnoResizetizerVersion$" />
-    <PackageVersion Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="$(UnoVersion)" />
-    <PackageVersion Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
-    <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.Wasm.Bootstrap" Version="$UnoWasmBootstrapVersion$" />
-    <PackageVersion Include="Uno.Wasm.Bootstrap.DevServer" Version="$UnoWasmBootstrapVersion$" />
-    <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
-    <!--#endif-->
-    <PackageVersion Include="Uno.WinUI" Version="$(UnoVersion)" />
-    <PackageVersion Include="Uno.WinUI.Lottie" Version="$(UnoVersion)" />
-    <!--#if (useCsharpMarkup)-->
-    <PackageVersion Include="Uno.WinUI.Markup" Version="$UnoMarkupVersion$" />
-    <PackageVersion Include="Uno.Extensions.Markup.Generators" Version="$UnoMarkupVersion$" />
-    <!--#if (useToolkit)-->
-    <PackageVersion Include="Uno.Toolkit.WinUI.Markup" Version="$UnoToolkitMarkupVersion$" />
-    <!--#endif-->
-    <!--#if (useExtensionsNavigation)-->
-    <PackageVersion Include="Uno.Extensions.Navigation.WinUI.Markup" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMvux)-->
-    <PackageVersion Include="Uno.Extensions.Reactive.WinUI.Markup" Version="$UnoExtensionsVersion$" />
-    <!--#endif-->
-    <!--#if (useMaterial)-->
-    <PackageVersion Include="Uno.Material.WinUI.Markup" Version="$UnoThemesVersion$" />
-    <!--#endif-->
-    <PackageVersion Include="Uno.Themes.WinUI.Markup" Version="$UnoThemesVersion$" />
-    <!--#endif-->
-    <PackageVersion Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" />
-    <!--#if (useGtk)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Gtk" Version="$(UnoVersion)" />
-    <!--#endif-->
-    <!--#if (useLinuxFb)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="$(UnoVersion)" />
-    <!--#endif-->
-    <!--#if (useWpf)-->
-    <PackageVersion Include="Uno.WinUI.Skia.Wpf" Version="$(UnoVersion)" />
-    <!--#endif-->
-    <!--#if (useWasm)-->
-    <PackageVersion Include="Uno.WinUI.WebAssembly" Version="$(UnoVersion)" />
-    <!--#endif-->
-    <!--#if (useAndroidMaterial)-->
-    <PackageVersion Include="Xamarin.Google.Android.Material" Version="$XamarinGoogleAndroidMaterial$" />
     <!--#endif-->
     <!--#if (useUITests)-->
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />

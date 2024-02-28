@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <!--#if (useWasm)-->
-    <ProjectReference Include="..\MyExtensionsApp.1.Wasm\MyExtensionsApp.1.Wasm.csproj" />
+    <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj" />
     <!--#endif -->
     <!--#if (useDataContracts)-->
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />

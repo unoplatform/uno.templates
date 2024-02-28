@@ -1,8 +1,19 @@
+using Uno.Resizetizer;
+
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
 public class App : Application
 {
+    /// <summary>
+    /// Initializes the singleton application object. This is the first line of authored code
+    /// executed, and as such is the logical equivalent of main() or WinMain().
+    /// </summary>
+    public App()
+    {
+        this.InitializeComponent();
+    }
+
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
 
@@ -13,6 +24,11 @@ public class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
 #endif
     {
+#if useCsharpMarkup
+        Resources.Build(r => r.Merged(
+            new AppResources()));
+
+#endif
         var builder = this.CreateBuilder(args)
 #if (useNavigationToolkit)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
@@ -164,6 +180,7 @@ public class App : Application
         MainWindow.EnableHotReload();
 #endif
 //+:cnd:noEmit
+        MainWindow.SetWindowIcon();
 
 #if useFrameNav
 //-:cnd:noEmit

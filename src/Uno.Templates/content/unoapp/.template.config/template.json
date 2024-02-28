@@ -315,8 +315,8 @@
           "description": "Enables WebAssembly as a target platform"
         },
         {
-          "choice": "gtk",
-          "displayName": "GTK",
+          "choice": "skia",
+          "displayName": "Skia",
           "description": "Enables GTK as a target platform"
         },
         {
@@ -1144,15 +1144,10 @@
       "datatype": "bool",
       "value": "(wasmMultiThreading)"
     },
-    "useGtk": {
+    "useSkia": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == gtk)"
-    },
-    "useLinuxFb": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == linux-fb)"
+      "value": "(platforms == skia)"
     },
     "useAndroid": {
       "type": "computed",
@@ -1198,11 +1193,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == macos || platforms == gtk)"
-    },
-    "useLinuxFbOrGtk": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == linux-fb || platforms == gtk)"
     },
     "useSkiaNativeAssets": {
       "type": "computed",
@@ -1478,35 +1468,131 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
           },
           {
-            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-android"
           },
           {
-            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-ios"
           },
           {
-            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-maccatalyst;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms != skia)",
             "value": "$(DotNetVersion)-maccatalyst"
           },
           {
-            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-browser;$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms != skia)",
+            "value": "$(DotNetVersion)-browser"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst && platforms != wasm && platforms == skia)",
+            "value": "$(DotNetVersion)-skia"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst && platforms != wasm && platforms != skia)",
             "value": ""
           }
         ]
@@ -1907,9 +1993,6 @@
       "path": "MyExtensionsApp.1\\MyExtensionsApp.1.csproj"
     },
     {
-      "path": "MyExtensionsApp.1.Shared\\MyExtensionsApp.1.Shared.csproj"
-    },
-    {
       "condition": "useServer",
       "path": "MyExtensionsApp.1.Server\\MyExtensionsApp.1.Server.csproj"
     },
@@ -1932,30 +2015,6 @@
     {
       "condition": "cpm",
       "path": "Directory.Packages.props"
-    },
-    {
-      "condition": "useMobile",
-      "path": "MyExtensionsApp.1.Mobile\\MyExtensionsApp.1.Mobile.csproj"
-    },
-    {
-      "condition": "useWinAppSdk && canWindowsRestore",
-      "path": "MyExtensionsApp.1.Windows\\MyExtensionsApp.1.Windows.csproj"
-    },
-    {
-      "condition": "useWasm",
-      "path": "MyExtensionsApp.1.Wasm\\MyExtensionsApp.1.Wasm.csproj"
-    },
-    {
-      "condition": "useGtk",
-      "path": "MyExtensionsApp.1.Skia.Gtk\\MyExtensionsApp.1.Skia.Gtk.csproj"
-    },
-    {
-      "condition": "useWpf",
-      "path": "MyExtensionsApp.1.Skia.WPF\\MyExtensionsApp.1.Skia.Wpf.csproj"
-    },
-    {
-      "condition": "useLinuxFb",
-      "path": "MyExtensionsApp.1.Skia.Linux.FrameBuffer\\MyExtensionsApp.1.Skia.Linux.FrameBuffer.csproj"
     }
   ],
   "sources": [
@@ -1997,61 +2056,43 @@
         {
           "condition": "(platforms != android)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/Android/**/*"
+            "MyExtensionsApp.1/Platforms/Android/**/*"
           ]
         },
         {
           "condition": "(platforms != ios)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/iOS/**/*"
+            "MyExtensionsApp.1/Platforms/iOS/**/*"
           ]
         },
         {
           "condition": "(platforms != macos)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/macOS/**/*"
+            "MyExtensionsApp.1/Platforms/macOS/**/*"
           ]
         },
         {
           "condition": "(platforms != maccatalyst)",
           "exclude": [
-            "MyExtensionsApp.1.Mobile/MacCatalyst/**/*"
-          ]
-        },
-        {
-          "condition": "(!useMobile)",
-          "exclude": [
-            "MyExtensionsApp.1.Mobile/**/*"
+            "MyExtensionsApp.1/Platforms/MacCatalyst/**/*"
           ]
         },
         {
           "condition": "(!useWasm)",
           "exclude": [
-            "MyExtensionsApp.1.Wasm**/*"
+            "MyExtensionsApp.1/Platforms/Wasm**/*"
           ]
         },
         {
-          "condition": "(!useGtk)",
+          "condition": "(!useSkia)",
           "exclude": [
-            "MyExtensionsApp.1.Skia.Gtk/**/*"
-          ]
-        },
-        {
-          "condition": "(!useWpf)",
-          "exclude": [
-            "MyExtensionsApp.1.Skia.WPF/**/*"
-          ]
-        },
-        {
-          "condition": "(!useLinuxFb)",
-          "exclude": [
-            "MyExtensionsApp.1.Skia.Linux.FrameBuffer/**/*"
+            "MyExtensionsApp.1/Platforms/Skia/**/*"
           ]
         },
         {
           "condition": "(!useWinAppSdk)",
           "exclude": [
-            "MyExtensionsApp.1.Windows/**/*"
+            "MyExtensionsApp.1/Platforms/Windows/**/*"
           ]
         },
         {

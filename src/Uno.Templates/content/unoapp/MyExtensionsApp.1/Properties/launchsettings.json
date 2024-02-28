@@ -7,7 +7,15 @@
       "sslPort": 0
     }
   },
-  "profiles": {
+	"profiles": {
+//#if (!useMsalAuthentication)
+		"MyExtensionsApp.1.Windows (Unpackaged)": {
+			"commandName": "Project"
+		},
+//#endif
+		"MyExtensionsApp.1.Windows (Package)": {
+			"commandName": "MsixPackage"
+		},
     "MyExtensionsApp.1.Wasm": {
       "commandName": "Project",
       "dotnetRunMessages": true,
@@ -26,5 +34,5 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  }
+	}
 }
