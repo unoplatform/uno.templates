@@ -12,8 +12,16 @@
     <!--#endif -->
     <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
 
-    <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <OutputType>Exe</OutputType>
+    <SingleProject>true</SingleProject>
+
+    <!-- Display name -->
+    <ApplicationTitle>SingleProjectPlayground</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>uno.platform.singleprojectplayground</ApplicationId>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
     <!--#if (useWinAppSdk) -->
     <!--
       If you encounter this error message:
