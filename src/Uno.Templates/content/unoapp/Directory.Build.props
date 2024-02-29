@@ -3,10 +3,7 @@
     <DotNetVersion>$baseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!--#if (cpm)-->
-
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <!--#endif-->
 
     <!--#if (mauiEmbedding)-->
     <!--

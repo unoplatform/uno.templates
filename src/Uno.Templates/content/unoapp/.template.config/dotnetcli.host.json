@@ -81,10 +81,6 @@
       "longName": "authentication",
       "shortName": "auth"
     },
-    "cpm": {
-      "longName": "cpm",
-      "shortName": "cpm"
-    },
     "vscode": {
       "longName": "vscode",
       "shortName": "vscode"

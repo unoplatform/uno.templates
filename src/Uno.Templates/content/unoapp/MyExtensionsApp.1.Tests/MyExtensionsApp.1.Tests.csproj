@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--#if (useCPM)-->
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
@@ -18,19 +17,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <!--#endif-->
-    <!--#else-->
-    <PackageReference Include="FluentAssertions" Version="$FluentAssertions$" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
-    <PackageReference Include="NUnit" Version="$NUnit$" />
-    <PackageReference Include="NUnit3TestAdapter" Version="$NUnit3TestAdapter$" />
-    <PackageReference Include="coverlet.collector" Version="$CoverletCollector$" />
-    <!--#if (useGitHubActions)-->
-    <PackageReference Include="GitHubActionsTestLogger" Version="2.3.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <!--#endif-->
     <!--#endif-->
   </ItemGroup>
 

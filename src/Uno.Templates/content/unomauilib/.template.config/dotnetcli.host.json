@@ -5,10 +5,6 @@
       "longName": "tfm",
       "shortName": "tfm"
     },
-    "cpm": {
-      "longName": "cpm",
-      "shortName": "cpm"
-    },
     "useAndroid": {
       "longName": "android",
       "shortName": "android"

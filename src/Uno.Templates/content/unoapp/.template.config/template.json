@@ -668,13 +668,6 @@
       "defaultValue": "main",
       "replaces": "$DefaultBranchName$"
     },
-    "cpm": {
-      "displayName": "Central Package Management",
-      "type": "parameter",
-      "dataType": "bool",
-      "defaultValue": "true",
-      "description": "NuGet package versions are centrally managed"
-    },
     "vscode": {
       "displayName": "Visual Studio Code Debugging",
       "type": "parameter",
@@ -796,11 +789,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(continuousIntegration == 'github')"
-    },
-    "useCPM": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "cpm"
     },
     "useTestSolutionFolder": {
       "type": "computed",
@@ -1062,11 +1050,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == ios)"
-    },
-    "useMacOS": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == macos)"
     },
     "useMacCatalyst": {
       "type": "computed",
@@ -1902,7 +1885,6 @@
       "path": "MyExtensionsApp.1.UITests\\MyExtensionsApp.1.UITests.csproj"
     },
     {
-      "condition": "cpm",
       "path": "Directory.Packages.props"
     }
   ],
@@ -2233,12 +2215,6 @@
           "condition": "(!useGitHubActions)",
           "exclude": [
             "GitHub/**"
-          ]
-        },
-        {
-          "condition": "(!cpm)",
-          "exclude": [
-            "Directory.Packages.props"
           ]
         },
         {

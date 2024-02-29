@@ -18,22 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--#if (useCPM)-->
     <!--#if (useSerilog)-->
     <PackageReference Include="Serilog.AspNetCore" />
     <!--#endif-->
     <PackageReference Include="Swashbuckle.AspNetCore" />
     <!--#if (useWasm)-->
     <PackageReference Include="Uno.Wasm.Bootstrap.Server" />
-    <!--#endif -->
-    <!--#else-->
-    <!--#if (useSerilog)-->
-    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-    <!--#endif-->
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <!--#if (useWasm)-->
-    <PackageReference Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
-    <!--#endif -->
     <!--#endif -->
   </ItemGroup>
 
