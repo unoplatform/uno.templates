@@ -16,9 +16,9 @@
     <SingleProject>true</SingleProject>
 
     <!-- Display name -->
-    <ApplicationTitle>SingleProjectPlayground</ApplicationTitle>
+    <ApplicationTitle>MyExtensionsApp.1</ApplicationTitle>
     <!-- App Identifier -->
-    <ApplicationId>uno.platform.singleprojectplayground</ApplicationId>
+    <ApplicationId>com.companyname.myextensionsapp</ApplicationId>
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
