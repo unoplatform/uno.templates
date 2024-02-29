@@ -67,6 +67,7 @@
       <!--#endif-->
       <!--#if (useHttp)-->
       Http;
+      Serialization;
       <!--#endif-->
       <!--#if (useLocalization)-->
       Localization;
