@@ -32,18 +32,13 @@ public partial class App : Application
             new AppResources()));
 
 #endif
-//-:cnd:noEmit
-#if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
         MainWindow = new Window();
-#else
-        MainWindow = Microsoft.UI.Xaml.Window.Current ?? new Window();
-#endif
-
+//-:cnd:noEmit
 #if DEBUG
         MainWindow.EnableHotReload();
 #endif
-
 //+:cnd:noEmit
+
 #if mauiEmbedding
 //-:cnd:noEmit
 #if MAUI_EMBEDDING
