@@ -11,7 +11,7 @@ jobs:
       Recommended:
         templateArgs: '-preset recommended'
       SkiaOnlyHeads:
-        templateArgs: '-platforms gtk wpf linux-fb'
+        templateArgs: '-platforms skia'
       MobileOnlyHeads:
         templateArgs: '-platforms android ios maccatalyst'
       RecommendedMarkup:
@@ -47,7 +47,7 @@ jobs:
       # Disabling this test for now as it was specific to net7
       # https://github.com/unoplatform/uno.templates/issues/22
       # Issue22:
-      #   templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms gtk -platforms wpf -platforms linux-fb -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
+      #   templateArgs: '-preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms macos -platforms windows -platforms wasm -platforms skia -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material'
       CustomAuthMvux:
         templateArgs: '-preset=recommended -auth=custom'
       CustomAuthMvvm:

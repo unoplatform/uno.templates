@@ -17,7 +17,7 @@
   "name": "Uno Platform App",
   "identity": "Uno.Platform.UnoApp.WinUI.netcoremobile.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.netcoremobile",
-  "description": "Solution template for creating a multi-platform C# & XAML application targeting Windows App SDK, Android, iOS, macOS, WebAssembly, Skia/WPF and Skia/GTK for Linux.",
+  "description": "Solution template for creating a multi-platform C# & XAML application targeting Windows App SDK, Android, iOS, macOS, WebAssembly, Skia.",
   "precedence": "99",
   "tags": {
     "language": "C#",
@@ -33,14 +33,7 @@
     "C7433AE2-B1A0-4C1A-887E-5CAA7AAF67A6", // Solution file (SolutionGuid)
     "FAA2C1DE-F859-4053-9573-6245F7E832EF", // src solution folder
     "BACDD33A-304C-46C4-9B00-AC166978D7E0", // (core) library
-    "339C569C-EE23-445E-B908-743673EE5BC9", // Platforms solution folder
     "BA1ACE40-623E-4F42-94BB-11CF4D52C445", // Web solution folder
-    "24D56E12-2373-4CBD-9AD4-5C931D15FB0D", // Mobile
-    "40EA03F7-8A22-4143-B251-79BAC3EB13D2", // Wasm
-    "A5B8155A-118F-4794-B551-C6F3CF7E5411", // Skia.Gtk
-    "6C744695-DA38-44D9-B487-FE5804C5508D", // Skia.WPF
-    "5A78EE9A-1922-468C-96E3-45817727511C", // Windows
-    "925C7A3E-6532-4E27-8ABE-37A4F9B73C8B", // Skia.Linux.FrameBuffer
     "1ADD4B1D-2758-4ED5-963A-FE3F4206BF20", // Server
     "7EF70027-9874-4112-A14F-33F02169CF8A", // Tests Solution folder
     "EB3EB846-D5CB-4140-834F-1CC40A0FD6D0", // Tests
@@ -282,7 +275,7 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "allowMultipleValues": true,
-      "defaultValue": "android|ios|maccatalyst|wasm|windows|gtk",
+      "defaultValue": "android|ios|maccatalyst|wasm|windows|skia",
       "choices": [
         {
           "choice": "android",
@@ -318,16 +311,6 @@
           "choice": "skia",
           "displayName": "Skia",
           "description": "Enables GTK as a target platform"
-        },
-        {
-          "choice": "wpf",
-          "displayName": "WPF",
-          "description": "Enables Windows with WPF as a target platform"
-        },
-        {
-          "choice": "linux-fb",
-          "displayName": "Linux Framebuffer",
-          "description": "Enables Linux Framebuffer as a target platform"
         }
       ]
     },
@@ -1110,25 +1093,10 @@
       "datatype": "bool",
       "value": "(platforms == windows)"
     },
-    "useWpf": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == wpf)"
-    },
-    "useMacOsOrGtk": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == macos || platforms == gtk)"
-    },
-    "useSkiaNativeAssets": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == android || platforms == ios || platforms == maccatalyst || platforms == macos || platforms == windows)"
-    },
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wpf || platforms == wasm || platforms == gtk || platforms == linux-fb || platforms == macos)"
+      "value": "(platforms == wasm || platforms == skia || platforms == macos)"
     },
     "mauiNamespaces": {
       "type": "generated",
@@ -1140,7 +1108,7 @@
         "cases": [
           {
             // This works.... don't try to optimize it!
-            "condition": "(platforms == wpf && mauiEmbedding || platforms == wasm && mauiEmbedding || platforms == gtk  && mauiEmbedding || platforms == linux-fb  && mauiEmbedding || platforms == macos  && mauiEmbedding)",
+            "condition": "(platforms == wasm && mauiEmbedding || platforms == skia  && mauiEmbedding || platforms == macos  && mauiEmbedding)",
             "value": "\n      xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n      xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n      xmlns:maui=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n      xmlns:not_maui=\"http://notmaui\"\n      mc:Ignorable=\"d not_maui\""
           },
           {
