@@ -6,10 +6,6 @@
     <!--#else -->
     <TargetFrameworks>$(DotNetVersion);$mobileTargetFrameworks$</TargetFrameworks>
     <!--#endif -->
-    <!--#if (useMacOS)-->
-    <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-    <!--<TargetFrameworks>$(TargetFrameworks);$(DotNetVersion)-macos</TargetFrameworks>-->
-    <!--#endif -->
     <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
 
     <OutputType>Exe</OutputType>

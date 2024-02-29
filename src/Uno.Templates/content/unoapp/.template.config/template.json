@@ -293,11 +293,6 @@
           "description": "Enables macOS (Catalyst) as a target platform"
         },
         {
-          "choice": "macos",
-          "displayName": "macOS (AppKit)",
-          "description": "Enables macOS (AppKit) as a target platform"
-        },
-        {
           "choice": "windows",
           "displayName": "Windows",
           "description": "Enables Windows with WinAppSdk (WinUI 3) as a target platform"
@@ -1081,7 +1076,7 @@
     "useMobile": {
       "type": "computed",
       "dataType": "bool",
-      "value": "(platforms == android || platforms == ios || platforms == macos || platforms == maccatalyst)"
+      "value": "(platforms == android || platforms == ios || platforms == maccatalyst)"
     },
     "useWasm": {
       "type": "computed",
@@ -1096,7 +1091,7 @@
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == wasm || platforms == skia || platforms == macos)"
+      "value": "(platforms == wasm || platforms == skia)"
     },
     "mauiNamespaces": {
       "type": "generated",
@@ -1108,7 +1103,7 @@
         "cases": [
           {
             // This works.... don't try to optimize it!
-            "condition": "(platforms == wasm && mauiEmbedding || platforms == skia  && mauiEmbedding || platforms == macos  && mauiEmbedding)",
+            "condition": "(platforms == wasm && mauiEmbedding || platforms == skia  && mauiEmbedding)",
             "value": "\n      xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n      xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n      xmlns:maui=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n      xmlns:not_maui=\"http://notmaui\"\n      mc:Ignorable=\"d not_maui\""
           },
           {
@@ -1957,12 +1952,6 @@
           "condition": "(platforms != ios)",
           "exclude": [
             "MyExtensionsApp.1/Platforms/iOS/**/*"
-          ]
-        },
-        {
-          "condition": "(platforms != macos)",
-          "exclude": [
-            "MyExtensionsApp.1/Platforms/macOS/**/*"
           ]
         },
         {
