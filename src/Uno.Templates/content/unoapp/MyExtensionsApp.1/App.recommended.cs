@@ -25,9 +25,30 @@ public partial class App : Application
 #endif
     {
 #if useCsharpMarkup
+        // Load WinUI Resources
         Resources.Build(r => r.Merged(
-            new AppResources()));
+            new XamlControlsResources()));
+#if useMaterial
 
+#if useToolkit
+        // Load Uno.UI.Toolkit and Material Resources
+        Resources.Build(r => r.Merged(
+            new  MaterialToolkitTheme(
+                    new Styles.ColorPaletteOverride(),
+                    new Styles.MaterialFontsOverride())));
+#else
+        // Load Uno.UI.Toolkit and Material Resources
+        Resources.Build(r => r.Merged(
+            new  MaterialTheme(
+                    new Styles.ColorPaletteOverride(),
+                    new Styles.MaterialFontsOverride())));
+#endif
+#elif (useToolkit)
+
+        // Load Uno.UI.Toolkit Resources
+        Resources.Build(r => r.Merged(
+            new ToolkitResources()));
+#endif
 #endif
         var builder = this.CreateBuilder(args)
 #if (useNavigationToolkit)

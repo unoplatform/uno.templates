@@ -1515,15 +1515,15 @@
         "cases": [
           {
             "condition": "(appThemeEvaluator == 'material' && (useToolkit == 'true' || useToolkit == true))",
-            "value": "\n                    xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
+            "value": "\n       xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
           },
           {
             "condition": "(appThemeEvaluator == 'material')",
-            "value": "\n                    xmlns:um=\"using:Uno.Material\""
+            "value": "\n       xmlns:um=\"using:Uno.Material\""
           },
           {
             "condition": "(appThemeEvaluator == 'cupertino')",
-            "value": "\n                    xmlns:uc=\"using:Uno.Cupertino\""
+            "value": "\n       xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
             "condition": "true",
@@ -2233,7 +2233,6 @@
         {
           "condition": "(!useCsharpMarkup)",
           "exclude": [
-            "MyExtensionsApp.1/AppResources.cs",
             "MyExtensionsApp.1/Styles/*.cs"
           ]
         },
