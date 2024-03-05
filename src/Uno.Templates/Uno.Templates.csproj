@@ -17,11 +17,12 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-PullRequest-339-114632-0339</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-feature.gtkless.1272</UnoVersion>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.24</UnoExtensionsVersion>
 		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.18</UnoThemesVersion>
 		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.32</UnoToolkitVersion>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0-dev.54</UnoMarkupVersion>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.9</UnoWasmBootstrapVersionNet8>
 
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
 		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdk)' == ''">17.9.0</MicrosoftTestSdkVersion>

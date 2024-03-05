@@ -727,6 +727,10 @@
       "defaultValue": "DefaultUnoToolkitVersion",
       "replaces": "$UnoToolkitVersion$"
     },
+    "unoWasmBootstrapVersion": {
+      "type": "parameter",
+      "datatype": "text"
+    },
     "mauiVersion": {
       "type": "generated",
       "generator": "switch",
@@ -745,6 +749,34 @@
           }
         ]
       }
+    },
+    "unoWasmBootstrapVersionDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$WasmBootstrapServer$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "DefaultUnoWasmBootstrapVersionNet8"
+          },
+          {
+            "condition": "(tfm == 'net9.0')",
+            "value": "DefaultUnoWasmBootstrapVersionNet8"
+          }
+        ]
+      }
+    },
+    "unoWasmBootstrapVersionEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "unoWasmBootstrapVersion",
+        "fallbackVariableName": "unoWasmBootstrapVersionDefault"
+      },
+      "replaces": "$UnoWasmBootstrapVersion$"
     },
     "unoMarkupVersion": {
       "type": "parameter",
@@ -1065,6 +1097,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == wasm)"
+    },
+    "useWasmPackageVersions": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == wasm && serverEvaluator)"
     },
     "useWinAppSdk": {
       "type": "computed",

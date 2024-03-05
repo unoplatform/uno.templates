@@ -33,4 +33,10 @@
     $$EnableDeveloperMode_CPM_PackageVersion$$
     <!--#endif-->
   </ItemGroup>
+  <!--#if (useWasmPackageVersions)-->
+
+  <ItemGroup Condition="$(UsingUnoSdk) != 'true'">
+    <PackageVersion Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
+  </ItemGroup>
+  <!--#endif-->
 </Project>
