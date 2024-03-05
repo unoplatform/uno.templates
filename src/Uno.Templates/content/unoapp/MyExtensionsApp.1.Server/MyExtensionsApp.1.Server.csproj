@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <!--#if (useWasm)-->
-    <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj" />
+    <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj"
+                      SetTargetFramework="TargetFramework=$(DotNetVersion)-browser"
+                      AdditionalProperties="OutputPath=$(MSBuildProjectDirectory)\$(OutputPath)"
+                      ReferenceOutputAssembly="false" />
     <!--#endif -->
     <!--#if (useDataContracts)-->
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />
