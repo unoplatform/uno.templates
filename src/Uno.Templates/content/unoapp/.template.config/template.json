@@ -1194,21 +1194,6 @@
       "datatype": "bool",
       "value": "(platforms == wpf)"
     },
-    "useMacOsOrGtk": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == macos || platforms == gtk)"
-    },
-    "useLinuxFbOrGtk": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == linux-fb || platforms == gtk)"
-    },
-    "useSkiaNativeAssets": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(platforms == android || platforms == ios || platforms == maccatalyst || platforms == macos || platforms == windows)"
-    },
     "useNonMauiPlatforms": {
       "type": "computed",
       "datatype": "bool",
@@ -1256,6 +1241,11 @@
         "source": "testsEvaluator",
         "pattern": ".*ui.*"
       }
+    },
+    "useSkia": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == wpf || platforms == gtk || platforms == linux-fb)"
     },
     "useServer": {
       "type": "computed",

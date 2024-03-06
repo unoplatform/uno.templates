@@ -98,7 +98,6 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Win32" />
     <PackageReference Include="SkiaSharp.Views.Uno.WinUI" />
     <PackageReference Include="SkiaSharp.Skottie" />
     <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />
@@ -181,7 +180,6 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="$SkiaSharpVersion$" />
     <PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="$SkiaSharpVersion$" />
     <PackageReference Include="SkiaSharp.Skottie" Version="$SkiaSharpVersion$" />
     <PackageReference Include="Uno.WinUI.DevServer" Version="$(UnoVersion)" Condition="'$(Configuration)'=='Debug'" />

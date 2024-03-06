@@ -146,7 +146,6 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
-    <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" />
   </ItemGroup>
   <!--#else-->
   <ItemGroup>
@@ -231,7 +230,6 @@
     <!--#endif-->
     <!--#endif-->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$MsftExtensionsLoggingConsoleVersion$" />
-    <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" Version="$SkiaSharpVersion$" />
   </ItemGroup>
   <!--#endif-->
   <ItemGroup>
