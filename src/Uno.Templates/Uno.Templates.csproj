@@ -17,7 +17,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-feature.gtkless.1272</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.1612</UnoVersion>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.24</UnoExtensionsVersion>
 		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.18</UnoThemesVersion>
 		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.32</UnoToolkitVersion>
@@ -34,7 +34,7 @@
 		<XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
 
 		<!-- UWP Legacy Templates -->
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.8</UnoWasmBootstrapVersionNet8>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.9</UnoWasmBootstrapVersionNet8>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.2428</MicrosoftWindowsSDKBuildToolsVersion>
 		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.4.240211001</MicrosoftWindowsAppSDKVersion>
