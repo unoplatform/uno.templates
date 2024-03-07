@@ -35,9 +35,11 @@ runs:
       shell: pwsh
       run: |
         dotnet tool install -g uno.check
-        $targets = ("${{ inputs.target-platform }}".Split(' ') | ForEach-Object { "--target $_".Replace("_win", "").Replace("_macos", "") }) -join ' '
-        if ($targets.Contains("all")) {
-            $targets = "--target all"
-        }
-
-        uno-check -v --ci --non-interactive --fix $targets --skip vswin --skip vsmac --skip xcode --skip vswinworkloads --skip androidemulator --skip dotnetnewunotemplates
+        ("${{ inputs.target-platform }} ".Split(' ') | ForEach-Object {
+          $target = $_.Replace("_win", "").Replace("_macos", "")
+          if (![string]::IsNullOrEmpty($target)) {
+            echo "target: $target"
+            uno-check -v --ci --non-interactive --fix --target $target vswin --skip vsmac --skip xcode --skip vswinworkloads --skip androidemulator --skip dotnetnewunotemplates
+            echo "uno-check finished for target: $target "
+          }
+        })
