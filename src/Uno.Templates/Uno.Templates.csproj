@@ -17,7 +17,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.1612</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.1767</UnoVersion>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.24</UnoExtensionsVersion>
 		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.18</UnoThemesVersion>
 		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.32</UnoToolkitVersion>
