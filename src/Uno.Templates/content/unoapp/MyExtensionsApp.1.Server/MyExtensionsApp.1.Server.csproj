@@ -11,7 +11,7 @@
   <ItemGroup>
     <!--#if (useWasm)-->
     <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj"
-                      SetTargetFramework="TargetFramework=$(DotNetVersion)-browser"
+                      SetTargetFramework="TargetFramework=$(DotNetVersion)-browserwasm"
                       AdditionalProperties="OutputPath=$(MSBuildProjectDirectory)\$(OutputPath)"
                       ReferenceOutputAssembly="false" />
     <!--#endif -->

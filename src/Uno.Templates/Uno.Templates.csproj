@@ -36,8 +36,8 @@
 		<!-- UWP Legacy Templates -->
 		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.9</UnoWasmBootstrapVersionNet8>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
-		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.2428</MicrosoftWindowsSDKBuildToolsVersion>
-		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.4.240211001</MicrosoftWindowsAppSDKVersion>
+		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
+		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240227000</MicrosoftWindowsAppSDKVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
 		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
 	</PropertyGroup>
