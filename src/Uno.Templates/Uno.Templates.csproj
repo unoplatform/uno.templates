@@ -17,29 +17,28 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.1767</UnoVersion>
+		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.1822</UnoVersion>
 		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.24</UnoExtensionsVersion>
 		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.18</UnoThemesVersion>
 		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.32</UnoToolkitVersion>
 		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0-dev.54</UnoMarkupVersion>
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.9</UnoWasmBootstrapVersionNet8>
+		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
+		<UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>
 
 		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
-		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdk)' == ''">17.9.0</MicrosoftTestSdkVersion>
-		<NUnitVersion Condition="'$(NUnitVersion)' == ''">4.0.1</NUnitVersion>
+		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdkVersion)' == ''">17.9.0</MicrosoftTestSdkVersion>
+		<NUnitVersion Condition="'$(NUnitVersion)' == ''">4.1.0</NUnitVersion>
 		<NUnit3TestAdapterVersion Condition="'$(NUnit3TestAdapterVersion)' == ''">4.5.0</NUnit3TestAdapterVersion>
 		<FluentAssertionsVersion Condition="'$(FluentAssertionsVersion)' == ''">6.12.0</FluentAssertionsVersion>
 		<CoverletCollectorVersion Condition="'$(CoverletCollectorVersion)' == ''">6.0.1</CoverletCollectorVersion>
-		<NewtonsoftJsonVersion Condition="'$(NewtonsoftJsonVersion)' == ''">13.0.3</NewtonsoftJsonVersion>
 		<XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
 
 		<!-- UWP Legacy Templates -->
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.9</UnoWasmBootstrapVersionNet8>
 		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
 		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
 		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240227000</MicrosoftWindowsAppSDKVersion>
 		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
+		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.3</XamarinGoogleAndroidMaterialVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
@@ -53,15 +52,6 @@
 		<TemplateFile Include="content/**/*" Exclude="**/obj/**;**/bin/**" />
 		<MauiControlsTemplateFile Include="content/unoapp/MyExtensionsApp.1.MauiControls/**/*" Exclude="**/obj/**;**/bin/**" />
 		<UpToDateCheckInput Include="@(TemplateFile)" />
-		<MergeTemplatePackage Include="Uno.ProjectTemplates.Dotnet" Version="$(UnoVersion)">
-			<FileExists>false</FileExists>
-		</MergeTemplatePackage>
-
-		<!-- Workaround for NU5017-->
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="content\" />
 	</ItemGroup>
 
 	<Target Name="PrepareTemplateFiles" BeforeTargets="ReplaceVersions" AfterTargets="DownloadTemplatePackages;ExtractPackages">
@@ -105,6 +95,7 @@
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoToolkitVersion" ReplacementText="$(UnoToolkitVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
+		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
 		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
 		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp._1.MauiControls" ReplacementText="MyExtensionsApp._1" />
@@ -114,7 +105,6 @@
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsSDKBuildTools$" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
 		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsAppSDK$" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
@@ -133,7 +123,7 @@
 					File.AppendAllText(
 						Filename,
 						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props" +
-						Environment.NewLine + "# Windows Publish Profiles" + Environment.NewLine + "!**/Platforms/**/Properties/PublishProfiles/*.pubxml"
+						Environment.NewLine + "# Publish Profiles" + Environment.NewLine + "!**/Properties/PublishProfiles/*.pubxml"
 						);
 				]]>
 			</Code>

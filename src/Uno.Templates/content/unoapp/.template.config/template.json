@@ -739,7 +739,7 @@
           },
           {
             "condition": "(tfm == 'net9.0')",
-            "value": "DefaultUnoWasmBootstrapVersionNet8"
+            "value": "DefaultUnoWasmBootstrapVersionNet9"
           }
         ]
       }
