@@ -36,11 +36,11 @@ public sealed partial class LoginPage : Page
                         .Children(
 #if useCustomAuthentication
                             new TextBox()
-                                .Text(x => x.Bind(() => vm.Username).TwoWay())
+                                .Text(x => x.Binding(() => vm.Username).TwoWay())
                                 .PlaceholderText("Username")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch),
                             new PasswordBox()
-                                .Password(x => x.Bind(() => vm.Password).TwoWay())
+                                .Password(x => x.Binding(() => vm.Password).TwoWay())
                                 .PlaceholderText("Password")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch),
 #endif
