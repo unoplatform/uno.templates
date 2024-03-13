@@ -27,7 +27,7 @@ global using Microsoft.UI.Xaml.Navigation;
 global using Microsoft.Extensions.Options;
 #endif
 #if (useBusinessModelsNamespace)
-global using MyExtensionsApp._1.Business.Models;
+global using MyExtensionsApp._1.Models;
 #endif
 #if (useInfrastructureNamespace)
 global using MyExtensionsApp._1.Infrastructure;
