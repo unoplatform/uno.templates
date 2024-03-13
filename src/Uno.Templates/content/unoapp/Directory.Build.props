@@ -50,6 +50,9 @@
       <!--#if (useSerilog)-->
       Serilog;
       <!--#endif-->
+      <!--#if (mauiEmbedding)-->
+      MauiEmbedding;
+      <!--#endif-->
       <!--#if (useMvux)-->
       Mvux;
       <!--#endif-->
