@@ -1352,6 +1352,49 @@
         "datatype": "string",
         "cases": [
           {
+            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
+          },
+          {
+            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
+          },
+          {
+            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-android"
+          },
+          {
+            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
+            "value": "$(DotNetVersion)-ios"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
+            "value": "$(DotNetVersion)-maccatalyst"
+          },
+          {
+            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
+            "value": ""
+          }
+        ]
+      }
+    },
+    "unoTargetFrameworks": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$unoTargetFrameworks$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
             "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms == desktop)",
             "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
           },
