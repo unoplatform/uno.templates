@@ -54,17 +54,10 @@
     <!--#endif-->
   </Choose>
   <!--#endif-->
-  <!--#if (mauiEmbedding)-->
 
   <ItemGroup>
-    <!--#if (useStandaloneCPM)-->
     <PackageReference Include="Microsoft.Maui.Controls" VersionOverride="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" VersionOverride="$(MauiVersion)" />
-    <!--else-->
-    <PackageReference Include="Microsoft.Maui.Controls" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-    <!--#endif -->
   </ItemGroup>
-  <!--#endif -->
 
 </Project>
