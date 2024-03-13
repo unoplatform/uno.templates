@@ -278,14 +278,14 @@ $$EnableDeveloperMode_Region_Navigate$$
 
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
-                Nested: new RouteMap[]
-                {
+                Nested:
+                [
 #if (useAuthentication)
-                    new RouteMap("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
+                    new ("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
 #endif
-                    new RouteMap("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
-                    new RouteMap("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
-                }
+                    new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
+                    new ("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
+                ]
             )
         );
 #endif
