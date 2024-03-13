@@ -53,8 +53,8 @@ global using Uno.UI;
 global using Uno.Extensions.Markup;
 #if (useMaterial)
 global using Uno.Material;
-#endif
 global using Uno.Themes.Markup;
+#endif
 #if (useToolkit)
 global using Uno.Toolkit.UI;
 #if (useMaterial)

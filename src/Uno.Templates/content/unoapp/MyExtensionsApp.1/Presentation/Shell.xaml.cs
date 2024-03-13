@@ -37,7 +37,11 @@ public sealed partial class Shell : UserControl, IContentControlProvider
                         .VerticalContentAlignment(VerticalAlignment.Stretch)
     #endif
                 )
+#if useMaterial
                 .Background(Theme.Brushes.Background.Default)
+#else
+                .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
+#endif
             );
         ContentControl = splash;
 #else
