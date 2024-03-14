@@ -2295,6 +2295,7 @@
           "condition": "(useCsharpMarkup)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/*.xaml",
+            "MyExtensionsApp.1/Styles/*.xaml",
             "MyExtensionsApp.1/MainPage.xaml",
             "MyExtensionsApp.1/Styles/.gitignore"
           ],
