@@ -41,7 +41,7 @@
   <!--#if (coreProjectHasProjectReferences)-->
 
   <ItemGroup>
-    <!--#if (useHttp)-->
+    <!--#if (useDataContracts)-->
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />
     <!--#endif-->
     <!--#if (mauiEmbedding)-->

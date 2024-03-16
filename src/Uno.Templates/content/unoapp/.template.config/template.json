@@ -1111,7 +1111,7 @@
     "useDataContracts": {
       "type": "computed",
       "dataType": "bool",
-      "value": "(useDependencyInjection && useHttp)"
+      "value": "(useDependencyInjection && useHttp && server)"
     },
     "useUnitTests": {
       "type": "generated",
@@ -1842,7 +1842,7 @@
     "coreProjectHasProjectReferences": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(mauiEmbedding || useHttp)"
+      "value": "(mauiEmbedding || (useDependencyInjection && useHttp && server))"
     },
     "useInfrastructureNamespace": {
       "type": "computed",
@@ -2019,6 +2019,19 @@
           "condition": "(!useServer)",
           "exclude": [
             "MyExtensionsApp.1.Server/**/*"
+          ]
+        },
+        {
+          "condition": "(!useDataContracts)",
+          "exclude": [
+            "MyExtensionsApp.1.DataContracts/**/*"
+          ]
+        },
+        {
+          "condition": "(useServer)",
+          "exclude": [
+            "MyExtensionsApp.1/Models/WeatherForecast.cs",
+            "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
           ]
         },
         {
@@ -2230,7 +2243,9 @@
           "condition": "(!useHttp)",
           "exclude": [
             "MyExtensionsApp.1/Infrastructure/DebugHandler.cs",
-            "MyExtensionsApp.1/Services/**"
+            "MyExtensionsApp.1/Services/**",
+            "MyExtensionsApp.1/Models/WeatherForecast.cs",
+            "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
           ]
         },
         {
