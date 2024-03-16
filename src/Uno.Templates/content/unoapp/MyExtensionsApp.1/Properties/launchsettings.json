@@ -9,14 +9,25 @@
   },
 	"profiles": {
 //#if (!useMsalAuthentication)
-		"MyExtensionsApp.1.Windows (Unpackaged)": {
+		"MyExtensionsApp.1 (WinAppSDK Unpackaged)": {
 			"commandName": "Project"
 		},
 //#endif
-		"MyExtensionsApp.1.Windows (Package)": {
+		"MyExtensionsApp.1 (WinAppSDK Packaged)": {
 			"commandName": "MsixPackage"
 		},
-    "MyExtensionsApp.1.Wasm": {
+//#if (useDesktop)
+		"MyExtensionsApp.1 (Desktop)": {
+			"commandName": "Project"
+		},
+    "MyExtensionsApp.1 (Desktop WSL2)": {
+      "commandName": "WSL2",
+      "commandLineArgs": "{ProjectDir}/bin/Debug/$(DotNetVersion)-desktop/MyExtensionsApp.1.dll",
+      "distributionName": ""
+    },
+//#endif
+//#if (useWasm)
+    "MyExtensionsApp.1 (Wasm)": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -26,7 +37,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express": {
+    "MyExtensionsApp.1 (Wasm - IIS Express)": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
@@ -34,5 +45,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
+//#endif
 	}
 }
