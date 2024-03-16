@@ -7,19 +7,19 @@
       "sslPort": 0
     }
   },
-	"profiles": {
+  "profiles": {
 //#if (!useMsalAuthentication)
-		"MyExtensionsApp.1 (WinAppSDK Unpackaged)": {
-			"commandName": "Project"
-		},
+    "MyExtensionsApp.1 (WinAppSDK Unpackaged)": {
+      "commandName": "Project"
+    },
 //#endif
-		"MyExtensionsApp.1 (WinAppSDK Packaged)": {
-			"commandName": "MsixPackage"
-		},
+    "MyExtensionsApp.1 (WinAppSDK Packaged)": {
+      "commandName": "MsixPackage"
+    },
 //#if (useDesktop)
-		"MyExtensionsApp.1 (Desktop)": {
-			"commandName": "Project"
-		},
+    "MyExtensionsApp.1 (Desktop)": {
+      "commandName": "Project"
+    },
     "MyExtensionsApp.1 (Desktop WSL2)": {
       "commandName": "WSL2",
       "commandLineArgs": "{ProjectDir}/bin/Debug/$(DotNetVersion)-desktop/MyExtensionsApp.1.dll",
@@ -46,5 +46,5 @@
       }
     }
 //#endif
-	}
+  }
 }
