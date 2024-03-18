@@ -1,6 +1,6 @@
 using Uno.UI.Runtime.Skia;
 
-namespace MyExtensionsApp._1.Skia.Gtk;
+namespace MyExtensionsApp._1;
 
 public class Program
 {
