@@ -1396,11 +1396,11 @@
         "cases": [
           {
             "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1412,11 +1412,11 @@
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-ios"
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1428,11 +1428,11 @@
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms == maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1444,11 +1444,11 @@
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1460,11 +1460,11 @@
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-android"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms != maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1476,11 +1476,11 @@
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-ios;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-ios"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms != maccatalyst && platforms != wasm && platforms == desktop)",
@@ -1492,11 +1492,11 @@
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms == desktop)",
-            "value": "$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm;$(DotNetVersion)-desktop"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-maccatalyst;$(DotNetVersion)-desktop"
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms == wasm && platforms != desktop)",
-            "value": "$(DotNetVersion)-maccatalyst;$(DotNetVersion)-browserwasm"
+            "value": "$(DotNetVersion)-browserwasm;$(DotNetVersion)-maccatalyst"
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms == maccatalyst && platforms != wasm && platforms == desktop)",
