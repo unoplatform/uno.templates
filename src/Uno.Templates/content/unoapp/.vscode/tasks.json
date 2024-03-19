@@ -10,7 +10,7 @@
         "build",
         "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net8.0-browserwasm",
+        "/property:TargetFramework=$baseTargetFramework$-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
@@ -23,7 +23,7 @@
         "publish",
         "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net8.0-browserwasm",
+        "/property:TargetFramework=$baseTargetFramework$-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
@@ -38,7 +38,7 @@
         "build",
         "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net8.0-desktop",
+        "/property:TargetFramework=$baseTargetFramework$-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
@@ -51,7 +51,7 @@
         "publish",
         "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
-        "/property:TargetFramework=net8.0-desktop",
+        "/property:TargetFramework=$baseTargetFramework$-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
