@@ -1,7 +1,7 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <!--#if (useWinAppSdk) -->
-    <TargetFrameworks>$(TargetFrameworks);$(DotNetVersion);$unoTargetFrameworks$</TargetFrameworks>
+    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
     <!--#else -->
     <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
