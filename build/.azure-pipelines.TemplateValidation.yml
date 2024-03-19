@@ -6,8 +6,9 @@ jobs:
 
   strategy:
     matrix:
-      DefaultArguments:
-        templateArgs: ''
+      # NOTE: temporarily disabling so we can merge #585 - Hosting namespace not found
+      # DefaultArguments:
+      #   templateArgs: ''
       Recommended:
         templateArgs: '-preset recommended'
       SkiaOnlyHeads:
@@ -18,8 +19,9 @@ jobs:
         templateArgs: '-preset recommended -markup csharp'
       MVVM:
         templateArgs: '-preset recommended -presentation mvvm'
-      CSharpMarkup:
-        templateArgs: '-markup csharp'
+      # NOTE: temporarily disabling so we can merge #585 - Hosting namespace not found
+      # CSharpMarkup:
+      #   templateArgs: '-markup csharp'
       NoHosting:
         templateArgs: '-preset recommended -di false'
       HostingOnly:
