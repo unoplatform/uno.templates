@@ -1,6 +1,5 @@
 <linker>
   <assembly fullname="MyExtensionsApp.1" />
-  <assembly fullname="MyExtensionsApp.1.Wasm" />
 
   <!--
   Uncomment this section when using JSON.NET

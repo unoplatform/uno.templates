@@ -1,4 +1,4 @@
-namespace MyExtensionsApp._1.Wasm;
+namespace MyExtensionsApp._1;
 
 public class Program
 {

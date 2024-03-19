@@ -2007,7 +2007,7 @@
         {
           "condition": "(!useWasm)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Wasm**/*"
+            "MyExtensionsApp.1/Platforms/WebAssembly**/*"
           ]
         },
         {
@@ -2303,8 +2303,8 @@
         {
           "condition": "(!wasmPwaManifest)",
           "exclude": [
-            "MyExtensionsApp/Platforms/Wasm/manifest.json",
-            "MyExtensionsApp/Platforms/Wasm/Assets/AppIcon-*"
+            "MyExtensionsApp/Platforms/WebAssembly/manifest.json",
+            "MyExtensionsApp/Platforms/WebAssembly/Assets/AppIcon-*"
           ]
         },
         {
