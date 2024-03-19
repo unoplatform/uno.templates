@@ -671,6 +671,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "mediaElement": {
+      "displayName": "Media Element",
+      "description": "Configures application to bundle native assets required for the MediaElement",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",

@@ -89,6 +89,10 @@
       "longName": "maui-embedding",
       "shortName": "maui"
     },
+    "mediaElement": {
+      "longName": "media-element",
+      "shortName": "media"
+    },
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"

@@ -38,6 +38,9 @@
       <!--#if (useCupertino)-->
       Cupertino;
       <!--#endif-->
+      <!--#if (mediaElement)-->
+      MediaElement;
+      <!--#endif-->
       <!--#if (useDependencyInjection)-->
       Hosting;
       <!--#endif-->
