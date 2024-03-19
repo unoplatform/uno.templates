@@ -22,7 +22,7 @@
     },
     "MyExtensionsApp.1 (Desktop WSL2)": {
       "commandName": "WSL2",
-      "commandLineArgs": "{ProjectDir}/bin/Debug/$(DotNetVersion)-desktop/MyExtensionsApp.1.dll",
+      "commandLineArgs": "{ProjectDir}/bin/Debug/$baseTargetFramework$-desktop/MyExtensionsApp.1.dll",
       "distributionName": ""
     },
 //#endif

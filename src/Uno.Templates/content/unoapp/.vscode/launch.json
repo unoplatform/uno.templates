@@ -29,7 +29,7 @@
       "server": {
         "runtimeExecutable": "dotnet",
         "program": "run",
-        "args": ["--no-build","-p:TargetFramework=net8.0-browserwasm"],
+        "args": ["--no-build","-p:TargetFramework=$baseTargetFramework$-browserwasm"],
         "outputCapture": "std",
         "timeout": 30000,
         "cwd": "${workspaceFolder}/MyExtensionsApp.1"
