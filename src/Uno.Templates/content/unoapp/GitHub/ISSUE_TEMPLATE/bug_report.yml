@@ -56,11 +56,13 @@ body:
       options:
         - Android
         - iOS
+        - MacOS
         - MacCatalyst
         - Windows
         - GTK
         - Linux Framebuffer
         - WPF
+        - Skia Desktop
         - WebAssembly
         - Other
         - I was *not* able test on other platforms

@@ -29,7 +29,7 @@
       "problemMatcher": "$msCompile"
     },
 //#endif
-//#if (useGtk)
+//#if (useDesktop)
     {
       "label": "build-desktop",
       "command": "dotnet",
