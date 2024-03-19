@@ -33,9 +33,7 @@ body:
         - Android
         - MacCatalyst
         - WebAssembly
-        - Gtk
-        - Linux Framebuffer
-        - Wpf
+        - Skia
         - Windows (WinAppSdk)
         - Server
   - type: dropdown

@@ -41,13 +41,6 @@
         }
       ]
     },
-    "cpm": {
-      "displayName": "Central Package Management",
-      "description": "Use Central Package Management",
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "true"
-    },
     "useAndroid": {
       "type": "parameter",
       "datatype": "bool",
@@ -112,12 +105,8 @@
         "datatype": "bool",
         "cases": [
           {
-            "condition": "(cpm == true)",
+            "condition": "(true == true)",
             "value": "true"
-          },
-          {
-            "condition": "(cpm == false)",
-            "value": "false"
           }
         ]
       }

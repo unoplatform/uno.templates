@@ -12,7 +12,7 @@ body:
     id: description
     attributes:
       label: Description
-      description: Please give a detailed description of the issue that you're seeing. You can add screenshots and videos as well. 
+      description: Please give a detailed description of the issue that you're seeing. You can add screenshots and videos as well.
       placeholder: Tell us what you see!
     validations:
       required: true
@@ -41,9 +41,7 @@ body:
         - iOS
         - MacCatalyst
         - Windows
-        - GTK
-        - Linux Framebuffer
-        - WPF
+        - Skia
         - WebAssembly
         - Other
     validations:
@@ -58,11 +56,13 @@ body:
       options:
         - Android
         - iOS
+        - MacOS
         - MacCatalyst
         - Windows
         - GTK
         - Linux Framebuffer
         - WPF
+        - Skia Desktop
         - WebAssembly
         - Other
         - I was *not* able test on other platforms
@@ -79,5 +79,5 @@ body:
     id: logs
     attributes:
       label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for back ticks.
+      description: Please copy and paste any relevant log output. This will be auomatically formatted into code, so no need for back ticks.
       render: shell

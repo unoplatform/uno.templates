@@ -81,10 +81,6 @@
       "longName": "authentication",
       "shortName": "auth"
     },
-    "cpm": {
-      "longName": "cpm",
-      "shortName": "cpm"
-    },
     "vscode": {
       "longName": "vscode",
       "shortName": "vscode"
@@ -92,6 +88,10 @@
     "mauiEmbedding": {
       "longName": "maui-embedding",
       "shortName": "maui"
+    },
+    "mediaElement": {
+      "longName": "media-element",
+      "shortName": "media"
     },
     "skipRestore": {
       "longName": "skip-restore",
@@ -123,34 +123,10 @@
     "unoExtensionsVersion": {
       "isHidden": true
     },
-    "unoExtensionsLoggingVersion": {
-      "isHidden": true
-    },
-    "skiaSharpVersion": {
-      "isHidden": true
-    },
-    "unoCoreExtensionsLoggingVersion": {
-      "isHidden": true
-    },
     "unoThemesVersion": {
       "isHidden": true
     },
-    "unoDspTasksVersion": {
-      "isHidden": true
-    },
     "unoToolkitVersion": {
-      "isHidden": true
-    },
-    "unoToolkitMarkupVersion": {
-      "isHidden": true
-    },
-    "unoResizetizerVersion": {
-      "isHidden": true
-    },
-    "unoUniversalImageLoaderVersion": {
-      "isHidden": true
-    },
-    "unoWasmBootstrapVersion": {
       "isHidden": true
     },
     "unoMarkupVersion": {

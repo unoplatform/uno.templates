@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <!--#if (useWasm)-->
-    <ProjectReference Include="..\MyExtensionsApp.1.Wasm\MyExtensionsApp.1.Wasm.csproj" />
+    <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj"
+                      SetTargetFramework="TargetFramework=$(DotNetVersion)-browserwasm"
+                      AdditionalProperties="OutputPath=$(MSBuildProjectDirectory)\$(OutputPath)"
+                      ReferenceOutputAssembly="false" />
     <!--#endif -->
     <!--#if (useDataContracts)-->
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />
@@ -18,22 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--#if (useCPM)-->
     <!--#if (useSerilog)-->
     <PackageReference Include="Serilog.AspNetCore" />
     <!--#endif-->
     <PackageReference Include="Swashbuckle.AspNetCore" />
     <!--#if (useWasm)-->
     <PackageReference Include="Uno.Wasm.Bootstrap.Server" />
-    <!--#endif -->
-    <!--#else-->
-    <!--#if (useSerilog)-->
-    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-    <!--#endif-->
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <!--#if (useWasm)-->
-    <PackageReference Include="Uno.Wasm.Bootstrap.Server" Version="$UnoWasmBootstrapVersion$" />
-    <!--#endif -->
     <!--#endif -->
   </ItemGroup>
 

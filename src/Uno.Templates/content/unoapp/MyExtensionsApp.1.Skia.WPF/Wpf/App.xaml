@@ -1,8 +1,0 @@
-﻿<Application x:Class="MyExtensionsApp._1.WPF.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MyExtensionsApp._1.WPF">
-  <Application.Resources>
-
-  </Application.Resources>
-</Application>

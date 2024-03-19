@@ -1,8 +1,19 @@
+using Uno.Resizetizer;
+
 //-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
-public class App : Application
+public partial class App : Application
 {
+    /// <summary>
+    /// Initializes the singleton application object. This is the first line of authored code
+    /// executed, and as such is the logical equivalent of main() or WinMain().
+    /// </summary>
+    public App()
+    {
+        this.InitializeComponent();
+    }
+
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
 
@@ -13,6 +24,32 @@ public class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
 #endif
     {
+#if useCsharpMarkup
+        // Load WinUI Resources
+        Resources.Build(r => r.Merged(
+            new XamlControlsResources()));
+#if useMaterial
+
+#if useToolkit
+        // Load Uno.UI.Toolkit and Material Resources
+        Resources.Build(r => r.Merged(
+            new  MaterialToolkitTheme(
+                    new Styles.ColorPaletteOverride(),
+                    new Styles.MaterialFontsOverride())));
+#else
+        // Load Uno.UI.Toolkit and Material Resources
+        Resources.Build(r => r.Merged(
+            new  MaterialTheme(
+                    new Styles.ColorPaletteOverride(),
+                    new Styles.MaterialFontsOverride())));
+#endif
+#elif (useToolkit)
+
+        // Load Uno.UI.Toolkit Resources
+        Resources.Build(r => r.Merged(
+            new ToolkitResources()));
+#endif
+#endif
         var builder = this.CreateBuilder(args)
 #if (useNavigationToolkit)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
@@ -164,6 +201,7 @@ public class App : Application
         MainWindow.EnableHotReload();
 #endif
 //+:cnd:noEmit
+        MainWindow.SetWindowIcon();
 
 #if useFrameNav
 //-:cnd:noEmit
@@ -240,14 +278,14 @@ $$EnableDeveloperMode_Region_Navigate$$
 
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
-                Nested: new RouteMap[]
-                {
+                Nested:
+                [
 #if (useAuthentication)
-                    new RouteMap("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
+                    new ("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
 #endif
-                    new RouteMap("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
-                    new RouteMap("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
-                }
+                    new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
+                    new ("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
+                ]
             )
         );
 #endif

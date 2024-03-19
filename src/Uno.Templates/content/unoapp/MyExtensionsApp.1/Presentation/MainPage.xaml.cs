@@ -34,7 +34,7 @@ public sealed partial class MainPage : Page
                         .Spacing(16)
                         .Children(
                             new TextBox()
-                                .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay))
+                                .Text(x => x.Binding(() => vm.Name).Mode(BindingMode.TwoWay))
                                 .PlaceholderText("Enter your name:"),
                             new Button()
                                 .Content("Go to Second Page")

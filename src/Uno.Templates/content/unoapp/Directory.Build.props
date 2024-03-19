@@ -3,10 +3,7 @@
     <DotNetVersion>$baseTargetFramework$</DotNetVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!--#if (cpm)-->
-
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <!--#endif-->
 
     <!--#if (mauiEmbedding)-->
     <!--
@@ -26,15 +23,78 @@
     -->
     <NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
     <!--#endif-->
-    <!--#if (mauiEmbedding)-->
 
-    <MauiVersion Condition=" '$(MauiVersion)' == '' ">$DefaultMauiVersion$</MauiVersion>
-    <AndroidMaterialVersion  Condition=" '$(AndroidMaterialVersion)' == '' ">1.10.0.1</AndroidMaterialVersion>
-    <AndroidXNavigationVersion  Condition=" '$(AndroidXNavigationVersion)' == '' ">2.6.0.1</AndroidXNavigationVersion>
-    <AndroidXCollectionVersion  Condition=" '$(AndroidXCollectionVersion)' == '' ">1.3.0.1</AndroidXCollectionVersion>
-    <!--#endif-->
+    <!--
+      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+      TODO: Add an aka link to the documentation
+    -->
+    <UnoFeatures>
+      <!--#if (useCsharpMarkup)-->
+      CSharpMarkup;
+      <!--#endif-->
+      <!--#if (useMaterial)-->
+      Material;
+      <!--#endif-->
+      <!--#if (useCupertino)-->
+      Cupertino;
+      <!--#endif-->
+      <!--#if (mediaElement)-->
+      MediaElement;
+      <!--#endif-->
+      <!--#if (useDependencyInjection)-->
+      Hosting;
+      <!--#endif-->
+      <!--#if (useToolkit)-->
+      Toolkit;
+      <!--#endif-->
+      <!--#if (useLogging)-->
+      Logging;
+      <!--#endif-->
+      <!--#if (useSerilog)-->
+      Serilog;
+      <!--#endif-->
+      <!--#if (mauiEmbedding)-->
+      MauiEmbedding;
+      <!--#endif-->
+      <!--#if (useMvux)-->
+      Mvux;
+      <!--#endif-->
+      <!--#if (usePrism)-->
+      Prism;
+      <!--#endif-->
+      <!--#if (useMvvm)-->
+      Mvvm;
+      <!--#endif-->
+      <!--#if (useConfiguration)-->
+      Configuration;
+      <!--#endif-->
+      <!--#if (useHttp)-->
+      Http;
+      Serialization;
+      <!--#endif-->
+      <!--#if (useLocalization)-->
+      Localization;
+      <!--#endif-->
+      <!--#if (useMsalAuthentication)-->
+      AuthenticationMsal;
+      <!--#elif (useOidcAuthenticaton)-->
+      AuthenticationOidc;
+      <!--#elif (useAuthentication)-->
+      Authentication;
+      <!--#endif-->
+      <!--#if (useExtensionsNavigation)-->
+      Navigation;
+      <!--#endif-->
+      <!--#if (themeService)-->
+      ExtensionsCore;
+      <!--#endif-->
+    </UnoFeatures>
+  </PropertyGroup>
 
-    <!-- Required for Hot Reload (See https://github.com/dotnet/sdk/issues/36666) -->
-    <IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)'=='Debug'">false</IncludeSourceRevisionInInformationalVersion>
+  <PropertyGroup>
+    <UnoExtensionsVersion>$UnoExtensionsVersion$</UnoExtensionsVersion>
+    <UnoToolkitVersion>$UnoToolkitVersion$</UnoToolkitVersion>
+    <UnoThemesVersion>$UnoThemesVersion$</UnoThemesVersion>
+    <UnoCSharpMarkupVersion>$UnoMarkupVersion$</UnoCSharpMarkupVersion>
   </PropertyGroup>
 </Project>

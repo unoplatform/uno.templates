@@ -27,7 +27,7 @@ global using Microsoft.UI.Xaml.Navigation;
 global using Microsoft.Extensions.Options;
 #endif
 #if (useBusinessModelsNamespace)
-global using MyExtensionsApp._1.Business.Models;
+global using MyExtensionsApp._1.Models;
 #endif
 #if (useInfrastructureNamespace)
 global using MyExtensionsApp._1.Infrastructure;
@@ -53,8 +53,8 @@ global using Uno.UI;
 global using Uno.Extensions.Markup;
 #if (useMaterial)
 global using Uno.Material;
-#endif
 global using Uno.Themes.Markup;
+#endif
 #if (useToolkit)
 global using Uno.Toolkit.UI;
 #if (useMaterial)

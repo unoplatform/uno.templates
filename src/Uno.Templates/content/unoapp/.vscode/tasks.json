@@ -8,8 +8,9 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/MyExtensionsApp.1.Wasm/MyExtensionsApp.1.Wasm.csproj",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net8.0-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
@@ -20,34 +21,37 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/MyExtensionsApp.1.Wasm/MyExtensionsApp.1.Wasm.csproj",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net8.0-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
     },
 //#endif
-//#if (useGtk)
+//#if (useDesktop)
     {
-      "label": "build-skia-gtk",
+      "label": "build-desktop",
       "command": "dotnet",
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/MyExtensionsApp.1.Skia.Gtk/MyExtensionsApp.1.Skia.Gtk.csproj",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net8.0-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "publish-skia-gtk",
+      "label": "publish-desktop",
       "command": "dotnet",
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/MyExtensionsApp.1.Skia.Gtk/MyExtensionsApp.1.Skia.Gtk.csproj",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net8.0-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
