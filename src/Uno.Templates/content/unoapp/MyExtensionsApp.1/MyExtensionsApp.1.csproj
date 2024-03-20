@@ -1,11 +1,14 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
+    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
     <!--#if (useWinAppSdk) -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
-    <!--#else -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
     <!--#endif -->
+    <!--
+      Under Linux we can't restore ios or maccatalyst workloads are not available on linux https://github.com/dotnet/runtime/issues/85505
+      dotnet restore would fail if they are not removed from the list
+    -->
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('linux')) == 'true'">$(TargetFrameworks.Replace("$(DotNetVersion)-ios","").Replace("$(DotNetVersion)-maccatalyst",""))</TargetFrameworks>
     <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
 
     <OutputType>Exe</OutputType>
