@@ -26,7 +26,7 @@
 
     <!--
       UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
-      TODO: Add an aka link to the documentation
+      https://aka.platform.uno/singleproject-features
     -->
     <UnoFeatures>
       <!--#if (useCsharpMarkup)-->
