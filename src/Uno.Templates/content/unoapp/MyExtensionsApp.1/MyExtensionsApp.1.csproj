@@ -1,12 +1,28 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <!--#if (useWinAppSdk) -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
-    <!--#else -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
-    <!--#endif -->
-    <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
+    <TargetFrameworks>
+      <!--#if (useWasm)-->
+      $(DotNetVersion)-browserwasm;
+      <!--#endif-->
+      <!--#if (useAndroid)-->
+      $(DotNetVersion)-android;
+      <!--#endif-->
+      <!--#if (useiOS)-->
+      $(DotNetVersion)-ios;
+      <!--#endif-->
+      <!--#if (useMacCatalyst)-->
+      $(DotNetVersion)-maccatalyst;
+      <!--#endif-->
+      <!--#if (useWinAppSdk)-->
+      $(DotNetVersion)-windows10.0.19041;
+      <!--#endif-->
+      <!--#if (useDesktop)-->
+      $(DotNetVersion)-desktop;
+      <!--#endif-->
+      <!--#if (useUnitTests)-->
+      $(DotNetVersion);
+      <!--#endif-->
+    </TargetFrameworks>
 
     <OutputType>Exe</OutputType>
     <SingleProject>true</SingleProject>
