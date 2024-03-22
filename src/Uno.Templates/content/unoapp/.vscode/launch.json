@@ -41,7 +41,7 @@
       // Use IntelliSense to find out which attributes exist for C# debugging
       // Use hover for the description of the existing attributes
       // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-      "name": "Uno Desktop (Debug)",
+      "name": "Uno Platform Desktop (Debug)",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-desktop",
