@@ -280,32 +280,32 @@
         {
           "choice": "android",
           "displayName": "Android",
-          "description": "Enables Android as a target platform"
+          "description": "Enables the Android target platform"
         },
         {
           "choice": "ios",
           "displayName": "iOS",
-          "description": "Enables iOS as a target platform"
+          "description": "Enables the iOS target platform"
         },
         {
           "choice": "maccatalyst",
           "displayName": "macOS (Catalyst)",
-          "description": "Enables macOS (Catalyst) as a target platform"
+          "description": "Enables the macOS (Catalyst) target platform"
         },
         {
           "choice": "windows",
           "displayName": "Windows",
-          "description": "Enables Windows with WinAppSdk (WinUI 3) as a target platform"
+          "description": "Enables the Windows with WinAppSdk (WinUI 3) target platform"
         },
         {
           "choice": "wasm",
           "displayName": "WebAssembly",
-          "description": "Enables WebAssembly as a target platform"
+          "description": "Enables the WebAssembly target platform"
         },
         {
           "choice": "desktop",
           "displayName": "Desktop",
-          "description": "Enables the Multi-Platform Skia Desktop as a target platform"
+          "description": "Enables the Skia Desktop (Linux X11/Framebuffer, macOS, Windows) target platforms"
         }
       ]
     },
