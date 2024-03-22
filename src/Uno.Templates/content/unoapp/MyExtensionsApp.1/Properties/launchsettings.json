@@ -10,20 +10,24 @@
   "profiles": {
 //#if (!useMsalAuthentication)
     "MyExtensionsApp.1 (WinAppSDK Unpackaged)": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "compatibleTargetFramework": "windows"
     },
 //#endif
     "MyExtensionsApp.1 (WinAppSDK Packaged)": {
-      "commandName": "MsixPackage"
+      "commandName": "MsixPackage",
+      "compatibleTargetFramework": "windows"
     },
 //#if (useDesktop)
     "MyExtensionsApp.1 (Desktop)": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "compatibleTargetFramework": "desktop"
     },
     "MyExtensionsApp.1 (Desktop WSL2)": {
       "commandName": "WSL2",
       "commandLineArgs": "{ProjectDir}/bin/Debug/$baseTargetFramework$-desktop/MyExtensionsApp.1.dll",
-      "distributionName": ""
+      "distributionName": "",
+      "compatibleTargetFramework": "desktop"
     },
 //#endif
 //#if (useWasm)
