@@ -1,9 +1,6 @@
 ﻿//-:cnd:noEmit
 global using System.Collections.Immutable;
-global using System.Windows.Input;
 global using Microsoft.Extensions.DependencyInjection;
-global using Windows.Networking.Connectivity;
-global using Windows.Storage;
 //+:cnd:noEmit
 #if (useDependencyInjection)
 global using Microsoft.Extensions.Hosting;
@@ -12,17 +9,11 @@ global using Microsoft.Extensions.Hosting;
 global using Microsoft.Extensions.Localization;
 #endif
 global using Microsoft.Extensions.Logging;
-global using Microsoft.UI.Xaml;
 #if (useCsharpMarkup)
 global using Microsoft.UI.Xaml.Automation;
-global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Controls.Primitives;
 global using Microsoft.UI.Xaml.Data;
-#else
-global using Microsoft.UI.Xaml.Controls;
 #endif
-global using Microsoft.UI.Xaml.Media;
-global using Microsoft.UI.Xaml.Navigation;
 #if (useConfiguration)
 global using Microsoft.Extensions.Options;
 #endif
@@ -48,7 +39,6 @@ global using MyExtensionsApp._1.MauiControls;
 #endif
 //+:cnd:noEmit
 #endif
-global using Uno.UI;
 #if (useCsharpMarkup)
 global using Uno.Extensions.Markup;
 #if (useMaterial)
@@ -62,7 +52,6 @@ global using Uno.Toolkit.UI.Material;
 #endif
 #endif
 #endif
-global using Windows.ApplicationModel;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;

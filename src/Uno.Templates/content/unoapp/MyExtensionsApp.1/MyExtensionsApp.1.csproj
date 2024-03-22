@@ -1,12 +1,28 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <!--#if (useWinAppSdk) -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$(DotNetVersion)-windows10.0.19041</TargetFrameworks>
-    <!--#else -->
-    <TargetFrameworks>$unoTargetFrameworks$;$(DotNetVersion)</TargetFrameworks>
-    <!--#endif -->
-    <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
+    <TargetFrameworks>
+      <!--#if (useWasm)-->
+      $(DotNetVersion)-browserwasm;
+      <!--#endif-->
+      <!--#if (useAndroid)-->
+      $(DotNetVersion)-android;
+      <!--#endif-->
+      <!--#if (useiOS)-->
+      $(DotNetVersion)-ios;
+      <!--#endif-->
+      <!--#if (useMacCatalyst)-->
+      $(DotNetVersion)-maccatalyst;
+      <!--#endif-->
+      <!--#if (useWinAppSdk)-->
+      $(DotNetVersion)-windows10.0.19041;
+      <!--#endif-->
+      <!--#if (useDesktop)-->
+      $(DotNetVersion)-desktop;
+      <!--#endif-->
+      <!--#if (useUnitTests)-->
+      $(DotNetVersion);
+      <!--#endif-->
+    </TargetFrameworks>
 
     <OutputType>Exe</OutputType>
     <SingleProject>true</SingleProject>
@@ -31,6 +47,72 @@
     -->
     <!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
     <!--#endif-->
+
+    <!--
+      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+      https://aka.platform.uno/singleproject-features
+    -->
+    <UnoFeatures>
+      <!--#if (useCsharpMarkup)-->
+      CSharpMarkup;
+      <!--#endif-->
+      <!--#if (useMaterial)-->
+      Material;
+      <!--#endif-->
+      <!--#if (useCupertino)-->
+      Cupertino;
+      <!--#endif-->
+      <!--#if (mediaElement)-->
+      MediaElement;
+      <!--#endif-->
+      <!--#if (useDependencyInjection)-->
+      Hosting;
+      <!--#endif-->
+      <!--#if (useToolkit)-->
+      Toolkit;
+      <!--#endif-->
+      <!--#if (useLogging)-->
+      Logging;
+      <!--#endif-->
+      <!--#if (useSerilog)-->
+      Serilog;
+      <!--#endif-->
+      <!--#if (mauiEmbedding)-->
+      MauiEmbedding;
+      <!--#endif-->
+      <!--#if (useMvux)-->
+      Mvux;
+      <!--#endif-->
+      <!--#if (usePrism)-->
+      Prism;
+      <!--#endif-->
+      <!--#if (useMvvm)-->
+      Mvvm;
+      <!--#endif-->
+      <!--#if (useConfiguration)-->
+      Configuration;
+      <!--#endif-->
+      <!--#if (useHttp)-->
+      Http;
+      Serialization;
+      <!--#endif-->
+      <!--#if (useLocalization)-->
+      Localization;
+      <!--#endif-->
+      <!--#if (useMsalAuthentication)-->
+      AuthenticationMsal;
+      <!--#elif (useOidcAuthenticaton)-->
+      AuthenticationOidc;
+      <!--#elif (useAuthentication)-->
+      Authentication;
+      <!--#endif-->
+      <!--#if (useExtensionsNavigation)-->
+      Navigation;
+      <!--#endif-->
+      <!--#if (themeService)-->
+      ExtensionsCore;
+      <!--#endif-->
+    </UnoFeatures>
   </PropertyGroup>
   <!--#if (enableDeveloperMode)-->
 
