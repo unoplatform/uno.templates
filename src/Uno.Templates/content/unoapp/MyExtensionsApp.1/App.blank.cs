@@ -9,11 +9,6 @@ namespace MyExtensionsApp._1;
 
 public partial class App : Application
 {
-#if (useLoggingFallback)
-    static App() =>
-        InitializeLogging();
-
-#endif
     /// <summary>
     /// Initializes the singleton application object. This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -117,7 +112,7 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
     /// <summary>
     /// Configures global Uno Platform logging
     /// </summary>
-    private static void InitializeLogging()
+    public static void InitializeLogging()
     {
 //-:cnd:noEmit
 #if DEBUG
