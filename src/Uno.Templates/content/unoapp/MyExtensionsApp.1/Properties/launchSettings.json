@@ -8,6 +8,27 @@
     }
   },
   "profiles": {
+//#if (useWasm)
+    // This profile is first in order for dotnet run to pick it up by default
+    "MyExtensionsApp.1 (Wasm)": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000",
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "MyExtensionsApp.1 (Wasm - IIS Express)": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+//#endif
 //#if (!useMsalAuthentication)
     "MyExtensionsApp.1 (WinAppSDK Unpackaged)": {
       "commandName": "Project",
@@ -28,26 +49,6 @@
       "commandLineArgs": "{ProjectDir}/bin/Debug/$baseTargetFramework$-desktop/MyExtensionsApp.1.dll",
       "distributionName": "",
       "compatibleTargetFramework": "desktop"
-    },
-//#endif
-//#if (useWasm)
-    "MyExtensionsApp.1 (Wasm)": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "MyExtensionsApp.1 (Wasm - IIS Express)": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
 //#endif
   }
