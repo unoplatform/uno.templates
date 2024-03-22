@@ -21,7 +21,7 @@
       "name": "Debug (Chrome, WebAssembly)",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:5001",
+      "url": "http://localhost:5000",
       "webRoot": "${workspaceFolder}/MyExtensionsApp.1",
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "timeout": 30000,
@@ -29,7 +29,7 @@
       "server": {
         "runtimeExecutable": "dotnet",
         "program": "run",
-        "args": ["--no-build","-p:TargetFramework=$baseTargetFramework$-browserwasm"],
+        "args": ["--no-build","-f","$baseTargetFramework$-browserwasm"],
         "outputCapture": "std",
         "timeout": 30000,
         "cwd": "${workspaceFolder}/MyExtensionsApp.1"
