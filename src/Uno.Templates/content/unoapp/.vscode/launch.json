@@ -29,7 +29,7 @@
       "server": {
         "runtimeExecutable": "dotnet",
         "program": "run",
-        "args": ["--no-build","-f","$baseTargetFramework$-browserwasm"],
+        "args": ["--no-build","-f","$baseTargetFramework$-browserwasm","--launch-profile", "MyExtensionsApp.1 (WebAssembly)"],
         "outputCapture": "std",
         "timeout": 30000,
         "cwd": "${workspaceFolder}/MyExtensionsApp.1"
@@ -48,6 +48,7 @@
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/MyExtensionsApp.1/bin/Debug/$baseTargetFramework$-desktop/MyExtensionsApp.1.dll",
       "args": [],
+      "launchSettingsProfile": "MyExtensionsApp.1 (Desktop)",
       "env": {
         "DOTNET_MODIFIABLE_ASSEMBLIES": "debug"
       },
