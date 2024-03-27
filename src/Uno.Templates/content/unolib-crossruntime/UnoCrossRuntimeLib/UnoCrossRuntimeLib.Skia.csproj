@@ -1,6 +1,6 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <TargetFramework>$(DotNetVersion)</TargetFramework>
+    <TargetFramework>$baseTargetFramework$</TargetFramework>
     <IsPackable>false</IsPackable>
     <UnoRuntimeIdentifier>skia</UnoRuntimeIdentifier>
     <DefineConstants>$(DefineConstants);WINUI;__SKIA__</DefineConstants>

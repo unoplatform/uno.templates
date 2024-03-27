@@ -121,31 +121,31 @@
         "cases": [
           {
             "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
+            "value": "$baseTargetFramework$-android;$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst"
           },
           {
             "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
+            "value": "$baseTargetFramework$-android;$baseTargetFramework$-ios"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
+            "value": "$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
+            "value": "$baseTargetFramework$-android;$baseTargetFramework$-maccatalyst"
           },
           {
             "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-android"
+            "value": "$baseTargetFramework$-android"
           },
           {
             "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-ios"
+            "value": "$baseTargetFramework$-ios"
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-maccatalyst"
+            "value": "$baseTargetFramework$-maccatalyst"
           },
           {
             "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",

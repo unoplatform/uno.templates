@@ -2,25 +2,25 @@
   <PropertyGroup>
     <TargetFrameworks>
       <!--#if (useWasm)-->
-      $(DotNetVersion)-browserwasm;
+      $baseTargetFramework$-browserwasm;
       <!--#endif-->
       <!--#if (useAndroid)-->
-      $(DotNetVersion)-android;
+      $baseTargetFramework$-android;
       <!--#endif-->
       <!--#if (useiOS)-->
-      $(DotNetVersion)-ios;
+      $baseTargetFramework$-ios;
       <!--#endif-->
       <!--#if (useMacCatalyst)-->
-      $(DotNetVersion)-maccatalyst;
+      $baseTargetFramework$-maccatalyst;
       <!--#endif-->
       <!--#if (useWinAppSdk)-->
-      $(DotNetVersion)-windows10.0.19041;
+      $baseTargetFramework$-windows10.0.19041;
       <!--#endif-->
       <!--#if (useDesktop)-->
-      $(DotNetVersion)-desktop;
+      $baseTargetFramework$-desktop;
       <!--#endif-->
       <!--#if (useUnitTests)-->
-      $(DotNetVersion);
+      $baseTargetFramework$;
       <!--#endif-->
     </TargetFrameworks>
 

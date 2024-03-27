@@ -1,7 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <DotNetVersion Condition=" $(DotNetVersion) == '' ">net8.0</DotNetVersion>
     <!--
     Force all projects of this folder to use a different output
     path to avoid intermediate output collisions

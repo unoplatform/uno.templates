@@ -1,6 +1,6 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <TargetFramework>$(DotNetVersion)</TargetFramework>
+    <TargetFramework>$baseTargetFramework$</TargetFramework>
     <IsPackable>false</IsPackable>
     <DefineConstants>$(DefineConstants);WINUI</DefineConstants>
     <OutputType>Library</OutputType>
