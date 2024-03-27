@@ -6,13 +6,20 @@
     <Nullable Condition="$(Nullable) == ''">enable</Nullable>
 
     <!--#endif-->
-    <!--#if (useWinAppSdk) -->
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
-    <TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
-    <!--#else -->
-    <TargetFrameworks>$baseTargetFramework$;$mobileTargetFrameworks$</TargetFrameworks>
-    <!--#endif -->
-    <TargetFrameworks Condition="'$(OverrideTargetFramework)'!=''">$(OverrideTargetFramework)</TargetFrameworks>
+    <TargetFrameworks>
+      <!--#if (useAndroid)-->
+      $baseTargetFramework$-android;
+      <!--#endif-->
+      <!--#if (useiOS)-->
+      $baseTargetFramework$-ios;
+      <!--#endif-->
+      <!--#if (useMacCatalyst)-->
+      $baseTargetFramework$-maccatalyst;
+      <!--#endif-->
+      <!--#if (useWinAppSdk)-->
+      $baseTargetFramework$-windows10.0.19041;
+      <!--#endif-->
+    </TargetFrameworks>
 
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>

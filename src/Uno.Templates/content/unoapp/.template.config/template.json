@@ -1350,49 +1350,6 @@
         ]
       }
     },
-    "mobileTargetFrameworks": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$mobileTargetFrameworks$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "$baseTargetFramework$-android;$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "$baseTargetFramework$-android;$baseTargetFramework$-ios"
-          },
-          {
-            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "$baseTargetFramework$-android;$baseTargetFramework$-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "$baseTargetFramework$-android"
-          },
-          {
-            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "$baseTargetFramework$-ios"
-          },
-          {
-            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "$baseTargetFramework$-maccatalyst"
-          },
-          {
-            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
-            "value": ""
-          }
-        ]
-      }
-    },
     "unoTargetFrameworks": {
       "type": "generated",
       "generator": "switch",
