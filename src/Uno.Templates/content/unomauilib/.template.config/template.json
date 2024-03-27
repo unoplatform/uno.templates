@@ -110,49 +110,6 @@
           }
         ]
       }
-    },
-    "mobileTargetFrameworks": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$mobileTargetFrameworks$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(platforms == android && platforms == ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms == ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-ios"
-          },
-          {
-            "condition": "(platforms != android && platforms == ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-ios;$(DotNetVersion)-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms != ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-android;$(DotNetVersion)-maccatalyst"
-          },
-          {
-            "condition": "(platforms == android && platforms != ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-android"
-          },
-          {
-            "condition": "(platforms != android && platforms == ios && platforms != maccatalyst)",
-            "value": "$(DotNetVersion)-ios"
-          },
-          {
-            "condition": "(platforms != android && platforms != ios && platforms == maccatalyst)",
-            "value": "$(DotNetVersion)-maccatalyst"
-          },
-          {
-            "condition": "(platforms != android && platforms != ios && platforms != maccatalyst)",
-            "value": ""
-          }
-        ]
-      }
     }
   }
 }
