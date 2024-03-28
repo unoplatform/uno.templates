@@ -34,6 +34,27 @@
     "3DDC01D0-8546-4FF6-8EFB-2E8D6B175A5B"  // UnoCrossRuntimeLib.Wasm
   ],
   "symbols": {
+    "tfm": {
+      "displayName": "Target Framework",
+      "type": "parameter",
+      "datatype": "choice",
+      "enableQuotelessLiterals": true,
+      "replaces": "$baseTargetFramework$",
+      "defaultValue": "net8.0",
+      "description": "Select the .NET version of your solution",
+      "choices": [
+        {
+          "choice": "net8.0",
+          "displayName": ".NET 8.0",
+          "description": "Target .NET 8.0 (Long Term Support)"
+        },
+        {
+          "choice": "net9.0",
+          "displayName": ".NET 9.0",
+          "description": "Target .NET 9.0 (Preview)"
+        }
+      ]
+    },
     "unoWinUIVersion": {
       "type": "parameter",
       "datatype": "text",
