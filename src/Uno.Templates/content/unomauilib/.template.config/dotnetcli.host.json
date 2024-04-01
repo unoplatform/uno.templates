@@ -9,7 +9,7 @@
       "longName": "android",
       "shortName": "android"
     },
-    "useiOS": {
+    "useIOS": {
       "longName": "ios",
       "shortName": "ios"
     },
