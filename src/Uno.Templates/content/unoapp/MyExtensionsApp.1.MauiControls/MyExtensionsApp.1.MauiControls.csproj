@@ -22,7 +22,7 @@
     </TargetFrameworks>
 
     <UseMaui>true</UseMaui>
-    <UnoSingleProject>true</UnoSingleProject>
+    <SingleProject>true</SingleProject>
   </PropertyGroup>
   <!--#if (unoMauiClassLibrary)-->
 
