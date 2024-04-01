@@ -1,6 +1,9 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>
+      <!--#if (useDesktop)-->
+      $baseTargetFramework$-desktop;
+      <!--#endif-->
       <!--#if (useAndroid)-->
       $baseTargetFramework$-android;
       <!--#endif-->
@@ -12,9 +15,6 @@
       <!--#endif-->
       <!--#if (useWinAppSdk)-->
       $baseTargetFramework$-windows10.0.19041;
-      <!--#endif-->
-      <!--#if (useDesktop)-->
-      $baseTargetFramework$-desktop;
       <!--#endif-->
       <!--#if (useUnitTests)-->
       $baseTargetFramework$;
