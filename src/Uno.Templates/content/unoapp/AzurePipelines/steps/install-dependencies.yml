@@ -20,7 +20,6 @@ steps:
     displayName: 'Use DotNet ${{ parameters.dotnetVersion }}'
     inputs:
       version: '${{ parameters.dotnetVersion }}'
-      includePreviewVersions: true
 
   # Install Windows SDK
   - task: PowerShell@2
