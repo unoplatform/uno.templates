@@ -25,7 +25,7 @@
     </TargetFrameworks>
 
     <OutputType>Exe</OutputType>
-    <SingleProject>true</SingleProject>
+    <UnoSingleProject>true</UnoSingleProject>
 
     <!-- Display name -->
     <ApplicationTitle>MyExtensionsApp.1</ApplicationTitle>

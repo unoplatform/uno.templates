@@ -3,7 +3,7 @@
     <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
     <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
     <!-- <TargetFrameworks>$(TargetFrameworks);net8.0-macos</TargetFrameworks> -->
-    <SingleProject>true</SingleProject>
+    <UnoSingleProject>true</UnoSingleProject>
     <OutputType>Exe</OutputType>
     <!-- Display name -->
     <ApplicationTitle>UnoQuickStart</ApplicationTitle>
