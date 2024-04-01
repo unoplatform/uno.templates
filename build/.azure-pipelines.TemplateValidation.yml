@@ -8,7 +8,7 @@ jobs:
     matrix:
       DefaultArguments:
         templateArgs: ''
-      DefaultArguments:
+      DefaultArguments_net9:
         templateArgs: '-tfm net9.0'
         unocheckArguments: '--pre-major'
       Recommended:
