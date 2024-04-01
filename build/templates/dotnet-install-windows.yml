@@ -9,5 +9,6 @@ steps:
     inputs:
       packageType: sdk
       version: ${{ parameters.DotNetVersion }}
+      includePreviewVersions: true
 
   - template: jdk-setup.yml
