@@ -10,7 +10,7 @@
       <!--#if (useAndroid)-->
       $baseTargetFramework$-android;
       <!--#endif-->
-      <!--#if (useiOS)-->
+      <!--#if (useIOS)-->
       $baseTargetFramework$-ios;
       <!--#endif-->
       <!--#if (useMacCatalyst)-->
@@ -34,7 +34,7 @@
       </PropertyGroup>
     </When>
     <!--#endif-->
-    <!--#if (useiOS)-->
+    <!--#if (useIOS)-->
     <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
       <PropertyGroup>
         <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>

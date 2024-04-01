@@ -1,13 +1,10 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>
-      <!--#if (useWasm)-->
-      $baseTargetFramework$-browserwasm;
-      <!--#endif-->
       <!--#if (useAndroid)-->
       $baseTargetFramework$-android;
       <!--#endif-->
-      <!--#if (useiOS)-->
+      <!--#if (useIOS)-->
       $baseTargetFramework$-ios;
       <!--#endif-->
       <!--#if (useMacCatalyst)-->
@@ -22,10 +19,13 @@
       <!--#if (useUnitTests)-->
       $baseTargetFramework$;
       <!--#endif-->
+      <!--#if (useWasm)-->
+      $baseTargetFramework$-browserwasm;
+      <!--#endif-->
     </TargetFrameworks>
 
     <OutputType>Exe</OutputType>
-    <SingleProject>true</SingleProject>
+    <UnoSingleProject>true</UnoSingleProject>
 
     <!-- Display name -->
     <ApplicationTitle>MyExtensionsApp.1</ApplicationTitle>

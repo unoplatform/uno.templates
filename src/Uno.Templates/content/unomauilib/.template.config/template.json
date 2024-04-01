@@ -48,7 +48,7 @@
       "description": "Include Android as a target platform",
       "displayName": "Android"
     },
-    "useiOS": {
+    "useIOS": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "true",
