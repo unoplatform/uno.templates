@@ -94,9 +94,8 @@ jobs:
       Issue477:
        templateArgs: '-preset recommended -theme material -toolkit'
       # https://github.com/unoplatform/uno.templates/issues/500
-      #Issue500:
-      # Disabled for https://github.com/unoplatform/uno.templates/issues/602
-      # templateArgs: '-preset blank -tfm net8.0 -markup csharp -presentation mvux -theme material -di -config -http -nav regions -log default -server -auth msal'
+      Issue500:
+       templateArgs: '-preset blank -tfm net8.0 -markup csharp -presentation mvux -theme material -di -config -http -nav regions -log default -server -auth msal'
       Issue572:
         templateArgs: '-preset "recommended" -id "com.companyname.TestDuplicatedReference" -pub "O=TestDuplicatedReference" -platforms "android" -platforms "ios" -platforms "wasm" -platforms "desktop" -theme-service  -vscode False -pwa False -theme "material" -presentation "mvvm" -config  -di  -log "default" -nav "regions" -http  -loc  -server False -tests "unit" -tests "ui" -toolkit  -dsp'
 

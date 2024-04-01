@@ -12,7 +12,6 @@
     <!--#if (useWasm)-->
     <ProjectReference Include="..\MyExtensionsApp.1\MyExtensionsApp.1.csproj"
                       SetTargetFramework="TargetFramework=$baseTargetFramework$-browserwasm"
-                      AdditionalProperties="OutputPath=$(MSBuildProjectDirectory)\$(OutputPath)"
                       ReferenceOutputAssembly="false" />
     <!--#endif -->
     <!--#if (useDataContracts)-->
