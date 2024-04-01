@@ -2,6 +2,9 @@ parameters:
 - name: arguments
   type: string
   default: ''
+- name: unocheckArguments
+  type: string
+  default: ''
 
 steps:
 - checkout: self
@@ -61,7 +64,7 @@ steps:
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     cd UnoApp1
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
   displayName: Uno Check
   env:
     ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)

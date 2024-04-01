@@ -10,7 +10,7 @@ jobs:
         templateArgs: ''
       DefaultArguments_net9:
         templateArgs: '-tfm net9.0'
-        unocheckArguments: '--pre-major'
+        unocheckArguments: '--preview-major'
       Recommended:
         templateArgs: '-preset recommended'
       SkiaOnlyHeads:
