@@ -2131,7 +2131,7 @@
         {
           "condition": "(!useRegionsNav)",
           "exclude": [
-            "MyExtensionsApp.1/Business/Models/Entity.cs"
+            "MyExtensionsApp.1/Models/Entity.cs"
           ]
         },
         {
@@ -2156,7 +2156,7 @@
         {
           "condition": "(!useConfiguration)",
           "exclude": [
-            "MyExtensionsApp.1/Business/Models/AppConfig.cs",
+            "MyExtensionsApp.1/Models/AppConfig.cs",
             "MyExtensionsApp.1/appsettings.*",
             "MyExtensionsApp.1.Tests/AppInfoTests.cs"
           ]
