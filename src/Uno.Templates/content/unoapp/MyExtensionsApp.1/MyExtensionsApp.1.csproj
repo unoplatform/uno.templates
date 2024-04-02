@@ -1,9 +1,6 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>
-      <!--#if (useDesktop)-->
-      $baseTargetFramework$-desktop;
-      <!--#endif-->
       <!--#if (useAndroid)-->
       $baseTargetFramework$-android;
       <!--#endif-->
@@ -18,6 +15,9 @@
       <!--#endif-->
       <!--#if (useUnitTests)-->
       $baseTargetFramework$;
+      <!--#endif-->
+      <!--#if (useDesktop)-->
+      $baseTargetFramework$-desktop;
       <!--#endif-->
       <!--#if (useWasm)-->
       $baseTargetFramework$-browserwasm;
