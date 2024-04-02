@@ -15,9 +15,6 @@ global using Microsoft.Extensions.Options;
 #if (useBusinessModelsNamespace)
 global using MyExtensionsApp._1.Models;
 #endif
-#if (useInfrastructureNamespace)
-global using MyExtensionsApp._1.Infrastructure;
-#endif
 #if (useExtensionsNavigation)
 global using MyExtensionsApp._1.Presentation;
 #endif

@@ -1,5 +1,5 @@
 //+:cnd:noEmit
-namespace MyExtensionsApp._1.Infrastructure;
+namespace MyExtensionsApp._1.Services.Endpoints;
 
 internal class DebugHttpHandler : DelegatingHandler
 {
