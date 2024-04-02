@@ -2,6 +2,9 @@ parameters:
 - name: arguments
   type: string
   default: ''
+- name: unocheckArguments
+  type: string
+  default: ''
 
 steps:
 - checkout: self
@@ -13,7 +16,7 @@ steps:
     $dotnetVersion = $env:TargetDotNetVersion
     if ($templateArgs -match 'net9.0')
     {
-        $dotnetVersion = '9.0.100-preview.1'
+        $dotnetVersion = '9.0.100-preview.2.24157.14'
     }
 
     Write-Host "DotNetVersion = $dotnetVersion"
@@ -61,7 +64,7 @@ steps:
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     cd UnoApp1
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
   displayName: Uno Check
   env:
     ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)

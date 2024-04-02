@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>$baseTargetFramework$-android;$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst</TargetFrameworks>
     <!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401-->
-    <!-- <TargetFrameworks>$(TargetFrameworks);net8.0-macos</TargetFrameworks> -->
+    <!-- <TargetFrameworks>$(TargetFrameworks);$baseTargetFramework$-macos</TargetFrameworks> -->
     <SingleProject>true</SingleProject>
     <OutputType>Exe</OutputType>
     <!-- Display name -->
