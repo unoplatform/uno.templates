@@ -5,7 +5,7 @@
     <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.2290</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.82</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.30</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.55</UnoToolkitVersion>
+    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.56</UnoToolkitVersion>
     <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0-dev.61</UnoMarkupVersion>
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
     <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>

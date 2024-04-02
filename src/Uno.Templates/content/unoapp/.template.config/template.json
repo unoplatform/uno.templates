@@ -1650,11 +1650,6 @@
       "datatype": "bool",
       "value": "(mauiEmbedding || (useDependencyInjection && useHttp && server))"
     },
-    "useInfrastructureNamespace": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "useHttp && useDependencyInjection"
-    },
     "useBusinessModelsNamespace": {
       "type": "computed",
       "datatype": "bool",
@@ -2048,7 +2043,6 @@
         {
           "condition": "(!useHttp)",
           "exclude": [
-            "MyExtensionsApp.1/Infrastructure/DebugHandler.cs",
             "MyExtensionsApp.1/Services/**",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",
             "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
@@ -2131,7 +2125,7 @@
         {
           "condition": "(!useRegionsNav)",
           "exclude": [
-            "MyExtensionsApp.1/Business/Models/Entity.cs"
+            "MyExtensionsApp.1/Models/Entity.cs"
           ]
         },
         {
@@ -2156,7 +2150,7 @@
         {
           "condition": "(!useConfiguration)",
           "exclude": [
-            "MyExtensionsApp.1/Business/Models/AppConfig.cs",
+            "MyExtensionsApp.1/Models/AppConfig.cs",
             "MyExtensionsApp.1/appsettings.*",
             "MyExtensionsApp.1.Tests/AppInfoTests.cs"
           ]
