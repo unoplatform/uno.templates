@@ -37,12 +37,6 @@ global using MyExtensionsApp._1.MauiControls;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;
-#if (useMaterial)
-global using Theme = Uno.Themes.Markup.Theme;
-#endif
-#if (useToolkit)
-global using ToolkitTheme = Uno.Toolkit.UI.Markup.Theme;
-#endif
 #endif
 #if (useMvvm)
 global using CommunityToolkit.Mvvm.ComponentModel;
