@@ -79,17 +79,15 @@ jobs:
         templateArgs: '-preset=recommended -auth=msal -markup csharp'
       MsalAuthMvvmCSharp:
         templateArgs: '-preset=recommended -presentation mvvm -auth=msal -markup csharp'
-      # NOTE: Temporarily disabling so we can merge #585
-      # MauiBlank:
-      #  templateArgs: '-preset=blank -maui'
-      # MauiRecommended:
-      #  templateArgs: '-preset=recommended -maui'
+      MauiBlank:
+       templateArgs: '-preset=blank -maui'
+      MauiRecommended:
+       templateArgs: '-preset=recommended -maui'
       ThemeService:
        templateArgs: '-theme-service'
-      # NOTE: Temporarily disabling so we can merge #585
       # https://github.com/unoplatform/uno.templates/issues/396
-      # Issue396:
-      #  templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
+      Issue396:
+       templateArgs: '-preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp'
       # https://github.com/unoplatform/uno.templates/issues/414
       Issue414:
        templateArgs: '-preset recommended -auth msal -markup csharp'
