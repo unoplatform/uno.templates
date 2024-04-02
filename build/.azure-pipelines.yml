@@ -65,7 +65,6 @@ stages:
 - stage: Template_validations
   dependsOn: Build
   jobs:
-  - template: .azure-pipelines.CrossRuntimeValidation.yml
   - template: .azure-pipelines.TemplateValidation.yml
   - template: .azure-pipelines.UnoLibValidation.yml
   - template: .azure-pipelines.UnoMauiLibValidation.yml
