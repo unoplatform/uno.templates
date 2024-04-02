@@ -17,31 +17,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.2281</UnoVersion>
-		<UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.0-dev.72</UnoExtensionsVersion>
-		<UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.19</UnoThemesVersion>
-		<UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.44</UnoToolkitVersion>
-		<UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0-dev.58</UnoMarkupVersion>
-		<UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
-		<UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>
-
-		<UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
-		<MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdkVersion)' == ''">17.9.0</MicrosoftTestSdkVersion>
-		<NUnitVersion Condition="'$(NUnitVersion)' == ''">4.1.0</NUnitVersion>
-		<NUnit3TestAdapterVersion Condition="'$(NUnit3TestAdapterVersion)' == ''">4.5.0</NUnit3TestAdapterVersion>
-		<FluentAssertionsVersion Condition="'$(FluentAssertionsVersion)' == ''">6.12.0</FluentAssertionsVersion>
-		<CoverletCollectorVersion Condition="'$(CoverletCollectorVersion)' == ''">6.0.1</CoverletCollectorVersion>
-		<NewtonsoftJsonVersion Condition="'$(NewtonsoftJsonVersion)' == ''">13.0.3</NewtonsoftJsonVersion>
-		<XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
-
-		<!-- UWP Legacy Templates -->
-		<UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
-		<MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
-		<MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240227000</MicrosoftWindowsAppSDKVersion>
-		<UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
-		<XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.3</XamarinGoogleAndroidMaterialVersion>
-	</PropertyGroup>
-	<PropertyGroup>
 		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
 		<PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
 		<Description>Templates for creating Uno Platform apps and libraries</Description>
@@ -66,7 +41,8 @@
 		<DownloadFile
 			DestinationFolder="$(TemplateContentFolder)/unoapp"
 			DestinationFileName=".gitignore"
-			SourceUrl="https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore" />
+			SourceUrl="https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore"
+			Condition="!Exists('$(TemplateContentFolder)/unoapp/.gitignore')" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
 		<AppendSingleTargetIgnore Filename="$(TemplateContentFolder)/unoapp/.gitignore" />
@@ -84,34 +60,15 @@
 		</ItemGroup>
 	</Target>
 
-	<Target Name="ReplaceVersions" BeforeTargets="BeforeBuild" AfterTargets="PrepareTemplateFiles">
+	<Target Name="SetupTemplateFiles" AfterTargets="PrepareTemplateFiles" BeforeTargets="ReplaceVersions">
 		<ItemGroup>
-			<_TemplateJson Include="$(IntermediateOutputPath)/content/**/template.json" />
+			<_VersionableFile Include="$(IntermediateOutputPath)/content/**/template.json" />
 			<_MauiLibTemplateFile Include="$(TemplateContentFolder)/unomauilib/**" />
-			<_PackageReferenceFile Include="$(TemplateContentFolder)/**/*.csproj;$(TemplateContentFolder)/**/Directory.Packages.props" />
+			<_VersionableFile Include="$(TemplateContentFolder)/**/*.csproj;$(TemplateContentFolder)/**/Directory.Packages.props" />
 		</ItemGroup>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoExtensionsVersion" ReplacementText="$(UnoExtensionsVersion)" />
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWinUIVersion" ReplacementText="$(UnoVersion)" />
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoThemesVersion" ReplacementText="$(UnoThemesVersion)"/>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoToolkitVersion" ReplacementText="$(UnoToolkitVersion)"/>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
-		<ReplaceFileText Filename="%(_TemplateJson.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
+
 		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp._1.MauiControls" ReplacementText="MyExtensionsApp._1" />
 		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp.1.MauiControls" ReplacementText="MyExtensionsApp.1" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftTestSdk$" ReplacementText="$(MicrosoftTestSdkVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsSDKBuildTools$" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$MicrosoftWindowsAppSDK$" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
-		<ReplaceFileText Filename="%(_PackageReferenceFile.Identity)" MatchExpression="$XamarinGoogleAndroidMaterial$" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
 	</Target>
 
 	<UsingTask TaskName="AppendSingleTargetIgnore" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
@@ -127,28 +84,6 @@
 						Filename,
 						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props" +
 						Environment.NewLine + "# Publish Profiles" + Environment.NewLine + "!**/Properties/PublishProfiles/*.pubxml"
-						);
-				]]>
-			</Code>
-		</Task>
-	</UsingTask>
-
-	<!-- Using Regex Replace prevents XmlPoke from replacing Tabs with Spaces -->
-	<UsingTask TaskName="ReplaceFileText" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
-		<ParameterGroup>
-			<Filename ParameterType="System.String" Required="true" />
-			<MatchExpression ParameterType="System.String" Required="true" />
-			<ReplacementText ParameterType="System.String" Required="true" />
-		</ParameterGroup>
-		<Task>
-			<Using Namespace="System" />
-			<Using Namespace="System.IO" />
-			<Using Namespace="System.Text.RegularExpressions" />
-			<Code Type="Fragment" Language="cs">
-				<![CDATA[
-					File.WriteAllText(
-						Filename,
-						Regex.Replace(File.ReadAllText(Filename), Regex.Escape(MatchExpression), ReplacementText)
 						);
 				]]>
 			</Code>

@@ -9,11 +9,6 @@ global using Microsoft.Extensions.Hosting;
 global using Microsoft.Extensions.Localization;
 #endif
 global using Microsoft.Extensions.Logging;
-#if (useCsharpMarkup)
-global using Microsoft.UI.Xaml.Automation;
-global using Microsoft.UI.Xaml.Controls.Primitives;
-global using Microsoft.UI.Xaml.Data;
-#endif
 #if (useConfiguration)
 global using Microsoft.Extensions.Options;
 #endif
@@ -39,22 +34,15 @@ global using MyExtensionsApp._1.MauiControls;
 #endif
 //+:cnd:noEmit
 #endif
-#if (useCsharpMarkup)
-global using Uno.Extensions.Markup;
-#if (useMaterial)
-global using Uno.Material;
-global using Uno.Themes.Markup;
-#endif
-#if (useToolkit)
-global using Uno.Toolkit.UI;
-#if (useMaterial)
-global using Uno.Toolkit.UI.Material;
-#endif
-#endif
-#endif
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 #if (useCsharpMarkup)
 global using Color = Windows.UI.Color;
+#if (useMaterial)
+global using Theme = Uno.Themes.Markup.Theme;
+#endif
+#if (useToolkit)
+global using ToolkitTheme = Uno.Toolkit.UI.Markup.Theme;
+#endif
 #endif
 #if (useMvvm)
 global using CommunityToolkit.Mvvm.ComponentModel;

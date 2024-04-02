@@ -32,7 +32,7 @@
   <Choose>
     <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
       <ItemGroup>
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="$XamarinGoogleAndroidMaterial$" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="DefaultXamarinGoogleAndroidMaterial" />
         <PackageReference Include="Uno.UniversalImageLoader" Version="$UnoUniversalImageLoaderVersion$" />
       </ItemGroup>
       <ItemGroup>
