@@ -39,7 +39,7 @@ runs:
           $target = $_.Replace("_win", "").Replace("_macos", "")
           if (![string]::IsNullOrEmpty($target)) {
             echo "target: $target"
-            uno-check -v --ci --non-interactive --fix --target $target vswin --skip vsmac --skip xcode --skip vswinworkloads --skip androidemulator --skip dotnetnewunotemplates
+            uno-check -v --ci --non-interactive --fix --target $target --skip vswin --skip vsmac --skip xcode --skip vswinworkloads --skip androidemulator --skip dotnetnewunotemplates
             echo "uno-check finished for target: $target "
           }
         })
