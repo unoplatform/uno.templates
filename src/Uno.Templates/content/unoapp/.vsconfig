@@ -35,7 +35,6 @@
 #//#endif
 #//#if (useMobile)
     "Microsoft.VisualStudio.Component.MonoDebugger",
-    "Component.Xamarin",
     "Microsoft.VisualStudio.ComponentGroup.Maui.All",
 #//#endif
 #//#if (useAndroid)
