@@ -62,6 +62,11 @@
       "datatype": "text",
       "defaultValue": "DefaultUnoWinUIVersion",
       "replaces": "$UnoWinUIVersion$"
+    },
+    "globalJson": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true"
     }
   },
   "primaryOutputs": [
@@ -72,6 +77,12 @@
   "sources": [
     {
       "modifiers": [
+        {
+          "condition": "(!globalJson)",
+          "exclude": [
+            "global.json"
+          ]
+        }
       ]
     }
   ]
