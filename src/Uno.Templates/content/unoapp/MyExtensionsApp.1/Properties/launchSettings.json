@@ -29,6 +29,7 @@
       }
     },
 //#endif
+//#if (useWinAppSdk)
 //#if (!useMsalAuthentication)
 //#if (useMobile)
     // Note: In order to select this profile, you'll need to comment the `Packaged` profile below until this is fixed: https://aka.platform.uno/wasdk-maui-debug-profile-issue
@@ -42,6 +43,7 @@
       "commandName": "MsixPackage",
       "compatibleTargetFramework": "windows"
     },
+//#endif
 //#if (useDesktop)
     "MyExtensionsApp.1 (Desktop)": {
       "commandName": "Project",
