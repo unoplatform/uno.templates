@@ -12,7 +12,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
                 .Child(
     #if useToolkit
                     new ExtendedSplashScreen()
-                        .Assign(out var splash)
+                        .Name(out var splash)
                         .HorizontalAlignment(HorizontalAlignment.Stretch)
                         .VerticalAlignment(VerticalAlignment.Stretch)
                         .HorizontalContentAlignment(HorizontalAlignment.Stretch)
@@ -30,7 +30,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
                         )
     #else
                     new ContentControl()
-                        .Assign(out var splash)
+                        .Name(out var splash)
                         .HorizontalAlignment(HorizontalAlignment.Stretch)
                         .VerticalAlignment(VerticalAlignment.Stretch)
                         .HorizontalContentAlignment(HorizontalAlignment.Stretch)
