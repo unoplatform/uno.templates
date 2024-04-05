@@ -7,6 +7,10 @@
     },
     "unoWinUIVersion": {
       "isHidden": true
+    },
+    "globalJson": {
+      "shortName": "global-json",
+      "longName": "global-json"
     }
   }
 }
