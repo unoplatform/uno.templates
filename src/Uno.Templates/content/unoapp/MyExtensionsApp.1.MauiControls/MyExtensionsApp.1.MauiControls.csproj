@@ -6,6 +6,9 @@
     <Nullable Condition="$(Nullable) == ''">enable</Nullable>
 
     <!--#endif-->
+    <!--#if (useWinAppSdk)-->
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
+    <!--#endif-->
     <TargetFrameworks>
       $baseTargetFramework$;
       <!--#if (useAndroid)-->
@@ -18,7 +21,7 @@
       $baseTargetFramework$-maccatalyst;
       <!--#endif-->
       <!--#if (useWinAppSdk)-->
-      $baseTargetFramework$-windows10.0.19041;
+      $(TargetFrameworks);
       <!--#endif-->
     </TargetFrameworks>
 
