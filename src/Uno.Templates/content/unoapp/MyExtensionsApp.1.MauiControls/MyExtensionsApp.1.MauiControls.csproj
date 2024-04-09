@@ -4,6 +4,7 @@
     <!--#if (unoMauiClassLibrary)-->
     <ImplicitUsings Condition="$(ImplicitUsings) == ''">enable</ImplicitUsings>
     <Nullable Condition="$(Nullable) == ''">enable</Nullable>
+    <ManagePackageVersionsCentrally Condition="$(ManagePackageVersionsCentrally) == ''">true</ManagePackageVersionsCentrally>
 
     <!--#endif-->
     <!--#if (useWinAppSdk)-->
@@ -66,8 +67,8 @@
   <!--#endif-->
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" VersionOverride="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" VersionOverride="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
   </ItemGroup>
 
 </Project>
