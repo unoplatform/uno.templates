@@ -4,7 +4,11 @@
     <!--#if (unoMauiClassLibrary)-->
     <ImplicitUsings Condition="$(ImplicitUsings) == ''">enable</ImplicitUsings>
     <Nullable Condition="$(Nullable) == ''">enable</Nullable>
+    <ManagePackageVersionsCentrally Condition="$(ManagePackageVersionsCentrally) == ''">true</ManagePackageVersionsCentrally>
 
+    <!--#endif-->
+    <!--#if (useWinAppSdk)-->
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$baseTargetFramework$-windows10.0.19041</TargetFrameworks>
     <!--#endif-->
     <TargetFrameworks>
       $baseTargetFramework$;
@@ -18,7 +22,7 @@
       $baseTargetFramework$-maccatalyst;
       <!--#endif-->
       <!--#if (useWinAppSdk)-->
-      $baseTargetFramework$-windows10.0.19041;
+      $(TargetFrameworks);
       <!--#endif-->
     </TargetFrameworks>
 
@@ -63,8 +67,8 @@
   <!--#endif-->
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" VersionOverride="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" VersionOverride="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
   </ItemGroup>
 
 </Project>
