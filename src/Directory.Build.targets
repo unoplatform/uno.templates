@@ -3,6 +3,7 @@
 
   <PropertyGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.7</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.1</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.1</UnoThemesVersion>
@@ -10,6 +11,9 @@
     <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0</UnoMarkupVersion>
 =======
     <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.2290</UnoVersion>
+=======
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.111</UnoVersion>
+>>>>>>> e036bd5 (chore: fixing MAUI build)
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.13</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.30</UnoThemesVersion>
     <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.56</UnoToolkitVersion>

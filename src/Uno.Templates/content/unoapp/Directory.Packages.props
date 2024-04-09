@@ -29,6 +29,10 @@
     <PackageVersion Include="Uno.UITest.Helpers" Version="$UnoUITestHelpersVersion$" />
     <PackageVersion Include="Xamarin.UITest" Version="$XamarinUITest$" />
     <!--#endif-->
+    <!--#if (mauiEmbedding)-->
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif-->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageVersion$$
     <!--#endif-->
