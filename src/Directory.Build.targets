@@ -2,23 +2,11 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.7</UnoVersion>
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.1</UnoExtensionsVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.13</UnoVersion>
+    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.2</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.1</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.2</UnoToolkitVersion>
+    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.4</UnoToolkitVersion>
     <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.0</UnoMarkupVersion>
-=======
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.0-dev.2290</UnoVersion>
-=======
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.111</UnoVersion>
->>>>>>> e036bd5 (chore: fixing MAUI build)
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.13</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">4.2.0-dev.30</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">5.2.0-dev.56</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.3.0-dev.11</UnoMarkupVersion>
->>>>>>> 0e34ec5 (chore: bump Uno.Extensions for MAUI Embedding)
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
     <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
