@@ -4,7 +4,7 @@
   <PropertyGroup>
     <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.22</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.4</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.1</UnoThemesVersion>
+    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.2</UnoThemesVersion>
     <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.5</UnoToolkitVersion>
     <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.2</UnoMarkupVersion>
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
