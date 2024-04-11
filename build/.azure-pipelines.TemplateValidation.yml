@@ -103,6 +103,8 @@ jobs:
   variables:
     - name: UseDotNetNativeToolchain
       value: false
+    - name: unocheckArguments
+      value: ''
 
   steps:
   - template: templates/package-validation.yml
