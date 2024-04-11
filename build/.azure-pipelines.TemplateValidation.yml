@@ -8,9 +8,9 @@ jobs:
     matrix:
       DefaultArguments:
         templateArgs: ''
-      # DefaultArguments_net9:
-      #   templateArgs: '-tfm net9.0'
-      #   unocheckArguments: '--preview-major'
+      DefaultArguments_net9:
+        templateArgs: '-tfm net9.0'
+        unocheckArguments: '--preview-major'
       Recommended:
         templateArgs: '-preset recommended'
       SkiaOnlyHeads:
@@ -103,8 +103,11 @@ jobs:
   variables:
     - name: UseDotNetNativeToolchain
       value: false
+    - name: unocheckArguments
+      value: ''
 
   steps:
   - template: templates/package-validation.yml
     parameters:
       arguments: $(templateArgs)
+      unocheckArguments: $(unocheckArguments)
