@@ -8,9 +8,9 @@ jobs:
     matrix:
       DefaultArguments:
         templateArgs: ''
-      # DefaultArguments_net9:
-      #   templateArgs: '-tfm net9.0'
-      #   unocheckArguments: '--preview-major'
+      DefaultArguments_net9:
+        templateArgs: '-tfm net9.0'
+        unocheckArguments: '--preview-major'
       Recommended:
         templateArgs: '-preset recommended'
       SkiaOnlyHeads:
