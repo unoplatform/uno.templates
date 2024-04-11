@@ -108,3 +108,4 @@ jobs:
   - template: templates/package-validation.yml
     parameters:
       arguments: $(templateArgs)
+      unocheckArguments: $(unocheckArguments)
