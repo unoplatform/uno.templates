@@ -2,11 +2,11 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.33</UnoVersion>
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.4</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.2</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.5</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.2</UnoMarkupVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.42</UnoVersion>
+    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.6</UnoExtensionsVersion>
+    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.7</UnoThemesVersion>
+    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.10</UnoToolkitVersion>
+    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.4</UnoMarkupVersion>
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
     <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
