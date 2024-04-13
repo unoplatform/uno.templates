@@ -2159,8 +2159,14 @@
           "condition": "(!mauiEmbedding)",
           "exclude": [
             "MyExtensionsApp.1/Assets/Fonts/**",
-            "MyExtensionsApp.1/Assets/Images/**",
+            "MyExtensionsApp.1/Assets/Images/dotnet_bot.svg",
             "MyExtensionsApp.1.MauiControls/**"
+          ]
+        },
+        {
+          "condition": "(!useRegionsNav)",
+          "exclude": [
+            "MyExtensionsApp.1/Assets/Images/back.svg"
           ]
         },
         {
