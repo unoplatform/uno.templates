@@ -2,13 +2,13 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.42</UnoVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.44</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.6</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.7</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.10</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.4</UnoMarkupVersion>
-    <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.11</UnoWasmBootstrapVersionNet8>
-    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.39</UnoWasmBootstrapVersionNet9>
+    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.8</UnoThemesVersion>
+    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.11</UnoToolkitVersion>
+    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.5</UnoMarkupVersion>
+    <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.13</UnoWasmBootstrapVersionNet8>
+    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.43</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion Condition="'$(UnoCoreLoggingVersion)' == ''">4.0.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.9</UnoDspTasksVersion>
