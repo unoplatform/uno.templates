@@ -2,7 +2,7 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.55</UnoVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.63</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.6</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.8</UnoThemesVersion>
     <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.11</UnoToolkitVersion>
