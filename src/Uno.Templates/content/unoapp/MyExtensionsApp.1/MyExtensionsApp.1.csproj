@@ -101,7 +101,7 @@
       <!--#endif-->
       <!--#if (useMsalAuthentication)-->
       AuthenticationMsal;
-      <!--#elif (useOidcAuthenticaton)-->
+      <!--#elif (useOidcAuthentication)-->
       AuthenticationOidc;
       <!--#elif (useAuthentication)-->
       Authentication;
