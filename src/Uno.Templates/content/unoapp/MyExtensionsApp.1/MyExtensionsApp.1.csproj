@@ -75,7 +75,7 @@
       Logging;
       <!--#endif-->
       <!--#if (useSerilog)-->
-      Serilog;
+      LoggingSerilog;
       <!--#endif-->
       <!--#if (mauiEmbedding)-->
       MauiEmbedding;
@@ -110,7 +110,7 @@
       Navigation;
       <!--#endif-->
       <!--#if (themeService)-->
-      ExtensionsCore;
+      ThemeService;
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
