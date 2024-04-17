@@ -75,7 +75,7 @@
       Logging;
       <!--#endif-->
       <!--#if (useSerilog)-->
-      Serilog;
+      LoggingSerilog;
       <!--#endif-->
       <!--#if (mauiEmbedding)-->
       MauiEmbedding;
@@ -101,7 +101,7 @@
       <!--#endif-->
       <!--#if (useMsalAuthentication)-->
       AuthenticationMsal;
-      <!--#elif (useOidcAuthenticaton)-->
+      <!--#elif (useOidcAuthentication)-->
       AuthenticationOidc;
       <!--#elif (useAuthentication)-->
       Authentication;
@@ -110,7 +110,7 @@
       Navigation;
       <!--#endif-->
       <!--#if (themeService)-->
-      ExtensionsCore;
+      ThemeService;
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
