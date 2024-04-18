@@ -114,7 +114,7 @@
       Navigation;
       <!--#endif-->
       <!--#if (themeService)-->
-      ThemeService;
+      ExtensionsCore;
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
