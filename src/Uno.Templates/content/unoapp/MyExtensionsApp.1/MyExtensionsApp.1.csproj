@@ -58,12 +58,16 @@
       <!--#endif-->
       <!--#if (useMaterial)-->
       Material;
-      <!--#endif-->
-      <!--#if (useCupertino)-->
+      <!--#elif (useCupertino)-->
       Cupertino;
+      <!--#elif (unoLottie)-->
+      Lottie
       <!--#endif-->
       <!--#if (mediaElement)-->
       MediaElement;
+      <!--#endif-->
+      <!--#if (unoSvg)-->
+      Svg;
       <!--#endif-->
       <!--#if (useDependencyInjection)-->
       Hosting;
