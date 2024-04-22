@@ -85,7 +85,7 @@
       MauiEmbedding;
       <!--#endif-->
       <!--#if (useMvux)-->
-      Mvux;
+      MVUX;
       <!--#endif-->
       <!--#if (usePrism)-->
       Prism;
