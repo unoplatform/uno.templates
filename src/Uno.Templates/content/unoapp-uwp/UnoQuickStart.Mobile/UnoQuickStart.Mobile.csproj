@@ -47,9 +47,9 @@
         <!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
         <MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
       </PropertyGroup>
-			<ItemGroup>
-				<BundleResource Include="iOS\PrivacyInfo.xcprivacy" LogicalName="PrivacyInfo.xcprivacy" />
-			</ItemGroup>
+      <ItemGroup>
+        <BundleResource Include="iOS\PrivacyInfo.xcprivacy" LogicalName="PrivacyInfo.xcprivacy" />
+      </ItemGroup>
       <ItemGroup>
         <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="$UnoExtensionsLoggingVersion$" />
       </ItemGroup>
