@@ -1,28 +1,6 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>
-      <!--#if (useAndroid)-->
-      $baseTargetFramework$-android;
-      <!--#endif-->
-      <!--#if (useIOS)-->
-      $baseTargetFramework$-ios;
-      <!--#endif-->
-      <!--#if (useMacCatalyst)-->
-      $baseTargetFramework$-maccatalyst;
-      <!--#endif-->
-      <!--#if (useWinAppSdk)-->
-      $baseTargetFramework$-windows10.0.19041;
-      <!--#endif-->
-      <!--#if (useUnitTests)-->
-      $baseTargetFramework$;
-      <!--#endif-->
-      <!--#if (useDesktop)-->
-      $baseTargetFramework$-desktop;
-      <!--#endif-->
-      <!--#if (useWasm)-->
-      $baseTargetFramework$-browserwasm;
-      <!--#endif-->
-    </TargetFrameworks>
+    <TargetFrameworks><!--#if (useAndroid)-->$baseTargetFramework$-android;<!--#endif--><!--#if (useIOS)-->$baseTargetFramework$-ios;<!--#endif--><!--#if (useMacCatalyst)-->$baseTargetFramework$-maccatalyst;<!--#endif--><!--#if (useWinAppSdk)-->$baseTargetFramework$-windows10.0.19041;<!--#endif--><!--#if (useUnitTests)-->$baseTargetFramework$;<!--#endif--><!--#if (useDesktop)-->$baseTargetFramework$-desktop;<!--#endif--><!--#if (useWasm)-->$baseTargetFramework$-browserwasm;<!--#endif--></TargetFrameworks>
 
     <OutputType>Exe</OutputType>
     <UnoSingleProject>true</UnoSingleProject>
