@@ -19,6 +19,8 @@ jobs:
         templateArgs: '-platforms android ios maccatalyst'
       RecommendedMarkup:
         templateArgs: '-preset recommended -markup csharp'
+      RecommendedMarkupFluent:
+        templateArgs: '-preset recommended -markup csharp -theme fluent'
       MVVM:
         templateArgs: '-preset recommended -presentation mvvm'
       CSharpMarkup:
