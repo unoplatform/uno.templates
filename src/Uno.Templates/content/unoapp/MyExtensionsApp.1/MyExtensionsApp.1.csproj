@@ -10,9 +10,6 @@
       <!--#if (useMacCatalyst)-->
       $baseTargetFramework$-maccatalyst;
       <!--#endif-->
-      <!--#if (useWinAppSdk)-->
-      $baseTargetFramework$-windows10.0.19041;
-      <!--#endif-->
       <!--#if (useUnitTests)-->
       $baseTargetFramework$;
       <!--#endif-->
@@ -21,6 +18,9 @@
       <!--#endif-->
       <!--#if (useWasm)-->
       $baseTargetFramework$-browserwasm;
+      <!--#endif-->
+      <!--#if (useWinAppSdk)-->
+      $baseTargetFramework$-windows10.0.19041;
       <!--#endif-->
     </TargetFrameworks>
 
