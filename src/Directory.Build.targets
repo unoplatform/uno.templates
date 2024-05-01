@@ -2,11 +2,11 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.587</UnoVersion>
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.18</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.1.0-dev.18</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.1.0-dev.10</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.3.0-dev.38</UnoMarkupVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.708</UnoVersion>
+    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.36</UnoExtensionsVersion>
+    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.1.0-dev.19</UnoThemesVersion>
+    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.1.0-dev.11</UnoToolkitVersion>
+    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.3.0-dev.40</UnoMarkupVersion>
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.13</UnoWasmBootstrapVersionNet8>
     <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.43</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
