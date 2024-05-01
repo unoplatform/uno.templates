@@ -7,49 +7,50 @@
 <!--#endif-->
       NavigationCacheMode="Required"
       Background="{ThemeResource $themeBackgroundBrush$}">
-
-  <Grid$toolkitSafeArea$>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition />
-    </Grid.RowDefinitions>
+  <ScrollViewer>
+    <Grid$toolkitSafeArea$>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
 <!--#if (useToolkit)-->
-    <utu:NavigationBar Content="{Binding Title}" />
+      <utu:NavigationBar Content="{Binding Title}" />
 <!--#else-->
-    <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" />
+      <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" />
 <!--#endif-->
 
-    <StackPanel Grid.Row="1"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          Spacing="16">
+      <StackPanel Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="16">
 <!--#if (mauiEmbedding)-->
 <!--#if (useNonMauiPlatforms)-->
-      <maui:Grid>
+        <maui:Grid>
+          <embed:MauiHost x:Name="MauiHostElement"
+                  xmlns:embed="using:Uno.Extensions.Maui"
+                  Source="controls:EmbeddedControl" />
+        </maui:Grid>
+        <not_maui:Grid>
+          <TextBlock AutomationProperties.AutomationId="NotMauiTextBlock"
+            Text="Alternative content for Non-Maui targets"
+            HorizontalAlignment="Center" />
+        </not_maui:Grid>
+<!--#else-->
         <embed:MauiHost x:Name="MauiHostElement"
                 xmlns:embed="using:Uno.Extensions.Maui"
                 Source="controls:EmbeddedControl" />
-      </maui:Grid>
-      <not_maui:Grid>
-        <TextBlock AutomationProperties.AutomationId="NotMauiTextBlock"
-          Text="Alternative content for Non-Maui targets"
-          HorizontalAlignment="Center" />
-      </not_maui:Grid>
-<!--#else-->
-      <embed:MauiHost x:Name="MauiHostElement"
-              xmlns:embed="using:Uno.Extensions.Maui"
-              Source="controls:EmbeddedControl" />
 <!--#endif-->
 <!--#endif-->
-      <TextBox Text="{Binding Name, Mode=TwoWay}"
-          PlaceholderText="Enter your name:" />
-      <Button Content="Go to Second Page"
-          AutomationProperties.AutomationId="SecondPageButton"
-          Command="{Binding GoToSecond}" />
+        <TextBox Text="{Binding Name, Mode=TwoWay}"
+            PlaceholderText="Enter your name:" />
+        <Button Content="Go to Second Page"
+            AutomationProperties.AutomationId="SecondPageButton"
+            Command="{Binding GoToSecond}" />
 <!--#if (useAuthentication)-->
-      <Button Content="Logout"
-          Command="{Binding Logout}" />
+        <Button Content="Logout"
+            Command="{Binding Logout}" />
 <!--#endif-->
-    </StackPanel>
-  </Grid>
+      </StackPanel>
+    </Grid>
+  </ScrollViewer>
 </Page>
