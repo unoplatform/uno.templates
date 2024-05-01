@@ -5,10 +5,7 @@
 <!--#else-->
 <Application x:Class="MyExtensionsApp._1.App"
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-       xmlns:wasm="http://platform.uno/wasm"$useThemesResourceNamespace$
-       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       mc:Ignorable="wasm">
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"$useThemesResourceNamespace$>
 
   <Application.Resources>
     <ResourceDictionary>
