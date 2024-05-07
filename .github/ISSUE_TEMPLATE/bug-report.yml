@@ -45,6 +45,7 @@ body:
       options:
         - dotnet new
         - Visual Studio
+        - Rider
     validations:
       required: true
   - type: dropdown
