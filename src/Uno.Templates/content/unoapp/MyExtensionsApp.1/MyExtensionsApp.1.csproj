@@ -58,6 +58,9 @@
       <!--#endif-->
       <!--#if (useMaterial)-->
       Material;
+      <!--#if (useDspGenerator)-->
+      Dsp;
+      <!--#endif-->
       <!--#elif (useCupertino)-->
       Cupertino;
       <!--#elif (unoLottie)-->
