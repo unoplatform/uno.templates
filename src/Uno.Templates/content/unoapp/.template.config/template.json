@@ -1797,43 +1797,52 @@
         {
           "condition": "(platforms != android)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Android/**/*"
+            "MyExtensionsApp.1/Platforms/Android/**/*",
+            ".run/MyExtensionsApp.1 (Android).run.xml"
           ]
         },
         {
           "condition": "(platforms != ios)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/iOS/**/*"
+            "MyExtensionsApp.1/Platforms/iOS/**/*",
+            ".run/MyExtensionsApp.1 (iOS).run.xml"
           ]
         },
         {
           "condition": "(platforms != maccatalyst)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/MacCatalyst/**/*"
+            "MyExtensionsApp.1/Platforms/MacCatalyst/**/*",
+            ".run/MyExtensionsApp.1 (MacCatalyst).run.xml"
           ]
         },
         {
           "condition": "(!useWasm)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/WebAssembly**/*"
+            "MyExtensionsApp.1/Platforms/WebAssembly**/*",
+            ".run/MyExtensionsApp.1 (WebAssembly IIS Express).run.xml",
+            ".run/MyExtensionsApp.1 (WebAssembly).run.xml"
           ]
         },
         {
           "condition": "(!useDesktop)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Desktop/**/*"
+            "MyExtensionsApp.1/Platforms/Desktop/**/*",
+            ".run/MyExtensionsApp.1 (Desktop).run.xml"
           ]
         },
         {
           "condition": "(!useWinAppSdk)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Windows/**/*"
+            "MyExtensionsApp.1/Platforms/Windows/**/*",
+            ".run/MyExtensionsApp.1 (WinAppSDK Unpackaged).run.xml"
           ]
         },
         {
           "condition": "(!useServer)",
           "exclude": [
-            "MyExtensionsApp.1.Server/**/*"
+            "MyExtensionsApp.1.Server/**/*",
+            ".run/MyExtensionsApp.1.Server (Server IIS Express).run.xml",
+            ".run/MyExtensionsApp.1.Server (Server).run.xml"
           ]
         },
         {
