@@ -878,6 +878,11 @@
       "datatype": "bool",
       "value": "(appTheme == 'cupertino')"
     },
+    "useUnoLottie": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(unoLottie || (useToolkit && appThemeEvaluator == 'fluent'))"
+    },
     "themeBackgroundBrush": {
       "type": "generated",
       "generator": "switch",
