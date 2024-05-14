@@ -63,7 +63,8 @@
       <!--#endif-->
       <!--#elif (useCupertino)-->
       Cupertino;
-      <!--#elif (unoLottie)-->
+      <!--#endif-->
+      <!--#if (useUnoLottie)-->
       Lottie
       <!--#endif-->
       <!--#if (mediaElement)-->
