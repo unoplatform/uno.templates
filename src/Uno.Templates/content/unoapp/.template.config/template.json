@@ -881,7 +881,7 @@
     "useUnoLottie": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(unoLottie || appThemeEvaluator == 'fluent')"
+      "value": "(unoLottie || (useToolkit && appThemeEvaluator == 'fluent'))"
     },
     "themeBackgroundBrush": {
       "type": "generated",
