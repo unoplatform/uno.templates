@@ -65,7 +65,7 @@
       Cupertino;
       <!--#endif-->
       <!--#if (useUnoLottie)-->
-      Lottie
+      Lottie;
       <!--#endif-->
       <!--#if (mediaElement)-->
       MediaElement;
