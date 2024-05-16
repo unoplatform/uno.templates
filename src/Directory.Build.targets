@@ -2,13 +2,13 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.108</UnoVersion>
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.14</UnoExtensionsVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.2.132</UnoVersion>
+    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.1.23</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.0.13</UnoThemesVersion>
     <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.0.18</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.13</UnoMarkupVersion>
+    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.2.14</UnoMarkupVersion>
     <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.13</UnoWasmBootstrapVersionNet8>
-    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.43</UnoWasmBootstrapVersionNet9>
+    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.47</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion Condition="'$(UnoCoreLoggingVersion)' == ''">4.0.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.9</UnoDspTasksVersion>
