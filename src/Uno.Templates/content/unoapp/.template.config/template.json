@@ -3226,7 +3226,7 @@
         {
           "condition": "(!useDspGenerator)",
           "exclude": [
-            "MyExtensionsApp.1/Styles/ColorPaletteOverride.zip"
+            "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"
           ]
         }
       ]
