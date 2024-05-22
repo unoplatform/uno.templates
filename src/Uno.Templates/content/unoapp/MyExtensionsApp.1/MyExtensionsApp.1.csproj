@@ -12,6 +12,10 @@
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
+    <!-- Package Publisher -->
+    <ApplicationPublisher>$appPublisher$</ApplicationPublisher>
+    <!-- Package Description -->
+    <Description>MyExtensionsApp.1 powered by Uno Platform.</Description>
     <!--#if (useWinAppSdk) -->
     <!--
       If you encounter this error message:

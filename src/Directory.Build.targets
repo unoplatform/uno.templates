@@ -2,7 +2,7 @@
   <Import Project="Directory.UnoMetadata.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.708</UnoVersion>
+    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.1451</UnoVersion>
     <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.36</UnoExtensionsVersion>
     <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.1.0-dev.19</UnoThemesVersion>
     <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.1.0-dev.11</UnoToolkitVersion>
@@ -24,7 +24,7 @@
 
     <!-- UWP Legacy Templates -->
     <MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
-    <MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240227000</MicrosoftWindowsAppSDKVersion>
+    <MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240428000</MicrosoftWindowsAppSDKVersion>
     <UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
     <XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
   </PropertyGroup>
