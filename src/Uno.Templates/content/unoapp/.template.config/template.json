@@ -668,7 +668,7 @@
       "displayName": "Rider Support",
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Sets up Rider support for the solution"
     },
     "wasmPwaManifest": {
@@ -1804,22 +1804,19 @@
         {
           "condition": "(platforms != android)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Android/**/*",
-            ".run/MyExtensionsApp.1 (Android).run.xml"
+            "MyExtensionsApp.1/Platforms/Android/**/*"
           ]
         },
         {
           "condition": "(platforms != ios)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/iOS/**/*",
-            ".run/MyExtensionsApp.1 (iOS).run.xml"
+            "MyExtensionsApp.1/Platforms/iOS/**/*"
           ]
         },
         {
           "condition": "(platforms != maccatalyst)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/MacCatalyst/**/*",
-            ".run/MyExtensionsApp.1 (MacCatalyst).run.xml"
+            "MyExtensionsApp.1/Platforms/MacCatalyst/**/*"
           ]
         },
         {
