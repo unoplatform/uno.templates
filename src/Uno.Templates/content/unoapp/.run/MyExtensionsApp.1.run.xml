@@ -3,7 +3,7 @@
   <configuration default="false" name="MyExtensionsApp.1 (Desktop)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1/MyExtensionsApp.1.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-desktop" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1 (Desktop)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1 (Desktop)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
@@ -20,7 +20,7 @@
   <configuration default="false" name="MyExtensionsApp.1 (WebAssembly IIS Express)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1/MyExtensionsApp.1.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-browserwasm" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1 (WebAssembly IIS Express)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1 (WebAssembly IIS Express)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
@@ -35,7 +35,7 @@
   <configuration default="false" name="MyExtensionsApp.1 (WebAssembly)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1/MyExtensionsApp.1.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-browserwasm" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1 (WebAssembly)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1 (WebAssembly)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
@@ -52,7 +52,7 @@
   <configuration default="false" name="MyExtensionsApp.1 (WinAppSDK Unpackaged)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1/MyExtensionsApp.1.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-windows10.0.19041.0" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1 (WinAppSDK Unpackaged)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1 (WinAppSDK Unpackaged)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
@@ -69,7 +69,7 @@
   <configuration default="false" name="MyExtensionsApp.1.Server (Server IIS Express)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1.Server/MyExtensionsApp.1.Server.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1.Server (Server IIS Express)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1.Server (Server IIS Express)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
@@ -84,7 +84,7 @@
   <configuration default="false" name="MyExtensionsApp.1.Server (Server)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1.Server/MyExtensionsApp.1.Server.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$" />
-    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1: MyExtensionsApp.1.Server (Server)" />
+    <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1.Server (Server)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
     <option name="RUNTIME_ARGUMENTS" value="" />
