@@ -594,8 +594,8 @@
       "defaultValue": "false"
     },
     "dspGenerator": {
-      "displayName": "Import DSP",
-      "description": "Import a Design System Package (DSP) to override Material colors",
+      "displayName": "Import Uno DSP",
+      "description": "Import a Uno DSP theme file to override Material colors",
       "type": "parameter",
       "datatype": "bool"
     },
