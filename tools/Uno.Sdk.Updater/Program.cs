@@ -1,6 +1,8 @@
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using Uno.Sdk.Models;
 using Uno.Sdk.Services;
 using Uno.Sdk.Updater;
@@ -30,6 +32,9 @@ var unoVersion = versions.OrderByDescending(x => x).FirstOrDefault();
 using var sdkPackage = await client.DownloadPackageAsync(UnoSdkPackageId, unoVersion);
 using var sdkZip = new ZipArchive(sdkPackage);
 
+string? readMePath = null;
+string? packagesJsonPath = null;
+
 foreach(var entry in sdkZip.Entries)
 {
     var extension = Path.GetExtension(entry.FullName);
@@ -40,6 +45,11 @@ foreach(var entry in sdkZip.Entries)
     }
 
     var outputPath = Path.Combine(baseArchivePath, entry.FullName);
+    if (Path.GetFileName(outputPath).ToLowerInvariant() == "readme.md")
+    {
+        readMePath = outputPath;
+    }
+
     var directory = Path.GetDirectoryName(outputPath);
     if (string.IsNullOrEmpty(directory))
     {
@@ -49,6 +59,7 @@ foreach(var entry in sdkZip.Entries)
     Directory.CreateDirectory(directory);
     if (entry.Name == "packages.json")
     {
+        packagesJsonPath = outputPath;
         using var packageStream = entry.Open();
         var inputManifest = await JsonSerializer.DeserializeAsync<IEnumerable<ManifestGroup>>(packageStream);
 
@@ -80,6 +91,31 @@ foreach(var entry in sdkZip.Entries)
     {
         entry.ExtractToFile(outputPath, true);
     }
+}
+
+if (string.IsNullOrEmpty(readMePath) || !File.Exists(readMePath))
+{
+    Console.WriteLine($"The downloaded {UnoSdkPackageId} did not contain a ReadMe.md, using local template.");
+    readMePath = Path.Combine(baseArchivePath, "ReadMe.md");
+    File.Copy("ReadMe.md", readMePath);
+}
+
+if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
+    !string.IsNullOrEmpty(packagesJsonPath) && File.Exists(packagesJsonPath))
+{
+    var readMe = File.ReadAllText(readMePath);
+    var manifestJson = File.ReadAllText(packagesJsonPath);
+    var manifest = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(manifestJson) ?? [];
+
+    foreach(var group in manifest)
+    {
+        readMe = Regex.Replace(readMe, Regex.Escape($"${group.Group}$"), group.Version);
+    }
+
+    readMe = Regex.Replace(readMe, Regex.Escape("$PackagesJson$"), manifestJson);
+
+    Console.WriteLine("Updated the ReadMe with the versions used by this pack of the Uno.Sdk.");
+    File.WriteAllText(readMePath, readMe, Encoding.UTF8);
 }
 
 Console.WriteLine("Finished updated.");
