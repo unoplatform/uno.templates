@@ -9,7 +9,9 @@ const string UnoSdkPackageId = "Uno.Sdk";
 
 var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 {
-    WriteIndented = true
+    // We want to keep the output Human Readable
+    WriteIndented = true,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
 };
 var baseArchivePath = Path.Combine(LocalFileSystem.UnoSdkDirectory, "archive");
 
