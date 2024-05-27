@@ -5,6 +5,9 @@ parameters:
 - name: unocheckArguments
   type: string
   default: ''
+- name: xCodeRoot
+  type: string
+  default: ''
 
 steps:
 - checkout: self
@@ -12,15 +15,14 @@ steps:
 
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
-    Write-Host "TemplateArgs = '$templateArgs'"
+    echo "TemplateArgs = '$templateArgs'"
     $dotnetVersion = $env:TargetDotNetVersion
     if ($templateArgs -match 'net9.0')
     {
         $dotnetVersion = '9.0.100-preview.2.24157.14'
     }
 
-    Write-Host "DotNetVersion = $dotnetVersion"
-    Write-Output "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
+    echo "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
   displayName: Evaluate Template Args
   env:
     TargetDotNetVersion: $(ValidationDotNetVersion)
@@ -33,55 +35,178 @@ steps:
   inputs:
     artifactName: $(Build.DefinitionName)
 
-- script: |
-      md $(Build.SourcesDirectory)\src\PackageCache
-      copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
+- pwsh: |
+      md $(Build.SourcesDirectory)/src/PackageCache
+      copy "$(System.ArtifactsDirectory)/$(Build.DefinitionName)/*.nupkg" $(Build.SourcesDirectory)/src/PackageCache
   displayName: Copy Artifacts to PackageCache
-
-- script: dotnet new install "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\Uno.Templates*.nupkg"
-  displayName: Install Project Templates
-
-- powershell: |
-      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)\src\PackageCache
-      dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-      dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
-      Set-PSDebug -Trace 1
-      $ErrorActionPreference = 'Stop'
-
-      # Create app with defaults
-      dotnet new unoapp -skip -d -v diagnostic -o UnoApp1 ${{ parameters.arguments }}
-      if ($LASTEXITCODE -ne 0)
-      {
-          throw "Exit code must be zero."
-      }
-
-  displayName: Create template app
 
 - template: canary-updater.yml
   parameters:
     MergeBranch: false
 
+- bash: |
+    sudo rm -fR /usr/lib/jvm
+    ubuntu_release=`lsb_release -rs` 
+    wget  https://packages.microsoft.com/config/ubuntu/${ubuntu_release}/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
+    sudo dpkg -i packages-microsoft-prod.deb 
+    sudo apt-get install apt-transport-https 
+    sudo apt-get update 
+    sudo apt-get install -y msopenjdk-11
+  displayName: OpenJDK (Linux)
+  condition: eq(variables['Agent.OS'], 'Linux')
+
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    cd UnoApp1
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
-  displayName: Uno Check
+    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+  displayName: Uno Check (Linux)
+  condition: eq(variables['Agent.OS'], 'Linux')
+  env:
+    ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
+    JAVA_HOME: $(JAVA_HOME)
+
+- powershell: |
+    & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip gtk3 --skip xcode --skip vswin --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+  displayName: Uno Check (macOS)
+  condition: eq(variables['Agent.OS'], 'Darwin')
+  env:
+    ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
+    JAVA_HOME: $(JAVA_HOME)
+
+- bash: |
+    echo 'xCode Root to ${{parameters.xCodeRoot}}'
+    echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'${{parameters.xCodeRoot}}
+    sudo xcode-select --switch ${{parameters.xCodeRoot}}/Contents/Developer
+
+  condition: eq(variables['Agent.OS'], 'Darwin')
+  displayName: Select Xcode
+
+- powershell: |
+    & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+  displayName: Uno Check (Windows)
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
   env:
     ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
 
-- powershell: |
-      Set-PSDebug -Trace 1
-      $ErrorActionPreference = 'Stop'
+- script: dotnet new install "$(System.ArtifactsDirectory)/$(Build.DefinitionName)/Uno.Templates*.nupkg"
+  displayName: Install Project Templates
+  
+- pwsh: |
+      dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)/src/PackageCache
+      dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
+      dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
+  displayName: Setup nuget sources
 
-      cd UnoApp1
+- pwsh: |
+    #Set-PSDebug -Trace 1
+    $ErrorActionPreference = 'Stop'
 
-      & dotnet build UnoApp1.sln "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
-      if ($LASTEXITCODE -ne 0)
+    # Escape quotes properly
+    $validationsArray = ('${{ replace(parameters.arguments, '""', '`""') }}' -split '\r?\n').Trim()
+
+    # write currently running dotnet version in a variable
+    $dotnetVersion = dotnet --version
+
+    echo "Running validations for:"
+
+    $validations=@{}
+    $buildFailures=@()
+
+    foreach($validation in $validationsArray)
+    {
+      # Skip commented out tests
+      if($validation.StartsWith('#'))
       {
-          throw "Exit code must be zero."
+        continue
       }
 
-  displayName: Build template app
+      $fields = ($validation -split ';').Trim()
+
+      if($fields[0])
+      {      
+        $validations.Add($fields[0], @($fields[2],$fields[1]))
+        echo "- $($fields[0]), $($fields[2]) (Filter: $($fields[1]))"
+      }
+    }
+
+    $currentTest=0;
+
+    foreach($validation in $validations.Keys)
+    {
+      $testName = $validation;
+      $testParams = $validations[$validation][0];
+      $environmentFilter = $validations[$validation][1];
+
+      # Skip testing for the wrong environment
+      if($environmentFilter -eq "Windows" -and !$IsWindows)
+      {
+        echo "Skipping $testName ($testParams) because it's only for Windows"
+        continue
+      }
+
+      if($environmentFilter -eq "Linux" -and !$IsLinux)
+      {
+        echo "Skipping $testName ($testParams) because it's only for Linux"
+        continue
+      }
+
+      echo "Testing $testName ($testParams)"
+
+      # Set the progress to report on azdo UI
+      $progress = ($currentTest / $validations.Keys.Count) * 100;
+      echo "Progress: {$progress}"
+      echo "##vso[task.setprogress value=$progress;]$testName"
+
+      # Split the string containing parameters with respect for quotes, so parameters can be 
+      # passed properly to the dotnet new command. (the string would be interpreted as a single parameter otherwise)
+      if($testParams)
+      {
+        $dotnetNewParams = ($testParams -replace "`n"," " -replace "`r"," ") -split ' (?=(?:[^"]|"[^"]*")*$)' | ForEach-Object { $_ -replace '"', '' } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+      }
+      else
+      {
+        # avoid passing an empty array
+        Remove-Variable -name dotnetNewParams -ErrorAction SilentlyContinue
+      }
+
+      # Create the app solution
+      & dotnet new unoapp -skip -d -o $testName $dotnetNewParams
+
+      if ($LASTEXITCODE -ne 0)
+      {
+        echo "Template creation failed for $testName"
+        $buildFailures += , "$testName";
+      }
+      else
+      {
+        # Build the app
+        pushd $testName 
+        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog"
+        if ($LASTEXITCODE -ne 0)
+        {
+          echo "Build failed for $testName"
+          $buildFailures += , "$testName";
+        }
+        popd
+      }
+
+      $currentTest = $currentTest + 1;
+    }
+
+    if($buildFailures.Length -gt 0)
+    {
+      echo "Validation failed for :"
+
+      foreach($buildFailure in $buildFailures)
+      {
+        echo "- $buildFailure"
+      }
+
+      throw "Exit code must be zero."
+    }
+
+  displayName: Test all scenarios
 
 - task: PublishBuildArtifacts@1
   condition: always()
