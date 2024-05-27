@@ -89,8 +89,9 @@ internal readonly struct NuGetVersion : IComparable<NuGetVersion>
         if (preview1 == null) return -1;
         if (preview2 == null) return 1;
 
-        var parts1 = preview1.Split(['.', '-'], StringSplitOptions.RemoveEmptyEntries);
-        var parts2 = preview2.Split(['.', '-'], StringSplitOptions.RemoveEmptyEntries);
+        char[] separators = ['.', '-'];
+        var parts1 = preview1.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        var parts2 = preview2.Split(separators, StringSplitOptions.RemoveEmptyEntries);
         var length = Math.Min(parts1.Length, parts2.Length);
 
         for (int i = 0; i < length; i++)
