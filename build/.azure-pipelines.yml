@@ -47,10 +47,14 @@ stages:
 
     - powershell: |
         $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
-        # Build first so that templates are downloaded properly
-        & dotnet build src\uno.templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-build.binlog -o $(build.artifactstagingdirectory)
-        # Pack separately to avoid NU5017
-        & dotnet pack src\uno.templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
+        # Run the Uno.Sdk.Updater first so that we have the latest assets for the templates
+        & dotnet run tools\Uno.Sdk.Updater\Uno.Sdk.Updater.csproj -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER
+
+        # Pack the Uno.Sdk
+        & dotnet pack src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
+
+        # Pack the Uno.Templates
+        & dotnet pack src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
 
       displayName: Pack Uno.Templates
 
