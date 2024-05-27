@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,6 +8,10 @@
     <TemplatesSourceDirectory>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'src'))</TemplatesSourceDirectory>
     <UnoSdkDirectory>$([MSBuild]::NormalizePath('$(TemplatesSourceDirectory)', 'Uno.Sdk'))</UnoSdkDirectory>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Packaging" Version="6.10.0" />
+  </ItemGroup>
 
   <Target Name="GenerateLocalFileSystem" BeforeTargets="BeforeBuild">
     <ItemGroup>

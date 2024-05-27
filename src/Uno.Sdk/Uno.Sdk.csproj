@@ -5,7 +5,6 @@
 		<PackageId>Uno.Sdk</PackageId>
 		<NoWarn>$(NoWarn);NU5128;NU5100</NoWarn>
 		<PackageType>MSBuildSdk</PackageType>
-		<Description>Provides a base SDK for Uno Platform projects.</Description>
 		<EnableDefaultItems>False</EnableDefaultItems>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 	</PropertyGroup>
@@ -13,4 +12,6 @@
 	<ItemGroup>
 		<None Include="archive\**\*" Pack="true" PackagePath="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+
+	<Import Project="nuspec.targets" />
 </Project>
