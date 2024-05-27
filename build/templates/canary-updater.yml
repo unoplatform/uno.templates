@@ -4,11 +4,11 @@ parameters:
 steps:
   - task: UseDotNet@2
     condition: eq(variables['IsCanaryBranch'], true)
-    displayName: 'Use .NET runtime 7.0.100'
+    displayName: 'Use .NET runtime 8.0.100'
     retryCountOnTaskFailure: 3
     inputs:
       packageType: runtime
-      version: 7.0.0
+      version: 8.0.0
       
   - task: nventiveCanaryUpdater@5
     condition: eq(variables['IsCanaryBranch'], true)
