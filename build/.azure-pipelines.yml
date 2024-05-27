@@ -49,7 +49,7 @@ stages:
         $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
         
         # Run the Uno.Sdk.Updater first so that we have the latest assets for the templates
-        & dotnet run tools\Uno.Sdk.Updater\Uno.Sdk.Updater.csproj -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER
+        & dotnet run tools\Uno.Sdk.Updater\Uno.Sdk.Updater.csproj -p:TemplateVersion=$env:GITVERSION_FULLSEMVER
       displayName: Run Uno.Sdk.Updater
 
     - powershell: |

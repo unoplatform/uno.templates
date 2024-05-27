@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <Target Name="GenerateLocalFileSystem" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <TemplateVersion Condition=" $(TemplateVersion) == '' ">$(Version)</TemplateVersion>
+    </PropertyGroup>
     <ItemGroup>
       <_LocalFileSystem Include="$(IntermediateOutputPath)\LocalFileSystem.cs" />
       <_FileSystemLine Include="//------------------------------------------------------------------------------" />
@@ -28,7 +31,7 @@
       <_FileSystemLine Include="{" />
       <_FileSystemLine Include="public const string TemplatesSourceDirectory = @&quot;$(TemplatesSourceDirectory)&quot;%3b" />
       <_FileSystemLine Include="public const string UnoSdkDirectory = @&quot;$(UnoSdkDirectory)&quot;%3b" />
-      <_FileSystemLine Include="public static readonly NuGetVersion TemplateVersion = NuGetVersion.Parse(&quot;$(Version)&quot;)%3b" />
+      <_FileSystemLine Include="public static readonly NuGetVersion TemplateVersion = NuGetVersion.Parse(&quot;$(TemplateVersion)&quot;)%3b" />
       <_FileSystemLine Include="}" />
     </ItemGroup>
     <WriteLinesToFile File="%(_LocalFileSystem.Identity)" 
