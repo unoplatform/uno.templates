@@ -47,11 +47,20 @@ stages:
 
     - powershell: |
         $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
+        
         # Run the Uno.Sdk.Updater first so that we have the latest assets for the templates
         & dotnet run tools\Uno.Sdk.Updater\Uno.Sdk.Updater.csproj -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER
+      displayName: Run Uno.Sdk.Updater
+
+    - powershell: |
+        $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
 
         # Pack the Uno.Sdk
         & dotnet pack src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
+      displayName: Pack Uno.Sdk
+
+    - powershell: |
+        $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
 
         # Pack the Uno.Templates
         & dotnet pack src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
