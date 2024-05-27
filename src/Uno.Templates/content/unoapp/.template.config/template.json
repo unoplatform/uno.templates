@@ -683,29 +683,11 @@
       "description": "If specified, skips the automatic restore of the project on create.",
       "defaultValue": "false"
     },
-    "unoWinUIVersion": {
+    "unoSdkVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoWinUIVersion",
-      "replaces": "$UnoWinUIVersion$"
-    },
-    "unoExtensionsVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoExtensionsVersion",
-      "replaces": "$UnoExtensionsVersion$"
-    },
-    "unoThemesVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoThemesVersion",
-      "replaces": "$UnoThemesVersion$"
-    },
-    "unoToolkitVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoToolkitVersion",
-      "replaces": "$UnoToolkitVersion$"
+      "defaultValue": "DefaultUnoSdkVersion",
+      "replaces": "$UnoSdkVersion$"
     },
     "unoWasmBootstrapVersion": {
       "type": "parameter",
@@ -738,12 +720,6 @@
         "fallbackVariableName": "unoWasmBootstrapVersionDefault"
       },
       "replaces": "$UnoWasmBootstrapVersion$"
-    },
-    "unoMarkupVersion": {
-      "type": "parameter",
-      "datatype": "text",
-      "defaultValue": "DefaultUnoMarkupVersion",
-      "replaces": "$UnoMarkupVersion$"
     },
     "unoUITestHelpersVersion": {
       "type": "parameter",
@@ -2890,7 +2866,7 @@
           ]
         },
         {
-          "condition": "(useMvvm)",
+          "condition": "(!useMvux)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/LoginModel.cs",
             "MyExtensionsApp.1/Presentation/MainModel.cs",
@@ -2899,7 +2875,7 @@
           ]
         },
         {
-          "condition": "(useMvux)",
+          "condition": "(!useMvvm)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/LoginViewModel.cs",
             "MyExtensionsApp.1/Presentation/MainViewModel.cs",

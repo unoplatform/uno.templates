@@ -8,7 +8,7 @@
 		<DefaultLanguage Condition="'$(DefaultLanguage)'==''">en-US</DefaultLanguage>
 	</PropertyGroup>
 
-	<Target Name="DownloadAndSetPackageIcon" AfterTargets="Build"  Condition="'$(PackageIcon)'==''">
+	<Target Name="DownloadAndSetPackageIcon" BeforeTargets="Pack" AfterTargets="Build"  Condition="'$(PackageIcon)'==''">
 		<PropertyGroup>
 			<IconUrl>https://uno-assets.platform.uno/logos/uno.png</IconUrl>
 		</PropertyGroup>

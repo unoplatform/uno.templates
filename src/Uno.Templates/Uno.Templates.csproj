@@ -10,17 +10,11 @@
 
 		<!-- required for .vsconfig -->
 		<NoDefaultExcludes>true</NoDefaultExcludes>
-
-		<!-- Disable package generation for WinUI converted build -->
-		<IsPackable Condition="'$(UNO_UWP_BUILD)'=='false'">false</IsPackable>
 		<NoWarn>$(NoWarn);NU5128</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackageTags>dotnet-new;templates;uno-platform</PackageTags>
-		<PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
 		<Description>Templates for creating Uno Platform apps and libraries</Description>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>dotnet-new;templates;uno-platform;webassembly;ios;android;uwp;winui;macos;winappsdk</PackageTags>
 	</PropertyGroup>
 
@@ -29,6 +23,29 @@
 		<MauiControlsTemplateFile Include="content/unoapp/MyExtensionsApp.1.MauiControls/**/*" Exclude="**/obj/**;**/bin/**" />
 		<UpToDateCheckInput Include="@(TemplateFile)" />
 	</ItemGroup>
+
+	<Target Name="ReplaceVersions" BeforeTargets="BeforeBuild">
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWinUIVersion" ReplacementText="$(UnoVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoSdkVersion" ReplacementText="$(Version)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsSDKBuildTools" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsAppSDK" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultXamarinGoogleAndroidMaterial" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoCoreLoggingVersion" ReplacementText="$(UnoCoreLoggingVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoDspTasksVersion" ReplacementText="$(UnoDspTasksVersion)" />
+
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$MicrosoftTestSdk$" ReplacementText="$(MicrosoftTestSdkVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
+	</Target>
 
 	<Target Name="PrepareTemplateFiles" BeforeTargets="ReplaceVersions" AfterTargets="DownloadTemplatePackages;ExtractPackages">
 		<PropertyGroup>

@@ -1,11 +1,7 @@
 ﻿[
-  { "PropertyName": "UnoExtensionsVersion", "PackageId": "Uno.Extensions.Core" },
   { "PropertyName": "UnoVersion", "PackageId": "Uno.WinUI" },  
   { "PropertyName": "UnoExtensionsLoggingVersion", "PackageId": "Uno.Extensions.Logging.WebAssembly.Console" }, 
-  { "PropertyName": "UnoThemesVersion", "PackageId": "Uno.Material.WinUI" }, 
-  { "PropertyName": "UnoToolkitVersion", "PackageId": "Uno.Toolkit.WinUI" }, 
   { "PropertyName": "UnoUniversalImageLoaderVersion", "PackageId": "Uno.UniversalImageLoader" }, 
   { "PropertyName": "UnoWasmBootstrapVersionNet8", "PackageId": "Uno.Wasm.Bootstrap" }, 
-  { "PropertyName": "UnoMarkupVersion", "PackageId": "Uno.WinUI.Markup" }, 
   { "PropertyName": "UnoUITestHelpersVersion", "PackageId": "Uno.UITest.Helpers" }
 ]

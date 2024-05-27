@@ -120,16 +120,7 @@
     "unoWinUIVersion": {
       "isHidden": true
     },
-    "unoExtensionsVersion": {
-      "isHidden": true
-    },
-    "unoThemesVersion": {
-      "isHidden": true
-    },
-    "unoToolkitVersion": {
-      "isHidden": true
-    },
-    "unoMarkupVersion": {
+    "unoSdkVersion": {
       "isHidden": true
     },
     "unoUITestHelpersVersion": {

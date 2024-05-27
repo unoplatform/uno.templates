@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
+</Project>
