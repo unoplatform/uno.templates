@@ -189,6 +189,9 @@ steps:
           $buildFailures += , "$testName";
         }
         popd
+
+        # Clean the folder to continue testing with limited disk space
+        Remove-Item -Recurse -Force $testName -ErrorAction SilentlyContinue
       }
 
       $currentTest = $currentTest + 1;
