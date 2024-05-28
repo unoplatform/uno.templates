@@ -11,6 +11,12 @@
 		<!-- required for .vsconfig -->
 		<NoDefaultExcludes>true</NoDefaultExcludes>
 		<NoWarn>$(NoWarn);NU5128</NoWarn>
+		<GenerateNuspecDependsOn>
+			ReplaceVersions;
+			PrepareTemplateFiles;
+			SetupTemplateFiles;
+			$(PackDependsOn);
+		</GenerateNuspecDependsOn>
 	</PropertyGroup>
 
 	<PropertyGroup>
