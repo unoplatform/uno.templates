@@ -28,6 +28,9 @@ using var sdkZip = new ZipArchive(sdkPackage);
 
 string? readMePath = null;
 string? packagesJsonPath = null;
+string? relativePackagesJsonPath = null;
+string? description = null;
+string? tags = null;
 
 foreach(var entry in sdkZip.Entries)
 {
@@ -54,7 +57,8 @@ foreach(var entry in sdkZip.Entries)
     Directory.CreateDirectory(directory);
     if (entry.Name == "packages.json")
     {
-        outputPath = Path.Combine(LocalFileSystem.UnoSdkDirectory, entry.FullName);
+        outputPath = Path.Combine(LocalFileSystem.UnoSdkDirectory, entry.Name);
+        relativePackagesJsonPath = entry.FullName;
         packagesJsonPath = outputPath;
         using var packageStream = entry.Open();
         var inputManifest = await JsonSerializer.DeserializeAsync<IEnumerable<ManifestGroup>>(packageStream);
@@ -72,17 +76,10 @@ foreach(var entry in sdkZip.Entries)
     }
     else if (extension == ".nuspec")
     {
-        var nuspec = NuGet.Packaging.Manifest.ReadFrom(entry.Open(), false);
-        var props = new Dictionary<string, string>
-        {
-            { "Description", nuspec.Metadata.Description },
-            { "PackageTags", nuspec.Metadata.Tags },
-            { "SdkVersion", unoVersion }
-        };
-
         Console.WriteLine("Extracting NuSpec Metadata");
-        var nuspecTargets = CreateMSBuildFile(props);
-        File.WriteAllText(Path.Combine(LocalFileSystem.UnoSdkDirectory, "nuspec.targets"), nuspecTargets);
+        var nuspec = NuGet.Packaging.Manifest.ReadFrom(entry.Open(), false);
+        description = nuspec.Metadata.Description;
+        tags = nuspec.Metadata.Tags;
     }
     else
     {
@@ -113,9 +110,38 @@ if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
 
     Console.WriteLine("Updated the ReadMe with the versions used by this pack of the Uno.Sdk.");
     File.WriteAllText(readMePath, readMe, Encoding.UTF8);
+
+    CreateSdkProps(description, tags, unoVersion, readMePath, packagesJsonPath, relativePackagesJsonPath ?? "ERROR - Unable to determine path");
 }
 
 Console.WriteLine("Finished updated.");
+
+static void CreateSdkProps(string? description, string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath)
+{
+    var props = new Dictionary<string, string>
+    {
+        { "Description", description ?? string.Empty },
+        { "PackageTags", tags ?? string.Empty },
+        { "SdkVersion", unoVersion },
+        { "PackageReadmeFile", Path.GetFileName(readMePath) }
+    };
+
+    var readMe = new MsBuildItem(Path.GetRelativePath(LocalFileSystem.UnoSdkDirectory, readMePath), new Dictionary<string, string>
+    {
+        { "Pack", bool.TrueString },
+        { "PackagePath", Path.GetFileName(readMePath) }
+    });
+
+    var packagesJson = new MsBuildItem(Path.GetRelativePath(LocalFileSystem.UnoSdkDirectory, packagesJsonPath), new Dictionary<string, string>
+    {
+        { "Pack", bool.TrueString },
+        { "PackagePath", relativePackagesJsonPath }
+    });
+
+    Console.WriteLine("Creating Sdk Updater Props for the Uno.Sdk");
+    var nuspecTargets = CreateMSBuildFile(props, readMe, packagesJson);
+    File.WriteAllText(Path.Combine(LocalFileSystem.UnoSdkDirectory, "Uno.Sdk.Updater.props"), nuspecTargets);
+}
 
 static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest)
 {
@@ -136,7 +162,7 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest)
     File.WriteAllText(outputPath, targets);
 }
 
-static string CreateMSBuildFile(IDictionary<string, string> props)
+static string CreateMSBuildFile(IDictionary<string, string> props, params MsBuildItem[] items)
 {
     var builder = new StringBuilder();
     builder.AppendLine("<Project>");
@@ -149,6 +175,17 @@ static string CreateMSBuildFile(IDictionary<string, string> props)
     }
 
     builder.AppendLine("  </PropertyGroup>");
+
+    if (items.Length != 0)
+    {
+        builder.AppendLine();
+        builder.AppendLine("  <ItemGroup>");
+        foreach (var item in items)
+        {
+            builder.AppendLine($"    {item.ToXml()}");
+        }
+        builder.AppendLine("  </ItemGroup>");
+    }
     builder.AppendLine("</Project>");
     return builder.ToString();
 }
@@ -231,4 +268,14 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     }
 
     return newGroup;
+}
+
+internal record MsBuildItem(string Include, IDictionary<string, string> Attributes, string ItemType = "None")
+{
+    public string ToXml()
+    {
+        var attributeList = Attributes.Select(x => $"{x.Key}=\"{x.Value}\"");
+        var attributes = string.Join(" ", attributeList);
+        return $"<{ItemType} Include=\"{Include}\" {attributes} />";
+    }
 }
