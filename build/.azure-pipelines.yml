@@ -73,11 +73,10 @@ stages:
     parameters:
       vmImage: 'ubuntu-latest'
       stageVariant: 'linux'
-  # net9.0 base version for catalyst is 14.5 and should be 15.0 in uno.sdk
-  # - template: .azure-pipelines.TemplateValidation.yml
-  #   parameters:
-  #     vmImage: 'macos-13'
-  #     stageVariant: 'macos13'
+  - template: .azure-pipelines.TemplateValidation.yml
+    parameters:
+      vmImage: 'macos-13'
+      stageVariant: 'macos13'
   - template: .azure-pipelines.UnoLibValidation.yml
   - template: .azure-pipelines.UnoMauiLibValidation.yml
   - template: .azure-pipelines.UWPValidation.yml
