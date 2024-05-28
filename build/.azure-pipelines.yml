@@ -15,7 +15,7 @@ pr:
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
-  ValidationUnoCheckVersion: '1.22.0-dev.2'
+  ValidationUnoCheckVersion: '1.24.0-dev.7'
   ValidationDotNetVersion: '8.0.204'
 
 stages:
@@ -66,6 +66,18 @@ stages:
   dependsOn: Build
   jobs:
   - template: .azure-pipelines.TemplateValidation.yml
+    parameters:
+      vmImage: 'windows-2022'
+      stageVariant: 'windows'
+  - template: .azure-pipelines.TemplateValidation.yml
+    parameters:
+      vmImage: 'ubuntu-latest'
+      stageVariant: 'linux'
+  # net9.0 base version for catalyst is 14.5 and should be 15.0 in uno.sdk
+  # - template: .azure-pipelines.TemplateValidation.yml
+  #   parameters:
+  #     vmImage: 'macos-13'
+  #     stageVariant: 'macos13'
   - template: .azure-pipelines.UnoLibValidation.yml
   - template: .azure-pipelines.UnoMauiLibValidation.yml
   - template: .azure-pipelines.UWPValidation.yml

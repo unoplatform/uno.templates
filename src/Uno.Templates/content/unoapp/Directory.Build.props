@@ -30,5 +30,8 @@
     <UnoToolkitVersion>$UnoToolkitVersion$</UnoToolkitVersion>
     <UnoThemesVersion>$UnoThemesVersion$</UnoThemesVersion>
     <UnoCSharpMarkupVersion>$UnoMarkupVersion$</UnoCSharpMarkupVersion>
+
+    <!-- Remove me -->
+    <UnoDspTasksVersion>1.4.0-dev.12</UnoDspTasksVersion>
   </PropertyGroup>
 </Project>
