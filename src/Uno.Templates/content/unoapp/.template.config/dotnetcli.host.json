@@ -138,9 +138,6 @@
     "enableDeveloperMode": {
       "isHidden": true
     },
-    "visualStudioSdkWorkaround": {
-      "isHidden": true
-    },
     "isVsix": {
       "isHidden": true
     }
