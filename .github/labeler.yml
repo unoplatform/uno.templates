@@ -4,4 +4,8 @@ area/build
 - build/*
 
 area/solution-templates
-- src/Uno.Templates/content/*
+- src/Uno.Templates/*
+
+area/sdk
+- src/Uno.Sdk/*
+- tools/Uno.Sdk.Updater/*
