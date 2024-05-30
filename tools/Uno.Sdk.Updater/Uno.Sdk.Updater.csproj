@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,8 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NuGet.Packaging" Version="6.10.0" />
     <None Update="ReadMe.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Packaging" Version="6.10.0" />
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <Target Name="GenerateLocalFileSystem" BeforeTargets="BeforeBuild">
@@ -27,11 +34,10 @@
       <_FileSystemLine Include="//------------------------------------------------------------------------------" />
       <_FileSystemLine Include="using Uno.Sdk.Models%3b" />
       <_FileSystemLine Include="namespace Uno.Sdk.Updater%3b" />
-      <_FileSystemLine Include="internal static class LocalFileSystem" />
+      <_FileSystemLine Include="internal static partial class LocalFileSystem" />
       <_FileSystemLine Include="{" />
       <_FileSystemLine Include="public const string TemplatesSourceDirectory = @&quot;$(TemplatesSourceDirectory)&quot;%3b" />
       <_FileSystemLine Include="public const string UnoSdkDirectory = @&quot;$(UnoSdkDirectory)&quot;%3b" />
-      <_FileSystemLine Include="public static readonly NuGetVersion TemplateVersion = NuGetVersion.Parse(&quot;$(TemplateVersion)&quot;)%3b" />
       <_FileSystemLine Include="}" />
     </ItemGroup>
     <WriteLinesToFile File="%(_LocalFileSystem.Identity)" 

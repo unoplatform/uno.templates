@@ -20,8 +20,8 @@ using var client = new NuGetApiClient();
 
 var versions = await client.GetPackageVersions(UnoSdkPackageId);
 
-versions = versions.Where(x => x > LocalFileSystem.TemplateVersion);
-var unoVersion = versions.OrderByDescending(x => x).FirstOrDefault();
+versions = versions.Where(x => x > LocalFileSystem.MinVersion && x < LocalFileSystem.MaxVersion);
+var unoVersion = versions.OrderByDescending(x => x).First();
 
 using var sdkPackage = await client.DownloadPackageAsync(UnoSdkPackageId, unoVersion);
 using var sdkZip = new ZipArchive(sdkPackage);
