@@ -4,11 +4,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.3.0-dev.1576 |
+| UnoVersion* | 5.3.0-dev.1578 |
 | UnoExtensionsVersion | 4.2.0-dev.81 |
 | UnoToolkitVersion | 6.1.0-dev.24 |
 | UnoThemesVersion | 5.1.0-dev.31 |
-| UnoCSharpMarkupVersion | 5.3.0-dev.72 |
+| UnoCSharpMarkupVersion | 5.3.0-dev.84 |
 | UnoWasmBootstrapVersion** | $UnoWasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.0.1 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.3.0-dev.1576",
+    "version": "5.3.0-dev.1578",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -261,11 +261,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
-    ]
+    ],
+    "versionOverride": {
+      "net9.0": "9.0.0-preview.4.10690"
+    }
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.3.0-dev.72",
+    "version": "5.3.0-dev.84",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
