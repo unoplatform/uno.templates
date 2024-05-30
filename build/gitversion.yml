@@ -1,6 +1,5 @@
 assembly-versioning-scheme: MajorMinorPatch
 mode: Mainline
-commits-since-version-source-padding: 1612
 
 branches:
   main:
@@ -9,6 +8,7 @@ branches:
     tag: dev
     increment: Minor
     is-source-branch-for: ['beta', 'stable']
+    commits-since-version-source-padding: 1612
 
   legacy:
     mode: ContinuousDeployment
