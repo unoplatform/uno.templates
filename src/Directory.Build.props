@@ -3,5 +3,9 @@
     <PackageProjectUrl>https://github.com/unoplatform/uno.templates</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <SkipCopyBuildProduct>true</SkipCopyBuildProduct>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
   </PropertyGroup>
 </Project>
