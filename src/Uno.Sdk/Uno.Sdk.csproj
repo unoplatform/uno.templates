@@ -51,6 +51,9 @@
 				Pack="true"
 				PackagePath="%(RecursiveDir)" />
 		</ItemGroup>
+
+		<Message Text="Packing: %(None.Identity) -> %(None.PackagePath)" Importance="high"
+			Condition="%(None.Pack) == 'true'" />
 	</Target>
 
 </Project>
