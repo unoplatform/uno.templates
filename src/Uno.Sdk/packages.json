@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.0-dev.1526",
+    "version": "5.3.0-dev.1576",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.53"
+      "net9.0": "9.0.0-dev.70"
     }
   },
   {
@@ -115,7 +115,7 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.5",
+    "version": "8.0.6",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
@@ -224,7 +224,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.3.0-dev.70",
+    "version": "5.3.0-dev.72",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
