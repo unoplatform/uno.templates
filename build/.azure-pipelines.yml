@@ -11,6 +11,9 @@ pr:
       - main
       - release/*
       - legacy/*
+  paths:
+    exclude:
+      - .github/**
 
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
