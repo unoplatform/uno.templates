@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>Provides a base SDK for Uno Platform projects.</Description>
     <PackageTags></PackageTags>
-    <SdkPackageId>Uno.Sdk</SdkPackageId>
-    <SdkVersion>5.3.0-dev.1581</SdkVersion>
+    <SdkPackageId>Uno.Sdk.Private</SdkPackageId>
+    <SdkVersion>5.3.0-dev.1617</SdkVersion>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
   </PropertyGroup>
 

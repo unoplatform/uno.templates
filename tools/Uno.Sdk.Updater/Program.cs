@@ -7,7 +7,7 @@ using Uno.Sdk.Models;
 using Uno.Sdk.Services;
 using Uno.Sdk.Updater;
 
-const string UnoSdkPackageId = "Uno.Sdk";
+const string UnoSdkPackageId = "Uno.Sdk.Private";
 
 Console.WriteLine("Starting the Uno.Sdk Updater");
 Console.WriteLine($"Base Version: {UpdaterBuildContext.TemplateVersion}");
