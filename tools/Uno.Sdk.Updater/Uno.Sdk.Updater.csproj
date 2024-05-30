@@ -21,7 +21,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <Target Name="GenerateLocalFileSystem" BeforeTargets="BeforeBuild">
+  <Target Name="GenerateLocalFileSystem" BeforeTargets="BeforeCompile">
     <PropertyGroup>
       <TemplateVersion Condition=" $(TemplateVersion) == '' ">$(Version)</TemplateVersion>
     </PropertyGroup>
@@ -34,6 +34,8 @@
       <_FileSystemLine Include="//------------------------------------------------------------------------------" />
       <_FileSystemLine Include="using Uno.Sdk.Models%3b" />
       <_FileSystemLine Include="namespace Uno.Sdk.Updater%3b" />
+      <_FileSystemLine Include="[global::System.Runtime.CompilerServices.CompilerGenerated]" />
+      <_FileSystemLine Include="[global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]" />
       <_FileSystemLine Include="internal static partial class LocalFileSystem" />
       <_FileSystemLine Include="{" />
       <_FileSystemLine Include="public const string TemplatesSourceDirectory = @&quot;$(TemplatesSourceDirectory)&quot;%3b" />
@@ -46,6 +48,8 @@
 
     <ItemGroup>
       <Compile Include="%(_LocalFileSystem.Identity)" />
+      <_GeneratedCodeFiles Include="%(_LocalFileSystem.Identity)" />
+      <FileWrites Include="%(_LocalFileSystem.Identity)" />
     </ItemGroup>
   </Target>
 

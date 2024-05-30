@@ -18,7 +18,7 @@
 		<PropertyGroup>
 			<SdkBuildOutputPath>$([System.IO.Path]::Combine($(IntermediateOutputPath), 'sdk'))</SdkBuildOutputPath>
 			<SdkDownloadFolder>$([System.IO.Path]::Combine($(SdkBuildOutputPath), 'downloads'))</SdkDownloadFolder>
-			<SdkDownloadUri>https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/uno.sdk/versions/$(SdkVersion)/content</SdkDownloadUri>
+			<SdkDownloadUri>https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/$(SdkPackageId.ToLowerInvariant())/versions/$(SdkVersion)/content</SdkDownloadUri>
 			<SdkNuGetFile>$([System.IO.Path]::Combine($(SdkDownloadFolder), 'uno.sdk.$(SdkVersion).nupkg'))</SdkNuGetFile>
 		</PropertyGroup>
 

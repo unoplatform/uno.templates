@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.3.0-dev.1578 |
+| UnoVersion* | 5.3.0-dev.1581 |
 | UnoExtensionsVersion | 4.2.0-dev.81 |
 | UnoToolkitVersion | 6.1.0-dev.24 |
-| UnoThemesVersion | 5.1.0-dev.31 |
+| UnoThemesVersion | 5.1.0-dev.33 |
 | UnoCSharpMarkupVersion | 5.3.0-dev.84 |
 | UnoWasmBootstrapVersion** | $UnoWasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.3.0-dev.1578",
+    "version": "5.3.0-dev.1581",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -316,7 +316,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.1.0-dev.31",
+    "version": "5.1.0-dev.33",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",

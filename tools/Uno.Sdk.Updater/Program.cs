@@ -9,6 +9,12 @@ using Uno.Sdk.Updater;
 
 const string UnoSdkPackageId = "Uno.Sdk";
 
+Console.WriteLine("Starting the Uno.Sdk Updater");
+Console.WriteLine($"Base Version: {UpdaterBuildContext.TemplateVersion}");
+Console.WriteLine($"Minimum Search Version: {UpdaterBuildContext.MinVersion}");
+Console.WriteLine($"Maximum Search Version: {UpdaterBuildContext.MaxVersion}");
+WriteBreak();
+
 var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 {
     // We want to keep the output Human Readable
@@ -18,11 +24,23 @@ var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 
 using var client = new NuGetApiClient();
 
+Console.WriteLine($"Getting Package Versions for: {UnoSdkPackageId}");
 var versions = await client.GetPackageVersions(UnoSdkPackageId);
 
-versions = versions.Where(x => x > LocalFileSystem.MinVersion && x < LocalFileSystem.MaxVersion);
+versions = versions.Where(x => x > UpdaterBuildContext.MinVersion && x < UpdaterBuildContext.MaxVersion);
+
+if (!versions.Any())
+{
+    Console.Error.WriteLine("No Uno Version was found.");
+
+    // Ensure that we do not return a success exit code.
+    throw new InvalidOperationException("No Uno Version was found.");
+}
+
 var unoVersion = versions.OrderByDescending(x => x).First();
 
+Console.WriteLine($"Found Uno Version: {unoVersion}");
+Console.WriteLine($"Downloading {UnoSdkPackageId}");
 using var sdkPackage = await client.DownloadPackageAsync(UnoSdkPackageId, unoVersion);
 using var sdkZip = new ZipArchive(sdkPackage);
 
@@ -31,6 +49,7 @@ string? packagesJsonPath = null;
 string? relativePackagesJsonPath = null;
 string? description = null;
 string? tags = null;
+bool wroteChanges = false;
 
 foreach(var entry in sdkZip.Entries)
 {
@@ -42,6 +61,9 @@ foreach(var entry in sdkZip.Entries)
         continue;
     }
 
+    WriteBreak();
+
+    Console.WriteLine($"Evaluating {entry.FullName}");
     var outputPath = Path.Combine(LocalFileSystem.UnoSdkDirectory, entry.FullName);
     if (Path.GetFileName(outputPath).Equals("readme.md", StringComparison.InvariantCultureIgnoreCase))
     {
@@ -70,9 +92,10 @@ foreach(var entry in sdkZip.Entries)
             manifest.Add(updated);
         }
 
-        CreateUpdaterTargets(manifest);
+        CreateUpdaterTargets(manifest, ref wroteChanges);
         var json = JsonSerializer.Serialize(manifest, jsonOptions);
-        File.WriteAllText(outputPath, json, Encoding.UTF8);
+
+        WriteIfDifferent(outputPath, json, ref wroteChanges);
     }
     else if (extension == ".nuspec")
     {
@@ -83,15 +106,19 @@ foreach(var entry in sdkZip.Entries)
     }
     else
     {
+        Console.WriteLine($"Copying file: {outputPath}");
         entry.ExtractToFile(outputPath, true);
     }
 }
 
-if (string.IsNullOrEmpty(readMePath) || !File.Exists(readMePath))
+WriteBreak();
+
+if (wroteChanges && (string.IsNullOrEmpty(readMePath) || !File.Exists(readMePath)))
 {
     Console.WriteLine($"The downloaded {UnoSdkPackageId} did not contain a ReadMe.md, using local template.");
     readMePath = Path.Combine(LocalFileSystem.UnoSdkDirectory, "ReadMe.md");
     File.Copy("ReadMe.md", readMePath, true);
+    wroteChanges = true;
 }
 
 if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
@@ -109,19 +136,43 @@ if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
     readMe = Regex.Replace(readMe, Regex.Escape("$PackagesJson$"), manifestJson);
 
     Console.WriteLine("Updated the ReadMe with the versions used by this pack of the Uno.Sdk.");
-    File.WriteAllText(readMePath, readMe, Encoding.UTF8);
+    WriteIfDifferent(readMePath, readMe, ref wroteChanges);
 
-    CreateSdkProps(description, tags, unoVersion, readMePath, packagesJsonPath, relativePackagesJsonPath ?? "ERROR - Unable to determine path");
+    CreateSdkProps(description, tags, unoVersion, readMePath, packagesJsonPath, relativePackagesJsonPath ?? "ERROR - Unable to determine path", ref wroteChanges);
 }
 
-Console.WriteLine("Finished updated.");
+if (wroteChanges)
+{
+    Console.WriteLine("Uno.Sdk has been updated.");
+}
+else
+{
+    Console.WriteLine("No changes were made to the Uno.Sdk.");
+}
 
-static void CreateSdkProps(string? description, string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath)
+Console.WriteLine("Finished Uno.Sdk update.");
+
+static void WriteIfDifferent(string filePath, string content, ref bool didWriteChanges)
+{
+    if (!File.Exists(filePath) || !File.ReadAllText(filePath).Equals(content))
+    {
+        File.WriteAllText(filePath, content, Encoding.UTF8);
+        didWriteChanges = true;
+        Console.WriteLine($"File '{filePath}' updated");
+    }
+    else
+    {
+        Console.WriteLine($"File '{filePath}' skipped. Already up to date.");
+    }
+}
+
+static void CreateSdkProps(string? description, string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath, ref bool didWriteChanges)
 {
     var props = new Dictionary<string, string>
     {
         { "Description", description ?? string.Empty },
         { "PackageTags", tags ?? string.Empty },
+        { "SdkPackageId", UnoSdkPackageId },
         { "SdkVersion", unoVersion },
         { "PackageReadmeFile", Path.GetFileName(readMePath) }
     };
@@ -140,10 +191,10 @@ static void CreateSdkProps(string? description, string? tags, string unoVersion,
 
     Console.WriteLine("Creating Sdk Updater Props for the Uno.Sdk");
     var nuspecTargets = CreateMSBuildFile(props, readMe, packagesJson);
-    File.WriteAllText(Path.Combine(LocalFileSystem.UnoSdkDirectory, "Uno.Sdk.Updater.props"), nuspecTargets);
+    WriteIfDifferent(Path.Combine(LocalFileSystem.UnoSdkDirectory, "Uno.Sdk.Updater.props"), nuspecTargets, ref didWriteChanges);
 }
 
-static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest)
+static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool didWriteChanges)
 {
     var props = new Dictionary<string, string>
     {
@@ -159,7 +210,7 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest)
 
     Console.WriteLine("Creating Uno.Sdk.Updater.targets for the Templates to sync with the Sdk Versions.");
     var outputPath = Path.Combine(LocalFileSystem.TemplatesSourceDirectory, "Uno.Sdk.Updater.targets");
-    File.WriteAllText(outputPath, targets);
+    WriteIfDifferent(outputPath, targets, ref didWriteChanges);
 }
 
 static string CreateMSBuildFile(IDictionary<string, string> props, params MsBuildItem[] items)
@@ -268,6 +319,12 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     }
 
     return newGroup;
+}
+
+static void WriteBreak()
+{
+    Console.WriteLine("----------------------------------------------------");
+    Console.WriteLine();
 }
 
 internal record MsBuildItem(string Include, IDictionary<string, string> Attributes, string ItemType = "None")

@@ -2,9 +2,9 @@
 
 namespace Uno.Sdk.Updater;
 
-partial class LocalFileSystem
+internal static class UpdaterBuildContext
 {
-    static LocalFileSystem()
+    static UpdaterBuildContext()
     {
         TemplateVersion = NuGetVersion.Parse(GitVersionInformation.NuGetVersion);
 
