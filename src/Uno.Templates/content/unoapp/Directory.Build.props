@@ -23,15 +23,4 @@
     <NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
     <!--#endif-->
   </PropertyGroup>
-
-  <!-- See https://aka.platform.uno/using-uno-sdk#implicit-packages for more information regarding the Implicit Packages version properties. -->
-  <PropertyGroup>
-    <UnoExtensionsVersion>$UnoExtensionsVersion$</UnoExtensionsVersion>
-    <UnoToolkitVersion>$UnoToolkitVersion$</UnoToolkitVersion>
-    <UnoThemesVersion>$UnoThemesVersion$</UnoThemesVersion>
-    <UnoCSharpMarkupVersion>$UnoMarkupVersion$</UnoCSharpMarkupVersion>
-
-    <!-- Remove me -->
-    <UnoDspTasksVersion>1.4.0-dev.12</UnoDspTasksVersion>
-  </PropertyGroup>
 </Project>

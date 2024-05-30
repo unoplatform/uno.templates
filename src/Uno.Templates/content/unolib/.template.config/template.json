@@ -57,11 +57,11 @@
         }
       ]
     },
-    "unoWinUIVersion": {
+    "unoSdkVersion": {
       "type": "parameter",
       "datatype": "text",
-      "defaultValue": "DefaultUnoWinUIVersion",
-      "replaces": "$UnoWinUIVersion$"
+      "defaultValue": "DefaultUnoSdkVersion",
+      "replaces": "$UnoSdkVersion$"
     },
     "globalJson": {
       "type": "parameter",

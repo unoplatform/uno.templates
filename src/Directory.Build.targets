@@ -1,18 +1,8 @@
 <Project>
   <Import Project="Directory.UnoMetadata.targets" />
+  <Import Project="Uno.Sdk.Updater.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.1451</UnoVersion>
-    <UnoExtensionsVersion Condition="'$(UnoExtensionsVersion)' == ''">4.2.0-dev.36</UnoExtensionsVersion>
-    <UnoThemesVersion Condition="'$(UnoThemesVersion)' == ''">5.1.0-dev.19</UnoThemesVersion>
-    <UnoToolkitVersion Condition="'$(UnoToolkitVersion)' == ''">6.1.0-dev.11</UnoToolkitVersion>
-    <UnoMarkupVersion Condition="'$(UnoMarkupVersion)' == ''">5.3.0-dev.70</UnoMarkupVersion>
-    <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.13</UnoWasmBootstrapVersionNet8>
-    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.43</UnoWasmBootstrapVersionNet9>
-    <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
-    <UnoCoreLoggingVersion Condition="'$(UnoCoreLoggingVersion)' == ''">4.0.1</UnoCoreLoggingVersion>
-    <UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.9</UnoDspTasksVersion>
-
     <UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
     <MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdkVersion)' == ''">17.9.0</MicrosoftTestSdkVersion>
     <NUnitVersion Condition="'$(NUnitVersion)' == ''">4.1.0</NUnitVersion>
@@ -23,37 +13,9 @@
     <XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
 
     <!-- UWP Legacy Templates -->
-    <MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
-    <MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240428000</MicrosoftWindowsAppSDKVersion>
     <UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
     <XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
   </PropertyGroup>
-
-  <Target Name="ReplaceVersions" BeforeTargets="BeforeBuild">
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsVersion" ReplacementText="$(UnoExtensionsVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWinUIVersion" ReplacementText="$(UnoVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoThemesVersion" ReplacementText="$(UnoThemesVersion)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoToolkitVersion" ReplacementText="$(UnoToolkitVersion)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoMarkupVersion" ReplacementText="$(UnoMarkupVersion)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsSDKBuildTools" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsAppSDK" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultXamarinGoogleAndroidMaterial" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoCoreLoggingVersion" ReplacementText="$(UnoCoreLoggingVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoDspTasksVersion" ReplacementText="$(UnoDspTasksVersion)" />
-
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$MicrosoftTestSdk$" ReplacementText="$(MicrosoftTestSdkVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
-    <ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
-  </Target>
 
   <!-- Using Regex Replace prevents XmlPoke from replacing Tabs with Spaces -->
   <UsingTask TaskName="ReplaceFileText" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">

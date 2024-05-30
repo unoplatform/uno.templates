@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="Uno.Sdk.Updater.props" />
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<DevelopmentDependency>true</DevelopmentDependency>
+		<PackageId>Uno.Sdk</PackageId>
+		<NoWarn>$(NoWarn);NU5128;NU5100</NoWarn>
+		<PackageType>MSBuildSdk</PackageType>
+		<EnableDefaultItems>False</EnableDefaultItems>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+	</PropertyGroup>
+
+	<Target Name="DownloadPrivateSdk"
+			BeforeTargets="ExtractSdkAssets">
+		<Error Text="No Sdk Version was found. Please ensure that the Uno.Sdk.Updater is run before building the Uno.Sdk project." Condition="'$(SdkVersion)' == ''" />
+
+		<PropertyGroup>
+			<SdkBuildOutputPath>$([System.IO.Path]::Combine($(IntermediateOutputPath), 'sdk'))</SdkBuildOutputPath>
+			<SdkDownloadFolder>$([System.IO.Path]::Combine($(SdkBuildOutputPath), 'downloads'))</SdkDownloadFolder>
+			<SdkDownloadUri>https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/$(SdkPackageId.ToLowerInvariant())/versions/$(SdkVersion)/content</SdkDownloadUri>
+			<SdkNuGetFile>$([System.IO.Path]::Combine($(SdkDownloadFolder), '$(SdkPackageId.ToLowerInvariant()).$(SdkVersion).nupkg'))</SdkNuGetFile>
+		</PropertyGroup>
+
+		<MakeDir Directories="$(SdkDownloadFolder)" />
+
+		<DownloadFile Condition="!Exists($(SdkNuGetFile))"
+					  SourceUrl="$(SdkDownloadUri)"
+					  DestinationFileName="$(SdkPackageId.ToLowerInvariant()).$(SdkVersion).nupkg"
+					  DestinationFolder="$(SdkDownloadFolder)" />
+	</Target>
+
+	<Target Name="ExtractSdkAssets"
+			AfterTargets="DownloadPrivateSdk"
+			BeforeTargets="BundleSdkAssets">
+
+		<PropertyGroup>
+			<SdkNuGetExtractionPath>$([System.IO.Path]::Combine($(SdkBuildOutputPath), 'extract', '$(SdkVersion)'))</SdkNuGetExtractionPath>
+		</PropertyGroup>
+
+		<Unzip Condition="Exists($(SdkNuGetFile)) AND !Exists($(SdkNuGetExtractionPath))"
+			   SourceFiles="$(SdkNuGetFile)"
+			   DestinationFolder="$(SdkNuGetExtractionPath)" />
+	</Target>
+
+	<Target Name="BundleSdkAssets"
+			AfterTargets="ExtractSdkAssets"
+			BeforeTargets="CoreCompile;Build;Pack">
+		<ItemGroup>
+			<None Include="$(SdkNuGetExtractionPath)\**\*.props;$(SdkNuGetExtractionPath)\**\*.targets;$(SdkNuGetExtractionPath)\**\*.dll;$(SdkNuGetExtractionPath)\**\*.buildschema.json"
+				Pack="true"
+				PackagePath="%(RecursiveDir)" />
+		</ItemGroup>
+
+		<Message Text="Packing: %(None.Identity)" Importance="high"
+			Condition="%(None.Pack) == 'true'" />
+	</Target>
+
+</Project>
