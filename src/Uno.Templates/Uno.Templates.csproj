@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
@@ -38,8 +38,6 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsSDKBuildTools" ReplacementText="$(MicrosoftWindowsSDKBuildToolsVersion)" />
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultMicrosoftWindowsAppSDK" ReplacementText="$(MicrosoftWindowsAppSDKVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultXamarinGoogleAndroidMaterial" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoCoreLoggingVersion" ReplacementText="$(UnoCoreLoggingVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoDspTasksVersion" ReplacementText="$(UnoDspTasksVersion)" />

@@ -1,15 +1,8 @@
 <Project>
   <Import Project="Directory.UnoMetadata.targets" />
-  <Import Project="Uno.Sdk.Updater.targets" Condition="Exists('Uno.Sdk.Updater.targets')" />
+  <Import Project="Uno.Sdk.Updater.targets" />
 
   <PropertyGroup>
-    <UnoVersion Condition="'$(UnoVersion)' == ''">5.3.0-dev.1451</UnoVersion>
-    <UnoWasmBootstrapVersionNet8 Condition="'$(UnoWasmBootstrapVersionNet8)' == ''">8.0.13</UnoWasmBootstrapVersionNet8>
-    <UnoWasmBootstrapVersionNet9 Condition="'$(UnoWasmBootstrapVersionNet9)' == ''">9.0.0-dev.43</UnoWasmBootstrapVersionNet9>
-    <UnoExtensionsLoggingVersion Condition="'$(UnoExtensionsLoggingVersion)' == ''">1.7.0</UnoExtensionsLoggingVersion>
-    <UnoCoreLoggingVersion Condition="'$(UnoCoreLoggingVersion)' == ''">4.0.1</UnoCoreLoggingVersion>
-    <UnoDspTasksVersion Condition="'$(UnoDspTasksVersion)' == ''">1.2.9</UnoDspTasksVersion>
-
     <UnoUITestHelpersVersion Condition="'$(UnoUITestHelpersVersion)' == ''">1.1.0-dev.70</UnoUITestHelpersVersion>
     <MicrosoftTestSdkVersion Condition="'$(MicrosoftTestSdkVersion)' == ''">17.9.0</MicrosoftTestSdkVersion>
     <NUnitVersion Condition="'$(NUnitVersion)' == ''">4.1.0</NUnitVersion>
@@ -20,8 +13,6 @@
     <XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
 
     <!-- UWP Legacy Templates -->
-    <MicrosoftWindowsSDKBuildToolsVersion Condition="'$(MicrosoftWindowsSDKBuildToolsVersion)' == ''">10.0.22621.3233</MicrosoftWindowsSDKBuildToolsVersion>
-    <MicrosoftWindowsAppSDKVersion Condition="'$(MicrosoftWindowsAppSDKVersion)' == ''">1.5.240428000</MicrosoftWindowsAppSDKVersion>
     <UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
     <XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
   </PropertyGroup>
