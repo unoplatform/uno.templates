@@ -57,7 +57,7 @@ stages:
                     param($match) "$($match.Groups[1].Value)$( $([int]$match.Groups[2].Value) + 1700)"
                 })
 
-            Write-Host "##vso[task.setvariable variable=GITVERSION_SEMVER]$env:GITVERSION_SEMVER"
+            Write-Host "##vso[task.setvariable variable=GITVERSION.SEMVER]$env:GITVERSION_SEMVER"
             Write-Host "##vso[build.updatebuildnumber]$env:GITVERSION_SEMVER"
         }
       displayName: Adjust Build Number for 5.3
