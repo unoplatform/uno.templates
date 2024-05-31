@@ -25,18 +25,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    # - name: Setup GitVersion
-    #   uses: gittools/actions/gitversion/setup@v1.1.1
-    #   with:
-    #     versionSpec: '5.10.3'
-
-    # - name: GitVersion
-    #   id: gitversion
-    #   uses: gittools/actions/gitversion/execute@v1.1.1
-    #   with:
-    #     useConfigFile: true
-    #     configFilePath: build/gitversion.yml
-
     - name: Run Uno Sdk Updater
       run: dotnet run --project tools/Uno.Sdk.Updater
 
@@ -56,13 +44,13 @@ jobs:
 
     - name: Enable Pull Request Automerge
       if: steps.cpr.outputs.pull-request-operation == 'created'
-      uses: peter-evans/enable-pull-request-automerge@v3
+      uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d # v3.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-    # - name: Auto approve
-    #   if: steps.cpr.outputs.pull-request-operation == 'created'
-    #   run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
-    #   env:
-    #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Auto approve
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
