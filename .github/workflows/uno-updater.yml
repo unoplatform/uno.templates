@@ -1,0 +1,50 @@
+name: Update Uno Sdk
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/uno-updater.yml
+      - tools/Uno.Sdk.Updater/*
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: main
+
+    - name: Run Uno Sdk Updater
+      run: dotnet run --project tools/Uno.Sdk.Updater
+
+    - name: Create Pull Request
+      id: cpr
+      uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: dev/sdk/update
+        title: Uno.Sdk Update
+        body: |
+          This updates the Uno.Sdk to the latest available version. 
+        labels: sdk-update
+        draft: false
+
+    - name: Enable Pull Request Automerge
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      uses: peter-evans/enable-pull-request-automerge@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+
+    # - name: Auto approve
+    #   if: steps.cpr.outputs.pull-request-operation == 'created'
+    #   run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
+    #   env:
+    #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
