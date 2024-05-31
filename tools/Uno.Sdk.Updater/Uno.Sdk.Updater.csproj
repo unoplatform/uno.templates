@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,8 +7,6 @@
     <Nullable>enable</Nullable>
     <TemplatesSourceDirectory>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'src'))</TemplatesSourceDirectory>
     <UnoSdkDirectory>$([MSBuild]::NormalizePath('$(TemplatesSourceDirectory)', 'Uno.Sdk'))</UnoSdkDirectory>
-    <GitVersionConfigPath>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'build', 'gitversion.yml'))</GitVersionConfigPath>
-    <GitVersion_ToolArgments>/config $(GitVersionConfigPath)</GitVersion_ToolArgments>
   </PropertyGroup>
 
   <ItemGroup>
