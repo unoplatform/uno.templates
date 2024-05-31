@@ -48,7 +48,7 @@ stages:
 
     - powershell: |
         # Offset the commit count to match uno's current count
-        if ($env:GITVERSION_SEMVER -match '^5\.2.*-dev\.\d+') {
+        if ($env:GITVERSION_SEMVER -match '^5\.3.*-dev\.\d+') {
 
             $env:GITVERSION_SEMVER = [regex]::Replace(
                 $env:GITVERSION_SEMVER,
@@ -60,7 +60,7 @@ stages:
             Write-Host "##vso[task.setvariable variable=GITVERSION_SEMVER]$env:GITVERSION_SEMVER"
             Write-Host "##vso[build.updatebuildnumber]$env:GITVERSION_SEMVER"
         }
-      displayName: Adjust Build Number for 5.2
+      displayName: Adjust Build Number for 5.3
 
     - template: templates/canary-updater.yml
 
