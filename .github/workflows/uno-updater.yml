@@ -10,6 +10,11 @@ on:
       - .github/workflows/uno-updater.yml
       - tools/Uno.Sdk.Updater/*
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to update'
+        required: true
+        default: 'main'
 
 jobs:
   update:
@@ -25,6 +30,7 @@ jobs:
       run: dotnet run --project tools/Uno.Sdk.Updater
 
     - name: Create Pull Request
+      if: github.event_name != 'pull_request'
       id: cpr
       uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
       with:
