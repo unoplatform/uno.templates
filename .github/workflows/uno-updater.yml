@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-        ref: main
+
 
     - name: Run Uno Sdk Updater
       run: dotnet run --project tools/Uno.Sdk.Updater
