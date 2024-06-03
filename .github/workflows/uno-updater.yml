@@ -17,7 +17,7 @@ on:
         default: 'main'
 
 jobs:
-  update:
+  manifest-update:
     runs-on: windows-latest
     steps:
     - name: Checkout
@@ -43,7 +43,7 @@ jobs:
         configFilePath: build/gitversion.yml
 
     - name: Run Uno Sdk Updater
-      run: dotnet run --project tools/Uno.Sdk.Updater
+      run: dotnet run -c Release --project tools/Uno.Sdk.Updater
 
     - name: Create Pull Request
       if: github.event_name != 'pull_request'
