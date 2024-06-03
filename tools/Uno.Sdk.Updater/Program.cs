@@ -117,7 +117,7 @@ if (wroteChanges && (string.IsNullOrEmpty(readMePath) || !File.Exists(readMePath
 {
     Console.WriteLine($"The downloaded {UnoSdkPackageId} did not contain a ReadMe.md, using local template.");
     readMePath = Path.Combine(LocalFileSystem.UnoSdkDirectory, "ReadMe.md");
-    File.Copy("ReadMe.md", readMePath, true);
+    File.Copy(Path.Combine(LocalFileSystem.UnoSdkUpdaterDirectory, "ReadMe.md"), readMePath, true);
     wroteChanges = true;
 }
 
