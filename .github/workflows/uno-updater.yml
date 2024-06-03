@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Uno Sdk Updater
       working-directory: tools/Uno.Sdk.Updater
-      run: dotnet run --project
+      run: dotnet run
 
     - name: Create Pull Request
       if: github.event_name != 'pull_request'
