@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<TemplatesSourceDirectory>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'src'))</TemplatesSourceDirectory>
 		<UnoSdkDirectory>$([MSBuild]::NormalizePath('$(TemplatesSourceDirectory)', 'Uno.Sdk'))</UnoSdkDirectory>
+		<UnoSdkUpdaterDirectory>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)'))</UnoSdkUpdaterDirectory>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,7 +21,8 @@
 	<Target Name="GenerateVersion" BeforeTargets="BeforeCompile">
 
 		<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-			<GitVersion_FullSemVer Condition="'$(GitVersion_FullSemVer)'==''">255.255.255.255</GitVersion_FullSemVer>
+			<!-- When debugging, change this version to the next pre-release -->
+			<GitVersion_FullSemVer Condition="'$(GitVersion_FullSemVer)'==''">5.3-dev</GitVersion_FullSemVer>
 		</PropertyGroup>
 
 		<Error Condition="'$(GitVersion_FullSemVer)'==''"
@@ -72,6 +74,7 @@
 			<_FileSystemLine Include="{" />
 			<_FileSystemLine Include="public const string TemplatesSourceDirectory = @&quot;$(TemplatesSourceDirectory)&quot;%3b" />
 			<_FileSystemLine Include="public const string UnoSdkDirectory = @&quot;$(UnoSdkDirectory)&quot;%3b" />
+			<_FileSystemLine Include="public const string UnoSdkUpdaterDirectory = @&quot;$(UnoSdkUpdaterDirectory)&quot;%3b" />
 			<_FileSystemLine Include="}" />
 		</ItemGroup>
 		<WriteLinesToFile File="%(_LocalFileSystem.Identity)"
