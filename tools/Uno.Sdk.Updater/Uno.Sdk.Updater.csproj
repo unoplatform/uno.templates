@@ -7,8 +7,9 @@
     <Nullable>enable</Nullable>
     <TemplatesSourceDirectory>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'src'))</TemplatesSourceDirectory>
     <UnoSdkDirectory>$([MSBuild]::NormalizePath('$(TemplatesSourceDirectory)', 'Uno.Sdk'))</UnoSdkDirectory>
+    <GitVersion_ToolArgments> /config $([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..', '..', 'build', 'gitversion.yml'))</GitVersion_ToolArgments>
   </PropertyGroup>
-
+    
   <ItemGroup>
     <None Update="ReadMe.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
