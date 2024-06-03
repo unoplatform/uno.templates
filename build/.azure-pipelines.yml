@@ -67,17 +67,17 @@ stages:
     - template: templates/canary-updater.yml
 
     - powershell: |
-        $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
+        $adjustedPackageVersion="$(GitVersion.SemVer)".ToLower();
 
         # Pack the Uno.Sdk
-        & dotnet build src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
+        & dotnet build src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(GitVersion.AssemblySemVer) /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
       displayName: Pack Uno.Sdk
 
     - powershell: |
-        $adjustedPackageVersion="$env:GITVERSION_SEMVER".ToLower();
+        $adjustedPackageVersion="$(GitVersion.SemVer)".ToLower();
 
         # Pack the Uno.Templates
-        & dotnet build src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$env:GITVERSION_ASSEMBLYSEMVER /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
+        & dotnet build src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(GitVersion.AssemblySemVer) /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
 
       displayName: Pack Uno.Templates
 
