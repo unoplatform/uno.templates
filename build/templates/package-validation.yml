@@ -81,6 +81,12 @@ steps:
   condition: eq(variables['Agent.OS'], 'Darwin')
   displayName: Select Xcode
 
+- bash: |
+    brew install ninja
+
+  condition: eq(variables['Agent.OS'], 'Darwin')
+  displayName: Install ninja
+
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
