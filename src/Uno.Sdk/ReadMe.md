@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.3.0-dev.1669 |
+| UnoVersion* | 5.3.0-dev.1678 |
 | UnoExtensionsVersion | 4.2.0-dev.81 |
-| UnoToolkitVersion | 6.1.0-dev.24 |
-| UnoThemesVersion | 5.1.0-dev.33 |
+| UnoToolkitVersion | 6.1.0-dev.25 |
+| UnoThemesVersion | 5.1.0-dev.35 |
 | UnoCSharpMarkupVersion | 5.3.0-dev.86 |
 | UnoWasmBootstrapVersion** | $WasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.1 |
 | MicrosoftLoggingVersion** | 8.0.0 |
 | WindowsCompatibilityVersion** | 8.0.6 |
-| MicrosoftIdentityClientVersion | 4.61.1 |
+| MicrosoftIdentityClientVersion | 4.61.2 |
 | CommunityToolkitMvvmVersion | 8.2.2 |
 | PrismVersion | 9.0.401-pre |
 | AndroidMaterialVersion | 1.10.0.3 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.3.0-dev.1669",
+    "version": "5.3.0-dev.1678",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -166,7 +166,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.61.1",
+    "version": "4.61.2",
     "packages": [
       "Microsoft.Identity.Client"
     ]
@@ -304,7 +304,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.1.0-dev.24",
+    "version": "6.1.0-dev.25",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -316,7 +316,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.1.0-dev.33",
+    "version": "5.1.0-dev.35",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
