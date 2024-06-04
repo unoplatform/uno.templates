@@ -275,7 +275,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.1.0-dev.35",
+    "version": "5.1.0-dev.36",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
