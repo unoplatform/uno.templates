@@ -31,7 +31,6 @@ public class ShellViewModel
     }
 #else
         // Add code here to initialize or attach event handlers to singleton services
-        // for example the LoggedOut event of an authentication service.
     }
 #endif
 //-:cnd:noEmit
