@@ -66,8 +66,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-    - name: Auto approve
-      if: steps.cpr.outputs.pull-request-operation == 'created'
-      run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Auto approve
+    #  if: steps.cpr.outputs.pull-request-operation == 'created'
+    #  run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
+    #  env:
+    #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
