@@ -125,7 +125,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.61.2",
+    "version": "4.61.3",
     "packages": [
       "Microsoft.Identity.Client"
     ]
