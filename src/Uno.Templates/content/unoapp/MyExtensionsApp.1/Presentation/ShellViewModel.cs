@@ -30,12 +30,7 @@ public class ShellViewModel
         await _navigator.NavigateViewModelAsync<LoginViewModel>(this, qualifier: Qualifiers.ClearBackStack);
     }
 #else
-        _ = Start();
-    }
-
-    public async Task Start()
-    {
-        await _navigator.NavigateViewModelAsync<MainViewModel>(this);
+        // Add code here to initialize or attach event handlers to singleton services
     }
 #endif
 //-:cnd:noEmit

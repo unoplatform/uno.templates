@@ -283,7 +283,7 @@ $$EnableDeveloperMode_Region_Navigate$$
 #if (useAuthentication)
                     new ("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
 #endif
-                    new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>()),
+                    new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>(), IsDefault:true),
                     new ("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
                 ]
             )
