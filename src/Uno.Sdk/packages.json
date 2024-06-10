@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.65",
+    "version": "5.4.0-dev.87",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.5.0-dev.101",
+    "version": "1.5.0-dev.103",
     "packages": [
       "Uno.Resizetizer"
     ]
