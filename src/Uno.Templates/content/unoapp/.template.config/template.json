@@ -648,6 +648,13 @@
       "defaultValue": "true",
       "description": "Sets up Visual Studio Code Debugging for WebAssembly and Skia Desktop"
     },
+    "rider": {
+      "displayName": "Rider Support",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Sets up Rider support for the solution"
+    },
     "wasmPwaManifest": {
       "displayName": "PWA Manifest",
       "description": "Includes a manifest in the WebAssembly project to make the application a PWA",
@@ -3083,6 +3090,12 @@
           "condition": "(!vscode)",
           "exclude": [
             ".vscode/**/*"
+          ]
+        },
+        {
+          "condition": "(!rider)",
+          "exclude": [
+            ".run/**/*"
           ]
         },
         {

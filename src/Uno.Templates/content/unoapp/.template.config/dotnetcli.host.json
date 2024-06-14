@@ -85,6 +85,10 @@
       "longName": "vscode",
       "shortName": "vscode"
     },
+    "rider": {
+      "longName": "rider",
+      "shortName": "rider"
+    },
     "mauiEmbedding": {
       "longName": "maui-embedding",
       "shortName": "maui"
