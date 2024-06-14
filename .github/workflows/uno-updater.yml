@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+      - release/stable/*
     paths:
       - .github/workflows/uno-updater.yml
       - tools/Uno.Sdk.Updater/*
