@@ -44,5 +44,8 @@
 #//#endif
     "Microsoft.VisualStudio.Workload.NetCrossPlat",
     "Microsoft.VisualStudio.Workload.NetCoreTools"
+  ],
+  "extensions": [
+    "https://marketplace.visualstudio.com/items?itemName=unoplatform.uno-platform-addin-2022"
   ]
 }
