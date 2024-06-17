@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.20",
+    "version": "5.3.31",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -44,7 +44,7 @@
   },
   {
     "group": "CoreLogging",
-    "version": "4.0.1",
+    "version": "4.1.1",
     "packages": [
       "Uno.Core.Extensions.Logging.Singleton"
     ]
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.4.10",
+    "version": "1.5.0",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -127,7 +127,8 @@
     "group": "MsalClient",
     "version": "4.61.3",
     "packages": [
-      "Microsoft.Identity.Client"
+      "Microsoft.Identity.Client",
+      "Microsoft.Identity.Client.Extensions.Msal"
     ]
   },
   {
