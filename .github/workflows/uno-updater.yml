@@ -19,6 +19,12 @@ jobs:
           - main
           - release/stable/5.3
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ matrix.branch }}
+        fetch-depth: 0
+  
     - name: "Sdk Update"
       uses: ./.github/actions/sdk-update
       with:

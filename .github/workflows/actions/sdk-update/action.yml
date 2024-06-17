@@ -1,19 +1,9 @@
 name: "SDK Update"
 description: "Update Uno Sdk"
-inputs:
-  branch:
-    description: "Branch to update"
-    required: true
 
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ inputs.branch }}
-        fetch-depth: 0
-
     - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:

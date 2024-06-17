@@ -13,7 +13,10 @@ jobs:
   manifest-update:
     runs-on: windows-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
     - name: "Sdk Update"
       uses: ./.github/actions/sdk-update
-      with:
-        branch: ${{ github.head_ref }}
