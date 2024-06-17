@@ -74,7 +74,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.targetbranch.outputs.targetbranch }}
         commit-message: 'chore: Update Uno.Sdk'
-        title: Uno.Sdk Update
+        title: Uno.Sdk Update - ${{ matrix.branch }}
         body: |
           This updates the Uno.Sdk to the latest available version. 
         labels: sdk-update
