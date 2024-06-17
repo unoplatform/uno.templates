@@ -3,12 +3,6 @@ name: Update Uno Sdk
 on:
   schedule:
     - cron: '0 */6 * * *'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - .github/workflows/uno-updater.yml
-      - tools/Uno.Sdk.Updater/*
   workflow_dispatch:
     inputs:
       branch:
@@ -25,11 +19,10 @@ jobs:
           - main
           - release/stable/5.3
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - name: "Sdk Update"
+      uses: ./.github/actions/sdk-update
       with:
-        ref: ${{ matrix.branch }}
-        fetch-depth: 0
+        branch: ${{ matrix.branch }}
 
     - name: Set target branch
       id: targetbranch
@@ -42,28 +35,7 @@ jobs:
         fi
       shell: bash
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.300'
-
-    - name: Setup GitVersion
-      uses: gittools/actions/gitversion/setup@v1.1.1
-      with:
-        versionSpec: '5.10.3'
-
-    - name: GitVersion
-      id: gitversion
-      uses: gittools/actions/gitversion/execute@v1.1.1
-      with:
-        useConfigFile: true
-        configFilePath: build/gitversion.yml
-
-    - name: Run Uno Sdk Updater
-      run: dotnet run -c Release --project tools/Uno.Sdk.Updater
-
     - name: Create Pull Request
-      if: github.event_name != 'pull_request'
       id: cpr
       uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
       with:
