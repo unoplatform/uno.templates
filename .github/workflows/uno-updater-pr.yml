@@ -6,7 +6,8 @@ on:
       - main
       - release/stable/*
     paths:
-      - .github/workflows/uno-updater.yml
+      - .github/workflows/uno-updater-pr.yml
+      - .github/actions/sdk-update/*
       - tools/Uno.Sdk.Updater/*
 
 jobs:
