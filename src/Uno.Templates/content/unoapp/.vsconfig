@@ -16,8 +16,6 @@
     "Microsoft.VisualStudio.Component.Web",
     "Microsoft.VisualStudio.ComponentGroup.Web.Client",
     "Microsoft.VisualStudio.Workload.NetWeb",
-    "Microsoft.VisualStudio.ComponentGroup.Azure.Prerequisites",
-    "Microsoft.VisualStudio.Workload.Azure",
     "Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.TemplateEngine",
 #//#endif
 #//#if (useWinAppSdk)
