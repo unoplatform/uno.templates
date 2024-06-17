@@ -2,11 +2,10 @@ name: Update Uno Sdk
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */6 * * *'
   pull_request:
     branches:
       - main
-      - release/stable/5.3
     paths:
       - .github/workflows/uno-updater.yml
       - tools/Uno.Sdk.Updater/*
@@ -20,11 +19,28 @@ on:
 jobs:
   manifest-update:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        branch:
+          - main
+          - release/stable/5.3
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        ref: ${{ matrix.branch }}
         fetch-depth: 0
+
+    - name: Set target branch
+      id: targetbranch
+      run: |
+        if [[ "${{ matrix.branch }}" == "main" ]]; then
+          echo "::set-output name=targetbranch::sdk/update/dev"
+        else
+          versionNumber=$(echo "${{ matrix.branch }}" | cut -d'/' -f 3)
+          echo "::set-output name=targetbranch::sdk/update/release/$versionNumber"
+        fi
+      shell: bash
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -52,7 +68,7 @@ jobs:
       uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: dev/sdk/update
+        branch: ${{ steps.targetbranch.outputs.targetbranch }}
         commit-message: 'chore: Update Uno.Sdk'
         title: Uno.Sdk Update
         body: |
