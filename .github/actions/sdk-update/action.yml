@@ -1,0 +1,26 @@
+name: "SDK Update"
+description: "Update Uno Sdk"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.300'
+
+    - name: Setup GitVersion
+      uses: gittools/actions/gitversion/setup@v1.1.1
+      with:
+        versionSpec: '5.10.3'
+
+    - name: GitVersion
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v1.1.1
+      with:
+        useConfigFile: true
+        configFilePath: build/gitversion.yml
+
+    - name: Run Uno Sdk Updater
+      run: dotnet run -c Release --project tools/Uno.Sdk.Updater
+      shell: pwsh
