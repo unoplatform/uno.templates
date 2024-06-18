@@ -23,3 +23,4 @@ runs:
 
     - name: Run Uno Sdk Updater
       run: dotnet run -c Release --project tools/Uno.Sdk.Updater
+      shell: pwsh
