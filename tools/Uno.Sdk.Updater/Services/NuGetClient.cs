@@ -15,6 +15,8 @@ internal class NuGetApiClient : IDisposable
 		BaseAddress = new Uri("https://pkgs.dev.azure.com")
 	};
 
+	public NuGetVersion? UnoVersion { get; set; }
+
 	public async Task<Stream> DownloadPackageAsync(string packageId, string version)
 	{
 		var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
@@ -36,9 +38,13 @@ internal class NuGetApiClient : IDisposable
 	{
 		var allVersions = new List<string>();
 		var publicVersions = await GetPublicPackageVersions(packageId);
-		var privateVersions = await GetPrivatePackageVersions(packageId);
 		allVersions.AddRange(publicVersions);
-		allVersions.AddRange(privateVersions);
+
+		if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
+		{
+			var privateVersions = await GetPrivatePackageVersions(packageId);
+			allVersions.AddRange(privateVersions);
+		}
 
 		var output = new List<NuGetVersion>();
 		foreach (var version in allVersions.Distinct())
