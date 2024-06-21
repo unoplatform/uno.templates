@@ -3,19 +3,6 @@ name: Update Uno Sdk
 on:
   schedule:
     - cron: '0 */6 * * *'
-<<<<<<< HEAD
-  pull_request:
-    branches:
-      - main
-<<<<<<< HEAD
-      - release/stable/*
-=======
->>>>>>> e7d0964 (ci: Updater fixes for release branches)
-    paths:
-      - .github/workflows/uno-updater.yml
-      - tools/Uno.Sdk.Updater/*
-=======
->>>>>>> 8aaa6af (ci: split cron and PR runner logic)
   workflow_dispatch:
     inputs:
       branch:
