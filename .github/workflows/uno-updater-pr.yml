@@ -1,0 +1,23 @@
+name: Update Uno Sdk (PR)
+
+on:
+  pull_request:
+    branches:
+      - main
+      - release/stable/*
+    paths:
+      - .github/workflows/uno-updater-pr.yml
+      - .github/actions/sdk-update/*
+      - tools/Uno.Sdk.Updater/*
+
+jobs:
+  manifest-update:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: "Sdk Update"
+      uses: ./.github/actions/sdk-update
