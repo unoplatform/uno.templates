@@ -1,4 +1,4 @@
-﻿using System.IO.Compression;
+using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -38,6 +38,7 @@ if (!versions.Any())
 }
 
 var unoVersion = versions.OrderByDescending(x => x).First();
+client.UnoVersion = unoVersion;
 
 Console.WriteLine($"Found Uno Version: {unoVersion}");
 Console.WriteLine($"Downloading {UnoSdkPackageId}");
@@ -268,11 +269,12 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
 
     var preview = unoVersion.IsPreview;
     string[] stableOnlyGroups = [
-    "CoreLogging",
-    "OSLogging",
-    "UniversalImageLoading",
-    "WasmBootstrap"
-];
+        "CoreLogging",
+        "OSLogging",
+        "UniversalImageLoading",
+        "WasmBootstrap"
+    ];
+
     if (stableOnlyGroups.Any(x => x == group.Group))
     {
         preview = false;
