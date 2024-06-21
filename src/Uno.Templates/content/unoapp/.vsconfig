@@ -21,15 +21,11 @@
     "Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.TemplateEngine",
 #//#endif
 #//#if (useWinAppSdk)
-    "Microsoft.VisualStudio.Component.Windows10SDK.19041",
     "Microsoft.VisualStudio.ComponentGroup.MSIX.Packaging",
 #//#endif
     "Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites",
     "Microsoft.VisualStudio.Component.Debugger.JustInTime",
     "Microsoft.VisualStudio.Workload.ManagedDesktop",
-    "Microsoft.Component.NetFX.Native",
-    "Microsoft.VisualStudio.Component.Graphics",
-    "Microsoft.VisualStudio.Component.Merq",
 #//#if (useIOS)
     "Component.Xamarin.RemotedSimulator",
 #//#endif
@@ -39,7 +35,6 @@
 #//#endif
 #//#if (useAndroid)
     "Component.Android.SDK34",
-    "Component.Android.SDK33",
     "Component.OpenJDK",
 #//#endif
     "Microsoft.VisualStudio.Workload.NetCrossPlat",
