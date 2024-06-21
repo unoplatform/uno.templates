@@ -334,6 +334,24 @@
         }
       ]
     },
+    "AllowPrereleaseNetSdk": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "false"
+          },
+          {
+            "condition": "(tfm == 'net9.0')",
+            "value": "true"
+          }
+        ]
+      }
+    },
     "presetTestsDefault": {
       "type": "generated",
       "generator": "switch",
