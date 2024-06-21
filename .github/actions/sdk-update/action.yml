@@ -1,6 +1,12 @@
 name: "SDK Update"
 description: "Update Uno Sdk"
 
+inputs:
+  branch:  # id of input
+    description: 'base branch'
+    required: true
+    default: 'main'
+
 runs:
   using: "composite"
   steps:
@@ -20,6 +26,7 @@ runs:
       with:
         useConfigFile: true
         configFilePath: build/gitversion.yml
+        additionalArguments: -b "${{ inputs.branch }}"
 
     - name: Run Uno Sdk Updater
       run: dotnet run -c Release --project tools/Uno.Sdk.Updater

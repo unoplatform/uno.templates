@@ -34,10 +34,10 @@ jobs:
       id: targetbranch
       run: |
         if [[ "${{ matrix.branch }}" == "main" ]]; then
-          echo "::set-output name=targetbranch::sdk/update/dev"
+          echo "targetbranch=sdk/update/dev" >> $GITHUB_OUTPUT
         else
           versionNumber=$(echo "${{ matrix.branch }}" | cut -d'/' -f 3)
-          echo "::set-output name=targetbranch::sdk/update/release/$versionNumber"
+          echo "targetbranch=sdk/update/release/$versionNumber" >> $GITHUB_OUTPUT
         fi
       shell: bash
 
@@ -46,6 +46,7 @@ jobs:
       uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        base: ${{ matrix.branch }}
         branch: ${{ steps.targetbranch.outputs.targetbranch }}
         commit-message: 'chore: Update Uno.Sdk'
         title: Uno.Sdk Update - ${{ matrix.branch }}
