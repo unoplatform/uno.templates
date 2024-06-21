@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.300",
+    "version": "5.4.0-dev.395",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.5.0-dev.106",
+    "version": "1.6.0-dev.12",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -236,7 +236,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.2.0-dev.137",
+    "version": "4.2.0-dev.152",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -276,7 +276,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.1",
+    "version": "5.2.0-dev.7",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
