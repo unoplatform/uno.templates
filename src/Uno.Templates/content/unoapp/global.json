@@ -1,17 +1,9 @@
 {
   // To update the version of Uno please update the version of the Uno.Sdk here. See https://aka.platform.uno/upgrade-uno-packages for more information.
   "msbuild-sdks": {
-<<<<<<< HEAD
     "Uno.Sdk": "$UnoWinUIVersion$"
-=======
-    "Uno.Sdk": "$UnoSdkVersion$"
   },
-  "sdk":{
-<<<<<<< HEAD
-    "allowPrerelease": false
->>>>>>> 93aaf3f (fix: Don't allow prerelease by default)
-=======
+  "sdk": {
     "allowPrerelease": $AllowPrereleaseNetSdk$
->>>>>>> 161adfa (chore: Adjust pre-release based on tfm)
   }
 }
