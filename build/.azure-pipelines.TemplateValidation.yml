@@ -38,7 +38,7 @@ jobs:
             "CustomAuthMvux;;-preset=recommended -auth=custom",
             "CustomAuthMvvm;;-preset=recommended -presentation mvvm -auth=custom",
             "CustomAuthMvuxCSharp;;-preset=recommended -auth=custom -markup csharp",
-            "CustomAuthMvvmCSharp;-preset=recommended -presentation mvvm -auth=custom -markup csharp",
+            "CustomAuthMvvmCSharp;;-preset=recommended -presentation mvvm -auth=custom -markup csharp",
             "WebAuthMvux;;-preset=recommended -auth=web",
             "WebAuthMvvm;;-preset=recommended -presentation mvvm -auth=web",
             "WebAuthMvuxCSharp;;-preset=recommended -auth=web -markup csharp",
