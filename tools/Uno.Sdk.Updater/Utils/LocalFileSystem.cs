@@ -1,6 +1,6 @@
 ﻿using Uno.Sdk.Models;
 
-namespace Uno.Sdk.Updater;
+namespace Uno.Sdk.Updater.Utils;
 
 internal static class UpdaterBuildContext
 {
