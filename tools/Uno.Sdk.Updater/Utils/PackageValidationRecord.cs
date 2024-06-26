@@ -24,6 +24,11 @@ internal sealed class PackageValidationRecord
             _validated[packageId] = [];
         }
 
+        if (!validated)
+        {
+            Console.WriteLine($"{packageId} {version} is not a valid dependency.");
+        }
+
         _validated[packageId].Add(new VersionValidationResult(version, validated));
     }
 

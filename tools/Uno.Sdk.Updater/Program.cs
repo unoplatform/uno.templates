@@ -293,6 +293,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         group.Packages.First();
 
     var version = await client.GetVersionAsync(packageId, preview);
+    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
     if (group.Version != newGroup.Version)
@@ -316,6 +317,8 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
+
+            version = NuGetVersion.Parse(version) < versionOverride ? versionOverrideString : version;
             updatedOverrides.Add(key, version);
         }
 
