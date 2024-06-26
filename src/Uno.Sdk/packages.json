@@ -51,7 +51,7 @@
   },
   {
     "group": "UniversalImageLoading",
-    "version": "1.9.36",
+    "version": "1.9.37",
     "packages": [
       "Uno.UniversalImageLoader"
     ]
@@ -216,7 +216,7 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.60",
+    "version": "8.0.61",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
