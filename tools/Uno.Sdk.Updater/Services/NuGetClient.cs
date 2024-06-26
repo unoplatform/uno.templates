@@ -12,6 +12,7 @@ internal class NuGetApiClient : IDisposable
 {
     private const string UnoWinUIPackageId = "Uno.WinUI";
     private static PackageValidationRecord _validation = new ();
+    private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
     private HttpClient PublicNuGetClient { get; } = new HttpClient
     {
@@ -44,6 +45,11 @@ internal class NuGetApiClient : IDisposable
 
     public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
     {
+        if (_cachedVersions.TryGetValue(packageId, out var cachedVersions))
+        {
+            return cachedVersions;
+        }
+
         var allVersions = new List<string>();
         var publicVersions = await GetPublicPackageVersions(packageId);
         allVersions.AddRange(publicVersions);
@@ -71,10 +77,12 @@ internal class NuGetApiClient : IDisposable
 
         if (!RequiresValidation(packageId))
         {
+            _cachedVersions[packageId] = latestVersions;
             return latestVersions;
         }
 
         var validatedOutput = new List<NuGetVersion>();
+        Console.WriteLine($"Validating available versions for {packageId}...");
         foreach(var version in latestVersions)
         {
             if (await ValidatePackage(packageId, version))
@@ -86,6 +94,7 @@ internal class NuGetApiClient : IDisposable
             break;
         }
 
+        _cachedVersions[packageId] = validatedOutput;
         return validatedOutput;
     }
 
@@ -217,7 +226,7 @@ internal class NuGetApiClient : IDisposable
         versions = versions.Where(x => x.IsPreview == preview);
 
         // https://api.nuget.org/v3-flatcontainer/uno.extensions.hosting.winui/4.2.0-dev.137/uno.extensions.hosting.winui.nuspec
-        if (NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
+        if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
         {
             versions = versions.Where(x => minimumVersion.Version <= x.Version);
         }
