@@ -6,7 +6,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 |----------------|:---------------:|
 | UnoVersion* | 5.4.0-dev.520 |
 | UnoExtensionsVersion | 4.2.0-dev.161 |
-| UnoToolkitVersion | 6.1.0-dev.55 |
+| UnoToolkitVersion | 6.1.0-dev.61 |
 | UnoThemesVersion | 5.2.0-dev.9 |
 | UnoCSharpMarkupVersion | 5.3.0-dev.98 |
 | UnoWasmBootstrapVersion** | $WasmBootstrapVersion$ |
@@ -305,7 +305,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.1.0-dev.55",
+    "version": "6.1.0-dev.61",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
