@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Uno.Sdk.Models;
 using Uno.Sdk.Services;
 using Uno.Sdk.Updater;
+using Uno.Sdk.Updater.Utils;
 
 const string UnoSdkPackageId = "Uno.Sdk.Private";
 
@@ -288,9 +289,11 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         preview = false;
     }
 
-    var packageId = group.Packages.First();
+    var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
+        group.Packages.First();
 
     var version = await client.GetVersionAsync(packageId, preview);
+    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
     if (group.Version != newGroup.Version)
@@ -314,6 +317,8 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
+
+            version = NuGetVersion.Parse(version) < versionOverride ? versionOverrideString : version;
             updatedOverrides.Add(key, version);
         }
 
