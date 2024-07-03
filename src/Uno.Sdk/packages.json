@@ -236,7 +236,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.2.0-dev.161",
+    "version": "4.3.0-dev.2",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
