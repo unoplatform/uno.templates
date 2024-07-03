@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.34",
+    "version": "5.3.52",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -228,7 +228,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.2.14",
+    "version": "5.3.2",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -236,7 +236,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.1.28",
+    "version": "4.2.0",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -276,7 +276,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.0.13",
+    "version": "5.1.5",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
