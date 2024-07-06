@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.653",
+    "version": "5.4.0-dev.681",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -228,7 +228,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.20",
+    "version": "5.4.0-dev.22",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
