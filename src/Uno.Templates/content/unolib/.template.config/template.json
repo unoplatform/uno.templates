@@ -12,10 +12,10 @@
     "Linux",
     "WebAssembly"
   ],
-  "name": "Cross-Platform Library",
+  "name": "Uno Platform Class Library",
   "identity": "Uno.Platform.UnoLib",
   "groupIdentity": "Uno.Platform.BlankLibrary",
-  "description": "Template for creating a multi-platform library with the Uno Platform that targets WinUI, Android, iOS, MacCatalyst, WebAssembly and Skia",
+  "description": "Template for creating a class library for the Uno Platform that targets WinUI, Android, iOS, MacCatalyst, WebAssembly and Skia",
   "precedence": "6001",
   "tags": {
     "language": "C#",

@@ -10,7 +10,7 @@
     "Windows",
     "WinUI"
   ],
-  "name": "Uno Maui Embedding Class Library",
+  "name": "Uno Platform Maui Embedding Class Library",
   "identity": "Uno.Platform.UnoApp.WinUI.mauiembeddingclasslibrary.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.mauiembeddingclasslibrary",
   "description": "Project template for creating .NET MAUI Controls to embed within your Uno Platform app.",
