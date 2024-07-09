@@ -10,10 +10,10 @@
     "macOS",
     "WebAssembly"
   ],
-  "name": "Cross-Platform UI Tests Library",
+  "name": "Uno Platform UI Tests Class Library",
   "identity": "Uno.Platform.UITestLibrary",
   "groupIdentity": "Uno.Platform.BlankUITestLibrary",
-  "description": "Project template for creating multi-platform UI Tests with the Uno Platform.",
+  "description": "Project template for creating UI Tests with the Uno Platform.",
   "precedence": "6001",
   "tags": {
     "language": "C#",
