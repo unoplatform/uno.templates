@@ -4,11 +4,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.3.52 |
+| UnoVersion* | 5.3.70 |
 | UnoExtensionsVersion | 4.2.0 |
-| UnoToolkitVersion | 6.0.24 |
+| UnoToolkitVersion | 6.1.5 |
 | UnoThemesVersion | 5.1.5 |
-| UnoCSharpMarkupVersion | 5.3.2 |
+| UnoCSharpMarkupVersion | 5.3.7 |
 | UnoWasmBootstrapVersion** | $WasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.3.52",
+    "version": "5.3.70",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.98"
+      "net9.0": "9.0.0-dev.100"
     }
   },
   {
@@ -189,6 +189,15 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ]
   },
   {
+    "group": "UnoFonts",
+    "version": "",
+    "packages": [
+      "Uno.Fonts.OpenSans",
+      "Uno.Fonts.Fluent",
+      "Uno.Fonts.Roboto"
+    ]
+  },
+  {
     "group": "AndroidMaterial",
     "version": "1.10.0.3",
     "packages": [
@@ -269,7 +278,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.3.2",
+    "version": "5.3.7",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -305,7 +314,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.0.24",
+    "version": "6.1.5",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
