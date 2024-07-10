@@ -111,7 +111,7 @@ internal class NuGetApiClient : IDisposable
     private bool RequiresValidation(string packageId) =>
         UnoVersion is not null && 
         packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
-        !packageId.Contains("Sdk", StringComparison.InvariantCultureIgnoreCase);
+        !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
 
     private async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
     {
