@@ -102,7 +102,6 @@
       <!--#if (themeService)-->
       ThemeService;
       <!--#endif-->
-      OpenSans;
     </UnoFeatures>
   </PropertyGroup>
   <!--#if (useUITests)-->
