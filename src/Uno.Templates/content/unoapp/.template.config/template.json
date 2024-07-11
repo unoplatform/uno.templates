@@ -337,6 +337,26 @@
         ]
       }
     },
+    "vsAndroidSdkComponent": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$VSAndroidSdkComponent$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net8.0')",
+            "value": "Component.Android.SDK34"
+          },
+          {
+            // This could become 35 when net9.0 launches
+            "condition": "(tfm == 'net9.0')",
+            "value": "Component.Android.SDK34"
+          }
+        ]
+      }
+    },
     "presetTestsDefault": {
       "type": "generated",
       "generator": "switch",

@@ -32,7 +32,7 @@
     "Microsoft.VisualStudio.ComponentGroup.Maui.All",
 #//#endif
 #//#if (useAndroid)
-    "Component.Android.SDK34",
+    "$VSAndroidSdkComponent$",
     "Component.OpenJDK",
 #//#endif
     "Microsoft.VisualStudio.Workload.NetCrossPlat",
