@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.761",
+    "version": "5.4.0-dev.805",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -148,6 +148,15 @@
     ]
   },
   {
+    "group": "UnoFonts",
+    "version": "2.4.0-dev.16",
+    "packages": [
+      "Uno.Fonts.OpenSans",
+      "Uno.Fonts.Fluent",
+      "Uno.Fonts.Roboto"
+    ]
+  },
+  {
     "group": "AndroidMaterial",
     "version": "1.10.0.3",
     "packages": [
@@ -228,7 +237,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.27",
+    "version": "5.4.0-dev.30",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
