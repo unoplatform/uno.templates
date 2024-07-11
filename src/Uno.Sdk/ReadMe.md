@@ -190,7 +190,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoFonts",
-    "version": "",
+    "version": "2.4.0",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",

@@ -149,7 +149,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "",
+    "version": "2.4.0",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
