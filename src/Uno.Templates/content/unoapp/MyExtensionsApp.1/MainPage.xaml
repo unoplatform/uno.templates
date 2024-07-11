@@ -11,7 +11,7 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center">
       <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
-            Text="Hello Uno Platform"
+            Text="Hello Uno Platform!"
             HorizontalAlignment="Center" />
 <!--#if (mauiEmbedding)-->
 <!--#if (useNonMauiPlatforms)-->
