@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.810",
+    "version": "5.4.0-dev.830",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.3.0-dev.5",
+    "version": "4.3.0-dev.7",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
