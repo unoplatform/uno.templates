@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.12",
+    "version": "1.6.0-dev.18",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -237,7 +237,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.30",
+    "version": "5.4.0-dev.32",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
