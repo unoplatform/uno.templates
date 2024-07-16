@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.83",
+    "version": "5.3.90",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -24,7 +24,7 @@
   },
   {
     "group": "WasmBootstrap",
-    "version": "8.0.17",
+    "version": "8.0.20",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
@@ -237,7 +237,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.3.11",
+    "version": "5.3.12",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
