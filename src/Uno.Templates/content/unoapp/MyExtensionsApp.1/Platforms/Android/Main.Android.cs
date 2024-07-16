@@ -22,6 +22,15 @@ namespace MyExtensionsApp._1.Droid;
 )]
 public class Application : Microsoft.UI.Xaml.NativeApplication
 {
+//+:cnd:noEmit
+#if (!useDependencyInjection && useLoggingFallback)
+    static Application()
+    {
+        App.InitializeLogging();
+    }
+#endif
+//-:cnd:noEmit
+
     public Application(IntPtr javaReference, JniHandleOwnership transfer)
         : base(() => new App(), javaReference, transfer)
     {
