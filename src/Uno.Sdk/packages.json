@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -273,7 +273,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.1.5",
+    "version": "6.1.7",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.1.5",
+    "version": "5.1.6",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
