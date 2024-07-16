@@ -6,15 +6,15 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 |----------------|:---------------:|
 | UnoVersion* | 5.3.90 |
 | UnoExtensionsVersion | 4.2.0 |
-| UnoToolkitVersion | 6.1.5 |
-| UnoThemesVersion | 5.1.5 |
+| UnoToolkitVersion | 6.1.7 |
+| UnoThemesVersion | 5.1.6 |
 | UnoCSharpMarkupVersion | 5.3.12 |
 | UnoWasmBootstrapVersion** | $WasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.5.1 |
+| UnoResizetizerVersion | 1.5.2 |
 | SkiaSharpVersion | 2.88.8 |
 | SvgSkiaVersion | 1.0.0.18 |
 | WinAppSdkVersion | 1.5.240627000 |
@@ -106,7 +106,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -314,7 +314,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.1.5",
+    "version": "6.1.7",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -326,7 +326,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.1.5",
+    "version": "5.1.6",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
