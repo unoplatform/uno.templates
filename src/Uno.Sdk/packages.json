@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.876",
+    "version": "5.4.0-dev.908",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.18",
+    "version": "1.6.0-dev.22",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -273,7 +273,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.9",
+    "version": "6.2.0-dev.12",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.11",
+    "version": "5.2.0-dev.13",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
