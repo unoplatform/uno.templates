@@ -4,7 +4,7 @@
     <Description>Provides a base SDK for Uno Platform projects.</Description>
     <PackageTags></PackageTags>
     <SdkPackageId>Uno.Sdk.Private</SdkPackageId>
-    <SdkVersion>5.4.0-dev.916</SdkVersion>
+    <SdkVersion>5.4.0-dev.918</SdkVersion>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
   </PropertyGroup>
 
