@@ -103,6 +103,17 @@
       ThemeService;
       <!--#endif-->
     </UnoFeatures>
+    <!--#if (useWasmMultiThreading)-->
+
+    <!--
+      Enable WebAssembly Threads
+      https://aka.platform.uno/wasm-threading
+
+      NOTE: This feature is still considered experimental by the dotnet team
+    -->
+    <WasmShellEnableThreads>true</WasmShellEnableThreads>
+    <WasmShellPThreadsPoolSize>8</WasmShellPThreadsPoolSize>
+    <!--#endif-->
   </PropertyGroup>
   <!--#if (useUITests)-->
 
