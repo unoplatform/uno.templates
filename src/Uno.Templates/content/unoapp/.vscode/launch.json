@@ -58,5 +58,41 @@
       "stopAtEntry": false
     },
 //#endif
+//#if (useWinAppSdk)
+    // Commenting WinAppSDK Packaged at the moment as I am still doing some tests
+    // {
+    //   // Use IntelliSense to find out which attributes exist for C# debugging
+    //   // Use hover for the description of the existing attributes
+    //   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    //   "name": "Uno Platform WinAppSDK Packaged Debug",
+    //   "type": "coreclr",
+    //   "request": "launch",
+    //   "preLaunchTask": "build-win-packaged",
+    //   "program": "${workspaceFolder}/MyExtensionsApp.1/bin/Debug/$baseTargetFramework$-windows10.0.19041/AppX/MyExtensionsApp.1.exe",
+    //   "args": [],
+    //   "cwd": "${workspaceFolder}/MyExtensionsApp.1",
+    //   // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+    //   "console": "internalConsole",
+    //   "internalConsoleOptions": "openOnSessionStart",
+    //   "stopAtEntry": false
+    // },
+    {
+      // Use IntelliSense to find out which attributes exist for C# debugging
+      // Use hover for the description of the existing attributes
+      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+      "name": "Uno Platform WinAppSDK Unpackaged Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-win-unpackaged",
+      "program": "${workspaceFolder}/MyExtensionsApp.1/bin/Debug/$baseTargetFramework$-windows10.0.19041/MyExtensionsApp.1.exe",
+      "args": [],
+      "launchSettingsProfile": "MyExtensionsApp.1 (WinAppSDK Unpackaged)",
+      "cwd": "${workspaceFolder}/MyExtensionsApp.1",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "stopAtEntry": false
+    }
+//#endif
   ]
 }
