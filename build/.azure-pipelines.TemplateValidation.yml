@@ -30,6 +30,7 @@ jobs:
             "NoServerNoHttp;;-preset recommended -server false -http false",
             "NoTests;;-preset recommended -tests none",
             "FrameNavigation;; -preset recommended --navigation blank",
+            "WasmMultiThreading;;-wasm-multi-threading true",
 
             # Disabling this test for now as it was specific to net7
             # https://github.com/unoplatform/uno.templates/issues/22
