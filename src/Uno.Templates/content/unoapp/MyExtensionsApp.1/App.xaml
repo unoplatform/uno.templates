@@ -50,10 +50,11 @@
         <!--#endif-->
         <!--#endif-->
       </ResourceDictionary.MergedDictionaries>
+
+      <!-- Add resources here -->
+
     </ResourceDictionary>
   </Application.Resources>
-
-  <!-- Add resources here -->
 
 <!--#endif-->
 </Application>
