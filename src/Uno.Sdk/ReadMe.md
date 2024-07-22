@@ -5,9 +5,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
 | UnoVersion* | 5.3.90 |
-| UnoExtensionsVersion | 4.2.0 |
-| UnoToolkitVersion | 6.1.7 |
-| UnoThemesVersion | 5.1.6 |
+| UnoExtensionsVersion | 4.2.2 |
+| UnoToolkitVersion | 6.1.8 |
+| UnoThemesVersion | 5.1.7 |
 | UnoCSharpMarkupVersion | 5.3.12 |
 | UnoWasmBootstrapVersion** | $WasmBootstrapVersion$ |
 | UnoLoggingVersion | 1.7.0 |
@@ -16,7 +16,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.5.2 |
 | SkiaSharpVersion | 2.88.8 |
-| SvgSkiaVersion | 1.0.0.18 |
+| SvgSkiaVersion | 1.0.0.19 |
 | WinAppSdkVersion | 1.5.240627000 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1 |
 | MicrosoftLoggingVersion** | 8.0.0 |
@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.102"
+      "net9.0": "9.0.0-dev.104"
     }
   },
   {
@@ -125,7 +125,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "1.0.0.18",
+    "version": "1.0.0.19",
     "packages": [
       "Svg.Skia"
     ]
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "4.2.0",
+    "version": "4.2.2",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -314,7 +314,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.1.7",
+    "version": "6.1.8",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -326,7 +326,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.1.6",
+    "version": "5.1.7",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
