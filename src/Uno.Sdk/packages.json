@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.102"
+      "net9.0": "9.0.0-dev.104"
     }
   },
   {
@@ -84,7 +84,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "1.0.0.18",
+    "version": "1.0.0.19",
     "packages": [
       "Svg.Skia"
     ]
@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.2.0",
+    "version": "4.2.2",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -273,7 +273,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.1.7",
+    "version": "6.1.8",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.1.6",
+    "version": "5.1.7",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
