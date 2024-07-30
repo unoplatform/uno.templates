@@ -290,7 +290,12 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
 
     var packageId = group.Packages.First();
 
+<<<<<<< HEAD
     var version = await client.GetVersionAsync(packageId, preview);
+=======
+    var version = await client.GetVersionAsync(packageId, preview, group.Version);
+    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
+>>>>>>> 509a186 (fix: limit updates for stable to the current Major.Minor)
     var newGroup = group with { Version = version };
 
     if (group.Version != newGroup.Version)
