@@ -229,6 +229,12 @@ internal class NuGetApiClient : IDisposable
         if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
         {
             versions = versions.Where(x => minimumVersion.Version <= x.Version);
+
+            if (UnoVersion.HasValue && !UnoVersion.Value.IsPreview)
+            {
+                var maxVersion = NuGetVersion.Parse($"{minimumVersion.Version.Major}.{minimumVersion.Version.Minor + 1}.0");
+                versions = versions.Where(x => x < maxVersion);
+            }
         }
 
         if (!versions.Any())

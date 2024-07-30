@@ -292,7 +292,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var version = await client.GetVersionAsync(packageId, preview);
+    var version = await client.GetVersionAsync(packageId, preview, group.Version);
     version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
