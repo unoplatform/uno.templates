@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+#nullable enable
+using System.Collections;
+>>>>>>> e4063e6 (chore: adding additional validations to Version checks)
 using System.Net.Http.Json;
 using Uno.Sdk.Models;
 
@@ -71,6 +76,7 @@ internal class NuGetApiClient : IDisposable
 		}
 	}
 
+<<<<<<< HEAD
 	private async Task<IEnumerable<string>> GetPublicPackageVersions(string packageId)
 	{
 		try
@@ -83,6 +89,14 @@ internal class NuGetApiClient : IDisposable
 			return [];
 		}
 	}
+=======
+        var latestVersions = output
+            .GroupBy(x => GetGroupVersion(packageId, x))
+            .Select(FilterGroup)
+            .Select(g => g.OrderByDescending(x => x).First())
+            .OrderByDescending(x => x)
+            .ToArray();
+>>>>>>> e4063e6 (chore: adding additional validations to Version checks)
 
 	public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
 	{
@@ -103,11 +117,33 @@ internal class NuGetApiClient : IDisposable
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void Dispose()
 	{
 		PublicNuGetClient.Dispose();
 	}
 =======
+=======
+    private static IGrouping<NuGetVersion, NuGetVersion> FilterGroup(IGrouping<NuGetVersion, NuGetVersion> group)
+    {
+        if (group.Any(x => !x.IsPreview))
+            return new NuGetGrouping(group.Key, group.Where(x => !x.IsPreview).ToArray());
+
+        return group;
+    }
+
+    private class NuGetGrouping(NuGetVersion key, IEnumerable<NuGetVersion> versions) : IGrouping<NuGetVersion, NuGetVersion>
+    {
+        public NuGetVersion Key => key;
+
+        public IEnumerable<NuGetVersion> Versions => versions;
+
+        public IEnumerator<NuGetVersion> GetEnumerator() => versions.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+>>>>>>> e4063e6 (chore: adding additional validations to Version checks)
     private static NuGetVersion GetGroupVersion(string packageId, NuGetVersion packageVersion)
     {
         if (packageId.StartsWith("Uno", StringComparison.InvariantCultureIgnoreCase))
@@ -233,7 +269,6 @@ internal class NuGetApiClient : IDisposable
     public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
     {
         var versions = await GetPackageVersions(packageId);
-        versions = versions.Where(x => x.IsPreview == preview);
 
         // https://api.nuget.org/v3-flatcontainer/uno.extensions.hosting.winui/4.2.0-dev.137/uno.extensions.hosting.winui.nuspec
         if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
@@ -245,6 +280,15 @@ internal class NuGetApiClient : IDisposable
                 var maxVersion = NuGetVersion.Parse($"{minimumVersion.Version.Major}.{minimumVersion.Version.Minor + 1}.0");
                 versions = versions.Where(x => x < maxVersion);
             }
+        }
+
+        if (preview && versions.Any(x => x.IsPreview))
+        {
+            versions = versions.Where(x => x.IsPreview);
+        }
+        else if (!preview && versions.Any(x => !x.IsPreview))
+        {
+            versions = versions.Where(x => !x.IsPreview);
         }
 
         if (!versions.Any())
