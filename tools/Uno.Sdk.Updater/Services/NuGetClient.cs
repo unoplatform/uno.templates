@@ -103,6 +103,7 @@ internal class NuGetApiClient : IDisposable
 		var versions = await GetPackageVersions(packageId);
 		versions = versions.Where(x => x.IsPreview == preview);
 
+<<<<<<< HEAD
 		if (NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
 		{
 			versions = versions.Where(x => minimumVersion.Version <= x.Version);
@@ -112,6 +113,22 @@ internal class NuGetApiClient : IDisposable
 		{
 			return string.Empty;
 		}
+=======
+        var validatedOutput = new List<NuGetVersion>();
+        Console.WriteLine($"Validating available versions for {packageId}...");
+        foreach(var version in latestVersions)
+        {
+            if (await ValidatePackage(packageId, version))
+            {
+                validatedOutput.Add(version);
+                continue;
+            }
+            else if (UnoVersion.HasValue && UnoVersion.Value.IsPreview)
+            {
+                break;
+            }
+        }
+>>>>>>> 7f698d5 (chore: merge local manifest for release branches)
 
 		return versions.OrderByDescending(x => x).First().OriginalVersion;
 	}
