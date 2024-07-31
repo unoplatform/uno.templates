@@ -92,8 +92,10 @@ internal class NuGetApiClient : IDisposable
                 validatedOutput.Add(version);
                 continue;
             }
-
-            break;
+            else if (UnoVersion.HasValue && UnoVersion.Value.IsPreview)
+            {
+                break;
+            }
         }
 
         _cachedVersions[packageId] = validatedOutput;
