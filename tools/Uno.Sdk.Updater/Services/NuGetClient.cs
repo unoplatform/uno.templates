@@ -1,109 +1,283 @@
+#nullable enable
+using System.Collections;
 using System.Net.Http.Json;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Uno.Sdk.Models;
+using Uno.Sdk.Updater.Utils;
 
 namespace Uno.Sdk.Services;
 
 internal class NuGetApiClient : IDisposable
 {
-	private HttpClient PublicNuGetClient { get; } = new HttpClient
-	{
-		BaseAddress = new Uri("https://api.nuget.org")
-	};
+    private const string UnoWinUIPackageId = "Uno.WinUI";
+    private static PackageValidationRecord _validation = new ();
+    private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
-	private HttpClient PrivateNuGetClient { get; } = new HttpClient
-	{
-		BaseAddress = new Uri("https://pkgs.dev.azure.com")
-	};
+    private HttpClient PublicNuGetClient { get; } = new HttpClient
+    {
+        BaseAddress = new Uri("https://api.nuget.org")
+    };
 
-	public NuGetVersion? UnoVersion { get; set; }
+    private HttpClient PrivateNuGetClient { get; } = new HttpClient
+    {
+        BaseAddress = new Uri("https://pkgs.dev.azure.com")
+    };
 
-	public async Task<Stream> DownloadPackageAsync(string packageId, string version)
-	{
-		var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
-		using var response = await PrivateNuGetClient.GetAsync(downloadUrl);
+    public NuGetVersion? UnoVersion { get; set; }
 
-		if (!response.IsSuccessStatusCode)
-			return Stream.Null;
+    public async Task<Stream> DownloadPackageAsync(string packageId, string version)
+    {
+        var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
+        using var response = await PrivateNuGetClient.GetAsync(downloadUrl);
 
-		using var tempStream = await response.Content.ReadAsStreamAsync();
-		var memoryStream = new MemoryStream();
-		await tempStream.CopyToAsync(memoryStream);
+        if (!response.IsSuccessStatusCode)
+            return Stream.Null;
 
-		return memoryStream;
-	}
+        using var tempStream = await response.Content.ReadAsStreamAsync();
+        var memoryStream = new MemoryStream();
+        await tempStream.CopyToAsync(memoryStream);
 
-	internal record VersionsResponse(string[] Versions);
+        return memoryStream;
+    }
 
-	public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
-	{
-		var allVersions = new List<string>();
-		var publicVersions = await GetPublicPackageVersions(packageId);
-		allVersions.AddRange(publicVersions);
+    internal record VersionsResponse(string[] Versions);
 
-		if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
-		{
-			var privateVersions = await GetPrivatePackageVersions(packageId);
-			allVersions.AddRange(privateVersions);
-		}
+    public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
+    {
+        if (_cachedVersions.TryGetValue(packageId, out var cachedVersions))
+        {
+            return cachedVersions;
+        }
 
-		var output = new List<NuGetVersion>();
-		foreach (var version in allVersions.Distinct())
-		{
-			if (NuGetVersion.TryParse(version, out var nugetVersion))
-			{
-				output.Add(nugetVersion);
-			}
-		}
+        var allVersions = new List<string>();
+        var publicVersions = await GetPublicPackageVersions(packageId);
+        allVersions.AddRange(publicVersions);
 
-		return output.OrderByDescending(x => x);
-	}
+        if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
+        {
+            var privateVersions = await GetPrivatePackageVersions(packageId);
+            allVersions.AddRange(privateVersions);
+        }
 
-	private async Task<IEnumerable<string>> GetPrivatePackageVersions(string packageId)
-	{
-		try
-		{
-			var response = await PrivateNuGetClient.GetFromJsonAsync<VersionsResponse>($"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/v3/flat2/{packageId.ToLowerInvariant()}/index.json");
-			return response?.Versions ?? [];
-		}
-		catch
-		{
-			return [];
-		}
-	}
+        var output = new List<NuGetVersion>();
+        foreach (var version in allVersions.Distinct())
+        {
+            if (NuGetVersion.TryParse(version, out var nugetVersion))
+            {
+                output.Add(nugetVersion);
+            }
+        }
 
-	private async Task<IEnumerable<string>> GetPublicPackageVersions(string packageId)
-	{
-		try
-		{
-			var response = await PublicNuGetClient.GetFromJsonAsync<VersionsResponse>($"/v3-flatcontainer/{packageId.ToLowerInvariant()}/index.json");
-			return response?.Versions ?? [];
-		}
-		catch
-		{
-			return [];
-		}
-	}
+        var latestVersions = output
+            .GroupBy(x => GetGroupVersion(packageId, x))
+            .Select(FilterGroup)
+            .Select(g => g.OrderByDescending(x => x).First())
+            .OrderByDescending(x => x)
+            .ToArray();
 
-	public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
-	{
-		var versions = await GetPackageVersions(packageId);
-		versions = versions.Where(x => x.IsPreview == preview);
+        if (!RequiresValidation(packageId))
+        {
+            _cachedVersions[packageId] = latestVersions;
+            return latestVersions;
+        }
 
-		if (NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
-		{
-			versions = versions.Where(x => minimumVersion.Version <= x.Version);
-		}
+        var validatedOutput = new List<NuGetVersion>();
+        Console.WriteLine($"Validating available versions for {packageId}...");
+        foreach(var version in latestVersions)
+        {
+            if (await ValidatePackage(packageId, version))
+            {
+                validatedOutput.Add(version);
+                continue;
+            }
+            else if (UnoVersion.HasValue && UnoVersion.Value.IsPreview)
+            {
+                break;
+            }
+        }
 
-		if (!versions.Any())
-		{
-			return string.Empty;
-		}
+        _cachedVersions[packageId] = validatedOutput;
+        return validatedOutput;
+    }
 
-		return versions.OrderByDescending(x => x).First().OriginalVersion;
-	}
+    private static IGrouping<NuGetVersion, NuGetVersion> FilterGroup(IGrouping<NuGetVersion, NuGetVersion> group)
+    {
+        if (group.Any(x => !x.IsPreview))
+            return new NuGetGrouping(group.Key, group.Where(x => !x.IsPreview).ToArray());
 
-	public void Dispose()
-	{
-		PublicNuGetClient.Dispose();
-	}
+        return group;
+    }
+
+    private class NuGetGrouping(NuGetVersion key, IEnumerable<NuGetVersion> versions) : IGrouping<NuGetVersion, NuGetVersion>
+    {
+        public NuGetVersion Key => key;
+
+        public IEnumerable<NuGetVersion> Versions => versions;
+
+        public IEnumerator<NuGetVersion> GetEnumerator() => versions.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    private static NuGetVersion GetGroupVersion(string packageId, NuGetVersion packageVersion)
+    {
+        if (packageId.StartsWith("Uno", StringComparison.InvariantCultureIgnoreCase))
+        {
+            return NuGetVersion.Parse($"{packageVersion.Version.Major}.{packageVersion.Version.Minor}.0");
+        }
+
+        return NuGetVersion.Parse($"{packageVersion.Version.Major}.{packageVersion.Version.Minor}.{packageVersion.Version.Build}");
+    }
+
+    private bool RequiresValidation(string packageId) =>
+        UnoVersion is not null && 
+        packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
+        !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
+
+    private async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
+    {
+        if (_validation.HasBeenChecked(packageId, version))
+        {
+            return _validation.IsValid(packageId, version);
+        }
+
+        var nuspecUrl = $"/v3-flatcontainer/{packageId.ToLowerInvariant()}/{version.OriginalVersion}/{packageId.ToLowerInvariant()}.nuspec";
+        using var response = PublicNuGetClient.GetAsync(nuspecUrl).Result;
+        if (!response.IsSuccessStatusCode)
+        {
+            // This could happen if the package we are checking is not publicly available.
+            return true;
+        }
+
+        var packageResponse = await response.Content.ReadAsStringAsync();
+        var xDocument = XDocument.Parse(packageResponse);
+
+        // Define the namespace manager
+        var namespaceManager = new XmlNamespaceManager(new NameTable());
+        namespaceManager.AddNamespace("ns", "http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd");
+
+        // Select dependency groups
+        var dependencyGroups = xDocument.XPathSelectElements("//ns:dependencies/ns:group", namespaceManager);
+
+        foreach (var group in dependencyGroups)
+        {
+            if (_validation.HasBeenChecked(packageId, version))
+                continue;
+
+            _validation.AddResult(packageId, version, await IsCompatibleWithUnoWinUI(group));
+        }
+
+        _validation.AddResult(packageId, version, true);
+        return _validation.IsValid(packageId, version);
+    }
+
+    private async Task<bool> IsCompatibleWithUnoWinUI(XElement group)
+    {
+        var dependencies = group.Elements().Where(e => e.Name.LocalName == "dependency").ToList();
+        var unoWinUIDependency = dependencies.FirstOrDefault(d => d.Attribute("id")?.Value == UnoWinUIPackageId);
+
+        // We don't have a dependency on Uno.WinUI
+        if (unoWinUIDependency is null)
+        {
+            var unoDependencies = dependencies.Where(x => x.Attribute("id")?.Value.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) ?? false);
+
+            // Check for Transitive Dependency
+            if (unoDependencies.Any())
+            {
+                var transitiveDependencies = unoDependencies.ToDictionary(x => x.Attribute("id")!.Value, x => NuGetVersion.Parse(x.Attribute("version")!.Value));
+                foreach((var packageId, var version) in transitiveDependencies)
+                {
+                    if (_validation.HasBeenChecked(packageId, version))
+                    {
+                        continue;
+                    }
+                    else if (!await ValidatePackage(packageId, version))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        if (!NuGetVersion.TryParse(unoWinUIDependency.Attribute("version")?.Value, out var unoWinUIVersion))
+        {
+            // This shouldn't happen
+            return false;
+        }
+
+        if (!_validation.HasBeenChecked(UnoWinUIPackageId, unoWinUIVersion))
+        {
+            _validation.AddResult(UnoWinUIPackageId, unoWinUIVersion, UnoVersion >= unoWinUIVersion);
+        }
+
+        return _validation.IsValid(UnoWinUIPackageId, unoWinUIVersion);
+    }
+
+    private async Task<IEnumerable<string>> GetPrivatePackageVersions(string packageId)
+    {
+        try
+        {
+            var response = await PrivateNuGetClient.GetFromJsonAsync<VersionsResponse>($"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/v3/flat2/{packageId.ToLowerInvariant()}/index.json");
+            return response?.Versions ?? [];
+        }
+        catch
+        {
+            return [];
+        }
+    }
+
+    private async Task<IEnumerable<string>> GetPublicPackageVersions(string packageId)
+    {
+        try
+        {
+            var response = await PublicNuGetClient.GetFromJsonAsync<VersionsResponse>($"/v3-flatcontainer/{packageId.ToLowerInvariant()}/index.json");
+            return response?.Versions ?? [];
+        }
+        catch
+        {
+            return [];
+        }
+    }
+
+    public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
+    {
+        var versions = await GetPackageVersions(packageId);
+
+        // https://api.nuget.org/v3-flatcontainer/uno.extensions.hosting.winui/4.2.0-dev.137/uno.extensions.hosting.winui.nuspec
+        if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
+        {
+            versions = versions.Where(x => minimumVersion.Version <= x.Version);
+
+            if (UnoVersion.HasValue && !UnoVersion.Value.IsPreview)
+            {
+                var maxVersion = NuGetVersion.Parse($"{minimumVersion.Version.Major}.{minimumVersion.Version.Minor + 1}.0");
+                versions = versions.Where(x => x < maxVersion);
+            }
+        }
+
+        if (preview && versions.Any(x => x.IsPreview))
+        {
+            versions = versions.Where(x => x.IsPreview);
+        }
+        else if (!preview && versions.Any(x => !x.IsPreview))
+        {
+            versions = versions.Where(x => !x.IsPreview);
+        }
+
+        if (!versions.Any())
+        {
+            return string.Empty;
+        }
+
+        return versions.OrderByDescending(x => x).First().OriginalVersion;
+    }
+
+    public void Dispose()
+    {
+        PublicNuGetClient.Dispose();
+    }
 }

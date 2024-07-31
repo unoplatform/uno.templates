@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Uno.Sdk.Models;
 using Uno.Sdk.Services;
 using Uno.Sdk.Updater;
+using Uno.Sdk.Updater.Utils;
 
 const string UnoSdkPackageId = "Uno.Sdk.Private";
 
@@ -84,10 +85,16 @@ foreach(var entry in sdkZip.Entries)
         relativePackagesJsonPath = entry.FullName;
         packagesJsonPath = outputPath;
         using var packageStream = entry.Open();
-        var inputManifest = await JsonSerializer.DeserializeAsync<IEnumerable<ManifestGroup>>(packageStream);
+        var inputManifest = await JsonSerializer.DeserializeAsync<IEnumerable<ManifestGroup>>(packageStream)
+            ?? throw new InvalidOperationException("Unable to parse the packages.json from the Sdk.");
+
+        if (!unoVersion.IsPreview)
+        {
+            inputManifest = MergeLocalManifest(inputManifest, outputPath);
+        }
 
         var manifest = new List<ManifestGroup>();
-        foreach(var group in inputManifest!)
+        foreach(var group in inputManifest)
         {
             var updated = await UpdateGroup(group, unoVersion, client);
             manifest.Add(updated);
@@ -152,6 +159,24 @@ else
 }
 
 Console.WriteLine("Finished Uno.Sdk update.");
+
+static IEnumerable<ManifestGroup> MergeLocalManifest(IEnumerable<ManifestGroup> sdkManifest, string packagesJsonPath)
+{
+    var localManifest = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(File.ReadAllText(packagesJsonPath))
+            ?? throw new InvalidOperationException("Unable to parse the packages.json from the Sdk.");
+    var mergedManifest = new List<ManifestGroup>(localManifest);
+    foreach (var group in sdkManifest)
+    {
+        if (mergedManifest.Any(x => x.Group == group.Group))
+        {
+            continue;
+        }
+
+        mergedManifest.Add(group);
+    }
+
+    return mergedManifest;
+}
 
 static void WriteIfDifferent(string filePath, string content, ref bool didWriteChanges)
 {
@@ -288,9 +313,11 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         preview = false;
     }
 
-    var packageId = group.Packages.First();
+    var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
+        group.Packages.First();
 
-    var version = await client.GetVersionAsync(packageId, preview);
+    var version = await client.GetVersionAsync(packageId, preview, group.Version);
+    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
     if (group.Version != newGroup.Version)
@@ -314,6 +341,8 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
+
+            version = NuGetVersion.Parse(version) < versionOverride ? versionOverrideString : version;
             updatedOverrides.Add(key, version);
         }
 
