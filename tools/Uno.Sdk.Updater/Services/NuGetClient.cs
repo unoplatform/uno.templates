@@ -1,119 +1,88 @@
-<<<<<<< HEAD
-=======
 #nullable enable
 using System.Collections;
->>>>>>> e4063e6 (chore: adding additional validations to Version checks)
 using System.Net.Http.Json;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Uno.Sdk.Models;
+using Uno.Sdk.Updater.Utils;
 
 namespace Uno.Sdk.Services;
 
 internal class NuGetApiClient : IDisposable
 {
-	private HttpClient PublicNuGetClient { get; } = new HttpClient
-	{
-		BaseAddress = new Uri("https://api.nuget.org")
-	};
+    private const string UnoWinUIPackageId = "Uno.WinUI";
+    private static PackageValidationRecord _validation = new ();
+    private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
-	private HttpClient PrivateNuGetClient { get; } = new HttpClient
-	{
-		BaseAddress = new Uri("https://pkgs.dev.azure.com")
-	};
+    private HttpClient PublicNuGetClient { get; } = new HttpClient
+    {
+        BaseAddress = new Uri("https://api.nuget.org")
+    };
 
-	public NuGetVersion? UnoVersion { get; set; }
+    private HttpClient PrivateNuGetClient { get; } = new HttpClient
+    {
+        BaseAddress = new Uri("https://pkgs.dev.azure.com")
+    };
 
-	public async Task<Stream> DownloadPackageAsync(string packageId, string version)
-	{
-		var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
-		using var response = await PrivateNuGetClient.GetAsync(downloadUrl);
+    public NuGetVersion? UnoVersion { get; set; }
 
-		if (!response.IsSuccessStatusCode)
-			return Stream.Null;
+    public async Task<Stream> DownloadPackageAsync(string packageId, string version)
+    {
+        var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
+        using var response = await PrivateNuGetClient.GetAsync(downloadUrl);
 
-		using var tempStream = await response.Content.ReadAsStreamAsync();
-		var memoryStream = new MemoryStream();
-		await tempStream.CopyToAsync(memoryStream);
+        if (!response.IsSuccessStatusCode)
+            return Stream.Null;
 
-		return memoryStream;
-	}
+        using var tempStream = await response.Content.ReadAsStreamAsync();
+        var memoryStream = new MemoryStream();
+        await tempStream.CopyToAsync(memoryStream);
 
-	internal record VersionsResponse(string[] Versions);
+        return memoryStream;
+    }
 
-	public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
-	{
-		var allVersions = new List<string>();
-		var publicVersions = await GetPublicPackageVersions(packageId);
-		allVersions.AddRange(publicVersions);
+    internal record VersionsResponse(string[] Versions);
 
-		if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
-		{
-			var privateVersions = await GetPrivatePackageVersions(packageId);
-			allVersions.AddRange(privateVersions);
-		}
+    public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
+    {
+        if (_cachedVersions.TryGetValue(packageId, out var cachedVersions))
+        {
+            return cachedVersions;
+        }
 
-		var output = new List<NuGetVersion>();
-		foreach (var version in allVersions.Distinct())
-		{
-			if (NuGetVersion.TryParse(version, out var nugetVersion))
-			{
-				output.Add(nugetVersion);
-			}
-		}
+        var allVersions = new List<string>();
+        var publicVersions = await GetPublicPackageVersions(packageId);
+        allVersions.AddRange(publicVersions);
 
-		return output.OrderByDescending(x => x);
-	}
+        if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
+        {
+            var privateVersions = await GetPrivatePackageVersions(packageId);
+            allVersions.AddRange(privateVersions);
+        }
 
-	private async Task<IEnumerable<string>> GetPrivatePackageVersions(string packageId)
-	{
-		try
-		{
-			var response = await PrivateNuGetClient.GetFromJsonAsync<VersionsResponse>($"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/v3/flat2/{packageId.ToLowerInvariant()}/index.json");
-			return response?.Versions ?? [];
-		}
-		catch
-		{
-			return [];
-		}
-	}
+        var output = new List<NuGetVersion>();
+        foreach (var version in allVersions.Distinct())
+        {
+            if (NuGetVersion.TryParse(version, out var nugetVersion))
+            {
+                output.Add(nugetVersion);
+            }
+        }
 
-<<<<<<< HEAD
-	private async Task<IEnumerable<string>> GetPublicPackageVersions(string packageId)
-	{
-		try
-		{
-			var response = await PublicNuGetClient.GetFromJsonAsync<VersionsResponse>($"/v3-flatcontainer/{packageId.ToLowerInvariant()}/index.json");
-			return response?.Versions ?? [];
-		}
-		catch
-		{
-			return [];
-		}
-	}
-=======
         var latestVersions = output
             .GroupBy(x => GetGroupVersion(packageId, x))
             .Select(FilterGroup)
             .Select(g => g.OrderByDescending(x => x).First())
             .OrderByDescending(x => x)
             .ToArray();
->>>>>>> e4063e6 (chore: adding additional validations to Version checks)
 
-	public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
-	{
-		var versions = await GetPackageVersions(packageId);
-		versions = versions.Where(x => x.IsPreview == preview);
+        if (!RequiresValidation(packageId))
+        {
+            _cachedVersions[packageId] = latestVersions;
+            return latestVersions;
+        }
 
-<<<<<<< HEAD
-		if (NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
-		{
-			versions = versions.Where(x => minimumVersion.Version <= x.Version);
-		}
-
-		if (!versions.Any())
-		{
-			return string.Empty;
-		}
-=======
         var validatedOutput = new List<NuGetVersion>();
         Console.WriteLine($"Validating available versions for {packageId}...");
         foreach(var version in latestVersions)
@@ -128,19 +97,11 @@ internal class NuGetApiClient : IDisposable
                 break;
             }
         }
->>>>>>> 7f698d5 (chore: merge local manifest for release branches)
 
-		return versions.OrderByDescending(x => x).First().OriginalVersion;
-	}
+        _cachedVersions[packageId] = validatedOutput;
+        return validatedOutput;
+    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	public void Dispose()
-	{
-		PublicNuGetClient.Dispose();
-	}
-=======
-=======
     private static IGrouping<NuGetVersion, NuGetVersion> FilterGroup(IGrouping<NuGetVersion, NuGetVersion> group)
     {
         if (group.Any(x => !x.IsPreview))
@@ -160,7 +121,6 @@ internal class NuGetApiClient : IDisposable
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
->>>>>>> e4063e6 (chore: adding additional validations to Version checks)
     private static NuGetVersion GetGroupVersion(string packageId, NuGetVersion packageVersion)
     {
         if (packageId.StartsWith("Uno", StringComparison.InvariantCultureIgnoreCase))
@@ -320,5 +280,4 @@ internal class NuGetApiClient : IDisposable
     {
         PublicNuGetClient.Dispose();
     }
->>>>>>> 509a186 (fix: limit updates for stable to the current Major.Minor)
 }
