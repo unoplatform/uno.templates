@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.1051",
+    "version": "5.4.0-dev.1064",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -58,7 +58,7 @@
   },
   {
     "group": "Dsp",
-    "version": "1.4.0-dev.12",
+    "version": "1.4.0",
     "packages": [
       "Uno.Dsp.Tasks"
     ]
@@ -84,7 +84,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "1.0.0.19",
+    "version": "2.0.0",
     "packages": [
       "Svg.Skia"
     ]
@@ -125,7 +125,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.61.3",
+    "version": "4.62.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -149,7 +149,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.4.0-dev.16",
+    "version": "2.4.0",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.3.0-dev.23",
+    "version": "5.0.0-dev.297",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.13",
+    "version": "5.2.0-dev.14",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
