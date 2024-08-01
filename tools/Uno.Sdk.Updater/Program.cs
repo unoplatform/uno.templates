@@ -286,7 +286,11 @@ static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifes
 
 static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion unoVersion, NuGetApiClient client)
 {
-    if (group.Packages.Any(x => x.StartsWith("Xamarin")))
+    if (group.Group == "Core")
+    {
+        return group with { Version = unoVersion };
+    }
+    else if (group.Packages.Any(x => x.StartsWith("Xamarin")))
     {
         Console.WriteLine("Leaving group as is: " + group.Group);
         return group;
