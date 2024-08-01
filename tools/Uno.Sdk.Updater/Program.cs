@@ -291,7 +291,10 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         Console.WriteLine($"Setting Core group to: {unoVersion.OriginalVersion}");
         return group with { Version = unoVersion };
     }
-    else if (group.Packages.Any(x => x.StartsWith("Xamarin")))
+    // Skip AndroidX packages to avoid Java misalignment
+    else if (group.Packages.Any(x => x.StartsWith("Xamarin")) 
+        // Skip Maui on Release branch to avoid AndroidX package misalignment
+        || (!unoVersion.IsPreview && group.Group == "Maui"))
     {
         Console.WriteLine("Leaving group as is: " + group.Group);
         return group;
