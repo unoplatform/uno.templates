@@ -1,6 +1,5 @@
 assembly-versioning-scheme: MajorMinorPatch
 mode: Mainline
-next-version: 5.3.90
 
 branches:
   main:
