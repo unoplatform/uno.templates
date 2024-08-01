@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.90",
+    "version": "5.3.114",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -225,7 +225,7 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.70",
+    "version": "8.0.71",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",

@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.3.90 |
+| UnoVersion* | 5.3.114 |
 | UnoExtensionsVersion | 4.2.2 |
 | UnoToolkitVersion | 6.1.8 |
 | UnoThemesVersion | 5.1.7 |
@@ -33,7 +33,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.18 |
 | AndroidXNavigationVersion | 2.7.7.1 |
 | AndroidXCollectionVersion | 1.4.0.1 |
-| MauiVersion** | 8.0.70 |
+| MauiVersion** | 8.0.71 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 9.0.
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.3.90",
+    "version": "5.3.114",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -266,7 +266,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "8.0.70",
+    "version": "8.0.71",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
