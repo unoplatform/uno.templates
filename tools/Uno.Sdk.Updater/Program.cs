@@ -288,6 +288,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
 {
     if (group.Group == "Core")
     {
+        Console.WriteLine($"Setting Core group to: {unoVersion.OriginalVersion}");
         return group with { Version = unoVersion };
     }
     else if (group.Packages.Any(x => x.StartsWith("Xamarin")))
