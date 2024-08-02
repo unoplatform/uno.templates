@@ -38,16 +38,17 @@
           </um:MaterialTheme.FontOverrideDictionary> -->
         </um:MaterialTheme>
         <!--#endif-->
-        <!--#else-->
-        <!--#if (useCupertino)-->
+        <!--#elif (useCupertino)-->
         <uc:CupertinoColors />
         <uc:CupertinoFonts />
         <uc:CupertinoResources />
-        <!--#endif-->
         <!--#if (useToolkit)-->
         <!-- Load Uno.UI.Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
         <!--#endif-->
+        <!--#elif (useToolkit)-->
+        <!-- Load Uno.UI.Toolkit resources -->
+        <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
         <!--#endif-->
       </ResourceDictionary.MergedDictionaries>
 
