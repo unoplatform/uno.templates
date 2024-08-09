@@ -55,6 +55,63 @@
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
+    },
+//#endif
+//#if (useWinAppSdk)
+    // Commenting WinAppSDK Packaged at the moment as I am still doing some tests (verifying if I need to use msbuild instead here)
+    // {
+    //   "label": "build-win-packaged",
+    //   "command": "dotnet",
+    //   "type": "process",
+    //   "args": [
+    //     "build",
+    //     "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
+    //     "/property:GenerateFullPaths=true",
+    //     "/property:TargetFramework=$baseTargetFramework$-net8.0-windows10.0.19041",
+    //     "/consoleloggerparameters:NoSummary",
+    //     "--output", "${workspaceFolder}/MyExtensionsApp.1/bin/Debug/net8.0-windows10.0.19041/AppX/"
+    //   ],
+    //   "problemMatcher": "$msCompile"
+    // },
+    // {
+    //   "label": "publish-win-packaged",
+    //   "command": "dotnet",
+    //   "type": "process",
+    //   "args": [
+    //     "publish",
+    //     "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
+    //     "/property:GenerateFullPaths=true",
+    //     "/property:TargetFramework=$baseTargetFramework$-net8.0-windows10.0.19041",
+    //     "/consoleloggerparameters:NoSummary",
+    //     "--output", "${workspaceFolder}/MyExtensionsApp.1/bin/Debug/net8.0-windows10.0.19041/AppX/"
+    //   ],
+    //   "problemMatcher": "$msCompile"
+    // },
+    {
+      "label": "build-win-unpackaged",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
+        "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=$baseTargetFramework$-net8.0-windows10.0.19041",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish-win-unpackaged",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/MyExtensionsApp.1/MyExtensionsApp.1.csproj",
+        "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=$baseTargetFramework$-net8.0-windows10.0.19041",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
     }
 //#endif
   ]
