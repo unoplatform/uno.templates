@@ -62,7 +62,7 @@
 			{
 				"Id": "blank",
 				"Sequence": 1,
-				"Icon": "ms-appx:///Assets/Template_Blank.svg",
+				"Icon": "/Assets/Template_Blank.svg",
 				"Parameters": {
 					"appTheme": "fluent",
 					"architecture": "none",
@@ -99,7 +99,7 @@
 			{
 				"Id": "recommended",
 				"Sequence": 2,
-				"Icon": "ms-appx:///Assets/Template_Recommended.svg",
+				"Icon": "/Assets/Template_Recommended.svg",
 				"IsDefault": true,
 				"Parameters": {
 					"appTheme": "material",
@@ -145,7 +145,7 @@
 				"Description": "Custom set of options.",
 				"IsCustom": true,
 				"Sequence": 3,
-				"Icon": "ms-appx:///Assets/Template_Custom.svg"
+				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
 		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "macOS (Catalyst)", "Desktop" ]
@@ -286,7 +286,7 @@
 	},
 	"MetaData": {
 		"appId": {
-			"Icon": "ms-appx:///Assets/Application.ID.svg",
+			"Icon": "/Assets/Application.ID.svg",
 			"Validation": {
 				"IsRequired": true,
 				"Regex": "^[a-zA-Z]+(\\.[a-zA-Z0-9_]+)*$",
@@ -304,7 +304,7 @@
 			}
 		},
 		"publisher": {
-			"Icon": "ms-appx:///Assets/Application.Publisher.svg",
+			"Icon": "/Assets/Application.Publisher.svg",
 			"Validation": {
 				"IsRequired": true,
 				"Message": "Missing Publisher"
@@ -318,19 +318,19 @@
 		},
 		"appTheme.cupertino": {
 			"Sequence": 3,
-			"Icon": "ms-appx:///Assets/Theme.Cupertino.svg"
+			"Icon": "/Assets/Theme.Cupertino.svg"
 		},
 		"appTheme.fluent": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Theme.Fluent.svg"
+			"Icon": "/Assets/Theme.Fluent.svg"
 		},
 		"appTheme.material": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Theme.Material.svg"
+			"Icon": "/Assets/Theme.Material.svg"
 		},
 		"architecture.none": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Presentation.None.svg",
+			"Icon": "/Assets/Presentation.None.svg",
 			"Requires": {
 				"navigation": {
 					"RequiredValues": [ "blank" ],
@@ -340,14 +340,14 @@
 		},
 		"architecture.mvvm": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Presentation.MVVM.svg"
+			"Icon": "/Assets/Presentation.MVVM.svg"
 		},
 		"architecture.mvux": {
 			"Sequence": 3,
-			"Icon": "ms-appx:///Assets/Presentation.MVUX.svg"
+			"Icon": "/Assets/Presentation.MVUX.svg"
 		},
 		"authentication.custom": {
-			"Icon": "ms-appx:///Assets/Authentication.Custom.svg",
+			"Icon": "/Assets/Authentication.Custom.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -356,10 +356,10 @@
 			}
 		},
 		"authentication.none": {
-			"Icon": "ms-appx:///Assets/Authentication.None.svg"
+			"Icon": "/Assets/Authentication.None.svg"
 		},
 		"authentication.msal": {
-			"Icon": "ms-appx:///Assets/Authentication.MSAL.svg",
+			"Icon": "/Assets/Authentication.MSAL.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -375,7 +375,7 @@
 			}
 		},
 		"authentication.oidc": {
-			"Icon": "ms-appx:///Assets/Authentication.OIDC.svg",
+			"Icon": "/Assets/Authentication.OIDC.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -384,7 +384,7 @@
 			}
 		},
 		"authentication.Web": {
-			"Icon": "ms-appx:///Assets/Authentication.Web.svg",
+			"Icon": "/Assets/Authentication.Web.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -393,7 +393,7 @@
 			}
 		},
 		"configuration": {
-			"Icon": "ms-appx:///Assets/Extensions.Configuration.svg",
+			"Icon": "/Assets/Extensions.Configuration.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -402,7 +402,7 @@
 			}
 		},
 		"cultures": {
-			"Icon": "ms-appx:///Assets/Extensions.Configuration.svg",
+			"Icon": "/Assets/Extensions.Configuration.svg",
 			"Requires": {
 				"localization": {
 					"RequiredValues": [ "true" ],
@@ -411,10 +411,10 @@
 			}
 		},
 		"dependencyInjection": {
-			"Icon": "ms-appx:///Assets/Extensions.DependencyInjection.svg"
+			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
 		"http": {
-			"Icon": "ms-appx:///Assets/Extensions.Http.svg",
+			"Icon": "/Assets/Extensions.Http.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -423,7 +423,7 @@
 			}
 		},
 		"localization": {
-			"Icon": "ms-appx:///Assets/Extensions.Localization.svg",
+			"Icon": "/Assets/Extensions.Localization.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -432,11 +432,11 @@
 			}
 		},
 		"logging": {
-			"Icon": "ms-appx:///Assets/Extensions.Loggin.svg"
+			"Icon": "/Assets/Extensions.Loggin.svg"
 		},
 		"logging.default": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Extensions.LogginDefault.svg",
+			"Icon": "/Assets/Extensions.LogginDefault.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -445,10 +445,10 @@
 			}
 		},
 		"logging.none": {
-			"Icon": "ms-appx:///Assets/Extensions.LogginConsole.svg"
+			"Icon": "/Assets/Extensions.LogginConsole.svg"
 		},
 		"logging.serilog": {
-			"Icon": "ms-appx:///Assets/Extensions.Serilog.svg",
+			"Icon": "/Assets/Extensions.Serilog.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -458,19 +458,19 @@
 		},
 		"markup.csharp": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Markup.CSharp.svg"
+			"Icon": "/Assets/Markup.CSharp.svg"
 		},
 		"markup.xaml": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Markup.Xaml.svg"
+			"Icon": "/Assets/Markup.Xaml.svg"
 		},
 		"navigation.blank": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Extensions.Navigation.svg"
+			"Icon": "/Assets/Extensions.Navigation.svg"
 		},
 		"navigation.regions": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Extensions.NavigationRegions.svg",
+			"Icon": "/Assets/Extensions.NavigationRegions.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -485,28 +485,28 @@
 			}
 		},
 		"platforms.android": {
-			"Icon": "ms-appx:///Assets/Platforms.Android.svg"
+			"Icon": "/Assets/Platforms.Android.svg"
 		},
 		"platforms.ios": {
 
-			"Icon": "ms-appx:///Assets/Platforms.iOS.svg"
+			"Icon": "/Assets/Platforms.iOS.svg"
 		},
 		"platforms.desktop": {
-			"Icon": "ms-appx:///Assets/Platforms.Desktop.svg"
+			"Icon": "/Assets/Platforms.Desktop.svg"
 		},
 		"platforms.maccatalyst": {
 
-			"Icon": "ms-appx:///Assets/Platforms.Catalyst.svg"
+			"Icon": "/Assets/Platforms.Catalyst.svg"
 		},
 		"platforms.wasm": {
-			"Icon": "ms-appx:///Assets/Platforms.Wasm.svg"
+			"Icon": "/Assets/Platforms.Wasm.svg"
 		},
 		"platforms.windows": {
 
-			"Icon": "ms-appx:///Assets/Platforms.Windows.svg"
+			"Icon": "/Assets/Platforms.Windows.svg"
 		},
 		"serialization": {
-			"Icon": "ms-appx:///Assets/Extensions.Serialization.svg",
+			"Icon": "/Assets/Extensions.Serialization.svg",
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -516,45 +516,45 @@
 		},
 		"server": {
 
-			"Icon": "ms-appx:///Assets/Features.Server.svg"
+			"Icon": "/Assets/Features.Server.svg"
 		},
 		"tests": {
 			"NoValue": "none"
 		},
 		"tests.ui": {
-			"Icon": "ms-appx:///Assets/Test.UiTest.svg"
+			"Icon": "/Assets/Test.UiTest.svg"
 		},
 		"tests.unit": {
 
-			"Icon": "ms-appx:///Assets/Test.UnitTest.svg"
+			"Icon": "/Assets/Test.UnitTest.svg"
 		},
 		"tfm.net6.0": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/framework.net6.svg"
+			"Icon": "/Assets/Framework.NET6.svg"
 		},
 		"tfm.net7.0": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Framework.NET7.svg"
+			"Icon": "/Assets/Framework.NET7.svg"
 		},
 		"tfm.net8.0": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Framework.NET8.svg"
+			"Icon": "/Assets/Framework.NET8.svg"
 		},
 		"tfm.net9.0": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Framework.NET9.svg"
+			"Icon": "/Assets/Framework.NET9.svg"
 		},
 		"toolkit": {
-			"Icon": "ms-appx:///Assets/Features.Toolkit.svg"
+			"Icon": "/Assets/Features.Toolkit.svg"
 		},
 		"vscode": {
-			"Icon": "ms-appx:///Assets/Features.VSCode.svg"
+			"Icon": "/Assets/Features.VSCode.svg"
 		},
 		"mediaElement": {
-			"Icon": "ms-appx:///Assets/Features.MediaElement.svg"
+			"Icon": "/Assets/Features.MediaElement.svg"
 		},
 		"wasmPwaManifest": {
-			"Icon": "ms-appx:///Assets/Features.Wasm.svg",
+			"Icon": "/Assets/Features.Wasm.svg",
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "wasm" ],
@@ -563,7 +563,7 @@
 			}
 		},
 		"wasmMultiThreading": {
-			"Icon": "ms-appx:///Assets/Features.WasmMultiThreading.svg",
+			"Icon": "/Assets/Features.WasmMultiThreading.svg",
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "wasm" ],
@@ -576,10 +576,10 @@
 			}
 		},
 		"mauiEmbedding": {
-			"Icon": "ms-appx:///Assets/Features.EmbedMAUI.svg"
+			"Icon": "/Assets/Features.EmbedMAUI.svg"
 		},
 		"dspGenerator": {
-			"Icon": "ms-appx:///Assets/Features.DSP.svg",
+			"Icon": "/Assets/Features.DSP.svg",
 			"Requires": {
 				"appTheme": {
 					"RequiredValues": [ "material" ],
@@ -588,24 +588,24 @@
 			}
 		},
 		"themeService": {
-			"Icon": "ms-appx:///Assets/Features.ThemeService.svg"
+			"Icon": "/Assets/Features.ThemeService.svg"
 		},
 
 		"continuousIntegration.none": {
 			"Sequence": 1,
-			"Icon": "ms-appx:///Assets/Workflow.None.svg"
+			"Icon": "/Assets/Workflow.None.svg"
 		},
 		"continuousIntegration.azure": {
 			"Sequence": 2,
-			"Icon": "ms-appx:///Assets/Workflow.Azure.svg"
+			"Icon": "/Assets/Workflow.Azure.svg"
 		},
 		"continuousIntegration.github": {
 			"Sequence": 3,
-			"Icon": "ms-appx:///Assets/Workflow.GitHub.svg"
+			"Icon": "/Assets/Workflow.GitHub.svg"
 		},
 		"enableDeveloperMode": {
 			"DeveloperMode": true,
-			"Icon": "ms-appx:///Assets/Workflow.GitHub.svg",
+			"Icon": "/Assets/Workflow.GitHub.svg",
 			"DisplayName": "Pre-release Features",
 			"Description": "Enabled pre-release features for testing"
 		}
