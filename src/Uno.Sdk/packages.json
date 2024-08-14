@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.1339",
+    "version": "5.4.0-dev.1343",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -91,7 +91,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.5.240627000",
+    "version": "1.5.240802000",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -110,17 +110,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.6.24327.7"
+      "net9.0": "9.0.0-preview.7.24405.7"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.7",
+    "version": "8.0.8",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.6.24327.6"
+      "net9.0": "9.0.0-preview.7.24405.2"
     }
   },
   {
@@ -232,7 +232,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.6.24327.7"
+      "net9.0": "9.0.0-preview.7.24407.4"
     }
   },
   {
