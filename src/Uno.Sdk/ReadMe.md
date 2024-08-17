@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.4.0-dev.1343 |
-| UnoExtensionsVersion | 5.0.0-dev.316 |
+| UnoVersion* | 5.4.0-dev.1510 |
+| UnoExtensionsVersion | 5.0.0-dev.336 |
 | UnoToolkitVersion | 6.2.0-dev.37 |
 | UnoThemesVersion | 5.2.0-dev.15 |
 | UnoCSharpMarkupVersion | 5.4.0-dev.35 |
@@ -14,7 +14,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0-dev.12 |
-| UnoResizetizerVersion | 1.6.0-dev.22 |
+| UnoResizetizerVersion | 1.6.0-dev.24 |
 | SkiaSharpVersion | 2.88.8 |
 | SvgSkiaVersion | 2.0.0 |
 | WinAppSdkVersion | 1.5.240802000 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.4.0-dev.1343",
+    "version": "5.4.0-dev.1510",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -106,7 +106,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.22",
+    "version": "1.6.0-dev.24",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.316",
+    "version": "5.0.0-dev.336",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
