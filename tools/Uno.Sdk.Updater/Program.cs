@@ -312,10 +312,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     {
         preview = false;
     }
-    else if (group.Group == "Prism")
-    {
-        preview = true;
-    }
     else if (!group.Packages.Any(x => x.StartsWith("Uno.")))
     {
         preview = false;
