@@ -7,30 +7,32 @@
 <!--#endif-->
       Background="{ThemeResource $themeBackgroundBrush$}">
   <ScrollViewer>
-    <StackPanel$toolkitSafeArea$
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center">
-      <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
-            Text="Hello Uno Platform!"
-            HorizontalAlignment="Center" />
+    <Grid$toolkitSafeArea$>
+      <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
+          Text="Hello Uno Platform!"
+          HorizontalAlignment="Center" />
 <!--#if (mauiEmbedding)-->
 <!--#if (useNonMauiPlatforms)-->
-      <maui:Grid>
-        <embed:MauiHost x:Name="MauiHostElement"
-                xmlns:embed="using:Uno.Extensions.Maui"
-                Source="controls:EmbeddedControl" />
-      </maui:Grid>
-      <not_maui:Grid>
-        <TextBlock AutomationProperties.AutomationId="NotMauiTextBlock"
+        <maui:Grid>
+          <embed:MauiHost x:Name="MauiHostElement"
+            xmlns:embed="using:Uno.Extensions.Maui"
+            Source="controls:EmbeddedControl" />
+        </maui:Grid>
+        <not_maui:Grid>
+          <TextBlock AutomationProperties.AutomationId="NotMauiTextBlock"
             Text="Alternative content for Non-Maui targets"
             HorizontalAlignment="Center" />
-      </not_maui:Grid>
+        </not_maui:Grid>
 <!--#else-->
-      <embed:MauiHost x:Name="MauiHostElement"
-              xmlns:embed="using:Uno.Extensions.Maui"
-              Source="controls:EmbeddedControl" />
+        <embed:MauiHost x:Name="MauiHostElement"
+          xmlns:embed="using:Uno.Extensions.Maui"
+          Source="controls:EmbeddedControl" />
 <!--#endif-->
 <!--#endif-->
-    </StackPanel>
+      </StackPanel>
+    </Grid>
   </ScrollViewer>
 </Page>
