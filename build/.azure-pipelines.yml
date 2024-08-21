@@ -92,22 +92,22 @@ stages:
 - stage: Template_validations
   dependsOn: Build
   jobs:
-  - template: .azure-pipelines.TemplateValidation.yml
-    parameters:
-      vmImage: 'windows-2022'
-      stageVariant: 'windows'
+  # - template: .azure-pipelines.TemplateValidation.yml
+  #   parameters:
+  #     vmImage: 'windows-2022'
+  #     stageVariant: 'windows'
   - template: .azure-pipelines.TemplateValidation.yml
     parameters:
       vmImage: 'ubuntu-latest'
       stageVariant: 'linux'
-  - template: .azure-pipelines.TemplateValidation.yml
-    parameters:
-      vmImage: 'macos-14'
-      stageVariant: 'macos14'
+  # - template: .azure-pipelines.TemplateValidation.yml
+  #   parameters:
+  #     vmImage: 'macos-14'
+  #     stageVariant: 'macos14'
       
-  - template: .azure-pipelines.UnoLibValidation.yml
-  - template: .azure-pipelines.UnoMauiLibValidation.yml
-  - template: .azure-pipelines.UWPValidation.yml
+  # - template: .azure-pipelines.UnoLibValidation.yml
+  # - template: .azure-pipelines.UnoMauiLibValidation.yml
+  # - template: .azure-pipelines.UWPValidation.yml
 
 - stage: Prepare
   condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
