@@ -140,7 +140,7 @@
   },
   {
     "group": "Prism",
-    "version": "9.0.401-pre",
+    "version": "9.0.537",
     "packages": [
       "Prism.DryIoc.Uno.WinUI",
       "Prism.Uno.WinUI",
@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.336",
+    "version": "5.0.0-dev.348",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -273,7 +273,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.37",
+    "version": "6.2.0-dev.39",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.15",
+    "version": "5.2.0-dev.16",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",

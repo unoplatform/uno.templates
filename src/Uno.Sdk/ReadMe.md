@@ -1,13 +1,13 @@
-﻿# Uno.Sdk
+# Uno.Sdk
 
 The Uno.Sdk powers the Uno Platform Single Project, including the ability to implicitly and easily manage many commonly used NuGet Packages with your Uno Platform application. Below is a table of the MSBuild Properties which you can use to override the default versions provided by this version of the SDK. You will also find the full Package manifest to give you a better idea of the packages' versions, or to better understand which variable to use for the packages that you want to override.
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
 | UnoVersion* | 5.4.0-dev.1510 |
-| UnoExtensionsVersion | 5.0.0-dev.336 |
-| UnoToolkitVersion | 6.2.0-dev.37 |
-| UnoThemesVersion | 5.2.0-dev.15 |
+| UnoExtensionsVersion | 5.0.0-dev.348 |
+| UnoToolkitVersion | 6.2.0-dev.39 |
+| UnoThemesVersion | 5.2.0-dev.16 |
 | UnoCSharpMarkupVersion | 5.4.0-dev.35 |
 | UnoWasmBootstrapVersion** | 8.0.20 |
 | UnoLoggingVersion | 1.7.0 |
@@ -23,7 +23,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WindowsCompatibilityVersion** | 8.0.8 |
 | MicrosoftIdentityClientVersion | 4.63.0 |
 | CommunityToolkitMvvmVersion | 8.2.2 |
-| PrismVersion | 9.0.401-pre |
+| PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.10.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
 | AndroidXAppCompatVersion | 1.6.1.7 |
@@ -181,7 +181,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Prism",
-    "version": "9.0.401-pre",
+    "version": "9.0.537",
     "packages": [
       "Prism.DryIoc.Uno.WinUI",
       "Prism.Uno.WinUI",
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.336",
+    "version": "5.0.0-dev.348",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -314,7 +314,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.37",
+    "version": "6.2.0-dev.39",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -326,7 +326,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.15",
+    "version": "5.2.0-dev.16",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
