@@ -20,7 +20,7 @@ jobs:
             "RecommendedMarkupFluent;;-preset recommended -markup csharp -theme fluent",
             "MVVM;;-preset recommended -presentation mvvm",
             "CSharpMarkup;;-markup csharp",
-            "NoHosting;;-preset recommended -di false",
+            "NoHosting;;-preset recommended -di false"
           );
 
           $matrixGroups = [ordered]@{}
