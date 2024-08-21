@@ -19,6 +19,10 @@ steps:
     artifactName: $(Build.DefinitionName)
 
 - script: |
+      echo $JAVA_HOME
+  displayName: Check Java Home
+
+- script: |
       md $(Build.SourcesDirectory)\src\PackageCache
       copy "$(System.ArtifactsDirectory)\$(Build.DefinitionName)\*.nupkg" $(Build.SourcesDirectory)\src\PackageCache
   displayName: Copy Artifacts to PackageCache
