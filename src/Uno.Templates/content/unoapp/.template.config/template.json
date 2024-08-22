@@ -2527,7 +2527,7 @@
         "cases": [
           {
             "condition": "(architectureEvaluator == 'mvux')",
-            "value": "BindableMainModel"
+            "value": "MainViewModel"
           },
           {
             "condition": "(architectureEvaluator == 'mvvm')",
@@ -2546,7 +2546,7 @@
         "cases": [
           {
             "condition": "(architectureEvaluator == 'mvux')",
-            "value": "BindableSecondModel"
+            "value": "SecondViewModel"
           },
           {
             "condition": "(architectureEvaluator == 'mvvm')",
@@ -2565,7 +2565,7 @@
         "cases": [
           {
             "condition": "(architectureEvaluator == 'mvux')",
-            "value": "BindableLoginModel"
+            "value": "LoginViewModel"
           },
           {
             "condition": "(architectureEvaluator == 'mvvm')",
