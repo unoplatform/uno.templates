@@ -7,7 +7,7 @@ public sealed partial class MainPage : Page
     {
 //+:cnd:noEmit
 #if useCsharpMarkup
-        this.DataContext<$mainDataContext$>((page, vm) => page
+        this.DataContext<MainViewModel>((page, vm) => page
             .NavigationCacheMode(NavigationCacheMode.Required)
 #if useMaterial
             .Background(Theme.Brushes.Background.Default)

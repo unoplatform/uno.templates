@@ -2562,63 +2562,6 @@
         ]
       }
     },
-    "mainDataContext": {
-      "type": "generated",
-      "generator": "switch",
-      "datatype": "string",
-      "replaces": "$mainDataContext$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(architectureEvaluator == 'mvux')",
-            "value": "MainViewModel"
-          },
-          {
-            "condition": "(architectureEvaluator == 'mvvm')",
-            "value": "MainViewModel"
-          }
-        ]
-      }
-    },
-    "secondDataContext": {
-      "type": "generated",
-      "generator": "switch",
-      "datatype": "string",
-      "replaces": "$secondDataContext$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(architectureEvaluator == 'mvux')",
-            "value": "SecondViewModel"
-          },
-          {
-            "condition": "(architectureEvaluator == 'mvvm')",
-            "value": "SecondViewModel"
-          }
-        ]
-      }
-    },
-    "loginDataContext": {
-      "type": "generated",
-      "generator": "switch",
-      "datatype": "string",
-      "replaces": "$loginDataContext$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(architectureEvaluator == 'mvux')",
-            "value": "LoginViewModel"
-          },
-          {
-            "condition": "(architectureEvaluator == 'mvvm')",
-            "value": "LoginViewModel"
-          }
-        ]
-      }
-    },
     "presetNavigationDefault": {
       "type": "generated",
       "generator": "switch",

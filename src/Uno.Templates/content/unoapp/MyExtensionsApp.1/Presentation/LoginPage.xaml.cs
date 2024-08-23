@@ -7,7 +7,7 @@ public sealed partial class LoginPage : Page
     {
 //+:cnd:noEmit
 #if useCsharpMarkup
-        this.DataContext<$loginDataContext$>((page, vm) => page
+        this.DataContext<LoginViewModel>((page, vm) => page
             .NavigationCacheMode(NavigationCacheMode.Required)
 #if useMaterial
             .Background(Theme.Brushes.Background.Default)
