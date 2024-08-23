@@ -579,8 +579,33 @@
       "displayName": "Theme Service",
       "description": "Include theme service for switching between Dark, Light and System themes",
       "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "false"
+      "datatype": "bool"
+    },
+    "presetThemeServiceDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "true"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "useThemeService": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "themeService",
+        "fallbackVariableName": "presetThemeServiceDefault"
+      }
     },
     "unoSvg": {
       "displayName": "Uno.WinUI.Svg",
