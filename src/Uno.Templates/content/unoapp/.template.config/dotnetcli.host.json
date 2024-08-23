@@ -121,10 +121,21 @@
       "longName": "wasm-multi-threading",
       "shortName": "wasm-multi-threading"
     },
+    "unoSvg": {
+      "longName": "svg",
+      "shortName": "svg"
+    },
+    "unoLottie": {
+      "longName": "lottie",
+      "shortName": "lottie"
+    },
     "unoWinUIVersion": {
       "isHidden": true
     },
     "unoSdkVersion": {
+      "isHidden": true
+    },
+    "unoWasmBootstrapVersion": {
       "isHidden": true
     },
     "unoUITestHelpersVersion": {
