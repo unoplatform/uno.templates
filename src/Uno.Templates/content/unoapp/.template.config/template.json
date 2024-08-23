@@ -943,7 +943,7 @@
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "serilog"
+            "value": "default"
           },
           {
             "condition": "(preset == 'blank')",

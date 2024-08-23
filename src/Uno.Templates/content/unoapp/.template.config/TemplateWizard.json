@@ -1,4 +1,4 @@
-﻿{
+{
 	"NavigationElements": [
 		{
 			"DisplayText": "Framework",
@@ -110,7 +110,7 @@
 					"dependencyInjection": "true",
 					"http": "true",
 					"localization": "true",
-					"logging": "serilog",
+					"logging": "default",
 					"markup": "xaml",
 					"mediaElement": "false",
 					"navigation": "regions",
