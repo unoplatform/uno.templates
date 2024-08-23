@@ -1,4 +1,4 @@
-{
+﻿{
 	"NavigationElements": [
 		{
 			"DisplayText": "Framework",
@@ -126,7 +126,7 @@
 					"mauiEmbedding": "false",
 					"wasmMultiThreading": "false",
 					"dspGenerator": "true",
-					"themeService": "false",
+					"themeService": "true",
 					"continuousIntegration": "none"
 				},
 				"Features": [
