@@ -99,7 +99,7 @@
       <!--#if (useExtensionsNavigation)-->
       Navigation;
       <!--#endif-->
-      <!--#if (themeService)-->
+      <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
     </UnoFeatures>
