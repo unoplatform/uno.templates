@@ -7,7 +7,7 @@ public sealed partial class SecondPage : Page
     {
 //+:cnd:noEmit
 #if useCsharpMarkup
-        this.DataContext<$secondDataContext$>((page, vm) => page
+        this.DataContext<SecondViewModel>((page, vm) => page
 #if useMaterial
             .Background(Theme.Brushes.Background.Default)
 #else
