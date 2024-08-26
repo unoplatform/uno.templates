@@ -39,4 +39,7 @@ global using Color = Windows.UI.Color;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 #endif
+#if (useMvux)
+[assembly: Uno.Extensions.Reactive.Config.BindableGenerationTool(3)]
+#endif
 //-:cnd:noEmit

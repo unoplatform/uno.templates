@@ -23,12 +23,4 @@
     <NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
     <!--#endif-->
   </PropertyGroup>
-  <!--#if (useMvux)-->
-  <ItemGroup  Condition="'$(UsingUnoSdk)' == 'true' AND $(UnoFeatures.Contains('mvux'))">
-    <AssemblyAttribute Include="Uno.Extensions.Reactive.Config.BindableGenerationToolAttribute">
-      <_Parameter1>3</_Parameter1>
-      <_Parameter1_TypeName>System.Int32</_Parameter1_TypeName>
-    </AssemblyAttribute>
-  </ItemGroup>
-  <!--#endif-->
 </Project>
