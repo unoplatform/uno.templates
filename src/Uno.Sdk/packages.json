@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.1544",
+    "version": "5.4.0-dev.1581",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -125,7 +125,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.63.0",
+    "version": "4.64.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.350",
+    "version": "5.0.0-dev.367",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.16",
+    "version": "5.2.0-dev.17",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
