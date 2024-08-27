@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.4.0-dev.1584 |
+| UnoVersion* | 5.4.0-dev.1596 |
 | UnoExtensionsVersion | 5.0.0-dev.370 |
 | UnoToolkitVersion | 6.2.0-dev.39 |
 | UnoThemesVersion | 5.2.0-dev.17 |
@@ -22,7 +22,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | 8.0.0 |
 | WindowsCompatibilityVersion** | 8.0.8 |
 | MicrosoftIdentityClientVersion | 4.64.0 |
-| CommunityToolkitMvvmVersion | 8.2.2 |
+| CommunityToolkitMvvmVersion | 8.3.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.10.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.4.0-dev.1584",
+    "version": "5.4.0-dev.1596",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -174,7 +174,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Mvvm",
-    "version": "8.2.2",
+    "version": "8.3.0",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
