@@ -245,7 +245,7 @@
   },
   {
     "group": "Extensions",
-    "version": "4.2.2",
+    "version": "4.2.14",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
