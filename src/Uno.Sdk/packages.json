@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.3.133",
+    "version": "5.3.144",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -24,7 +24,7 @@
   },
   {
     "group": "WasmBootstrap",
-    "version": "8.0.20",
+    "version": "8.0.21",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
