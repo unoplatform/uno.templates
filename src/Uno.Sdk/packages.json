@@ -225,7 +225,7 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.80",
+    "version": "8.0.82",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
