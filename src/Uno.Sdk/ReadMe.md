@@ -33,7 +33,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.18 |
 | AndroidXNavigationVersion | 2.7.7.1 |
 | AndroidXCollectionVersion | 1.4.0.1 |
-| MauiVersion** | 8.0.80 |
+| MauiVersion** | 8.0.82 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 9.0.
@@ -266,7 +266,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "8.0.80",
+    "version": "8.0.82",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
