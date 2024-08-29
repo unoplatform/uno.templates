@@ -133,7 +133,7 @@
   },
   {
     "group": "Mvvm",
-    "version": "8.3.0",
+    "version": "8.2.2",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
