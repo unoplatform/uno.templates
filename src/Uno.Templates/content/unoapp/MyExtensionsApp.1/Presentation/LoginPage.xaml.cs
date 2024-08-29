@@ -16,7 +16,7 @@ public sealed partial class LoginPage : Page
 #endif
             .Content(new Grid()
 #if useToolkit
-                .SafeArea(SafeArea.InsetMask.All)
+                .SafeArea(SafeArea.InsetMask.VisibleBounds)
 #endif
                 .RowDefinitions("Auto,*")
                 .Children(

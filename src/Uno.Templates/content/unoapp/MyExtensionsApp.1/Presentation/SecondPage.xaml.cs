@@ -15,7 +15,7 @@ public sealed partial class SecondPage : Page
 #endif
             .Content(new Grid()
 #if useToolkit
-                .SafeArea(SafeArea.InsetMask.All)
+                .SafeArea(SafeArea.InsetMask.VisibleBounds)
 #endif
                 .Children(
 #if useToolkit
