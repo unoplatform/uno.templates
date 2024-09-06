@@ -186,7 +186,7 @@
   },
   {
     "group": "AndroidXActivity",
-    "version": "1.9.1.1",
+    "version": "1.9.0",
     "packages": [
       "Xamarin.AndroidX.Activity"
     ]
