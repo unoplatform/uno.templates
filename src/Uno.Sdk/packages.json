@@ -237,7 +237,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.37",
+    "version": "5.4.0-dev.41",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
