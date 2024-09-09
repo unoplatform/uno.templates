@@ -157,7 +157,7 @@ steps:
         continue
       }
 
-      if ($environmentFilter -eq "Windows" -and $testParams.Contains('net9.0') -and ($testName -eq "MauiBlank" -or $testName -eq "MauiRecommended" -or $testName -eq "Issue396"))
+      if ($environmentFilter -eq "Windows" -and $testParams.Contains('net9.0') -and ( ($testName -eq "MauiBlank") -or ($testName -eq "MauiRecommended") -or ($testName -eq "Issue396")))
       {
         echo "Skipping $testName ($testParams) on net9.0 Windows because of https://github.com/unoplatform/uno.csharpmarkup/issues/787"
         continue
