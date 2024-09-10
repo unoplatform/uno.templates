@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.104"
+      "net9.0": "9.0.0-dev.120"
     }
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.5.240802000",
+    "version": "1.6.240829007",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -237,7 +237,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.37",
+    "version": "5.4.0-dev.43",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
