@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.1720",
+    "version": "5.5.0-dev.212",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -19,7 +19,8 @@
       "Uno.WinUI.Svg",
       "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.WebAssembly",
-      "Uno.WinUI.MediaPlayer.WebAssembly"
+      "Uno.WinUI.MediaPlayer.WebAssembly",
+      "Uno.WinUI.Graphics3DGL"
     ]
   },
   {
@@ -31,7 +32,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.104"
+      "net9.0": "9.0.0-dev.116"
     }
   },
   {
@@ -91,7 +92,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.5.240802000",
+    "version": "1.6.240829007",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -237,7 +238,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.37",
+    "version": "5.4.0-dev.43",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -245,7 +246,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.401",
+    "version": "5.0.0-dev.423",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -273,7 +274,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.41",
+    "version": "6.2.0-dev.42",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +286,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.22",
+    "version": "5.2.0-dev.23",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
