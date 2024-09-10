@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.116"
+      "net9.0": "9.0.0-dev.120"
     }
   },
   {
@@ -151,7 +151,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.7"
+      "net9.0": "9.0.0-rc.1.24431.7"
     }
   },
   {
@@ -161,7 +161,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.2"
+      "net9.0": "9.0.0-rc.1.24452.1"
     }
   },
   {
