@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.0-dev.1720",
+    "version": "5.5.0-dev.227",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -19,7 +19,8 @@
       "Uno.WinUI.Svg",
       "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.WebAssembly",
-      "Uno.WinUI.MediaPlayer.WebAssembly"
+      "Uno.WinUI.MediaPlayer.WebAssembly",
+      "Uno.WinUI.Graphics3DGL"
     ]
   },
   {
@@ -110,7 +111,7 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.7"
+      "net9.0": "9.0.0-rc.1.24431.7"
     }
   },
   {
@@ -120,7 +121,7 @@
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.2"
+      "net9.0": "9.0.0-rc.1.24452.1"
     }
   },
   {
@@ -232,7 +233,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24407.4"
+      "net9.0": "9.0.0-rc.1.24453.9"
     }
   },
   {
@@ -245,7 +246,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.401",
+    "version": "5.0.0-dev.423",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -273,7 +274,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.41",
+    "version": "6.2.0-dev.42",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -285,7 +286,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.22",
+    "version": "5.2.0-dev.23",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
