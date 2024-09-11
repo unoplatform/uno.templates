@@ -86,19 +86,21 @@ jobs:
               }
           }
 
+          # Disabled until net9-rc1 is supported by the uno wasm bootstrapper
+          #
           # generate matrix for net9
-          for ($i = 0; $i -lt $tests.Count; $i++) 
-          { 
-              $currentGroup += $tests[$i] + " -tfm net9.0";
-
-              if ($currentGroup.Count -eq $groupSize) {
-                $matrixGroups["Group$($matrixGroups.Count)_net9"] = @{
-                  'unocheckArguments' = '--pre-major'
-                  'validations' = $currentGroup -join "`r`n"
-                };
-                $currentGroup = @()
-              }
-          }
+          # for ($i = 0; $i -lt $tests.Count; $i++) 
+          # { 
+          #     $currentGroup += $tests[$i] + " -tfm net9.0";
+          # 
+          #     if ($currentGroup.Count -eq $groupSize) {
+          #       $matrixGroups["Group$($matrixGroups.Count)_net9"] = @{
+          #         'unocheckArguments' = '--pre-major'
+          #         'validations' = $currentGroup -join "`r`n"
+          #       };
+          #       $currentGroup = @()
+          #     }
+          # }
 
           $matrixAsJson = $matrixGroups | ConvertTo-Json -Compress
 
