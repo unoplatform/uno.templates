@@ -22,6 +22,10 @@ variables:
   ValidationUnoCheckVersion: '1.24.0-dev.7'
   ValidationDotNetVersion: '8.0.204'
 
+  # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
+  # compatible version of the bootstrapper
+  UnoDisableNet9Validation: true
+
 stages:
 - stage: Build
   jobs:
