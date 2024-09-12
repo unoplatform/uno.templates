@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.120"
+      "net9.0": "9.0.0-dev.122"
     }
   },
   {
@@ -285,7 +285,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.1.7",
+    "version": "5.1.9",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
