@@ -66,7 +66,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.24",
+    "version": "1.6.0-dev.26",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -126,7 +126,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.64.0",
+    "version": "4.64.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -134,7 +134,7 @@
   },
   {
     "group": "Mvvm",
-    "version": "8.3.0",
+    "version": "8.3.1",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
@@ -246,7 +246,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.426",
+    "version": "5.0.0-dev.428",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -274,7 +274,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.42",
+    "version": "6.3.0-dev.2",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
