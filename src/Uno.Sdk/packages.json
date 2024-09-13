@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.0-dev.250",
+    "version": "5.5.0-dev.255",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -150,7 +150,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.4.0",
+    "version": "2.5.0-dev.9",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
