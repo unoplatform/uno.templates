@@ -1,5 +1,5 @@
 parameters:
-  DotNetVersion: '8.0.100'
+  DotNetVersion: '8.0.400'
 
 steps:
 
