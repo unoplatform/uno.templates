@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.0-dev.332",
+    "version": "5.5.0-dev.336",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -286,7 +286,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.3.0-dev.3",
+    "version": "5.3.0-dev.4",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
