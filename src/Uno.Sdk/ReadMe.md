@@ -4,11 +4,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.4.0-dev.1720 |
-| UnoExtensionsVersion | 5.0.0-dev.401 |
-| UnoToolkitVersion | 6.2.0-dev.41 |
-| UnoThemesVersion | 5.2.0-dev.22 |
-| UnoCSharpMarkupVersion | 5.4.0-dev.37 |
+| UnoVersion* | 5.4.12 |
+| UnoExtensionsVersion | 5.0.0-dev.431 |
+| UnoToolkitVersion | 6.2.4 |
+| UnoThemesVersion | 5.2.1 |
+| UnoCSharpMarkupVersion | 5.4.1 |
 | UnoWasmBootstrapVersion** | 8.0.21 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
@@ -21,8 +21,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.1 |
 | MicrosoftLoggingVersion** | 8.0.0 |
 | WindowsCompatibilityVersion** | 8.0.8 |
-| MicrosoftIdentityClientVersion | 4.64.0 |
-| CommunityToolkitMvvmVersion | 8.3.0 |
+| MicrosoftIdentityClientVersion | 4.64.1 |
+| CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.10.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.4.0-dev.1720",
+    "version": "5.4.12",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.104"
+      "net9.0": "9.0.0-dev.286"
     }
   },
   {
@@ -151,7 +151,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.7"
+      "net9.0": "9.0.0-rc.1.24431.7"
     }
   },
   {
@@ -161,12 +161,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-preview.7.24405.2"
+      "net9.0": "9.0.0-rc.1.24452.1"
     }
   },
   {
     "group": "MsalClient",
-    "version": "4.64.0",
+    "version": "4.64.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -174,7 +174,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Mvvm",
-    "version": "8.3.0",
+    "version": "8.3.2",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
@@ -190,7 +190,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoFonts",
-    "version": "2.4.0",
+    "version": "2.4.5",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -278,7 +278,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.4.0-dev.37",
+    "version": "5.4.1",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.401",
+    "version": "5.0.0-dev.431",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -314,7 +314,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.2.0-dev.41",
+    "version": "6.2.4",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -326,7 +326,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.2.0-dev.22",
+    "version": "5.2.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
