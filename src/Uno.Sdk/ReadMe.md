@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.5.0-dev.336 |
+| UnoVersion* | 5.5.0-dev.399 |
 | UnoExtensionsVersion | 5.0.0-dev.428 |
 | UnoToolkitVersion | 6.3.0-dev.2 |
 | UnoThemesVersion | 5.3.0-dev.4 |
@@ -14,7 +14,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0-dev.12 |
-| UnoResizetizerVersion | 1.6.0-dev.29 |
+| UnoResizetizerVersion | 1.6.0-dev.31 |
 | SkiaSharpVersion | 2.88.8 |
 | SvgSkiaVersion | 2.0.0.1 |
 | WinAppSdkVersion | 1.6.240829007 |
@@ -22,7 +22,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | 8.0.0 |
 | WindowsCompatibilityVersion** | 8.0.8 |
 | MicrosoftIdentityClientVersion | 4.64.1 |
-| CommunityToolkitMvvmVersion | 8.3.1 |
+| CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.10.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.5.0-dev.336",
+    "version": "5.5.0-dev.399",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -73,7 +73,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.270"
+      "net9.0": "9.0.0-dev.286"
     }
   },
   {
@@ -107,7 +107,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.29",
+    "version": "1.6.0-dev.31",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -175,7 +175,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Mvvm",
-    "version": "8.3.1",
+    "version": "8.3.2",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
