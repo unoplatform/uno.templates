@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.0-dev.423",
+    "version": "5.5.0-dev.465",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
