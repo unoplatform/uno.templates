@@ -5,7 +5,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
 | UnoVersion* | 5.4.22 |
-| UnoExtensionsVersion | 5.0.0-dev.431 |
+| UnoExtensionsVersion | 5.0.2 |
 | UnoToolkitVersion | 6.2.6 |
 | UnoThemesVersion | 5.2.5 |
 | UnoCSharpMarkupVersion | 5.4.3 |
@@ -13,12 +13,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
-| UnoDspTasksVersion | 1.4.0-dev.12 |
-| UnoResizetizerVersion | 1.6.0-dev.24 |
+| UnoDspTasksVersion | 1.4.0 |
+| UnoResizetizerVersion | 1.6.0 |
 | SkiaSharpVersion | 2.88.8 |
 | SvgSkiaVersion | 2.0.0.1 |
 | WinAppSdkVersion | 1.6.240829007 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.1 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.0 |
 | WindowsCompatibilityVersion** | 8.0.8 |
 | MicrosoftIdentityClientVersion | 4.64.1 |
@@ -99,14 +99,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Dsp",
-    "version": "1.4.0-dev.12",
+    "version": "1.4.0",
     "packages": [
       "Uno.Dsp.Tasks"
     ]
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.24",
+    "version": "1.6.0",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -139,7 +139,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.1",
+    "version": "10.0.26100.1742",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.0.0-dev.431",
+    "version": "5.0.2",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
