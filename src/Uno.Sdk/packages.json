@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.4.27",
+    "version": "5.4.38",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -91,7 +91,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.240829007",
+    "version": "1.6.240923002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
