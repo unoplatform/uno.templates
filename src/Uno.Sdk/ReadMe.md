@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.5.0-dev.605 |
+| UnoVersion* | 5.5.0-dev.747 |
 | UnoExtensionsVersion | 5.1.0-dev.62 |
 | UnoToolkitVersion | 6.3.0-dev.6 |
 | UnoThemesVersion | 5.3.0-dev.8 |
@@ -19,8 +19,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SvgSkiaVersion | 2.0.0.1 |
 | WinAppSdkVersion | 1.6.240923002 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
-| MicrosoftLoggingVersion** | 8.0.0 |
-| WindowsCompatibilityVersion** | 8.0.8 |
+| MicrosoftLoggingVersion** | 8.0.1 |
+| WindowsCompatibilityVersion** | 8.0.10 |
 | MicrosoftIdentityClientVersion | 4.65.0 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.5.0-dev.605",
+    "version": "5.5.0-dev.747",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -52,13 +52,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Skia.Gtk",
-      "Uno.WinUI.Skia.Linux.FrameBuffer",
-      "Uno.WinUI.Skia.MacOS",
-      "Uno.WinUI.Skia.Wpf",
-      "Uno.WinUI.Skia.X11",
+      "Uno.WinUI.Runtime.Skia.Gtk",
+      "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
+      "Uno.WinUI.Runtime.Skia.MacOS",
+      "Uno.WinUI.Runtime.Skia.Wpf",
+      "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
-      "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.WebAssembly",
       "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.Graphics3DGL",
@@ -148,22 +147,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24431.7"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.8",
+    "version": "8.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24452.1"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {

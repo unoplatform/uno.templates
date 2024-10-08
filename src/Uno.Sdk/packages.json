@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.0-dev.605",
+    "version": "5.5.0-dev.747",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -11,13 +11,12 @@
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Skia.Gtk",
-      "Uno.WinUI.Skia.Linux.FrameBuffer",
-      "Uno.WinUI.Skia.MacOS",
-      "Uno.WinUI.Skia.Wpf",
-      "Uno.WinUI.Skia.X11",
+      "Uno.WinUI.Runtime.Skia.Gtk",
+      "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
+      "Uno.WinUI.Runtime.Skia.MacOS",
+      "Uno.WinUI.Runtime.Skia.Wpf",
+      "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
-      "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.WebAssembly",
       "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.Graphics3DGL",
@@ -107,22 +106,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24431.7"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.8",
+    "version": "8.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24452.1"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {
