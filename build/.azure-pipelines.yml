@@ -29,6 +29,9 @@ variables:
   # Required for WinUI 1.6
   WindowsSdkPackageVersion: '10.0.19041.38'
 
+  # Required for WinAppSDK native AOT, to remove when included in uno.sdk
+  AllowUnsafeBlocks: true
+
 stages:
 - stage: Build
   jobs:
