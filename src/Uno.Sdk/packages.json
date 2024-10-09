@@ -159,7 +159,7 @@
   },
   {
     "group": "AndroidMaterial",
-    "version": "1.12.0",
+    "version": "1.11.0.3",
     "packages": [
       "Xamarin.Google.Android.Material"
     ]
@@ -208,7 +208,7 @@
   },
   {
     "group": "AndroidXNavigation",
-    "version": "2.8.2",
+    "version": "2.8.0.1",
     "packages": [
       "Xamarin.AndroidX.Navigation.UI",
       "Xamarin.AndroidX.Navigation.Fragment",
