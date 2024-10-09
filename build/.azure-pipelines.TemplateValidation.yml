@@ -126,6 +126,6 @@ jobs:
   steps:
   - template: templates/package-validation.yml     
     parameters:
-      xCodeRoot: '/Applications/Xcode_15.4.app'
+      xCodeRoot: '/Applications/Xcode_16.app'
       arguments: $(validations)
       unocheckArguments: $(unocheckArguments)
