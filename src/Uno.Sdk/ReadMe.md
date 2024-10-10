@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.5.0-dev.800 |
+| UnoVersion* | 5.5.0-dev.883 |
 | UnoExtensionsVersion | 5.1.0-dev.67 |
 | UnoToolkitVersion | 6.3.0-dev.6 |
 | UnoThemesVersion | 5.3.0-dev.8 |
@@ -24,15 +24,15 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftIdentityClientVersion | 4.65.0 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
-| AndroidMaterialVersion | 1.11.0.2 |
+| AndroidMaterialVersion | 1.11.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
-| AndroidXAppCompatVersion | 1.7.0.2 |
-| AndroidXRecyclerViewVersion | 1.3.2.7 |
-| AndroidXActivityVersion | 1.9.1.1 |
-| AndroidXBrowserVersion | 1.8.0.4 |
-| AndroidXSwipeRefreshLayoutVersion | 1.1.0.22 |
-| AndroidXNavigationVersion | 2.7.7.6 |
-| AndroidXCollectionVersion | 1.4.2.1 |
+| AndroidXAppCompatVersion | 1.7.0.3 |
+| AndroidXRecyclerViewVersion | 1.3.2.8 |
+| AndroidXActivityVersion | 1.9.2.1 |
+| AndroidXBrowserVersion | 1.8.0.6 |
+| AndroidXSwipeRefreshLayoutVersion | 1.1.0.24 |
+| AndroidXNavigationVersion | 2.8.0.1 |
+| AndroidXCollectionVersion | 1.4.4 |
 | MauiVersion** | 8.0.91 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.5.0-dev.800",
+    "version": "5.5.0-dev.883",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -200,7 +200,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidMaterial",
-    "version": "1.11.0.2",
+    "version": "1.11.0.3",
     "packages": [
       "Xamarin.Google.Android.Material"
     ]
@@ -214,42 +214,42 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXAppCompat",
-    "version": "1.7.0.2",
+    "version": "1.7.0.3",
     "packages": [
       "Xamarin.AndroidX.AppCompat"
     ]
   },
   {
     "group": "AndroidXRecyclerView",
-    "version": "1.3.2.7",
+    "version": "1.3.2.8",
     "packages": [
       "Xamarin.AndroidX.RecyclerView"
     ]
   },
   {
     "group": "AndroidXActivity",
-    "version": "1.9.1.1",
+    "version": "1.9.2.1",
     "packages": [
       "Xamarin.AndroidX.Activity"
     ]
   },
   {
     "group": "AndroidXBrowser",
-    "version": "1.8.0.4",
+    "version": "1.8.0.6",
     "packages": [
       "Xamarin.AndroidX.Browser"
     ]
   },
   {
     "group": "AndroidXSwipeRefreshLayout",
-    "version": "1.1.0.22",
+    "version": "1.1.0.24",
     "packages": [
       "Xamarin.AndroidX.SwipeRefreshLayout"
     ]
   },
   {
     "group": "AndroidXNavigation",
-    "version": "2.7.7.6",
+    "version": "2.8.0.1",
     "packages": [
       "Xamarin.AndroidX.Navigation.UI",
       "Xamarin.AndroidX.Navigation.Fragment",
@@ -259,7 +259,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXCollection",
-    "version": "1.4.2.1",
+    "version": "1.4.4",
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
