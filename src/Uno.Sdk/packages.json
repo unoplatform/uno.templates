@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.69",
+    "version": "5.6.0-dev.81",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -69,6 +69,13 @@
     "version": "1.6.0-dev.31",
     "packages": [
       "Uno.Resizetizer"
+    ]
+  },
+  {
+    "group": "sdkextras",
+    "version": "5.6.0-dev.2",
+    "packages": [
+      "Uno.Sdk.Extras"
     ]
   },
   {
@@ -274,7 +281,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.4.0-dev.4",
+    "version": "6.4.0-dev.17",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
