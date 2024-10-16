@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.8",
+    "version": "5.5.16",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -292,6 +292,13 @@
       "Uno.Material.WinUI.Markup",
       "Uno.Themes.WinUI.Markup",
       "Uno.Cupertino.WinUI"
+    ]
+  },
+  {
+    "group": "sdkextras",
+    "version": "5.5.2",
+    "packages": [
+      "Uno.Sdk.Extras"
     ]
   }
 ]
