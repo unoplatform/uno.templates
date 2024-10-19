@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.127 |
-| UnoExtensionsVersion | 5.1.0-dev.67 |
+| UnoVersion* | 5.6.0-dev.136 |
+| UnoExtensionsVersion | 5.2.0-dev.10 |
 | UnoToolkitVersion | 6.4.0-dev.17 |
 | UnoThemesVersion | 5.4.0-dev.2 |
 | UnoCSharpMarkupVersion | 5.5.0-dev.7 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.10 |
-| MicrosoftIdentityClientVersion | 4.65.0 |
+| MicrosoftIdentityClientVersion | 4.66.0 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.11.0.3 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.127",
+    "version": "5.6.0-dev.136",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -120,6 +120,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ]
   },
   {
+    "group": "settings",
+    "version": "0.1.0-dev.144",
+    "packages": [
+      "Uno.Settings.DevServer"
+    ]
+  },
+  {
     "group": "SkiaSharp",
     "version": "2.88.8",
     "packages": [
@@ -174,7 +181,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.65.0",
+    "version": "4.66.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -294,7 +301,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.1.0-dev.67",
+    "version": "5.2.0-dev.10",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
