@@ -197,7 +197,7 @@ steps:
       {
         # Build the app
         pushd $testName 
-        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog"
+        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog" /p:TreatWarningsAsErrors=true /p:NoWarn=NU1507;CS1591
         if ($LASTEXITCODE -ne 0)
         {
           echo "Build failed for $testName"
