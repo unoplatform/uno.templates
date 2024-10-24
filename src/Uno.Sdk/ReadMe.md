@@ -17,10 +17,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.5.2 |
 | SkiaSharpVersion | 2.88.8 |
 | SvgSkiaVersion | 1.0.0.19 |
-| WinAppSdkVersion | 1.5.240802000 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.1 |
-| MicrosoftLoggingVersion** | 8.0.0 |
-| WindowsCompatibilityVersion** | 8.0.8 |
+| WinAppSdkVersion | 1.5.241001000 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
+| MicrosoftLoggingVersion** | 8.0.1 |
+| WindowsCompatibilityVersion** | 8.0.10 |
 | MicrosoftIdentityClientVersion | 4.61.3 |
 | CommunityToolkitMvvmVersion | 8.2.2 |
 | PrismVersion | 9.0.401-pre |
@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.122"
+      "net9.0": "9.0.1"
     }
   },
   {
@@ -132,36 +132,36 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.5.240802000",
+    "version": "1.5.241001000",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.1",
+    "version": "10.0.26100.1742",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24431.7"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.8",
+    "version": "8.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24452.1"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {
