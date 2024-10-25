@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.226",
+    "version": "5.6.0-dev.228",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,14 +74,14 @@
   },
   {
     "group": "sdkextras",
-    "version": "5.6.0-dev.9",
+    "version": "5.6.0-dev.10",
     "packages": [
       "Uno.Sdk.Extras"
     ]
   },
   {
     "group": "settings",
-    "version": "0.1.0-dev.230",
+    "version": "0.1.0-dev.244",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -289,7 +289,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.4.0-dev.17",
+    "version": "6.4.0-dev.48",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
