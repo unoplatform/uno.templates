@@ -243,13 +243,19 @@ internal class NuGetApiClient : IDisposable
         }
     }
 
-    public async Task<string> GetVersionAsync(string packageId, bool preview, string? minimumVersionString = null)
+    public async Task<string> GetVersionAsync(string packageId, bool preview, bool majorUpgradeDisabled, string? minimumVersionString = null)
     {
         var versions = await GetPackageVersions(packageId);
+
 
         // https://api.nuget.org/v3-flatcontainer/uno.extensions.hosting.winui/4.2.0-dev.137/uno.extensions.hosting.winui.nuspec
         if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
         {
+            if (majorUpgradeDisabled)
+            {
+                versions = versions.Where(v => v.Version.Major <= minimumVersion.Version.Major);
+            }
+
             versions = versions.Where(x => minimumVersion.Version <= x.Version);
 
             if (UnoVersion.HasValue && !UnoVersion.Value.IsPreview)
