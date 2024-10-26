@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.35",
+    "version": "5.5.37",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -296,14 +296,14 @@
   },
   {
     "group": "sdkextras",
-    "version": "5.5.9",
+    "version": "5.5.10",
     "packages": [
       "Uno.Sdk.Extras"
     ]
   },
   {
     "group": "settings",
-    "version": "0.1.0-dev.244",
+    "version": "0.1.0-dev.246",
     "packages": [
       "Uno.Settings.DevServer"
     ]
