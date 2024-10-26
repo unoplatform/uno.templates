@@ -3,6 +3,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
 
     <!--#if (mauiEmbedding)-->
     <!--
