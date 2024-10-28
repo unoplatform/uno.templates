@@ -35,8 +35,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXCollectionVersion | 1.4.4 |
 | MauiVersion** | 8.0.92 |
 
-\* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
-\*\* This version may have a different version for .NET 9.0.
+- \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
+- \*\* This version may have a different version for .NET 9.0.
 
 ```json
 [
