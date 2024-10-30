@@ -59,14 +59,14 @@
   },
   {
     "group": "Dsp",
-    "version": "1.4.0-dev.12",
+    "version": "1.4.0",
     "packages": [
       "Uno.Dsp.Tasks"
     ]
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0-dev.31",
+    "version": "1.6.0",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -150,7 +150,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.5.0-dev.9",
+    "version": "2.4.5",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
