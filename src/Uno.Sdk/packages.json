@@ -303,7 +303,7 @@
   },
   {
     "group": "settings",
-    "version": "1.0.15",
+    "version": "1.0.19",
     "packages": [
       "Uno.Settings.DevServer"
     ]
