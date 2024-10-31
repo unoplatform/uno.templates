@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.10 |
-| MicrosoftIdentityClientVersion | 4.65.0 |
+| MicrosoftIdentityClientVersion | 4.66.1 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.11.0.3 |
@@ -33,7 +33,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.24 |
 | AndroidXNavigationVersion | 2.8.0.1 |
 | AndroidXCollectionVersion | 1.4.4 |
-| MauiVersion** | 8.0.91 |
+| MauiVersion** | 8.0.92 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 9.0.
@@ -47,6 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
       "Uno.WinUI.Maps",
+      "Uno.WinUI.GooglePlay",
       "Uno.WinUI.Foldable",
       "Uno.WinUI.MSAL",
       "Uno.WinUI.Svg",
@@ -113,6 +114,20 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ]
   },
   {
+    "group": "sdkextras",
+    "version": "5.6.0-dev.11",
+    "packages": [
+      "Uno.Sdk.Extras"
+    ]
+  },
+  {
+    "group": "settings",
+    "version": "1.1.0-dev.66",
+    "packages": [
+      "Uno.Settings.DevServer"
+    ]
+  },
+  {
     "group": "SkiaSharp",
     "version": "2.88.9-preview.2.2",
     "packages": [
@@ -167,7 +182,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.65.0",
+    "version": "4.66.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -267,7 +282,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "8.0.91",
+    "version": "8.0.92",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
