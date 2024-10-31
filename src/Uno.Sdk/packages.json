@@ -309,19 +309,5 @@
       "Uno.Themes.WinUI.Markup",
       "Uno.Cupertino.WinUI"
     ]
-  },
-  {
-    "group": "sdkextras",
-    "version": "5.5.10",
-    "packages": [
-      "Uno.Sdk.Extras"
-    ]
-  },
-  {
-    "group": "settings",
-    "version": "1.0.25",
-    "packages": [
-      "Uno.Settings.DevServer"
-    ]
   }
 ]
