@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.236 |
+| UnoVersion* | 5.6.0-dev.271 |
 | UnoExtensionsVersion | 5.2.0-dev.10 |
 | UnoToolkitVersion | 6.4.0-dev.48 |
-| UnoThemesVersion | 5.4.0-dev.2 |
+| UnoThemesVersion | 5.4.0-dev.10 |
 | UnoCSharpMarkupVersion | 5.5.0-dev.7 |
 | UnoWasmBootstrapVersion** | 8.0.21 |
 | UnoLoggingVersion | 1.7.0 |
@@ -35,14 +35,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXCollectionVersion | 1.4.4 |
 | MauiVersion** | 8.0.92 |
 
-- \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
-- \*\* This version may have a different version for .NET 9.0.
+\* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
+\*\* This version may have a different version for .NET 9.0.
 
 ```json
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.236",
+    "version": "5.6.0-dev.271",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -122,7 +122,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "0.1.0-dev.254",
+    "version": "1.1.0-dev.66",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -342,7 +342,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.4.0-dev.2",
+    "version": "5.4.0-dev.10",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
