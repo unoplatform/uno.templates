@@ -3113,6 +3113,7 @@
           "condition": "(!wasmPwaManifest)",
           "exclude": [
             "MyExtensionsApp/Platforms/WebAssembly/manifest.json",
+            "MyExtensionsApp/Platforms/WebAssembly/manifest.webmanifest",
             "MyExtensionsApp/Platforms/WebAssembly/Assets/AppIcon-*"
           ]
         },
