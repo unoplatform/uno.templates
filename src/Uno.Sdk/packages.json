@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.37",
+    "version": "5.5.45",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -32,7 +32,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.3"
+      "net9.0": "9.0.4"
     }
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -85,7 +85,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "2.0.0.1",
+    "version": "2.0.0.2",
     "packages": [
       "Svg.Skia"
     ]
@@ -246,7 +246,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.1.1",
+    "version": "5.1.2",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
