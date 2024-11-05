@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0">
+<Project ToolsVersion="15.0">
   <!--
     To update the version of Uno, you should instead update the Sdk version in the global.json file.
 
@@ -32,6 +32,9 @@
     <!--#if (mauiEmbedding)-->
     <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+        <!--#if (useCsharpMarkup)-->
+    <PackageVersion Include="Uno.Extensions.Maui.WinUI.Markup" Version="$(MauiVersion)" />
+        <!--#endif-->
     <!--#endif-->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageVersion$$
