@@ -51,7 +51,7 @@ public partial class App : Application
         MainWindow = new Window();
 //-:cnd:noEmit
 #if DEBUG
-        MainWindow.EnableHotReload();
+        MainWindow.UseStudio();
 #endif
 //+:cnd:noEmit
 
