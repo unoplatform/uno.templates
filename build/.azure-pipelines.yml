@@ -112,8 +112,8 @@ stages:
       stageVariant: 'linux'
   - template: .azure-pipelines.TemplateValidation.yml
     parameters:
-      vmImage: 'macos-14'
-      stageVariant: 'macos14'
+      vmImage: 'macos-15'
+      stageVariant: 'macos15'
       
   - template: .azure-pipelines.UnoLibValidation.yml
   - template: .azure-pipelines.UnoMauiLibValidation.yml
