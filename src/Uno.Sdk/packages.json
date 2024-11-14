@@ -121,22 +121,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24473.5"
+      "net9.0": "9.0.0"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.0",
+    "version": "8.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24474.4"
+      "net9.0": "9.0.0"
     }
   },
   {
@@ -241,14 +241,14 @@
   },
   {
     "group": "Maui",
-    "version": "9.0.0",
+    "version": "8.0.93",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24503.2"
+      "net9.0": "9.0.0"
     }
   },
   {
