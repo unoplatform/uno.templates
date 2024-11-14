@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.460",
+    "version": "5.6.0-dev.477",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -81,7 +81,7 @@
   },
   {
     "group": "settings",
-    "version": "1.2.0-dev.7",
+    "version": "1.2.0-dev.13",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -107,7 +107,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.240923002",
+    "version": "1.6.241106002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -121,7 +121,7 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.1",
+    "version": "9.0.0",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
@@ -131,7 +131,7 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.10",
+    "version": "9.0.0",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
@@ -141,7 +141,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.66.1",
+    "version": "4.66.2",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -241,7 +241,7 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.93",
+    "version": "9.0.0",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
