@@ -111,8 +111,7 @@ steps:
   displayName: Install Project Templates
 
 - bash: |
-    cd ~/.nuget
-    rm -fRv *.nupkg
+    find ~/.nuget -type f -name "*.nupkg" -exec rm {} \;
   displayName: Cleanup nupkg from package cache
   condition: eq(variables['Agent.OS'], 'Linux')
 
