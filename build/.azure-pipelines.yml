@@ -19,7 +19,7 @@ pr:
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
-  ValidationUnoCheckVersionNet8: '1.27.0'
+  ValidationUnoCheckVersionNet8: '1.26.1'
   ValidationUnoCheckVersionNet9: '1.27.1'
   ValidationDotNetVersion: '8.0.401'
 
