@@ -223,7 +223,7 @@ steps:
         popd
 
         # Clean the folder to continue testing with limited disk space
-        Remove-Item -Recurse -Force $testName -ErrorAction SilentlyContinue
+        Remove-Item -Recurse -Force $testName -ErrorAction Continue
       }
 
       $currentTest = $currentTest + 1;
