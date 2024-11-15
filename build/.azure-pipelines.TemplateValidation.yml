@@ -70,7 +70,7 @@ jobs:
 
           $matrixGroups = [ordered]@{}
           $currentGroup = @()
-          $groupSize = 5
+          $groupSize = 4
 
           # Generate matrix for net8
           for ($i = 0; $i -lt $tests.Count; $i++) 
