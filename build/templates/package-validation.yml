@@ -112,7 +112,7 @@ steps:
 
 - bash: |
     cd ~/.nuget
-    rm -fR *.nupkg
+    rm -fRv *.nupkg
   displayName: Cleanup nupkg from package cache
   condition: eq(variables['Agent.OS'], 'Linux')
 
