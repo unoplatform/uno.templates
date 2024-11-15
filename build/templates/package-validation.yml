@@ -17,12 +17,15 @@ steps:
     $templateArgs = '${{ parameters.arguments }}'
     echo "TemplateArgs = '$templateArgs'"
     $dotnetVersion = $env:TargetDotNetVersion
+    $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
     if ($templateArgs -match 'net9.0')
     {
-        $dotnetVersion = '9.0.100-rc.2.24474.11'
+        $dotnetVersion = '9.0.100'
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
     }
 
     echo "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
+    echo "##vso[task.setvariable variable=ValidationUnoCheckVersion]$ValidationUnoCheckVersion"
   displayName: Evaluate Template Args
   env:
     TargetDotNetVersion: $(ValidationDotNetVersion)
