@@ -32,7 +32,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.4"
+      "net9.0": "9.0.7"
     }
   },
   {
@@ -92,7 +92,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.240923002",
+    "version": "1.6.241106002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -116,7 +116,7 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.10",
+    "version": "8.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
