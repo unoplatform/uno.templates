@@ -313,7 +313,10 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     // as they are generally containing breaking changes.
     string[] majorUpgradeDisabledGroups = [
         "SkiaSharp",
-        "WasmBootstrap"
+        "WasmBootstrap",
+        "MicrosoftLoggingConsole",
+        "WindowsCompatibility",
+        "Maui",
     ];
 
     if (stableOnlyGroups.Any(x => x == group.Group))

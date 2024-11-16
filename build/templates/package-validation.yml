@@ -13,19 +13,54 @@ steps:
 - checkout: self
   clean: 'true'
 
+- bash: |
+    # This list is based on what the base image contains and
+    # may need to be adjusted as new software gets installed.
+    # Use the `du` command below to determine what can be
+    # uninstalled.
+    
+    rm -fR ~/.cargo
+    rm -fR ~/.rustup
+    rm -fR ~/.dotnet
+    sudo rm -fR /usr/share/swift
+    sudo rm -fR /opt/microsoft/msedge
+    sudo rm -fR /usr/local/.ghcup
+    sudo rm -fR /usr/lib/mono
+    sudo snap remove lxd
+    sudo snap remove core20
+    sudo apt remove snapd
+
+    df -h
+    # du -h -d 3 /
+
+  displayName: 'Cleanup unused image dependencies (Linux)'
+  condition: eq(variables['Agent.OS'], 'Linux')
+
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     echo "TemplateArgs = '$templateArgs'"
     $dotnetVersion = $env:TargetDotNetVersion
+    $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
     if ($templateArgs -match 'net9.0')
     {
-        $dotnetVersion = '9.0.100-rc.2.24474.11'
+        $dotnetVersion = '9.0.100'
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
     }
 
     echo "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
+    echo "##vso[task.setvariable variable=ValidationUnoCheckVersion]$ValidationUnoCheckVersion"
   displayName: Evaluate Template Args
   env:
     TargetDotNetVersion: $(ValidationDotNetVersion)
+
+# Install android 34 as we're running on macos-15, early so we use the tooling from the agent
+- bash: |
+    echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'tools' | tr '\r' '\n' | uniq
+    echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platform-tools' | tr '\r' '\n' | uniq
+    echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'build-tools;35.0.0' | tr '\r' '\n' | uniq
+    echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platforms;android-34' | tr '\r' '\n' | uniq
+  displayName: Install Android 34
+  condition: eq(variables['Agent.OS'], 'Darwin')
 
 - template: dotnet-install-windows.yml
   parameters:
@@ -97,7 +132,13 @@ steps:
 
 - script: dotnet new install "$(System.ArtifactsDirectory)/$(Build.DefinitionName)/Uno.Templates*.nupkg"
   displayName: Install Project Templates
-  
+
+- bash: |
+    find ~/.nuget -type f -name "*.nupkg" -exec rm {} \;
+    df -h
+  displayName: Cleanup nupkg from package cache
+  condition: eq(variables['Agent.OS'], 'Linux')
+
 - pwsh: |
       dotnet nuget add source -n nuget_local $(Build.SourcesDirectory)/src/PackageCache
       dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
@@ -186,7 +227,7 @@ steps:
       }
 
       # Create the app solution
-      & dotnet new unoapp -skip -d -o $testName $dotnetNewParams
+      & dotnet new unoapp -skip -o $testName $dotnetNewParams
 
       if ($LASTEXITCODE -ne 0)
       {
@@ -206,7 +247,13 @@ steps:
         popd
 
         # Clean the folder to continue testing with limited disk space
-        Remove-Item -Recurse -Force $testName -ErrorAction SilentlyContinue
+        Remove-Item -Recurse -Force $testName -ErrorAction Continue
+
+        if ($IsLinux)
+        {
+          echo "Show disk usage"
+          & df -h
+        }
       }
 
       $currentTest = $currentTest + 1;
