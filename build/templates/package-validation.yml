@@ -21,14 +21,13 @@ steps:
     sudo rm -fR /opt/microsoft/msedge
     sudo rm -fR /usr/local/.ghcup
     sudo rm -fR /usr/lib/mono
-    sudo rm -fR /usr/share/dotnet
+    # sudo rm -fR /usr/share/dotnet
     sudo snap remove lxd
     sudo snap remove core20
     sudo apt remove snapd
 
     df -h
-    cd /
-    du -h -d 3
+    # du -h -d 3 /
 
   displayName: Disk space
   condition: eq(variables['Agent.OS'], 'Linux')
