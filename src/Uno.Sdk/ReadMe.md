@@ -19,8 +19,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SvgSkiaVersion | 2.0.0.2 |
 | WinAppSdkVersion | 1.6.241106002 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
-| MicrosoftLoggingVersion** | 9.0.0 |
-| WindowsCompatibilityVersion** | 9.0.0 |
+| MicrosoftLoggingVersion** | 8.0.1 |
+| WindowsCompatibilityVersion** | 8.0.10 |
 | MicrosoftIdentityClientVersion | 4.66.2 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
@@ -162,7 +162,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
@@ -172,7 +172,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.0",
+    "version": "8.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
@@ -282,14 +282,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "9.0.0",
+    "version": "8.0.93",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24503.2"
+      "net9.0": "9.0.0"
     }
   },
   {
