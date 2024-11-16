@@ -22,10 +22,9 @@ steps:
     sudo rm -fR /usr/local/.ghcup
     sudo rm -fR /usr/lib/mono
     sudo rm -fR /usr/share/dotnet
+    sudo snap remove lxd
     sudo snap remove core20
     sudo apt remove snapd
-    sudo apt remove swift
-    sudo apt remove pipx
 
     df -h
     cd /
