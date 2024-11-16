@@ -17,10 +17,12 @@ steps:
     rm -fR ~/.cargo
     rm -fR ~/.rustup
     rm -fR ~/.dotnet
+    sudo apt remove snap
+    sudo apt remove skel
 
     df -h
-    cd /
-    du -h -d 2
+    cd /home
+    du -h -d 3
 
   displayName: Disk space
   condition: eq(variables['Agent.OS'], 'Linux')
