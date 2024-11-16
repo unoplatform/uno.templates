@@ -14,8 +14,12 @@ steps:
   clean: 'true'
 
 - bash: |
+    rm -fR ~/.cargo
+    rm -fR ~/.rustup
+    rm -fR ~/.dotnet
+
     df -h
-    cd /home/vsts
+    cd /
     du -h -d 2
 
   displayName: Disk space
