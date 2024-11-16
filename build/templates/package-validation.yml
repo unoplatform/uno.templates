@@ -13,6 +13,11 @@ steps:
 - checkout: self
   clean: 'true'
 
+- bash: |
+    df -h
+  displayName: Disk space
+  condition: eq(variables['Agent.OS'], 'Linux')
+
 - powershell: |
     $templateArgs = '${{ parameters.arguments }}'
     echo "TemplateArgs = '$templateArgs'"
@@ -112,6 +117,7 @@ steps:
 
 - bash: |
     find ~/.nuget -type f -name "*.nupkg" -exec rm {} \;
+    df -h
   displayName: Cleanup nupkg from package cache
   condition: eq(variables['Agent.OS'], 'Linux')
 
@@ -203,7 +209,7 @@ steps:
       }
 
       # Create the app solution
-      & dotnet new unoapp -skip -d -o $testName $dotnetNewParams
+      & dotnet new unoapp -skip -o $testName $dotnetNewParams
 
       if ($LASTEXITCODE -ne 0)
       {
@@ -224,6 +230,12 @@ steps:
 
         # Clean the folder to continue testing with limited disk space
         Remove-Item -Recurse -Force $testName -ErrorAction Continue
+
+        if ($IsLinux)
+        {
+          echo "Show disk usage"
+          & df -h
+        }
       }
 
       $currentTest = $currentTest + 1;
