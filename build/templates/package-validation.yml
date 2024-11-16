@@ -15,6 +15,7 @@ steps:
 
 - bash: |
     df -h
+    cd /
     du -h -d 2
 
   displayName: Disk space
