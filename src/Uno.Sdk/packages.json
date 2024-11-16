@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.477",
+    "version": "5.6.0-dev.514",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -33,7 +33,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.4"
+      "net9.0": "9.0.7"
     }
   },
   {
@@ -126,17 +126,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.10",
+    "version": "8.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {
@@ -241,14 +241,14 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.93",
+    "version": "8.0.100",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -289,7 +289,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.4.0-dev.51",
+    "version": "6.4.0-dev.53",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -301,7 +301,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.4.0-dev.18",
+    "version": "5.4.0-dev.19",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",

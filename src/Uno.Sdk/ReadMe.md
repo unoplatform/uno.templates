@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.477 |
+| UnoVersion* | 5.6.0-dev.514 |
 | UnoExtensionsVersion | 5.2.0-dev.12 |
-| UnoToolkitVersion | 6.4.0-dev.51 |
-| UnoThemesVersion | 5.4.0-dev.18 |
+| UnoToolkitVersion | 6.4.0-dev.53 |
+| UnoThemesVersion | 5.4.0-dev.19 |
 | UnoCSharpMarkupVersion | 5.5.6 |
 | UnoWasmBootstrapVersion** | 8.0.21 |
 | UnoLoggingVersion | 1.7.0 |
@@ -20,7 +20,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.6.241106002 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.10 |
+| WindowsCompatibilityVersion** | 8.0.11 |
 | MicrosoftIdentityClientVersion | 4.66.2 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
@@ -33,7 +33,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.24 |
 | AndroidXNavigationVersion | 2.8.0.1 |
 | AndroidXCollectionVersion | 1.4.4 |
-| MauiVersion** | 9.0.0 |
+| MauiVersion** | 8.0.100 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 9.0.
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.477",
+    "version": "5.6.0-dev.514",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.4"
+      "net9.0": "9.0.7"
     }
   },
   {
@@ -172,7 +172,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.10",
+    "version": "8.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
@@ -282,14 +282,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "8.0.93",
+    "version": "8.0.100",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -330,7 +330,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.4.0-dev.51",
+    "version": "6.4.0-dev.53",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -342,7 +342,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.4.0-dev.18",
+    "version": "5.4.0-dev.19",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
