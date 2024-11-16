@@ -17,11 +17,10 @@ steps:
     rm -fR ~/.cargo
     rm -fR ~/.rustup
     rm -fR ~/.dotnet
-    sudo apt remove snap
-    sudo apt remove skel
+    sudo apt remove snapd
 
     df -h
-    cd /home
+    cd /
     du -h -d 3
 
   displayName: Disk space
