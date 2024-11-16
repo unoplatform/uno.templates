@@ -15,7 +15,7 @@ steps:
 
 - bash: |
     df -h
-    cd /
+    cd /home/vsts
     du -h -d 2
 
   displayName: Disk space
