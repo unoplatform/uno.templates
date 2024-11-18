@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.122"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -72,7 +72,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "2.88.8",
+    "version": "2.88.9",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -91,21 +91,21 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.5.240802000",
+    "version": "1.5.241107002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.1",
+    "version": "10.0.26100.1742",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
@@ -115,7 +115,7 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.8",
+    "version": "8.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
