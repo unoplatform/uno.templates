@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.794 |
-| UnoExtensionsVersion | 5.2.0-dev.12 |
+| UnoVersion* | 5.6.0-dev.846 |
+| UnoExtensionsVersion | 5.2.0-dev.18 |
 | UnoToolkitVersion | 6.4.0-dev.53 |
 | UnoThemesVersion | 5.4.0-dev.19 |
 | UnoCSharpMarkupVersion | 5.5.6 |
@@ -17,7 +17,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.7.0-dev.2 |
 | SkiaSharpVersion | 2.88.9-preview.2.2 |
 | SvgSkiaVersion | 2.0.0.2 |
-| WinAppSdkVersion | 1.6.241106002 |
+| WinAppSdkVersion | 1.6.241114003 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.11 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.794",
+    "version": "5.6.0-dev.846",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -129,7 +129,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.1.0-dev.69",
+    "version": "1.1.0-dev.85",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -155,7 +155,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241106002",
+    "version": "1.6.241114003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -309,7 +309,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.2.0-dev.12",
+    "version": "5.2.0-dev.18",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
