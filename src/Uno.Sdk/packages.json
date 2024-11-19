@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.794",
+    "version": "5.6.0-dev.846",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -33,7 +33,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -88,7 +88,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.1.0-dev.69",
+    "version": "1.1.0-dev.85",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -114,7 +114,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241106002",
+    "version": "1.6.241114003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -268,7 +268,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.2.0-dev.12",
+    "version": "5.2.0-dev.18",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
