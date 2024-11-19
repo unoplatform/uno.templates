@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
@@ -296,7 +297,13 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         // Skip Maui on Release branch to avoid AndroidX package misalignment
         || (!unoVersion.IsPreview && group.Group == "Maui"))
     {
-        Console.WriteLine("Leaving group as is: " + group.Group);
+        Console.WriteLine("Skipping " + group.Group + " to avoid Java misalignment.");
+        return group;
+    }
+    // Skip WinAppSdkBuildTools group due to https://github.com/unoplatform/uno/issues/18840
+    else if (string.Equals(group.Group, "WinAppSdkBuildTools", StringComparison.InvariantCultureIgnoreCase))
+    {
+        Console.WriteLine("Skipping " + group.Group + "to avoid issues caused by https://github.com/unoplatform/uno/issues/18840");
         return group;
     }
 
