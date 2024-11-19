@@ -92,7 +92,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241106002",
+    "version": "1.6.241114003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
