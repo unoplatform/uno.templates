@@ -174,7 +174,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24473.5"
+      "net9.0": "9.0.0"
     }
   },
   {
@@ -184,7 +184,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24474.4"
+      "net9.0": "9.0.0"
     }
   },
   {
