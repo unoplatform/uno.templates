@@ -183,7 +183,7 @@
         {
           "choice": "net9.0",
           "displayName": ".NET 9.0",
-          "description": "Target .NET 9.0 (Preview)"
+          "description": "Target .NET 9.0 (Standard Term Support)"
         }
       ]
     },
