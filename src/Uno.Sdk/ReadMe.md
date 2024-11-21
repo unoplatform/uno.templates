@@ -356,27 +356,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Themes.WinUI.Markup",
       "Uno.Cupertino.WinUI"
     ]
-  },
-  {
-    "group": "sdkextras",
-    "version": "5.5.11",
-    "packages": [
-      "Uno.Sdk.Extras"
-    ]
-  },
-  {
-    "group": "settings",
-    "version": "1.1.22",
-    "packages": [
-      "Uno.Settings.DevServer"
-    ]
-  },
-  {
-    "group": "hotdesign",
-    "version": "1.0.160",
-    "packages": [
-      "Uno.UI.HotDesign"
-    ]
   }
 ]
 ```
