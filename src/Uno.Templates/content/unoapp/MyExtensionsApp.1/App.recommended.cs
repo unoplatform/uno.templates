@@ -198,7 +198,7 @@ public partial class App : Application
 
 //-:cnd:noEmit
 #if DEBUG
-        MainWindow.EnableHotReload();
+        MainWindow.UseStudio();
 #endif
 //+:cnd:noEmit
         MainWindow.SetWindowIcon();
