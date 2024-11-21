@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.6.0-dev.868",
+    "version": "5.6.0-dev.881",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -88,7 +88,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.1.0-dev.119",
+    "version": "1.1.0-dev.132",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -121,7 +121,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.22621.3233",
+    "version": "10.0.26100.1742",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -133,7 +133,7 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
@@ -143,7 +143,7 @@
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {
