@@ -183,7 +183,7 @@
         {
           "choice": "net9.0",
           "displayName": ".NET 9.0",
-          "description": "Target .NET 9.0 (Preview)"
+          "description": "Target .NET 9.0 (Standard Term Support)"
         }
       ]
     },
@@ -2691,7 +2691,7 @@
           },
           {
             "condition": "(tfm == 'net9.0')",
-            "value": "9.0.0-rc.1.24431.7"
+            "value": "9.0.0"
           }
         ]
       }
@@ -2710,7 +2710,7 @@
           },
           {
             "condition": "(tfm == 'net9.0')",
-            "value": "9.0.0-rc.1.24452.1"
+            "value": "9.0.0"
           }
         ]
       }
