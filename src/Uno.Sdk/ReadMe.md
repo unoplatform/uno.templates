@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.868 |
+| UnoVersion* | 5.6.0-dev.881 |
 | UnoExtensionsVersion | 5.2.0-dev.20 |
 | UnoToolkitVersion | 6.4.0-dev.55 |
 | UnoThemesVersion | 5.4.0-dev.19 |
@@ -18,7 +18,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 2.88.9-preview.2.2 |
 | SvgSkiaVersion | 2.0.0.2 |
 | WinAppSdkVersion | 1.6.241114003 |
-| WinAppSdkBuildToolsVersion | 10.0.22621.1742 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.11 |
 | MicrosoftIdentityClientVersion | 4.66.2 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.868",
+    "version": "5.6.0-dev.881",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -129,7 +129,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.1.0-dev.119",
+    "version": "1.1.0-dev.132",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -162,7 +162,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.22621.1742",
+    "version": "10.0.26100.1742",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -174,7 +174,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24473.5"
     }
   },
   {
@@ -184,7 +184,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.0-rc.2.24474.4"
     }
   },
   {
