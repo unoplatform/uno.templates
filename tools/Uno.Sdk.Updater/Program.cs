@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
@@ -296,16 +297,33 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         // Skip Maui on Release branch to avoid AndroidX package misalignment
         || (!unoVersion.IsPreview && group.Group == "Maui"))
     {
-        Console.WriteLine("Leaving group as is: " + group.Group);
+        Console.WriteLine("Skipping " + group.Group + " to avoid Java misalignment.");
+        return group;
+    }
+    // Skip WinAppSdkBuildTools group due to https://github.com/unoplatform/uno/issues/18840
+    else if (string.Equals(group.Group, "WinAppSdkBuildTools", StringComparison.InvariantCultureIgnoreCase))
+    {
+        Console.WriteLine("Skipping " + group.Group + "to avoid issues caused by https://github.com/unoplatform/uno/issues/18840");
         return group;
     }
 
     var preview = unoVersion.IsPreview;
+
     string[] stableOnlyGroups = [
         "CoreLogging",
         "OSLogging",
         "UniversalImageLoading",
         "WasmBootstrap"
+    ];
+
+    // Those groups have major versions update disabled
+    // as they are generally containing breaking changes.
+    string[] majorUpgradeDisabledGroups = [
+        "SkiaSharp",
+        "WasmBootstrap",
+        "MicrosoftLoggingConsole",
+        "WindowsCompatibility",
+        "Maui",
     ];
 
     if (stableOnlyGroups.Any(x => x == group.Group))
@@ -320,7 +338,8 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var version = await client.GetVersionAsync(packageId, preview, group.Version);
+    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
+    var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
     version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
@@ -340,7 +359,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
                 continue;
             }
 
-            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, versionOverride.OriginalVersion);
+            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, noMajorUpgrade, versionOverride.OriginalVersion);
             if (version != versionOverrideString)
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");

@@ -52,7 +52,7 @@ steps:
     uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates ${{ parameters.unocheckArguments }}
   displayName: Uno Check
   env:
-    ValidationUnoCheckVersion: $(ValidationUnoCheckVersion)
+    ValidationUnoCheckVersion: $(ValidationUnoCheckVersionNet8)
 
 - powershell: |
       Set-PSDebug -Trace 1

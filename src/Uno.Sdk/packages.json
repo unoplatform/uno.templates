@@ -1,11 +1,12 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.66",
+    "version": "5.6.0-dev.881",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
       "Uno.WinUI.Maps",
+      "Uno.WinUI.GooglePlay",
       "Uno.WinUI.Foldable",
       "Uno.WinUI.MSAL",
       "Uno.WinUI.Svg",
@@ -59,16 +60,37 @@
   },
   {
     "group": "Dsp",
-    "version": "1.4.0",
+    "version": "1.4.0-dev.12",
     "packages": [
       "Uno.Dsp.Tasks"
     ]
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.1",
+    "version": "1.7.0-dev.2",
     "packages": [
       "Uno.Resizetizer"
+    ]
+  },
+  {
+    "group": "sdkextras",
+    "version": "5.6.0-dev.14",
+    "packages": [
+      "Uno.Sdk.Extras"
+    ]
+  },
+  {
+    "group": "settings",
+    "version": "1.2.0-dev.13",
+    "packages": [
+      "Uno.Settings.DevServer"
+    ]
+  },
+  {
+    "group": "hotdesign",
+    "version": "1.1.0-dev.132",
+    "packages": [
+      "Uno.UI.HotDesign"
     ]
   },
   {
@@ -126,7 +148,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.65.0",
+    "version": "4.66.2",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -150,7 +172,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.4.5",
+    "version": "2.5.0-dev.9",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -226,14 +248,14 @@
   },
   {
     "group": "Maui",
-    "version": "8.0.91",
+    "version": "8.0.100",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24503.2"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -246,7 +268,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.1.3",
+    "version": "5.2.0-dev.20",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -274,7 +296,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.3.6",
+    "version": "6.4.0-dev.55",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -286,7 +308,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.3.1",
+    "version": "5.4.0-dev.19",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
