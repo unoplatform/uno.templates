@@ -419,6 +419,10 @@
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
+				},
+				"configuration":{
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Configuration is required"
 				}
 			}
 		},
@@ -428,6 +432,10 @@
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
+				},
+				"configuration":{
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Configuration is required"
 				}
 			}
 		},
