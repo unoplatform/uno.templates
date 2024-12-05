@@ -337,7 +337,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "sdkextras",
-    "version": "5.5.11",
+    "version": "5.5.12",
     "packages": [
       "Uno.Sdk.Extras"
     ]
