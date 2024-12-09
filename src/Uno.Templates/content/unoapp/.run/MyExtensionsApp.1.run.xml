@@ -51,7 +51,7 @@
   <!--#if (useWinAppSdk)-->
   <configuration default="false" name="MyExtensionsApp.1 (WinAppSDK Unpackaged)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
     <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MyExtensionsApp.1/MyExtensionsApp.1.csproj" />
-    <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-windows10.0.22621.0" />
+    <option name="LAUNCH_PROFILE_TFM" value="$baseTargetFramework$-windows10.0.26100.0" />
     <option name="LAUNCH_PROFILE_NAME" value="MyExtensionsApp.1 (WinAppSDK Unpackaged)" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />
     <option name="USE_MONO" value="0" />
