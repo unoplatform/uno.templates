@@ -1,6 +1,6 @@
 <Project Sdk="Uno.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>$baseTargetFramework$;$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst;$baseTargetFramework$-android;$baseTargetFramework$-windows10.0.22621;$baseTargetFramework$-browserwasm;$baseTargetFramework$-desktop</TargetFrameworks>
+    <TargetFrameworks>$baseTargetFramework$;$baseTargetFramework$-ios;$baseTargetFramework$-maccatalyst;$baseTargetFramework$-android;$baseTargetFramework$-windows10.0.26100;$baseTargetFramework$-browserwasm;$baseTargetFramework$-desktop</TargetFrameworks>
     <UnoSingleProject>true</UnoSingleProject>
     <OutputType>Library</OutputType>
     <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
