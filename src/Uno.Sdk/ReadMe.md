@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.1176 |
+| UnoVersion* | 5.6.0-dev.1180 |
 | UnoExtensionsVersion | 5.2.0-dev.27 |
 | UnoToolkitVersion | 6.4.0-dev.65 |
 | UnoThemesVersion | 5.4.0-dev.19 |
@@ -22,7 +22,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.11 |
 | MicrosoftIdentityClientVersion | 4.66.2 |
-| CommunityToolkitMvvmVersion | 8.3.2 |
+| CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.11.0.3 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.1176",
+    "version": "5.6.0-dev.1180",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -129,7 +129,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.2.0-dev.60",
+    "version": "1.2.0-dev.76",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -197,7 +197,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Mvvm",
-    "version": "8.3.2",
+    "version": "8.4.0",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
@@ -296,7 +296,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.14"
+      "net9.0": "9.0.21"
     }
   },
   {
