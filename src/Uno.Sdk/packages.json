@@ -81,14 +81,14 @@
   },
   {
     "group": "settings",
-    "version": "1.2.0-dev.28",
+    "version": "1.2.0-dev.32",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.2.0-dev.76",
+    "version": "1.2.0-dev.79",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -260,7 +260,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.5.6",
+    "version": "5.6.0-dev.2",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
