@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.4.38 |
+| UnoVersion* | 5.4.46 |
 | UnoExtensionsVersion | 5.0.2 |
 | UnoToolkitVersion | 6.2.6 |
 | UnoThemesVersion | 5.2.5 |
@@ -14,13 +14,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.6.0 |
-| SkiaSharpVersion | 2.88.8 |
-| SvgSkiaVersion | 2.0.0.1 |
-| WinAppSdkVersion | 1.6.240829007 |
+| UnoResizetizerVersion | 1.6.1 |
+| SkiaSharpVersion | 2.88.9 |
+| SvgSkiaVersion | 2.0.0.4 |
+| WinAppSdkVersion | 1.6.241114003 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
-| MicrosoftLoggingVersion** | 8.0.0 |
-| WindowsCompatibilityVersion** | 8.0.8 |
+| MicrosoftLoggingVersion** | 8.0.1 |
+| WindowsCompatibilityVersion** | 8.0.11 |
 | MicrosoftIdentityClientVersion | 4.64.1 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.4.38",
+    "version": "5.4.46",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -72,7 +72,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-dev.309"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -106,14 +106,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "packages": [
       "Uno.Resizetizer"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "2.88.8",
+    "version": "2.88.9",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -125,14 +125,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "2.0.0.1",
+    "version": "2.0.0.4",
     "packages": [
       "Svg.Skia"
     ]
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.240829007",
+    "version": "1.6.241114003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -146,7 +146,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
@@ -156,7 +156,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.8",
+    "version": "8.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
