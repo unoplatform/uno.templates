@@ -4,17 +4,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.6.0-dev.1180 |
+| UnoVersion* | 5.6.0-dev.1219 |
 | UnoExtensionsVersion | 5.2.0-dev.27 |
 | UnoToolkitVersion | 6.4.0-dev.65 |
-| UnoThemesVersion | 5.4.0-dev.19 |
+| UnoThemesVersion | 5.4.0-dev.21 |
 | UnoCSharpMarkupVersion | 5.6.0-dev.2 |
 | UnoWasmBootstrapVersion** | 8.0.21 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0-dev.12 |
-| UnoResizetizerVersion | 1.7.0-dev.2 |
+| UnoResizetizerVersion | 1.7.0-dev.10 |
 | SkiaSharpVersion | 2.88.9-preview.2.2 |
 | SvgSkiaVersion | 2.0.0.4 |
 | WinAppSdkVersion | 1.6.241114003 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.6.0-dev.1180",
+    "version": "5.6.0-dev.1219",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -108,7 +108,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.7.0-dev.2",
+    "version": "1.7.0-dev.10",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -129,7 +129,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.2.0-dev.79",
+    "version": "1.2.0-dev.108",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -349,7 +349,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.4.0-dev.19",
+    "version": "5.4.0-dev.21",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
