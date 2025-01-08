@@ -22,11 +22,11 @@
 
 		<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 			<!-- When debugging, change this version to the next pre-release -->
-			<GitVersion_FullSemVer Condition="'$(GitVersion_FullSemVer)'==''">255.255.255.255</GitVersion_FullSemVer>
+			<NBGV_SemVer2 Condition="'$(NBGV_SemVer2)'==''">255.255.255.255</NBGV_SemVer2>
 		</PropertyGroup>
 
-		<Error Condition="'$(GitVersion_FullSemVer)'==''"
-			   Text="The environment variable GitVersion_FullSemVer must be set" />
+		<Error Condition="'$(NBGV_SemVer2)'==''"
+			   Text="The environment variable NBGV_SemVer2 must be set" />
 
 		<ItemGroup>
 			<_GitVersionFileSystem Include="$(IntermediateOutputPath)\GitVersionInformation.g.cs" />
@@ -41,7 +41,7 @@
 			<_GitVersionFileSystemLine Include="[global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]" />
 			<_GitVersionFileSystemLine Include="internal static partial class GitVersionInformation" />
 			<_GitVersionFileSystemLine Include="{" />
-			<_GitVersionFileSystemLine Include="public const string NuGetVersion = @&quot;$(GitVersion_FullSemVer)&quot;%3b" />
+			<_GitVersionFileSystemLine Include="public const string NuGetVersion = @&quot;$(NBGV_SemVer2)&quot;%3b" />
 			<_GitVersionFileSystemLine Include="}" />
 		</ItemGroup>
 		<WriteLinesToFile File="%(_GitVersionFileSystem.Identity)"

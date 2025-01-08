@@ -46,49 +46,52 @@ stages:
       clean: 'true'
       fetchDepth: 0
 
-    - task: gitversion/setup@0
-      retryCountOnTaskFailure: 3
-      inputs:
-        versionSpec: '5.10.3'
-
-    - task: gitversion/execute@0
-      retryCountOnTaskFailure: 3
-      inputs:
-        useConfigFile: true
-        configFilePath: build/gitversion.yml
-      displayName: Use GitVersion
+    - pwsh: |
+        dotnet tool uninstall nbgv -g
+        dotnet tool install nbgv -g --version 3.6.139
+        nbgv cloud -a
+      displayName: Version with NBGV
+      name: NBGV
+    
+    - pwsh: |
+        $InformationalVersion="$(NBGV_SemVer2)+$(NBGV_BuildingRef)".Replace("refs/heads/","").Replace("/","-")
+        echo "##vso[task.setvariable variable=NBGV_InformationalVersion;]$InformationalVersion"
+        echo "##vso[task.setvariable variable=NBGV_InformationalVersion;isOutput=true;]$InformationalVersion"
+        echo "Informational Version: $InformationalVersion"
+      displayName: Generate Informational Version
+      name: NBGV_InformationalVersion
 
     - powershell: |
         # Offset the commit count to match uno's current count
-        if ($env:GITVERSION_SEMVER -match '^5\.3.*-dev\.\d+') {
+        if ($env:NBGV_SemVer2 -match '^5\.3.*-dev\.\d+') {
 
-            $env:GITVERSION_SEMVER = [regex]::Replace(
-                $env:GITVERSION_SEMVER,
+            $env:NBGV_SemVer2 = [regex]::Replace(
+                $env:NBGV_SemVer2,
                 '(.*?\.)(\d+)$',
                 { 
                     param($match) "$($match.Groups[1].Value)$( $([int]$match.Groups[2].Value) + 1700)"
                 })
             
-            Write-Host "##vso[task.setvariable variable=GitVersion.SemVer]$env:GITVERSION_SEMVER"
-            Write-Host "##vso[task.setvariable variable=GitVersion.SemVer;isOutput=true]$env:GITVERSION_SEMVER"
-            Write-Host "##vso[build.updatebuildnumber]$env:GITVERSION_SEMVER"
+            Write-Host "##vso[task.setvariable variable=NBGV_SemVer2]$env:NBGV_SemVer2"
+            Write-Host "##vso[task.setvariable variable=NBGV_SemVer2;isOutput=true]$env:NBGV_SemVer2"
+            Write-Host "##vso[build.updatebuildnumber]$env:NBGV_SemVer2"
         }
       displayName: Adjust Build Number for 5.3
 
     - template: templates/canary-updater.yml
 
     - powershell: |
-        $adjustedPackageVersion="$(GitVersion.SemVer)".ToLower();
+        $adjustedPackageVersion="$(NBGV_SemVer2)".ToLower();
 
         # Pack the Uno.Sdk
-        & dotnet build src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(GitVersion.AssemblySemVer) /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
+        & dotnet build src\Uno.Sdk\Uno.Sdk.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(NBGV_AssemblyVersion) /bl:$(build.artifactstagingdirectory)\uno.sdk-pack.binlog -o $(build.artifactstagingdirectory)
       displayName: Pack Uno.Sdk
 
     - powershell: |
-        $adjustedPackageVersion="$(GitVersion.SemVer)".ToLower();
+        $adjustedPackageVersion="$(NBGV_SemVer2)".ToLower();
 
         # Pack the Uno.Templates
-        & dotnet build src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(GitVersion.AssemblySemVer) /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
+        & dotnet build src\Uno.Templates\Uno.Templates.csproj -c Release -p:PackageVersion=$adjustedPackageVersion -p:Version=$(NBGV_AssemblyVersion) /bl:$(build.artifactstagingdirectory)\uno.templates-pack.binlog -o $(build.artifactstagingdirectory)
 
       displayName: Pack Uno.Templates
 
