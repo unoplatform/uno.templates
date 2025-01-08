@@ -19,8 +19,8 @@ pr:
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
-  ValidationUnoCheckVersionNet8: '1.26.1'
-  ValidationUnoCheckVersionNet9: '1.27.1'
+  ValidationUnoCheckVersionNet8: '1.28.0-dev.43'
+  ValidationUnoCheckVersionNet9: '1.28.0-dev.43'
   ValidationDotNetVersion: '8.0.401'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
