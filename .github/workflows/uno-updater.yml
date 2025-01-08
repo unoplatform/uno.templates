@@ -20,6 +20,7 @@ jobs:
           - release/stable/5.3
           - release/stable/5.4
           - release/stable/5.5
+          - release/stable/5.6
 
     steps:
     - name: Checkout
