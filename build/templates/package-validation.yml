@@ -46,12 +46,16 @@ steps:
         $dotnetVersion = '9.0.100'
         $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
     }
-
+    echo "Dotnet Version = '$dotnetVersion'"
+    echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
+    
     echo "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
     echo "##vso[task.setvariable variable=ValidationUnoCheckVersion]$ValidationUnoCheckVersion"
   displayName: Evaluate Template Args
   env:
     TargetDotNetVersion: $(ValidationDotNetVersion)
+    ValidationUnoCheckVersionNet8: $(ValidationUnoCheckVersionNet8)
+    ValidationUnoCheckVersionNet9: $(ValidationUnoCheckVersionNet9)
 
 # Install android 34 as we're running on macos-15, early so that
 # the JDK override does not break the installer
