@@ -15,18 +15,11 @@ runs:
       with:
         dotnet-version: '8.0.401'
 
-    - name: Setup GitVersion
-      uses: gittools/actions/gitversion/setup@v1.1.1
+    - uses: dotnet/nbgv@f088059084cb5d872e9d1a994433ca6440c2bf72 # v0.4.2
+      id: nbgv
       with:
-        versionSpec: '5.10.3'
-
-    - name: GitVersion
-      id: gitversion
-      uses: gittools/actions/gitversion/execute@v1.1.1
-      with:
-        useConfigFile: true
-        configFilePath: build/gitversion.yml
-        additionalArguments: -b "${{ inputs.branch }}"
+        toolVersion: 3.6.139
+        setAllVars: true
 
     - name: Run Uno Sdk Updater
       run: dotnet run -c Release --project tools/Uno.Sdk.Updater
