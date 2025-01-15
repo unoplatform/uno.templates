@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.5.94 |
+| UnoVersion* | 5.5.95 |
 | UnoExtensionsVersion | 5.1.3 |
 | UnoToolkitVersion | 6.3.7 |
 | UnoThemesVersion | 5.3.1 |
@@ -17,10 +17,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.6.1 |
 | SkiaSharpVersion | 2.88.9-preview.2.2 |
 | SvgSkiaVersion | 2.0.0.4 |
-| WinAppSdkVersion | 1.6.241114003 |
+| WinAppSdkVersion | 1.6.250108002 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.11 |
+| WindowsCompatibilityVersion** | 8.0.12 |
 | MicrosoftIdentityClientVersion | 4.65.0 |
 | CommunityToolkitMvvmVersion | 8.3.2 |
 | PrismVersion | 9.0.537 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.5.94",
+    "version": "5.5.95",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -133,7 +133,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241114003",
+    "version": "1.6.250108002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -152,17 +152,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.1"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.11",
+    "version": "8.0.12",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.1"
     }
   },
   {
@@ -274,7 +274,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.2.24503.2"
+      "net9.0": "9.0.0"
     }
   },
   {
