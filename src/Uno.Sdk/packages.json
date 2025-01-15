@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.5.94",
+    "version": "5.5.95",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -92,7 +92,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241114003",
+    "version": "1.6.250108002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -111,17 +111,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.1"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.11",
+    "version": "8.0.12",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0"
+      "net9.0": "9.0.1"
     }
   },
   {
