@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.241114003",
+    "version": "1.6.250108002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -110,17 +110,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24431.7"
+      "net9.0": "9.0.1"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.11",
+    "version": "8.0.12",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.0-rc.1.24452.1"
+      "net9.0": "9.0.1"
     }
   },
   {
