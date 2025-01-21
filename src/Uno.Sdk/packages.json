@@ -24,7 +24,7 @@
   },
   {
     "group": "WasmBootstrap",
-    "version": "8.0.21",
+    "version": "8.0.23",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
