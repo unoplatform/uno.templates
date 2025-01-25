@@ -75,7 +75,7 @@ jobs:
           # Generate matrix for net8
           for ($i = 0; $i -lt $tests.Count; $i++) 
           { 
-              $currentGroup += $tests[$i];
+              $currentGroup += $tests[$i] + " -tfm net8.0";
 
               if ($currentGroup.Count -eq $groupSize) {
                 $matrixGroups["Group$($matrixGroups.Count)"] = @{
@@ -90,7 +90,7 @@ jobs:
           for ($i = 0; $i -lt $tests.Count; $i++) 
           { 
               $currentGroup += $tests[$i] + " -tfm net9.0";
-          
+
               if ($currentGroup.Count -eq $groupSize) {
                 $matrixGroups["Group$($matrixGroups.Count)_net9"] = @{
                   'unocheckArguments' = '--pre-major'
