@@ -12,3 +12,4 @@ jobs:
   - template: templates/template-validation.yml
     parameters:
       templateName: 'unomauilib'
+      arguments: '-tfm net8.0'

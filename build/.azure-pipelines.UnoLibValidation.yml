@@ -12,3 +12,4 @@ jobs:
   - template: templates/template-validation.yml
     parameters:
       templateName: 'unolib'
+      arguments: '-tfm net8.0'
