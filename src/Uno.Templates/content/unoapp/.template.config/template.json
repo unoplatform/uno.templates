@@ -726,6 +726,13 @@
       "datatype": "bool",
       "defaultValue": "true"
     },
+    "meadowSupport": {
+      "displayName": "Meadow Support",
+      "description": "Includes a support for Meadow by Wilderness Labs",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "mauiEmbedding": {
       "displayName": ".NET MAUI Embedding",
       "description": "Configures application to embed .NET MAUI controls",
