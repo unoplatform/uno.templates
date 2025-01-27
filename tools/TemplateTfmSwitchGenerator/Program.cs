@@ -6,12 +6,12 @@ var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
     WriteIndented = true,
 };
 Platform[] platforms = [
-    new Platform("platforms == desktop", "platforms != desktop", "desktop"),
     new Platform("platforms == android", "platforms != android", "android"),
     new Platform("platforms == ios", "platforms != ios", "ios"),
     new Platform("platforms == maccatalyst", "platforms != maccatalyst", "maccatalyst"),
     new Platform("platforms == windows", "platforms != windows", "windows10.0.26100"),
     new Platform("platforms == wasm", "platforms != wasm", "browserwasm"),
+    new Platform("platforms == desktop", "platforms != desktop", "desktop"),
     new Platform("useUnitTests == true", "useUnitTests == false", null)
 ];
 
