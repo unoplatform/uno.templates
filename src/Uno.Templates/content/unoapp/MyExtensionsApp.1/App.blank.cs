@@ -74,6 +74,10 @@ public partial class App : Application
 #endif
 #endif
         MainWindow = new Window();
+        
+#if meadowSupport
+        LoadMeadowOS();
+#endif
 //-:cnd:noEmit
 #if DEBUG
         MainWindow.UseStudio();

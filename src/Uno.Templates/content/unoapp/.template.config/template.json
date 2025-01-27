@@ -3198,6 +3198,12 @@
           "exclude": [
             "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"
           ]
+        },
+        {
+          "condition": "(!meadowSupport)",
+          "exclude": [
+            "MyExtensionsApp.1/UnoMeadowApplication.cs"
+          ]
         }
       ]
     }
