@@ -1,7 +1,7 @@
 ﻿using Meadow;
 using Microsoft.UI.Dispatching;
 
-namespace UnoApp12;
+namespace MyExtensionsApp._1;
 
 public class UnoMeadowDesktopApplication: UnoMeadowApplication<Desktop>
 {
