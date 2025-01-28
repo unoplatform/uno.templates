@@ -1113,6 +1113,11 @@
       "datatype": "bool",
       "value": "(platforms == wasm && server)"
     },
+    "useMeadowAndCsharpMarkup": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useCsharpMarkup && meadowSupport)"
+    },
     "useWinAppSdk": {
       "type": "computed",
       "datatype": "bool",
