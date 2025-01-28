@@ -129,7 +129,7 @@
   </ItemGroup>
   <!--#endif-->
 
-  <!--#if (coreProjectHasProjectReferences)-->
+  <!--#if (meadowSupport)-->
     <ItemGroup>
         <PackageReference Include="Meadow.Desktop" Version="2.0.1.2" />
         <PackageReference Include="Meadow.Foundation" Version="2.0.1.2" />
