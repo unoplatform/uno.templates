@@ -3,14 +3,14 @@
 using System;
 using Microsoft.Extensions.Logging;
 #endif
-#if meadowSupport
+#if (meadowSupport)
 using Meadow;
 #endif
 using Uno.Resizetizer;
 
 namespace MyExtensionsApp._1;
 
-#if meadowSupport
+#if (meadowSupport)
 public partial class App : UnoMeadowDesktopApplication
 #else
 public partial class App : Application
@@ -27,7 +27,7 @@ public partial class App : Application
 
     protected Window? MainWindow { get; private set; }
 
-#if meadowSupport
+#if (meadowSupport)
     public override Task MeadowInitialize()
     {
         var r = Resolver.Services.Get<IMeadowDevice>();
@@ -75,7 +75,7 @@ public partial class App : Application
 #endif
         MainWindow = new Window();
         
-#if meadowSupport
+#if (meadowSupport)
         LoadMeadowOS();
 #endif
 //-:cnd:noEmit

@@ -1,12 +1,12 @@
+//+:cnd:noEmit
 using Uno.Resizetizer;
-#if meadowSupport
+#if (meadowSupport)
 using Meadow;
 #endif
 
-//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
-#if meadowSupport
+#if (meadowSupport)
 public partial class App : UnoMeadowDesktopApplication
 #else
 public partial class App : Application
@@ -25,7 +25,7 @@ public partial class App : Application
     protected IHost? Host { get; private set; }
 
     
-#if meadowSupport
+#if (meadowSupport)
     public override Task MeadowInitialize()
     {
         var r = Resolver.Services.Get<IMeadowDevice>();
@@ -224,7 +224,7 @@ public partial class App : Application
         MainWindow = builder.Window;
 
         
-#if meadowSupport
+#if (meadowSupport)
         LoadMeadowOS();
 #endif
 //-:cnd:noEmit
