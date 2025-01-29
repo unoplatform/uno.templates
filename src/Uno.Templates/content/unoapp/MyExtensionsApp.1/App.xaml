@@ -19,7 +19,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:MyExtensionsApp._1"$useThemesResourceNamespace$>
 <!--#endif-->
-
+<!--#if (!useCsharpMarkup)-->
 <!--#if (meadowSupport)-->
   <local:UnoMeadowDesktopApplication.Resources>
 <!--#else-->
@@ -77,7 +77,7 @@
 <!--#else-->
   </Application.Resources>
 <!--#endif-->
-
+<!--#endif-->
 <!--#if (meadowSupport)-->
 </local:UnoMeadowDesktopApplication>
 <!--#else-->
