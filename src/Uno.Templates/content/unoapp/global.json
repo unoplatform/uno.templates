@@ -4,6 +4,6 @@
     "Uno.Sdk": "$UnoSdkVersion$"
   },
   "sdk":{
-    "allowPrerelease": "$AllowPrereleaseNetSdk$"
+    "allowPrerelease": $AllowPrereleaseNetSdk$
   }
 }
