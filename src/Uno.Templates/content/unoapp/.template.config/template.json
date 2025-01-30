@@ -332,7 +332,7 @@
           },
           {
             "condition": "(tfm == 'net9.0')",
-            "value": "true"
+            "value": "false"
           }
         ]
       }
