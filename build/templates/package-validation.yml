@@ -213,7 +213,7 @@ steps:
         }
       }
 
-      if ($testParams.Contains('net8.0') -and $testParams.Contains('-auth msal') -and $IsMacOS)
+      if ($testParams.Contains('net8.0') -and $IsMacOS -and ($testParams.Contains('-auth msal') -or $testParams.Contains('auth=msal')))
       {
           echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
           continue
