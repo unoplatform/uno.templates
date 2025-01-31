@@ -213,6 +213,12 @@ steps:
         }
       }
 
+      if ($testParams.Contains('net8.0') -and $testParams.Contains('-auth msal') -and $IsMacOS)
+      {
+          echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
+          continue
+      }
+
       echo "Testing $testName ($testParams)"
 
       # Set the progress to report on azdo UI
