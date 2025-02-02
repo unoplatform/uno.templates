@@ -28,9 +28,9 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
     {
         App.InitializeLogging();
     }
+    
 #endif
 //-:cnd:noEmit
-
     public Application(IntPtr javaReference, JniHandleOwnership transfer)
         : base(() => new App(), javaReference, transfer)
     {
