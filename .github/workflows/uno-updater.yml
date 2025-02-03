@@ -29,23 +29,7 @@ jobs:
         ref: ${{ matrix.branch }}
         fetch-depth: 0
 
-    # set a variable named use_nbgv when a file named version.json exists, use powershell
-    - name: Determine NBGV usage
-      id: use_nbgv
-      run: |
-        if (Test-Path version.json) {
-          echo "use_nbgv=true" >> $GITHUB_ENV
-        }
-      shell: pwsh
-  
-    - name: "Sdk Update Legacy"
-      if: ${{ steps.use_nbgv.outputs.use_nbgv != 'true' }}
-      uses: ./.github/actions/sdk-update-legacy
-      with:
-        branch: ${{ matrix.branch }}
-  
     - name: "Sdk Update"
-      if: ${{ steps.use_nbgv.outputs.use_nbgv == 'true' }}
       uses: ./.github/actions/sdk-update
       with:
         branch: ${{ matrix.branch }}
