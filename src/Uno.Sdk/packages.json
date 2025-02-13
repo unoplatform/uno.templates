@@ -181,7 +181,7 @@
   },
   {
     "group": "AndroidMaterial",
-    "version": "1.11.0.3",
+    "version": "1.12.0.2",
     "packages": [
       "Xamarin.Google.Android.Material"
     ]
@@ -209,14 +209,14 @@
   },
   {
     "group": "AndroidXActivity",
-    "version": "1.9.2.1",
+    "version": "1.9.3.2",
     "packages": [
       "Xamarin.AndroidX.Activity"
     ]
   },
   {
     "group": "AndroidXBrowser",
-    "version": "1.8.0.6",
+    "version": "1.8.0.8",
     "packages": [
       "Xamarin.AndroidX.Browser"
     ]
@@ -230,7 +230,7 @@
   },
   {
     "group": "AndroidXNavigation",
-    "version": "2.8.0.1",
+    "version": "2.8.5.1",
     "packages": [
       "Xamarin.AndroidX.Navigation.UI",
       "Xamarin.AndroidX.Navigation.Fragment",
@@ -240,7 +240,7 @@
   },
   {
     "group": "AndroidXCollection",
-    "version": "1.4.4",
+    "version": "1.4.5.2",
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
