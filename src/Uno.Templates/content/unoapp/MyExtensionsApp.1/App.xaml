@@ -1,14 +1,31 @@
-<!--#if (useCsharpMarkup)-->
+<!--#if (useMeadowAndCsharpMarkup)-->
+<local:UnoMeadowDesktopApplication x:Class="MyExtensionsApp._1.App"
+                                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                   xmlns:local="using:MyExtensionsApp._1">
+<!--#elif (meadowSupport)-->
+<local:UnoMeadowDesktopApplication x:Class="MyExtensionsApp._1.App"
+                                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                   xmlns:local="using:MyExtensionsApp._1"$useThemesResourceNamespace$>
+<!--#elif (useCsharpMarkup)-->
 <Application x:Class="MyExtensionsApp._1.App"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:MyExtensionsApp._1">
 <!--#else-->
 <Application x:Class="MyExtensionsApp._1.App"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"$useThemesResourceNamespace$>
-
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:MyExtensionsApp._1"$useThemesResourceNamespace$>
+<!--#endif-->
+<!--#if (!useCsharpMarkup)-->
+<!--#if (meadowSupport)-->
+  <local:UnoMeadowDesktopApplication.Resources>
+<!--#else-->
   <Application.Resources>
-    <ResourceDictionary>
+<!--#endif-->
+      <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <!-- Load WinUI resources -->
         <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
@@ -55,7 +72,15 @@
       <!-- Add resources here -->
 
     </ResourceDictionary>
+<!--#if (meadowSupport)-->
+  </local:UnoMeadowDesktopApplication.Resources>
+<!--#else-->
   </Application.Resources>
-
 <!--#endif-->
+<!--#endif-->
+<!--#if (meadowSupport)-->
+</local:UnoMeadowDesktopApplication>
+<!--#else-->
 </Application>
+<!--#endif-->
+
