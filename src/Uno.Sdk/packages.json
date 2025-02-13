@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.7.0-dev.459",
+    "version": "5.7.0-dev.487",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -81,14 +81,14 @@
   },
   {
     "group": "settings",
-    "version": "1.3.0-dev.17",
+    "version": "1.3.0-dev.25",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.6.0-dev.12",
+    "version": "1.6.0-dev.21",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -114,7 +114,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.250108002",
+    "version": "1.6.250205002",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -133,17 +133,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.1"
+      "net9.0": "9.0.2"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.12",
+    "version": "8.0.13",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.1"
+      "net9.0": "9.0.2"
     }
   },
   {
@@ -181,7 +181,7 @@
   },
   {
     "group": "AndroidMaterial",
-    "version": "1.11.0.3",
+    "version": "1.12.0.2",
     "packages": [
       "Xamarin.Google.Android.Material"
     ]
@@ -195,28 +195,28 @@
   },
   {
     "group": "AndroidXAppCompat",
-    "version": "1.7.0.3",
+    "version": "1.7.0.5",
     "packages": [
       "Xamarin.AndroidX.AppCompat"
     ]
   },
   {
     "group": "AndroidXRecyclerView",
-    "version": "1.3.2.8",
+    "version": "1.3.2.10",
     "packages": [
       "Xamarin.AndroidX.RecyclerView"
     ]
   },
   {
     "group": "AndroidXActivity",
-    "version": "1.9.2.1",
+    "version": "1.9.3.2",
     "packages": [
       "Xamarin.AndroidX.Activity"
     ]
   },
   {
     "group": "AndroidXBrowser",
-    "version": "1.8.0.6",
+    "version": "1.8.0.8",
     "packages": [
       "Xamarin.AndroidX.Browser"
     ]
@@ -230,7 +230,7 @@
   },
   {
     "group": "AndroidXNavigation",
-    "version": "2.8.0.1",
+    "version": "2.8.5.1",
     "packages": [
       "Xamarin.AndroidX.Navigation.UI",
       "Xamarin.AndroidX.Navigation.Fragment",
@@ -240,7 +240,7 @@
   },
   {
     "group": "AndroidXCollection",
-    "version": "1.4.4",
+    "version": "1.4.5.2",
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
@@ -255,7 +255,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.30"
+      "net9.0": "9.0.40"
     }
   },
   {
@@ -268,7 +268,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.3.0-dev.117",
+    "version": "5.3.0-dev.122",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -308,7 +308,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.91.gd05e0e2e94",
+    "version": "5.5.0-dev.93",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
