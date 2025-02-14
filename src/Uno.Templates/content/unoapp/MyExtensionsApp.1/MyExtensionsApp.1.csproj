@@ -102,6 +102,12 @@
       <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
+
+      <!--#if (skiaeverywhere)-->
+      WebAssemblySkiaRenderer;
+      AndroidSkiaRenderer;
+      AppleUIKitSkiaRenderer;
+      <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
   <!--#if (useUITests)-->

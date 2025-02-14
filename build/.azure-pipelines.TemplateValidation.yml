@@ -11,6 +11,9 @@ jobs:
             # The format is "TestName;[PlatformFilter];Arguments"
             # The platform 
 
+            "SkiaEverywhereRecommended;;-skiaeverywhere true -preset=recommended",
+            "SkiaEverywhereBlank;;-skiaeverywhere true -preset=blank",
+
             "DefaultArgs;;",
             "Recommended;;-preset recommended",
             "SkiaOnlyHeads;;-platforms desktop",

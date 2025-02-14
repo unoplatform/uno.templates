@@ -383,6 +383,13 @@
         "fallbackVariableName": "presetTestsDefault"
       }
     },
+    "skiaeverywhere": {
+      "displayName": "SkiaEverywhere",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Enables skia rendering for all platforms"
+    },
     "server": {
       "displayName": "Server",
       "type": "parameter",
