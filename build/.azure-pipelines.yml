@@ -121,7 +121,6 @@ stages:
       
   - template: .azure-pipelines.UnoLibValidation.yml
   - template: .azure-pipelines.UnoMauiLibValidation.yml
-  - template: .azure-pipelines.UWPValidation.yml
 
 - stage: Prepare
   condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))
