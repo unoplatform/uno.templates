@@ -384,7 +384,7 @@
       }
     },
     "skiaeverywhere": {
-      "displayName": "SkiaEverywhere",
+      "displayName": "skiaeverywhere",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
