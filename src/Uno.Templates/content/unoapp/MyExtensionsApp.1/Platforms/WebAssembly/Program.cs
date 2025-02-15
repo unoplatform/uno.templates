@@ -8,7 +8,7 @@ public class Program
 #if (!skiaeverywhere)
     public static int Main(string[] args)
 #else
-    public static async Task Main(string[] args)
+    public static async Task<int> Main(string[] args)
 #endif
 //-:cnd:noEmit
     {
