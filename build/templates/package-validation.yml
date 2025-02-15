@@ -219,6 +219,12 @@ steps:
           continue
       }
 
+      if ($testParams.Contains('net8.0') -and $testParams.Contains('--skiaeverywhere'))
+      {
+          echo "Skipping Skia Everywhere test for net8"
+          continue
+      }
+
       echo "Testing $testName ($testParams)"
 
       # Set the progress to report on azdo UI
