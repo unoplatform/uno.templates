@@ -10,6 +10,11 @@
 		<EnableDefaultItems>False</EnableDefaultItems>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 	</PropertyGroup>
+	
+	<PropertyGroup>
+		<!-- Override the description so that the private sdk has its own -->
+		<Description>Provides a base SDK for Uno Platform projects.</Description>
+	</PropertyGroup>
 
 	<Target Name="DownloadPrivateSdk"
 			BeforeTargets="ExtractSdkAssets">
@@ -47,10 +52,20 @@
 			AfterTargets="ExtractSdkAssets"
 			BeforeTargets="CoreCompile;Build;Pack">
 		<ItemGroup>
-			<None Include="$(SdkNuGetExtractionPath)\**\*.props;$(SdkNuGetExtractionPath)\**\*.targets;$(SdkNuGetExtractionPath)\**\*.dll;$(SdkNuGetExtractionPath)\**\*.buildschema.json"
+			<_SdkFiles Include="$(SdkNuGetExtractionPath)\**\*.props;$(SdkNuGetExtractionPath)\**\*.targets;$(SdkNuGetExtractionPath)\**\*.buildschema.json"
 				Pack="true"
 				PackagePath="%(RecursiveDir)" />
+			<_SdkBinFiles Include="$(SdkNuGetExtractionPath)\**\*.dll"
+				Pack="true"
+				PackagePath="%(RecursiveDir)" />
+
+			<None Include="@(_SdkFiles);@(_SdkBinFiles)" />
 		</ItemGroup>
+
+		<ReplaceFileText
+			Filename="%(_SdkFiles.Identity)"
+			MatchExpression="DefaultUnoSdkVersion"
+			ReplacementText="$(SdkVersion)" />
 
 		<Message Text="Packing: %(None.Identity)" Importance="high"
 			Condition="%(None.Pack) == 'true'" />
