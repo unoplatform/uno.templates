@@ -52,11 +52,14 @@
 			AfterTargets="ExtractSdkAssets"
 			BeforeTargets="CoreCompile;Build;Pack">
 		<ItemGroup>
-			<_SdkFiles Include="$(SdkNuGetExtractionPath)\**\*.props;$(SdkNuGetExtractionPath)\**\*.targets;$(SdkNuGetExtractionPath)\**\*.dll;$(SdkNuGetExtractionPath)\**\*.buildschema.json"
+			<_SdkFiles Include="$(SdkNuGetExtractionPath)\**\*.props;$(SdkNuGetExtractionPath)\**\*.targets;$(SdkNuGetExtractionPath)\**\*.buildschema.json"
+				Pack="true"
+				PackagePath="%(RecursiveDir)" />
+			<_SdkBinFiles Include="$(SdkNuGetExtractionPath)\**\*.dll"
 				Pack="true"
 				PackagePath="%(RecursiveDir)" />
 
-			<None Include="@(_SdkFiles)" />
+			<None Include="@(_SdkFiles);@(_SdkBinFiles)" />
 		</ItemGroup>
 
 		<ReplaceFileText
