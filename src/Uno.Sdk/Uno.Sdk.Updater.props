@@ -4,11 +4,7 @@
     <Description>Do not use this package directly. It is intended for Uno Platform code contributors during development.</Description>
     <PackageTags></PackageTags>
     <SdkPackageId>Uno.Sdk.Private</SdkPackageId>
-<<<<<<< HEAD
     <SdkVersion>5.6.61</SdkVersion>
-=======
-    <SdkVersion>5.7.0-dev.510</SdkVersion>
->>>>>>> 3240b18 (chore: Update Uno.Sdk)
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
   </PropertyGroup>
 
