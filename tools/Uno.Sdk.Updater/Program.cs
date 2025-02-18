@@ -109,7 +109,6 @@ foreach(var entry in sdkZip.Entries)
     {
         Console.WriteLine("Extracting NuSpec Metadata");
         var nuspec = NuGet.Packaging.Manifest.ReadFrom(entry.Open(), false);
-        description = nuspec.Metadata.Description;
         tags = nuspec.Metadata.Tags;
     }
     else
@@ -146,7 +145,7 @@ if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
     Console.WriteLine("Updated the ReadMe with the versions used by this pack of the Uno.Sdk.");
     WriteIfDifferent(readMePath, readMe, ref wroteChanges);
 
-    CreateSdkProps(description, tags, unoVersion, readMePath, packagesJsonPath, relativePackagesJsonPath ?? "ERROR - Unable to determine path", ref wroteChanges);
+    CreateSdkProps(tags, unoVersion, readMePath, packagesJsonPath, relativePackagesJsonPath ?? "ERROR - Unable to determine path", ref wroteChanges);
 }
 
 if (wroteChanges)
@@ -192,11 +191,10 @@ static void WriteIfDifferent(string filePath, string content, ref bool didWriteC
     }
 }
 
-static void CreateSdkProps(string? description, string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath, ref bool didWriteChanges)
+static void CreateSdkProps(string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath, ref bool didWriteChanges)
 {
     var props = new Dictionary<string, string>
     {
-        { "Description", description ?? string.Empty },
         { "PackageTags", tags ?? string.Empty },
         { "SdkPackageId", UnoSdkPackageId },
         { "SdkVersion", unoVersion },
