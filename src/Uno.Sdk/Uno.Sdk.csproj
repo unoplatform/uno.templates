@@ -64,8 +64,9 @@
 
 		<ReplaceFileText
 			Filename="%(_SdkFiles.Identity)"
-			MatchExpression="DefaultUnoSdkVersion"
-			ReplacementText="$(SdkVersion)" />
+			MatchExpression="(?&lt;=&lt;UnoSdkVersion&gt;).*?(?=&lt;/UnoSdkVersion&gt;)"
+			ReplacementText="$(PackageVersion)"
+			EscapeMatchExpression="false" />
 
 		<Message Text="Packing: %(None.Identity)" Importance="high"
 			Condition="%(None.Pack) == 'true'" />

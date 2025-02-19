@@ -23,6 +23,7 @@
       <Filename ParameterType="System.String" Required="true" />
       <MatchExpression ParameterType="System.String" Required="true" />
       <ReplacementText ParameterType="System.String" Required="true" />
+      <EscapeMatchExpression ParameterType="System.Boolean" />
     </ParameterGroup>
     <Task>
       <Using Namespace="System" />
@@ -30,12 +31,15 @@
       <Using Namespace="System.Text.RegularExpressions" />
       <Code Type="Fragment" Language="cs">
         <![CDATA[
+          var exp = EscapeMatchExpression ? Regex.Escape(MatchExpression) : MatchExpression;
+
           File.WriteAllText(
             Filename,
-            Regex.Replace(File.ReadAllText(Filename), Regex.Escape(MatchExpression), ReplacementText)
+            Regex.Replace(File.ReadAllText(Filename), exp, ReplacementText)
             );
         ]]>
       </Code>
     </Task>
   </UsingTask>
+
 </Project>
