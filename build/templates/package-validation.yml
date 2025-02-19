@@ -250,7 +250,7 @@ steps:
       {
         # Build the app
         pushd $testName 
-        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog"
+        & dotnet build -m:1 $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog"
         if ($LASTEXITCODE -ne 0)
         {
           echo "Build failed for $testName"
