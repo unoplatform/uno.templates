@@ -103,10 +103,8 @@
       ThemeService;
       <!--#endif-->
 
-      <!--#if (skiaeverywhere)-->
-      WebAssemblySkiaRenderer;
-      AndroidSkiaRenderer;
-      AppleUIKitSkiaRenderer;
+      <!--#if (useSkiaRenderer)-->
+      SkiaRenderer;
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>

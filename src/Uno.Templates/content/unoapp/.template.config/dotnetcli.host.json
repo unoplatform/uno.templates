@@ -37,9 +37,9 @@
       "longName": "server",
       "shortName": "server"
     },
-    "skiaEverywhere": {
-      "longName": "skiaEverywhere",
-      "shortName": "skiaEverywhere"
+    "renderer": {
+      "longName": "renderer",
+      "shortName": "renderer"
     },
     "wasmPwaManifest": {
       "longName": "wasm-pwa-manifest",

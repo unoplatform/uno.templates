@@ -5,7 +5,7 @@ public class Program
     private static App? _app;
 
 //+:cnd:noEmit
-#if (!skiaeverywhere)
+#if (!useSkiaRenderer)
     public static int Main(string[] args)
 #else
     public static async Task<int> Main(string[] args)
@@ -19,7 +19,7 @@ public class Program
 #endif
 //-:cnd:noEmit
 //+:cnd:noEmit
-#if (!skiaeverywhere)
+#if (!useSkiaRenderer)
         Microsoft.UI.Xaml.Application.Start(_ => _app = new App());
 #else
 		var host = new global::Uno.UI.Runtime.Skia.WebAssembly.Browser.PlatformHost(() => _app = new App());

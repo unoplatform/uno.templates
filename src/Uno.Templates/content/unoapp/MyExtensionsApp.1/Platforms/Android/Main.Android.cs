@@ -35,14 +35,14 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
         : base(() => new App(), javaReference, transfer)
     {
 //+:cnd:noEmit
-#if (!skiaeverywhere)
+#if (!useSkiaRenderer)
         ConfigureUniversalImageLoader();
 #endif
 //-:cnd:noEmit
     }
 
 //+:cnd:noEmit
-#if (!skiaeverywhere)
+#if (!useSkiaRenderer)
     private static void ConfigureUniversalImageLoader()
     {
         // Create global configuration and initialize ImageLoader with this config
