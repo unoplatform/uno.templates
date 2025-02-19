@@ -64,7 +64,7 @@
 
 		<ReplaceFileText
 			Filename="%(_SdkFiles.Identity)"
-			MatchExpression="(?<=<UnoSdkVersion>).*?(?=</UnoSdkVersion>)"
+			MatchExpression="(?&lt;=&lt;UnoSdkVersion&gt;).*?(?=&lt;/UnoSdkVersion&gt;)"
 			ReplacementText="$(SdkVersion)"
 			EscapeMatchExpression="false" />
 
