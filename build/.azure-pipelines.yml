@@ -33,6 +33,8 @@ variables:
   # Required for WinAppSDK native AOT, to remove when included in uno.sdk
   AllowUnsafeBlocks: true
 
+  JavaMaximumHeapSize: 2G
+
 stages:
 - stage: Build
   jobs:
