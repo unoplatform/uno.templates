@@ -18,7 +18,7 @@ steps:
       usePrivateFeed: false
       mergeBranch: ${{ parameters.MergeBranch }}
       branchToMerge: main
-      nugetUpdaterVersion: '1.2.6'
+      nugetUpdaterVersion: '1.2.10'
       packageAuthor: 'unoplatform,uno platform'
       excludedPaths: 'content'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
