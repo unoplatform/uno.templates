@@ -20,7 +20,7 @@ steps:
       branchToMerge: main
       nugetUpdaterVersion: '1.2.6'
       packageAuthor: 'unoplatform,uno platform'
-      excludePaths: 'content'
+      excludedPaths: 'content'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       projectProperties: 'propertiesToUpdate.json'
       useVersionOverrides: true
