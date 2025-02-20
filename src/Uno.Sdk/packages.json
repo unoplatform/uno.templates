@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.7.0-dev.517",
+    "version": "5.7.0-dev.565",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -33,7 +33,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.13"
+      "net9.0": "9.0.14"
     }
   },
   {
@@ -88,7 +88,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.6.0-dev.44",
+    "version": "1.6.0-dev.47",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -296,7 +296,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.5.0-dev.98",
+    "version": "6.5.0-dev.99",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
