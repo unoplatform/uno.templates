@@ -207,3 +207,21 @@ stages:
         deploy:
           steps:
           - template: templates/nuget-publish-public.yml
+
+  - job: Tag_Release
+    displayName: 'Set git tag'
+    dependsOn: 'Nuget_Prod_Nuget_Org'
+
+    steps:
+    - checkout: self
+      persistCredentials: true
+      fetchDepth: 0
+
+    - template: templates/gitversion.yml
+
+    - script: |
+        git config user.email "info@platform.uno"
+        git config user.name "Uno DevOps"
+        git tag $(NBGV_SemVer2)
+        git push origin $(NBGV_SemVer2)
+      displayName: "Tag and push to GitHub"
