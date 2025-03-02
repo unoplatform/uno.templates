@@ -2415,7 +2415,7 @@
         "cases": [
           {
             "condition": "(useToolkit)",
-            "value": "\n      xmlns:utu=\"using:Uno.Toolkit.UI\""
+            "value": "\r\n      xmlns:utu=\"using:Uno.Toolkit.UI\""
           },
           {
             "condition": "true",
@@ -2433,7 +2433,7 @@
         "cases": [
           {
             "condition": "(appThemeEvaluator == 'material')",
-            "value": "\n      xmlns:um=\"using:Uno.Material\""
+            "value": "\r\n      xmlns:um=\"using:Uno.Material\""
           },
           {
             "condition": "true",
@@ -2455,15 +2455,15 @@
           },
           {
             "condition": "(appThemeEvaluator == 'material' && (useToolkit == 'true' || useToolkit == true))",
-            "value": "\n       xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
+            "value": "\r\n       xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
           },
           {
             "condition": "(appThemeEvaluator == 'material')",
-            "value": "\n       xmlns:um=\"using:Uno.Material\""
+            "value": "\r\n       xmlns:um=\"using:Uno.Material\""
           },
           {
             "condition": "(appThemeEvaluator == 'cupertino')",
-            "value": "\n       xmlns:uc=\"using:Uno.Cupertino\""
+            "value": "\r\n       xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
             "condition": "true",
@@ -2597,7 +2597,7 @@
         "cases": [
           {
             "condition": "(navigationEvaluator == 'regions')",
-            "value": "\n      xmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
+            "value": "\r\n      xmlns:uen=\"using:Uno.Extensions.Navigation.UI\""
           },
           {
             "condition": "true",
