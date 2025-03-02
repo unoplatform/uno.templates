@@ -217,7 +217,12 @@ stages:
       persistCredentials: true
       fetchDepth: 0
 
-    - template: templates/gitversion.yml
+    - pwsh: |
+        dotnet tool uninstall nbgv -g
+        dotnet tool install nbgv -g --version 3.6.139
+        nbgv cloud -a
+      displayName: Version with NBGV
+      name: NBGV
 
     - script: |
         git config user.email "info@platform.uno"
