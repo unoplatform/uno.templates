@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "5.7.0-dev.649",
+    "version": "5.7.0-dev.660",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -81,14 +81,14 @@
   },
   {
     "group": "settings",
-    "version": "1.3.0-dev.25",
+    "version": "1.3.0-dev.28",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.6.0-dev.77",
+    "version": "1.7.0-dev.4",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -148,7 +148,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.68.0",
+    "version": "4.69.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
