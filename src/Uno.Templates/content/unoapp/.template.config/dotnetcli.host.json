@@ -97,6 +97,10 @@
       "longName": "media-element",
       "shortName": "media"
     },
+    "meadowSupport": {
+      "longName": "meadow-support",
+      "shortName": "meadow"
+    },
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
