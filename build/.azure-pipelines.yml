@@ -217,16 +217,21 @@ stages:
       persistCredentials: true
       fetchDepth: 0
 
-    - pwsh: |
-        dotnet tool uninstall nbgv -g
-        dotnet tool install nbgv -g --version 3.6.139
-        nbgv cloud -a
-      displayName: Version with NBGV
-      name: NBGV
+    - task: gitversion/setup@0
+      retryCountOnTaskFailure: 3
+      inputs:
+        versionSpec: '5.10.3'
+
+    - task: gitversion/execute@0
+      retryCountOnTaskFailure: 3
+      inputs:
+        useConfigFile: true
+        configFilePath: build/gitversion.yml
+      displayName: Use GitVersion
 
     - script: |
         git config user.email "info@platform.uno"
         git config user.name "Uno DevOps"
-        git tag $(NBGV_SemVer2)
-        git push origin $(NBGV_SemVer2)
+        git tag $(GitVersion.SemVer)
+        git push origin $(GitVersion.SemVer)
       displayName: "Tag and push to GitHub"
