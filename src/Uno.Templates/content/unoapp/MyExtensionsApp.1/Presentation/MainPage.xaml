@@ -7,7 +7,7 @@
 <!--#endif-->
       NavigationCacheMode="Required"
       Background="{ThemeResource $themeBackgroundBrush$}">
-  <ScrollViewer>
+  <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />

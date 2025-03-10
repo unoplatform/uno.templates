@@ -6,7 +6,7 @@
       xmlns:controls="using:MyExtensionsApp._1.MauiControls"
 <!--#endif-->
       Background="{ThemeResource $themeBackgroundBrush$}">
-  <ScrollViewer>
+  <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>
       <StackPanel
         HorizontalAlignment="Center"
