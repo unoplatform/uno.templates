@@ -12,16 +12,12 @@ steps:
 
   # Adjust all the global.json files so that the AllowPrereleaseNetSdk is quoted to avoid issues with the updater
   # We cannot quote it in the template, as it causes linting issues in vscode, so we replace it here.
-  - task: PowerShell@2
-    condition: eq(variables['IsCanaryBranch'], true)
-    displayName: 'Quote AllowPrereleaseNetSdk in global.json'
-    inputs:
-      targetType: 'inline'
-      script: |
-        Get-ChildItem -Path $(Build.SourcesDirectory) -Filter global.json -Recurse | ForEach-Object
-        {
+  - pwsh: |
+        Get-ChildItem -Path "$(Build.SourcesDirectory)" -Filter global.json -Recurse | ForEach-Object {
           (Get-Content $_.FullName) -replace '\$AllowPrereleaseNetSdk\$', '"$AllowPrereleaseNetSdk$"' | Set-Content $_.FullName
         }
+    condition: eq(variables['IsCanaryBranch'], true)
+    displayName: 'Quote AllowPrereleaseNetSdk in global.json'
       
   - task: unoplatformCanaryUpdater@1
     condition: eq(variables['IsCanaryBranch'], true)
