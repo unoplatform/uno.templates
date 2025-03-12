@@ -6,7 +6,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 |----------------|:---------------:|
 | UnoVersion* | 5.6.81 |
 | UnoExtensionsVersion | 5.2.7 |
-| UnoToolkitVersion | 6.4.3 |
+| UnoToolkitVersion | 6.4.5 |
 | UnoThemesVersion | 5.4.0 |
 | UnoCSharpMarkupVersion | 5.6.7 |
 | UnoWasmBootstrapVersion** | 8.0.23 |
@@ -17,10 +17,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.7.0 |
 | SkiaSharpVersion | 2.88.9 |
 | SvgSkiaVersion | 2.0.0.4 |
-| WinAppSdkVersion | 1.6.250205002 |
+| WinAppSdkVersion | 1.6.250228001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.13 |
+| WindowsCompatibilityVersion** | 8.0.14 |
 | MicrosoftIdentityClientVersion | 4.66.2 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -155,7 +155,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.250205002",
+    "version": "1.6.250228001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -174,17 +174,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.2"
+      "net9.0": "9.0.3"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.13",
+    "version": "8.0.14",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.2"
+      "net9.0": "9.0.3"
     }
   },
   {
@@ -337,7 +337,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.4.3",
+    "version": "6.4.5",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
