@@ -1,9 +1,16 @@
+//+:cnd:noEmit
 using Uno.Resizetizer;
+#if (meadowSupport)
+using Meadow;
+#endif
 
-//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
+#if (meadowSupport)
+public partial class App : UnoMeadowDesktopApplication
+#else
 public partial class App : Application
+#endif
 {
     /// <summary>
     /// Initializes the singleton application object. This is the first line of authored code
@@ -17,6 +24,26 @@ public partial class App : Application
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
 
+    
+#if (meadowSupport)
+    public override Task MeadowInitialize()
+    {
+        var r = Resolver.Services.Get<IMeadowDevice>();
+
+        if (r == null)
+        {
+            Resolver.Log.Info("IMeadowDevice is null");
+        }
+        else
+        {
+            Resolver.Log.Info($"IMeadowDevice is {r.GetType().Name}");
+        }
+
+        return Task.CompletedTask;
+
+    }
+#endif  
+    
 //+:cnd:noEmit
 #if useFrameNav
     protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -196,6 +223,10 @@ public partial class App : Application
             );
         MainWindow = builder.Window;
 
+        
+#if (meadowSupport)
+        LoadMeadowOS();
+#endif
 //-:cnd:noEmit
 #if DEBUG
         MainWindow.UseStudio();
