@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.7.0-dev.750 |
+| UnoVersion* | 5.7.0-dev.763 |
 | UnoExtensionsVersion | 5.3.0-dev.133 |
 | UnoToolkitVersion | 6.5.0-dev.110 |
 | UnoThemesVersion | 5.5.0-dev.93 |
@@ -17,11 +17,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.8.0-dev.15 |
 | SkiaSharpVersion | 2.88.9 |
 | SvgSkiaVersion | 2.0.0.4 |
-| WinAppSdkVersion | 1.6.250228001 |
+| WinAppSdkVersion | 1.7.250310001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.14 |
-| MicrosoftIdentityClientVersion | 4.69.1 |
+| MicrosoftIdentityClientVersion | 4.70.0 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.2 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.7.0-dev.750",
+    "version": "5.7.0-dev.763",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -129,7 +129,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.9.0-dev.3",
+    "version": "1.9.0-dev.18",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -155,7 +155,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.250228001",
+    "version": "1.7.250310001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -189,7 +189,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.69.1",
+    "version": "4.70.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
