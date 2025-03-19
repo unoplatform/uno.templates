@@ -43,7 +43,7 @@ steps:
     $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
     if ($templateArgs -match 'net9.0')
     {
-        $dotnetVersion = '9.0.100'
+        $dotnetVersion = '9.0.201'
         $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
     }
     echo "Dotnet Version = '$dotnetVersion'"
