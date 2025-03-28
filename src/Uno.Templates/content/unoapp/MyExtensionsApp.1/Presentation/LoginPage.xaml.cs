@@ -47,7 +47,7 @@ public sealed partial class LoginPage : Page
                             new Button()
                                 .Content("Login")
                                 .HorizontalAlignment(HorizontalAlignment.Stretch)
-                                .Command(() => vm.Login)))));
+                                .Command(() => vm.DoLoginCommand)))));
 #else
         this.InitializeComponent();
 #endif

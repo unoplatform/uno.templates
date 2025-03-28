@@ -45,10 +45,10 @@
             PlaceholderText="Enter your name:" />
         <Button Content="Go to Second Page"
             AutomationProperties.AutomationId="SecondPageButton"
-            Command="{Binding GoToSecond}" />
+            Command="{Binding GoToSecondViewCommand}" />
 <!--#if (useAuthentication)-->
         <Button Content="Logout"
-            Command="{Binding Logout}" />
+            Command="{Binding DoLogoutCommand}" />
 <!--#endif-->
       </StackPanel>
     </Grid>
