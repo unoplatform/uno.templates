@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.0.0-dev.4",
+    "version": "6.0.0-dev.5",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -28,7 +28,7 @@
       "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
-      ]
+    ]
   },
   {
     "group": "WasmBootstrap",
