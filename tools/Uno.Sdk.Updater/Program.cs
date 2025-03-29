@@ -331,6 +331,13 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
 
     var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
     var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
+
+    if (string.IsNullOrEmpty(version))
+    {
+        Console.WriteLine($"Unable to find package {packageId} versions, skipping.");
+        version = "0.0.0.0";
+    }
+
     version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
     var newGroup = group with { Version = version };
 
