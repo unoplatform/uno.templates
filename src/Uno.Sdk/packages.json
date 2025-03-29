@@ -12,9 +12,9 @@
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Runtime.Skia.Gtk",
       "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
       "Uno.WinUI.Runtime.Skia.MacOS",
+      "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
@@ -24,9 +24,11 @@
       "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
       "Uno.WinUI.Runtime.WebAssembly",
       "Uno.WinUI.MediaPlayer.WebAssembly",
+      "Uno.WinUI.MediaPlayer.Skia.X11",
+      "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
-    ]
+      ]
   },
   {
     "group": "WasmBootstrap",
@@ -99,7 +101,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "2.88.9",
+    "version": "3.119.0-preview.0.11",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
