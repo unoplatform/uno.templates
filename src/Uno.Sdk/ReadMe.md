@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.7.0-dev.812 |
+| UnoVersion* | 6.0.0-dev.5 |
 | UnoExtensionsVersion | 5.3.0-dev.133 |
 | UnoToolkitVersion | 6.5.0-dev.110 |
 | UnoThemesVersion | 5.5.0-dev.93 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.7.0-dev.812",
+    "version": "6.0.0-dev.5",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -53,14 +53,20 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Runtime.Skia.Gtk",
       "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
       "Uno.WinUI.Runtime.Skia.MacOS",
+      "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
+      "Uno.WinUI.WebAssembly",
+      "Uno.WinUI.Runtime.Skia.Android",
+      "Uno.WinUI.Runtime.Skia.AppleUIKit",
+      "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
       "Uno.WinUI.Runtime.WebAssembly",
       "Uno.WinUI.MediaPlayer.WebAssembly",
+      "Uno.WinUI.MediaPlayer.Skia.X11",
+      "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
     ]
