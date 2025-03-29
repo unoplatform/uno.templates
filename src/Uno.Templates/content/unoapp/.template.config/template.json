@@ -383,6 +383,37 @@
         "fallbackVariableName": "presetTestsDefault"
       }
     },
+    "renderer": {
+      "displayName": "Renderer",
+      "description": "Controls the renderer used for iOS, Android, Catalyst and WebAssembly targets",
+      "type": "parameter",
+      "datatype": "choice",
+      "allowMultipleValues": false,
+      "enableQuotelessLiterals": true,
+      "defaultValue": "native",
+      "choices": [
+        {
+          "choice": "skia",
+          "description": "Use the Skia based renderer",
+          "displayName": "Skia"
+        },
+        {
+          "choice": "native",
+          "description": "Use the native APIs based render",
+          "displayName": "Native"
+        }
+      ]
+    },
+    "useSkiaRenderer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(renderer == 'skia')"
+    },
+    "useNativeRenderer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(renderer == 'native')"
+    },
     "server": {
       "displayName": "Server",
       "type": "parameter",
@@ -879,7 +910,7 @@
         "fallbackVariableName": "presetAppThemeDefault"
       }
     },
-    "useDspGenerator":{
+    "useDspGenerator": {
       "type": "computed",
       "datatype": "bool",
       "value": "(dspGeneratorEvaluator && appThemeEvaluator == 'material')"

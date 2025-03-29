@@ -60,15 +60,7 @@ steps:
 
       cd UnoTemplateValidation1
 
-      if ('${{ parameters.templateName }}' -eq 'unoapp-uwp')
-      {
-          $msbuild = vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe
-          & $msbuild /r "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
-      }
-      else
-      {
-          & dotnet build "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
-      }
+      & dotnet build "/bl:$(build.artifactstagingdirectory)\$(Agent.JobName).binlog"
       
       if ($LASTEXITCODE -ne 0)
       {
