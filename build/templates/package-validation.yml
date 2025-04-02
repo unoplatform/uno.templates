@@ -98,7 +98,7 @@ steps:
 
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk  ${{ parameters.unocheckArguments }}
   displayName: Uno Check (Linux)
   condition: eq(variables['Agent.OS'], 'Linux')
   env:
@@ -107,7 +107,7 @@ steps:
 
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip gtk3 --skip xcode --skip vswin --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip gtk3 --skip xcode --skip vswin --skip unosdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
   displayName: Uno Check (macOS)
   condition: eq(variables['Agent.OS'], 'Darwin')
   env:
@@ -130,7 +130,7 @@ steps:
 
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip unosdk --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
   displayName: Uno Check (Windows)
   condition: eq(variables['Agent.OS'], 'Windows_NT')
   env:
