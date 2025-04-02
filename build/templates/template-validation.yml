@@ -49,7 +49,7 @@ steps:
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
     cd UnoTemplateValidation1
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip unosdk --skip vsmac --skip dotnetnewunotemplates ${{ parameters.unocheckArguments }}
   displayName: Uno Check
   env:
     ValidationUnoCheckVersion: $(ValidationUnoCheckVersionNet8)
