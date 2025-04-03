@@ -9,6 +9,10 @@ on:
       - .github/workflows/uno-updater-pr.yml
       - .github/actions/sdk-update/*
       - tools/Uno.Sdk.Updater/*
+  
+concurrency:
+  group: ${{github.workflow}} - ${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
   manifest-update:

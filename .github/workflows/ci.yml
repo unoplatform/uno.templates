@@ -1,0 +1,212 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - release/**
+
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - release/**
+
+  schedule:
+    - cron: '0 0 * * *' # Canary
+  
+concurrency:
+  group: ${{github.workflow}} - ${{github.ref}}
+  cancel-in-progress: true
+
+# variables
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
+  ValidationUnoCheckVersionNet8: '1.26.4'
+  ValidationUnoCheckVersionNet9: '1.31.0-dev.10'
+  ValidationDotNetVersion: '8.0.407'
+
+  # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
+  # compatible version of the bootstrapper
+  UnoDisableNet9Validation: true
+
+  # Required for WinUI 1.6
+  WindowsSdkPackageVersion: '10.0.19041.57'
+
+  # Required for WinAppSDK native AOT, to remove when included in uno.sdk
+  AllowUnsafeBlocks: true
+
+  # Reduce the number of downloaded packages
+  RestoreEnablePackagePruning: true
+
+jobs:
+
+  # Build the nuget packages
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: "Build Package"
+      uses: ./.github/actions/ci/build-packages
+
+  # Sign the nuget packages
+  sign:
+    name: Sign Package
+    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
+    runs-on: windows-latest
+    needs: Build
+    steps:
+    - name: "Sign Packages"
+      uses: ./.github/actions/ci/sign-package
+
+  # Publish dev packages to uno feed and nuget.org
+  publish_dev:
+    name: Publish Dev
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: windows-latest
+    needs: sign
+
+    steps:
+    - name: "Uno Feed Publish"
+      uses: ./.github/actions/ci/nuget-uno-publish
+    - name: "nuget.org Publish"
+      uses: ./.github/actions/ci/nuget-org-publish
+
+  # Publish release packages to uno feed
+  publish_release_uno:
+    name: Publish Production
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
+    runs-on: windows-latest
+    environment: Production
+    needs: sign
+
+    steps:
+    - name: "Uno Feed Publish"
+      uses: ./.github/actions/ci/nuget-uno-publish
+
+  # Publish release packages to nuget.org
+  publish_release_nuget_org:
+    name: Publish Production
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
+    runs-on: windows-latest
+    environment: Production
+    needs: publish_release_uno
+
+    steps:
+    - name: "Uno Feed Publish"
+      uses: ./.github/actions/ci/nuget-uno-publish
+
+  # Generate the template tests build matrix
+  generate-test-matrix:
+    runs-on: ubuntu-latest
+    name: Generate Test Matrix
+
+    outputs:
+      testMatrix: ${{ steps.generate-test-matrix-step.outputs.TestMatrix }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: "Test Matrix"
+      id: generate-test-matrix-step
+      uses: ./.github/actions/ci/generate-test-matrix
+
+  # Run the test matrix on linux
+  linux-template-tests:
+    runs-on: ubuntu-latest
+    needs: 
+    - generate-test-matrix
+    - build
+
+    name: Linux Tests (${{ matrix.groupName }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+
+    env:
+      UseDotNetNativeToolchain: false
+      unocheckArguments: ''
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: "Run Tests"
+      uses: ./.github/actions/ci/run-tests
+      with:
+        xCodeRoot: '/Applications/Xcode_16.2.app'
+        arguments: ${{ matrix.validations }}
+        unocheckArguments: ${{ matrix.unocheckArguments }}
+        logs-artifact-name: ${{ matrix.groupName }}
+
+  # Run the test matrix on Windows
+  windows-template-tests:
+    runs-on: windows-latest
+    needs: 
+    - generate-test-matrix
+    - build
+
+    name: Windows Tests (${{ matrix.groupName }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+
+    env:
+      UseDotNetNativeToolchain: false
+      unocheckArguments: ''
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: "Run Tests"
+      uses: ./.github/actions/ci/run-tests
+      with:
+        xCodeRoot: '/Applications/Xcode_16.2.app'
+        arguments: ${{ matrix.validations }}
+        unocheckArguments: ${{ matrix.unocheckArguments }}
+        logs-artifact-name: ${{ matrix.groupName }}
+
+  # Run the test matrix on macOS
+  macos-template-tests:
+    runs-on: macos-latest
+    needs: 
+    - generate-test-matrix
+    - build
+
+    name: macOS Tests (${{ matrix.groupName }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+
+    env:
+      UseDotNetNativeToolchain: false
+      unocheckArguments: ''
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: "Run Tests"
+      uses: ./.github/actions/ci/run-tests
+      with:
+        xCodeRoot: '/Applications/Xcode_16.2.app'
+        arguments: ${{ matrix.validations }}
+        unocheckArguments: ${{ matrix.unocheckArguments }}
+        logs-artifact-name: ${{ matrix.groupName }}

@@ -1,0 +1,34 @@
+name: "Sign Packages"
+description: "Sign Packages"
+
+runs:
+  using: "composite"
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+
+  - name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+      name: nuget-packages
+      path: artifacts\NuGet
+
+  - name: Setup .NET SDK
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: '9.0.200'
+
+  - name: Setup SignClient
+    run: |
+      dotnet tool install --tool-path build SignClient
+
+  - name: SignClient
+    shell: pwsh
+    run: |
+      build\SignClient sign -i artifacts\NuGet\*.nupkg -c build\SignClient.json -r "${{ secrets.UNO_PLATFORM_CODESIGN_USERNAME }}" -s "${{ secrets.UNO_PLATFORM_CODESIGN_SECRET }}" -n "Uno.Check" -d "Uno.Check" -u "https://github.com/unoplatform/uno.check"
+
+  - name: Upload Signed Artifacts
+    uses: actions/upload-artifact@v4
+    with:
+      name: NuGet-Signed
+      path: .\artifacts\NuGet

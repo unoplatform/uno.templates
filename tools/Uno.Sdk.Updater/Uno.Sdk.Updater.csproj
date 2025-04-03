@@ -22,7 +22,7 @@
 
 		<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 			<!-- When debugging, change this version to the next pre-release -->
-			<NBGV_SemVer2 Condition="'$(NBGV_SemVer2)'==''">255.255.255.255</NBGV_SemVer2>
+			<NBGV_SemVer2 Condition="'$(NBGV_SemVer2)'==''">6.0-dev.5546</NBGV_SemVer2>
 		</PropertyGroup>
 
 		<Error Condition="'$(NBGV_SemVer2)'==''"
