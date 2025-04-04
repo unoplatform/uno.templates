@@ -26,4 +26,4 @@ runs:
   - name: Uno NuGet Feed Push
     shell: pwsh
     run: |
-        dotnet nuget push artifacts\*.nupkg
+        dotnet nuget push --api-key AzureArtifacts artifacts\*.nupkg
