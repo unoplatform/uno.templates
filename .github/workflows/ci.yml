@@ -17,9 +17,8 @@ on:
   
 concurrency:
   group: ${{github.workflow}} - ${{github.ref}}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !contains(github.ref, 'refs/heads/release/') && !contains(github.ref, 'refs/heads/main')}}
 
-# variables
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
