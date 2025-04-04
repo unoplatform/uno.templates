@@ -1,0 +1,18 @@
+name: "Deploy to nuget.org"
+description: "Deploy to nuget.org"
+    
+runs:
+  using: "composite"
+
+  steps:
+  - name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+        name: NuGet-Signed
+        path: artifacts
+
+  - name: NuGet.org Push
+    shell: pwsh
+    run: |
+        dotnet nuget push artifacts\*.nupkg -s https://api.nuget.org/v3/index.json -k "${{ secrets.NUGET_ORG_API_KEY }}"
+

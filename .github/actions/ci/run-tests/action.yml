@@ -1,0 +1,388 @@
+name: "Run Tests"
+description: "Run Tests"
+
+inputs:
+  logs-artifact-name:
+    description: 'Name of the artifact used for binlogs'
+    default: ''
+  arguments:
+    description: 'Arguments to pass to the test build'
+    default: ''
+  unocheckArguments:
+    description: 'Arguments to pass to uno-check'
+    default: ''
+  xCodeRoot:
+    description: 'The xCode Version to use on macOS'
+    default: ''
+    
+runs:
+  using: "composite"
+
+  steps:
+  - name: 'Cleanup unused image dependencies (Linux)'
+    if: runner.os == 'Linux'
+    shell: bash
+    run: |
+      # This list is based on what the base image contains and
+      # may need to be adjusted as new software gets installed.
+      # Use the `du` command below to determine what can be
+      # uninstalled.
+      
+      rm -fR ~/.cargo
+      rm -fR ~/.rustup
+      rm -fR ~/.dotnet
+      sudo rm -fR /usr/share/swift
+      sudo rm -fR /opt/microsoft/msedge
+      sudo rm -fR /usr/local/.ghcup
+      sudo rm -fR /usr/lib/mono
+      sudo snap remove lxd
+      sudo snap remove core20
+      sudo apt remove snapd
+  
+      df -h
+      # du -h -d 3 /
+
+  - name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+      name: nuget-packages
+      path: ${{ github.workspace }}/src/PackageCache
+
+  - name: 'Evaluate Template Args'
+    shell: pwsh
+    run: |
+        if ($IsMacOS -or $IsLinux)
+        {
+            echo "WasmCachePath=${{ github.workspace }}/.emscripten-cache" >> $env:GITHUB_ENV
+        }
+        else
+        {
+            # The cache must be in the user folder if the emsdk tooling 
+            # is on a separate drive as the workspace
+            echo "WasmCachePath=$env:USERPROFILE\\.emscripten-cache" >> $env:GITHUB_ENV
+        }
+
+  - name: 'Set Dotnet and UnoCheck Versions'
+    shell: pwsh
+    run: |
+        $templateArgs = '${{ inputs.arguments }}'
+        echo "TemplateArgs = '$templateArgs'"
+        $dotnetVersion = $env:TargetDotNetVersion
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
+
+        if ($templateArgs -match 'net9.0')
+        {
+            $dotnetVersion = '9.0.201'
+            $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+        }
+
+        echo "Dotnet Version = '$dotnetVersion'"
+        echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
+    
+        echo "DotNetVersion=$dotnetVersion" >> $env:GITHUB_ENV
+        echo "ValidationUnoCheckVersion=$ValidationUnoCheckVersion" >> $env:GITHUB_ENV
+    env:
+      TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
+      ValidationUnoCheckVersionNet8: ${{ env.ValidationUnoCheckVersionNet8 }}
+      ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
+
+  - name: Cache EMSDK
+    id: cache-emsdk
+    uses: actions/cache@v4
+    env:
+        cache-name: cache-emsdk-modules
+    with:
+        path: ${{ env.WasmCachePath }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-emsdk-${{ env.ValidationUnoCheckVersion }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-emsdk-${{ env.ValidationUnoCheckVersion }}
+
+  - name: Cache .NET
+    id: cache-dotnet
+    uses: actions/cache@v4
+    env:
+        cache-name: cache-dotnet-install
+    with:
+        path: ${{ github.workspace }}/.dotnet
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-dotnet-${{ env.ValidationUnoCheckVersion }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-dotnet-${{ env.ValidationUnoCheckVersion }}
+
+  # Install android 34 as we're running on macos-15, early so that
+  # the JDK override does not break the installer
+  - name: 'Install Android 34'
+    if: runner.os == 'macOS'
+    shell: bash
+    run: |
+      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'tools'| tr '\r' '\n' | uniq
+      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platform-tools'  | tr '\r' '\n' | uniq
+      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platforms;android-34' | tr '\r' '\n' | uniq
+      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'build-tools;35.0.0' | tr '\r' '\n' | uniq
+      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'build-tools;34.0.0' | tr '\r' '\n' | uniq
+
+  - name: "Install .NET Windows"
+    uses: ./.github/actions/ci/dotnet-install
+    with:
+      DotNetVersion: ${{ env.DotNetVersion }}
+
+  - name: "Canary Updater"
+    uses: ./.github/actions/ci/canary-updater
+    with:
+      MergeBranch: false
+  
+  - name: 'OpenJDK (Linux)'
+    if: runner.os == 'linux'
+    shell: bash
+    run: |
+      sudo rm -fR /usr/lib/jvm
+      ubuntu_release=`lsb_release -rs` 
+      wget  https://packages.microsoft.com/config/ubuntu/${ubuntu_release}/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
+      sudo dpkg -i packages-microsoft-prod.deb 
+      sudo apt-get install apt-transport-https 
+      sudo apt-get update 
+      sudo apt-get install -y msopenjdk-11
+
+  - name: 'Uno Check (Linux)'
+    if: runner.os == 'linux'
+    shell: pwsh
+    run: |
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk  ${{ inputs.unocheckArguments }}
+    env:
+      ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
+      JAVA_HOME: ${{ env.JAVA_HOME }}
+
+  - name: 'Uno Check (macOS)'
+    if: runner.os == 'macOS'
+    shell: pwsh
+    run: |
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip androidemulator --skip gtk3 --skip xcode --skip vswin --skip unosdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
+    env:
+      ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
+      JAVA_HOME: ${{ env.JAVA_HOME }}
+
+  - name: 'Select Xcode'
+    if: runner.os == 'macOS'
+    shell: bash
+    run: |
+      echo 'xCode Root to ${{ inputs.xCodeRoot }}'
+      echo 'MD_APPLE_SDK_ROOT=${{ inputs.xCodeRoot }}' >> $GITHUB_ENV
+      sudo xcode-select --switch ${{ inputs.xCodeRoot }}/Contents/Developer
+
+  - name: 'Install ninja'
+    if: runner.os == 'macOS'
+    shell: bash
+    run: |
+       brew install ninja
+
+  - name: 'Uno Check (Windows)'
+    if: runner.os == 'windows'
+    shell: pwsh
+    run: |
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip unosdk --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
+    env:
+      ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
+  
+  - name: 'Install Project Templates'
+    shell: pwsh
+    run: |
+      dotnet new install "${{ github.workspace }}/src/PackageCache/Uno.Templates*.nupkg"
+
+  - name: 'Cleanup nupkg from package cache'
+    if: runner.os == 'linux'
+    shell: pwsh
+    run: |
+      find ~/.nuget -type f -name "*.nupkg" -exec rm {} \;
+      df -h
+
+  - name: 'Setup nuget sources'
+    shell: pwsh
+    run: |
+        dotnet nuget add source -n nuget_local ${{ github.workspace }}/src/PackageCache
+        dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
+        dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
+
+  - name: 'Test all scenarios'
+    shell: pwsh
+    run: |
+      #Set-PSDebug -Trace 1
+      $ErrorActionPreference = 'Stop'
+
+      # Split input string
+      $validationsArray = ('${{ inputs.arguments }}' -split '\r?\n').Trim()
+
+      # write currently running dotnet version in a variable
+      $dotnetVersion = dotnet --version
+
+      echo "Running validations for:"
+
+      $validations=@{}
+      $buildFailures=@()
+
+      foreach($validation in $validationsArray)
+      {
+        # Skip commented out tests
+        if($validation.StartsWith('#'))
+        {
+          continue
+        }
+
+        $fields = ($validation -split ';').Trim()
+
+        if($fields[0])
+        {      
+          $validations.Add($fields[0], @($fields[3], $fields[1], $fields[2]))
+          echo "- $($fields[0]), $($fields[2]) $($fields[3]) (Filter: $($fields[1]))"
+        }
+      }
+
+      $currentTest=0;
+
+      foreach($validation in $validations.Keys)
+      {
+        $testName = $validation;
+        $testParams = $validations[$validation][0];
+        $environmentFilter = $validations[$validation][1];
+        $templateName = $validations[$validation][2];
+
+        if($testParams -eq $null)
+        {
+          $testParams = ""
+        }
+
+        # Skip testing for the wrong environment
+        if($environmentFilter -eq "Windows" -and !$IsWindows)
+        {
+          echo "Skipping $testName ($testParams) because it's only for Windows"
+          continue
+        }
+
+        if($environmentFilter -eq "Linux" -and !$IsLinux)
+        {
+          echo "Skipping $testName ($testParams) because it's only for Linux"
+          continue
+        }
+
+        if($environmentFilter -eq "macOS" -and !$IsMacos)
+        {
+          echo "Skipping $testName ($testParams) because it's only for macOS"
+          continue
+        }
+
+        if($environmentFilter -eq "!macOS" -and $IsMacos)
+        {
+          echo "Skipping $testName ($testParams) because it's not selected for macOS"
+          continue
+        }
+
+        if ($testParams.Contains('net9.0') -and $IsWindows)
+        {
+          if($testName -eq "MauiBlank" -or $testName -eq "MauiRecommended" -or $testName -eq "Issue396")
+          {
+            echo "Skipping $testName ($testParams) on net9.0 Windows because of https://github.com/unoplatform/uno.csharpmarkup/issues/787"
+            continue
+          }
+        }
+
+        if ($testParams.Contains('net8.0') -and $IsMacOS -and ($testParams.Contains('-auth msal') -or $testParams.Contains('auth=msal')))
+        {
+            echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
+            continue
+        }
+
+        if ($testParams.Contains('net8.0') -and $testParams.Contains('--renderer skia'))
+        {
+            echo "Skipping Skia Everywhere test for net8"
+            continue
+        }
+
+        if ($testParams.Contains('net9.0') -and $testName -eq "mauilib_MacOS")
+        {
+            echo "Invalid net9 support: The SupportedOSPlatformVersion value 14.0 in the project file is lower than the minimum value 15.0"
+            continue
+        }
+
+        echo "Testing $testName ($templateName $testParams)"
+
+        # Set the progress to report on azdo UI
+        $progress = ($currentTest / $validations.Keys.Count) * 100;
+        echo "Progress: {$progress}"
+        echo "##vso[task.setprogress value=$progress;]$testName"
+
+        # Split the string containing parameters with respect for quotes, so parameters can be 
+        # passed properly to the dotnet new command. (the string would be interpreted as a single parameter otherwise)
+        if($testParams)
+        {
+          $dotnetNewParams = ($testParams -replace "`n"," " -replace "`r"," ") -split ' (?=(?:[^"]|"[^"]*")*$)' | ForEach-Object { $_ -replace '"', '' } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+        }
+        else
+        {
+          # avoid passing an empty array
+          Remove-Variable -name dotnetNewParams -ErrorAction SilentlyContinue
+        }
+
+        # Create the app solution
+        & dotnet new $templateName -o $testName $dotnetNewParams
+
+        if ($LASTEXITCODE -ne 0)
+        {
+          echo "Template creation failed for $testName"
+          $buildFailures += , "$testName";
+        }
+        else
+        {
+          # Build the app
+          pushd $testName
+
+          # Disable most costly features to speed up the build
+          $extraArgs=@(
+            "-p:RunAOTCompilation=false",
+            "-p:MtouchUseLlvm=false",
+            "-p:MtouchLink=none",
+            "-p:WasmShellILLinkerEnabled=false",
+            "-p:UseInterpreter=true",
+            "-p:_IsDedupEnabled=false",
+            "-p:MtouchInterpreter=all"
+          );
+
+          & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
+          if ($LASTEXITCODE -ne 0)
+          {
+            echo "Build failed for $testName"
+            $buildFailures += , "$testName";
+          }
+          popd
+
+          # Clean the folder to continue testing with limited disk space
+          Remove-Item -Recurse -Force $testName -ErrorAction Continue
+
+          if ($IsLinux)
+          {
+            echo "Show disk usage"
+            & df -h
+          }
+        }
+
+        $currentTest = $currentTest + 1;
+      }
+
+      if($buildFailures.Length -gt 0)
+      {
+        echo "Validation failed for :"
+
+        foreach($buildFailure in $buildFailures)
+        {
+          echo "- $buildFailure"
+        }
+
+        throw "Exit code must be zero."
+      }
+
+  - name: Upload Build Logs
+    if: always()
+    uses: actions/upload-artifact@v4
+    with:
+      name: build-logs-${{ runner.os }}-${{ inputs.logs-artifact-name }}
+      path: ${{ github.workspace }}/artifacts/logs/

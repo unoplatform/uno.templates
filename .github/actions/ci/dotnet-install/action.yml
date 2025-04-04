@@ -1,0 +1,32 @@
+name: "Install .NET"
+description: "Install .NET"
+
+inputs:
+   DotNetVersion:
+     description: ".NET Version"
+
+runs:
+  using: "composite"
+  steps:
+  # When running on macos, set the DOTNET_INSTALL_DIR so a workspace local folder
+  # is used to install the SDK. This is required for the Uno.Sdk.Updater to work
+  - name: Set DOTNET_INSTALL_DIR
+    if: runner.os == 'macos' || runner.os == 'linux'
+    shell: bash
+    run: echo "DOTNET_INSTALL_DIR=$GITHUB_WORKSPACE/.dotnet" >> $GITHUB_ENV
+
+  - name: Set DOTNET_INSTALL_DIR
+    if: runner.os == 'windows'
+    shell: bash
+    run: echo "DOTNET_INSTALL_DIR=$GITHUB_WORKSPACE\.dotnet" >> $GITHUB_ENV
+
+  - name: Install .NET SDK ${{ inputs.DotNetVersion }}
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: ${{ inputs.DotNetVersion }}
+
+  - name: 'Select JDK 11'
+    shell: pwsh
+    run: |
+      echo "JAVA_HOME=$env:JAVA_HOME_11_X64" >> $GITHUB_ENV
+      echo "JavaSdkDirectory=$env:JAVA_HOME_11_X64" >> $GITHUB_ENV

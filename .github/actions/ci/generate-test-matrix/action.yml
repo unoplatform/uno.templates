@@ -1,0 +1,128 @@
+name: "Generate Test Matrix"
+description: "Generate Test Matrix"
+
+outputs:
+    TestMatrix:
+        description: "Test Matrix"
+        value: ${{ steps.buildTestMatrix.outputs.TestMatrix }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Generate Test Matrix
+      id: buildTestMatrix
+      shell: pwsh
+      run: |
+        $tests = @(
+            # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
+            # macOS is generally not selected unless building the whole targets list, because of expensive CI
+        
+            "SkiaEverywhereRecommended;;unoapp;-skip --renderer skia -preset=recommended",
+            "SkiaEverywhereBlank;;unoapp;-skip --renderer skia -preset=blank",
+
+            "DefaultArgs;;unoapp;-skip ",
+            "Recommended;;unoapp;-skip -preset recommended",
+            "SkiaOnlyHeads;!macOS;unoapp;-skip -platforms desktop",
+            "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios maccatalyst",
+            "RecommendedMarkup;;unoapp;-skip -preset recommended -markup csharp",
+            "RecommendedMarkupDsp;;unoapp;-skip -preset recommended -markup csharp -dsp",
+            "RecommendedMarkupFluent;!macOS;unoapp;-skip -preset recommended -markup csharp -theme fluent",
+            "MVVM;!macOS;unoapp;-skip -preset recommended -presentation mvvm",
+            "CSharpMarkup;;unoapp;-skip -markup csharp",
+            "NoHosting;!macOS;unoapp;-skip -preset recommended -di false",
+            "HostingOnly;!macOS;unoapp;-skip -preset recommended -config false -loc false -http false -log none --navigation blank",
+            "NoConfiguration;!macOS;unoapp;-skip -preset recommended -config false",
+            "NoLocalization;!macOS;unoapp;-skip -preset recommended -loc false",
+            "NoHttp;!macOS;unoapp;-skip -preset recommended -http false",
+            "NoSerilog;!macOS;unoapp;-skip -preset recommended -log default",
+            "NoServer;!macOS;unoapp;-skip -preset recommended -server false",
+            "NoServerNoHttp;!macOS;unoapp;-skip -preset recommended -server false -http false",
+            "NoTests;!macOS;unoapp;-skip -preset recommended -tests none",
+            "FrameNavigation;!macOS;unoapp;-skip -preset recommended --navigation blank",
+
+            "mauilib_MacOS;macOS;unomauilib;"
+            "unolib_MacOS;macOS;unolib;"
+            "mauilib_Windows;Windows;unomauilib;"
+            "unolib_Windows;Windows;unolib;"
+
+            # Disabling this test for now as it was specific to net7
+            # https://github.com/unoplatform/uno.templates/issues/22
+            # "Issue22;;unoapp;-skip -preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms windows -platforms wasm -platforms desktop -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material",
+        
+            "CustomAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=custom",
+            "CustomAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=custom",
+            "CustomAuthMvuxCSharp;!macOS;unoapp;-skip -preset=recommended -auth=custom -markup csharp",
+            "CustomAuthMvvmCSharp;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=custom -markup csharp",
+            "WebAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=web",
+            "WebAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=web",
+            "WebAuthMvuxCSharp;!macOS;unoapp;-skip -preset=recommended -auth=web -markup csharp",
+            "WebAuthMvvmCSharp;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=web -markup csharp",
+            "OidcAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=oidc",
+            "OidcAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=oidc",
+            "OidcAuthMvuxCSharp;!macOS;unoapp;-skip -preset=recommended -auth=oidc -markup csharp",
+            "OidcAuthMvvmCSharp;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=oidc -markup csharp",
+            "MsalAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=msal",
+            "MsalAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=msal",
+            "MsalAuthMvuxCSharp;!macOS;unoapp;-skip -preset=recommended -auth=msal -markup csharp",
+            "MsalAuthMvvmCSharp;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=msal -markup csharp",
+            "MauiBlank;Windows;unoapp;-skip -preset=blank -maui",
+            "MauiRecommended;Windows;unoapp;-skip -preset=recommended -maui",
+            "MauiBlank_Linux;Linux;unoapp;-skip -preset=blank -maui -platforms android desktop wasm",
+            "MauiRecommended_Linux;Linux;unoapp;-skip -preset=recommended -maui -platforms android desktop wasm",
+            "ThemeService;;unoapp;-skip -theme-service",
+            # https://github.com/unoplatform/uno.templates/issues/396
+            "Issue396;!macOS;unoapp;-skip -preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp",
+            # https://github.com/unoplatform/uno.templates/issues/414
+            "Issue414;!macOS;unoapp;-skip -preset recommended -auth msal -markup csharp",
+            # https://github.com/unoplatform/uno.templates/issues/477
+            "Issue477;!macOS;unoapp;-skip -preset recommended -theme material -toolkit",
+            # https://github.com/unoplatform/uno.templates/issues/500
+            "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http -nav regions -log default -server -auth msal",
+            # https://github.com/unoplatform/uno.templates/issues/572
+            "Issue572;!macOS;unoapp;-skip -preset `"recommended`" -id `"com.companyname.TestDuplicatedReference`" -pub `"O=TestDuplicatedReference`" -platforms `"android`" -platforms `"ios`" -platforms `"wasm`" -platforms `"desktop`" -theme-service  -vscode False -pwa False -theme `"material`" -presentation `"mvvm`" -config  -di  -log `"default`" -nav `"regions`" -http  -loc  -server False -tests `"unit`" -tests `"ui`" -toolkit  -dsp"
+        );
+        
+        $matrixGroups = @()
+        $currentGroup = @()
+        $groupSize = 8
+        
+        # Generate matrix for net8
+        for ($i = 0; $i -lt $tests.Count; $i++) 
+        { 
+            $currentGroup += $tests[$i] + " -tfm net8.0";
+        
+            if ($currentGroup.Count -eq $groupSize) {
+                $newGroup = @{
+                    'groupName' = "Group$($matrixGroups.Count)_net8"
+                    'unocheckArguments' = ''
+                    'validations' = ($currentGroup -join "`r`n")
+                };
+
+                $matrixGroups += $newGroup;
+
+                $currentGroup = @()
+            }
+        }
+        
+        # generate matrix for net9
+        for ($i = 0; $i -lt $tests.Count; $i++) 
+        { 
+            $currentGroup += $tests[$i] + " -tfm net9.0";
+        
+            if ($currentGroup.Count -eq $groupSize) {
+                $newGroup = @{
+                    'groupName' = "Group$($matrixGroups.Count)_net9"
+                    'unocheckArguments' = '--pre-major'
+                    'validations' = ($currentGroup -join "`r`n")
+                };
+                $matrixGroups += $newGroup;
+                $currentGroup = @()
+            }
+        }
+
+        $matrixAsJson = $matrixGroups | ConvertTo-Json -Compress
+        
+        echo "json: $matrixAsJson"
+
+        echo "TestMatrix=$matrixAsJson" >> $env:GITHUB_OUTPUT
+
