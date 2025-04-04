@@ -102,6 +102,8 @@ jobs:
     steps:
     - name: "Uno Feed Publish"
       uses: ./.github/actions/ci/nuget-uno-publish
+    - name: "Tag Release"
+      uses: ./.github/actions/ci/tag-release
 
   # Generate the template tests build matrix
   generate-test-matrix:
