@@ -74,6 +74,8 @@ jobs:
     needs: sign
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: "Uno Feed Publish"
       uses: ./.github/actions/ci/nuget-uno-publish
     - name: "nuget.org Publish"
@@ -88,6 +90,8 @@ jobs:
     needs: sign
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: "Uno Feed Publish"
       uses: ./.github/actions/ci/nuget-uno-publish
 
@@ -100,6 +104,8 @@ jobs:
     needs: publish_release_uno
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: "Uno Feed Publish"
       uses: ./.github/actions/ci/nuget-uno-publish
     - name: "Tag Release"
