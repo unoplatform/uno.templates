@@ -230,3 +230,15 @@ jobs:
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
+
+  test-validation:
+    name: Tests Validation
+    runs-on: ubuntu-latest
+    needs:
+    - macos-template-tests
+    - linux-template-tests
+    - windows-template-tests
+    steps:
+    - name: "Marker for end of build"
+      shell: pwsh
+      run: echo "Build is done"
