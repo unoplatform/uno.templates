@@ -67,6 +67,9 @@ jobs:
       uses: actions/checkout@v2
     - name: "Sign Packages"
       uses: ./.github/actions/ci/sign-package
+      with:
+        sign-username: ${{ secrets.UNO_PLATFORM_CODESIGN_USERNAME }}
+        sign-password: ${{ secrets.UNO_PLATFORM_CODESIGN_SECRET }}
 
   # Publish dev packages to uno feed and nuget.org
   publish_dev:
