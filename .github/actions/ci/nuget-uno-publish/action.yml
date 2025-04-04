@@ -19,6 +19,6 @@ runs:
   - name: Uno NuGet Feed Push
     shell: pwsh
     run: |
-        dotnet nuget push artifacts\*.nupkg -s https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json -k AZ
+        dotnet nuget push artifacts\*.nupkg -s https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json --api-key AzureArtifacts
     env:
       NUGET_AUTH_TOKEN: ${{ inputs.token }}
