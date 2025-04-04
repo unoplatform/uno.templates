@@ -62,7 +62,7 @@ runs:
             echo "WasmCachePath=$env:USERPROFILE\\.emscripten-cache" >> $env:GITHUB_ENV
         }
 
-  - name: 'Evaluate Template Args'
+  - name: 'Set Dotnet and UnoCheck Versions'
     shell: pwsh
     run: |
         $templateArgs = '${{ inputs.arguments }}'
