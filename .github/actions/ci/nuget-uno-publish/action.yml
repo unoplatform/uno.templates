@@ -1,6 +1,11 @@
 name: "Deploy to nuget.org"
 description: "Deploy to nuget.org"
-    
+
+inputs:
+  token:
+    description: "The token to use for nuget publishing"
+    required: true
+
 runs:
   using: "composite"
 
@@ -14,5 +19,5 @@ runs:
   - name: Uno NuGet Feed Push
     shell: pwsh
     run: |
-        dotnet nuget push artifacts\*.nupkg -s https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json -k "${{ secrets.UNO_NUGET_FEED_API_KEY }}"
+        dotnet nuget push artifacts\*.nupkg -s https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json -k "${{ inputs.token }}"
 
