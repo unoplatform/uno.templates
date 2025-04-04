@@ -19,6 +19,7 @@ runs:
       dotnet-version: '9.0.200'
 
   - name: Setup SignClient
+    shell: pwsh
     run: |
       dotnet tool install --tool-path build SignClient
 
