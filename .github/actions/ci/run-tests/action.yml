@@ -147,7 +147,7 @@ runs:
     shell: pwsh
     run: |
       & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip androidemulator --skip unosdk  ${{ inputs.unocheckArguments }}
+      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk  ${{ inputs.unocheckArguments }}
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
       JAVA_HOME: ${{ env.JAVA_HOME }}
