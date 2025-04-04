@@ -63,6 +63,8 @@ jobs:
     runs-on: windows-latest
     needs: Build
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: "Sign Packages"
       uses: ./.github/actions/ci/sign-package
 
