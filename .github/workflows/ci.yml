@@ -75,7 +75,7 @@ jobs:
   publish_dev:
     name: Publish Dev
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: sign
 
     steps:
@@ -94,7 +94,7 @@ jobs:
   publish_release_uno:
     name: Publish Production
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: Production
     needs: sign
 
@@ -110,7 +110,7 @@ jobs:
   publish_release_nuget_org:
     name: Publish Production
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: Production
     needs: publish_release_uno
 
