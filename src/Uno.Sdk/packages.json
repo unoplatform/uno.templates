@@ -296,7 +296,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "6.4.5",
+    "version": "6.4.6",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -308,7 +308,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.4.0",
+    "version": "5.4.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
