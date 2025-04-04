@@ -1,5 +1,5 @@
-name: "Sign Packages"
-description: "Sign Packages"
+name: "Tag and push to GitHub"
+description: "Tag and push to GitHub"
 
 runs:
   using: "composite"
