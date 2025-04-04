@@ -19,11 +19,9 @@ runs:
   - uses: actions/setup-dotnet@v4
     with:
       dotnet-version: '9.0.x'
-      source-url: https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json
-    env:
-      NUGET_AUTH_TOKEN: ${{ inputs.token }}
 
   - name: Uno NuGet Feed Push
     shell: pwsh
     run: |
-        dotnet nuget push -k ${{ inputs.token }} -s "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json" artifacts/*.nupkg
+        dotnet nuget sources add -Name "dev" -source https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json -UserName az -Password ${{ inputs.token }} -config ./nuget.config
+        dotnet nuget push --api-key AZ -s dev artifacts/*.nupkg
