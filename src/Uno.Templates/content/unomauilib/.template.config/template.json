@@ -6,7 +6,7 @@
     "Uno Platform",
     "Android",
     "iOS",
-    "Mac Catalyst",
+    "tvOS",
     "Windows",
     "WinUI"
   ],
@@ -60,12 +60,12 @@
       "description": "Include iOS as a target platform",
       "displayName": "iOS"
     },
-    "useMacCatalyst": {
+    "useTvOS": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "true",
-      "description": "Include MacCatalyst as a target platform",
-      "displayName": "MacCatalyst"
+      "description": "Include tvOS as a target platform",
+      "displayName": "tvOS"
     },
     "useWinAppSdk": {
       "type": "parameter",

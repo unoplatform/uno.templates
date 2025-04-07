@@ -127,7 +127,7 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
         {
 #if __WASM__
             builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
-#elif __IOS__ || __MACCATALYST__
+#elif __IOS__ || __TVOS__
             builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
 #else
             builder.AddConsole();
