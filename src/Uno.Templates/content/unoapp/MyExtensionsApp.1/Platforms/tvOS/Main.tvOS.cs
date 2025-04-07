@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace MyExtensionsApp._1.MacCatalyst;
+namespace MyExtensionsApp._1.tvOS;
 
 public class EntryPoint
 {

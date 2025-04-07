@@ -39,7 +39,7 @@ body:
         - Core
         - Android
         - iOS
-        - MacCatalyst
+        - tvOS
         - Windows
         - Skia
         - WebAssembly
@@ -57,7 +57,7 @@ body:
         - Android
         - iOS
         - MacOS
-        - MacCatalyst
+        - tvOS
         - Windows
         - GTK
         - Linux Framebuffer
