@@ -18,8 +18,8 @@
       <!--#if (useIOS)-->
       $baseTargetFramework$-ios;
       <!--#endif-->
-      <!--#if (useMacCatalyst)-->
-      $baseTargetFramework$-maccatalyst;
+      <!--#if (useTvOS)-->
+      $baseTargetFramework$-tvos;
       <!--#endif-->
       <!--#if (useWinAppSdk)-->
       $(TargetFrameworks);
@@ -46,10 +46,10 @@
       </PropertyGroup>
     </When>
     <!--#endif-->
-    <!--#if (useMacCatalyst)-->
-    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
+    <!--#if (useTvOS)-->
+    <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tvos'">
       <PropertyGroup>
-        <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
       </PropertyGroup>
     </When>
     <!--#endif-->
