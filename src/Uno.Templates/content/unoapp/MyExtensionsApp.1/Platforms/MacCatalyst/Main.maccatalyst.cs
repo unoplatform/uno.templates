@@ -1,5 +1,9 @@
 using UIKit;
+//+:cnd:noEmit
+#if (useSkiaRenderer)
 using Uno.UI.Runtime.Skia.AppleUIKit;
+#endif
+//-:cnd:noEmit
 
 namespace MyExtensionsApp._1.MacCatalyst;
 
