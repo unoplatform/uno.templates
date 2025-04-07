@@ -219,20 +219,14 @@
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Mobile",
-				"SymbolIds": [ "ios", "android" ]
+				"Title": "Uno Platform targets",
+				"SymbolIds": [ "ios", "android", "wasm", "desktop", "tvos" ]
 			},
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Web",
-				"SymbolIds": [ "wasm" ]
-			},
-			{
-				"SectionType": "MultiSelect",
-				"SymbolId": "platforms",
-				"Title": "Desktop",
-				"SymbolIds": [ "windows", "desktop" ]
+				"Title": "Other targets",
+				"SymbolIds": [ "windows" ]
 			}
 		],
 		"Presentation": [
