@@ -1,3 +1,5 @@
+using Uno.UI.Runtime.Skia.WebAssembly.Browser;
+
 namespace MyExtensionsApp._1;
 
 public class Program
@@ -22,7 +24,7 @@ public class Program
 #if (!useSkiaRenderer)
         Microsoft.UI.Xaml.Application.Start(_ => _app = new App());
 #else
-		var host = new global::Uno.UI.Runtime.Skia.WebAssembly.Browser.PlatformHost(() => _app = new App());
+		var host = new WebAssemblyBrowserHost(() => _app = new App());
 		await host.Run();
 #endif
 //-:cnd:noEmit

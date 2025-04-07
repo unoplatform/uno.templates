@@ -1,4 +1,5 @@
 using UIKit;
+using Uno.UI.Runtime.Skia.AppleUIKit;
 
 namespace MyExtensionsApp._1.MacCatalyst;
 
@@ -19,7 +20,7 @@ public class EntryPoint
         // you can specify it here.
         UIApplication.Main(args, null, typeof(App));
 #else
-		var host = new global::Uno.UI.Runtime.Skia.AppleUIKit.PlatformHost(() => new App());
+		var host = new AppleUIKitHost(() => new App());
 		host.Run();
 #endif
 //-:cnd:noEmit
