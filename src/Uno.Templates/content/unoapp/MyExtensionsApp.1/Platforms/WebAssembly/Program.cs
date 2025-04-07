@@ -1,5 +1,9 @@
+//+:cnd:noEmit
+#if (useSkiaRenderer)
 using Uno.UI.Runtime.Skia.WebAssembly.Browser;
 
+#endif
+//-:cnd:noEmit
 namespace MyExtensionsApp._1;
 
 public class Program
