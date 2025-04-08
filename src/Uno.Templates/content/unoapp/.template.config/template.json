@@ -289,7 +289,7 @@
         {
           "choice": "desktop",
           "displayName": "Desktop",
-          "description": "Enables Skia Desktop (Linux X11/Framebuffer, macOS, Windows)"
+          "description": "Enables Skia Desktop Windows, macOS, Linux (X11/Framebuffer)."
         }
       ]
     },
