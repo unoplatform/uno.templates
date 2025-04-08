@@ -384,11 +384,11 @@
       "datatype": "choice",
       "allowMultipleValues": false,
       "enableQuotelessLiterals": true,
-      "defaultValue": "native",
+      "defaultValue": "skia",
       "choices": [
         {
           "choice": "skia",
-          "description": "Use the Skia based renderer",
+          "description": "Use Skia based rendering for mobile and web",
           "displayName": "Skia"
         },
         {
@@ -1912,7 +1912,7 @@
             "value": ""
           }
         ]
-        
+
       }
     },
     "toolkitNamespace": {

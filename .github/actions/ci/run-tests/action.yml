@@ -292,7 +292,7 @@ runs:
             continue
         }
 
-        if ($testParams.Contains('net8.0') -and $testParams.Contains('--renderer skia'))
+        if ($testParams.Contains('net8.0') -and !$testParams.Contains('--renderer native'))
         {
             echo "Skipping Skia Everywhere test for net8"
             continue

@@ -8,7 +8,23 @@
 		{
 			"DisplayText": "Platforms",
 			"NavigationId": "Platforms",
-			"Description": "Select which platforms the application is going to target"
+			"Description": "Select which platforms the application is going to target",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		{
 			"DisplayText": "Presentation",
@@ -77,7 +93,7 @@
 					"mediaElement": "false",
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|windows|desktop",
-          "rider": "true",
+					"rider": "true",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
@@ -89,7 +105,8 @@
 					"wasmMultiThreading": "false",
 					"dspGenerator": "false",
 					"themeService": "false",
-					"continuousIntegration": "none"
+					"continuousIntegration": "none",
+					"renderer": "skia"
 				},
 				"Features": [
 					".NET 8",
@@ -115,7 +132,7 @@
 					"mediaElement": "false",
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|windows|desktop",
-          "rider": "true",
+					"rider": "true",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
@@ -127,7 +144,8 @@
 					"wasmMultiThreading": "false",
 					"dspGenerator": "true",
 					"themeService": "true",
-					"continuousIntegration": "none"
+					"continuousIntegration": "none",
+					"renderer": "skia"
 				},
 				"Features": [
 					".NET 8",
@@ -199,6 +217,11 @@
 				"Title": "",
 				"SectionType": "MultiSelect",
 				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+			}
+			,
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "renderer"
 			}
 		],
 		"Framework": [
@@ -418,7 +441,7 @@
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
 				},
-				"configuration":{
+				"configuration": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Configuration is required"
 				}
@@ -431,7 +454,7 @@
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
 				},
-				"configuration":{
+				"configuration": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Configuration is required"
 				}
@@ -491,21 +514,73 @@
 			}
 		},
 		"platforms.android": {
-			"Icon": "/Assets/Platforms.Android.svg"
+			"Icon": "/Assets/Platforms.Android.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.ios": {
-
-			"Icon": "/Assets/Platforms.iOS.svg"
+			"Icon": "/Assets/Platforms.iOS.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.desktop": {
-			"Icon": "/Assets/Platforms.Desktop.svg"
+			"Icon": "/Assets/Platforms.Desktop.svg",
+			"Tag": {
+				"Value": "Skia"
+			}
 		},
 		"platforms.wasm": {
-			"Icon": "/Assets/Platforms.Wasm.svg"
+			"Icon": "/Assets/Platforms.Wasm.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.windows": {
-
-			"Icon": "/Assets/Platforms.Windows.svg"
+			"Icon": "/Assets/Platforms.Windows.svg",
+			"Tag": {
+				"Value": "Native"
+			}
 		},
 		"serialization": {
 			"Icon": "/Assets/Extensions.Serialization.svg",
@@ -548,6 +623,12 @@
 		},
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
+		},
+		"renderer.skia": {
+			"Icon": "/Assets/Features.SkiaRendering.svg"
+		},
+		"renderer.native": {
+			"Icon": "/Assets/Features.NativeRendering.svg"
 		},
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"
@@ -642,7 +723,8 @@
 		"themeService",
 		"continuousIntegration",
 		"isCustomized",
-		"mediaElement"
+		"mediaElement",
+		"renderer"
 	],
 	"PackagesToUpdate": [
 		{
