@@ -37,9 +37,9 @@
       "longName": "server",
       "shortName": "server"
     },
-    "renderer": {
-      "longName": "renderer",
-      "shortName": "renderer"
+    "nativeRendering": {
+      "longName": "native-rendering",
+      "shortName": "nr"
     },
     "wasmPwaManifest": {
       "longName": "wasm-pwa-manifest",

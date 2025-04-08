@@ -383,36 +383,22 @@
         "fallbackVariableName": "presetTestsDefault"
       }
     },
-    "renderer": {
-      "displayName": "Renderer",
-      "description": "Controls the renderer used for iOS, Android, Catalyst and WebAssembly targets",
+    "nativeRendering": {
+      "displayName": "Native rendering",
+      "description": "Use native rendering on targets platforms",
       "type": "parameter",
-      "datatype": "choice",
-      "allowMultipleValues": false,
-      "enableQuotelessLiterals": true,
-      "defaultValue": "native",
-      "choices": [
-        {
-          "choice": "skia",
-          "description": "Use the Skia based renderer",
-          "displayName": "Skia"
-        },
-        {
-          "choice": "native",
-          "description": "Use the native APIs based render",
-          "displayName": "Native"
-        }
-      ]
+      "datatype": "bool",
+      "defaultValue": "false"
     },
     "useSkiaRenderer": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(renderer == 'skia')"
+      "value": "(nativeRendering == false)"
     },
     "useNativeRenderer": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(renderer == 'native')"
+      "value": "(nativeRendering)"
     },
     "server": {
       "displayName": "Server",

@@ -17,8 +17,8 @@ runs:
             # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
             # macOS is generally not selected unless building the whole targets list, because of expensive CI
         
-            "SkiaEverywhereRecommended;;unoapp;-skip --renderer skia -preset=recommended",
-            "SkiaEverywhereBlank;;unoapp;-skip --renderer skia -preset=blank",
+            "SkiaEverywhereRecommended;;unoapp;-skip --native-rendering false -preset=recommended",
+            "SkiaEverywhereBlank;;unoapp;-skip --native-rendering false -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
