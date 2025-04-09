@@ -31,7 +31,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.11"
+      "net9.0": "9.0.16"
     }
   },
   {
@@ -110,17 +110,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.1"
+      "net9.0": "9.0.4"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.12",
+    "version": "8.0.15",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.1"
+      "net9.0": "9.0.4"
     }
   },
   {
