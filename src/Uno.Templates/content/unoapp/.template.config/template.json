@@ -385,7 +385,7 @@
     },
     "nativeRendering": {
       "displayName": "Native rendering",
-      "description": "Use native rendering on targets platforms",
+      "description": "Use native rendering on all target platforms",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
