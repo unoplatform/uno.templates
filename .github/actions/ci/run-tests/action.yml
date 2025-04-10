@@ -158,6 +158,9 @@ runs:
     run: |
       & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
       uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip androidemulator --skip gtk3 --skip xcode --skip vswin --skip unosdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
+
+      # required for net8 (uno-check < 1.31 does not install it)
+      dotnet workload install tvos
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
       JAVA_HOME: ${{ env.JAVA_HOME }}
@@ -182,6 +185,9 @@ runs:
     run: |
       & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
       uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip unosdk --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
+      
+      # required for net8 (uno-check < 1.31 does not install it)
+      dotnet workload install tvos
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
   
