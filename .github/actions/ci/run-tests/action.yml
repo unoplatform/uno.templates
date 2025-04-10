@@ -304,6 +304,12 @@ runs:
             continue
         }
 
+        if ($testParams.Contains('net8.0') -and $testParams.Contains('tvos'))
+        {
+            echo "Skipping tvos for net8"
+            continue
+        }
+
         if ($testParams.Contains('net9.0') -and $testName -eq "mauilib_MacOS")
         {
             echo "Invalid net9 support: The SupportedOSPlatformVersion value 14.0 in the project file is lower than the minimum value 15.0"
