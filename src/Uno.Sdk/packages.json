@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.0.0-dev.126",
+    "version": "6.0.0-dev.131",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -114,7 +114,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "2.0.0.4",
+    "version": "2.0.0.5",
     "packages": [
       "Svg.Skia"
     ]
@@ -262,7 +262,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.50"
+      "net9.0": "9.0.60"
     }
   },
   {
