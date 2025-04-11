@@ -175,6 +175,10 @@ stages:
   - deployment: 'Nuget'
     displayName: 'Nuget Publish Dev'
     environment: 'Uno Templates Development'
+
+    pool:
+      vmImage: 'ubuntu-22.04'
+
     strategy:
       runOnce:
         deploy:
@@ -189,6 +193,10 @@ stages:
   - deployment: 'Nuget_Prod_Dev'
     displayName: 'Nuget Publish Prod Dev'
     environment: 'Uno Templates Production'
+
+    pool:
+      vmImage: 'ubuntu-22.04'
+
     strategy:
       runOnce:
         deploy:
@@ -202,6 +210,10 @@ stages:
   - deployment: 'Nuget_Prod_Nuget_Org'
     displayName: 'Nuget Publish Prod NuGet.org'
     environment: 'Uno Templates Production'
+
+    pool:
+      vmImage: 'ubuntu-22.04'
+
     strategy:
       runOnce:
         deploy:
@@ -211,6 +223,9 @@ stages:
   - job: Tag_Release
     displayName: 'Set git tag'
     dependsOn: 'Nuget_Prod_Nuget_Org'
+
+    pool:
+      vmImage: 'ubuntu-22.04'
 
     steps:
     - checkout: self
