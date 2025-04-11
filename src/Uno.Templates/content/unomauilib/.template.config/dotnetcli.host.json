@@ -13,9 +13,9 @@
       "longName": "ios",
       "shortName": "ios"
     },
-    "useMacCatalyst": {
-      "longName": "maccatalyst",
-      "shortName": "maccatalyst"
+    "useTvOS": {
+      "longName": "tvos",
+      "shortName": "tvos"
     },
     "useWinAppSdk": {
       "longName": "winappsdk",

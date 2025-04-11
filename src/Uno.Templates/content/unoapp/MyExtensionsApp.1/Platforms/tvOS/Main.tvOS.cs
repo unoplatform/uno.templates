@@ -5,7 +5,7 @@ using Uno.UI.Runtime.Skia.AppleUIKit;
 #endif
 //-:cnd:noEmit
 
-namespace MyExtensionsApp._1.MacCatalyst;
+namespace MyExtensionsApp._1.tvOS;
 
 public class EntryPoint
 {
