@@ -21,7 +21,7 @@
 
 	<PropertyGroup>
 		<Description>Templates for creating Uno Platform apps and libraries</Description>
-		<PackageTags>dotnet-new;templates;uno-platform;webassembly;ios;android;uwp;winui;macos;winappsdk</PackageTags>
+		<PackageTags>dotnet-new;templates;uno-platform;webassembly;ios;android;winui;macos;winappsdk</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>

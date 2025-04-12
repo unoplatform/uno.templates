@@ -9,6 +9,10 @@ on:
         description: 'Branch to update'
         required: true
         default: 'main'
+  
+concurrency:
+  group: ${{github.workflow}} - ${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
   manifest-update:
@@ -17,9 +21,6 @@ jobs:
       matrix:
         branch:
           - main
-          - release/stable/5.3
-          - release/stable/5.4
-          - release/stable/5.5
           - release/stable/5.6
 
     steps:
@@ -49,7 +50,7 @@ jobs:
       id: cpr
       uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PR_TOKEN }}
         base: ${{ matrix.branch }}
         branch: ${{ steps.targetbranch.outputs.targetbranch }}
         commit-message: 'chore: Update Uno.Sdk'
@@ -63,11 +64,11 @@ jobs:
       if: steps.cpr.outputs.pull-request-operation == 'created'
       uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d # v3.0.0
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PR_TOKEN }}
         pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
     #- name: Auto approve
     #  if: steps.cpr.outputs.pull-request-operation == 'created'
     #  run: gh pr review --approve "${{ steps.cpr.outputs.pull-request-number }}"
     #  env:
-    #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #    GH_TOKEN: ${{ secrets.PR_TOKEN }}

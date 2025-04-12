@@ -1,0 +1,37 @@
+name: "Canary Updater"
+description: "Canary Updater"
+
+inputs:
+   MergeBranch:
+     description: ".NET Version"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Determine Canary state
+      shell: pwsh
+      run: |
+        # if running in the canaries/dev branch, set IsCanaryBranch to true otherwise false
+        if ($env:GITHUB_REF_NAME -eq "canaries/dev") {
+          echo "IsCanaryBranch=true" >> $GITHUB_ENV
+        } else {
+          echo "IsCanaryBranch=false" >> $GITHUB_ENV
+        }
+
+    - name: Run Canary Updater
+      shell: pwsh
+      if: env.IsCanaryBranch == 'true'
+      run: |
+        dotnet.exe tool install Uno.NuGet.Updater.Tool --version 1.2.10 --tool-path ${{ env.RUNNER_TEMP }} --ignore-failed-sources
+
+        ${{ env.RUNNER_TEMP }}/nugetupdater.exe `
+            --solution=D:\a\1\s `
+            --useNuGetorg `
+            "--packageAuthor=unoplatform,uno platform" `
+            --outputFile=D:\a\1\a\Canary.md `
+            --result=D:\a\1\s\result.json `
+            --strict `
+            --versionOverrides=D:\a\1\s/build/templates/versionOverrides.json `
+            --version=dev `
+            --version=stable `
+            --feed=https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json

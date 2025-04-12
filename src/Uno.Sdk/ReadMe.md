@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 5.7.0-dev.720 |
+| UnoVersion* | 6.0.0-dev.137 |
 | UnoExtensionsVersion | 5.3.0-dev.133 |
-| UnoToolkitVersion | 6.5.0-dev.110 |
-| UnoThemesVersion | 5.5.0-dev.93 |
+| UnoToolkitVersion | 7.0.0-dev.88 |
+| UnoThemesVersion | 5.5.0-dev.95 |
 | UnoCSharpMarkupVersion | 5.7.0-dev.12 |
 | UnoWasmBootstrapVersion** | 8.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -15,13 +15,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.8.0-dev.15 |
-| SkiaSharpVersion | 2.88.9 |
-| SvgSkiaVersion | 2.0.0.4 |
-| WinAppSdkVersion | 1.6.250205002 |
+| SkiaSharpVersion | 3.119.0-preview.1.2 |
+| SvgSkiaVersion | 2.0.0.7 |
+| WinAppSdkVersion | 1.7.250401001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.13 |
-| MicrosoftIdentityClientVersion | 4.69.1 |
+| WindowsCompatibilityVersion** | 8.0.15 |
+| MicrosoftIdentityClientVersion | 4.70.2 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.2 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "5.7.0-dev.720",
+    "version": "6.0.0-dev.137",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -53,14 +53,20 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Runtime.Skia.Gtk",
       "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
       "Uno.WinUI.Runtime.Skia.MacOS",
+      "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
+      "Uno.WinUI.WebAssembly",
+      "Uno.WinUI.Runtime.Skia.Android",
+      "Uno.WinUI.Runtime.Skia.AppleUIKit",
+      "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
       "Uno.WinUI.Runtime.WebAssembly",
       "Uno.WinUI.MediaPlayer.WebAssembly",
+      "Uno.WinUI.MediaPlayer.Skia.X11",
+      "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
     ]
@@ -74,7 +80,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.14"
+      "net9.0": "9.0.16"
     }
   },
   {
@@ -122,40 +128,41 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.3.0-dev.28",
+    "version": "1.3.0-dev.57",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.8.0-dev.3",
+    "version": "1.11.0-dev.96",
     "packages": [
       "Uno.UI.HotDesign"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "2.88.9",
+    "version": "3.119.0-preview.1.2",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
       "SkiaSharp.Views.WinUI",
       "SkiaSharp.NativeAssets.Linux",
       "SkiaSharp.NativeAssets.macOS",
-      "SkiaSharp.NativeAssets.Win32"
+      "SkiaSharp.NativeAssets.Win32",
+      "SkiaSharp.NativeAssets.WebAssembly"
     ]
   },
   {
     "group": "SvgSkia",
-    "version": "2.0.0.4",
+    "version": "2.0.0.7",
     "packages": [
       "Svg.Skia"
     ]
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.250205002",
+    "version": "1.7.250401001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -174,22 +181,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.2"
+      "net9.0": "9.0.4"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.13",
+    "version": "8.0.15",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.2"
+      "net9.0": "9.0.4"
     }
   },
   {
     "group": "MsalClient",
-    "version": "4.69.1",
+    "version": "4.70.2",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -296,7 +303,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.40"
+      "net9.0": "9.0.60"
     }
   },
   {
@@ -337,7 +344,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "6.5.0-dev.110",
+    "version": "7.0.0-dev.88",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -349,12 +356,19 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.93",
+    "version": "5.5.0-dev.95",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
       "Uno.Themes.WinUI.Markup",
       "Uno.Cupertino.WinUI"
+    ]
+  },
+  {
+    "group": "VlcNativeWindowsAssets",
+    "version": "3.0.21",
+    "packages": [
+      "VideoLAN.LibVLC.Windows"
     ]
   }
 ]

@@ -102,6 +102,10 @@
       <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
+
+      <!--#if (useSkiaRenderer)-->
+      SkiaRenderer;
+      <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
   <!--#if (useUITests)-->

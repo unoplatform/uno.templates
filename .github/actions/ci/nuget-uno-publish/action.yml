@@ -1,0 +1,27 @@
+name: "Deploy to nuget.org"
+description: "Deploy to nuget.org"
+
+inputs:
+  token:
+    description: "The token to use for nuget publishing"
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+  - name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+        name: NuGet-Signed
+        path: artifacts
+
+  - uses: actions/setup-dotnet@v4
+    with:
+      dotnet-version: '9.0.x'
+
+  - name: Uno NuGet Feed Push
+    shell: pwsh
+    run: |
+        dotnet nuget add source https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json -n "dev" --username az --password "${{ inputs.token }}" --store-password-in-clear-text
+        dotnet nuget push --api-key AZ -s dev artifacts/*.nupkg
