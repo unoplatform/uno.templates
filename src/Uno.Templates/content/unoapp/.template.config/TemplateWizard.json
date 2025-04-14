@@ -76,7 +76,7 @@
 					"markup": "xaml",
 					"mediaElement": "false",
 					"navigation": "blank",
-					"platforms": "android|ios|maccatalyst|wasm|windows|desktop",
+					"platforms": "android|ios|wasm|windows|desktop",
           "rider": "true",
 					"server": "false",
 					"skipRestore": "true",
@@ -114,7 +114,7 @@
 					"markup": "xaml",
 					"mediaElement": "false",
 					"navigation": "regions",
-					"platforms": "android|ios|maccatalyst|wasm|windows|desktop",
+					"platforms": "android|ios|wasm|windows|desktop",
           "rider": "true",
 					"server": "false",
 					"skipRestore": "true",
@@ -148,7 +148,7 @@
 				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
-		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "macOS (Catalyst)", "Desktop" ]
+		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "Desktop" ]
 	},
 	"Sections": {
 		"Application": [
@@ -232,7 +232,7 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
 				"Title": "Desktop",
-				"SymbolIds": [ "windows", "maccatalyst", "desktop" ]
+				"SymbolIds": [ "windows", "desktop" ]
 			}
 		],
 		"Presentation": [
@@ -295,11 +295,10 @@
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [
-						"maccatalyst",
 						"ios",
 						"android"
 					],
-					"MoreInformation": "Application ID is only used for mobile (iOS, Android, MacCatalyst) platform"
+					"MoreInformation": "Application ID is only used for mobile (iOS, Android) platforms"
 				}
 			}
 		},
@@ -367,7 +366,6 @@
 				},
 				"platforms": {
 					"RequiredValues": [
-						"!maccatalyst",
 						"!desktop"
 					],
 					"MoreInformation": "MSAL only supported on iOS, Android, Windows and WASM"
@@ -501,10 +499,6 @@
 		},
 		"platforms.desktop": {
 			"Icon": "/Assets/Platforms.Desktop.svg"
-		},
-		"platforms.maccatalyst": {
-
-			"Icon": "/Assets/Platforms.Catalyst.svg"
 		},
 		"platforms.wasm": {
 			"Icon": "/Assets/Platforms.Wasm.svg"

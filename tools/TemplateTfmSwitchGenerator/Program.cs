@@ -8,7 +8,6 @@ var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 Platform[] platforms = [
     new Platform("platforms == android", "platforms != android", "android"),
     new Platform("platforms == ios", "platforms != ios", "ios"),
-    new Platform("platforms == maccatalyst", "platforms != maccatalyst", "maccatalyst"),
     new Platform("platforms == windows", "platforms != windows", "windows10.0.26100"),
     new Platform("platforms == wasm", "platforms != wasm", "browserwasm"),
     new Platform("platforms == desktop", "platforms != desktop", "desktop"),
