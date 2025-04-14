@@ -23,7 +23,7 @@ runs:
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
             "SkiaOnlyHeads;!macOS;unoapp;-skip -platforms desktop",
-            "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios maccatalyst",
+            "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios",
             "RecommendedMarkup;;unoapp;-skip -preset recommended -markup csharp",
             "RecommendedMarkupDsp;;unoapp;-skip -preset recommended -markup csharp -dsp",
             "RecommendedMarkupFluent;!macOS;unoapp;-skip -preset recommended -markup csharp -theme fluent",
@@ -47,7 +47,7 @@ runs:
 
             # Disabling this test for now as it was specific to net7
             # https://github.com/unoplatform/uno.templates/issues/22
-            # "Issue22;;unoapp;-skip -preset blank -tfm net7.0 -platforms android -platforms ios -platforms maccatalyst -platforms windows -platforms wasm -platforms desktop -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material",
+            # "Issue22;;unoapp;-skip -preset blank -tfm net7.0 -platforms android -platforms ios -platforms windows -platforms wasm -platforms desktop -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material",
         
             "CustomAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=custom",
             "CustomAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=custom",

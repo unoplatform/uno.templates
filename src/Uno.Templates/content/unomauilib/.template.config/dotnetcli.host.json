@@ -13,10 +13,6 @@
       "longName": "ios",
       "shortName": "ios"
     },
-    "useMacCatalyst": {
-      "longName": "maccatalyst",
-      "shortName": "maccatalyst"
-    },
     "useWinAppSdk": {
       "longName": "winappsdk",
       "shortName": "winappsdk"
