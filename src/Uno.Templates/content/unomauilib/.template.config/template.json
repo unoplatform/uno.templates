@@ -6,7 +6,6 @@
     "Uno Platform",
     "Android",
     "iOS",
-    "Mac Catalyst",
     "Windows",
     "WinUI"
   ],
@@ -59,13 +58,6 @@
       "defaultValue": "true",
       "description": "Include iOS as a target platform",
       "displayName": "iOS"
-    },
-    "useMacCatalyst": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "true",
-      "description": "Include MacCatalyst as a target platform",
-      "displayName": "MacCatalyst"
     },
     "useWinAppSdk": {
       "type": "parameter",
