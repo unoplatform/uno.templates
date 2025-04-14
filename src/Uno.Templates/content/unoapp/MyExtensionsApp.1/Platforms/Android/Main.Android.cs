@@ -8,8 +8,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Com.Nostra13.Universalimageloader.Core;
 using Microsoft.UI.Xaml.Media;
+//+:cnd:noEmit
+#if (!useSkiaRenderer)
+using Com.Nostra13.Universalimageloader.Core;
+#endif
+//-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;
 
