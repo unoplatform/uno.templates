@@ -75,6 +75,7 @@
 					"logging": "none",
 					"markup": "xaml",
 					"mediaElement": "false",
+          "meadowSupport": "false",
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|windows|desktop",
           "rider": "true",
@@ -113,6 +114,7 @@
 					"logging": "default",
 					"markup": "xaml",
 					"mediaElement": "false",
+          "meadowSupport": "false",
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|windows|desktop",
           "rider": "true",
@@ -198,7 +200,7 @@
 			{
 				"Title": "",
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement", "meadowSupport" ]
 			}
 		],
 		"Framework": [
@@ -555,6 +557,9 @@
 		"mediaElement": {
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
+    "meadowSupport": {
+      "Icon": "/Assets/Features.MeadowSupport.svg"
+    },
 		"wasmPwaManifest": {
 			"Icon": "/Assets/Features.Wasm.svg",
 			"Requires": {
@@ -642,7 +647,8 @@
 		"themeService",
 		"continuousIntegration",
 		"isCustomized",
-		"mediaElement"
+		"mediaElement",
+    "meadowSupport"
 	],
 	"PackagesToUpdate": [
 		{

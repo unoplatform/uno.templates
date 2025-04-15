@@ -751,6 +751,13 @@
       "datatype": "bool",
       "defaultValue": "true"
     },
+    "meadowSupport": {
+      "displayName": "Meadow Support",
+      "description": "Includes a support for Meadow by Wilderness Labs",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "mauiEmbedding": {
       "displayName": ".NET MAUI Embedding",
       "description": "Configures application to embed .NET MAUI controls",
@@ -1125,6 +1132,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == wasm && server)"
+    },
+    "useMeadowAndCsharpMarkup": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useCsharpMarkup && meadowSupport)"
     },
     "useWinAppSdk": {
       "type": "computed",
@@ -2693,6 +2705,12 @@
           "condition": "(!useDspGenerator)",
           "exclude": [
             "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"
+          ]
+        },
+        {
+          "condition": "(!meadowSupport)",
+          "exclude": [
+            "MyExtensionsApp.1/UnoMeadowApplication.cs"
           ]
         }
       ]
