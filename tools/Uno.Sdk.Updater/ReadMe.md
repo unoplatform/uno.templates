@@ -26,6 +26,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | PrismVersion | $Prism$ |
 | AndroidMaterialVersion | $AndroidMaterial$ |
 | AndroidXLegacySupportV4Version | $AndroidXLegacySupportV4$ |
+| AndroidXSplashScreenVersion | $AndroidXSplashScreen$ |
 | AndroidXAppCompatVersion | $AndroidXAppCompat$ |
 | AndroidXRecyclerViewVersion | $AndroidXRecyclerView$ |
 | AndroidXActivityVersion | $AndroidXActivity$ |
