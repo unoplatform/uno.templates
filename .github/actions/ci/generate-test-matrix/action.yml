@@ -86,23 +86,25 @@ runs:
         $currentGroup = @()
         $groupSize = 8
         
-        # Generate matrix for net8
-        for ($i = 0; $i -lt $tests.Count; $i++) 
-        { 
-            $currentGroup += $tests[$i] + " -tfm net8.0";
-        
-            if ($currentGroup.Count -eq $groupSize) {
-                $newGroup = @{
-                    'groupName' = "Group$($matrixGroups.Count)_net8"
-                    'unocheckArguments' = ''
-                    'validations' = ($currentGroup -join "`r`n")
-                };
-
-                $matrixGroups += $newGroup;
-
-                $currentGroup = @()
-            }
-        }
+        # disabled until we get net10 support
+        #
+        # Generate matrix for net10
+        # for ($i = 0; $i -lt $tests.Count; $i++) 
+        # { 
+        #     $currentGroup += $tests[$i] + " -tfm net10.0";
+        # 
+        #     if ($currentGroup.Count -eq $groupSize) {
+        #         $newGroup = @{
+        #             'groupName' = "Group$($matrixGroups.Count)_net10"
+        #             'unocheckArguments' = ''
+        #             'validations' = ($currentGroup -join "`r`n")
+        #         };
+        # 
+        #         $matrixGroups += $newGroup;
+        # 
+        #         $currentGroup = @()
+        #     }
+        # }
         
         # generate matrix for net9
         for ($i = 0; $i -lt $tests.Count; $i++) 

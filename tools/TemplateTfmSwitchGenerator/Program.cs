@@ -14,7 +14,7 @@ Platform[] platforms = [
     new Platform("useUnitTests == true", "useUnitTests == false", null)
 ];
 
-string[] runtimes = ["net8.0", "net9.0"];
+string[] runtimes = ["net9.0"];
 
 var cases = new List<TemplateSwitchCase>();
 foreach (var runtime in runtimes)

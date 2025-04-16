@@ -34,11 +34,6 @@
       "description": "Select the .NET version of your solution",
       "choices": [
         {
-          "choice": "net8.0",
-          "displayName": ".NET 8.0",
-          "description": "Target .NET 8.0 (Long Term Support)"
-        },
-        {
           "choice": "net9.0",
           "displayName": ".NET 9.0",
           "description": "Target .NET 9.0 (Standard Term Support)"
