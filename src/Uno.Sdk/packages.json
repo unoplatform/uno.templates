@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.0.0-dev.150",
+    "version": "6.0.0-dev.154",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -198,6 +198,13 @@
     "version": "1.0.0.23",
     "packages": [
       "Xamarin.AndroidX.Legacy.Support.V4"
+    ]
+  },
+  {
+    "group": "AndroidXSplashScreen",
+    "version": "1.0.1.14",
+    "packages": [
+      "Xamarin.AndroidX.Core.SplashScreen"
     ]
   },
   {

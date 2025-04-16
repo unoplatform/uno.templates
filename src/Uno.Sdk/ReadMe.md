@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.0.0-dev.150 |
+| UnoVersion* | 6.0.0-dev.154 |
 | UnoExtensionsVersion | 5.3.0-dev.138 |
 | UnoToolkitVersion | 7.0.0-dev.91 |
 | UnoThemesVersion | 5.5.0-dev.95 |
@@ -42,7 +42,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.0.0-dev.150",
+    "version": "6.0.0-dev.154",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -239,6 +239,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "1.0.0.23",
     "packages": [
       "Xamarin.AndroidX.Legacy.Support.V4"
+    ]
+  },
+  {
+    "group": "AndroidXSplashScreen",
+    "version": "1.0.1.14",
+    "packages": [
+      "Xamarin.AndroidX.Core.SplashScreen"
     ]
   },
   {
