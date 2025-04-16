@@ -18,6 +18,13 @@ namespace MyExtensionsApp._1.Droid;
 )]
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        AndroidX.Core.SplashScreen.SplashScreen.InstallSplashScreen(this);
+
+        base.OnCreate(savedInstanceState);
+    }
+
 #if useMsalAuthentication
     protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
     {
