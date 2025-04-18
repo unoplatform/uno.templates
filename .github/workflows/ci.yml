@@ -91,7 +91,7 @@ jobs:
 
   # Publish release packages to uno feed
   publish_release_uno:
-    name: Publish Production
+    name: Publish Uno Production
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     environment: Production
@@ -107,7 +107,7 @@ jobs:
 
   # Publish release packages to nuget.org
   publish_release_nuget_org:
-    name: Publish Production
+    name: Publish Nuget.org Production
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     environment: Production
