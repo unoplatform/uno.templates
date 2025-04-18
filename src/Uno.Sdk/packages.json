@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.0.2",
+    "version": "6.0.12",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -274,7 +274,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "5.7.0-dev.12",
+    "version": "5.7.0-dev.14",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -310,7 +310,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "7.0.0-dev.93",
+    "version": "7.0.0-dev.94",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
