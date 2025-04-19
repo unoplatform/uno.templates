@@ -73,7 +73,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.8.0-dev.15",
+    "version": "1.8.0-dev.27",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -322,7 +322,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.95",
+    "version": "5.5.0-dev.96",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
