@@ -60,7 +60,7 @@ jobs:
     name: Sign Package
     if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
     runs-on: windows-latest
-    needs: Build
+    needs: build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
