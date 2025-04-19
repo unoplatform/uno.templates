@@ -16,7 +16,7 @@ on:
     - cron: '0 0 * * *' # Canary
   
 concurrency:
-  group: ${{github.workflow}} - ${{github.ref}}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ !contains(github.ref, 'refs/heads/release/') && !contains(github.ref, 'refs/heads/main')}}
 
 env:
@@ -166,7 +166,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -196,7 +196,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -226,7 +226,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
