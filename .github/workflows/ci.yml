@@ -203,7 +203,7 @@ jobs:
 
   # Run the test matrix on macOS
   macos-template-tests:
-    runs-on: macos-latest
+    runs-on: macos-15
     needs: 
     - generate-test-matrix
     - build
