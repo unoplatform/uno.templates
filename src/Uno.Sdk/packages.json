@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.1.0-dev.2",
+    "version": "6.1.0-dev.19",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -73,7 +73,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.8.0-dev.15",
+    "version": "1.9.0-dev.3",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -155,7 +155,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.70.2",
+    "version": "4.71.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -322,7 +322,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.95",
+    "version": "5.5.0-dev.96",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",

@@ -4,24 +4,24 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.1.0-dev.2 |
+| UnoVersion* | 6.1.0-dev.19 |
 | UnoExtensionsVersion | 5.3.0-dev.138 |
 | UnoToolkitVersion | 7.0.0-dev.94 |
-| UnoThemesVersion | 5.5.0-dev.95 |
+| UnoThemesVersion | 5.5.0-dev.96 |
 | UnoCSharpMarkupVersion | 6.1.0-dev.2 |
 | UnoWasmBootstrapVersion** | 8.0.23 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.8.0-dev.15 |
+| UnoResizetizerVersion | 1.9.0-dev.3 |
 | SkiaSharpVersion | 3.119.0-preview.1.2 |
 | SvgSkiaVersion | 3.0.0 |
 | WinAppSdkVersion | 1.7.250401001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.15 |
-| MicrosoftIdentityClientVersion | 4.70.2 |
+| MicrosoftIdentityClientVersion | 4.71.0 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.2 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.1.0-dev.2",
+    "version": "6.1.0-dev.19",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -115,7 +115,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.8.0-dev.15",
+    "version": "1.9.0-dev.3",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -197,7 +197,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.70.2",
+    "version": "4.71.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -364,7 +364,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.95",
+    "version": "5.5.0-dev.96",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
