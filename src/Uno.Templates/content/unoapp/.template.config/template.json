@@ -422,9 +422,28 @@
     },
     "http": {
       "displayName": "HTTP",
-      "description": "Register native handlers for http and setup Refit support",
+      "description": "Register native handlers for http.",
       "type": "parameter",
-      "datatype": "bool"
+      "datatype": "choice",
+      "defaultValue": "Default",
+      "choices": [
+        {
+          "choice": "default",
+          "description": "Native handlers",          
+          "displayName": "Http"
+
+        },
+        {
+          "choice": "refit",
+          "description": "Setup Refit support",
+          "displayName": "Refit"
+        },
+        {
+          "choice": "kiota",
+          "description": "Setup Kiota support",
+          "displayName": "Kiota"
+        }
+      ]
     },
     "localization": {
       "displayName": "Localization",
@@ -1233,6 +1252,21 @@
       "type": "computed",
       "dataType": "bool",
       "value": "(httpEvaluator && useConfiguration)"
+    },
+    "useHttpDefault": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useHttp && http == 'default'"
+    },
+    "useHttpRefit": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useHttp && http== 'refit'"
+    },
+    "useHttpKiota": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useHttp && http == 'kiota'"
     },
     "presetLocalizationDefault": {
       "type": "generated",
@@ -2268,7 +2302,7 @@
           ]
         },
         {
-          "condition": "(!useHttp)",
+          "condition": "(!useHttp || !useHttpDefault || !useHttpRefit || !useHttpKiota)",
           "exclude": [
             "MyExtensionsApp.1/Services/**",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",
