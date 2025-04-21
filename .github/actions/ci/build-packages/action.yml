@@ -48,3 +48,9 @@ runs:
       with:
         name: nuget-packages
         path: ./artifacts
+
+    - name: Add NuGet Summary
+      shell: pwsh
+      run: |
+          echo "### NuGet Package Summary" >> $env:GITHUB_STEP_SUMMARY
+          echo "Package version: ${{ steps.nbgv.outputs.SemVer2 }}" >> $env:GITHUB_STEP_SUMMARY
