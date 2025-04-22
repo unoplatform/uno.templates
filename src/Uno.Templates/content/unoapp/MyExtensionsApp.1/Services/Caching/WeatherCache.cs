@@ -5,7 +5,7 @@ namespace MyExtensionsApp._1.Services.Caching;
 
 public sealed class WeatherCache : IWeatherCache
 {
-#if useHttpKiota
+#if (useHttpKiota)
     private readonly MyExtensionsApp._1.Client.WeatherServiceClient _client;
 #else
     private readonly IApiClient _api;
@@ -17,24 +17,24 @@ public sealed class WeatherCache : IWeatherCache
 #endif
 
     public WeatherCache(
-#if useHttpKiota
+#if (useHttpKiota)
         MyExtensionsApp._1.Client.WeatherServiceClient client,
 #else
         IApiClient api,
 #endif
         ISerializer serializer
-#if useLogging
+#if (useLogging)
         , ILogger<WeatherCache> logger
 #endif
     )
     {
-#if useHttpKiota
+#if (useHttpKiota)
         _client = client;
 #else
         _api = api;
 #endif
         _serializer = serializer;
-#if useLogging
+#if (useLogging)
         _logger = logger;
 #endif
     }
@@ -56,9 +56,10 @@ public sealed class WeatherCache : IWeatherCache
 #endif
             throw new WebException("No internet connection", WebExceptionStatus.ConnectFailure);
         }
+        
         IImmutableList<WeatherForecast> weather;
 
-#if useHttpKiota
+#if (useHttpKiota)
         var response = await _client
             .Api
             .Weatherforecast
