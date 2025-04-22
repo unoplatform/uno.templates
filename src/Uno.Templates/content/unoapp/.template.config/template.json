@@ -422,7 +422,7 @@
     },
     "http": {
       "displayName": "HTTP",
-      "description": "Configures HTTP support in the application",
+      "description": "Configure HTTP support in the application",
       "type": "parameter",
       "datatype": "choice",
       "defaultValue": "basic",
@@ -434,7 +434,7 @@
         },
         {
           "choice": "basic",
-          "description": "Enables configuration of native HTTP handlers and registration of basic endpoints",
+          "description": "Enable configuration of native HTTP handlers and registration of basic endpoints",
           "displayName": "Basic"
         },
         {
@@ -1257,20 +1257,20 @@
       "dataType": "bool",
       "value": "(httpEvaluator != \"none\" && useConfiguration)"
     },
-    "useHttpDefault": {
+    "useHttpBasic": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(httpEvaluator == \"basic\" && useConfiguration)"
+      "value": "(httpEvaluator == \"basic\" && useHttp)"
     },
     "useHttpRefit": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(httpEvaluator == \"refit\" && useConfiguration)"
+      "value": "(httpEvaluator == \"refit\" && useHttp)"
     },
     "useHttpKiota": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(httpEvaluator == \"kiota\" && useConfiguration)"
+      "value": "(httpEvaluator == \"kiota\" && useHttp)"
     },
     "presetLocalizationDefault": {
       "type": "generated",
@@ -2318,7 +2318,7 @@
           "exclude": [ "Content/Client/WeatherServiceClient/**/*" ]
         },
         {
-          "condition": "useHttpRefit || useHttpDefault || useHttp == false",
+          "condition": "useHttpRefit || useHttpBasic || useHttp == false",
           "exclude": [ "Specs/**/*", "Content/Client/WeatherServiceClient/**/*" ]
         },        
         {

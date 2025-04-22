@@ -18,7 +18,7 @@ global using MyExtensionsApp._1.Models;
 #if (useExtensionsNavigation)
 global using MyExtensionsApp._1.Presentation;
 #endif
-#if (useHttpRefit)
+#if (useHttpRefit || useHttpKiota)
 global using MyExtensionsApp._1.DataContracts;
 global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;

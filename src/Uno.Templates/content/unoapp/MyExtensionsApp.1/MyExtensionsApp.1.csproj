@@ -82,7 +82,7 @@
       <!--#if (useConfiguration)-->
       Configuration;
       <!--#endif-->
-      <!--#if (useHttp)-->
+      <!--#if (useHttpBasic)-->
       Http;
       Serialization;
       <!--#endif-->      

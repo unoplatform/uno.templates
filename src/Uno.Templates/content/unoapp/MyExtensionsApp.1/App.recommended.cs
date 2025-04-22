@@ -123,6 +123,7 @@ public partial class App : Application
                     .AddContentSerializer(context)
                     .AddJsonTypeInfo(WeatherForecastContext.Default.IImmutableListWeatherForecast))
        .UseHttp((context, services) => {
+//-:cnd:noEmit
 #if DEBUG
            // DelegatingHandler will be automatically injected into Refit Client
            services.AddTransient<DelegatingHandler, DebugHttpHandler>();
@@ -130,6 +131,7 @@ public partial class App : Application
            services.AddSingleton<IWeatherCache, WeatherCache>();
  
 #if useHttpRefit
+//+:cnd:noEmit
     services.AddRefitClient<IApiClient>(context);
 #elif useHttpKiota
     services.AddKiotaClient<WeatherServiceClient>(
@@ -137,6 +139,7 @@ public partial class App : Application
         options: new EndpointOptions { Url = context.Configuration["ApiClient:Url"]! }
     );
 #endif
+//+:cnd:noEmit
     services.AddSingleton<IWeatherCache, WeatherCache>();
 })
 #endif

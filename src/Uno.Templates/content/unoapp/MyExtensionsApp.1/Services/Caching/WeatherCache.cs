@@ -7,7 +7,8 @@ public sealed class WeatherCache : IWeatherCache
 {
 #if (useHttpKiota)
     private readonly MyExtensionsApp._1.Client.WeatherServiceClient _client;
-#else
+#endif
+#if (useHttpRefit)
     private readonly IApiClient _api;
 #endif
     private readonly ISerializer _serializer;
@@ -19,13 +20,12 @@ public sealed class WeatherCache : IWeatherCache
     public WeatherCache(
 #if (useHttpKiota)
         MyExtensionsApp._1.Client.WeatherServiceClient client,
-#else
+#endif
+#if (useHttpRefit)
         IApiClient api,
 #endif
         ISerializer serializer
-#if (useLogging)
         , ILogger<WeatherCache> logger
-#endif
     )
     {
 #if (useHttpKiota)
