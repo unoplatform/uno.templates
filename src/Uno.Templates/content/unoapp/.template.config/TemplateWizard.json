@@ -203,24 +203,24 @@
 			},
 			{
 				"SectionType": "SingleSelect",
-				"Title": "HTTP support",
+				"Title": "HTTP",
 				"SymbolId": "http",
 				"Choices": [
 					{
-						"value": "none",
-						"display": "None"
-					},
-					{
 						"value": "basic",
 						"display": "Basic"
+					},
+					{
+						"value": "kiota",
+						"display": "Kiota"
 					},
 					{
 						"value": "refit",
 						"display": "Refit"
 					},
 					{
-						"value": "kiota",
-						"display": "Kiota"
+						"value": "none",
+						"display": "None"
 					}
 				]
 			}
@@ -457,12 +457,16 @@
 		"dependencyInjection": {
 			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
-		"http.none": {
-			"Icon": "/Assets/Extensions.Http.svg", //TODO: waiting for Assets
-			"Sequence": 1
-		  },
 		  "http.default": {
 			"Icon": "/Assets/Extensions.Http.svg",
+			"Sequence": 1,
+			"Requires": {
+			  "dependencyInjection": { "RequiredValues": [ "true" ] },
+			  "configuration":       { "RequiredValues": [ "true" ] }
+			}
+		  },
+		  "http.kiota": {
+			"Icon": "/Assets/Extensions.Http.Kiota.svg",
 			"Sequence": 2,
 			"Requires": {
 			  "dependencyInjection": { "RequiredValues": [ "true" ] },
@@ -470,20 +474,16 @@
 			}
 		  },
 		  "http.refit": {
-			"Icon": "/Assets/Extensions.Http.svg",
+			"Icon": "/Assets/Extensions.Http.Refit.svg",
 			"Sequence": 3,
 			"Requires": {
 			  "dependencyInjection": { "RequiredValues": [ "true" ] },
 			  "configuration":       { "RequiredValues": [ "true" ] }
 			}
 		  },
-		  "http.kiota": {
-			"Icon": "/Assets/Extensions.Http.svg",
-			"Sequence": 4,
-			"Requires": {
-			  "dependencyInjection": { "RequiredValues": [ "true" ] },
-			  "configuration":       { "RequiredValues": [ "true" ] }
-			}
+		  "http.none": {
+			"Icon": "/Assets/Presentation.None.svg",
+			"Sequence": 4
 		  },
 		"localization": {
 			"Icon": "/Assets/Extensions.Localization.svg",
