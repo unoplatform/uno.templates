@@ -434,7 +434,7 @@
         },
         {
           "choice": "basic",
-          "description": "Enables configuration of native Http handlers and registration of basic endpoints",
+          "description": "Enables configuration of native HTTP handlers and registration of basic endpoints",
           "displayName": "Basic"
         },
         {
