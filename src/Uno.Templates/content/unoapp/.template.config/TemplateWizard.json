@@ -215,7 +215,7 @@
 						"display": "None"
 					}
 				]
-			}
+			},
 			{
 				"SectionType": "SingleSelect",
 				"SymbolId": "navigation"
