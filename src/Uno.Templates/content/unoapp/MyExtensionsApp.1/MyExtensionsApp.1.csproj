@@ -85,6 +85,14 @@
       <!--#if (useHttp)-->
       Http;
       Serialization;
+      <!--#endif-->      
+      <!--#if (useHttpRefit)-->
+      HttpRefit;
+      Serialization;
+      <!--#endif-->
+      <!--#if (useHttpKiota)-->
+      HttpKiota;
+      Serialization;
       <!--#endif-->
       <!--#if (useLocalization)-->
       Localization;
@@ -102,7 +110,6 @@
       <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
-
       <!--#if (useSkiaRenderer)-->
       SkiaRenderer;
       <!--#endif-->
