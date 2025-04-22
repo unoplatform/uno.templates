@@ -86,7 +86,7 @@
 					"configuration": "false",
 					"cultures": "es|fr|pt-BR",
 					"dependencyInjection": "false",
-					"http": "false",
+					"http": "none",
 					"localization": "false",
 					"logging": "none",
 					"markup": "xaml",
@@ -125,7 +125,7 @@
 					"configuration": "true",
 					"cultures": "es|fr|pt-BR",
 					"dependencyInjection": "true",
-					"http": "true",
+					"http": "refit",
 					"localization": "true",
 					"logging": "default",
 					"markup": "xaml",
@@ -191,7 +191,7 @@
 		"Extensions": [
 			{
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "dependencyInjection", "configuration", "http", "localization", "serialization" ]
+				"SymbolIds": [ "dependencyInjection", "configuration", "localization", "serialization" ]
 			},
 			{
 				"SectionType": "SingleSelect",
@@ -200,6 +200,29 @@
 			{
 				"SectionType": "SingleSelect",
 				"SymbolId": "logging"
+			},
+			{
+				"SectionType": "SingleSelect",
+				"Title": "HTTP support",
+				"SymbolId": "http",
+				"Choices": [
+					{
+						"value": "none",
+						"display": "None"
+					},
+					{
+						"value": "basic",
+						"display": "Basic"
+					},
+					{
+						"value": "refit",
+						"display": "Refit"
+					},
+					{
+						"value": "kiota",
+						"display": "Kiota"
+					}
+				]
 			}
 			//{
 			//  "SectionType": "CheckBox",
@@ -434,19 +457,34 @@
 		"dependencyInjection": {
 			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
-		"http": {
+		"http.none": {
+			"Icon": "/Assets/Extensions.Http.svg", //TODO: waiting for Assets
+			"Sequence": 1
+		  },
+		  "http.default": {
 			"Icon": "/Assets/Extensions.Http.svg",
+			"Sequence": 2,
 			"Requires": {
-				"dependencyInjection": {
-					"RequiredValues": [ "true" ],
-					"MoreInformation": "Dependency Injection is required"
-				},
-				"configuration": {
-					"RequiredValues": [ "true" ],
-					"MoreInformation": "Configuration is required"
-				}
+			  "dependencyInjection": { "RequiredValues": [ "true" ] },
+			  "configuration":       { "RequiredValues": [ "true" ] }
 			}
-		},
+		  },
+		  "http.refit": {
+			"Icon": "/Assets/Extensions.Http.svg",
+			"Sequence": 3,
+			"Requires": {
+			  "dependencyInjection": { "RequiredValues": [ "true" ] },
+			  "configuration":       { "RequiredValues": [ "true" ] }
+			}
+		  },
+		  "http.kiota": {
+			"Icon": "/Assets/Extensions.Http.svg",
+			"Sequence": 4,
+			"Requires": {
+			  "dependencyInjection": { "RequiredValues": [ "true" ] },
+			  "configuration":       { "RequiredValues": [ "true" ] }
+			}
+		  },
 		"localization": {
 			"Icon": "/Assets/Extensions.Localization.svg",
 			"Requires": {

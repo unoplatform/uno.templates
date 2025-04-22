@@ -422,25 +422,29 @@
     },
     "http": {
       "displayName": "HTTP",
-      "description": "Register native handlers for http.",
+      "description": "Configures HTTP support in the application",
       "type": "parameter",
       "datatype": "choice",
-      "defaultValue": "Default",
+      "defaultValue": "basic",
       "choices": [
         {
-          "choice": "default",
-          "description": "Native handlers",          
-          "displayName": "Http"
-
+          "choice": "none",
+          "description": "No HTTP support",
+          "displayName": "None"
+        },
+        {
+          "choice": "basic",
+          "description": "Enables configuration of native Http handlers and registration of basic endpoints",
+          "displayName": "Basic"
         },
         {
           "choice": "refit",
-          "description": "Setup Refit support",
+          "description": "Include Refit support",
           "displayName": "Refit"
         },
         {
           "choice": "kiota",
-          "description": "Setup Kiota support",
+          "description": "Include Kiota support",
           "displayName": "Kiota"
         }
       ]
@@ -1225,17 +1229,17 @@
     "presetHttpDefault": {
       "type": "generated",
       "generator": "switch",
-      "datatype": "bool",
+      "datatype": "string",
       "parameters": {
         "evaluator": "C++",
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "true"
+            "value": "refit"
           },
           {
             "condition": "(preset == 'blank')",
-            "value": "false"
+            "value": "none"
           }
         ]
       }
@@ -1251,22 +1255,22 @@
     "useHttp": {
       "type": "computed",
       "dataType": "bool",
-      "value": "(httpEvaluator && useConfiguration)"
+      "value": "(httpEvaluator != \"none\" && useConfiguration)"
     },
     "useHttpDefault": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useHttp && http == 'default'"
+      "value": "(httpEvaluator == \"basic\" && useConfiguration)"
     },
     "useHttpRefit": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useHttp && http== 'refit'"
+      "value": "(httpEvaluator == \"refit\" && useConfiguration)"
     },
     "useHttpKiota": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useHttp && http == 'kiota'"
+      "value": "(httpEvaluator == \"kiota\" && useConfiguration)"
     },
     "presetLocalizationDefault": {
       "type": "generated",
@@ -2302,13 +2306,21 @@
           ]
         },
         {
-          "condition": "(!useHttp || !useHttpDefault || !useHttpRefit || !useHttpKiota)",
+          "condition": "!useHttpRefit",
           "exclude": [
             "MyExtensionsApp.1/Services/**",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",
             "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
           ]
         },
+        {
+          "condition": "useHttpKiota == false",
+          "exclude": [ "Content/Client/WeatherServiceClient/**/*" ]
+        },
+        {
+          "condition": "useHttpRefit || useHttpDefault || useHttp == false",
+          "exclude": [ "Specs/**/*", "Content/Client/WeatherServiceClient/**/*" ]
+        },        
         {
           "condition": "(!useUnitTests)",
           "exclude": [
