@@ -243,14 +243,14 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
 				"Title": "Uno Platform Targets",
-        "SymbolIds": [ "ios", "android", "wasm", "desktop" ]
+        			"SymbolIds": [ "ios", "android", "wasm", "desktop" ]
 			},
-      {
-        "SectionType": "MultiSelect",
-        "SymbolId": "platforms",
-        "Title": "Other Targets",
-        "SymbolIds": [ "windows" ]
-      }
+		        {
+		        	"SectionType": "MultiSelect",
+		        	"SymbolId": "platforms",
+		        	"Title": "Other Targets",
+		        	"SymbolIds": [ "windows" ]
+		        }
 		],
 		"Presentation": [
 			{
