@@ -195,14 +195,6 @@
 			},
 			{
 				"SectionType": "SingleSelect",
-				"SymbolId": "navigation"
-			},
-			{
-				"SectionType": "SingleSelect",
-				"SymbolId": "logging"
-			},
-			{
-				"SectionType": "SingleSelect",
 				"Title": "HTTP",
 				"SymbolId": "http",
 				"Choices": [
@@ -223,6 +215,14 @@
 						"display": "None"
 					}
 				]
+			}
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "navigation"
+			},
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "logging"
 			}
 			//{
 			//  "SectionType": "CheckBox",
