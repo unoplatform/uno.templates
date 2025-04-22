@@ -68,7 +68,7 @@ public sealed class WeatherCache : IWeatherCache
             ?? new List<global::MyExtensionsApp._1.Client.Models.WeatherForecast>();
 
         var json    = _serializer.ToString(response);
-        var weather = _serializer.FromString<ImmutableArray<WeatherForecast>>(json);
+        weather = _serializer.FromString<ImmutableArray<WeatherForecast>>(json);
 #else
         var response = await _api.GetWeather(token);
 
