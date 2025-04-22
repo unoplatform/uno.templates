@@ -457,9 +457,13 @@
 		"dependencyInjection": {
 			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
+		"http.none": {
+			"Icon": "/Assets/Presentation.None.svg",
+			"Sequence": 1
+		  },
 		  "http.basic": {
 			"Icon": "/Assets/Extensions.Http.svg",
-			"Sequence": 1,
+			"Sequence": 2,
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -473,7 +477,7 @@
 		},
 		  "http.kiota": {
 			"Icon": "/Assets/Extensions.Http.Kiota.svg",
-			"Sequence": 2,
+			"Sequence": 3,
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -487,7 +491,7 @@
 		  },
 		  "http.refit": {
 			"Icon": "/Assets/Extensions.Http.Refit.svg",
-			"Sequence": 3,
+			"Sequence": 4,
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
@@ -498,10 +502,6 @@
 					"MoreInformation": "Configuration is required"
 				}
 			}
-		  },
-		  "http.none": {
-			"Icon": "/Assets/Presentation.None.svg",
-			"Sequence": 4
 		  },
 		"localization": {
 			"Icon": "/Assets/Extensions.Localization.svg",
