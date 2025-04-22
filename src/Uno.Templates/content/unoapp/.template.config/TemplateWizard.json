@@ -457,7 +457,7 @@
 		"dependencyInjection": {
 			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
-		  "http.default": {
+		  "http.basic": {
 			"Icon": "/Assets/Extensions.Http.svg",
 			"Sequence": 1,
 			"Requires": {
