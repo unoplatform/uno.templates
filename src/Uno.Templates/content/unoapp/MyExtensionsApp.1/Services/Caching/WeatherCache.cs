@@ -1,8 +1,8 @@
 using System.Net;
 #if(useHttpKiota)
-using WeatherForecast = test.Client.Models.WeatherForecast;
+using WeatherForecast = MyExtensionsApp._1.Client.Models.WeatherForecast;
 #elif (useHttpRefit)
-using WeatherForecast = test.DataContracts.WeatherForecast;
+using WeatherForecast = MyExtensionsApp._1.DataContracts.WeatherForecast;
 #endif
 
 namespace MyExtensionsApp._1.Services.Caching;
