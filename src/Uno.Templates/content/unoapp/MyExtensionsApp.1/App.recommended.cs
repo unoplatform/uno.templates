@@ -140,7 +140,6 @@ public partial class App : Application
     );
 #endif
 //+:cnd:noEmit
-    services.AddSingleton<IWeatherCache, WeatherCache>();
 })
 #endif
 #if useAuthentication
