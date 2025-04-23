@@ -197,24 +197,6 @@
 				"SectionType": "SingleSelect",
 				"Title": "HTTP",
 				"SymbolId": "http",
-				"Choices": [
-					{
-						"value": "basic",
-						"display": "Basic"
-					},
-					{
-						"value": "kiota",
-						"display": "Kiota"
-					},
-					{
-						"value": "refit",
-						"display": "Refit"
-					},
-					{
-						"value": "none",
-						"display": "None"
-					}
-				]
 			},
 			{
 				"SectionType": "SingleSelect",

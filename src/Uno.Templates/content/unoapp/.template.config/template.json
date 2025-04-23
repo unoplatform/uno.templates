@@ -425,7 +425,6 @@
       "description": "Configure HTTP support in the application",
       "type": "parameter",
       "datatype": "choice",
-      "defaultValue": "basic",
       "choices": [
         {
           "choice": "none",
