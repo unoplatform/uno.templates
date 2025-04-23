@@ -2305,7 +2305,7 @@
           ]
         },
         {
-          "condition": "!useHttpRefit",
+          "condition": "(!useHttpRefit)",
           "exclude": [
             "MyExtensionsApp.1/Services/**",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",
@@ -2313,13 +2313,9 @@
           ]
         },
         {
-          "condition": "useHttpKiota == false",
-          "exclude": [ "Content/Client/WeatherServiceClient/**/*" ]
+          "condition": "(!useHttpKiota)",
+          "exclude": [ "MyExtensionsApp.1/Specs/**", "MyExtensionsApp.1/Content/Client/WeatherServiceClient/**" ]
         },
-        {
-          "condition": "useHttpRefit || useHttpBasic || useHttp == false",
-          "exclude": [ "Specs/**/*", "Content/Client/WeatherServiceClient/**/*" ]
-        },        
         {
           "condition": "(!useUnitTests)",
           "exclude": [
