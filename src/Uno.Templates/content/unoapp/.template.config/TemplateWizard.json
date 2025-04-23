@@ -196,7 +196,7 @@
 			{
 				"SectionType": "SingleSelect",
 				"Title": "HTTP",
-				"SymbolId": "http",
+				"SymbolId": "http"
 			},
 			{
 				"SectionType": "SingleSelect",

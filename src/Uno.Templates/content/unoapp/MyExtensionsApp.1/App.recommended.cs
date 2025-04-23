@@ -122,22 +122,21 @@ public partial class App : Application
                 .UseSerialization((context, services) => services
                     .AddContentSerializer(context)
                     .AddJsonTypeInfo(WeatherForecastContext.Default.IImmutableListWeatherForecast))
-       .UseHttp((context, services) => {
+                .UseHttp((context, services) => {
 //-:cnd:noEmit
 #if DEBUG
-           // DelegatingHandler will be automatically injected into Refit Client
-           services.AddTransient<DelegatingHandler, DebugHttpHandler>();
+                // DelegatingHandler will be automatically injected into Refit Client
+                services.AddTransient<DelegatingHandler, DebugHttpHandler>();
 #endif
-           services.AddSingleton<IWeatherCache, WeatherCache>();
- 
-#if useHttpRefit
+                services.AddSingleton<IWeatherCache, WeatherCache>();
 //+:cnd:noEmit
-    services.AddRefitClient<IApiClient>(context);
+#if useHttpRefit
+                services.AddRefitClient<IApiClient>(context);
 #elif useHttpKiota
-    services.AddKiotaClient<WeatherServiceClient>(
-        context,
-        options: new EndpointOptions { Url = context.Configuration["ApiClient:Url"]! }
-    );
+                services.AddKiotaClient<WeatherServiceClient>(
+                context,
+                options: new EndpointOptions { Url = context.Configuration["ApiClient:Url"]! }
+                );
 #endif
 //+:cnd:noEmit
 })
@@ -205,11 +204,11 @@ public partial class App : Application
             );
         MainWindow = builder.Window;
 
-//-:cnd:noEmit
+        //-:cnd:noEmit
 #if DEBUG
         MainWindow.UseStudio();
 #endif
-//+:cnd:noEmit
+        //+:cnd:noEmit
         MainWindow.SetWindowIcon();
 
 #if useFrameNav

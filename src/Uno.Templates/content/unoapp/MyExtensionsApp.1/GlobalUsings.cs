@@ -25,9 +25,7 @@ global using MyExtensionsApp._1.Services.Caching;
 global using MyExtensionsApp._1.Services.Endpoints;
 #endif
 #if (useHttpKiota)
-global using MyExtensionsApp._1.Client.WeatherServiceClient;
-global using MyExtensionsApp._1.Client.WeatherServiceClient.Api;
-global using MyExtensionsApp._1.Client.WeatherServiceClient.Models;
+global using MyExtensionsApp._1.Client;
 #endif
 #if (mauiEmbedding)
 //-:cnd:noEmit

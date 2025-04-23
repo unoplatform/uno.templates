@@ -428,7 +428,7 @@
       "choices": [
         {
           "choice": "none",
-          "description": "No HTTP support",
+          "description": ".NET SDK Only",
           "displayName": "None"
         },
         {
@@ -2305,7 +2305,7 @@
           ]
         },
         {
-          "condition": "(!useHttpRefit)",
+          "condition": "(!useHttpRefit && !useHttpKiota)",
           "exclude": [
             "MyExtensionsApp.1/Services/**",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",

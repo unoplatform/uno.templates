@@ -1,18 +1,21 @@
-//-:cnd:noEmit
 using System.Net;
+#if(useHttpKiota)
+using WeatherForecast = test.Client.Models.WeatherForecast;
+#elif (useHttpRefit)
+using WeatherForecast = test.DataContracts.WeatherForecast;
+#endif
 
 namespace MyExtensionsApp._1.Services.Caching;
 
 public sealed class WeatherCache : IWeatherCache
 {
 #if (useHttpKiota)
-    private readonly MyExtensionsApp._1.Client.WeatherServiceClient _client;
+    private readonly WeatherServiceClient _client;
 #endif
 #if (useHttpRefit)
     private readonly IApiClient _api;
 #endif
     private readonly ISerializer _serializer;
-//+:cnd:noEmit
 #if (useLogging)
     private readonly ILogger _logger;
 #endif
@@ -92,6 +95,9 @@ public sealed class WeatherCache : IWeatherCache
         await Save(weather, token);
         return weather;
     }
+
+    private static async ValueTask<StorageFile> GetFile(CreationCollisionOption option) =>
+        await ApplicationData.Current.TemporaryFolder.CreateFileAsync("weather.json", option);
 
     private async ValueTask<string?> GetCachedWeather(CancellationToken token)
     {
