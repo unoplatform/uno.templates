@@ -30,7 +30,7 @@ public sealed class WeatherCache : IWeatherCache
     {
 #if (useHttpKiota)
         _client = client;
-#else
+#elif (useHttpRefit)
         _api = api;
 #endif
         _serializer = serializer;
@@ -69,7 +69,7 @@ public sealed class WeatherCache : IWeatherCache
 
         var json    = _serializer.ToString(response);
         weather = _serializer.FromString<ImmutableArray<WeatherForecast>>(json);
-#else
+#elif (useHttpRefit)
         var response = await _api.GetWeather(token);
 
         if (response.IsSuccessStatusCode && response.Content is not null)
