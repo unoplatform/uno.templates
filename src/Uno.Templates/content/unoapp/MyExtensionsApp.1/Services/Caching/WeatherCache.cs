@@ -68,9 +68,9 @@ public sealed class WeatherCache : IWeatherCache
             .Weatherforecast
             .GetAsync(null, token)
             .ConfigureAwait(false)
-            ?? new List<global::MyExtensionsApp._1.Client.Models.WeatherForecast>();
+            ?? new List<WeatherForecast>();
 
-        var json    = _serializer.ToString(response);
+        var json = _serializer.ToString(response);
         weather = _serializer.FromString<ImmutableArray<WeatherForecast>>(json);
 #elif (useHttpRefit)
         var response = await _api.GetWeather(token);
