@@ -221,7 +221,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoFonts",
-    "version": "2.7.0-dev.5",
+    "version": "2.8.0-dev.3",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -324,7 +324,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "5.3.0-dev.138",
+    "version": "5.4.0-dev.6",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -353,7 +353,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "7.0.0-dev.95",
+    "version": "7.1.0-dev.1",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -365,7 +365,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.5.0-dev.96",
+    "version": "5.6.0-dev.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",

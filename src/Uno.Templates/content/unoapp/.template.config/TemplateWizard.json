@@ -247,21 +247,15 @@
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Mobile",
-				"SymbolIds": [ "ios", "android" ]
+				"Title": "Uno Platform Targets",
+        			"SymbolIds": [ "ios", "android", "wasm", "desktop" ]
 			},
-			{
-				"SectionType": "MultiSelect",
-				"SymbolId": "platforms",
-				"Title": "Web",
-				"SymbolIds": [ "wasm" ]
-			},
-			{
-				"SectionType": "MultiSelect",
-				"SymbolId": "platforms",
-				"Title": "Desktop",
-				"SymbolIds": [ "windows", "desktop" ]
-			}
+		        {
+		        	"SectionType": "MultiSelect",
+		        	"SymbolId": "platforms",
+		        	"Title": "Other Targets",
+		        	"SymbolIds": [ "windows" ]
+		        }
 		],
 		"Presentation": [
 			{
