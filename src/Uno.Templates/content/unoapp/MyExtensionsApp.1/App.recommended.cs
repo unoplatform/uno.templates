@@ -117,28 +117,31 @@ public partial class App : Application
                 // Enable localization (see appsettings.json for supported languages)
                 .UseLocalization()
 #endif
-#if useHttp
+#if(useHttpKiota || useHttpRefit)
                 // Register Json serializers (ISerializer and ISerializer)
                 .UseSerialization((context, services) => services
                     .AddContentSerializer(context)
                     .AddJsonTypeInfo(WeatherForecastContext.Default.IImmutableListWeatherForecast))
+#endif
+#if useHttp
                 .UseHttp((context, services) => {
 //-:cnd:noEmit
 #if DEBUG
-                // DelegatingHandler will be automatically injected into Refit Client
+                // DelegatingHandler will be automatically injected
                 services.AddTransient<DelegatingHandler, DebugHttpHandler>();
 #endif
-                services.AddSingleton<IWeatherCache, WeatherCache>();
 //+:cnd:noEmit
 #if useHttpRefit
+                services.AddSingleton<IWeatherCache, WeatherCache>();
                 services.AddRefitClient<IApiClient>(context);
 #elif useHttpKiota
+                services.AddSingleton<IWeatherCache, WeatherCache>();
                 services.AddKiotaClient<WeatherServiceClient>(
                 context,
                 options: new EndpointOptions { Url = context.Configuration["ApiClient:Url"]! }
                 );
 #endif
-//+:cnd:noEmit
+
 })
 #endif
 #if useAuthentication

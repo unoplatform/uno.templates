@@ -18,6 +18,9 @@ global using MyExtensionsApp._1.Models;
 #if (useExtensionsNavigation)
 global using MyExtensionsApp._1.Presentation;
 #endif
+#if useHttp
+global using MyExtensionsApp._1.Services.Endpoints;
+#endif
 #if (useHttpRefit || useHttpKiota)
 global using MyExtensionsApp._1.DataContracts;
 global using MyExtensionsApp._1.DataContracts.Serialization;
@@ -26,6 +29,7 @@ global using MyExtensionsApp._1.Services.Endpoints;
 #endif
 #if (useHttpKiota)
 global using MyExtensionsApp._1.Client;
+global using Uno.Extensions.Http.Kiota;
 #endif
 #if (mauiEmbedding)
 //-:cnd:noEmit

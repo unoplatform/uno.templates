@@ -2307,7 +2307,8 @@
         {
           "condition": "(!useHttpRefit && !useHttpKiota)",
           "exclude": [
-            "MyExtensionsApp.1/Services/**",
+            "MyExtensionsApp.1/Services/Caching/**",
+            "MyExtensionsApp.1/Services/Endpoints/IApiClient.cs",
             "MyExtensionsApp.1/Models/WeatherForecast.cs",
             "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
           ]
