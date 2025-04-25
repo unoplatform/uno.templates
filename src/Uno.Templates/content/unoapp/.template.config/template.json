@@ -2398,12 +2398,6 @@
           ]
         },
         {
-          "condition": "(!useRegionsNav)",
-          "exclude": [
-            "MyExtensionsApp.1/Assets/Images/back.svg"
-          ]
-        },
-        {
           "condition": "(!useDspGenerator)",
           "exclude": [
             "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"

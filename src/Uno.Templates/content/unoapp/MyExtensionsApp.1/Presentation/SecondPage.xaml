@@ -12,15 +12,7 @@
       <RowDefinition />
     </Grid.RowDefinitions>
 <!--#if (useToolkit)-->
-    <utu:NavigationBar Content="Second Page">
-      <utu:NavigationBar.MainCommand>
-        <AppBarButton>
-          <AppBarButton.Icon>
-            <BitmapIcon UriSource="ms-appx:///Assets/Images/back.png" />
-          </AppBarButton.Icon>
-        </AppBarButton>
-      </utu:NavigationBar.MainCommand>
-    </utu:NavigationBar>
+    <utu:NavigationBar Content="Second Page" />
 <!--#else-->
     <TextBlock Text="Second Page" HorizontalAlignment="Center" />
 <!--#endif-->
