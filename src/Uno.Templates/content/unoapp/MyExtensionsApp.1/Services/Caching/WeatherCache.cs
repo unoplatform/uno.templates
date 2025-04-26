@@ -1,29 +1,46 @@
-//-:cnd:noEmit
 using System.Net;
+#if(useHttpKiota)
+using WeatherForecast = MyExtensionsApp._1.Client.Models.WeatherForecast;
+#elif (useHttpRefit)
+using WeatherForecast = MyExtensionsApp._1.DataContracts.WeatherForecast;
+#endif
 
 namespace MyExtensionsApp._1.Services.Caching;
 
 public sealed class WeatherCache : IWeatherCache
 {
+#if (useHttpKiota)
+    private readonly WeatherServiceClient _client;
+#endif
+#if (useHttpRefit)
     private readonly IApiClient _api;
+#endif
     private readonly ISerializer _serializer;
-//+:cnd:noEmit
 #if (useLogging)
     private readonly ILogger _logger;
-
-    public WeatherCache(IApiClient api, ISerializer serializer, ILogger<WeatherCache> logger)
-    {
-        _api = api;
-        _serializer = serializer;
-        _logger = logger;
-    }
-#else
-    public WeatherCache(IApiClient api, ISerializer serializer)
-    {
-        _api = api;
-        _serializer = serializer;
-    }
 #endif
+
+    public WeatherCache(
+#if (useHttpKiota)
+        MyExtensionsApp._1.Client.WeatherServiceClient client,
+#endif
+#if (useHttpRefit)
+        IApiClient api,
+#endif
+        ISerializer serializer
+        , ILogger<WeatherCache> logger
+    )
+    {
+#if (useHttpKiota)
+        _client = client;
+#elif (useHttpRefit)
+        _api = api;
+#endif
+        _serializer = serializer;
+#if (useLogging)
+        _logger = logger;
+#endif
+    }
 
     private bool IsConnected => NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
@@ -42,14 +59,25 @@ public sealed class WeatherCache : IWeatherCache
 #endif
             throw new WebException("No internet connection", WebExceptionStatus.ConnectFailure);
         }
+        
+        IImmutableList<WeatherForecast> weather;
 
+#if (useHttpKiota)
+        var response = await _client
+            .Api
+            .Weatherforecast
+            .GetAsync(null, token)
+            .ConfigureAwait(false)
+            ?? new List<WeatherForecast>();
+
+        var json = _serializer.ToString(response);
+        weather = _serializer.FromString<ImmutableArray<WeatherForecast>>(json);
+#elif (useHttpRefit)
         var response = await _api.GetWeather(token);
 
         if (response.IsSuccessStatusCode && response.Content is not null)
         {
-            var weather = response.Content;
-            await Save(weather, token);
-            return weather;
+            weather = response.Content;
         }
         else if (response.Error is not null)
         {
@@ -60,8 +88,12 @@ public sealed class WeatherCache : IWeatherCache
         }
         else
         {
-            return ImmutableArray<WeatherForecast>.Empty;
+            weather = ImmutableArray<WeatherForecast>.Empty;
         }
+#endif
+
+        await Save(weather, token);
+        return weather;
     }
 
     private static async ValueTask<StorageFile> GetFile(CreationCollisionOption option) =>
