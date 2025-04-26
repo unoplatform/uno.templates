@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.1.0-dev.90 |
+| UnoVersion* | 6.1.0-dev.100 |
 | UnoExtensionsVersion | 5.4.0-dev.6 |
 | UnoToolkitVersion | 7.1.0-dev.1 |
 | UnoThemesVersion | 5.6.0-dev.1 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.1742 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.15 |
-| MicrosoftIdentityClientVersion | 4.71.0 |
+| MicrosoftIdentityClientVersion | 4.71.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.2 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.1.0-dev.90",
+    "version": "6.1.0-dev.100",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -129,14 +129,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.4.0-dev.6",
+    "version": "1.4.0-dev.8",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.12.0-dev.28",
+    "version": "1.12.0-dev.39",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -197,7 +197,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.71.0",
+    "version": "4.71.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -334,6 +334,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Extensions.Hosting.WinUI",
       "Uno.Extensions.Http.WinUI",
       "Uno.Extensions.Http.Refit",
+      "Uno.Extensions.Http.Kiota",
       "Uno.Extensions.Localization.WinUI",
       "Uno.Extensions.Logging.WinUI",
       "Uno.Extensions.Maui.WinUI",
