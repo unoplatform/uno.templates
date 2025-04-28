@@ -166,7 +166,7 @@
 				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
-		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "Desktop" ]
+		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "Desktops" ]
 	},
 	"Sections": {
 		"Application": [
@@ -247,15 +247,9 @@
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Uno Platform Targets",
-        			"SymbolIds": [ "ios", "android", "wasm", "desktop" ]
-			},
-		        {
-		        	"SectionType": "MultiSelect",
-		        	"SymbolId": "platforms",
-		        	"Title": "Other Targets",
-		        	"SymbolIds": [ "windows" ]
-		        }
+				"Title": "Supported Platforms",
+        			"SymbolIds": [ "ios", "android", "wasm", "windows", "desktop" ]
+			}
 		],
 		"Presentation": [
 			{
