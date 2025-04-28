@@ -334,6 +334,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Extensions.Hosting.WinUI",
       "Uno.Extensions.Http.WinUI",
       "Uno.Extensions.Http.Refit",
+      "Uno.Extensions.Http.Kiota",
       "Uno.Extensions.Localization.WinUI",
       "Uno.Extensions.Logging.WinUI",
       "Uno.Extensions.Maui.WinUI",
