@@ -87,14 +87,14 @@
   },
   {
     "group": "settings",
-    "version": "1.3.4",
+    "version": "1.3.8",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.11.130",
+    "version": "1.11.144",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -274,7 +274,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.0.11",
+    "version": "6.0.13",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -282,7 +282,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.3.1",
+    "version": "5.3.8",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -311,7 +311,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "7.0.1",
+    "version": "7.0.2",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
