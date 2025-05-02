@@ -166,7 +166,7 @@
 				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
-		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "Desktops" ]
+		"Platforms": [ "Android", "iOS", "WebAssembly", "Desktops", "Windows App SDK" ]
 	},
 	"Sections": {
 		"Application": [
@@ -248,7 +248,7 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
 				"Title": "Supported Platforms",
-        			"SymbolIds": [ "ios", "android", "wasm", "windows", "desktop" ]
+        			"SymbolIds": [ "ios", "android", "wasm", "desktop", "windows" ]
 			}
 		],
 		"Presentation": [
@@ -327,7 +327,7 @@
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "windows" ],
-					"MoreInformation": "Publisher is only required for Windows platform"
+					"MoreInformation": "Publisher is only required for the Windows App SDK platform"
 				}
 			}
 		},
@@ -384,7 +384,7 @@
 					"RequiredValues": [
 						"!desktop"
 					],
-					"MoreInformation": "MSAL only supported on iOS, Android, Windows and WASM"
+					"MoreInformation": "MSAL only supported on iOS, Android, WebAssembly and Windows App SDK"
 				}
 			}
 		},
@@ -671,19 +671,19 @@
 				}
 			}
 		},
-		"wasmMultiThreading": {
-			"Icon": "/Assets/Features.WasmMultiThreading.svg",
-			"Requires": {
-				"platforms": {
-					"RequiredValues": [ "wasm" ],
-					"MoreInformation": "WebAssembly platform is required"
-				},
-				"tfm": {
-					"RequiredValues": [ "net8.0" ],
-					"MoreInformation": "Only supported on net8.0"
-				}
-			}
-		},
+		// "wasmMultiThreading": {
+		// 	"Icon": "/Assets/Features.WasmMultiThreading.svg",
+		// 	"Requires": {
+		// 		"platforms": {
+		// 			"RequiredValues": [ "wasm" ],
+		// 			"MoreInformation": "WebAssembly platform is required"
+		// 		},
+		// 		"tfm": {
+		// 			"RequiredValues": [ "net8.0" ],
+		// 			"MoreInformation": "Only supported on net8.0"
+		// 		}
+		// 	}
+		// },
 		"mauiEmbedding": {
 			"Icon": "/Assets/Features.EmbedMAUI.svg"
 		},
