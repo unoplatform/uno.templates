@@ -16,7 +16,7 @@
   "name": "Uno Platform App",
   "identity": "Uno.Platform.UnoApp.WinUI.netcoremobile.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.netcoremobile",
-  "description": "Solution template for creating a multi-platform C# & XAML application targeting Windows App SDK, Android, iOS, macOS, WebAssembly, Skia Desktop.",
+  "description": "Solution template for creating a multi-platform C# & XAML application targeting Android, iOS, WebAssembly, Skia Desktop Windows, macOS, Linux (X11/Framebuffer) and Windows App SDK.",
   "precedence": "99",
   "tags": {
     "language": "C#",
@@ -88,7 +88,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp), used by the Android, iOS, and Mac targets."
+      "description": "The application identifier (e.g. com.mycompany.myapp), used by the Android, iOS targets."
     },
     "appIdDefault": {
       "type": "generated",
@@ -266,19 +266,19 @@
           "description": "Enables the iOS target platform"
         },
         {
-          "choice": "windows",
-          "displayName": "Windows",
-          "description": "Enables the Windows with WinAppSdk (WinUI 3) target platform"
-        },
-        {
           "choice": "wasm",
           "displayName": "WebAssembly",
           "description": "Enables the WebAssembly target platform"
         },
         {
           "choice": "desktop",
-          "displayName": "Desktop",
-          "description": "Enables Skia Desktop Windows, macOS, Linux (X11/Framebuffer)."
+          "displayName": "Desktops",
+          "description": "Enables Skia Desktop Windows, macOS, Linux (X11/Framebuffer)"
+        },
+        {
+          "choice": "windows",
+          "displayName": "Windows App SDK",
+          "description": "Enables the Windows target platform using WinAppSDK (WinUI 3)"
         }
       ]
     },
@@ -380,7 +380,7 @@
         },
         {
           "choice": "native",
-          "description": "Use the native APIs based render",
+          "description": "Use native APIs based renderer",
           "displayName": "Native"
         }
       ]
@@ -767,13 +767,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
-    "wasmMultiThreading": {
-      "displayName": "WASM Multi-Threading",
-      "description": "Configures application to use multi-threading in WebAssembly",
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "false"
-    },
+    // "wasmMultiThreading": {
+    //   "displayName": "WASM Multi-Threading",
+    //   "description": "Configures application to use multi-threading in WebAssembly",
+    //   "type": "parameter",
+    //   "datatype": "bool",
+    //   "defaultValue": "false"
+    // },
     "mediaElement": {
       "displayName": "Media Element",
       "description": "Configures application to bundle native assets required for the MediaElement",
