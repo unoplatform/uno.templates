@@ -253,7 +253,7 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "allowMultipleValues": true,
-      "defaultValue": "android|ios|wasm|windows|desktop",
+      "defaultValue": "android|ios|wasm|desktop",
       "choices": [
         {
           "choice": "android",
@@ -1234,7 +1234,7 @@
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "refit"
+            "value": "kiota"
           },
           {
             "condition": "(preset == 'blank')",
