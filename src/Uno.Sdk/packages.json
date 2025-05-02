@@ -1,7 +1,11 @@
 ﻿[
   {
     "group": "Core",
+<<<<<<< HEAD
     "version": "6.0.366",
+=======
+    "version": "6.1.0-dev.223",
+>>>>>>> cc11534 (chore: Bump to latest uno)
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
