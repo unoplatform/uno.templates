@@ -17,8 +17,8 @@ runs:
             # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
             # macOS is generally not selected unless building the whole targets list, because of expensive CI
         
-            "SkiaEverywhereRecommended;;unoapp;-skip --renderer skia -preset=recommended",
-            "SkiaEverywhereBlank;;unoapp;-skip --renderer skia -preset=blank",
+            "NativeRecommended;;unoapp;-skip --renderer native -preset=recommended",
+            "NativeBlank;;unoapp;-skip --renderer native -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
@@ -33,10 +33,10 @@ runs:
             "HostingOnly;!macOS;unoapp;-skip -preset recommended -config false -loc false -http none -log none --navigation blank",
             "NoConfiguration;!macOS;unoapp;-skip -preset recommended -config false",
             "NoLocalization;!macOS;unoapp;-skip -preset recommended -loc false",
-            "NoHttp;!macOS;unoapp;-skip -preset recommended -http none",
-            "HttpBasic;!macOS;unoapp;-skip -preset recommended -http basic",
-            "HttpRefit;!macOS;unoapp;-skip -preset recommended -http refit",
-            "HttpKiota;!macOS;unoapp;-skip -preset recommended -http kiota",
+            "NoHttp;;unoapp;-skip -preset recommended -http none",
+            "HttpBasic;;unoapp;-skip -preset recommended -http basic",
+            "HttpRefit;;unoapp;-skip -preset recommended -http refit",
+            "HttpKiota;;unoapp;-skip -preset recommended -http kiota",
             "NoSerilog;!macOS;unoapp;-skip -preset recommended -log default",
             "NoServer;!macOS;unoapp;-skip -preset recommended -server false",
             "NoServerNoHttp;!macOS;unoapp;-skip -preset recommended -server false -http none",
