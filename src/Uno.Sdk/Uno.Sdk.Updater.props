@@ -3,7 +3,11 @@
   <PropertyGroup>
     <PackageTags></PackageTags>
     <SdkPackageId>Uno.Sdk.Private</SdkPackageId>
+<<<<<<< HEAD
     <SdkVersion>6.0.366</SdkVersion>
+=======
+    <SdkVersion>6.1.0-dev.223</SdkVersion>
+>>>>>>> cc11534 (chore: Bump to latest uno)
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
   </PropertyGroup>
 
