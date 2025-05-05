@@ -88,7 +88,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp), used by the Android, iOS targets."
+      "description": "The application identifier (e.g. com.mycompany.myapp)"
     },
     "appIdDefault": {
       "type": "generated",
@@ -767,6 +767,9 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+    // and we recently removed .NET 8 option from the template (see PR #1373).
+    // This feature will be re-enabled once multi-threading becomes available again.
     // "wasmMultiThreading": {
     //   "displayName": "WASM Multi-Threading",
     //   "description": "Configures application to use multi-threading in WebAssembly",
@@ -1096,11 +1099,14 @@
       "datatype": "bool",
       "value": "(navigationEvaluator != 'blank' && (useMvux || useMvvm))"
     },
-    "useWasmMultiThreading": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(wasmMultiThreading)"
-    },
+    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+    // and we recently removed .NET 8 option from the template (see PR #1373).
+    // This feature will be re-enabled once multi-threading becomes available again.
+    // "useWasmMultiThreading": {
+    //   "type": "computed",
+    //   "datatype": "bool",
+    //   "value": "(wasmMultiThreading)"
+    // },
     "useDesktop": {
       "type": "computed",
       "datatype": "bool",

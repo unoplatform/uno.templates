@@ -121,10 +121,13 @@
       "longName": "default-branch-name",
       "shortName": "branch"
     },
-    "wasmMultiThreading": {
-      "longName": "wasm-multi-threading",
-      "shortName": "wasm-multi-threading"
-    },
+    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+    // and we recently removed .NET 8 option from the template (see PR #1373).
+    // This feature will be re-enabled once multi-threading becomes available again.
+    // "wasmMultiThreading": {
+    //   "longName": "wasm-multi-threading",
+    //   "shortName": "wasm-multi-threading"
+    // },
     "unoSvg": {
       "longName": "svg",
       "shortName": "svg"
