@@ -88,7 +88,7 @@
       "displayName": "Application ID",
       "type": "parameter",
       "datatype": "string",
-      "description": "The application identifier (e.g. com.mycompany.myapp)"
+      "description": "The application identifier (e.g. com.mycompany.myapp)."
     },
     "appIdDefault": {
       "type": "generated",
