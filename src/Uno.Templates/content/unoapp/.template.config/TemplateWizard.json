@@ -257,8 +257,20 @@
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Supported Platforms",
-        			"SymbolIds": [ "ios", "android", "wasm", "desktop", "windows" ]
+				"Title": "Mobile",
+				"SymbolIds": [ "android", "ios" ]
+			},
+			{
+				"SectionType": "MultiSelect",
+				"SymbolId": "platforms",
+				"Title": "Web",
+				"SymbolIds": [ "wasm" ]
+			},
+			{
+				"SectionType": "MultiSelect",
+				"SymbolId": "platforms",
+				"Title": "Desktop",
+				"SymbolIds": [ "desktop", "windows" ]
 			}
 		],
 		"Presentation": [
