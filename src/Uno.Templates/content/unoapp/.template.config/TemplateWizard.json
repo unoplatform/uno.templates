@@ -1,4 +1,4 @@
-﻿{
+{
 	"NavigationElements": [
 		{
 			"DisplayText": "Framework",
@@ -102,7 +102,10 @@
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					"wasmMultiThreading": "false",
+					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+					// and we recently removed .NET 8 option from the template (see PR #1373).
+					// This feature will be re-enabled once multi-threading becomes available again.
+					//"wasmMultiThreading": "false",
 					"dspGenerator": "false",
 					"themeService": "false",
 					"continuousIntegration": "none",
@@ -141,7 +144,10 @@
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					"wasmMultiThreading": "false",
+					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+					// and we recently removed .NET 8 option from the template (see PR #1373).
+					// This feature will be re-enabled once multi-threading becomes available again.
+					//"wasmMultiThreading": "false",
 					"dspGenerator": "true",
 					"themeService": "true",
 					"continuousIntegration": "none",
@@ -166,7 +172,7 @@
 				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
-		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "Desktops" ]
+		"Platforms": [ "Android", "iOS", "WebAssembly", "Desktops", "Windows App SDK" ]
 	},
 	"Sections": {
 		"Application": [
@@ -221,7 +227,11 @@
 			{
 				"Title": "",
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+				// and we recently removed .NET 8 option from the template (see PR #1373).
+				// This feature will be re-enabled once multi-threading becomes available again.
+				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 			}
 			,
 			{
@@ -247,8 +257,20 @@
 			{
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
-				"Title": "Supported Platforms",
-        			"SymbolIds": [ "ios", "android", "wasm", "windows", "desktop" ]
+				"Title": "Mobile",
+				"SymbolIds": [ "android", "ios" ]
+			},
+			{
+				"SectionType": "MultiSelect",
+				"SymbolId": "platforms",
+				"Title": "Web",
+				"SymbolIds": [ "wasm" ]
+			},
+			{
+				"SectionType": "MultiSelect",
+				"SymbolId": "platforms",
+				"Title": "Desktop",
+				"SymbolIds": [ "desktop", "windows" ]
 			}
 		],
 		"Presentation": [
@@ -327,7 +349,7 @@
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "windows" ],
-					"MoreInformation": "Publisher is only required for Windows platform"
+					"MoreInformation": "Publisher is only required for the Windows App SDK platform"
 				}
 			}
 		},
@@ -384,7 +406,7 @@
 					"RequiredValues": [
 						"!desktop"
 					],
-					"MoreInformation": "MSAL only supported on iOS, Android, Windows and WASM"
+					"MoreInformation": "MSAL only supported on iOS, Android, WebAssembly and Windows App SDK"
 				}
 			}
 		},
@@ -671,19 +693,22 @@
 				}
 			}
 		},
-		"wasmMultiThreading": {
-			"Icon": "/Assets/Features.WasmMultiThreading.svg",
-			"Requires": {
-				"platforms": {
-					"RequiredValues": [ "wasm" ],
-					"MoreInformation": "WebAssembly platform is required"
-				},
-				"tfm": {
-					"RequiredValues": [ "net8.0" ],
-					"MoreInformation": "Only supported on net8.0"
-				}
-			}
-		},
+		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+		// and we recently removed .NET 8 option from the template (see PR #1373).
+		// This feature will be re-enabled once multi-threading becomes available again.
+		// "wasmMultiThreading": {
+		// 	"Icon": "/Assets/Features.WasmMultiThreading.svg",
+		// 	"Requires": {
+		// 		"platforms": {
+		// 			"RequiredValues": [ "wasm" ],
+		// 			"MoreInformation": "WebAssembly platform is required"
+		// 		},
+		// 		"tfm": {
+		// 			"RequiredValues": [ "net8.0" ],
+		// 			"MoreInformation": "Only supported on net8.0"
+		// 		}
+		// 	}
+		// },
 		"mauiEmbedding": {
 			"Icon": "/Assets/Features.EmbedMAUI.svg"
 		},
@@ -744,7 +769,10 @@
 		"vscode",
 		"wasmPwaManifest",
 		"mauiEmbedding",
-		"wasmMultiThreading",
+		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+		// and we recently removed .NET 8 option from the template (see PR #1373).
+		// This feature will be re-enabled once multi-threading becomes available again.
+		//"wasmMultiThreading",
 		"dspGenerator",
 		"themeService",
 		"continuousIntegration",
