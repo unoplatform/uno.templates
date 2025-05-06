@@ -128,7 +128,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.1742",
+    "version": "10.0.26100.3916",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
