@@ -99,7 +99,7 @@ runs:
         #     if ($currentGroup.Count -eq $groupSize) {
         #         $newGroup = @{
         #             'groupName' = "Group$($matrixGroups.Count)_net10"
-        #             'unocheckArguments' = ''
+        #             'unocheckArguments' = '--pre-major'
         #             'validations' = ($currentGroup -join "`r`n")
         #         };
         # 
@@ -117,7 +117,7 @@ runs:
             if ($currentGroup.Count -eq $groupSize) {
                 $newGroup = @{
                     'groupName' = "Group$($matrixGroups.Count)_net9"
-                    'unocheckArguments' = '--pre-major'
+                    'unocheckArguments' = ''
                     'validations' = ($currentGroup -join "`r`n")
                 };
                 $matrixGroups += $newGroup;

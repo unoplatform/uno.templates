@@ -16,14 +16,14 @@ on:
     - cron: '0 0 * * *' # Canary
   
 concurrency:
-  group: ${{github.workflow}} - ${{github.ref}}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ !contains(github.ref, 'refs/heads/release/') && !contains(github.ref, 'refs/heads/main')}}
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet8: '1.26.4'
-  ValidationUnoCheckVersionNet9: '1.31.0-dev.10'
+  ValidationUnoCheckVersionNet9: '1.31.0-dev.40'
   ValidationDotNetVersion: '8.0.407'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
@@ -60,7 +60,7 @@ jobs:
     name: Sign Package
     if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
     runs-on: windows-latest
-    needs: Build
+    needs: build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -166,7 +166,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -196,14 +196,14 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
 
   # Run the test matrix on macOS
   macos-template-tests:
-    runs-on: macos-latest
+    runs-on: macos-15
     needs: 
     - generate-test-matrix
     - build
@@ -226,7 +226,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.2.app'
+        xCodeRoot: '/Applications/Xcode_16.3.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
