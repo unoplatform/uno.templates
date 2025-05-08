@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.11.178",
+    "version": "1.11.182",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -274,7 +274,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.0.14",
+    "version": "6.0.15",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
