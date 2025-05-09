@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.1.0-dev.368",
+    "version": "6.1.0-dev.373",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -39,7 +39,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.16"
+      "net9.0": "9.0.18"
     }
   },
   {
