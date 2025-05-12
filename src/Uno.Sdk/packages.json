@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.1.0-dev.373",
+    "version": "6.1.0-dev.377",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -73,7 +73,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.9.0-dev.3",
+    "version": "1.9.0-dev.12",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -282,7 +282,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.4.0-dev.15",
+    "version": "5.4.0-dev.16",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
