@@ -54,3 +54,7 @@ runs:
       run: |
           echo "### NuGet Package Summary" >> $env:GITHUB_STEP_SUMMARY
           echo "Package version: ${{ steps.nbgv.outputs.SemVer2 }}" >> $env:GITHUB_STEP_SUMMARY
+          echo "<details><summary>Referenced packages versions</summary><p>" >> $env:GITHUB_STEP_SUMMARY
+          $readme = Get-Content src/Uno.Sdk/ReadMe.md -Raw
+          echo $readme >> $env:GITHUB_STEP_SUMMARY
+          echo "</p></details>" >> $env:GITHUB_STEP_SUMMARY
