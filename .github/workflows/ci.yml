@@ -117,7 +117,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: "Uno Feed Publish"
-      uses: ./.github/actions/ci/nuget-uno-publish
+      uses: ./.github/actions/ci/nuget-org-publish
       with:
         token: ${{ secrets.NUGET_ORG_API_KEY }}
     - name: "Tag Release"
