@@ -68,6 +68,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.MediaPlayer.Skia.X11",
       "Uno.WinUI.MediaPlayer.Skia.Win32",
+      "Uno.WinUI.WebView.Skia.X11",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
     ]
