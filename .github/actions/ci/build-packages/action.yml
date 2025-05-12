@@ -54,11 +54,6 @@ runs:
       run: |
           echo "### NuGet Package Summary" >> $env:GITHUB_STEP_SUMMARY
           echo "Package version: ${{ steps.nbgv.outputs.SemVer2 }}" >> $env:GITHUB_STEP_SUMMARY
-
-          echo "### Package versions" >> $env:GITHUB_STEP_SUMMARY
+          echo "---" >> $env:GITHUB_STEP_SUMMARY
           $readme = Get-Content src/Uno.Sdk/ReadMe.md -Raw
-          if (($pos = $readme.IndexOf("```json")) -ge 0) {
-            $readme = $readme.Substring(0, $pos)
-          }
           echo $readme >> $env:GITHUB_STEP_SUMMARY
-
