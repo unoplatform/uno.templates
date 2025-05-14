@@ -12,7 +12,7 @@ runs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '9.0.203'
+        dotnet-version: '9.0.300'
 
     - uses: dotnet/nbgv@f088059084cb5d872e9d1a994433ca6440c2bf72 # v0.4.2
       name: NBGV
