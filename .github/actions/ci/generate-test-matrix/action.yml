@@ -96,7 +96,7 @@ runs:
         # { 
         #     $currentGroup += $tests[$i] + " -tfm net10.0";
         # 
-        #     if ($currentGroup.Count -eq $groupSize) {
+        #     if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
         #         $newGroup = @{
         #             'groupName' = "Group$($matrixGroups.Count)_net10"
         #             'unocheckArguments' = '--pre-major'
@@ -114,7 +114,7 @@ runs:
         { 
             $currentGroup += $tests[$i] + " -tfm net9.0";
         
-            if ($currentGroup.Count -eq $groupSize) {
+            if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
                 $newGroup = @{
                     'groupName' = "Group$($matrixGroups.Count)_net9"
                     'unocheckArguments' = ''
