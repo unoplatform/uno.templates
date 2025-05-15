@@ -80,9 +80,10 @@ runs:
             # https://github.com/unoplatform/uno.templates/issues/477
             "Issue477;!macOS;unoapp;-skip -preset recommended -theme material -toolkit",
             # https://github.com/unoplatform/uno.templates/issues/500
-            "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http -nav regions -log default -server -auth msal",
+            "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http none -nav regions -log default -server -auth msal"
             # https://github.com/unoplatform/uno.templates/issues/572
-            "Issue572;!macOS;unoapp;-skip -preset `"recommended`" -id `"com.companyname.TestDuplicatedReference`" -pub `"O=TestDuplicatedReference`" -platforms `"android`" -platforms `"ios`" -platforms `"wasm`" -platforms `"desktop`" -theme-service  -vscode False -pwa False -theme `"material`" -presentation `"mvvm`" -config  -di  -log `"default`" -nav `"regions`" -http  -loc  -server False -tests `"unit`" -tests `"ui`" -toolkit  -dsp"
+            # Disabled for resizetizer issue https://github.com/unoplatform/uno.templates/issues/1492
+            # "Issue572;!macOS;unoapp;-skip -preset `"recommended`" -id `"com.companyname.TestDuplicatedReference`" -pub `"O=TestDuplicatedReference`" -platforms `"android`" -platforms `"ios`" -platforms `"wasm`" -platforms `"desktop`" -theme-service  -vscode False -pwa False -theme `"material`" -presentation `"mvvm`" -config  -di  -log `"default`" -nav `"regions`" -http none -loc  -server False -tests `"unit`" -tests `"ui`" -toolkit  -dsp"
         );
         
         $matrixGroups = @()
@@ -96,7 +97,7 @@ runs:
         # { 
         #     $currentGroup += $tests[$i] + " -tfm net10.0";
         # 
-        #     if ($currentGroup.Count -eq $groupSize) {
+        #     if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
         #         $newGroup = @{
         #             'groupName' = "Group$($matrixGroups.Count)_net10"
         #             'unocheckArguments' = '--pre-major'
@@ -114,7 +115,7 @@ runs:
         { 
             $currentGroup += $tests[$i] + " -tfm net9.0";
         
-            if ($currentGroup.Count -eq $groupSize) {
+            if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
                 $newGroup = @{
                     'groupName' = "Group$($matrixGroups.Count)_net9"
                     'unocheckArguments' = ''
