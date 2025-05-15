@@ -80,7 +80,7 @@ runs:
             # https://github.com/unoplatform/uno.templates/issues/477
             "Issue477;!macOS;unoapp;-skip -preset recommended -theme material -toolkit",
             # https://github.com/unoplatform/uno.templates/issues/500
-            "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http none -nav regions -log default -server -auth msal",
+            "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http none -nav regions -log default -server -auth msal"
             # https://github.com/unoplatform/uno.templates/issues/572
             # Disabled for resizetizer issue https://github.com/unoplatform/uno.templates/issues/1492
             # "Issue572;!macOS;unoapp;-skip -preset `"recommended`" -id `"com.companyname.TestDuplicatedReference`" -pub `"O=TestDuplicatedReference`" -platforms `"android`" -platforms `"ios`" -platforms `"wasm`" -platforms `"desktop`" -theme-service  -vscode False -pwa False -theme `"material`" -presentation `"mvvm`" -config  -di  -log `"default`" -nav `"regions`" -http none -loc  -server False -tests `"unit`" -tests `"ui`" -toolkit  -dsp"
