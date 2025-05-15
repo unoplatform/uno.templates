@@ -345,12 +345,5 @@
     "packages": [
       "Microsoft.Web.WebView2"
     ]
-  },
-  {
-    "group": "MicrosoftWebView2",
-    "version": "1.0.3240.44",
-    "packages": [
-      "Microsoft.Web.WebView2"
-    ]
   }
 ]
