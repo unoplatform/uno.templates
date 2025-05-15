@@ -26,9 +26,9 @@ public partial class LoginViewModel : ObservableObject
         _dispatcher = dispatcher;
         _navigator = navigator;
         _authentication = authentication;
-        Login = new AsyncRelayCommand(DoLogin);
     }
-
+    
+    [RelayCommand]
     private async Task DoLogin()
     {
 #if useCustomAuthentication
@@ -45,5 +45,4 @@ public partial class LoginViewModel : ObservableObject
 
     public string Title { get; } = "Login";
 
-    public ICommand Login { get; }
 }
