@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.0.598 |
+| UnoVersion* | 6.0.611 |
 | UnoExtensionsVersion | 5.3.8 |
 | UnoToolkitVersion | 7.0.2 |
 | UnoThemesVersion | 5.5.1 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.0.598",
+    "version": "6.0.611",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -68,6 +68,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.MediaPlayer.Skia.X11",
       "Uno.WinUI.MediaPlayer.Skia.Win32",
+      "Uno.WinUI.WebView.Skia.X11",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK"
     ]
