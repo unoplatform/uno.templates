@@ -345,8 +345,8 @@ runs:
             "-p:UseInterpreter=true",
             "-p:_IsDedupEnabled=false",
             "-p:MtouchInterpreter=all",
-            "/p:TreatWarningsAsErrors=true",
-            "/p:NoWarn=NU1507;CS1591"
+            "-p:TreatWarningsAsErrors=true",
+            "-p:NoWarn=`"NU1507;CS1591`""
           );
 
           & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
