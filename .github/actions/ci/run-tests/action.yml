@@ -344,7 +344,8 @@ runs:
             "-p:WasmShellILLinkerEnabled=false",
             "-p:UseInterpreter=true",
             "-p:_IsDedupEnabled=false",
-            "-p:MtouchInterpreter=all"
+            "-p:MtouchInterpreter=all",
+            "-p:TreatWarningsAsErrors=true"
           );
 
           & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
