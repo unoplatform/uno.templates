@@ -65,7 +65,11 @@ public partial class App : Application
 //+:cnd:noEmit
 #endif
 //-:cnd:noEmit
+#if useMsalAuthentication
+            .Configure((host, window) => host
+#else
             .Configure(host => host
+#endif   
 #if DEBUG
                 // Switch to Development environment when running in DEBUG
                 .UseEnvironment(Environments.Development)
@@ -151,7 +155,7 @@ public partial class App : Application
 #elif useOidcAuthentication
     auth.AddOidc(name: "OidcAuthentication")
 #elif useMsalAuthentication
-    auth.AddMsal(name: "MsalAuthentication")
+    auth.AddMsal(window, name: "MsalAuthentication")
 #elif useCustomAuthentication
     auth.AddCustom(custom =>
             custom
