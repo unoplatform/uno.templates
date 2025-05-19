@@ -3,7 +3,7 @@
   <PropertyGroup>
     <UnoVersion>5.6.102</UnoVersion>
     <UnoWasmBootstrapVersionNet8>8.0.23</UnoWasmBootstrapVersionNet8>
-    <UnoWasmBootstrapVersionNet9>9.0.16</UnoWasmBootstrapVersionNet9>
+    <UnoWasmBootstrapVersionNet9>9.0.19</UnoWasmBootstrapVersionNet9>
     <UnoExtensionsLoggingVersion>1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion>4.1.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion>1.4.0</UnoDspTasksVersion>
