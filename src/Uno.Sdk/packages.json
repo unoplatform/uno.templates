@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.1.0-dev.427",
+    "version": "6.1.0-dev.437",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.9.0-dev.12",
+    "version": "1.9.0-dev.13",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.12.0-dev.121",
+    "version": "1.12.0-dev.124",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -122,14 +122,14 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250401001",
+    "version": "1.7.250513003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.3916",
+    "version": "10.0.26100.4188",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -312,7 +312,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "7.1.0-dev.8",
+    "version": "7.1.0-dev.10",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
