@@ -5,7 +5,11 @@
     <ImplicitUsings Condition="$(ImplicitUsings) == ''">enable</ImplicitUsings>
     <Nullable Condition="$(Nullable) == ''">enable</Nullable>
     <ManagePackageVersionsCentrally Condition="$(ManagePackageVersionsCentrally) == ''">true</ManagePackageVersionsCentrally>
-
+    <!--
+       Adding NoWarn to remove build warning
+       NU1507: Warning when there are multiple package sources when using CPM with no source mapping
+     -->
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
     <!--#endif-->
     <!--#if (useWinAppSdk)-->
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$baseTargetFramework$-windows10.0.26100</TargetFrameworks>
