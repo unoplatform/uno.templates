@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.1.0-dev.437 |
+| UnoVersion* | 6.1.0-dev.445 |
 | UnoExtensionsVersion | 5.4.0-dev.19 |
 | UnoToolkitVersion | 7.1.0-dev.10 |
-| UnoThemesVersion | 5.6.0-dev.5 |
+| UnoThemesVersion | 5.6.0-dev.6 |
 | UnoCSharpMarkupVersion | 6.1.0-dev.2 |
 | UnoWasmBootstrapVersion** | 8.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.4188 |
 | MicrosoftLoggingVersion** | 8.0.1 |
 | WindowsCompatibilityVersion** | 8.0.16 |
-| MicrosoftIdentityClientVersion | 4.72.0 |
+| MicrosoftIdentityClientVersion | 4.72.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.2 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.1.0-dev.437",
+    "version": "6.1.0-dev.445",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -130,14 +130,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.4.0-dev.12",
+    "version": "1.4.0-dev.16",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.12.0-dev.124",
+    "version": "1.12.0-dev.128",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -198,7 +198,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.72.0",
+    "version": "4.72.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -366,7 +366,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "5.6.0-dev.5",
+    "version": "5.6.0-dev.6",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
