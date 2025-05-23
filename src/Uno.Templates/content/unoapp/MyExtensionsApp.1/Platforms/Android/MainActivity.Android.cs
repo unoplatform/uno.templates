@@ -26,7 +26,7 @@ public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
     }
 
 #if useMsalAuthentication
-    protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
+    protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent? data)
     {
         base.OnActivityResult(requestCode, resultCode, data);
         AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
