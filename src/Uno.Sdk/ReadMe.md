@@ -16,7 +16,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.9.0-dev.13 |
 | SkiaSharpVersion | 3.119.0-preview.1.2 |
-| SvgSkiaVersion | 3.0.2 |
+| SvgSkiaVersion | 3.0.3 |
 | WinAppSdkVersion | 1.7.250513003 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4188 |
 | MicrosoftLoggingVersion** | 8.0.1 |
@@ -157,7 +157,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "packages": [
       "Svg.Skia"
     ]
