@@ -115,7 +115,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "5.3.8",
+    "version": "5.3.15",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -312,7 +312,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "7.0.2",
+    "version": "7.0.7",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -324,7 +324,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.5.3",
+    "version": "5.5.4",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
