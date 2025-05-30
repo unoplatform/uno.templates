@@ -33,7 +33,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.16"
+      "net9.0": "9.0.19"
     }
   },
   {
@@ -107,21 +107,21 @@
   },
   {
     "group": "SvgSkia",
-    "version": "2.0.0.4",
+    "version": "2.0.0.8",
     "packages": [
       "Svg.Skia"
     ]
   },
   {
     "group": "WinAppSdk",
-    "version": "1.6.250228001",
+    "version": "1.6.250430001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.1742",
+    "version": "10.0.26100.4188",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -133,17 +133,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.3"
+      "net9.0": "9.0.5"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.14",
+    "version": "8.0.16",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.3"
+      "net9.0": "9.0.5"
     }
   },
   {
