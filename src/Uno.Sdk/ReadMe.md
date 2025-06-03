@@ -383,7 +383,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3240.44",
+    "version": "1.0.3296.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
