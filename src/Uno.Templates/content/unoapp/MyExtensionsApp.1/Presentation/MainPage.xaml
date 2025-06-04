@@ -12,18 +12,31 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition />
+<!--#if (mauiEmbedding)-->
+        <RowDefinition Height="*" />
+<!--#endif-->
       </Grid.RowDefinitions>
 <!--#if (useToolkit)-->
       <utu:NavigationBar Content="{Binding Title}" />
 <!--#else-->
       <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" />
 <!--#endif-->
-
       <StackPanel Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="16">
+        <TextBox Text="{Binding Name, Mode=TwoWay}"
+            PlaceholderText="Enter your name:" />
+        <Button Content="Go to Second Page"
+            AutomationProperties.AutomationId="SecondPageButton"
+            Command="{Binding GoToSecond}" />
+<!--#if (useAuthentication)-->
+        <Button Content="Logout"
+            Command="{Binding Logout}" />
+<!--#endif-->
+      </StackPanel>
 <!--#if (mauiEmbedding)-->
+      <Grid Grid.Row="2">
 <!--#if (useNonMauiPlatforms)-->
         <maui:Grid>
           <embed:MauiHost x:Name="MauiHostElement"
@@ -40,17 +53,8 @@
                 xmlns:embed="using:Uno.Extensions.Maui"
                 Source="controls:EmbeddedControl" />
 <!--#endif-->
+      </Grid>
 <!--#endif-->
-        <TextBox Text="{Binding Name, Mode=TwoWay}"
-            PlaceholderText="Enter your name:" />
-        <Button Content="Go to Second Page"
-            AutomationProperties.AutomationId="SecondPageButton"
-            Command="{Binding GoToSecond}" />
-<!--#if (useAuthentication)-->
-        <Button Content="Logout"
-            Command="{Binding Logout}" />
-<!--#endif-->
-      </StackPanel>
     </Grid>
   </ScrollViewer>
 </Page>

@@ -8,14 +8,10 @@
       Background="{ThemeResource $themeBackgroundBrush$}">
   <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>
-      <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
-        <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
-          Text="Hello Uno Platform!"
-          HorizontalAlignment="Center" />
 <!--#if (mauiEmbedding)-->
 <!--#if (useNonMauiPlatforms)-->
+      <Grid HorizontalAlignment="Center"
+            VerticalAlignment="Center">
         <maui:Grid>
           <embed:MauiHost x:Name="MauiHostElement"
             xmlns:embed="using:Uno.Extensions.Maui"
@@ -31,8 +27,14 @@
           xmlns:embed="using:Uno.Extensions.Maui"
           Source="controls:EmbeddedControl" />
 <!--#endif-->
+      </Grid>
+<!--#else-->
+      <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Text="Hello Uno Platform!"
+        HorizontalAlignment="Center" />
 <!--#endif-->
-      </StackPanel>
     </Grid>
   </ScrollViewer>
 </Page>
