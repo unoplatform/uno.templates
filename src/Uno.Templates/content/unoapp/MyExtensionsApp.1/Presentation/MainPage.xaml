@@ -27,6 +27,7 @@
 <!--#if (useNonMauiPlatforms)-->
         <maui:Grid>
           <embed:MauiHost x:Name="MauiHostElement"
+                  MaxHeight="500"
                   xmlns:embed="using:Uno.Extensions.Maui"
                   Source="controls:EmbeddedControl" />
         </maui:Grid>
@@ -37,6 +38,7 @@
         </not_maui:Grid>
 <!--#else-->
         <embed:MauiHost x:Name="MauiHostElement"
+                MaxHeight="500"
                 xmlns:embed="using:Uno.Extensions.Maui"
                 Source="controls:EmbeddedControl" />
 <!--#endif-->
