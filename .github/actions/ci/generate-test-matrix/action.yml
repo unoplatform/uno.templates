@@ -83,7 +83,18 @@ runs:
             "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http none -nav regions -log default -server -auth msal"
             # https://github.com/unoplatform/uno.templates/issues/572
             # Disabled for resizetizer issue https://github.com/unoplatform/uno.templates/issues/1492
+<<<<<<< HEAD
             # "Issue572;!macOS;unoapp;-skip -preset `"recommended`" -id `"com.companyname.TestDuplicatedReference`" -pub `"O=TestDuplicatedReference`" -platforms `"android`" -platforms `"ios`" -platforms `"wasm`" -platforms `"desktop`" -theme-service  -vscode False -pwa False -theme `"material`" -presentation `"mvvm`" -config  -di  -log `"default`" -nav `"regions`" -http none -loc  -server False -tests `"unit`" -tests `"ui`" -toolkit  -dsp"
+=======
+            # "Issue572;!macOS;unoapp;-skip -preset recommended -id com.companyname.TestDuplicatedReference -pub O=TestDuplicatedReference -platforms android -platforms ios -platforms wasm -platforms desktop -theme-service -vscode False -pwa False -theme material -presentation mvvm -config -di -log default -nav regions -http none -loc -server False -tests unit -tests ui -toolkit -dsp"
+            # https://github.com/unoplatform/uno.templates/issues/1553
+            "RecommendedNoPresentation;;unoapp;-preset recommended -presentation none"
+            "BlankDINavNoPresentation;;unoapp;-presentation none -di -nav regions -config"
+            "RecommendedMvvm;;unoapp;-preset recommended -presentation mvvm"
+            "BlankDINavMvvm;;unoapp;-presentation mvvm -di -nav regions -config"
+            "BlankMvvmNoNav;;unoapp;-presentation mvvm"
+            "RecommendedMvvmNoNav;;unoapp;-preset recommended -presentation mvvm -nav blank"
+>>>>>>> 5175d5e (fix: template architecture)
         );
         
         $matrixGroups = @()
