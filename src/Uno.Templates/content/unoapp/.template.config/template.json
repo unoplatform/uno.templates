@@ -1772,11 +1772,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(architectureEvaluator == 'mvux')",
+            "condition": "(useMvux)",
             "value": "ShellModel"
           },
           {
-            "condition": "(architectureEvaluator == 'mvvm')",
+            "condition": "(useMvvm)",
             "value": "ShellViewModel"
           }
         ]
@@ -1790,11 +1790,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(architectureEvaluator == 'mvux')",
+            "condition": "(useMvux)",
             "value": "MainModel"
           },
           {
-            "condition": "(architectureEvaluator == 'mvvm')",
+            "condition": "(useMvvm)",
             "value": "MainViewModel"
           }
         ]
@@ -1808,11 +1808,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(architectureEvaluator == 'mvux')",
+            "condition": "(useMvux)",
             "value": "SecondModel"
           },
           {
-            "condition": "(architectureEvaluator == 'mvvm')",
+            "condition": "(useMvvm)",
             "value": "SecondViewModel"
           }
         ]
@@ -1826,11 +1826,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(architectureEvaluator == 'mvux')",
+            "condition": "(useMvux)",
             "value": "LoginModel"
           },
           {
-            "condition": "(architectureEvaluator == 'mvvm')",
+            "condition": "(useMvvm)",
             "value": "LoginViewModel"
           }
         ]
