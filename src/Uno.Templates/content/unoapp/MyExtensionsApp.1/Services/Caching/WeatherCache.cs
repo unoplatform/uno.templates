@@ -1,5 +1,6 @@
-//+:cnd:noEmit
+//-:cnd:noEmit
 using System.Net;
+//+:cnd:noEmit
 #if (useHttpKiota)
 using WeatherForecast = MyExtensionsApp._1.Client.Models.WeatherForecast;
 #elif (useHttpRefit)
