@@ -371,7 +371,7 @@
 			"Requires": {
 				"navigation": {
 					"RequiredValues": [ "blank" ],
-					"MoreInformation": "Navigation needs to be Blank"
+					"MoreInformation": "Navigation needs to be set to Blank"
 				}
 			}
 		},
