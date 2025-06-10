@@ -2311,6 +2311,12 @@
           ]
         },
         {
+          "condition": "(!useHttp)",
+          "exclude": [
+            "MyExtensionsApp.1/Services/Endpoints/DebugHandler.cs"
+          ]
+        },
+        {
           "condition": "!(useHttpKiota && useServer)",
           "exclude": [ "MyExtensionsApp.1/Specs/**", "MyExtensionsApp.1/Content/Client/WeatherServiceClient/**" ]
         },
