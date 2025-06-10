@@ -117,7 +117,7 @@ public partial class App : Application
                 // Enable localization (see appsettings.json for supported languages)
                 .UseLocalization()
 #endif
-#if(useHttpKiota || useHttpRefit)
+#if (useHttpKiota || useHttpRefit)
                 // Register Json serializers (ISerializer and ISerializer)
                 .UseSerialization((context, services) => services
                     .AddContentSerializer(context)
