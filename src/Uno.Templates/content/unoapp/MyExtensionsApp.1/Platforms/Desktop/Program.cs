@@ -1,5 +1,6 @@
 using Uno.UI.Hosting;
-using MyExtensionsApp._1;
+
+namespace MyExtensionsApp._1;
 
 internal class Program
 {

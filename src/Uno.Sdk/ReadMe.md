@@ -340,6 +340,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Extensions.Logging.WinUI",
       "Uno.Extensions.Maui.WinUI",
       "Uno.Extensions.Maui.WinUI.Markup",
+      "Uno.Extensions.Maui.WinUI.Runtime.Skia",
       "Uno.Extensions.Navigation.WinUI",
       "Uno.Extensions.Navigation.WinUI.Markup",
       "Uno.Extensions.Navigation.Toolkit.WinUI",
