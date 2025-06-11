@@ -13,6 +13,9 @@ using Microsoft.UI.Xaml.Media;
 #if (!useSkiaRenderer)
 using Com.Nostra13.Universalimageloader.Core;
 #endif
+#if (mauiEmbedding)
+using App = MyExtensionsApp._1.App;
+#endif
 //-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;
