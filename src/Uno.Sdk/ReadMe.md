@@ -325,7 +325,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "6.1.0-dev.5",
+    "version": "6.1.0-dev.11",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
