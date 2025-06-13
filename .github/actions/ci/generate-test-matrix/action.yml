@@ -72,6 +72,8 @@ runs:
             "MauiRecommended;Windows;unoapp;-skip -preset=recommended -maui",
             "MauiBlank_Linux;Linux;unoapp;-skip -preset=blank -maui -platforms android desktop wasm",
             "MauiRecommended_Linux;Linux;unoapp;-skip -preset=recommended -maui -platforms android desktop wasm",
+            "MauiBlank_macOS;macOS;unoapp;-skip -preset=blank -maui -platforms android desktop wasm ios",
+            "MauiRecommended_macOS;macOS;unoapp;-skip -preset=recommended -maui -platforms android desktop wasm ios",
             "ThemeService;;unoapp;-skip -theme-service",
             # https://github.com/unoplatform/uno.templates/issues/396
             "Issue396;!macOS;unoapp;-skip -preset blank -platforms windows -platforms android -presentation none -theme fluent -nav blank -log none -maui -markup csharp",
