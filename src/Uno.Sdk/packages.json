@@ -284,10 +284,14 @@
   {
     "group": "Extensions",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "version": "5.3.15",
 =======
     "version": "6.1.0-dev.9",
 >>>>>>> c0e185b (chore: add skia runtime package ref for maui embedding)
+=======
+    "version": "6.1.0-dev.11",
+>>>>>>> 4e5915a (chore: bump extensions version)
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
