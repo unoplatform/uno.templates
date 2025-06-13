@@ -234,11 +234,45 @@ jobs:
   test-validation:
     name: Tests Validation
     runs-on: ubuntu-latest
+    if: always()
     needs:
-    - macos-template-tests
-    - linux-template-tests
-    - windows-template-tests
+      - macos-template-tests
+      - linux-template-tests
+      - windows-template-tests
+
     steps:
-    - name: "Marker for end of build"
-      shell: pwsh
-      run: echo "Build is done"
+      - name: Check matrix job results
+        run: |
+          hasFailed=false
+
+          macos_status="${{ needs.macos-template-tests.result }}"
+          linux_status="${{ needs.linux-template-tests.result }}"
+          windows_status="${{ needs.windows-template-tests.result }}"
+
+          echo "macos-template-tests: $macos_status"
+          if [ "$macos_status" = "failure" ]; then
+            echo "::error::macos-template-tests failed (status: $macos_status)"
+            hasFailed=true
+          fi
+
+          echo "linux-template-tests: $linux_status"
+          if [ "$linux_status" = "failure" ]; then
+            echo "::error::linux-template-tests failed (status: $linux_status)"
+            hasFailed=true
+          fi
+
+          echo "windows-template-tests: $windows_status"
+          if [ "$windows_status" = "failure" ]; then
+            echo "::error::windows-template-tests failed (status: $windows_status)"
+            hasFailed=true
+          fi
+
+          if [ "$hasFailed" = "true" ]; then
+            echo "::error::One or more test jobs failed. Blocking merge."
+            exit 1
+          fi
+
+      - name: All tests passed
+        if: ${{ success() }}
+        run: echo "✅ All matrix test jobs passed."
+
