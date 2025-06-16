@@ -71,8 +71,6 @@
 		<Copy SourceFiles="@(TemplateFile)" DestinationFiles="$(TemplateContentFolder)/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/GitHub/Install-WindowsSdkISO.cips" DestinationFiles="$(TemplateContentFolder)/unoapp/AzurePipelines/Install-WindowsSdkISO.cips" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Server/WeatherForecast.cs" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1/Models/WeatherForecast.cs" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/Serialization/WeatherForecastContext.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1/Serialization/WeatherForecastContext.cs" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(MauiControlsTemplateFile)" DestinationFiles="$(TemplateContentFolder)/unomauilib/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" DestinationFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.csproj" SkipUnchangedFiles="false" />
 		<Delete Files="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" />

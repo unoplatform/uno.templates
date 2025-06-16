@@ -1,5 +1,5 @@
 //+:cnd:noEmit
-#if (useHttp)
+#if (useHttp && useServer)
 using System.Text.Json.Serialization.Metadata;
 #endif
 #if (useSerilog)
@@ -8,7 +8,7 @@ using Serilog;
 #if (useWasm)
 using Uno.Wasm.Bootstrap.Server;
 #endif
-#if (useHttp)
+#if (useHttp && useServer)
 using MyExtensionsApp._1.DataContracts.Serialization;
 #endif
 
@@ -25,7 +25,7 @@ try
     SerilogHostBuilderExtensions.UseSerilog(builder.Host);
 #endif
 
-#if (useHttp)
+#if (useHttp && useServer)
     // Configure the JsonOptions to use the generated WeatherForecastContext
     builder.Services.Configure<JsonOptions>(options =>
         options.JsonSerializerOptions.TypeInfoResolver = JsonTypeInfoResolver.Combine(
@@ -66,7 +66,9 @@ try
     app.MapFallbackToFile("index.html");
 #endif
 
+#if useServer
     app.MapWeatherApi();
+#endif
     app.UseStaticFiles();
 
     await app.RunAsync();

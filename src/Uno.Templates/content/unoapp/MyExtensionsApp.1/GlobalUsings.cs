@@ -21,15 +21,18 @@ global using MyExtensionsApp._1.Presentation;
 #if useHttp
 global using MyExtensionsApp._1.Services.Endpoints;
 #endif
-#if (useHttpRefit || useHttpKiota)
+#if useServer && (useHttpRefit || useHttpKiota)
 global using MyExtensionsApp._1.DataContracts;
 global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 #endif
-#if (useHttpKiota)
+#if useHttpKiota && useServer
 global using MyExtensionsApp._1.Client;
+#endif
+#if useHttpKiota
 global using Uno.Extensions.Http.Kiota;
 #endif
+
 #if (mauiEmbedding)
 //-:cnd:noEmit
 #if MAUI_EMBEDDING

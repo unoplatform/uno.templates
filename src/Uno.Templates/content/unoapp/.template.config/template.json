@@ -2099,13 +2099,6 @@
           ]
         },
         {
-          "condition": "(useServer)",
-          "exclude": [
-            "MyExtensionsApp.1/Models/WeatherForecast.cs",
-            "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
-          ]
-        },
-        {
           "condition": "(useDependencyInjection)",
           "exclude": [
             "MyExtensionsApp.1/App.blank.cs"
@@ -2311,16 +2304,14 @@
           ]
         },
         {
-          "condition": "(!useHttpRefit && !useHttpKiota)",
+          "condition": "!(useServer && (useHttpRefit || useHttpKiota))",
           "exclude": [
             "MyExtensionsApp.1/Services/Caching/**",
-            "MyExtensionsApp.1/Services/Endpoints/IApiClient.cs",
-            "MyExtensionsApp.1/Models/WeatherForecast.cs",
-            "MyExtensionsApp.1/Serialization/WeatherForecastContext.cs"
+            "MyExtensionsApp.1/Services/Endpoints/IApiClient.cs"
           ]
         },
         {
-          "condition": "(!useHttpKiota)",
+          "condition": "!(useHttpKiota && useServer)",
           "exclude": [ "MyExtensionsApp.1/Specs/**", "MyExtensionsApp.1/Content/Client/WeatherServiceClient/**" ]
         },
         {
