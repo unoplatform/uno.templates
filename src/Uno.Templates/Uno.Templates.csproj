@@ -62,7 +62,7 @@
 		<DownloadFile
 			DestinationFolder="$(TemplateContentFolder)/unoapp"
 			DestinationFileName=".gitignore"
-			SourceUrl="https://github.com/dotnet/sdk/blob/main/template_feed/Microsoft.DotNet.Common.ItemTemplates/content/Gitignore/.gitignore"
+			SourceUrl="https://raw.githubusercontent.com/dotnet/sdk/refs/heads/main/template_feed/Microsoft.DotNet.Common.ItemTemplates/content/Gitignore/.gitignore"
 			Condition="!Exists('$(TemplateContentFolder)/unoapp/.gitignore')" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
