@@ -41,7 +41,7 @@ runs:
             "NoServer;!macOS;unoapp;-skip -preset recommended -server false",
             "NoServerNoHttp;!macOS;unoapp;-skip -preset recommended -server false -http none",
             "NoTests;!macOS;unoapp;-skip -preset recommended -tests none",
-            "FrameNavigation;!macOS;unoapp;-skip -preset recommended --navigation blank",
+            "FrameNavigation;!macOS;unoapp;-skip -preset recommended --navigation blank",```
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
