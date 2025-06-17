@@ -93,6 +93,15 @@ runs:
             "BlankDINavMvvm;;unoapp;-presentation mvvm -di -nav regions -config"
             "BlankMvvmNoNav;;unoapp;-presentation mvvm"
             "RecommendedMvvmNoNav;;unoapp;-preset recommended -presentation mvvm -nav blank"
+            # https://github.com/unoplatform/uno.templates/issues/1549
+            "noServerNone;;unoapp;-skip -preset recommended -http none"
+            "noServerBasic;;unoapp;-skip -preset recommended -http basic"
+            "noServer;;unoapp;-skip -preset recommended"
+            "noServerRefit;;unoapp;-skip -preset recommended -http refit"
+            "serverNone;;unoapp;-skip -preset recommended -server -http none"
+            "serverBasic;;unoapp;-skip -preset recommended -server -http basic"
+            "server;;unoapp;-skip -preset recommended -server"
+            "serverRefit;;unoapp;-skip -preset recommended -server -http refit"
         );
 
         $matrixGroups = @()
