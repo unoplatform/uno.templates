@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.14.0-dev.8",
+    "version": "1.14.0-dev.28",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.1.0-dev.11",
+    "version": "6.1.0-dev.14",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
