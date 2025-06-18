@@ -26,7 +26,7 @@ global using MyExtensionsApp._1.DataContracts;
 global using MyExtensionsApp._1.DataContracts.Serialization;
 global using MyExtensionsApp._1.Services.Caching;
 #endif
-#if useHttpKiota && useServer
+#if (useHttpKiota && useServer)
 global using MyExtensionsApp._1.Client;
 #endif
 #if useHttpKiota
