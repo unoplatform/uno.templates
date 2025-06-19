@@ -32,7 +32,6 @@ global using MyExtensionsApp._1.Client;
 #if useHttpKiota
 global using Uno.Extensions.Http.Kiota;
 #endif
-
 #if (mauiEmbedding)
 //-:cnd:noEmit
 #if MAUI_EMBEDDING
