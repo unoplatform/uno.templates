@@ -96,12 +96,17 @@ runs:
             # https://github.com/unoplatform/uno.templates/issues/1549
             "noServerNone;;unoapp;-skip -preset recommended -http none"
             "noServerBasic;;unoapp;-skip -preset recommended -http basic"
-            "noServer;;unoapp;-skip -preset recommended"
+            "noServerKiota;;unoapp;-skip -preset recommended"
             "noServerRefit;;unoapp;-skip -preset recommended -http refit"
+            "serverKiota;;unoapp;-skip -preset recommended -server"
             "serverNone;;unoapp;-skip -preset recommended -server -http none"
             "serverBasic;;unoapp;-skip -preset recommended -server -http basic"
-            "server;;unoapp;-skip -preset recommended -server"
             "serverRefit;;unoapp;-skip -preset recommended -server -http refit"
+            "blankNoServer;;unoapp;-skip"
+            "blankServerNone;;unoapp;-skip -server"
+            "blankServerBasic;;unoapp;-skip -server -http basic"
+            "blankServerRefit;;unoapp;-skip -server -http refit"
+            "blankServerKiota;;unoapp;-skip -server -http kiota"
         );
 
         $matrixGroups = @()
