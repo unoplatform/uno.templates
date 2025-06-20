@@ -58,11 +58,11 @@
 
 		<RemoveDir Directories="$(TemplateContentFolder)" />
 
-		<!-- Ensure we keep the .gitignore up to date with the latest changes to the official VisualStudio.gitignore -->
+		<!-- Ensure we keep the .gitignore up to date with the latest changes to the official .gitignore provided by dotnet templates-->
 		<DownloadFile
 			DestinationFolder="$(TemplateContentFolder)/unoapp"
 			DestinationFileName=".gitignore"
-			SourceUrl="https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore"
+			SourceUrl="https://raw.githubusercontent.com/dotnet/sdk/refs/heads/main/template_feed/Microsoft.DotNet.Common.ItemTemplates/content/Gitignore/.gitignore"
 			Condition="!Exists('$(TemplateContentFolder)/unoapp/.gitignore')" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
