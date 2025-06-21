@@ -99,6 +99,10 @@
     },
     "mediaElement": {
       "longName": "media-element",
+      "shortName": "mediaelement"
+    },
+    "mediaPlayerElement": {
+      "longName": "media-player-element",
       "shortName": "media"
     },
     "skipRestore": {

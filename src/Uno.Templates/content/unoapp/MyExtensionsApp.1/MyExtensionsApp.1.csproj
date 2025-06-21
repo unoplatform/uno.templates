@@ -49,8 +49,8 @@
       <!--#if (useUnoLottie)-->
       Lottie;
       <!--#endif-->
-      <!--#if (mediaElement)-->
-      MediaElement;
+      <!--#if (useMediaPlayerElement)-->
+      MediaPlayerElement;
       <!--#endif-->
       <!--#if (unoSvg)-->
       Svg;
