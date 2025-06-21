@@ -779,7 +779,14 @@
     // },
     "mediaElement": {
       "displayName": "Media Element",
-      "description": "Configures application to bundle native assets required for the MediaElement",
+      "description": "Configures application to bundle native assets required for the MediaPlayerElement",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "mediaPlayerElement": {
+      "displayName": "Media Player Element",
+      "description": "Configures application to bundle native assets required for the MediaPlayerElement",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
@@ -936,6 +943,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(unoLottie || (useToolkit && appThemeEvaluator == 'fluent'))"
+    },
+    "useMediaPlayerElement": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(mediaElement || mediaPlayerElement)"
     },
     "themeBackgroundBrush": {
       "type": "generated",
