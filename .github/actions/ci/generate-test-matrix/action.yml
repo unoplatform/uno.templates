@@ -45,8 +45,10 @@ runs:
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
+            "unolibNative_MacOS;macOS;unolib;--renderer native"
             "mauilib_Windows;Windows;unomauilib;"
             "unolib_Windows;Windows;unolib;"
+            "unolibNative_Windows;Windows;unolib;--renderer native"
 
             # Disabling this test for now as it was specific to net7
             # https://github.com/unoplatform/uno.templates/issues/22
