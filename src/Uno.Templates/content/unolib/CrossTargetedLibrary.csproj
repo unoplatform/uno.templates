@@ -15,7 +15,7 @@
     
     <UnoFeatures>
     <!--#if (useSkiaRenderer)-->
-    SkiaRenderer;
+      SkiaRenderer;
     <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
