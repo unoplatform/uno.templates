@@ -12,9 +12,12 @@
       UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
       https://aka.platform.uno/singleproject-features
     -->
-    <!--
-    <UnoFeatures></UnoFeatures>
-    -->
+    
+    <UnoFeatures>
+    <!--#if (useSkiaRenderer)-->
+    SkiaRenderer;
+    <!--#endif-->
+    </UnoFeatures>
   </PropertyGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
