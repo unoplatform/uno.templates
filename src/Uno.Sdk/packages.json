@@ -81,7 +81,7 @@
   },
   {
     "group": "sdkextras",
-    "version": "6.1.0-dev.22",
+    "version": "6.1.0-dev.28",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.14.0-dev.87",
+    "version": "1.14.0-dev.91",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.1.0-dev.19",
+    "version": "6.1.0-dev.22",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
