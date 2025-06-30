@@ -43,33 +43,16 @@ public partial class MainViewModel : ObservableObject
 #if useConfiguration
         Title += $" - {appInfo?.Value?.Environment}";
 #endif
-        GoToSecond = new AsyncRelayCommand(GoToSecondView);
-#if mauiEmbedding
-        Counter = new RelayCommand(OnCount);
-#endif
-#if useAuthentication
-        Logout = new AsyncRelayCommand(DoLogout);
-#endif
     }
     public string? Title { get; }
-
-    public ICommand GoToSecond { get; }
-#if mauiEmbedding
-
-    public ICommand Counter { get; }
-#endif
-
-#if useAuthentication
-    public ICommand Logout { get; }
-
-#endif
+    [RelayCommand]
     private async Task GoToSecondView()
     {
         await _navigator.NavigateViewModelAsync<SecondViewModel>(this, data: new Entity(Name!));
     }
 
 #if mauiEmbedding
-
+    [RelayCommand]
     private void OnCount()
     {
         CounterText = ++count switch
@@ -80,6 +63,7 @@ public partial class MainViewModel : ObservableObject
     }
 #endif
 #if useAuthentication
+    [RelayCommand]
     public async Task DoLogout(CancellationToken token)
     {
         await _authentication.LogoutAsync(token);
