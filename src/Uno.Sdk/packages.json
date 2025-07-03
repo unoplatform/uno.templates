@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.1.0-dev.701",
+    "version": "6.1.6",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,28 +74,28 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.9.0-dev.13",
+    "version": "1.9.1",
     "packages": [
       "Uno.Resizetizer"
     ]
   },
   {
     "group": "sdkextras",
-    "version": "6.1.0-dev.28",
+    "version": "6.1.1",
     "packages": [
       "Uno.Sdk.Extras"
     ]
   },
   {
     "group": "settings",
-    "version": "1.4.0-dev.24",
+    "version": "1.4.3",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.14.0-dev.115",
+    "version": "1.14.7",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.1.0-dev.22",
+    "version": "6.1.1",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -325,7 +325,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.6.0-dev.6",
+    "version": "5.6.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
