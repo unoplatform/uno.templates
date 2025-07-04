@@ -74,7 +74,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.10.0-dev.5",
+    "version": "1.10.0-dev.8",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.15.0-dev.12",
+    "version": "1.15.0-dev.14",
     "packages": [
       "Uno.UI.HotDesign"
     ]
