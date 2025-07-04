@@ -14,7 +14,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.9.1 |
+| UnoResizetizerVersion | 1.9.4 |
 | SkiaSharpVersion | 3.119.0 |
 | SvgSkiaVersion | 3.0.3 |
 | WinAppSdkVersion | 1.7.250606001 |
@@ -116,7 +116,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.9.1",
+    "version": "1.9.4",
     "packages": [
       "Uno.Resizetizer"
     ]
