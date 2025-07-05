@@ -130,7 +130,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.3.12",
+    "version": "1.3.16",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -384,7 +384,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3296.44",
+    "version": "1.0.3351.48",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
