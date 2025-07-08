@@ -4,9 +4,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.1.11 |
+| UnoVersion* | 6.1.14 |
 | UnoExtensionsVersion | 6.1.1 |
-| UnoToolkitVersion | 8.0.1 |
+| UnoToolkitVersion | 8.0.2 |
 | UnoThemesVersion | 5.6.1 |
 | UnoCSharpMarkupVersion | 6.0.15 |
 | UnoWasmBootstrapVersion** | 8.0.23 |
@@ -20,7 +20,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4188 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.17 |
+| WindowsCompatibilityVersion** | 8.0.18 |
 | MicrosoftIdentityClientVersion | 4.73.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.1.11",
+    "version": "6.1.14",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.14.26",
+    "version": "1.14.36",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -183,17 +183,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.6"
+      "net9.0": "9.0.7"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.17",
+    "version": "8.0.18",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.6"
+      "net9.0": "9.0.7"
     }
   },
   {
@@ -355,7 +355,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "8.0.1",
+    "version": "8.0.2",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
