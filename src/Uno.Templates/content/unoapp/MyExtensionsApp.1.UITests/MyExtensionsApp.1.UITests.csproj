@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--#if (assertionLibrary == "FluentAssertions")-->
     <PackageReference Include="FluentAssertions" />
+    <!--#elif (assertionLibrary == "Shouldly")-->
+    <PackageReference Include="Shouldly" />
+    <!--#endif-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="NUnit" />

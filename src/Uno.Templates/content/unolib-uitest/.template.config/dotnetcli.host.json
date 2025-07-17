@@ -7,6 +7,10 @@
     },
     "unoUITestHelpersVersion": {
       "isHidden": true
+    },
+    "assertionLibrary": {
+      "longName": "assertionLibrary",
+      "shortName": "assertion"
     }
   }
 }

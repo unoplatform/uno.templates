@@ -49,6 +49,31 @@
           "description": "Target .NET 9.0 (Standard Term Support)"
         }
       ]
+    },
+    "assertionLibrary": {
+      "displayName": "Assertion Library",
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "none",
+      "replaces": "$assertionLibrary$",
+      "description": "Choose the assertion library for tests",
+      "choices": [
+        {
+          "choice": "none",
+          "displayName": "No Assertion Library",
+          "description": "Do not use any specific assertion library"
+        },
+        {
+          "choice": "Shouldly",
+          "displayName": "Shouldly",
+          "description": "Use Shouldly for assertions in tests"
+        },
+        {
+          "choice": "FluentAssertions",
+          "displayName": "Fluent Assertions",
+          "description": "Use Fluent Assertions for assertions in tests"
+        }
+      ]
     }
   },
   "primaryOutputs": [
