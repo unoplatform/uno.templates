@@ -1,12 +1,4 @@
 ﻿//-:cnd:noEmit
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using Uno.UITest.Helpers.Queries;
-using Query = System.Func<Uno.UITest.IAppQuery, Uno.UITest.IAppQuery>;
 
 namespace UnoUITestsLibrary;
 
