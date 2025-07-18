@@ -55,13 +55,15 @@
       "type": "parameter",
       "datatype": "choice",
       "defaultValue": "none",
-      "replaces": "$assertionLibrary$",
+      "enableQuotelessLiterals": true,
+      "allowMultipleValues": false,
+      "isEnabled": "tests != none",
       "description": "Choose the assertion library for tests",
       "choices": [
         {
           "choice": "none",
           "displayName": "No Assertion Library",
-          "description": "Do not use any specific assertion library"
+          "description": "Do not use any specific assertion library and only use the built-in assertions provided by the test framework"
         },
         {
           "choice": "Shouldly",
@@ -74,6 +76,14 @@
           "description": "Use Fluent Assertions for assertions in tests"
         }
       ]
+    },
+    "useFluentAssertions": {
+      "type": "computed",
+      "value": "(assertionLibrary == FluentAssertions)"
+    },
+    "useShouldly": {
+      "type": "computed",
+      "value": "(assertionLibrary == Shouldly)"
     }
   },
   "primaryOutputs": [

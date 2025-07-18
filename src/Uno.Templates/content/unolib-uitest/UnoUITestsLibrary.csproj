@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--#if (assertionLibrary == "FluentAssertions")-->
+    <!--#if (useFluentAssertions)-->
     <PackageReference Include="FluentAssertions" VersionOverride="$FluentAssertions$" />
-    <!--#elif (assertionLibrary == "Shouldly")-->
+    <!--#endif-->
+    <!--#if (useShouldly)-->
     <PackageReference Include="Shouldly" VersionOverride="$ShouldlyVersion$" />
     <!--#endif-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="$MicrosoftTestSdk$" />

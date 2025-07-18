@@ -1,4 +1,5 @@
-﻿namespace UnoUITestsLibrary;
+﻿//-:cnd:noEmit
+namespace UnoUITestsLibrary;
 
 public class Constants
 {
