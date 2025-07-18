@@ -674,10 +674,35 @@
 						"RequiredValues": [ "!none" ],
 						"MoreInformation": "Test selection is required to use Shouldly Assertion library"
 					}
+				}
 			}
-		}
 		},
 		"tests.ui.assertion.fluentAssertions": {
+			// "Icon": "/Assets/Test.UiTest.FluentAssertions.svg" TODO: Add icon
+			"Sequence": 2,
+			"Requires": {
+				"tests": {
+					"RequiredValues": [ "!none" ],
+					"MoreInformation": "Test selection is required to use Fluent Assertions library"
+				}
+			}
+		},
+		"tests.unit.assertion": {
+			"NoValue": "none"
+		},
+		"tests.unit.assertion.shouldly": {
+			// "Icon": "/Assets/Test.UiTest.Shouldly.svg" TODO: Add icon
+			"Sequence": 1,
+			"Tag":{
+				"Requires": {
+					"tests": {
+						"RequiredValues": [ "!none" ],
+						"MoreInformation": "Test selection is required to use Shouldly Assertion library"
+					}
+				}
+			}
+		},
+		"tests.unit.assertion.fluentAssertions": {
 			// "Icon": "/Assets/Test.UiTest.FluentAssertions.svg" TODO: Add icon
 			"Sequence": 2,
 			"Requires": {
