@@ -17,10 +17,11 @@ public class AppInfoTests
         appInfo.Environment.Should().Be("Test");
 #endif
 #if(useShouldly)
-            appInfo.ShouldNotBeNull();
-            appInfo.Environment.ShouldBe("Test");
-#else
-        Assert.That(appInfo,Is.Not.Null);
+        appInfo.ShouldNotBeNull();
+        appInfo.Environment.ShouldBe("Test");
+#endif
+#if(!useShouldly && !useFluentAssertions)
+        Assert.That(appInfo, Is.Not.Null);
         Assert.That(appInfo.Environment, Is.EqualTo("Test"));
 #endif
     }
