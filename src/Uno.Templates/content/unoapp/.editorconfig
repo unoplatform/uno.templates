@@ -23,7 +23,7 @@ charset = utf-8
 indent_size = 2
 indent_style = space
 
-[.{vsconfig,csproj,proj,projitems,sh,shproj,props,targets,json,slnf,css,webmanifest,manifest,plist}]
+[*.{vsconfig,csproj,proj,projitems,sh,shproj,props,targets,json,slnf,css,webmanifest,manifest,plist}]
 end_of_line = lf
 
 [*.xaml]
