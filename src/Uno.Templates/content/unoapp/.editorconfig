@@ -23,7 +23,7 @@ charset = utf-8
 indent_size = 2
 indent_style = space
 
-[.{vsconfig,csproj,proj,projitems,sh,shproj,props,targets,xml,json,slnf,css,webmanifest,manifest,plist}]
+[.{vsconfig,csproj,proj,projitems,sh,shproj,props,targets,json,slnf,css,webmanifest,manifest,plist}]
 end_of_line = lf
 
 [*.xaml]
@@ -36,6 +36,10 @@ indent_style = tab
 [web.config]
 indent_size = 4
 end_of_line = lf
+
+[*.{xml,xaml,json}]
+# EOL should be normalized by Git. Setting to lf seems to mess up on Windows Hosts sometimes. See https://github.com/unoplatform/uno.templates/issues/1501
+end_of_line = unset
 
 [*.cs]
 # EOL should be normalized by Git. See https://github.com/dotnet/format/issues/1099
