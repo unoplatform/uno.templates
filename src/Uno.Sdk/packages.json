@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.2.0-dev.76",
+    "version": "6.2.0-dev.113",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -88,14 +88,14 @@
   },
   {
     "group": "settings",
-    "version": "1.5.0-dev.30",
+    "version": "1.6.0-dev.2",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.15.0-dev.102",
+    "version": "1.15.0-dev.152",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -115,7 +115,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "packages": [
       "Svg.Skia"
     ]
@@ -129,7 +129,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4188",
+    "version": "10.0.26100.4654",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -156,7 +156,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.74.0",
+    "version": "4.74.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -275,7 +275,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.1.0-dev.2",
+    "version": "6.1.15",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.2.0-dev.6",
+    "version": "6.2.0-dev.18",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -313,7 +313,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.1.0-dev.5",
+    "version": "8.1.0-dev.7",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
