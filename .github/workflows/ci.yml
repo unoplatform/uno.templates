@@ -73,7 +73,7 @@ jobs:
     - name: "Sign Packages"
       uses: ./.github/actions/ci/sign-package
       with:
-        sign-client-id:: ${{ secrets.SIGN_AZURE_CLIENT_ID }}
+        sign-client-id: ${{ secrets.SIGN_AZURE_CLIENT_ID }}
         sign-tenant-id: ${{ secrets.SIGN_AZURE_TENANT_ID }}
         sign-azure-subscription-id: ${{ secrets.SIGN_AZURE_SUBSCRIPTION_ID }}
         sign-key-vault-url: ${{ secrets.SIGN_KEY_VAULT_URL }}
