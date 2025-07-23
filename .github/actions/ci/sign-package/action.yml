@@ -1,14 +1,6 @@
 name: "Sign Packages"
 description: "Sign Packages"
 
-inputs:
-  sign-username:
-    description: "The username to use for signing"
-    required: true
-  sign-password:
-    description: "The password to use for signing"
-    required: true
-
 runs:
   using: "composite"
   steps:
@@ -28,13 +20,30 @@ runs:
 
   - name: Setup SignClient
     shell: pwsh
-    run: |
-      dotnet tool install --tool-path build SignClient
+    run: dotnet tool install --tool-path . sign --version 0.9.1-beta.25278.1
 
-  - name: SignClient
+  # Login to Azure using a ServicePrincipal configured to authenticate against a GitHub Action
+  - name: 'Az CLI login'
+    uses: azure/login@v1
+    with:
+      allow-no-subscriptions: true
+      client-id: ${{ secrets.SIGN_AZURE_CLIENT_ID }}
+      tenant-id: ${{ secrets.SIGN_AZURE_TENANT_ID }}
+      subscription-id: ${{ secrets.SIGN_AZURE_SUBSCRIPTION_ID }}
+
+  # Run the signing command
+  - name: Sign artifacts
     shell: pwsh
-    run: |
-      build\SignClient sign -i artifacts\NuGet\*.nupkg -c build\SignClient.json -r "${{ inputs.sign-username }}" -s "${{ inputs.sign-password }}" -n "Uno.Templates" -d "Uno.Templates" -u "https://github.com/unoplatform/uno.templates"
+    run: >
+      ./sign code azure-key-vault
+      artifacts\NuGet\*.nupkg
+      --publisher-name "Uno.Templates"
+      --description "Uno.Templates"
+      --description-url "https://github.com/${{ env.GITHUB_REPOSITORY }}"
+      --azure-key-vault-managed-identity true
+      --azure-key-vault-url "${{ secrets.SIGN_KEY_VAULT_URL }}"
+      --azure-key-vault-certificate "${{ secrets.SIGN_KEY_VAULT_CERTIFICATE_ID }}"
+      --verbosity information
 
   - name: Upload Signed Artifacts
     uses: actions/upload-artifact@v4
