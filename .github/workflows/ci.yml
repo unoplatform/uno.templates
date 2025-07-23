@@ -60,15 +60,17 @@ jobs:
     name: Sign Package
     if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
     runs-on: windows-latest
+
+    environment: PackageSign
+    permissions:
+      id-token: write # Required for requesting the JWT
+
     needs: build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: "Sign Packages"
       uses: ./.github/actions/ci/sign-package
-      with:
-        sign-username: ${{ secrets.UNO_PLATFORM_CODESIGN_USERNAME }}
-        sign-password: ${{ secrets.UNO_PLATFORM_CODESIGN_SECRET }}
 
   # Publish dev packages to uno feed and nuget.org
   publish_dev:
