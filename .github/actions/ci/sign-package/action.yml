@@ -9,7 +9,7 @@ inputs:
     description: "The tenant id to use for signing"
     required: true
   sign-azure-subscription-id:
-    description: "The azure subscriptioid to use for signing"
+    description: "The azure subscription to use for signing"
     required: true
   sign-key-vault-url:
     description: "The key vault url to use for signing"
