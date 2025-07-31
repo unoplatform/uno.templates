@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.2.0-dev.169",
+    "version": "6.2.0-dev.171",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.6.0-dev.3",
+    "version": "1.6.0-dev.4",
     "packages": [
       "Uno.Settings.DevServer"
     ]
