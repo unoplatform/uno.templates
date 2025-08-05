@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.2.0-dev.180 |
-| UnoExtensionsVersion | 6.2.0-dev.19 |
+| UnoVersion* | 6.2.0-dev.192 |
+| UnoExtensionsVersion | 6.2.0-dev.20 |
 | UnoToolkitVersion | 8.1.0-dev.7 |
 | UnoThemesVersion | 5.7.0-dev.4 |
 | UnoCSharpMarkupVersion | 6.2.0-dev.6 |
@@ -20,7 +20,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4654 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.18 |
+| WindowsCompatibilityVersion** | 8.0.19 |
 | MicrosoftIdentityClientVersion | 4.74.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.2.0-dev.180",
+    "version": "6.2.0-dev.192",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.3",
+    "version": "1.16.0-dev.4",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -183,17 +183,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.18",
+    "version": "8.0.19",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -325,7 +325,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "6.2.0-dev.19",
+    "version": "6.2.0-dev.20",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",

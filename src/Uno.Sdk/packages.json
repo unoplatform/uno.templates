@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.2.0-dev.180",
+    "version": "6.2.0-dev.192",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.3",
+    "version": "1.16.0-dev.4",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -141,17 +141,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.18",
+    "version": "8.0.19",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
@@ -283,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.2.0-dev.19",
+    "version": "6.2.0-dev.20",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
