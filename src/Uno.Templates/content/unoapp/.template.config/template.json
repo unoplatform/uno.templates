@@ -27,7 +27,7 @@
   "sourceName": "MyExtensionsApp.1",
   "defaultName": "UnoApp",
   "placeholderFilename": "template-ignore",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "guids": [
     "C7433AE2-B1A0-4C1A-887E-5CAA7AAF67A6", // Solution file (SolutionGuid)
     "FAA2C1DE-F859-4053-9573-6245F7E832EF", // src solution folder
