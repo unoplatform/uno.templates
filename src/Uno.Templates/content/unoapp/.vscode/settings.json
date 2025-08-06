@@ -1,6 +1,7 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
+  "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "explorer.fileNesting.patterns": {
     "*.xaml": "$(capture).xaml.cs"
   },
