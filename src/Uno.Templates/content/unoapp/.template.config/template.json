@@ -1998,6 +1998,11 @@
       "type": "computed",
       "value": "(osLower == 'windows' || osLower == 'windows_nt')",
       "datatype": "bool"
+    },
+    "unoRemoteControlPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "$RemoteControlPort$"
     }
   },
   "primaryOutputs": [
