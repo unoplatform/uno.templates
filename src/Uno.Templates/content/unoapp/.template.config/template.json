@@ -2041,6 +2041,11 @@
     {
       "modifiers": [
         {
+          "include": [
+            "MyExtensionsApp.1/MyExtensionsApp.1.csproj.user"
+          ]
+        },
+        {
           "copyOnly": [
             "**/*.png",
             "**/*.jpg",
