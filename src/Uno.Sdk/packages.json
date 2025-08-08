@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.5.3",
+    "version": "1.5.13",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -115,7 +115,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.4",
+    "version": "3.0.5",
     "packages": [
       "Svg.Skia"
     ]
@@ -141,17 +141,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.18",
+    "version": "8.0.19",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.8"
     }
   },
   {
