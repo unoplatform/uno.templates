@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.2",
+    "version": "6.3.0-dev.48",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -17,6 +17,7 @@
       "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
+      "Uno.WinUI.Svg",
       "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.Skia.Android",
       "Uno.WinUI.Runtime.Skia.AppleUIKit",
@@ -94,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.26",
+    "version": "1.16.0-dev.32",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -282,7 +283,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.2.0-dev.22",
+    "version": "6.3.0-dev.3",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -324,7 +325,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.8.0-dev.1",
+    "version": "5.8.0-dev.2",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -341,7 +342,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3351.48",
+    "version": "1.0.3405.78",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
