@@ -1998,6 +1998,11 @@
       "type": "computed",
       "value": "(osLower == 'windows' || osLower == 'windows_nt')",
       "datatype": "bool"
+    },
+    "unoRemoteControlPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "$RemoteControlPort$"
     }
   },
   "primaryOutputs": [
@@ -2035,6 +2040,11 @@
   "sources": [
     {
       "modifiers": [
+        {
+          "include": [
+            "MyExtensionsApp.1/MyExtensionsApp.1.csproj.user"
+          ]
+        },
         {
           "copyOnly": [
             "**/*.png",
