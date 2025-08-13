@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.6.0-dev.13",
+    "version": "1.6.0-dev.14",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -313,7 +313,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.2.0-dev.2",
+    "version": "8.2.0-dev.4",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
