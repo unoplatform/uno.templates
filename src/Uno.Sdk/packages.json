@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.55",
+    "version": "6.3.0-dev.61",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.11.0-dev.5",
+    "version": "1.11.0-dev.6",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -88,14 +88,14 @@
   },
   {
     "group": "settings",
-    "version": "1.6.0-dev.14",
+    "version": "1.6.0-dev.15",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.39",
+    "version": "1.16.0-dev.53",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -270,7 +270,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.90"
+      "net9.0": "9.0.100"
     }
   },
   {
