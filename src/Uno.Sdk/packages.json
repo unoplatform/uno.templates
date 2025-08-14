@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.53",
+    "version": "1.16.0-dev.54",
     "packages": [
       "Uno.UI.HotDesign"
     ]
