@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.2.43",
+    "version": "6.2.58",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.15.45",
+    "version": "1.15.50",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -274,7 +274,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.2.7",
+    "version": "6.2.10",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -312,7 +312,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.1.2",
+    "version": "8.1.4",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
