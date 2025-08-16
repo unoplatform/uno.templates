@@ -307,6 +307,39 @@
         }
       ]
     },
+    "assertionLibrary": {
+      "displayName": "Assertion Library",
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "none",
+      "allowMultipleValues": false,
+      "description": "Choose the assertion library for tests",
+      "enableQuotelessLiterals": true,
+      "isEnabled": "tests != none",
+      "onlyIf": [
+        {
+          "symbol": "tests",
+          "value":"unit|ui"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "none",
+          "displayName": "No Assertion Library",
+          "description": "Do not use any specific assertion library and only use the built-in assertions provided by the test framework"
+        },
+        {
+          "choice": "Shouldly",
+          "displayName": "Shouldly",
+          "description": "Use Shouldly for assertions in tests"
+        },
+        {
+          "choice": "FluentAssertions",
+          "displayName": "Fluent Assertions",
+          "description": "Use Fluent Assertions for assertions in tests"
+        }
+      ]
+    },
     "AllowPrereleaseNetSdk": {
       "type": "generated",
       "generator": "switch",
@@ -1189,6 +1222,14 @@
         "source": "testsEvaluator",
         "pattern": ".*ui.*"
       }
+    },
+    "useFluentAssertions": {
+      "type": "computed",
+      "value": "(assertionLibrary == FluentAssertions)"
+    },
+    "useShouldly": {
+      "type": "computed",
+      "value": "(assertionLibrary == Shouldly)"
     },
     "useServer": {
       "type": "computed",
