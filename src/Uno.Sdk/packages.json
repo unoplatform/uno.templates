@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.15.50",
+    "version": "1.15.58",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -128,7 +128,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4654",
+    "version": "10.0.26100.4948",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
