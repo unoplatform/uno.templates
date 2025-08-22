@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.128",
+    "version": "6.3.0-dev.129",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.103",
+    "version": "1.16.0-dev.106",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -115,7 +115,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.5",
+    "version": "3.0.6",
     "packages": [
       "Svg.Skia"
     ]
