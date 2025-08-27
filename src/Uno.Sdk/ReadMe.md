@@ -75,14 +75,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WasmBootstrap",
-    "version": "8.0.23",
+    "version": "9.0.20",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.20"
+      "net10.0": "10.0.0-dev.24"
     }
   },
   {
@@ -178,22 +178,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "8.0.1",
+    "version": "9.0.8",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net10.0": "9.0.8"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.19",
+    "version": "9.0.4",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net10.0": "9.0.4"
     }
   },
   {
@@ -305,14 +305,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "8.0.100",
+    "version": "9.0.60",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net9.0": "9.0.100"
+      "net10.0": "9.0.60"
     }
   },
   {
