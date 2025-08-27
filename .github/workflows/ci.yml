@@ -24,7 +24,7 @@ env:
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet9: '1.32.0-dev.52'
   ValidationUnoCheckVersionNet10: '1.32.0-dev.52'
-  ValidationDotNetVersion: '8.0.407'
+  ValidationDotNetVersion: '9.0.304'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
   # compatible version of the bootstrapper
