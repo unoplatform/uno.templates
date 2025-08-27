@@ -223,8 +223,8 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool d
     var props = new Dictionary<string, string>
     {
         { "UnoVersion", GetManifestGroupVersion(manifest, "Core") },
-        { "UnoWasmBootstrapVersionNet8", GetManifestGroupVersion(manifest, "WasmBootstrap") },
-        { "UnoWasmBootstrapVersionNet9", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
+        { "UnoWasmBootstrapVersionNet9", GetManifestGroupVersion(manifest, "WasmBootstrap") },
+        { "UnoWasmBootstrapVersionNet10", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
         { "UnoExtensionsLoggingVersion", GetManifestGroupVersion(manifest, "OSLogging") },
         { "UnoCoreLoggingVersion", GetManifestGroupVersion(manifest, "CoreLogging") },
         { "UnoDspTasksVersion", GetManifestGroupVersion(manifest, "Dsp") },

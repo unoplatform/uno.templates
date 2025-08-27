@@ -826,6 +826,10 @@
           {
             "condition": "(tfm == 'net9.0')",
             "value": "DefaultUnoWasmBootstrapVersionNet9"
+          },
+          {
+            "condition": "(tfm == 'net10.0')",
+            "value": "DefaultUnoWasmBootstrapVersionNet10"
           }
         ]
       }
@@ -1423,6 +1427,10 @@
           {
             "condition": "(tfm == 'net9.0')",
             "value": "9.0.x"
+          },
+          {
+            "condition": "(tfm == 'net10.0')",
+            "value": "10.0.x"
           }
         ]
       }
@@ -2232,6 +2240,10 @@
           {
             "condition": "(tfm == 'net9.0')",
             "value": "9.0.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0')",
+            "value": "10.0.0-preview.7.25380.108"
           }
         ]
       }
@@ -2247,6 +2259,10 @@
           {
             "condition": "(tfm == 'net9.0')",
             "value": "9.0.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0')",
+            "value": "10.0.0-preview.7.25380.108"
           }
         ]
       }
