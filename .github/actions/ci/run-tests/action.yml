@@ -68,12 +68,18 @@ runs:
         $templateArgs = '${{ inputs.arguments }}'
         echo "TemplateArgs = '$templateArgs'"
         $dotnetVersion = $env:TargetDotNetVersion
-        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
 
         if ($templateArgs -match 'net9.0')
         {
             $dotnetVersion = '9.0.300'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+        }
+
+        if ($templateArgs -match 'net9.0')
+        {
+            $dotnetVersion = '9.0.300'
+            $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
@@ -83,7 +89,7 @@ runs:
         echo "ValidationUnoCheckVersion=$ValidationUnoCheckVersion" >> $env:GITHUB_ENV
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
-      ValidationUnoCheckVersionNet8: ${{ env.ValidationUnoCheckVersionNet8 }}
+      ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
       ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
 
   - name: Cache EMSDK

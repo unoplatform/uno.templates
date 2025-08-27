@@ -224,7 +224,7 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool d
     {
         { "UnoVersion", GetManifestGroupVersion(manifest, "Core") },
         { "UnoWasmBootstrapVersionNet8", GetManifestGroupVersion(manifest, "WasmBootstrap") },
-        { "UnoWasmBootstrapVersionNet9", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net9.0") },
+        { "UnoWasmBootstrapVersionNet9", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
         { "UnoExtensionsLoggingVersion", GetManifestGroupVersion(manifest, "OSLogging") },
         { "UnoCoreLoggingVersion", GetManifestGroupVersion(manifest, "CoreLogging") },
         { "UnoDspTasksVersion", GetManifestGroupVersion(manifest, "Dsp") },
