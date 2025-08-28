@@ -666,7 +666,7 @@
 			"Icon": "/Assets/Framework.NET8.svg"
 		},
 		"tfm.net9.0": {
-			"Sequence": 2,
+			"Sequence": 1,
 			"Icon": "/Assets/Framework.NET9.svg"
 		},
 		"tfm.net10.0": {
