@@ -143,7 +143,7 @@ runs:
       sudo rm -fR /usr/lib/jvm
       sudo apt-get install apt-transport-https 
       sudo apt-get update 
-      sudo apt-get install -y msopenjdk-11
+      sudo apt-get install -y msopenjdk-17
 
   - name: 'Uno Check (Linux)'
     if: runner.os == 'linux'
