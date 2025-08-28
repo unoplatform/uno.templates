@@ -68,7 +68,7 @@ runs:
         $templateArgs = '${{ inputs.arguments }}'
         echo "TemplateArgs = '$templateArgs'"
         $dotnetVersion = $env:TargetDotNetVersion
-        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
+        $ValidationUnoCheckVersion = "invalid"
 
         if ($templateArgs -match 'net9.0')
         {
