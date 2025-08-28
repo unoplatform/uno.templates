@@ -175,7 +175,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
+        xCodeRoot: '/Applications/Xcode_16.4.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -205,7 +205,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
+        xCodeRoot: '/Applications/Xcode_16.4.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -235,7 +235,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
+        xCodeRoot: '/Applications/Xcode_16.4.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
