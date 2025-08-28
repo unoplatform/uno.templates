@@ -249,7 +249,7 @@
   },
   {
     "group": "AndroidXBrowser",
-    "version": "1.8.0.8",
+    "version": "1.8.0.10",
     "packages": [
       "Xamarin.AndroidX.Browser"
     ],
@@ -259,7 +259,7 @@
   },
   {
     "group": "AndroidXSwipeRefreshLayout",
-    "version": "1.1.0.24",
+    "version": "1.1.0.28",
     "packages": [
       "Xamarin.AndroidX.SwipeRefreshLayout"
     ],
@@ -279,7 +279,7 @@
   },
   {
     "group": "AndroidXCollection",
-    "version": "1.4.5.2",
+    "version": "1.5.0.2",
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
