@@ -279,22 +279,28 @@ static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifes
         return group.VersionOverride[overrideKey];
     }
 
-    throw new InvalidOperationException($"No Version Overrides were fround for {groupId} or the key {overrideKey}.");
+throw new InvalidOperationException($"No Version Overrides were found for {groupId} or the key {overrideKey}.");
 }
 
 static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion unoVersion, NuGetApiClient client)
 {
+    if (ExcludeConfig.Excluded.Contains(group.Group))
+    {
+        Console.WriteLine($"Skipping '{group.Group}' due to exclusion list.");
+        return group;
+    }
+
     if (group.Group == "Core")
     {
         Console.WriteLine($"Setting Core group to: {unoVersion.OriginalVersion}");
         return group with { Version = unoVersion };
     }
     // Skip AndroidX packages to avoid Java misalignment
-    else if (group.Packages.Any(x => x.StartsWith("Xamarin")) 
+    else if (group.Packages.Any(x => x.StartsWith("Xamarin"))
         // Skip Maui on Release branch to avoid AndroidX package misalignment
         || (!unoVersion.IsPreview && group.Group == "Maui"))
     {
-        Console.WriteLine("Skipping " + group.Group + " to avoid Java misalignment.");
+        Console.WriteLine($"Skipping '{group.Group}' to avoid Java misalignment.");
         return group;
     }
 
@@ -386,5 +392,56 @@ internal record MsBuildItem(string Include, IDictionary<string, string> Attribut
         var attributeList = Attributes.Select(x => $"{x.Key}=\"{x.Value}\"");
         var attributes = string.Join(" ", attributeList);
         return $"<{ItemType} Include=\"{Include}\" {attributes} />";
+    }
+}
+
+static class ExcludeConfig
+{
+    private static readonly Lazy<HashSet<string>> _excluded = new(() => Load());
+    public static HashSet<string> Excluded => _excluded.Value;
+
+    private static HashSet<string> Load()
+    {
+        var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        var path = Environment.GetEnvironmentVariable("UNO_SDK_EXCLUDE_FILE");
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            // Nothing passed -> no exclusions
+            return set;
+        }
+
+        if (!File.Exists(path))
+        {
+            Console.WriteLine($"Exclude file not found: {path}");
+            return set;
+        }
+
+        try
+        {
+            using var fs = File.OpenRead(path);
+            using var doc = System.Text.Json.JsonDocument.Parse(fs);
+            if (doc.RootElement.TryGetProperty("exclude", out var arr) &&
+                arr.ValueKind == System.Text.Json.JsonValueKind.Array)
+            {
+                foreach (var el in arr.EnumerateArray())
+                {
+                    if (el.ValueKind == System.Text.Json.JsonValueKind.String)
+                    {
+                        var s = el.GetString();
+                        if (!string.IsNullOrWhiteSpace(s))
+                            set.Add(s!);
+                    }
+                }
+            }
+
+            Console.WriteLine($"Loaded {set.Count} exclusion(s) from {path}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to read exclude file: {ex.Message}");
+        }
+
+        return set;
     }
 }
