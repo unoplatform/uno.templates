@@ -340,12 +340,10 @@
         "datatype": "string",
         "cases": [
           {
-            // This could become 35 when net9.0 launches
             "condition": "(tfm == 'net9.0')",
             "value": "Component.Android.SDK34"
           },
           {
-            // This could become 35 when net9.0 launches
             "condition": "(tfm == 'net10.0')",
             "value": "Component.Android.SDK35"
           }
