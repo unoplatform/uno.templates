@@ -272,17 +272,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: win2022-probes
-        path: |
-          psver.txt
-          systeminfo.txt
-          vswhere.txt
-          dotnet-info.txt
-          choco.txt
-          choco-installed.txt
-          java.txt
-          msbuild.txt
-          android-sdks.txt
-          drives.txt
+          path: |
+            psver.txt
+            systeminfo.txt
+            vswhere.txt
+            dotnet-info.txt
+            choco.txt
+            choco-installed.txt
+            java.txt
+            msbuild.txt
+            android-sdks.txt
+            drives.txt
 
   # --- Matrixed tests (Linux/macOS unchanged, Windows A/B) ---------------------
 
