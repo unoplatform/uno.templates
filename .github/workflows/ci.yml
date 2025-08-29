@@ -259,7 +259,14 @@ jobs:
           choco --version | Out-File choco.txt; choco list -lo -r | Select-Object -First 100 | Out-File choco-installed.txt
           java -version 2>&1 | Out-File java.txt
           cmd /c "where msbuild" | Out-File msbuild.txt
-          sdkmanager --list | Out-File android-sdks.txt
+          # Android SDK check (don’t assume PATH; probe canonical location)
+          $sdkman = "C:\Program Files (x86)\Android\android-sdk\cmdline-tools\latest\bin\sdkmanager.bat"
+          if (Test-Path $sdkman) {
+            & $sdkman --list | Out-File android-sdks.txt
+          } else {
+            "sdkmanager not found at $sdkman" | Out-File android-sdks.txt
+          }
+          # D:\ presence (expected on WS2022; removed on WS2025)
           if (Test-Path D:\) { 'D:\ exists' | Out-File drives.txt } else { 'D:\ not present' | Out-File drives.txt }
       - name: Upload Windows 2022 probe artifacts
         uses: actions/upload-artifact@v4
@@ -444,6 +451,86 @@ jobs:
         with:
           name: windows-logs-diff
           path: diff.txt
+
+  # Summarize results + key diffs into a single text artifact and job summary
+  summarize-migration-check:
+    name: WS2025 Migration Summary
+    runs-on: ubuntu-latest
+    needs:
+      - linux-template-tests
+      - macos-template-tests
+      - windows-template-tests-2022
+      - windows-template-tests-2025
+      - linux-probes
+      - macos-probes
+      - windows-2022-probes
+      - windows-2025-probes
+      - compare-windows-results
+    steps:
+      - name: Download probe artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "*-probes"
+          path: probes
+
+      - name: Build summary
+        run: |
+          set -euo pipefail
+          outfile="summary.txt"
+
+          echo "GitHub Actions Runner Image Migration – Validation Summary"            >  "$outfile"
+          echo "================================================================"   >> "$outfile"
+          echo ""                                                                   >> "$outfile"
+          echo "Job statuses:"                                                      >> "$outfile"
+          echo "  Linux tests         : ${{ needs.linux-template-tests.result }}"   >> "$outfile"
+          echo "  macOS tests         : ${{ needs.macos-template-tests.result }}"   >> "$outfile"
+          echo "  Windows 2022 tests  : ${{ needs.windows-template-tests-2022.result }}" >> "$outfile"
+          echo "  Windows 2025 tests  : ${{ needs.windows-template-tests-2025.result }}" >> "$outfile"
+          echo ""                                                                   >> "$outfile"
+
+          w22_dir="probes/win2022-probes"
+          w25_dir="probes/win2025-probes"
+
+          echo "Key environment diffs:"                                             >> "$outfile"
+          if [ -f "$w22_dir/drives.txt" ] && [ -f "$w25_dir/drives.txt" ]; then
+            d22=$(cat "$w22_dir/drives.txt" || true)
+            d25=$(cat "$w25_dir/drives.txt" || true)
+            echo "- D: drive (WS2022): ${d22}"                                      >> "$outfile"
+            echo "- D: drive (WS2025): ${d25}"                                      >> "$outfile"
+          else
+            echo "- D: drive info: missing"                                         >> "$outfile"
+          fi
+
+          if [ -f "$w22_dir/android-sdks.txt" ] && [ -f "$w25_dir/android-sdks.txt" ]; then
+            a22=$(head -n 1 "$w22_dir/android-sdks.txt" || true)
+            a25=$(head -n 1 "$w25_dir/android-sdks.txt" || true)
+            echo "- Android SDK check (WS2022): ${a22}"                             >> "$outfile"
+            echo "- Android SDK check (WS2025): ${a25}"                             >> "$outfile"
+          else
+            echo "- Android SDK check: missing"                                     >> "$outfile"
+          fi
+
+          echo ""                                                                   >> "$outfile"
+          echo "Next steps:"                                                        >> "$outfile"
+          echo "- If Windows 2025 failed but Windows 2022 passed:"                 >> "$outfile"
+          echo "    * Review missing tools in probes (e.g., D: drive removal, Android cmdline-tools)." >> "$outfile"
+          echo "    * Pin workflows to exact tool versions (setup-dotnet, setup-node, etc.)."          >> "$outfile"
+          echo "    * Temporarily pin runs-on: windows-2022 while fixing."         >> "$outfile"
+          echo "- If all jobs passed on Windows 2025:"                              >> "$outfile"
+          echo "    * You’re ready for windows-latest migration (Sept 2–30, 2025)." >> "$outfile"
+
+          # Also publish as job summary
+          {
+            echo '```'
+            cat "$outfile"
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload summary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ws2025-migration-summary
+          path: summary.txt
 
   test-validation:
     name: Tests Validation
