@@ -5,13 +5,11 @@ on:
     branches:
       - main
       - release/**
-
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
       - release/**
-
   schedule:
     - cron: '0 0 * * *' # Canary
   
@@ -45,39 +43,40 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
-    - name: "Build Package"
-      uses: ./.github/actions/ci/build-packages
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "Build Package"
+        uses: ./.github/actions/ci/build-packages
 
   # Sign the nuget packages
+  # TEMP TEST DRAFT PR:
+  # We explicitly set Windows 2025 here to validate the upcoming windows-latest migration
+  # (windows-latest => windows-2025 rollout scheduled Sept 2–30, 2025).
   sign:
     name: Sign Package
     if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
-    runs-on: windows-latest
-
+    runs-on: windows-2025
     environment: PackageSign
-  
     permissions:
       id-token: write # Required for requesting the JWT
-
     needs: build
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: "Sign Packages"
-      uses: ./.github/actions/ci/sign-package
-      with:
-        sign-client-id: ${{ secrets.SIGN_AZURE_CLIENT_ID }}
-        sign-tenant-id: ${{ secrets.SIGN_AZURE_TENANT_ID }}
-        sign-azure-subscription-id: ${{ secrets.SIGN_AZURE_SUBSCRIPTION_ID }}
-        sign-key-vault-url: ${{ secrets.SIGN_KEY_VAULT_URL }}
-        sign-key-vault-cert-id: ${{ secrets.SIGN_KEY_VAULT_CERTIFICATE_ID }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Runner info (Windows 2025)
+        shell: pwsh
+        run: 'echo ImageOS=$env:ImageOS; echo ImageVersion=$env:ImageVersion'
+      - name: "Sign Packages"
+        uses: ./.github/actions/ci/sign-package
+        with:
+          sign-client-id: ${{ secrets.SIGN_AZURE_CLIENT_ID }}
+          sign-tenant-id: ${{ secrets.SIGN_AZURE_TENANT_ID }}
+          sign-azure-subscription-id: ${{ secrets.SIGN_AZURE_SUBSCRIPTION_ID }}
+          sign-key-vault-url: ${{ secrets.SIGN_KEY_VAULT_URL }}
+          sign-key-vault-cert-id: ${{ secrets.SIGN_KEY_VAULT_CERTIFICATE_ID }}
 
   # Publish dev packages to uno feed and nuget.org
   publish_dev:
@@ -85,18 +84,17 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     needs: sign
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: "Uno Feed Publish"
-      uses: ./.github/actions/ci/nuget-uno-publish
-      with:
-        token: ${{ secrets.UNO_NUGET_FEED_API_KEY }}
-    - name: "nuget.org Publish"
-      uses: ./.github/actions/ci/nuget-org-publish
-      with:
-        token: ${{ secrets.NUGET_ORG_API_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Uno Feed Publish"
+        uses: ./.github/actions/ci/nuget-uno-publish
+        with:
+          token: ${{ secrets.UNO_NUGET_FEED_API_KEY }}
+      - name: "nuget.org Publish"
+        uses: ./.github/actions/ci/nuget-org-publish
+        with:
+          token: ${{ secrets.NUGET_ORG_API_KEY }}
 
   # Publish release packages to uno feed
   publish_release_uno:
@@ -105,14 +103,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     needs: sign
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: "Uno Feed Publish"
-      uses: ./.github/actions/ci/nuget-uno-publish
-      with:
-        token: ${{ secrets.UNO_NUGET_FEED_API_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Uno Feed Publish"
+        uses: ./.github/actions/ci/nuget-uno-publish
+        with:
+          token: ${{ secrets.UNO_NUGET_FEED_API_KEY }}
 
   # Publish release packages to nuget.org
   publish_release_nuget_org:
@@ -121,124 +118,326 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     needs: publish_release_uno
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: "Uno Feed Publish"
-      uses: ./.github/actions/ci/nuget-org-publish
-      with:
-        token: ${{ secrets.NUGET_ORG_API_KEY }}
-    - name: "Tag Release"
-      uses: ./.github/actions/ci/tag-release
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Uno Feed Publish"
+        uses: ./.github/actions/ci/nuget-org-publish
+        with:
+          token: ${{ secrets.NUGET_ORG_API_KEY }}
+      - name: "Tag Release"
+        uses: ./.github/actions/ci/tag-release
 
   # Generate the template tests build matrix
   generate-test-matrix:
     runs-on: ubuntu-latest
     name: Generate Test Matrix
-
     outputs:
       testMatrix: ${{ steps.generate-test-matrix-step.outputs.TestMatrix }}
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "Test Matrix"
+        id: generate-test-matrix-step
+        uses: ./.github/actions/ci/generate-test-matrix
 
-    - name: "Test Matrix"
-      id: generate-test-matrix-step
-      uses: ./.github/actions/ci/generate-test-matrix
+  # --- Probes / Diagnostics ----------------------------------------------------
 
-  # Run the test matrix on linux
+  linux-probes:
+    name: Linux Probes (ubuntu-latest = 24.04)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner info (Linux)
+        run: |
+          set -euxo pipefail
+          cat /etc/os-release | tee os-release.txt
+          uname -a | tee -a os-release.txt
+          gcc --version | head -n1 | tee gcc.txt || true
+          g++ --version | head -n1 | tee -a gcc.txt || true
+          clang --version | head -n1 | tee clang.txt || true
+          openssl version -a | tee openssl.txt || true
+          dotnet --info | tee dotnet-info.txt || true
+          node --version | tee node.txt || true
+          python3 --version | tee python.txt || true
+          yes | sdkmanager --list | tee android-sdks.txt || true
+      - name: Upload Linux probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-probes
+          path: |
+            os-release.txt
+            gcc.txt
+            clang.txt
+            openssl.txt
+            dotnet-info.txt
+            node.txt
+            python.txt
+            android-sdks.txt
+
+  macos-probes:
+    name: macOS Probes (macOS 15)
+    runs-on: macos-15
+    steps:
+      - name: Runner info (macOS)
+        run: |
+          set -euxo pipefail
+          sw_vers | tee sw-vers.txt
+          uname -a | tee -a sw-vers.txt
+          xcodebuild -version | tee xcode.txt || true
+          xcode-select -p | tee -a xcode.txt || true
+          xcrun simctl list | tee simctl.txt || true
+          dotnet --info | tee dotnet-info.txt || true
+          node --version | tee node.txt || true
+          python3 --version | tee python.txt || true
+      - name: Upload macOS probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-probes
+          path: |
+            sw-vers.txt
+            xcode.txt
+            simctl.txt
+            dotnet-info.txt
+            node.txt
+            python.txt
+
+  windows-2025-probes:
+    name: Windows Probes (Windows 2025)
+    runs-on: windows-2025
+    steps:
+      - name: Runner info (Windows 2025)
+        shell: pwsh
+        run: |
+          $PSVersionTable | Out-File psver.txt
+          systeminfo | Out-File systeminfo.txt
+          echo "ImageOS=$env:ImageOS" | Out-File -Append systeminfo.txt
+          echo "ImageVersion=$env:ImageVersion" | Out-File -Append systeminfo.txt
+          & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -all -products * | Out-File vswhere.txt
+          dotnet --info | Out-File dotnet-info.txt
+          choco --version | Out-File choco.txt; choco list -lo -r | Select-Object -First 100 | Out-File choco-installed.txt
+          java -version 2>&1 | Out-File java.txt
+          cmd /c "where msbuild" | Out-File msbuild.txt
+          sdkmanager --list | Out-File android-sdks.txt
+          dir C:\ | Out-File drives.txt
+      - name: Upload Windows 2025 probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: win2025-probes
+          path: |
+            psver.txt
+            systeminfo.txt
+            vswhere.txt
+            dotnet-info.txt
+            choco.txt
+            choco-installed.txt
+            java.txt
+            msbuild.txt
+            android-sdks.txt
+            drives.txt
+
+  windows-2022-probes:
+    name: Windows Probes (Windows 2022)
+    runs-on: windows-2022
+    steps:
+      - name: Runner info (Windows 2022)
+        shell: pwsh
+        run: |
+          $PSVersionTable | Out-File psver.txt
+          systeminfo | Out-File systeminfo.txt
+          echo "ImageOS=$env:ImageOS" | Out-File -Append systeminfo.txt
+          echo "ImageVersion=$env:ImageVersion" | Out-File -Append systeminfo.txt
+          & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -all -products * | Out-File vswhere.txt
+          dotnet --info | Out-File dotnet-info.txt
+          choco --version | Out-File choco.txt; choco list -lo -r | Select-Object -First 100 | Out-File choco-installed.txt
+          java -version 2>&1 | Out-File java.txt
+          cmd /c "where msbuild" | Out-File msbuild.txt
+          sdkmanager --list | Out-File android-sdks.txt
+          if (Test-Path D:\) { 'D:\ exists' | Out-File drives.txt } else { 'D:\ not present' | Out-File drives.txt }
+      - name: Upload Windows 2022 probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: win2022-probes
+          path: |
+            psver.txt
+            systeminfo.txt
+            vswhere.txt
+            dotnet-info.txt
+            choco.txt
+            choco-installed.txt
+            java.txt
+            msbuild.txt
+            android-sdks.txt
+            drives.txt
+
+  # --- Matrixed tests (Linux/macOS unchanged, Windows A/B) ---------------------
+
   linux-template-tests:
     runs-on: ubuntu-latest
     needs: 
-    - generate-test-matrix
-    - build
-
+      - generate-test-matrix
+      - build
+      - linux-probes
     name: Linux Tests (${{ matrix.groupName }})
-
     strategy:
       fail-fast: false
       matrix:
         include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
-
     env:
       UseDotNetNativeToolchain: false
       unocheckArguments: ''
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    
-    - name: "Run Tests"
-      uses: ./.github/actions/ci/run-tests
-      with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
-        arguments: ${{ matrix.validations }}
-        unocheckArguments: ${{ matrix.unocheckArguments }}
-        logs-artifact-name: ${{ matrix.groupName }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Runner info (Linux quick)
+        run: |
+          echo "Kernel:"; uname -a
+          echo "Dotnet:"; dotnet --info
+      - name: "Run Tests"
+        uses: ./.github/actions/ci/run-tests
+        with:
+          xCodeRoot: '/Applications/Xcode_16.3.app'
+          arguments: ${{ matrix.validations }}
+          unocheckArguments: ${{ matrix.unocheckArguments }}
+          logs-artifact-name: ${{ matrix.groupName }}
 
-  # Run the test matrix on Windows
-  windows-template-tests:
-    runs-on: windows-latest
+  # TEMP TEST: switched from windows-latest to windows-2025
+  # windows-latest will migrate to windows-2025 September 2–30, 2025 (GitHub).
+  windows-template-tests-2025:
+    runs-on: windows-2025
     needs: 
-    - generate-test-matrix
-    - build
-
-    name: Windows Tests (${{ matrix.groupName }})
-
+      - generate-test-matrix
+      - build
+      - windows-2025-probes
+    name: Windows Tests 2025 (${{ matrix.groupName }})
     strategy:
       fail-fast: false
       matrix:
         include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
-
     env:
       UseDotNetNativeToolchain: false
       unocheckArguments: ''
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    
-    - name: "Run Tests"
-      uses: ./.github/actions/ci/run-tests
-      with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
-        arguments: ${{ matrix.validations }}
-        unocheckArguments: ${{ matrix.unocheckArguments }}
-        logs-artifact-name: ${{ matrix.groupName }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Runner info (Windows 2025 quick)
+        shell: pwsh
+        run: 'echo ImageOS=$env:ImageOS; echo ImageVersion=$env:ImageVersion'
+      - name: "Run Tests"
+        uses: ./.github/actions/ci/run-tests
+        with:
+          xCodeRoot: '/Applications/Xcode_16.3.app'
+          arguments: ${{ matrix.validations }}
+          unocheckArguments: ${{ matrix.unocheckArguments }}
+          logs-artifact-name: ${{ matrix.groupName }}-win2025
+      - name: Upload Windows 2025 logs marker
+        uses: actions/upload-artifact@v4
+        with:
+          name: win2025-logs
+          path: .
+          if-no-files-found: ignore
 
-  # Run the test matrix on macOS
+  # Control group to compare against current stable image
+  windows-template-tests-2022:
+    runs-on: windows-2022
+    needs: 
+      - generate-test-matrix
+      - build
+      - windows-2022-probes
+    name: Windows Tests 2022 (${{ matrix.groupName }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+    env:
+      UseDotNetNativeToolchain: false
+      unocheckArguments: ''
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Runner info (Windows 2022 quick)
+        shell: pwsh
+        run: 'echo ImageOS=$env:ImageOS; echo ImageVersion=$env:ImageVersion'
+      - name: "Run Tests"
+        uses: ./.github/actions/ci/run-tests
+        with:
+          xCodeRoot: '/Applications/Xcode_16.3.app'
+          arguments: ${{ matrix.validations }}
+          unocheckArguments: ${{ matrix.unocheckArguments }}
+          logs-artifact-name: ${{ matrix.groupName }}-win2022
+      - name: Upload Windows 2022 logs marker
+        uses: actions/upload-artifact@v4
+        with:
+          name: win2022-logs
+          path: .
+          if-no-files-found: ignore
+
   macos-template-tests:
     runs-on: macos-15
     needs: 
-    - generate-test-matrix
-    - build
-
+      - generate-test-matrix
+      - build
+      - macos-probes
     name: macOS Tests (${{ matrix.groupName }})
-
     strategy:
       fail-fast: false
+    # Use the same matrix as generated
       matrix:
         include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
-
     env:
       UseDotNetNativeToolchain: false
       unocheckArguments: ''
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    
-    - name: "Run Tests"
-      uses: ./.github/actions/ci/run-tests
-      with:
-        xCodeRoot: '/Applications/Xcode_16.3.app'
-        arguments: ${{ matrix.validations }}
-        unocheckArguments: ${{ matrix.unocheckArguments }}
-        logs-artifact-name: ${{ matrix.groupName }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Runner info (macOS quick)
+        run: |
+          echo "sw_vers:"; sw_vers
+          echo "Dotnet:"; dotnet --info
+      - name: "Run Tests"
+        uses: ./.github/actions/ci/run-tests
+        with:
+          xCodeRoot: '/Applications/Xcode_16.3.app'
+          arguments: ${{ matrix.validations }}
+          unocheckArguments: ${{ matrix.unocheckArguments }}
+          logs-artifact-name: ${{ matrix.groupName }}
+
+  # Compare logs/artifacts between Windows 2022 and 2025 runs
+  compare-windows-results:
+    name: Compare Windows 2022 vs 2025
+    runs-on: ubuntu-latest
+    needs:
+      - windows-template-tests-2022
+      - windows-template-tests-2025
+    steps:
+      - name: Download Windows 2022 logs
+        uses: actions/download-artifact@v4
+        with:
+          name: win2022-logs
+          path: win2022
+        continue-on-error: true
+      - name: Download Windows 2025 logs
+        uses: actions/download-artifact@v4
+        with:
+          name: win2025-logs
+          path: win2025
+        continue-on-error: true
+      - name: Diff logs (best-effort)
+        run: |
+          set -euxo pipefail
+          echo "Comparing artifact directories (best-effort)…"
+          if [ -d win2022 ] && [ -d win2025 ]; then
+            diff -ruN win2022 win2025 | head -n 500 > diff.txt || true
+          else
+            echo "Missing one or both artifact dirs; skipping diff." > diff.txt
+          fi
+          echo "Done."
+      - name: Upload diff
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-logs-diff
+          path: diff.txt
 
   test-validation:
     name: Tests Validation
@@ -247,8 +446,8 @@ jobs:
     needs:
       - macos-template-tests
       - linux-template-tests
-      - windows-template-tests
-
+      - windows-template-tests-2022
+      - windows-template-tests-2025
     steps:
       - name: Check matrix job results
         run: |
@@ -256,7 +455,8 @@ jobs:
 
           macos_status="${{ needs.macos-template-tests.result }}"
           linux_status="${{ needs.linux-template-tests.result }}"
-          windows_status="${{ needs.windows-template-tests.result }}"
+          win22_status="${{ needs.windows-template-tests-2022.result }}"
+          win25_status="${{ needs.windows-template-tests-2025.result }}"
 
           echo "macos-template-tests: $macos_status"
           if [ "$macos_status" = "failure" ]; then
@@ -270,9 +470,15 @@ jobs:
             hasFailed=true
           fi
 
-          echo "windows-template-tests: $windows_status"
-          if [ "$windows_status" = "failure" ]; then
-            echo "::error::windows-template-tests failed (status: $windows_status)"
+          echo "windows-template-tests-2022: $win22_status"
+          if [ "$win22_status" = "failure" ]; then
+            echo "::error::windows-template-tests-2022 failed (status: $win22_status)"
+            hasFailed=true
+          fi
+
+          echo "windows-template-tests-2025: $win25_status"
+          if [ "$win25_status" = "failure" ]; then
+            echo "::error::windows-template-tests-2025 failed (status: $win25_status)"
             hasFailed=true
           fi
 
@@ -283,5 +489,4 @@ jobs:
 
       - name: All tests passed
         if: ${{ success() }}
-        run: echo "✅ All matrix test jobs passed."
-
+        run: echo "✅ All matrix test jobs passed (including Windows 2022 vs 2025 A/B)."
