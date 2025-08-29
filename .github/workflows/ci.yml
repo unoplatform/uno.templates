@@ -272,17 +272,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: win2022-probes
-          path: |
-            psver.txt
-            systeminfo.txt
-            vswhere.txt
-            dotnet-info.txt
-            choco.txt
-            choco-installed.txt
-            java.txt
-            msbuild.txt
-            android-sdks.txt
-            drives.txt
+        path: |
+          psver.txt
+          systeminfo.txt
+          vswhere.txt
+          dotnet-info.txt
+          choco.txt
+          choco-installed.txt
+          java.txt
+          msbuild.txt
+          android-sdks.txt
+          drives.txt
 
   # --- Matrixed tests (Linux/macOS unchanged, Windows A/B) ---------------------
 
@@ -347,9 +347,10 @@ jobs:
       - name: Upload Windows 2025 logs marker
         uses: actions/upload-artifact@v4
         with:
-          name: win2025-logs
+          name: win2025-logs-${{ matrix.groupName }}   # unique per matrix
           path: .
           if-no-files-found: ignore
+          retention-days: 7
 
   # Control group to compare against current stable image
   windows-template-tests-2022:
@@ -382,9 +383,10 @@ jobs:
       - name: Upload Windows 2022 logs marker
         uses: actions/upload-artifact@v4
         with:
-          name: win2022-logs
+          name: win2022-logs-${{ matrix.groupName }}   # unique per matrix
           path: .
           if-no-files-found: ignore
+          retention-days: 7
 
   macos-template-tests:
     runs-on: macos-15
@@ -427,14 +429,16 @@ jobs:
       - name: Download Windows 2022 logs
         uses: actions/download-artifact@v4
         with:
-          name: win2022-logs
+          pattern: win2022-logs-*          # download all, merged
           path: win2022
+          merge-multiple: true
         continue-on-error: true
       - name: Download Windows 2025 logs
         uses: actions/download-artifact@v4
         with:
-          name: win2025-logs
+          pattern: win2025-logs-*          # download all, merged
           path: win2025
+          merge-multiple: true
         continue-on-error: true
       - name: Diff logs (best-effort)
         run: |
