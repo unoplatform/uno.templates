@@ -219,7 +219,13 @@ jobs:
           choco --version | Out-File choco.txt; choco list -lo -r | Select-Object -First 100 | Out-File choco-installed.txt
           java -version 2>&1 | Out-File java.txt
           cmd /c "where msbuild" | Out-File msbuild.txt
-          sdkmanager --list | Out-File android-sdks.txt
+          # Android SDK check (no sdkmanager in PATH on WS2025)
+          $sdkman = "C:\Program Files (x86)\Android\android-sdk\cmdline-tools\latest\bin\sdkmanager.bat"
+          if (Test-Path $sdkman) {
+            & $sdkman --list | Out-File android-sdks.txt
+          } else {
+            "sdkmanager not found at $sdkman" | Out-File android-sdks.txt
+          }
           dir C:\ | Out-File drives.txt
       - name: Upload Windows 2025 probe artifacts
         uses: actions/upload-artifact@v4
