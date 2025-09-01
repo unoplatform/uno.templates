@@ -9,7 +9,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoToolkitVersion | 8.2.0-dev.6 |
 | UnoThemesVersion | 5.8.0-dev.2 |
 | UnoCSharpMarkupVersion | 6.3.0-dev.3 |
-| UnoWasmBootstrapVersion** | 9.0.20 |
+| UnoWasmBootstrapVersion** | 8.0.23 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
@@ -19,8 +19,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4948 |
-| MicrosoftLoggingVersion** | 9.0.8 |
-| WindowsCompatibilityVersion** | 9.0.8 |
+| MicrosoftLoggingVersion** | 8.0.1 |
+| WindowsCompatibilityVersion** | 8.0.19 |
 | MicrosoftIdentityClientVersion | 4.76.0 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -34,7 +34,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.24 |
 | AndroidXNavigationVersion | 2.8.5.1 |
 | AndroidXCollectionVersion | 1.4.5.2 |
-| MauiVersion** | 9.0.100 |
+| MauiVersion** | 8.0.100 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 9.0.
@@ -82,7 +82,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "9.0.20"
+      "net10.0": "10.0.0-dev.24"
     }
   },
   {
@@ -188,12 +188,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.8",
+    "version": "9.0.4",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "9.0.8"
+      "net10.0": "9.0.4"
     }
   },
   {
@@ -305,14 +305,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "9.0.100",
+    "version": "9.0.60",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "9.0.100"
+      "net10.0": "9.0.60"
     }
   },
   {
