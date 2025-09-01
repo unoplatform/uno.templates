@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.144",
+    "version": "6.3.0-dev.160",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.11.0-dev.11",
+    "version": "1.11.0-dev.17",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.141",
+    "version": "1.16.0-dev.167",
     "packages": [
       "Uno.UI.HotDesign"
     ]
