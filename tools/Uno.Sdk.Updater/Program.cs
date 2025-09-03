@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Uno.Sdk.Models;
 using Uno.Sdk.Services;
 using Uno.Sdk.Updater;
+using Uno.Sdk.Updater.Config;
 using Uno.Sdk.Updater.Utils;
 
 const string UnoSdkPackageId = "Uno.Sdk.Private";
@@ -15,6 +16,9 @@ Console.WriteLine($"Base Version: {UpdaterBuildContext.TemplateVersion}");
 Console.WriteLine($"Minimum Search Version: {UpdaterBuildContext.MinVersion}");
 Console.WriteLine($"Maximum Search Version: {UpdaterBuildContext.MaxVersion}");
 WriteBreak();
+
+// Minimal CLI parsing for --exclude-file
+ExcludeConfig.ExcludeFilePath = Cli.GetArgValue("--exclude-file");
 
 var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 {
@@ -53,7 +57,7 @@ string? description = null;
 string? tags = null;
 bool wroteChanges = false;
 
-foreach(var entry in sdkZip.Entries)
+foreach (var entry in sdkZip.Entries)
 {
     var extension = Path.GetExtension(entry.FullName);
     string[] allowedExtensions = [".md", ".json", ".nuspec"];
@@ -88,13 +92,12 @@ foreach(var entry in sdkZip.Entries)
         var inputManifest = await JsonSerializer.DeserializeAsync<IEnumerable<ManifestGroup>>(packageStream)
             ?? throw new InvalidOperationException("Unable to parse the packages.json from the Sdk.");
 
-        if (!unoVersion.IsPreview)
-        {
-            inputManifest = MergeLocalManifest(inputManifest, outputPath);
-        }
+        inputManifest = unoVersion.IsPreview
+        ? MergeLocalOverridesOnly(inputManifest, outputPath)  // keep only local VersionOverride entries
+        : MergeLocalManifest(inputManifest, outputPath);      // full merge as before
 
         var manifest = new List<ManifestGroup>();
-        foreach(var group in inputManifest)
+        foreach (var group in inputManifest)
         {
             var updated = await UpdateGroup(group, unoVersion, client);
             manifest.Add(updated);
@@ -135,7 +138,7 @@ if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
     var manifestJson = File.ReadAllText(packagesJsonPath);
     var manifest = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(manifestJson) ?? [];
 
-    foreach(var group in manifest)
+    foreach (var group in manifest)
     {
         readMe = Regex.Replace(readMe, Regex.Escape($"${group.Group}$"), group.Version);
     }
@@ -175,6 +178,49 @@ static IEnumerable<ManifestGroup> MergeLocalManifest(IEnumerable<ManifestGroup> 
     }
 
     return mergedManifest;
+}
+
+// Keep local versions as baseline. Only ensure local VersionOverride are present,
+// and bring in any brand-new groups that exist in the SDK manifest.
+static IEnumerable<ManifestGroup> MergeLocalOverridesOnly(IEnumerable<ManifestGroup> sdkManifest, string packagesJsonPath)
+{
+    var local = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(File.ReadAllText(packagesJsonPath))
+               ?? throw new InvalidOperationException($"Unable to parse local packages.json at '{packagesJsonPath}'.");
+
+    // Start from LOCAL manifest -> prevents downgrades of existing groups
+    var map = local.ToDictionary(g => g.Group, g => g, StringComparer.OrdinalIgnoreCase);
+
+    // Keep local versions as the baseline to prevent downgrades.
+    // For groups that have local VersionOverride entries, merge them over the
+    // existing overrides in the map (local wins). This preserves any SDK overrides
+    // that local did not specify, and ensures a case-insensitive dictionary.
+    foreach (var lg in local)
+    {
+        if (lg.VersionOverride is { Count: > 0 } && map.TryGetValue(lg.Group, out var existing))
+        {
+            // Start from existing overrides so we don't drop SDK-provided keys
+            var merged = existing.VersionOverride is null
+                ? new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                : new Dictionary<string, string>(existing.VersionOverride, StringComparer.OrdinalIgnoreCase);
+
+            foreach (var kv in lg.VersionOverride)
+            {
+                // Local overrides win (overwrite)
+                merged[kv.Key] = kv.Value;
+            }
+
+            map[lg.Group] = existing with { VersionOverride = merged };
+        }
+    }
+
+    // Add brand-new groups that exist in SDK but not locally
+    foreach (var sg in sdkManifest)
+    {
+        if (!map.ContainsKey(sg.Group))
+            map[sg.Group] = sg;
+    }
+
+    return map.Values;
 }
 
 static void WriteIfDifferent(string filePath, string content, ref bool didWriteChanges)
@@ -279,22 +325,28 @@ static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifes
         return group.VersionOverride[overrideKey];
     }
 
-    throw new InvalidOperationException($"No Version Overrides were fround for {groupId} or the key {overrideKey}.");
+    throw new InvalidOperationException($"No Version Overrides were found for {groupId} or the key {overrideKey}.");
 }
 
 static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion unoVersion, NuGetApiClient client)
 {
+    if (ExcludeConfig.Excluded.Contains(group.Group))
+    {
+        Console.WriteLine($"Skipping '{group.Group}' due to exclusion list.");
+        return group;
+    }
+
     if (group.Group == "Core")
     {
         Console.WriteLine($"Setting Core group to: {unoVersion.OriginalVersion}");
         return group with { Version = unoVersion };
     }
     // Skip AndroidX packages to avoid Java misalignment
-    else if (group.Packages.Any(x => x.StartsWith("Xamarin")) 
+    else if (group.Packages.Any(x => x.StartsWith("Xamarin"))
         // Skip Maui on Release branch to avoid AndroidX package misalignment
         || (!unoVersion.IsPreview && group.Group == "Maui"))
     {
-        Console.WriteLine("Skipping " + group.Group + " to avoid Java misalignment.");
+        Console.WriteLine($"Skipping '{group.Group}' to avoid Java misalignment.");
         return group;
     }
 
@@ -349,21 +401,33 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     if (group.VersionOverride is not null && group.VersionOverride.Count != 0)
     {
         var updatedOverrides = new Dictionary<string, string>();
-        foreach((var key, var versionOverrideString) in group.VersionOverride)
+        foreach ((var key, var versionOverrideString) in group.VersionOverride)
         {
             if (!NuGetVersion.TryParse(versionOverrideString, out var versionOverride))
             {
-                Console.WriteLine($"Could not parse version '{versionOverrideString} for {group.Group}.");
+                Console.WriteLine($"Could not parse version '{versionOverrideString}' for group '{group.Group}', package '{packageId}'.");
                 continue;
             }
 
-            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, noMajorUpgrade, versionOverride.OriginalVersion);
+            // Explicit VersionOverrides should always allow major upgrades
+            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion);
             if (version != versionOverrideString)
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
 
-            version = NuGetVersion.Parse(version) < versionOverride ? versionOverrideString : version;
+            if (!NuGetVersion.TryParse(version, out var parsedVersion))
+            {
+                Console.WriteLine($"Could not parse version '{version}' for {group.Group}.");
+                // Fall back to the local override as a safe default
+                version = versionOverride.OriginalVersion;
+            }
+            else if (parsedVersion < versionOverride)
+            {
+                // Keep the local override (e.g., 10.0.0-preview) if the feed returns a lower version (e.g., 9.x)
+                version = versionOverride.OriginalVersion;
+            }
+
             updatedOverrides.Add(key, version);
         }
 
