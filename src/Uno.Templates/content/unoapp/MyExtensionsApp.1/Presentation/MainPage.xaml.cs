@@ -1,4 +1,4 @@
-﻿//-:cnd:noEmit
+//-:cnd:noEmit
 namespace MyExtensionsApp._1.Presentation;
 
 public sealed partial class MainPage : Page
@@ -40,13 +40,13 @@ public sealed partial class MainPage : Page
                                 .Content("Go to Second Page")
                                 .AutomationProperties(automationId: "SecondPageButton")
 #if !useAuthentication
-                                .Command(() => vm.GoToSecond)
+                                .Command(() => vm.GoToSecondViewCommand)
 #else
-                                .Command(() => vm.GoToSecond),
+                                .Command(() => vm.GoToSecondViewCommand),
                             new Button()
                                 .Content("Logout")
                                 .AutomationProperties(automationId: "LogoutButton")
-                                .Command(() => vm.Logout)
+                                .Command(() => vm.DoLogoutCommand)
 #endif
                                 ))));
 #else
