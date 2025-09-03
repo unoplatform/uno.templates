@@ -37,7 +37,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MauiVersion** | $Maui$ |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
-\*\* This version may have a different version for .NET 9.0.
+\*\* This version may have a different version for .NET 10.0.
 
 ```json
 $PackagesJson$
