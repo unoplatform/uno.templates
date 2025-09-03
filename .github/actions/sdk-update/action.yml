@@ -27,6 +27,4 @@ runs:
 
     - name: Run Uno Sdk Updater
       shell: pwsh
-      env:
-        UNO_SDK_EXCLUDE_FILE: ${{ inputs['exclude-file'] }}
-      run: dotnet run -c Release --project tools/Uno.Sdk.Updater
+      run: dotnet run -c Release --project tools/Uno.Sdk.Updater -- --exclude-file "${{ inputs['exclude-file'] }}"
