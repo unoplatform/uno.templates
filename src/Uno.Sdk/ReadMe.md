@@ -4,9 +4,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.3.0-dev.170 |
+| UnoVersion* | 6.3.0-dev.177 |
 | UnoExtensionsVersion | 6.3.0-dev.3 |
-| UnoToolkitVersion | 8.2.0-dev.6 |
+| UnoToolkitVersion | 8.2.0-dev.11 |
 | UnoThemesVersion | 5.8.0-dev.2 |
 | UnoCSharpMarkupVersion | 6.3.0-dev.3 |
 | UnoWasmBootstrapVersion** | 9.0.20 |
@@ -37,13 +37,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MauiVersion** | 9.0.100 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
-\*\* This version may have a different version for .NET 9.0.
+\*\* This version may have a different version for .NET 10.0.
 
 ```json
 [
   {
     "group": "Core",
-    "version": "6.3.0-dev.170",
+    "version": "6.3.0-dev.177",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -382,7 +382,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "8.2.0-dev.6",
+    "version": "8.2.0-dev.11",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",

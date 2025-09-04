@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.170",
+    "version": "6.3.0-dev.177",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -340,7 +340,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.2.0-dev.6",
+    "version": "8.2.0-dev.11",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
