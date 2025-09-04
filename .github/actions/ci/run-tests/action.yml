@@ -68,12 +68,18 @@ runs:
         $templateArgs = '${{ inputs.arguments }}'
         echo "TemplateArgs = '$templateArgs'"
         $dotnetVersion = $env:TargetDotNetVersion
-        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
+        $ValidationUnoCheckVersion = "invalid"
 
         if ($templateArgs -match 'net9.0')
         {
-            $dotnetVersion = '9.0.300'
+            $dotnetVersion = '9.0.304'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+        }
+
+        if ($templateArgs -match 'net10.0')
+        {
+            $dotnetVersion = '10.0.100-preview.7.25380.108'
+            $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
@@ -83,7 +89,7 @@ runs:
         echo "ValidationUnoCheckVersion=$ValidationUnoCheckVersion" >> $env:GITHUB_ENV
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
-      ValidationUnoCheckVersionNet8: ${{ env.ValidationUnoCheckVersionNet8 }}
+      ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
       ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
 
   - name: Cache EMSDK
@@ -137,7 +143,7 @@ runs:
       sudo rm -fR /usr/lib/jvm
       sudo apt-get install apt-transport-https 
       sudo apt-get update 
-      sudo apt-get install -y msopenjdk-11
+      sudo apt-get install -y msopenjdk-17
 
   - name: 'Uno Check (Linux)'
     if: runner.os == 'linux'
