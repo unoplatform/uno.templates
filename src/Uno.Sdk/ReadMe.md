@@ -20,7 +20,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4948 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.19 |
+| WindowsCompatibilityVersion** | 8.0.20 |
 | MicrosoftIdentityClientVersion | 4.74.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -182,17 +182,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.9"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.19",
+    "version": "8.0.20",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.9"
     }
   },
   {
@@ -383,7 +383,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3485.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
