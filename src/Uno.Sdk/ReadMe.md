@@ -4,23 +4,23 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.3.0-dev.193 |
+| UnoVersion* | 6.3.27 |
 | UnoExtensionsVersion | 6.3.0-dev.3 |
-| UnoToolkitVersion | 8.2.0-dev.11 |
+| UnoToolkitVersion | 8.2.1 |
 | UnoThemesVersion | 5.8.0-dev.2 |
-| UnoCSharpMarkupVersion | 6.3.0-dev.3 |
+| UnoCSharpMarkupVersion | 6.3.9 |
 | UnoWasmBootstrapVersion** | 9.0.20 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.11.0-dev.17 |
+| UnoResizetizerVersion | 1.11.1 |
 | SkiaSharpVersion | 3.119.0 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4948 |
-| MicrosoftLoggingVersion** | 9.0.8 |
-| WindowsCompatibilityVersion** | 9.0.8 |
+| MicrosoftLoggingVersion** | 9.0.9 |
+| WindowsCompatibilityVersion** | 9.0.9 |
 | MicrosoftIdentityClientVersion | 4.76.0 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.3.0-dev.193",
+    "version": "6.3.27",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -116,7 +116,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.11.0-dev.17",
+    "version": "1.11.1",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.194",
+    "version": "1.16.8",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -178,22 +178,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.8",
+    "version": "9.0.9",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-preview.7.25380.108"
+      "net10.0": "10.0.0-rc.1.25451.107"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.8",
+    "version": "9.0.9",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-preview.7.25380.108"
+      "net10.0": "10.0.0-rc.1.25451.107"
     }
   },
   {
@@ -344,7 +344,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.3.0-dev.3",
+    "version": "6.3.9",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -382,7 +382,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "8.2.0-dev.11",
+    "version": "8.2.1",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -411,7 +411,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3485.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]

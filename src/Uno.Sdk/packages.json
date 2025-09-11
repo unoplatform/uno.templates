@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.3.0-dev.193",
+    "version": "6.3.27",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -74,7 +74,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.11.0-dev.17",
+    "version": "1.11.1",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.16.0-dev.194",
+    "version": "1.16.8",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -136,22 +136,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.8",
+    "version": "9.0.9",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-preview.7.25380.108"
+      "net10.0": "10.0.0-rc.1.25451.107"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.8",
+    "version": "9.0.9",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-preview.7.25380.108"
+      "net10.0": "10.0.0-rc.1.25451.107"
     }
   },
   {
@@ -302,7 +302,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.3.0-dev.3",
+    "version": "6.3.9",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -340,7 +340,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.2.0-dev.11",
+    "version": "8.2.1",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -369,7 +369,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3485.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
