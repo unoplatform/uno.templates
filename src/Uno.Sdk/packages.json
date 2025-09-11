@@ -17,7 +17,6 @@
       "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
-      "Uno.WinUI.Svg",
       "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.Skia.Android",
       "Uno.WinUI.Runtime.Skia.AppleUIKit",
@@ -81,14 +80,14 @@
   },
   {
     "group": "sdkextras",
-    "version": "6.2.0-dev.4",
+    "version": "6.1.1",
     "packages": [
       "Uno.Sdk.Extras"
     ]
   },
   {
     "group": "settings",
-    "version": "1.6.0-dev.15",
+    "version": "1.5.16",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -136,22 +135,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.9",
+    "version": "9.0.8",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-preview.7.25380.108"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.9",
+    "version": "9.0.8",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-preview.7.25380.108"
     }
   },
   {
@@ -180,7 +179,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.8.0-dev.3",
+    "version": "2.7.1",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -310,7 +309,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.3.0-dev.3",
+    "version": "6.2.3",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -352,7 +351,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.8.0-dev.2",
+    "version": "5.7.3",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
