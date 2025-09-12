@@ -87,7 +87,7 @@
   },
   {
     "group": "settings",
-    "version": "1.5.16",
+    "version": "1.6.1",
     "packages": [
       "Uno.Settings.DevServer"
     ]
