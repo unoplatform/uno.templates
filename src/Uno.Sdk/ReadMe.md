@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.4.0-dev.49 |
+| UnoVersion* | 6.4.0-dev.60 |
 | UnoExtensionsVersion | 6.3.0-dev.3 |
 | UnoToolkitVersion | 8.3.0-dev.3 |
 | UnoThemesVersion | 5.8.0-dev.2 |
@@ -17,7 +17,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.12.0-dev.3 |
 | SkiaSharpVersion | 3.119.0 |
 | SvgSkiaVersion | 3.0.6 |
-| WinAppSdkVersion | 1.8.250907003 |
+| WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.4948 |
 | MicrosoftLoggingVersion** | 9.0.9 |
 | WindowsCompatibilityVersion** | 9.0.9 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.4.0-dev.49",
+    "version": "6.4.0-dev.60",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.17.0-dev.41",
+    "version": "1.17.0-dev.63",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -164,7 +164,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.8.250907003",
+    "version": "1.7.250606001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -236,7 +236,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.Google.Android.Material"
     ],
     "versionOverride": {
-      "net10.0": "1.12.0.4"
+      "net10.0": "1.12.0.5"
     }
   },
   {
@@ -266,7 +266,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.AppCompat"
     ],
     "versionOverride": {
-      "net10.0": "1.7.0.7"
+      "net10.0": "1.7.1.1"
     }
   },
   {
@@ -276,7 +276,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.RecyclerView"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.2"
+      "net10.0": "1.4.0.3"
     }
   },
   {
@@ -286,7 +286,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Activity"
     ],
     "versionOverride": {
-      "net10.0": "1.10.1.2"
+      "net10.0": "1.10.1.3"
     }
   },
   {
@@ -296,7 +296,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Browser"
     ],
     "versionOverride": {
-      "net10.0": "1.8.0.10"
+      "net10.0": "1.8.0.11"
     }
   },
   {
@@ -306,7 +306,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.SwipeRefreshLayout"
     ],
     "versionOverride": {
-      "net10.0": "1.1.0.28"
+      "net10.0": "1.1.0.29"
     }
   },
   {
@@ -317,7 +317,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Navigation.Fragment",
       "Xamarin.AndroidX.Navigation.Runtime",
       "Xamarin.AndroidX.Navigation.Common"
-    ]
+    ],
+    "versionOverride": {
+      "net10.0": "2.9.2.1"
+    }
   },
   {
     "group": "AndroidXCollection",
@@ -327,7 +330,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Collection.Ktx"
     ],
     "versionOverride": {
-      "net10.0": "1.5.0.2"
+      "net10.0": "1.5.0.3"
     }
   },
   {
