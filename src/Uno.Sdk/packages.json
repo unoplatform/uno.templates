@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.15.66",
+    "version": "1.15.71",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -121,7 +121,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250606001",
+    "version": "1.7.250909003",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -140,17 +140,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.9"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.19",
+    "version": "8.0.20",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.9"
     }
   },
   {
@@ -341,7 +341,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3485.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
