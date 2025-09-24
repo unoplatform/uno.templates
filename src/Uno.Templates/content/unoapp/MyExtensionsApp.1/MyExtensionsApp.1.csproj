@@ -31,7 +31,7 @@
     <!--#endif-->
 
     <!--
-      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+      UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features
     -->
     <UnoFeatures>
