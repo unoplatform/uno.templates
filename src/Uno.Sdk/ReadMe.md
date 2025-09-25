@@ -81,7 +81,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-dev.24"
+      "net10.0": "10.0.0-dev.36"
     }
   },
   {
@@ -136,7 +136,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.16.89",
+    "version": "1.16.91",
     "packages": [
       "Uno.UI.HotDesign"
     ]
