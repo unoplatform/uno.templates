@@ -796,6 +796,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "webView": {
+      "displayName": "WebView",
+      "description": "Configures application to bundle native assets required for the WebView",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",

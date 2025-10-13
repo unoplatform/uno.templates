@@ -52,6 +52,9 @@
       <!--#if (mediaElement)-->
       MediaElement;
       <!--#endif-->
+      <!--#if (webView)-->
+      WebView;
+      <!--#endif-->
       <!--#if (unoSvg)-->
       Svg;
       <!--#endif-->
