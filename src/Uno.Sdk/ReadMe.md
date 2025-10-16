@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.4.0-dev.187 |
-| UnoExtensionsVersion | 6.3.0-dev.12 |
+| UnoVersion* | 6.4.0-dev.210 |
+| UnoExtensionsVersion | 6.3.0-dev.16 |
 | UnoToolkitVersion | 8.3.0-dev.14 |
 | UnoThemesVersion | 5.8.0-dev.6 |
 | UnoCSharpMarkupVersion | 6.4.0-dev.5 |
@@ -19,8 +19,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250606001 |
 | WinAppSdkBuildToolsVersion | 10.0.26100.6584 |
-| MicrosoftLoggingVersion** | 9.0.9 |
-| WindowsCompatibilityVersion** | 9.0.9 |
+| MicrosoftLoggingVersion** | 9.0.10 |
+| WindowsCompatibilityVersion** | 9.0.10 |
 | MicrosoftIdentityClientVersion | 4.77.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -34,7 +34,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
 | AndroidXNavigationVersion | 2.8.9.2 |
 | AndroidXCollectionVersion | 1.5.0.2 |
-| MauiVersion** | 9.0.110 |
+| MauiVersion** | 9.0.111 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 10.0.
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.4.0-dev.187",
+    "version": "6.4.0-dev.210",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.17.0-dev.224",
+    "version": "1.17.0-dev.242",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -178,22 +178,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.9",
+    "version": "9.0.10",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-rc.2.25502.107"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.9",
+    "version": "9.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-rc.2.25502.107"
     }
   },
   {
@@ -335,14 +335,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Maui",
-    "version": "9.0.110",
+    "version": "9.0.111",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25452.6"
+      "net10.0": "10.0.0-rc.2.25504.7"
     }
   },
   {
@@ -355,7 +355,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "6.3.0-dev.12",
+    "version": "6.3.0-dev.16",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
