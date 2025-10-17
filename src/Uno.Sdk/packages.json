@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.4.0-dev.210",
+    "version": "6.4.0-dev.212",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.17.0-dev.242",
+    "version": "1.17.0-dev.251",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -293,7 +293,7 @@
   },
   {
     "group": "Maui",
-    "version": "9.0.111",
+    "version": "9.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Controls.Compatibility",
