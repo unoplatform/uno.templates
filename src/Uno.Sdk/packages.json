@@ -121,7 +121,7 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250909003",
+    "version": "1.7.251014001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -135,22 +135,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.9",
+    "version": "9.0.10",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-rc.2.25502.107"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.9",
+    "version": "9.0.10",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.1.25451.107"
+      "net10.0": "10.0.0-rc.2.25502.107"
     }
   },
   {
@@ -368,7 +368,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3485.44",
+    "version": "1.0.3537.50",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
