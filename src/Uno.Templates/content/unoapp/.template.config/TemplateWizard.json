@@ -91,6 +91,7 @@
 					"logging": "none",
 					"markup": "xaml",
 					"mediaElement": "false",
+					"webView": "false",
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -133,6 +134,7 @@
 					"logging": "default",
 					"markup": "xaml",
 					"mediaElement": "false",
+					"webView": "false",
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -231,7 +233,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement", "webView" ]
 			}
 			,
 			{
@@ -688,6 +690,9 @@
 		"mediaElement": {
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
+		"webView": {
+			"Icon": "/Assets/Features.WebView.svg"
+		},
 		"wasmPwaManifest": {
 			"Icon": "/Assets/Features.Wasm.svg",
 			"Requires": {
@@ -782,6 +787,7 @@
 		"continuousIntegration",
 		"isCustomized",
 		"mediaElement",
+		"webView",
 		"renderer"
 	],
 	"PackagesToUpdate": [
