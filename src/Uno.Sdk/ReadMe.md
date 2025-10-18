@@ -421,7 +421,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "1.0-dev.15",
+    "version": "1.0.0-dev.36",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
