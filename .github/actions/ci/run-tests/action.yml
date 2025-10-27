@@ -11,9 +11,6 @@ inputs:
   unocheckArguments:
     description: 'Arguments to pass to uno-check'
     default: ''
-  xCodeRoot:
-    description: 'The xCode Version to use on macOS'
-    default: ''
     
 runs:
   using: "composite"
@@ -62,7 +59,7 @@ runs:
             echo "WasmCachePath=$env:USERPROFILE\\.emscripten-cache" >> $env:GITHUB_ENV
         }
 
-  - name: 'Set Dotnet and UnoCheck Versions'
+  - name: 'Set Dotnet, UnoCheck, and Xcode Versions'
     shell: pwsh
     run: |
         $templateArgs = '${{ inputs.arguments }}'
@@ -74,23 +71,29 @@ runs:
         {
             $dotnetVersion = '9.0.305'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+            $XcodeVersion = $env:XcodeVersionNet9
         }
 
         if ($templateArgs -match 'net10.0')
         {
             $dotnetVersion = '10.0.100-rc.2.25502.107'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
+            $XcodeVersion = $env:XcodeVersionNet10
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
         echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
+        echo "Xcode Version = '$XcodeVersion'"
     
         echo "DotNetVersion=$dotnetVersion" >> $env:GITHUB_ENV
         echo "ValidationUnoCheckVersion=$ValidationUnoCheckVersion" >> $env:GITHUB_ENV
+        echo "XcodeRoot=$XcodeVersion" >> $env:GITHUB_ENV
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
       ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
       ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
+      XcodeVersionNet10: ${{ env.XcodeVersionNet10 }}
+      XcodeVersionNet9: ${{ env.XcodeVersionNet9 }}
 
   - name: Cache EMSDK
     id: cache-emsdk
@@ -169,9 +172,9 @@ runs:
     if: runner.os == 'macOS'
     shell: bash
     run: |
-      echo 'xCode Root to ${{ inputs.xCodeRoot }}'
-      echo 'MD_APPLE_SDK_ROOT=${{ inputs.xCodeRoot }}' >> $GITHUB_ENV
-      sudo xcode-select --switch ${{ inputs.xCodeRoot }}/Contents/Developer
+      echo 'xCode Root to ${{ env.XcodeRoot }}'
+      echo 'MD_APPLE_SDK_ROOT=${{ env.XcodeRoot }}' >> $GITHUB_ENV
+      sudo xcode-select --switch ${{ env.XcodeRoot }}/Contents/Developer
 
   - name: 'Install ninja'
     if: runner.os == 'macOS'
