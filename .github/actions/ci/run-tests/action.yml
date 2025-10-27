@@ -78,7 +78,7 @@ runs:
 
         if ($templateArgs -match 'net10.0')
         {
-            $dotnetVersion = '10.0.100-rc.1.25451.107'
+            $dotnetVersion = '10.0.100-rc.2.25502.107'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
         }
 

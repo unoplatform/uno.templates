@@ -23,7 +23,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet9: '1.33.0-dev.13'
-  ValidationUnoCheckVersionNet10: '1.33.0-dev.13'
+  ValidationUnoCheckVersionNet10: '1.33.0-dev.27'
   ValidationDotNetVersion: '9.0.305'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
@@ -175,7 +175,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.4.app'
+        xCodeRoot: '/Applications/Xcode_26.0.1.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -205,7 +205,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.4.app'
+        xCodeRoot: '/Applications/Xcode_26.0.1.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
@@ -235,7 +235,7 @@ jobs:
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
-        xCodeRoot: '/Applications/Xcode_16.4.app'
+        xCodeRoot: '/Applications/Xcode_26.0.1.app'
         arguments: ${{ matrix.validations }}
         unocheckArguments: ${{ matrix.unocheckArguments }}
         logs-artifact-name: ${{ matrix.groupName }}
