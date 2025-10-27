@@ -253,7 +253,7 @@
     },
     "platforms": {
       "displayName": "Platforms",
-      "description": "What platforms would you like to target",
+      "description": "What platforms would you like to target (separate multiple values with a space)",
       "type": "parameter",
       "datatype": "choice",
       "enableQuotelessLiterals": true,
