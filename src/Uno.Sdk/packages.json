@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.4.0-dev.299",
+    "version": "6.4.0-dev.309",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.17.0-dev.343",
+    "version": "1.17.0-dev.346",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -313,7 +313,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.3.0-dev.25",
+    "version": "6.3.0-dev.29",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -343,7 +343,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.3.0-dev.24",
+    "version": "8.3.0-dev.25",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
