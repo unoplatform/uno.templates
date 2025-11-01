@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.7.0-dev.15",
+    "version": "1.7.0-dev.18",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -313,7 +313,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.3.0-dev.29",
+    "version": "6.3.0-dev.33",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
