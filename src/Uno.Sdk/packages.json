@@ -101,7 +101,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.0",
+    "version": "3.119.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -121,14 +121,14 @@
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250606001",
+    "version": "1.7.251014001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4948",
+    "version": "10.0.26100.6901",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -140,17 +140,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.10"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.19",
+    "version": "8.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -341,7 +341,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]

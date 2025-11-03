@@ -15,12 +15,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.10.3 |
-| SkiaSharpVersion | 3.119.0 |
+| SkiaSharpVersion | 3.119.1 |
 | SvgSkiaVersion | 3.0.3 |
-| WinAppSdkVersion | 1.7.250606001 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.4948 |
+| WinAppSdkVersion | 1.7.251014001 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.6901 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.19 |
+| WindowsCompatibilityVersion** | 8.0.21 |
 | MicrosoftIdentityClientVersion | 4.74.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -143,7 +143,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.0",
+    "version": "3.119.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -163,14 +163,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250606001",
+    "version": "1.7.251014001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4948",
+    "version": "10.0.26100.6901",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -182,17 +182,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.10"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.19",
+    "version": "8.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.8"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -383,7 +383,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3405.78",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
