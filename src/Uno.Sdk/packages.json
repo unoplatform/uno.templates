@@ -40,7 +40,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net9.0": "9.0.19"
+      "net9.0": "9.0.20"
     }
   },
   {
@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.3.12",
+    "version": "1.3.17",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -102,7 +102,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.0-preview.1.2",
+    "version": "3.119.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -115,21 +115,21 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.3",
+    "version": "3.0.6",
     "packages": [
       "Svg.Skia"
     ]
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250606001",
+    "version": "1.7.251014001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4188",
+    "version": "10.0.26100.6901",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -141,17 +141,17 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.6"
+      "net9.0": "9.0.10"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.17",
+    "version": "8.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.6"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -313,7 +313,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "7.0.7",
+    "version": "7.0.9",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -342,7 +342,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3296.44",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
