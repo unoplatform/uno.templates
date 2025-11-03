@@ -15,12 +15,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.9.4 |
-| SkiaSharpVersion | 3.119.0 |
-| SvgSkiaVersion | 3.0.4 |
-| WinAppSdkVersion | 1.7.250606001 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.4654 |
+| SkiaSharpVersion | 3.119.1 |
+| SvgSkiaVersion | 3.0.6 |
+| WinAppSdkVersion | 1.7.251014001 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.6901 |
 | MicrosoftLoggingVersion** | 8.0.1 |
-| WindowsCompatibilityVersion** | 8.0.18 |
+| WindowsCompatibilityVersion** | 8.0.21 |
 | MicrosoftIdentityClientVersion | 4.73.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -130,7 +130,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.5.3",
+    "version": "1.5.16",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -144,7 +144,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.0",
+    "version": "3.119.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -157,21 +157,21 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.4",
+    "version": "3.0.6",
     "packages": [
       "Svg.Skia"
     ]
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250606001",
+    "version": "1.7.251014001",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.4654",
+    "version": "10.0.26100.6901",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -183,17 +183,17 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.10"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "8.0.18",
+    "version": "8.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net9.0": "9.0.7"
+      "net9.0": "9.0.10"
     }
   },
   {
@@ -384,7 +384,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3351.48",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
