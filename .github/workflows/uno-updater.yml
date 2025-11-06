@@ -26,6 +26,7 @@ jobs:
           - release/stable/6.1
           - release/stable/6.2
           - release/stable/6.3
+          - release/stable/6.4
 
     steps:
     - name: Checkout
