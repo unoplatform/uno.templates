@@ -305,7 +305,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.4.0-dev.5",
+    "version": "6.4.5",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -313,7 +313,7 @@
   },
   {
     "group": "Extensions",
-    "version": "6.3.0-dev.36",
+    "version": "7.0.1",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -355,7 +355,7 @@
   },
   {
     "group": "Themes",
-    "version": "5.8.0-dev.9",
+    "version": "6.0.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
