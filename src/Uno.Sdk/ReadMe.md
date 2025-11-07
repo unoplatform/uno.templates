@@ -4,9 +4,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.4.0-dev.357 |
+| UnoVersion* | 6.4.2 |
 | UnoExtensionsVersion | 6.3.0-dev.36 |
-| UnoToolkitVersion | 8.3.0-dev.25 |
+| UnoToolkitVersion | 8.3.1 |
 | UnoThemesVersion | 5.8.0-dev.9 |
 | UnoCSharpMarkupVersion | 6.4.0-dev.5 |
 | UnoWasmBootstrapVersion** | 9.0.20 |
@@ -14,7 +14,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 1.12.0-dev.5 |
+| UnoResizetizerVersion | 1.12.1 |
 | SkiaSharpVersion | 3.119.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.4.0-dev.357",
+    "version": "6.4.2",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -116,7 +116,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.12.0-dev.5",
+    "version": "1.12.1",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -130,14 +130,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.7.0-dev.31",
+    "version": "1.7.1",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.17.0-dev.348",
+    "version": "1.17.1",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -385,7 +385,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "8.3.0-dev.25",
+    "version": "8.3.1",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -421,7 +421,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "1.0.0-dev.50",
+    "version": "1.0.3",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
