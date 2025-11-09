@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.17.5",
+    "version": "1.17.18",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -222,7 +222,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoFonts",
-    "version": "2.8.0-dev.3",
+    "version": "2.8.1",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
