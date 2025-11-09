@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.17.5",
+    "version": "1.17.18",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -180,7 +180,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.8.0-dev.3",
+    "version": "2.8.1",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
