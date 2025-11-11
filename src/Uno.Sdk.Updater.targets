@@ -3,8 +3,7 @@
   <PropertyGroup>
     <UnoVersion>6.5.0-dev.42</UnoVersion>
     <UnoWasmBootstrapVersionNet9>9.0.20</UnoWasmBootstrapVersionNet9>
-    <!-- TODO: Update when stable -->
-    <UnoWasmBootstrapVersionNet10>10.0.0-dev.36</UnoWasmBootstrapVersionNet10>
+    <UnoWasmBootstrapVersionNet10>10.0.1</UnoWasmBootstrapVersionNet10>
     <UnoExtensionsLoggingVersion>1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion>4.1.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion>1.4.0</UnoDspTasksVersion>
