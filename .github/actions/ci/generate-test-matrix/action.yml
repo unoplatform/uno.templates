@@ -125,7 +125,7 @@ runs:
             if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
                 $newGroup = @{
                     'groupName' = "Group$($matrixGroups.Count)_net10"
-                    'unocheckArguments' = '--pre-major'
+                    'unocheckArguments' = ''
                     'validations' = ($currentGroup -join "`r`n")
                 };
         
