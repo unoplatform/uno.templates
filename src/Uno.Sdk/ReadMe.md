@@ -183,7 +183,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25502.107"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -193,7 +193,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25502.107"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -342,7 +342,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25504.7"
+      "net10.0": "10.0.0"
     }
   },
   {
