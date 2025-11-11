@@ -23,7 +23,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet9: '1.33.0-dev.13'
-  ValidationUnoCheckVersionNet10: '1.33.0-dev.29'
+  ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   ValidationDotNetVersion: '9.0.305'
   XcodeVersionNet9: '/Applications/Xcode_16.4.app'
   XcodeVersionNet10: '/Applications/Xcode_26.0.1.app'
