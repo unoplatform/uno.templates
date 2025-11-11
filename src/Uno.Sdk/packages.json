@@ -141,7 +141,7 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25502.107"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -151,7 +151,7 @@
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25502.107"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -300,7 +300,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0-rc.2.25504.7"
+      "net10.0": "10.0.0"
     }
   },
   {
