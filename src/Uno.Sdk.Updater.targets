@@ -4,11 +4,15 @@
     <UnoVersion>6.4.43</UnoVersion>
     <UnoWasmBootstrapVersionNet9>9.0.20</UnoWasmBootstrapVersionNet9>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <UnoWasmBootstrapVersionNet10>10.0.1</UnoWasmBootstrapVersionNet10>
 =======
     <!-- TODO: Update when stable -->
     <UnoWasmBootstrapVersionNet10>10.0.0-dev.36</UnoWasmBootstrapVersionNet10>
 >>>>>>> 15bbfba (chore: adjust for net10)
+=======
+    <UnoWasmBootstrapVersionNet10>10.0.1</UnoWasmBootstrapVersionNet10>
+>>>>>>> 29a2454 (chore: bump bootstrap)
     <UnoExtensionsLoggingVersion>1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion>4.1.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion>1.4.0</UnoDspTasksVersion>
