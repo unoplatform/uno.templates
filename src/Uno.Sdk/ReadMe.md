@@ -130,14 +130,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.3",
+    "version": "1.8.0-dev.5",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.18.0-dev.88",
+    "version": "1.18.0-dev.95",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -342,7 +342,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.10"
     }
   },
   {
