@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.17.112",
+    "version": "1.17.129",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -136,7 +136,7 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.10",
+    "version": "9.0.11",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
@@ -146,7 +146,7 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.10",
+    "version": "9.0.11",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
