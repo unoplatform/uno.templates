@@ -4,12 +4,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.4.43 |
+| UnoVersion* | 6.4.106 |
 | UnoExtensionsVersion | 7.0.4 |
 | UnoToolkitVersion | 8.3.2 |
 | UnoThemesVersion | 6.0.2 |
-| UnoCSharpMarkupVersion | 6.4.11 |
-| UnoWasmBootstrapVersion** | 9.0.20 |
+| UnoCSharpMarkupVersion | 6.4.14 |
+| UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.4.43",
+    "version": "6.4.106",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -75,14 +75,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WasmBootstrap",
-    "version": "9.0.20",
+    "version": "9.0.23",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.6"
     }
   },
   {
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.17.129",
+    "version": "1.17.155",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -347,7 +347,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.4.11",
+    "version": "6.4.14",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -421,7 +421,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
