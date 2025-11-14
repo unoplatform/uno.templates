@@ -4,12 +4,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.5.0-dev.87 |
+| UnoVersion* | 6.5.0-dev.96 |
 | UnoExtensionsVersion | 7.1.0-dev.3 |
 | UnoToolkitVersion | 8.4.0-dev.2 |
 | UnoThemesVersion | 6.1.0-dev.2 |
 | UnoCSharpMarkupVersion | 6.5.0-dev.3 |
-| UnoWasmBootstrapVersion** | 9.0.20 |
+| UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.26100.6901 |
 | MicrosoftLoggingVersion** | 9.0.11 |
 | WindowsCompatibilityVersion** | 9.0.11 |
-| MicrosoftIdentityClientVersion | 4.79.0 |
+| MicrosoftIdentityClientVersion | 4.79.1 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.4 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.5.0-dev.87",
+    "version": "6.5.0-dev.96",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -75,14 +75,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WasmBootstrap",
-    "version": "9.0.20",
+    "version": "9.0.23",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.6"
     }
   },
   {
@@ -137,7 +137,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.18.0-dev.118",
+    "version": "1.18.0-dev.146",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -198,7 +198,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.79.0",
+    "version": "4.79.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
