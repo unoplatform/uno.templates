@@ -19,57 +19,27 @@ charset = utf-8
 # File Extension Settings
 ##########################################
 
-[*.{yml,yaml}]
+[*.{xaml,xml,yml,yaml,slnf,sln,csproj,proj,projitems,shproj,props,targets,appxmanifest,json,html,cshtml,webmanifest,manifest,css,vsconfig,sh,md,markdown}]
 indent_size = 2
+indent_style = space
 
-[.vsconfig]
-indent_size = 2
+[*.{vsconfig,csproj,proj,projitems,sh,shproj,props,targets,json,slnf,css,webmanifest,manifest,plist}]
 end_of_line = lf
-
-[*.sln]
-indent_style = tab
-indent_size = 2
-
-[*.{csproj,proj,projitems,shproj}]
-indent_size = 4
-
-[*.{json,slnf}]
-indent_size = 2
-end_of_line = lf
-
-[*.{props,targets}]
-indent_size = 4
 
 [*.xaml]
-indent_size = 4
 charset = utf-8-bom
-
-[*.xml]
-indent_size = 4
-end_of_line = lf
 
 [*.plist]
 indent_size = 4
 indent_style = tab
-end_of_line = lf
-
-[*.manifest]
-indent_size = 4
-
-[*.appxmanifest]
-indent_size = 4
-
-[*.{json,css,webmanifest}]
-indent_size = 2
-end_of_line = lf
 
 [web.config]
 indent_size = 4
 end_of_line = lf
 
-[*.sh]
-indent_size = 2
-end_of_line = lf
+[*.{xml,xaml,json}]
+# EOL should be normalized by Git. Setting to lf seems to mess up on Windows Hosts sometimes. See https://github.com/unoplatform/uno.templates/issues/1501
+end_of_line = unset
 
 [*.cs]
 # EOL should be normalized by Git. See https://github.com/dotnet/format/issues/1099
