@@ -1,7 +1,6 @@
 {
   "exclude": [
-    "SvgSkia",
-    "WinAppSdk"
+    "SvgSkia"
   ]
 }
 
