@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.4.133",
+    "version": "6.4.185",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -40,7 +40,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.6"
+      "net10.0": "10.0.13"
     }
   },
   {
@@ -129,7 +129,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.6901",
+    "version": "10.0.26100.7175",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -305,7 +305,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.4.17",
+    "version": "6.4.22",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -379,7 +379,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
