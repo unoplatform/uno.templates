@@ -1211,6 +1211,11 @@
       "datatype": "bool",
       "value": "(server)"
     },
+    "requiresNugetPackages": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions)"
+    },
     "useAndroidMaterial": {
       "type": "computed",
       "datatype": "bool",
@@ -2318,6 +2323,7 @@
       "path": "MyExtensionsApp.1.UITests\\MyExtensionsApp.1.UITests.csproj"
     },
     {
+      "condition": "requiresNugetPackages",
       "path": "Directory.Packages.props"
     }
   ],
@@ -2740,6 +2746,14 @@
           "condition": "(!useDspGenerator)",
           "exclude": [
             "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"
+          ]
+        },
+        {
+          "condition": "(!requiresNugetPackages)",
+          "exclude": [
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props"
           ]
         }
       ]
