@@ -2372,7 +2372,7 @@
           ]
         },
         {
-          "condition": "(isVsix || projectOnly)",
+          "condition": "(isVsix || (projectOnly && !requiresNugetPackages))",
           "exclude": [
             "MyExtensionsApp.1.sln"
           ]
@@ -2784,7 +2784,7 @@
           ]
         },
         {
-          "condition": "(projectOnly)",
+          "condition": "(projectOnly && !requiresNugetPackages)",
           "exclude": [
             ".editorconfig",
             ".vsconfig",
@@ -2796,7 +2796,7 @@
       ]
     },
     {
-      "condition": "(projectOnly)",
+      "condition": "(projectOnly && !requiresNugetPackages)",
       "source": "MyExtensionsApp.1/",
       "target": "./"
     }
