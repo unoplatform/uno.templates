@@ -34,7 +34,7 @@ jobs:
       - name: Build MyExtensionsApp.1 (Debug)
         shell: pwsh
         run: msbuild ./MyExtensionsApp.1/MyExtensionsApp.1.csproj /r
-#if (useUnitTests)
+#if (useNUnitTests)
 
   unit_test:
     name: Unit Tests
