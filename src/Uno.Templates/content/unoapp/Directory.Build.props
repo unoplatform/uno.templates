@@ -23,4 +23,11 @@
     <NoWarn>$(NoWarn);NETSDK1023</NoWarn>
     <!--#endif-->
   </PropertyGroup>
+  <ItemGroup>
+    <!--#if (useGitHubActions)-->
+    <PackageReference Update="GitHubActionsTestLogger"
+                      PrivateAssets="all"
+                      IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <!--#endif-->
+  </ItemGroup>
 </Project>
