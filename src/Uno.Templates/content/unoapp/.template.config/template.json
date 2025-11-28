@@ -171,7 +171,7 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net9.0",
+      "defaultValue": "net10.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
@@ -182,7 +182,7 @@
         {
           "choice": "net10.0",
           "displayName": ".NET 10.0",
-          "description": "Target .NET 10.0 (Preview)"
+          "description": "Target .NET 10.0"
         }
       ]
     },
@@ -253,7 +253,7 @@
     },
     "platforms": {
       "displayName": "Platforms",
-      "description": "What platforms would you like to target",
+      "description": "What platforms would you like to target (separate multiple values with a space)",
       "type": "parameter",
       "datatype": "choice",
       "enableQuotelessLiterals": true,
@@ -359,7 +359,7 @@
           },
           {
             "condition": "(tfm == 'net10.0')",
-            "value": "true"
+            "value": "false"
           }
         ]
       }
@@ -839,8 +839,17 @@
     "unoSdkVersion": {
       "type": "parameter",
       "datatype": "text",
+      "displayName": "Uno.SDK Version",
+      "description": "Version of the Uno.SDK to use in global.json. Defaults to the version included with the template.",
       "defaultValue": "DefaultUnoSdkVersion",
       "replaces": "$UnoSdkVersion$"
+    },
+    "includeGlobalJson": {
+      "type": "parameter",
+      "datatype": "bool",
+      "displayName": "Include global.json",
+      "description": "If specified, generates a global.json file with the Uno.SDK version. Set to false to manage SDK versions externally.",
+      "defaultValue": "true"
     },
     "unoWasmBootstrapVersion": {
       "type": "parameter",
@@ -1251,6 +1260,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(server)"
+    },
+    "requiresNugetPackages": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions)"
     },
     "useAndroidMaterial": {
       "type": "computed",
@@ -2359,6 +2373,7 @@
       "path": "MyExtensionsApp.1.UITests\\MyExtensionsApp.1.UITests.csproj"
     },
     {
+      "condition": "requiresNugetPackages",
       "path": "Directory.Packages.props"
     }
   ],
@@ -2781,6 +2796,20 @@
           "condition": "(!useDspGenerator)",
           "exclude": [
             "MyExtensionsApp.1/Styles/ColorPaletteOverride.json"
+          ]
+        },
+        {
+          "condition": "(!requiresNugetPackages)",
+          "exclude": [
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props"
+          ]
+        },
+        {
+          "condition": "(!includeGlobalJson)",
+          "exclude": [
+            "global.json"
           ]
         }
       ]
