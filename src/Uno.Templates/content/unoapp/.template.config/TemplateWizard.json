@@ -97,7 +97,7 @@
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
-					"tfm": "net9.0",
+					"tfm": "net10.0",
 					"toolkit": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
@@ -139,7 +139,7 @@
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
-					"tfm": "net9.0",
+					"tfm": "net10.0",
 					"toolkit": "true",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
@@ -666,8 +666,12 @@
 			"Icon": "/Assets/Framework.NET8.svg"
 		},
 		"tfm.net9.0": {
-			"Sequence": 2,
+			"Sequence": 1,
 			"Icon": "/Assets/Framework.NET9.svg"
+		},
+		"tfm.net10.0": {
+			"Sequence": 2,
+			"Icon": "/Assets/Framework.NET10.svg"
 		},
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
@@ -829,7 +833,7 @@
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",
 			"UsePrerelease": {
-				"tfm": [ "net9.0" ]
+				"tfm": [ "net10.0" ]
 			}
 		},
 		{

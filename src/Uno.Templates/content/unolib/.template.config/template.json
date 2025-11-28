@@ -40,13 +40,18 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net9.0",
+      "defaultValue": "net10.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
           "choice": "net9.0",
           "displayName": ".NET 9.0",
           "description": "Target .NET 9.0 (Standard Term Support)"
+        },
+        {
+          "choice": "net10.0",
+          "displayName": ".NET 10.0",
+          "description": "Target .NET 10.0"
         }
       ]
     },
