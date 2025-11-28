@@ -113,7 +113,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 9",
+					".NET 10",
 					"XAML"
 				]
 			},
@@ -156,7 +156,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 9",
+					".NET 10",
 					"XAML",
 					"MVUX",
 					"Material",
