@@ -12,7 +12,7 @@
     <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
     <!--#endif-->
     <!--#if (useShouldly)-->
-    <PackageVersion Include="Shouldly" Version="$ShouldlyVersion$" />
+    <PackageVersion Include="Shouldly" Version="$Shouldly$" />
     <!--#endif-->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
     <PackageVersion Include="NUnit" Version="$NUnit$" />
