@@ -37,7 +37,7 @@ jobs:
 #if (useNUnitTests)
 
   unit_test:
-    name: Unit Tests
+    name: NUnit Tests
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -56,8 +56,33 @@ jobs:
         shell: pwsh
         run: msbuild ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj /p:Configuration=Release /p:OverrideTargetFramework=$baseTargetFramework$ /r
 
-      - name: Run Unit Tests
+      - name: Run NUnit Tests
         shell: pwsh
         run: dotnet test ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+#elseif (useXUnitTests)
+
+  unit_test:
+    name: xUnit Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        timeout-minutes: ${{ fromJSON(env.STEP_TIMEOUT_MINUTES) }}
+        uses: "./.github/steps/install_dependencies"
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: Build MyExtensionsApp.1.xUnitTests (Release)
+        shell: pwsh
+        run: msbuild ./MyExtensionsApp.1.xUnitTests/MyExtensionsApp.1.xUnitTests.csproj /p:Configuration=Release /p:OverrideTargetFramework=$baseTargetFramework$ /r
+
+      - name: Run Unit xUnitTests
+        shell: pwsh
+        run: dotnet test ./MyExtensionsApp.1.xUnitTests/MyExtensionsApp.1.xUnitTests.csproj --no-build -c Release --logger GitHubActions --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 #else
 #endif

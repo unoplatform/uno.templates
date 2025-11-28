@@ -10,6 +10,10 @@
     VSTest by default when using 'dotnet test'. For more information on how to enable support
     for Microsoft Testing Platform, please visit:
       https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
+    Using .NET SDK version 8 or 9.0:
+      https://xunit.net/docs/getting-started/v3/microsoft-testing-platform#using-net-sdk-version-8-or-9
+    Using .NET SDK version 10 or later:
+      https://xunit.net/docs/getting-started/v3/microsoft-testing-platform#using-net-sdk-version-10-or-later
     -->
   </PropertyGroup>
 
