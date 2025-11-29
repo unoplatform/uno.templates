@@ -71,6 +71,9 @@
       <!--#if (useUnoLottie)-->
       Lottie;
       <!--#endif-->
+      <!--#if (webview)-->
+      WebView;
+      <!--#endif-->
       <!--#if (mediaElement)-->
       MediaElement;
       <!--#endif-->
