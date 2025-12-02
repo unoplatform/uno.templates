@@ -69,7 +69,7 @@ runs:
 
         if ($templateArgs -match 'net9.0')
         {
-            $dotnetVersion = '9.0.305'
+            $dotnetVersion = '9.0.308'
             $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
             $XcodeVersion = $env:XcodeVersionNet9
         }
