@@ -24,7 +24,7 @@ env:
   IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet9: '1.32.23'
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
-  ValidationDotNetVersion: '9.0.8'
+  ValidationDotNetVersion: '9.0.308'
   XcodeVersionNet9: '/Applications/Xcode_16.4.app'
   XcodeVersionNet10: '/Applications/Xcode_26.0.1.app'
 
