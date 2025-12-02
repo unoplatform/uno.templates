@@ -24,7 +24,6 @@ runs:
     uses: actions/setup-dotnet@v1
     with:
       dotnet-version: ${{ inputs.DotNetVersion }}
-      dit
 
   - name: 'Select JDK 11'
     shell: pwsh
