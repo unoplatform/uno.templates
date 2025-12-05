@@ -7,11 +7,19 @@
   -->
   <ItemGroup>
     <!--#if (useTestSolutionFolder)-->
-    <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
-    <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
+    <!--#if (useNUnit)-->
     <PackageVersion Include="NUnit" Version="$NUnit$" />
     <PackageVersion Include="NUnit3TestAdapter" Version="$NUnit3TestAdapter$" />
+    <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
+    <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
+    <!--#endif-->
+    <!--#if (usexUnit)-->
+    <PackageVersion Include="xUnit.v3" Version="$xUnitV3$" />
+    <PackageVersion Include="xUnit.runner.visualstudio" Version="$xUnitRunnerVisualStudio$" />
+    <PackageVersion Include="Shouldly" Version="$Shouldly$" />
+    <!--#endif-->
+    <!--#endif-->
     <!--#if (useGitHubActions)-->
     <PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
     <!--#endif-->
