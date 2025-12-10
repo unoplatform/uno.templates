@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.5.0-dev.212",
+    "version": "6.5.0-dev.435",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.18.0-dev.363",
+    "version": "1.18.0-dev.386",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -141,7 +141,7 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -151,7 +151,7 @@
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -313,7 +313,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.1.0-dev.44",
+    "version": "7.1.0-dev.49",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -343,7 +343,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.4.0-dev.4",
+    "version": "8.4.0-dev.10",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -372,14 +372,14 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3595.46",
+    "version": "1.0.3650.58",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
   },
   {
     "group": "AppMcp",
-    "version": "1.1.0-dev.37",
+    "version": "1.1.0-dev.38",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
