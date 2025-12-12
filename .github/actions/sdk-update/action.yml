@@ -6,6 +6,10 @@ inputs:
     description: 'base branch'
     required: true
     default: 'main'
+  exclude-file:  # packages to exclude for the update
+    description: 'Path to the JSON exclude file'
+    required: false
+    default: '.github/sdk-update-exclude.json'
 
 runs:
   using: "composite"
@@ -22,5 +26,5 @@ runs:
         setAllVars: true
 
     - name: Run Uno Sdk Updater
-      run: dotnet run -c Release --project tools/Uno.Sdk.Updater
       shell: pwsh
+      run: dotnet run -c Release --project tools/Uno.Sdk.Updater -- --exclude-file "${{ inputs['exclude-file'] }}"

@@ -35,7 +35,7 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoSdkVersion" ReplacementText="$(PackageVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet10" ReplacementText="$(UnoWasmBootstrapVersionNet10)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultXamarinGoogleAndroidMaterial" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
