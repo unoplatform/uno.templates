@@ -809,6 +809,13 @@
       "description": "If specified, skips the automatic restore of the project on create.",
       "defaultValue": "false"
     },
+    "projectOnly": {
+      "type": "parameter",
+      "datatype": "bool",
+      "displayName": "Project Only",
+      "description": "If specified, creates only the main project folder without solution file or top-level configuration files. Intended for adding projects to existing solutions.",
+      "defaultValue": "false"
+    },
     "unoSdkVersion": {
       "type": "parameter",
       "datatype": "text",
@@ -823,6 +830,11 @@
       "displayName": "Include global.json",
       "description": "If specified, generates a global.json file with the Uno.SDK version. Set to false to manage SDK versions externally.",
       "defaultValue": "true"
+    },
+    "includeGlobalJsonEvaluator": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(includeGlobalJson && !projectOnly)"
     },
     "unoWasmBootstrapVersion": {
       "type": "parameter",
@@ -2379,7 +2391,7 @@
           ]
         },
         {
-          "condition": "(isVsix)",
+          "condition": "(isVsix || (projectOnly && !requiresNugetPackages))",
           "exclude": [
             "MyExtensionsApp.1.sln"
           ]
@@ -2791,12 +2803,27 @@
           ]
         },
         {
-          "condition": "(!includeGlobalJson)",
+          "condition": "(!includeGlobalJsonEvaluator)",
           "exclude": [
             "global.json"
           ]
+        },
+        {
+          "condition": "(projectOnly && !requiresNugetPackages)",
+          "exclude": [
+            ".editorconfig",
+            ".vsconfig",
+            ".run/**/*",
+            ".vscode/**/*",
+            "MyExtensionsApp.1/**"
+          ]
         }
       ]
+    },
+    {
+      "condition": "(projectOnly && !requiresNugetPackages)",
+      "source": "MyExtensionsApp.1/",
+      "target": "./"
     }
   ],
   "postActions": [
