@@ -789,6 +789,13 @@
     //   "datatype": "bool",
     //   "defaultValue": "false"
     // },
+    "webview": {
+      "displayName": "WebView",
+      "description": "Configures application to bundle native assets required for the WebView2 control.",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "mediaElement": {
       "displayName": "Media Player Element",
       "description": "Configures application to bundle native assets required for the MediaPlayerElement",
