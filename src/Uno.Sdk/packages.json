@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.4.195",
+    "version": "6.4.229",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -40,7 +40,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13"
+      "net10.0": "10.0.15"
     }
   },
   {
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.17.385",
+    "version": "1.17.400",
     "packages": [
       "Uno.UI.HotDesign"
     ]
