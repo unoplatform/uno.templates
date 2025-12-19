@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Uno.Resizetizer;
 
 //-:cnd:noEmit
@@ -19,8 +20,10 @@ public partial class App : Application
 
 //+:cnd:noEmit
 #if useFrameNav
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected override void OnLaunched(LaunchActivatedEventArgs args)
 #else
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
 #endif
     {
