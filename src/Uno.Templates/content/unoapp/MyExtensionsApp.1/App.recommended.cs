@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Uno.Resizetizer;
 
 //-:cnd:noEmit
@@ -19,8 +20,10 @@ public partial class App : Application
 
 //+:cnd:noEmit
 #if useFrameNav
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected override void OnLaunched(LaunchActivatedEventArgs args)
 #else
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
 #endif
     {
@@ -114,16 +117,12 @@ public partial class App : Application
                 .UseConfiguration(configure: configBuilder =>
                     configBuilder
                         .EmbeddedSource<App>()
-#pragma warning disable IL2026 // Suppress trimming warnings for Configuration extensions
                         .Section<AppConfig>()
-#pragma warning restore IL2026
                 )
 #endif
 #if useLocalization
                 // Enable localization (see appsettings.json for supported languages)
-#pragma warning disable IL2026 // Suppress trimming warnings for Localization extensions
                 .UseLocalization()
-#pragma warning restore IL2026
 #endif
 #if (useServer && (useHttpKiota || useHttpRefit))
                 // Register Json serializers (ISerializer and ISerializer)
@@ -210,13 +209,9 @@ public partial class App : Application
                     //services.AddSingleton<IMyService, MyService>();
                 })
 #if (useReactiveExtensionsNavigation)
-#pragma warning disable IL2026 // Suppress trimming warnings for Navigation extensions
                 .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
-#pragma warning restore IL2026
 #elif (useExtensionsNavigation)
-#pragma warning disable IL2026 // Suppress trimming warnings for Navigation extensions
                 .UseNavigation(RegisterRoutes)
-#pragma warning restore IL2026
 #endif
             );
         MainWindow = builder.Window;
@@ -230,9 +225,7 @@ public partial class App : Application
 
 #if useFrameNav
 //-:cnd:noEmit
-#pragma warning disable IL2026 // Suppress trimming warnings for IApplicationBuilder.Build
         Host = builder.Build();
-#pragma warning restore IL2026
 
         // Do not repeat app initialization when the Window already has content,
         // just ensure that the window is active
@@ -263,16 +256,13 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
 //+:cnd:noEmit
 #elif (!useAuthentication)
 #if (!enableDeveloperMode)
-#pragma warning disable IL2026 // Suppress trimming warnings for NavigateAsync
         Host = await builder.NavigateAsync<Shell>();
-#pragma warning restore IL2026
 #else
 $$EnableDeveloperMode_Region_Navigate$$
             ();
 #endif
 #else
 #if (!enableDeveloperMode)
-#pragma warning disable IL2026 // Suppress trimming warnings for NavigateAsync
         Host = await builder.NavigateAsync<Shell>
 #else
 $$EnableDeveloperMode_Region_Navigate$$
@@ -290,7 +280,6 @@ $$EnableDeveloperMode_Region_Navigate$$
                     await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
                 }
             });
-#pragma warning restore IL2026
 #endif
     }
 #if (useExtensionsNavigation)
