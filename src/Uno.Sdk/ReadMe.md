@@ -130,14 +130,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.7.1",
+    "version": "1.7.3",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.17.413",
+    "version": "1.17.415",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -183,7 +183,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -193,7 +193,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -414,7 +414,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3595.46",
+    "version": "1.0.3650.58",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
