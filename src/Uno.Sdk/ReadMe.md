@@ -183,7 +183,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -193,7 +193,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -414,7 +414,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3650.58",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
