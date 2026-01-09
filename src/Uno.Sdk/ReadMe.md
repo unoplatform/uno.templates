@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.4.229 |
+| UnoVersion* | 6.4.242 |
 | UnoExtensionsVersion | 7.0.17 |
 | UnoToolkitVersion | 8.3.2 |
 | UnoThemesVersion | 6.0.2 |
@@ -18,7 +18,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 3.119.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.7175 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.7463 |
 | MicrosoftLoggingVersion** | 9.0.11 |
 | WindowsCompatibilityVersion** | 9.0.11 |
 | MicrosoftIdentityClientVersion | 4.78.0 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.4.229",
+    "version": "6.4.242",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -171,7 +171,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.7175",
+    "version": "10.0.26100.7463",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -183,7 +183,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -193,7 +193,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.1"
     }
   },
   {
@@ -414,7 +414,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3595.46",
+    "version": "1.0.3650.58",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
