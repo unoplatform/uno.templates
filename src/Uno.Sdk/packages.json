@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.5.0-dev.616",
+    "version": "6.5.0-dev.646",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.18.0-dev.555",
+    "version": "1.18.0-dev.556",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -129,7 +129,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.7175",
+    "version": "10.0.26100.7463",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -156,7 +156,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.80.0",
+    "version": "4.81.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -355,7 +355,7 @@
   },
   {
     "group": "Themes",
-    "version": "6.1.0-dev.4",
+    "version": "6.1.0-dev.5",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
