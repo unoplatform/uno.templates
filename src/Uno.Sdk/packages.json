@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.7.3",
+    "version": "1.7.1",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -129,7 +129,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.7463",
+    "version": "10.0.26100.7175",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -141,7 +141,7 @@
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -151,7 +151,7 @@
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.1"
+      "net10.0": "10.0.0"
     }
   },
   {
@@ -372,7 +372,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3650.58",
+    "version": "1.0.3595.46",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
