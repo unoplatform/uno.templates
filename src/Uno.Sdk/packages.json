@@ -365,7 +365,7 @@
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.21",
+    "version": "3.0.23",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]

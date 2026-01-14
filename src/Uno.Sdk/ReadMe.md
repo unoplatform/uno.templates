@@ -407,7 +407,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.21",
+    "version": "3.0.23",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
