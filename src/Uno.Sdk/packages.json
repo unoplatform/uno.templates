@@ -81,7 +81,7 @@
   },
   {
     "group": "sdkextras",
-    "version": "6.3.0-dev.36",
+    "version": "6.3.1",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -313,7 +313,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.3",
+    "version": "7.1.1",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -343,7 +343,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.5.0-dev.2",
+    "version": "8.4.2",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -355,7 +355,7 @@
   },
   {
     "group": "Themes",
-    "version": "6.2.0-dev.3",
+    "version": "6.1.1",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
