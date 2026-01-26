@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.5.31",
+    "version": "6.5.44",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.18.16",
+    "version": "1.18.23",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -305,7 +305,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.5.3",
+    "version": "6.5.5",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
