@@ -1,5 +1,6 @@
 jobs:
 - job: unit_test
+  cancelTimeoutInMinutes: 0
   displayName: Unit Tests
   pool:
     vmImage: $(windowsAgent)
