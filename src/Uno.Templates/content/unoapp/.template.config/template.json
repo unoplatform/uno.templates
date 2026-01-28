@@ -2789,16 +2789,10 @@
             ".editorconfig",
             ".vsconfig",
             ".run/**/*",
-            ".vscode/**/*",
-            "MyExtensionsApp.1/**"
+            ".vscode/**/*"
           ]
         }
       ]
-    },
-    {
-      "condition": "(projectOnly)",
-      "source": "MyExtensionsApp.1/",
-      "target": "./"
     }
   ],
   "postActions": [
