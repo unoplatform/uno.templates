@@ -153,16 +153,6 @@
     },
     "isVsix": {
       "isHidden": true
-    },
-    "projectOnly": {
-      "longName": "project-only",
-      "shortName": "project-only",
-      "isHidden": true
-    },
-    "includeGlobalJson": {
-      "longName": "include-global-json",
-      "shortName": "include-global-json",
-      "isHidden": true
     }
   }
 }
