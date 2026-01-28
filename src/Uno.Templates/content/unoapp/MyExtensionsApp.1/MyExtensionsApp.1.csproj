@@ -16,28 +16,6 @@
     <ApplicationPublisher>$appPublisher$</ApplicationPublisher>
     <!-- Package Description -->
     <Description>MyExtensionsApp.1 powered by Uno Platform.</Description>
-    <!--#if (!requiresNugetPackages)-->
-
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <!--#if (useWinAppSdk)-->
-
-    <!--
-      Adding NoWarn to remove build warnings
-      NETSDK1201: Warning that specifying RID won't create self containing app
-      PRI257: Ignore default language (en) not being one of the included resources (eg en-us, en-uk)
-    -->
-    <NoWarn>$(NoWarn);NETSDK1201;PRI257</NoWarn>
-    <!--#endif-->
-    <!--#if (mauiEmbedding)-->
-
-    <!--
-      Adding NoWarn to remove build warnings
-      NETSDK1023:	Microsoft.Maui.Graphics reference required to avoid build error causes warning because it's already implicitly referenced by Maui SDK
-    -->
-    <NoWarn>$(NoWarn);NETSDK1023</NoWarn>
-    <!--#endif-->
-    <!--#endif-->
     <!--#if (useWinAppSdk) -->
     <!--
       If you encounter this error message:
