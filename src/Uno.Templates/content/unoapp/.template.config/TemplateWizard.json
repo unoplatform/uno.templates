@@ -112,7 +112,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 8",
+					".NET 10",
 					"XAML"
 				]
 			},
@@ -154,7 +154,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 8",
+					".NET 10",
 					"XAML",
 					"MVUX",
 					"Material",
@@ -292,7 +292,7 @@
 				"Title": "",
 				"SectionType": "MultiSelect",
 				"SymbolId": "tests",
-				"Choices": [ "unit", "ui" ]
+				"Choices": [ "nunit", "xunit", "ui" ]
 			}
 		],
 		"Theme": [
@@ -649,7 +649,10 @@
 		"tests.ui": {
 			"Icon": "/Assets/Test.UiTest.svg"
 		},
-		"tests.unit": {
+		"tests.xunit": {
+			"Icon": "/Assets/Test.UnitTest.svg"
+		},
+		"tests.nunit": {
 
 			"Icon": "/Assets/Test.UnitTest.svg"
 		},

@@ -1,6 +1,7 @@
 jobs:
-- job: unit_test
-  displayName: Unit Tests
+#if (useNUnitTests)
+- job: n_unit_test
+  displayName: NUnit Tests
   pool:
     vmImage: $(windowsAgent)
   steps:
@@ -26,3 +27,37 @@ jobs:
         runTestsInIsolation: true
         codeCoverageEnabled: true
         rerunFailedTests: true
+#elseif (useXUnitTests)
+
+# Learn how to get xUnit test results in Azure DevOps: https://xunit.net/docs/getting-test-results-in-azure-devops
+
+- job: x_unit_test
+  displayName: xUnit Tests
+  pool:
+    vmImage: $(windowsAgent)
+  steps:
+    - checkout: self
+      fetchDepth: 0
+
+    - template: ../steps/install-dependencies.yml
+
+    - task: MSBuild@1
+      inputs:
+        solution: ./MyExtensionsApp.1.xUnitTests/MyExtensionsApp.1.xUnitTests.csproj
+        configuration: 'Release'
+        msbuildArguments: '/p:OverrideTargetFramework=$baseTargetFramework$ /r'
+
+    - task: VSTest@2
+      type: Visual Studio Test
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\bin\$(BuildConfiguration)\**\*.xUnitTests.dll
+          !**\ref\**
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        runTestsInIsolation: true
+        codeCoverageEnabled: true
+        rerunFailedTests: true
+#else
+#endif

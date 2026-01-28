@@ -11,7 +11,7 @@ Platform[] platforms = [
     new Platform("platforms == windows", "platforms != windows", "windows10.0.26100"),
     new Platform("platforms == wasm", "platforms != wasm", "browserwasm"),
     new Platform("platforms == desktop", "platforms != desktop", "desktop"),
-    new Platform("useUnitTests == true", "useUnitTests == false", null)
+    new Platform("useNUnitTests == true", "useNUnitTests == false", null)
 ];
 
 string[] runtimes = ["net9.0", "net10.0"];
