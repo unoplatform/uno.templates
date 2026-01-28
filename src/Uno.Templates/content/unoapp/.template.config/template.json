@@ -1235,7 +1235,7 @@
     "requiresNugetPackages": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions)"
+      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions || isVsix)"
     },
     "useAndroidMaterial": {
       "type": "computed",
