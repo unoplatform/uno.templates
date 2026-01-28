@@ -1235,7 +1235,7 @@
     "requiresNugetPackages": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions || isVsix)"
+      "value": "(useTestSolutionFolder || useUITests || useAspNetCoreSerilogPackage || useServer || mauiEmbedding || enableDeveloperMode || useWasmPackageVersions)"
     },
     "useAndroidMaterial": {
       "type": "computed",
@@ -2770,7 +2770,7 @@
           ]
         },
         {
-          "condition": "(!requiresNugetPackages)",
+          "condition": "(projectOnly && !requiresNugetPackages)",
           "exclude": [
             "Directory.Build.props",
             "Directory.Build.targets",

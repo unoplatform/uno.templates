@@ -2,6 +2,7 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!--#if (requiresNugetPackages)-->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 
     <!--
@@ -9,6 +10,7 @@
       NU1507: Warning when there are multiple package sources when using CPM with no source mapping
     -->
     <NoWarn>$(NoWarn);NU1507</NoWarn>
+    <!--#endif-->
     <!--#if (useWinAppSdk)-->
     <!--
       NETSDK1201: Warning that specifying RID won't create self containing app
