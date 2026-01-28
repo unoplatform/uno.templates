@@ -806,17 +806,8 @@
     "unoSdkVersion": {
       "type": "parameter",
       "datatype": "text",
-      "displayName": "Uno.SDK Version",
-      "description": "Version of the Uno.SDK to use in global.json. Defaults to the version included with the template.",
       "defaultValue": "DefaultUnoSdkVersion",
       "replaces": "$UnoSdkVersion$"
-    },
-    "includeGlobalJson": {
-      "type": "parameter",
-      "datatype": "bool",
-      "displayName": "Include global.json",
-      "description": "If specified, generates a global.json file with the Uno.SDK version. Set to false to manage SDK versions externally.",
-      "defaultValue": "true"
     },
     "unoWasmBootstrapVersion": {
       "type": "parameter",
@@ -2763,12 +2754,6 @@
             "Directory.Build.props",
             "Directory.Build.targets",
             "Directory.Packages.props"
-          ]
-        },
-        {
-          "condition": "(!includeGlobalJson)",
-          "exclude": [
-            "global.json"
           ]
         }
       ]
