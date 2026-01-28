@@ -809,7 +809,7 @@
       "displayName": "Project Only",
       "description": "If specified, creates only the main project folder without solution file or top-level configuration files. Intended for adding projects to existing solutions.",
       "defaultValue": "false",
-      "isHidden": true
+      "isHidden": "true"
     },
     "unoSdkVersion": {
       "type": "parameter",
@@ -825,7 +825,7 @@
       "displayName": "Include global.json",
       "description": "If specified, generates a global.json file with the Uno.SDK version. Set to false to manage SDK versions externally.",
       "defaultValue": "true",
-      "isHidden": true
+      "isHidden": "true"
     },
     "includeGlobalJsonEvaluator": {
       "type": "computed",
