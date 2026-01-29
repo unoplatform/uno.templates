@@ -97,6 +97,7 @@
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
+					"assertionLibrary": "none",
 					"tfm": "net10.0",
 					"toolkit": "false",
 					"vscode": "true",
@@ -112,7 +113,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 8",
+					".NET 10",
 					"XAML"
 				]
 			},
@@ -139,6 +140,7 @@
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
+					"assertionLibrary": "none",
 					"tfm": "net10.0",
 					"toolkit": "true",
 					"vscode": "true",
@@ -154,7 +156,7 @@
 					"renderer": "skia"
 				},
 				"Features": [
-					".NET 8",
+					".NET 10",
 					"XAML",
 					"MVUX",
 					"Material",
@@ -293,6 +295,13 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "tests",
 				"Choices": [ "unit", "ui" ]
+			},
+			{
+				"Title": "Assertion Library",
+				"SectionType": "SingleSelect",
+				"SymbolId": "assertionLibrary",
+				"Choices": [ "none", "Shouldly", "FluentAssertions" ],
+				"NestedIn": "tests"
 			}
 		],
 		"Theme": [
@@ -653,6 +662,56 @@
 
 			"Icon": "/Assets/Test.UnitTest.svg"
 		},
+		"tests.ui.assertion": {
+			"NoValue": "none"
+		},
+		"tests.ui.assertion.shouldly": {
+			// "Icon": "/Assets/Test.UiTest.Shouldly.svg" TODO: Add icon
+			"Sequence": 1,
+			"Tag":{
+				"Requires": {
+					"tests": {
+						"RequiredValues": [ "!none" ],
+						"MoreInformation": "Test selection is required to use Shouldly Assertion library"
+					}
+				}
+			}
+		},
+		"tests.ui.assertion.fluentAssertions": {
+			// "Icon": "/Assets/Test.UiTest.FluentAssertions.svg" TODO: Add icon
+			"Sequence": 2,
+			"Requires": {
+				"tests": {
+					"RequiredValues": [ "!none" ],
+					"MoreInformation": "Test selection is required to use Fluent Assertions library"
+				}
+			}
+		},
+		"tests.unit.assertion": {
+			"NoValue": "none"
+		},
+		"tests.unit.assertion.shouldly": {
+			// "Icon": "/Assets/Test.UiTest.Shouldly.svg" TODO: Add icon
+			"Sequence": 1,
+			"Tag":{
+				"Requires": {
+					"tests": {
+						"RequiredValues": [ "!none" ],
+						"MoreInformation": "Test selection is required to use Shouldly Assertion library"
+					}
+				}
+			}
+		},
+		"tests.unit.assertion.fluentAssertions": {
+			// "Icon": "/Assets/Test.UiTest.FluentAssertions.svg" TODO: Add icon
+			"Sequence": 2,
+			"Requires": {
+				"tests": {
+					"RequiredValues": [ "!none" ],
+					"MoreInformation": "Test selection is required to use Fluent Assertions library"
+				}
+			}
+		},
 		"tfm.net6.0": {
 			"Sequence": 1,
 			"Icon": "/Assets/Framework.NET6.svg"
@@ -760,6 +819,7 @@
 		"appTheme",
 		"platforms",
 		"tests",
+		"assertionLibrary",
 		"server",
 		"dependencyInjection",
 		"configuration",
