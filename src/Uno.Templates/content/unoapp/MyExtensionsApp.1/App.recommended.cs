@@ -81,34 +81,15 @@ public partial class App : Application
 #if useLogging
                 .UseLogging(configure: (context, logBuilder) =>
                 {
-                    // Configure log levels for different categories of logging
-                    logBuilder
-                        .SetMinimumLevel(
-                            context.HostingEnvironment.IsDevelopment() ?
+                    ConfigureLogging(
+                        logBuilder,
+                        // Configure log levels for different categories of logging
+                        context.HostingEnvironment.IsDevelopment() ?
                                 LogLevel.Information :
                                 LogLevel.Warning)
+                    .CoreLogLevel(LogLevel.Warning);
 
-                        // Default filters for core Uno Platform namespaces
-                        .CoreLogLevel(LogLevel.Warning);
-
-                    // Uno Platform namespace filter groups
-                    // Uncomment individual methods to see more detailed logging
-                    //// Generic Xaml events
-                    //logBuilder.XamlLogLevel(LogLevel.Debug);
-                    //// Layout specific messages
-                    //logBuilder.XamlLayoutLogLevel(LogLevel.Debug);
-                    //// Storage messages
-                    //logBuilder.StorageLogLevel(LogLevel.Debug);
-                    //// Binding related messages
-                    //logBuilder.XamlBindingLogLevel(LogLevel.Debug);
-                    //// Binder memory references tracking
-                    //logBuilder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
-                    //// DevServer and HotReload related
-                    //logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
-                    //// Debug JS interop
-                    //logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
-
-                }, enableUnoLogging: true)
+                }, enableUnoLogging: false)
 #endif
 #if useSerilog
                 .UseSerilog(consoleLoggingEnabled: true, fileLoggingEnabled: true)
@@ -311,4 +292,100 @@ $$EnableDeveloperMode_Region_Navigate$$
 #endif
     }
 #endif
+
+    /// <summary>
+    /// Configures global Uno Platform logging
+    /// </summary>
+    private static ILoggingBuilder ConfigureLogging(ILoggingBuilder builder, LogLevel defaultLogLevel)
+    {
+#if __WASM__
+        builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
+#elif __IOS__
+        builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
+
+        // Log to the Visual Studio Debug console
+        builder.AddConsole();
+#else   // !__WASM__ && !__IOS__
+        builder.AddConsole();
+#endif  // __WASM__ || __IOS__
+
+        // Exclude logs below this level
+        builder.SetMinimumLevel(defaultLogLevel);
+
+        // Default filters for Uno Platform namespaces
+        builder.AddFilter("Uno", LogLevel.Warning);
+        builder.AddFilter("Windows", LogLevel.Warning);
+        builder.AddFilter("Microsoft", LogLevel.Warning);
+
+        // Generic Xaml events
+        // builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.VisualStateGroup", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.StateTriggerBase", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.UIElement", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.FrameworkElement", LogLevel.Trace );
+
+        // Layouter specific messages
+        // builder.AddFilter("Microsoft.UI.Xaml.Controls", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.Controls.Layouter", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.Controls.Panel", LogLevel.Debug );
+
+        // builder.AddFilter("Windows.Storage", LogLevel.Debug );
+
+        // Binding related messages
+        // builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
+        // builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
+
+        // Binder memory references tracking
+        // builder.AddFilter("Uno.UI.DataBinding.BinderReferenceHolder", LogLevel.Debug );
+
+        // DevServer and HotReload related
+        // builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Information);
+
+        // Debug JS interop
+        // builder.AddFilter("Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug );
+
+        // Uno Platform namespace filter groups
+        // Uncomment individual methods to see more detailed logging
+        //// Generic Xaml events
+        //builder.XamlLogLevel(LogLevel.Debug);
+        //// Layout specific messages
+        //builder.XamlLayoutLogLevel(LogLevel.Debug);
+        //// Storage messages
+        //builder.StorageLogLevel(LogLevel.Debug);
+        //// Binding related messages
+        //builder.XamlBindingLogLevel(LogLevel.Debug);
+        //// Binder memory references tracking
+        //builder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
+        //// DevServer and HotReload related
+        //builder.HotReloadCoreLogLevel(LogLevel.Information);
+        //// Debug JS interop
+        //builder.WebAssemblyLogLevel(LogLevel.Debug);
+
+        return builder;
+    }
+
+    /// <summary>
+    /// Configures global Uno Platform logging
+    /// </summary>
+    public static void InitializeLogging()
+    {
+#if DEBUG
+        // Logging is disabled by default for release builds, as it incurs a significant
+        // initialization cost from Microsoft.Extensions.Logging setup. If startup performance
+        // is a concern for your application, keep this disabled. If you're running on the web or
+        // desktop targets, you can use URL or command line parameters to enable it.
+        //
+        // For more performance documentation: https://platform.uno/docs/articles/Uno-UI-Performance.html
+
+        var factory = LoggerFactory.Create(builder => ConfigureLogging(builder, LogLevel.Information));
+
+        // LogExtensionPoint.AmbientLoggerFactory is used by `Uno.dll` et al for
+        // logging messages, such as from `NativeDispatcher`.
+        // Some of these can occur *before* Dependency Injection `.UseLogging()` executes.
+        global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
+#if HAS_UNO
+        global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
+#endif  // HAS_UNO
+#endif  // DEBUG
+    }
 }
