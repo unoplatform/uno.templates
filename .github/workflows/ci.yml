@@ -25,8 +25,8 @@ env:
   ValidationUnoCheckVersionNet9: '1.32.23'
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   ValidationDotNetVersion: '9.0.308'
-  XcodeVersionNet9: '/Applications/Xcode_26.0.1.app'
-  XcodeVersionNet10: '/Applications/Xcode_26.0.1.app'
+  XcodeVersionNet9: '/Applications/Xcode_26.2.app'
+  XcodeVersionNet10: '/Applications/Xcode_26.2.app'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
   # compatible version of the bootstrapper
