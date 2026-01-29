@@ -1,5 +1,6 @@
 jobs:
 - job: smoke_test
+  cancelTimeoutInMinutes: 0
   displayName: Smoke Test (Debug Build of MyExtensionsApp.1)
   pool:
     vmImage: $(windowsAgent)
