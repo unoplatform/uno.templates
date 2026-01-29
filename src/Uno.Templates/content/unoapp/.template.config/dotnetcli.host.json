@@ -97,6 +97,10 @@
       "longName": "maui-embedding",
       "shortName": "maui"
     },
+    "webview": {
+      "longName": "webview",
+      "shortName": "webview"
+    },
     "mediaElement": {
       "longName": "media-element",
       "shortName": "media"
