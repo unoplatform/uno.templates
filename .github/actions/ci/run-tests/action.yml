@@ -66,28 +66,33 @@ runs:
         echo "TemplateArgs = '$templateArgs'"
         $dotnetVersion = $env:TargetDotNetVersion
         $ValidationUnoCheckVersion = "invalid"
+        $IosRuntimeVersion = ""
 
         if ($templateArgs -match 'net9.0')
         {
-            $dotnetVersion = '9.0.308'
-            $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
-            $XcodeVersion = $env:XcodeVersionNet9
+          $dotnetVersion = '9.0.308'
+          $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+          $XcodeVersion = $env:XcodeVersionNet9
+          $IosRuntimeVersion = '26.2'
         }
 
         if ($templateArgs -match 'net10.0')
         {
-            $dotnetVersion = '10.0.100'
-            $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
-            $XcodeVersion = $env:XcodeVersionNet10
+          $dotnetVersion = '10.0.100'
+          $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
+          $XcodeVersion = $env:XcodeVersionNet10
+          $IosRuntimeVersion = '26.2'
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
         echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
         echo "Xcode Version = '$XcodeVersion'"
+        echo "iOS Runtime Version = '$IosRuntimeVersion'"
     
         echo "DotNetVersion=$dotnetVersion" >> $env:GITHUB_ENV
         echo "ValidationUnoCheckVersion=$ValidationUnoCheckVersion" >> $env:GITHUB_ENV
         echo "XcodeRoot=$XcodeVersion" >> $env:GITHUB_ENV
+        echo "IosRuntimeVersion=$IosRuntimeVersion" >> $env:GITHUB_ENV
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
       ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
@@ -175,6 +180,18 @@ runs:
       echo 'xCode Root to ${{ env.XcodeRoot }}'
       echo 'MD_APPLE_SDK_ROOT=${{ env.XcodeRoot }}' >> $GITHUB_ENV
       sudo xcode-select --switch ${{ env.XcodeRoot }}/Contents/Developer
+
+  - name: 'Ensure iOS simulator runtime'
+    if: runner.os == 'macOS' && env.IosRuntimeVersion != ''
+    shell: bash
+    run: |
+      echo "Checking iOS simulator runtime ${{ env.IosRuntimeVersion }}"
+      if xcrun simctl list runtimes | grep -q "iOS ${{ env.IosRuntimeVersion }}"; then
+        echo "iOS runtime ${{ env.IosRuntimeVersion }} already installed"
+        exit 0
+      fi
+      echo "Downloading iOS simulator runtime ${{ env.IosRuntimeVersion }}"
+      sudo xcodebuild -downloadPlatform iOS -buildVersion ${{ env.IosRuntimeVersion }}
 
   - name: 'Install ninja'
     if: runner.os == 'macOS'
@@ -353,6 +370,11 @@ runs:
             "-p:MtouchInterpreter=all",
             "-p:TreatWarningsAsErrors=true"
           );
+
+          if ($IsMacos)
+          {
+            $extraArgs += "-p:ValidateXcodeVersion=false"
+          }
 
           & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
           if ($LASTEXITCODE -ne 0)
