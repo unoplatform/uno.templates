@@ -112,7 +112,7 @@ runs:
             "blankServerRefit;;unoapp;-skip -server -http refit"
             "blankServerKiota;;unoapp;-skip -server -http kiota"
             "DevServerPortExplicit;;unoapp;-skip --devServerPort 12345"
-       );
+        );
 
         $matrixGroups = @()
         $currentGroup = @()
