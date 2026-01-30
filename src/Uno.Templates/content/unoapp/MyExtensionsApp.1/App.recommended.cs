@@ -273,11 +273,11 @@ $$EnableDeveloperMode_Region_Navigate$$
                 var authenticated = await auth.RefreshAsync();
                 if (authenticated)
                 {
-                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
                 }
                 else
                 {
-                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
+                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
                 }
             });
 #endif
