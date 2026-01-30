@@ -859,6 +859,12 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "devServerPort": {
+      "displayName": "Dev Server Port",
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": ""
+    },
     "useAzurePipelines": {
       "type": "computed",
       "datatype": "bool",
@@ -2278,15 +2284,29 @@
         "toLower": true
       }
     },
+    "useProvidedDevServerPort": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(devServerPort != '')"
+    },
+    "devServerPortEffective": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "devServerPort",
+        "fallbackVariableName": "devServerPortGenerated"
+      },
+      "replaces": "$DevServerPort$"
+    },
     "canWindowsRestore": {
       "type": "computed",
       "value": "(osLower == 'windows' || osLower == 'windows_nt')",
       "datatype": "bool"
     },
-    "unoRemoteControlPort": {
+    "devServerPortGenerated": {
       "type": "generated",
       "generator": "port",
-      "replaces": "$RemoteControlPort$"
+      "condition": "(!useProvidedDevServerPort)"
     }
   },
   "primaryOutputs": [
