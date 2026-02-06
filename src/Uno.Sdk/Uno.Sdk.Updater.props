@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PackageTags></PackageTags>
     <SdkPackageId>Uno.Sdk.Private</SdkPackageId>
-    <SdkVersion>6.5.64</SdkVersion>
+    <SdkVersion>6.5.153</SdkVersion>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
   </PropertyGroup>
 
