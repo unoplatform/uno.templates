@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.221",
+    "version": "6.6.0-dev.230",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -81,7 +81,7 @@
   },
   {
     "group": "sdkextras",
-    "version": "6.4.0-dev.3",
+    "version": "6.4.0-dev.7",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -95,14 +95,14 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.143",
+    "version": "1.19.0-dev.148",
     "packages": [
       "Uno.UI.HotDesign"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.1",
+    "version": "3.119.2",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -379,7 +379,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "1.2.0-dev.9",
+    "version": "1.2.0-dev.14",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
