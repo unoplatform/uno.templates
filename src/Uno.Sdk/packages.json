@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.230",
+    "version": "6.6.0-dev.279",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -88,14 +88,14 @@
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.24",
+    "version": "1.8.0-dev.35",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.148",
+    "version": "1.19.0-dev.162",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -136,22 +136,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.12",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.2"
+      "net10.0": "10.0.3"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.12",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.2"
+      "net10.0": "10.0.3"
     }
   },
   {
@@ -379,7 +379,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "1.2.0-dev.14",
+    "version": "1.2.0-dev.18",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
