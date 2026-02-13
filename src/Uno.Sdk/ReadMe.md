@@ -15,12 +15,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.12.1 |
-| SkiaSharpVersion | 3.119.1 |
+| SkiaSharpVersion | 3.119.2 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.26100.7463 |
-| MicrosoftLoggingVersion** | 9.0.12 |
-| WindowsCompatibilityVersion** | 9.0.12 |
+| WinAppSdkBuildToolsVersion | 10.0.26100.7705 |
+| MicrosoftLoggingVersion** | 9.0.13 |
+| WindowsCompatibilityVersion** | 9.0.13 |
 | MicrosoftIdentityClientVersion | 4.81.0 |
 | CommunityToolkitMvvmVersion | 8.4.0 |
 | PrismVersion | 9.0.537 |
@@ -82,7 +82,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.34"
+      "net10.0": "10.0.40"
     }
   },
   {
@@ -144,7 +144,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.1",
+    "version": "3.119.2",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -171,29 +171,29 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.7463",
+    "version": "10.0.26100.7705",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.12",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.2"
+      "net10.0": "10.0.3"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.12",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.2"
+      "net10.0": "10.0.3"
     }
   },
   {
