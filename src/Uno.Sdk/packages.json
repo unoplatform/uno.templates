@@ -40,7 +40,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.0.15"
+      "net10.0": "10.0.40"
     }
   },
   {
@@ -88,7 +88,7 @@
   },
   {
     "group": "settings",
-    "version": "1.7.1",
+    "version": "1.7.6",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -102,7 +102,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.1",
+    "version": "3.119.2",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -129,29 +129,29 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.26100.7175",
+    "version": "10.0.26100.7705",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.11",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.3"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.11",
+    "version": "9.0.13",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.0"
+      "net10.0": "10.0.3"
     }
   },
   {
@@ -365,14 +365,14 @@
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.21",
+    "version": "3.0.23",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3595.46",
+    "version": "1.0.3719.77",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
