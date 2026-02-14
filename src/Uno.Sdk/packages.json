@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.290",
+    "version": "6.6.0-dev.302",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -40,7 +40,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.24"
+      "net10.0": "10.1.0-dev.70"
     }
   },
   {
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.168",
+    "version": "1.19.0-dev.174",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -300,7 +300,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.31"
+      "net10.0": "10.0.40"
     }
   },
   {
@@ -379,7 +379,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "1.2.0-dev.18",
+    "version": "1.2.0-dev.23",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
