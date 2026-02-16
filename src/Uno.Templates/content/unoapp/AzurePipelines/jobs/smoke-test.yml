@@ -16,6 +16,6 @@ jobs:
       displayName: 'Build MyExtensionsApp.1 (Debug)'
       inputs:
         targetType: 'inline'
-        script: 'dotnet build ./MyExtensionsApp.1/MyExtensionsApp.1.csproj'
+        script: 'dotnet build ./MyExtensionsApp.1/MyExtensionsApp.1.csproj --configuration Debug'
         failOnStderr: true
         pwsh: true

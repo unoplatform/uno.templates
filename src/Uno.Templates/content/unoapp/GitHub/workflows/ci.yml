@@ -29,7 +29,7 @@ jobs:
 
       - name: Build MyExtensionsApp.1 (Debug)
         shell: pwsh
-        run: dotnet build ./MyExtensionsApp.1/MyExtensionsApp.1.csproj
+        run: dotnet build ./MyExtensionsApp.1/MyExtensionsApp.1.csproj --configuration Debug
 #if (useUnitTests)
 
   unit_test:
