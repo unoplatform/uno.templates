@@ -10,11 +10,13 @@ jobs:
 
     - template: ../steps/install-dependencies.yml
 
-    - task: MSBuild@1
+    - task: PowerShell@2
+      displayName: 'Build MyExtensionsApp.1.Tests (Release)'
       inputs:
-        solution: ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj
-        configuration: 'Release'
-        msbuildArguments: '/p:OverrideTargetFramework=$baseTargetFramework$ /r'
+        targetType: 'inline'
+        script: 'dotnet build ./MyExtensionsApp.1.Tests/MyExtensionsApp.1.Tests.csproj -c Release /p:OverrideTargetFramework=$baseTargetFramework$'
+        failOnStderr: true
+        pwsh: true
 
     - task: VSTest@3
       inputs:
