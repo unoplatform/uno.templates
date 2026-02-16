@@ -70,7 +70,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.WebView.Skia.X11",
       "Uno.WinUI.Graphics3DGL",
-      "Uno.WinUI.Graphics2DSK"
+      "Uno.WinUI.Graphics2DSK",
+      "Uno.WinUI.SpellChecking"
     ]
   },
   {
