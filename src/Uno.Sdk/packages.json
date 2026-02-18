@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.317",
+    "version": "6.6.0-dev.330",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -89,14 +89,14 @@
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.35",
+    "version": "1.8.0-dev.39",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.188",
+    "version": "1.19.0-dev.191",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -301,7 +301,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.40"
+      "net10.0": "10.0.41"
     }
   },
   {
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.9",
+    "version": "7.2.0-dev.13",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
