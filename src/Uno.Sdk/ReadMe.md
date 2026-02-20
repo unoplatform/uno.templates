@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.6.0-dev.358 |
-| UnoExtensionsVersion | 7.2.0-dev.13 |
+| UnoVersion* | 6.6.0-dev.371 |
+| UnoExtensionsVersion | 7.2.0-dev.18 |
 | UnoToolkitVersion | 8.5.0-dev.24 |
 | UnoThemesVersion | 6.2.0-dev.9 |
 | UnoCSharpMarkupVersion | 6.6.0-dev.5 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.6.0-dev.358",
+    "version": "6.6.0-dev.371",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -83,7 +83,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.100"
+      "net10.0": "10.1.0-dev.102"
     }
   },
   {
@@ -356,7 +356,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.13",
+    "version": "7.2.0-dev.18",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",

@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.358",
+    "version": "6.6.0-dev.371",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -41,7 +41,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.100"
+      "net10.0": "10.1.0-dev.102"
     }
   },
   {
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.13",
+    "version": "7.2.0-dev.18",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
