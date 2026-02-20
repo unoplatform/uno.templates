@@ -673,6 +673,10 @@
 			"Sequence": 2,
 			"Icon": "/Assets/Framework.NET10.svg"
 		},
+		"tfm.net11.0": {
+			"Sequence": 3,
+			"Icon": "/Assets/Framework.NET11.svg"
+		},
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
@@ -833,7 +837,7 @@
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",
 			"UsePrerelease": {
-				"tfm": [ "net10.0" ]
+				"tfm": [ "net10.0", "net11.0" ]
 			}
 		},
 		{

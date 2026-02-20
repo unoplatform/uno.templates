@@ -84,6 +84,14 @@ runs:
           $IosRuntimeVersion = '26.2'
         }
 
+        if ($templateArgs -match 'net11.0')
+        {
+          $dotnetVersion = '11.0.100-preview.1'
+          $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet11
+          $XcodeVersion = $env:XcodeVersionNet11
+          $IosRuntimeVersion = '26.2'
+        }
+
         echo "Dotnet Version = '$dotnetVersion'"
         echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
         echo "Xcode Version = '$XcodeVersion'"
@@ -96,8 +104,10 @@ runs:
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
       ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
+      ValidationUnoCheckVersionNet11: ${{ env.ValidationUnoCheckVersionNet11 }}
       ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
       XcodeVersionNet10: ${{ env.XcodeVersionNet10 }}
+      XcodeVersionNet11: ${{ env.XcodeVersionNet11 }}
       XcodeVersionNet9: ${{ env.XcodeVersionNet9 }}
 
   - name: Cache EMSDK
