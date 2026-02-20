@@ -271,6 +271,7 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool d
         { "UnoVersion", GetManifestGroupVersion(manifest, "Core") },
         { "UnoWasmBootstrapVersionNet9", GetManifestGroupVersion(manifest, "WasmBootstrap") },
         { "UnoWasmBootstrapVersionNet10", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
+        { "UnoWasmBootstrapVersionNet11", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net11.0") },
         { "UnoExtensionsLoggingVersion", GetManifestGroupVersion(manifest, "OSLogging") },
         { "UnoCoreLoggingVersion", GetManifestGroupVersion(manifest, "CoreLogging") },
         { "UnoDspTasksVersion", GetManifestGroupVersion(manifest, "Dsp") },
@@ -320,12 +321,12 @@ static string GetManifestGroupVersion(IEnumerable<ManifestGroup> manifest, strin
 static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifest, string groupId, string overrideKey)
 {
     var group = manifest.First(x => x.Group == groupId);
-    if (group.VersionOverride is not null && group.VersionOverride.Count != 0)
+    if (group.VersionOverride is not null && group.VersionOverride.Count != 0 && group.VersionOverride.ContainsKey(overrideKey))
     {
         return group.VersionOverride[overrideKey];
     }
 
-    throw new InvalidOperationException($"No Version Overrides were found for {groupId} or the key {overrideKey}.");
+    return GetManifestGroupVersion(manifest, groupId);
 }
 
 static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion unoVersion, NuGetApiClient client)

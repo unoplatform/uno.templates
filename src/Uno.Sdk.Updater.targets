@@ -4,6 +4,7 @@
     <UnoVersion>6.6.0-dev.358</UnoVersion>
     <UnoWasmBootstrapVersionNet9>9.0.23</UnoWasmBootstrapVersionNet9>
     <UnoWasmBootstrapVersionNet10>10.1.0-dev.100</UnoWasmBootstrapVersionNet10>
+    <UnoWasmBootstrapVersionNet11>11.0.0-dev.1</UnoWasmBootstrapVersionNet11>
     <UnoExtensionsLoggingVersion>1.7.0</UnoExtensionsLoggingVersion>
     <UnoCoreLoggingVersion>4.1.1</UnoCoreLoggingVersion>
     <UnoDspTasksVersion>1.4.0</UnoDspTasksVersion>
