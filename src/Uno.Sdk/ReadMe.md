@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.6.0-dev.468 |
+| UnoVersion* | 6.6.0-dev.526 |
 | UnoExtensionsVersion | 7.2.0-dev.20 |
 | UnoToolkitVersion | 8.5.0-dev.24 |
 | UnoThemesVersion | 6.2.0-dev.10 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.6.0-dev.468",
+    "version": "6.6.0-dev.526",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
