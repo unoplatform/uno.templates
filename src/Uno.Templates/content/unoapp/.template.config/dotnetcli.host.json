@@ -103,7 +103,7 @@
     },
     "mediaPlayerElement": {
       "longName": "media-player-element",
-      "shortName": "media"
+      "shortName": "mpe"
     },
     "skipRestore": {
       "longName": "skip-restore",
