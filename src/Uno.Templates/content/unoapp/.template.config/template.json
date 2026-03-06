@@ -803,6 +803,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "mediaPlayerElement": {
+      "displayName": "Media Player Element",
+      "description": "Configures application to bundle native assets required for the MediaPlayerElement",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",
@@ -965,6 +972,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(unoLottie || (useToolkit && appThemeEvaluator == 'fluent'))"
+    },
+    "useMediaPlayerElement": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(mediaElement || mediaPlayerElement)"
     },
     "themeBackgroundBrush": {
       "type": "generated",

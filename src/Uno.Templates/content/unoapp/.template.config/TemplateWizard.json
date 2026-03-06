@@ -90,8 +90,8 @@
 					"localization": "false",
 					"logging": "none",
 					"markup": "xaml",
-					"mediaElement": "false",
 					"webView": "false",
+					"mediaPlayerElement": "false",
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -133,8 +133,8 @@
 					"localization": "true",
 					"logging": "default",
 					"markup": "xaml",
-					"mediaElement": "false",
 					"webView": "false",
+					"mediaPlayerElement": "false",
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -233,7 +233,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement", "webView" ]
+				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement", "webView" ]
 			}
 			,
 			{
@@ -687,7 +687,7 @@
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"
 		},
-		"mediaElement": {
+		"mediaPlayerElement": {
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
 		"webView": {
@@ -786,8 +786,8 @@
 		"themeService",
 		"continuousIntegration",
 		"isCustomized",
-		"mediaElement",
 		"webView",
+		"mediaPlayerElement",
 		"renderer"
 	],
 	"PackagesToUpdate": [
