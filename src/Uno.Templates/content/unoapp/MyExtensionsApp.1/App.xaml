@@ -46,6 +46,12 @@
         <!-- Load Uno.UI.Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
         <!--#endif-->
+        <!--#elif (useSimpleTheme)-->
+        <!--#if (useToolkit)-->
+        <utus:SimpleToolkitTheme />
+        <!--#else-->
+        <us:SimpleTheme />
+        <!--#endif-->
         <!--#elif (useToolkit)-->
         <!-- Load Uno.UI.Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />

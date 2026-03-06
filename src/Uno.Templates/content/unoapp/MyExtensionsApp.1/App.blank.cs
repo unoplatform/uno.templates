@@ -41,6 +41,17 @@ public partial class App : Application
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #endif
+#elif (useSimpleTheme)
+
+#if useToolkit
+        // Load Uno.UI.Toolkit and Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleToolkitTheme()));
+#else
+        // Load Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleTheme()));
+#endif
 #elif (useToolkit)
 
         // Load Uno.UI.Toolkit Resources
