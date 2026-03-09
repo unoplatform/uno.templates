@@ -2050,27 +2050,19 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useFluent == true)",
+            "condition": "(appThemeEvaluator == 'fluent')",
             "value": ""
           },
           {
-            "condition": "(useMaterial == true && (useToolkit == 'true' || useToolkit == true))",
-            "value": "\r\n       xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
-          },
-          {
-            "condition": "(useMaterial == true)",
+            "condition": "(appThemeEvaluator == 'material')",
             "value": "\r\n       xmlns:um=\"using:Uno.Material\""
           },
           {
-            "condition": "(useCupertino == true)",
+            "condition": "(appThemeEvaluator == 'cupertino')",
             "value": "\r\n       xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
-            "condition": "(useSimpleTheme == true && (useToolkit == 'true' || useToolkit == true))",
-            "value": "\r\n       xmlns:utus=\"using:Uno.Toolkit.UI.Simple\""
-          },
-          {
-            "condition": "(useSimpleTheme == true)",
+            "condition": "(appThemeEvaluator == 'simpletheme')",
             "value": "\r\n       xmlns:us=\"using:Uno.Simple\""
           },
           {

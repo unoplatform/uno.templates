@@ -15,6 +15,7 @@
         <!--#if (useMaterial)-->
         <!--#if (useToolkit)-->
         <utum:MaterialToolkitTheme
+          xmlns:utum="using:Uno.Toolkit.UI.Material"
           ColorOverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml">
           <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
           <!-- <utum:MaterialToolkitTheme.FontOverrideDictionary>
@@ -48,7 +49,7 @@
         <!--#endif-->
         <!--#elif (useSimpleTheme)-->
         <!--#if (useToolkit)-->
-        <utus:SimpleToolkitTheme />
+        <utus:SimpleToolkitTheme xmlns:utus="using:Uno.Toolkit.UI.Simple" />
         <!--#else-->
         <us:SimpleTheme />
         <!--#endif-->
