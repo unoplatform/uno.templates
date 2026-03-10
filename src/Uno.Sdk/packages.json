@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.636",
+    "version": "6.6.0-dev.653",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -96,7 +96,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.319",
+    "version": "1.19.0-dev.321",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -157,7 +157,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.82.1",
+    "version": "4.83.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.27",
+    "version": "7.2.0-dev.32",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -344,7 +344,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.5.0-dev.28",
+    "version": "8.5.0-dev.29",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
