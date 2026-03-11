@@ -425,6 +425,12 @@
       "type": "parameter",
       "datatype": "bool"
     },
+    "sample": {
+      "displayName": "Include sample content",
+      "description": "Configures whether to add sample pages and functionality to demonstrate basic usage patterns.",
+      "type": "parameter",
+      "datatype": "bool"
+    },
     "dependencyInjection": {
       "displayName": "Dependency Injection",
       "description": "Use dependency injection for registering and accessing services",
@@ -929,7 +935,7 @@
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "material"
+            "value": "simpletheme"
           },
           {
             "condition": "(preset == 'blank')",
@@ -1005,6 +1011,32 @@
             "value": "BackgroundBrush"
           }
         ]
+      }
+    },
+    "presetSampleDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "false"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "useSampleContent": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "sample",
+        "fallbackVariableName": "presetSampleDefault"
       }
     },
     "presetDependencyInjectionDefault": {
@@ -2062,6 +2094,10 @@
             "value": "\r\n       xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
+            "condition": "(appThemeEvaluator == 'simpletheme' && (useToolkit == 'true' || useToolkit == true))",
+            "value": "\r\n       xmlns:utus=\"using:Uno.Toolkit.UI.Simple\""
+          },
+          {
             "condition": "(appThemeEvaluator == 'simpletheme')",
             "value": "\r\n       xmlns:us=\"using:Uno.Simple\""
           },
@@ -2275,7 +2311,7 @@
     "useBusinessModelsNamespace": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useDependencyInjection && (useConfiguration || navigationEvaluator != 'blank')"
+      "value": "useDependencyInjection && (useConfiguration || useSampleContent)"
     },
     "MsftExtensionsLoggingConsoleVersion": {
       "type": "generated",
@@ -2516,6 +2552,16 @@
           "condition": "(!useAuthentication)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/Login*.*"
+          ]
+        },
+        {
+          "condition": "(!useSampleContent)",
+          "exclude": [
+            "MyExtensionsApp.1/Presentation/SecondPage.xaml",
+            "MyExtensionsApp.1/Presentation/SecondPage.xaml.cs",
+            "MyExtensionsApp.1/Presentation/SecondModel.cs",
+            "MyExtensionsApp.1/Presentation/SecondViewModel.cs",
+            "MyExtensionsApp.1/Models/Entity.cs"
           ]
         },
         {
