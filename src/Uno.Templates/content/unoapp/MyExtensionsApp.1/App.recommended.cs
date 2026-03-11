@@ -303,8 +303,12 @@ $$EnableDeveloperMode_Region_Navigate$$
 #if (useAuthentication)
             new ViewMap<LoginPage, $loginRouteViewModel$>(),
 #endif
+#if (useSampleContent)
             new ViewMap<MainPage, $mainRouteViewModel$>(),
             new DataViewMap<SecondPage, $secondRouteViewModel$, Entity>()
+#else
+            new ViewMap<MainPage, $mainRouteViewModel$>()
+#endif
         );
 
         routes.Register(
@@ -315,7 +319,9 @@ $$EnableDeveloperMode_Region_Navigate$$
                     new ("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
 #endif
                     new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>(), IsDefault:true),
+#if (useSampleContent)
                     new ("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
+#endif
                 ]
             )
         );

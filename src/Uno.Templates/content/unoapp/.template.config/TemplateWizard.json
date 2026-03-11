@@ -94,6 +94,7 @@
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
+					"sample": "false",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
@@ -122,7 +123,7 @@
 				"Icon": "/Assets/Template_Recommended.svg",
 				"IsDefault": true,
 				"Parameters": {
-					"appTheme": "material",
+					"appTheme": "simpletheme",
 					"architecture": "mvux",
 					"authentication": "none",
 					"configuration": "true",
@@ -136,6 +137,7 @@
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
+					"sample": "false",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
@@ -157,7 +159,7 @@
 					".NET 8",
 					"XAML",
 					"MVUX",
-					"Material",
+					"Simple",
 					"Configuration",
 					"Localization",
 					"Testing"
@@ -231,7 +233,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			}
 			,
 			{
@@ -300,7 +302,7 @@
 				"Title": "",
 				"SectionType": "SingleSelect",
 				"SymbolId": "appTheme",
-				"Choices": [ "material", "fluent", "DPS" ]
+				"Choices": [ "material", "fluent", "simpletheme", "DPS" ]
 			},
 			//{
 			//    "SectionType": "Color",
@@ -354,7 +356,7 @@
 			}
 		},
 		"appTheme.cupertino": {
-			"Sequence": 3,
+			"Sequence": 4,
 			"Icon": "/Assets/Theme.Cupertino.svg"
 		},
 		"appTheme.fluent": {
@@ -364,6 +366,10 @@
 		"appTheme.material": {
 			"Sequence": 1,
 			"Icon": "/Assets/Theme.Material.svg"
+		},
+		"appTheme.simpletheme": {
+			"Sequence": 3,
+			"Icon": "/Assets/Theme.Cupertino.svg"
 		},
 		"architecture.none": {
 			"Sequence": 1,
@@ -673,6 +679,9 @@
 			"Sequence": 2,
 			"Icon": "/Assets/Framework.NET10.svg"
 		},
+		"sample": {
+			"Icon": "/Assets/Features.Toolkit.svg"
+		},
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
@@ -768,6 +777,7 @@
 		"cultures",
 		"logging",
 		"navigation",
+		"sample",
 		"toolkit",
 		"authentication",
 		"vscode",
