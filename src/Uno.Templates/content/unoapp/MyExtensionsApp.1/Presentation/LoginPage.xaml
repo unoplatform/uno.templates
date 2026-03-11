@@ -33,7 +33,7 @@
             HorizontalAlignment="Stretch" />
 <!--#endif-->
       <Button Content="Login"
-          Command="{Binding Login}"
+          Command="{Binding DoLoginCommand}"
           HorizontalAlignment="Stretch" />
     </StackPanel>
   </Grid>
