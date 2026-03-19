@@ -22,7 +22,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | 9.0.14 |
 | WindowsCompatibilityVersion** | 9.0.14 |
 | MicrosoftIdentityClientVersion | 4.83.1 |
-| CommunityToolkitMvvmVersion | 8.4.0 |
+| CommunityToolkitMvvmVersion | 8.4.1 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.4 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
@@ -207,7 +207,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Mvvm",
-    "version": "8.4.0",
+    "version": "8.4.1",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
