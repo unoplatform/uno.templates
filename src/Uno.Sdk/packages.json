@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.901",
+    "version": "6.6.0-dev.903",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -165,7 +165,7 @@
   },
   {
     "group": "Mvvm",
-    "version": "8.4.1",
+    "version": "8.4.2",
     "packages": [
       "CommunityToolkit.Mvvm"
     ]
@@ -301,7 +301,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.50"
+      "net10.0": "10.0.51"
     }
   },
   {
@@ -357,7 +357,7 @@
   },
   {
     "group": "Themes",
-    "version": "7.0.0-dev.17",
+    "version": "7.0.0-dev.19",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
