@@ -63,6 +63,9 @@ jobs:
         fetch-depth: 0
         ref: ${{ env.CheckoutRef }}
 
+    - name: Free disk space (Linux)
+      uses: ./.github/actions/host-cleanup-linux
+
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
 
@@ -193,7 +196,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ env.CheckoutRef }}
-    
+
     - name: "Run Tests"
       uses: ./.github/actions/ci/run-tests
       with:
