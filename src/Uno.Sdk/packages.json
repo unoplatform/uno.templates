@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.921",
+    "version": "6.6.0-dev.922",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -157,7 +157,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.83.1",
+    "version": "4.83.3",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
