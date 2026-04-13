@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.994",
+    "version": "6.6.0-dev.1009",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -96,7 +96,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.388",
+    "version": "1.19.0-dev.403",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.69",
+    "version": "7.2.0-dev.88",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -376,7 +376,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3856.49",
+    "version": "1.0.3912.50",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
