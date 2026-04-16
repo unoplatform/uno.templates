@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.0-dev.1125",
+    "version": "6.6.0-dev.1131",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -369,7 +369,7 @@
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.23",
+    "version": "3.0.23.1",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
