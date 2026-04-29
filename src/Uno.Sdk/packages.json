@@ -96,7 +96,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.0-dev.514",
+    "version": "1.19.0-dev.515",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -301,7 +301,7 @@
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.51"
+      "net10.0": "10.0.60"
     }
   },
   {
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.2.0-dev.99",
+    "version": "7.2.0-dev.101",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
