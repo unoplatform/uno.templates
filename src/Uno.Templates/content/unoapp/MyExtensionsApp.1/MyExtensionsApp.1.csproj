@@ -115,6 +115,15 @@
       <!--#if (useSkiaRenderer)-->
       SkiaRenderer;
       <!--#endif-->
+      <!--#if (includeAndroidTV)-->
+      AndroidTV;
+      <!--#endif-->
+      <!--#if (includeAndroidAuto)-->
+      AndroidAuto;
+      <!--#endif-->
+      <!--#if (includeAndroidWear)-->
+      AndroidWear;
+      <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
   <!--#if (useUITests)-->

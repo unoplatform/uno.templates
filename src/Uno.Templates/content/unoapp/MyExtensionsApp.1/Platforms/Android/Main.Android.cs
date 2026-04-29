@@ -13,6 +13,16 @@ using Microsoft.UI.Xaml.Media;
 #if (!useSkiaRenderer)
 using Com.Nostra13.Universalimageloader.Core;
 #endif
+#if includeAndroidTV
+using Android.Content.PM;
+#endif
+//-:cnd:noEmit
+
+//+:cnd:noEmit
+#if includeAndroidTV
+[assembly: UsesFeature("android.software.leanback", Required = false)]
+[assembly: UsesFeature("android.hardware.touchscreen", Required = false)]
+#endif
 //-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;
@@ -20,6 +30,11 @@ namespace MyExtensionsApp._1.Droid;
 [global::Android.App.ApplicationAttribute(
     Label = "@string/ApplicationName",
     Icon = "@mipmap/icon",
+//+:cnd:noEmit
+#if includeAndroidTV
+    Banner = "@drawable/banner",
+#endif
+//-:cnd:noEmit
     LargeHeap = true,
     HardwareAccelerated = true,
     Theme = "@style/Theme.App.Starting"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<!--
+		Disables the native Android control highlight when running on Android TV so the
+		Uno-managed XYFocusKeyboardNavigation focus visual is the only highlight rendered.
+		Note: this applies app-wide, including any embedded native controls.
+	-->
+	<style name="AppTheme.AndroidTV" parent="AppTheme">
+		<item name="android:colorControlHighlight">@android:color/transparent</item>
+	</style>
+</resources>

@@ -425,6 +425,27 @@
       "type": "parameter",
       "datatype": "bool"
     },
+    "includeAndroidTV": {
+      "displayName": "Android TV",
+      "description": "Configures the Android head for Android TV (Leanback launcher, banner, focus highlight overrides). Single APK targets phones and TVs.",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "includeAndroidAuto": {
+      "displayName": "Android Auto",
+      "description": "Configures the Android head for Android Auto / Automotive OS using the AndroidX Car App Library.",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "includeAndroidWear": {
+      "displayName": "Wear OS",
+      "description": "Adds Wear OS opt-in to the Android head (single APK targeting both phone and watch).",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "shell": {
       "displayName": "Shell",
       "description": "Includes Shell.xaml as a root navigation container (with ExtendedSplashScreen when Toolkit is enabled)",
@@ -1208,6 +1229,21 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == android)"
+    },
+    "useAndroidTV": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "((platforms == android) && includeAndroidTV)"
+    },
+    "useAndroidAuto": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "((platforms == android) && includeAndroidAuto)"
+    },
+    "useAndroidWear": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "((platforms == android) && includeAndroidWear)"
     },
     "useIOS": {
       "type": "computed",
@@ -2484,6 +2520,19 @@
           "condition": "(platforms != android)",
           "exclude": [
             "MyExtensionsApp.1/Platforms/Android/**/*"
+          ]
+        },
+        {
+          "condition": "(!useAndroidTV)",
+          "exclude": [
+            "MyExtensionsApp.1/Platforms/Android/Resources/drawable-xhdpi/banner.png",
+            "MyExtensionsApp.1/Platforms/Android/Resources/values/Styles.AndroidTV.xml"
+          ]
+        },
+        {
+          "condition": "(!useAndroidAuto)",
+          "exclude": [
+            "MyExtensionsApp.1/Platforms/Android/Resources/xml/automotive_app_desc.xml"
           ]
         },
         {
