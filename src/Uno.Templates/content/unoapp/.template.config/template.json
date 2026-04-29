@@ -425,6 +425,12 @@
       "type": "parameter",
       "datatype": "bool"
     },
+    "splash": {
+      "displayName": "Extended Splash Screen",
+      "description": "Includes an Extended Splash Screen (requires Toolkit)",
+      "type": "parameter",
+      "datatype": "bool"
+    },
     "sample": {
       "displayName": "Include sample content",
       "description": "Configures whether to add sample pages and functionality to demonstrate basic usage patterns.",
@@ -1091,6 +1097,37 @@
         "sourceVariableName": "toolkit",
         "fallbackVariableName": "presetToolkitDefault"
       }
+    },
+    "presetSplashDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "false"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "useSplash": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "splash",
+        "fallbackVariableName": "presetSplashDefault"
+      }
+    },
+    "useExtendedSplashScreen": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useSplash && useToolkit"
     },
     "presetLoggingDefault": {
       "type": "generated",

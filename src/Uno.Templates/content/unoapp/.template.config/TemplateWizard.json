@@ -100,6 +100,7 @@
 					"tests": "none",
 					"tfm": "net10.0",
 					"toolkit": "false",
+					"splash": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
@@ -143,6 +144,7 @@
 					"tests": "none",
 					"tfm": "net10.0",
 					"toolkit": "true",
+					"splash": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
@@ -233,7 +235,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "sample", "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "splash", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			}
 			,
 			{
@@ -685,6 +687,15 @@
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
+		"splash": {
+			"Icon": "/Assets/Features.Toolkit.svg",
+			"Requires": {
+				"toolkit": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Toolkit is required for Extended Splash Screen"
+				}
+			}
+		},
 		"renderer.skia": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
@@ -779,6 +790,7 @@
 		"navigation",
 		"sample",
 		"toolkit",
+		"splash",
 		"authentication",
 		"vscode",
 		"wasmPwaManifest",
