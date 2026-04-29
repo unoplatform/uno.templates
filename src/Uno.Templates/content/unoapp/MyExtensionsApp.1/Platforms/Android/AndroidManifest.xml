@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-  <application android:allowBackup="true" android:supportsRtl="true"></application>
+  <!--#if (includeAndroidTV)-->
+  <uses-feature android:name="android.software.leanback" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+  <!--#endif-->
+  <!--#if (includeAndroidWear)-->
+  <uses-feature android:name="android.hardware.type.watch" android:required="false" />
+  <!--#endif-->
+  <application android:allowBackup="true" android:supportsRtl="true">
+    <!--#if (includeAndroidAuto)-->
+    <meta-data android:name="com.google.android.gms.car.application"
+               android:resource="@xml/automotive_app_desc" />
+    <!--#endif-->
+  </application>
 </manifest>

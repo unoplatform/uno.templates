@@ -16,6 +16,14 @@ namespace MyExtensionsApp._1.Droid;
     ConfigurationChanges = global::Uno.UI.ActivityHelper.AllConfigChanges,
     WindowSoftInputMode = SoftInput.AdjustNothing | SoftInput.StateHidden
 )]
+#if includeAndroidTV
+[IntentFilter(
+    new[] { Android.Content.Intent.ActionMain },
+    Categories = new[] {
+        Android.Content.Intent.CategoryLauncher,
+        Android.Content.Intent.CategoryLeanbackLauncher
+    })]
+#endif
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
     protected override void OnCreate(Bundle? savedInstanceState)
