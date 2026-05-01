@@ -14,7 +14,6 @@ public sealed partial class MainPage : Page
 #else
             .Background(ThemeResource.Get<Brush>("$themeBackgroundBrush$"))
 #endif
-#if useSampleContent
             .Content(new Grid()
 #if useToolkit
                 .SafeArea(SafeArea.InsetMask.VisibleBounds)
@@ -49,21 +48,7 @@ public sealed partial class MainPage : Page
                                 .AutomationProperties(automationId: "LogoutButton")
                                 .Command(() => vm.Logout)
 #endif
-                                )))
-#else
-            .Content(new Grid()
-#if useToolkit
-                .SafeArea(SafeArea.InsetMask.VisibleBounds)
-#endif
-                .Children(
-                    new TextBlock()
-                        .Text("Hello Uno Platform!")
-                        .AutomationProperties(automationId: "HelloTextBlock")
-                        .FontSize(20)
-                        .HorizontalAlignment(HorizontalAlignment.Center)
-                        .VerticalAlignment(VerticalAlignment.Center)))
-#endif
-        );
+                                ))));
 #else
         this.InitializeComponent();
 #endif

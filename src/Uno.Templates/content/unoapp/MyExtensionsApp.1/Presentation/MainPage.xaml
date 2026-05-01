@@ -7,7 +7,6 @@
 <!--#endif-->
       NavigationCacheMode="Required"
       Background="{ThemeResource $themeBackgroundBrush$}">
-<!--#if (useSampleContent)-->
   <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>
       <Grid.RowDefinitions>
@@ -56,13 +55,4 @@
       </StackPanel>
     </Grid>
   </ScrollViewer>
-<!--#else-->
-  <Grid$toolkitSafeArea$>
-    <TextBlock Text="Hello Uno Platform!"
-               AutomationProperties.AutomationId="HelloTextBlock"
-               FontSize="20"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center" />
-  </Grid>
-<!--#endif-->
 </Page>
