@@ -24,6 +24,8 @@ runs:
             "Recommended;;unoapp;-skip -preset recommended",
             "SkiaOnlyHeads;!macOS;unoapp;-skip -platforms desktop",
             "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios",
+            "RecommendedShell;!macOS;unoapp;-skip -preset recommended --shell",
+            "RecommendedShellMarkup;!macOS;unoapp;-skip -preset recommended --shell -markup csharp",
             "RecommendedMarkup;;unoapp;-skip -preset recommended -markup csharp",
             "RecommendedMarkupDsp;;unoapp;-skip -preset recommended -markup csharp -dsp",
             "RecommendedMarkupFluent;!macOS;unoapp;-skip -preset recommended -markup csharp -theme fluent",

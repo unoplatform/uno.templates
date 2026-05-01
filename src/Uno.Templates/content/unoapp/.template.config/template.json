@@ -425,9 +425,9 @@
       "type": "parameter",
       "datatype": "bool"
     },
-    "splash": {
-      "displayName": "Extended Splash Screen",
-      "description": "Includes an Extended Splash Screen (requires Toolkit)",
+    "shell": {
+      "displayName": "Shell",
+      "description": "Includes Shell.xaml as a root navigation container (with ExtendedSplashScreen when Toolkit is enabled)",
       "type": "parameter",
       "datatype": "bool"
     },
@@ -1098,7 +1098,7 @@
         "fallbackVariableName": "presetToolkitDefault"
       }
     },
-    "presetSplashDefault": {
+    "presetShellDefault": {
       "type": "generated",
       "generator": "switch",
       "parameters": {
@@ -1116,18 +1116,18 @@
         ]
       }
     },
-    "useSplash": {
+    "useShell": {
       "type": "generated",
       "generator": "coalesce",
       "parameters": {
-        "sourceVariableName": "splash",
-        "fallbackVariableName": "presetSplashDefault"
+        "sourceVariableName": "shell",
+        "fallbackVariableName": "presetShellDefault"
       }
     },
     "useExtendedSplashScreen": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useSplash && useToolkit"
+      "value": "useShell && useToolkit"
     },
     "presetLoggingDefault": {
       "type": "generated",
@@ -2181,6 +2181,24 @@
         ]
       }
     },
+    "navigationRootType": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$navigationRootType$",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(useShell)",
+            "value": "Shell"
+          },
+          {
+            "condition": "true",
+            "value": "MainPage"
+          }
+        ]
+      }
+    },
     "mainRouteViewModel": {
       "type": "generated",
       "generator": "switch",
@@ -2582,6 +2600,15 @@
             "MyExtensionsApp.1/Presentation/LoginViewModel.cs",
             "MyExtensionsApp.1/Presentation/MainViewModel.cs",
             "MyExtensionsApp.1/Presentation/SecondViewModel.cs",
+            "MyExtensionsApp.1/Presentation/ShellViewModel.cs"
+          ]
+        },
+        {
+          "condition": "(!useShell)",
+          "exclude": [
+            "MyExtensionsApp.1/Presentation/Shell.xaml",
+            "MyExtensionsApp.1/Presentation/Shell.xaml.cs",
+            "MyExtensionsApp.1/Presentation/ShellModel.cs",
             "MyExtensionsApp.1/Presentation/ShellViewModel.cs"
           ]
         },
