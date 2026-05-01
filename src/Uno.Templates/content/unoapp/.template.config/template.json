@@ -429,7 +429,8 @@
       "displayName": "Shell",
       "description": "Includes Shell.xaml as a root navigation container (with ExtendedSplashScreen when Toolkit is enabled)",
       "type": "parameter",
-      "datatype": "bool"
+      "datatype": "bool",
+      "defaultValue": "false"
     },
     "sample": {
       "displayName": "Include sample content",
@@ -1098,36 +1099,10 @@
         "fallbackVariableName": "presetToolkitDefault"
       }
     },
-    "presetShellDefault": {
-      "type": "generated",
-      "generator": "switch",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "bool",
-        "cases": [
-          {
-            "condition": "(preset == 'recommended')",
-            "value": "false"
-          },
-          {
-            "condition": "(preset == 'blank')",
-            "value": "false"
-          }
-        ]
-      }
-    },
-    "useShell": {
-      "type": "generated",
-      "generator": "coalesce",
-      "parameters": {
-        "sourceVariableName": "shell",
-        "fallbackVariableName": "presetShellDefault"
-      }
-    },
     "useExtendedSplashScreen": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useShell && useToolkit"
+      "value": "shell && useToolkit"
     },
     "presetLoggingDefault": {
       "type": "generated",
@@ -2189,11 +2164,11 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(useShell)",
+            "condition": "(shell)",
             "value": "Shell"
           },
           {
-            "condition": "true",
+            "condition": "(!shell)",
             "value": "MainPage"
           }
         ]
@@ -2604,7 +2579,7 @@
           ]
         },
         {
-          "condition": "(!useShell)",
+          "condition": "(!shell)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/Shell.xaml",
             "MyExtensionsApp.1/Presentation/Shell.xaml.cs",

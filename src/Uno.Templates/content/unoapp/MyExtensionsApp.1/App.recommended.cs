@@ -299,7 +299,7 @@ $$EnableDeveloperMode_Region_Navigate$$
     {
 #if (useRegionsNav)
         views.Register(
-#if (useShell)
+#if (shell)
             new ViewMap(ViewModel: typeof($shellRouteViewModel$)),
 #endif
 #if (useAuthentication)
@@ -313,7 +313,7 @@ $$EnableDeveloperMode_Region_Navigate$$
 #endif
         );
 
-#if (useShell)
+#if (shell)
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
                 Nested:
