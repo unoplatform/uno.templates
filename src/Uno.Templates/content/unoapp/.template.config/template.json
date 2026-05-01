@@ -248,11 +248,6 @@
           "choice": "cupertino",
           "description": "Use the Cupertino design theme",
           "displayName": "Cupertino"
-        },
-        {
-          "choice": "simpletheme",
-          "description": "Use the Simple design theme",
-          "displayName": "Simple"
         }
       ]
     },
@@ -422,12 +417,6 @@
     "toolkit": {
       "displayName": "Toolkit",
       "description": "Includes Uno.Toolkit for additional controls and helper classes",
-      "type": "parameter",
-      "datatype": "bool"
-    },
-    "sample": {
-      "displayName": "Include sample content",
-      "description": "Configures whether to add sample pages and functionality to demonstrate basic usage patterns.",
       "type": "parameter",
       "datatype": "bool"
     },
@@ -935,7 +924,7 @@
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "simpletheme"
+            "value": "material"
           },
           {
             "condition": "(preset == 'blank')",
@@ -972,11 +961,6 @@
       "datatype": "bool",
       "value": "(appTheme == 'cupertino')"
     },
-    "useSimpleTheme": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(appThemeEvaluator == 'simpletheme')"
-    },
     "useUnoLottie": {
       "type": "computed",
       "datatype": "bool",
@@ -1005,38 +989,8 @@
           {
             "condition": "(appTheme == 'cupertino')",
             "value": "CupertinoSystemBackgroundBrush"
-          },
-          {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
-            "value": "BackgroundBrush"
           }
         ]
-      }
-    },
-    "presetSampleDefault": {
-      "type": "generated",
-      "generator": "switch",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "bool",
-        "cases": [
-          {
-            "condition": "(preset == 'recommended')",
-            "value": "false"
-          },
-          {
-            "condition": "(preset == 'blank')",
-            "value": "false"
-          }
-        ]
-      }
-    },
-    "useSampleContent": {
-      "type": "generated",
-      "generator": "coalesce",
-      "parameters": {
-        "sourceVariableName": "sample",
-        "fallbackVariableName": "presetSampleDefault"
       }
     },
     "presetDependencyInjectionDefault": {
@@ -2056,24 +2010,6 @@
         ]
       }
     },
-    "simpleThemeNamespace": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$simpleThemeNamespace$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
-            "value": "\r\n      xmlns:us=\"using:Uno.Simple\""
-          },
-          {
-            "condition": "true",
-            "value": ""
-          }
-        ]
-      }
-    },
     "resourceStyleThemeNamespace": {
       "type": "generated",
       "generator": "switch",
@@ -2086,20 +2022,16 @@
             "value": ""
           },
           {
+            "condition": "(appThemeEvaluator == 'material' && (useToolkit == 'true' || useToolkit == true))",
+            "value": "\r\n       xmlns:utum=\"using:Uno.Toolkit.UI.Material\""
+          },
+          {
             "condition": "(appThemeEvaluator == 'material')",
             "value": "\r\n       xmlns:um=\"using:Uno.Material\""
           },
           {
             "condition": "(appThemeEvaluator == 'cupertino')",
             "value": "\r\n       xmlns:uc=\"using:Uno.Cupertino\""
-          },
-          {
-            "condition": "(appThemeEvaluator == 'simpletheme' && (useToolkit == 'true' || useToolkit == true))",
-            "value": "\r\n       xmlns:utus=\"using:Uno.Toolkit.UI.Simple\""
-          },
-          {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
-            "value": "\r\n       xmlns:us=\"using:Uno.Simple\""
           },
           {
             "condition": "true",
@@ -2311,7 +2243,7 @@
     "useBusinessModelsNamespace": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useDependencyInjection && (useConfiguration || useSampleContent)"
+      "value": "useDependencyInjection && (useConfiguration || navigationEvaluator != 'blank')"
     },
     "MsftExtensionsLoggingConsoleVersion": {
       "type": "generated",
@@ -2552,16 +2484,6 @@
           "condition": "(!useAuthentication)",
           "exclude": [
             "MyExtensionsApp.1/Presentation/Login*.*"
-          ]
-        },
-        {
-          "condition": "(!useSampleContent)",
-          "exclude": [
-            "MyExtensionsApp.1/Presentation/SecondPage.xaml",
-            "MyExtensionsApp.1/Presentation/SecondPage.xaml.cs",
-            "MyExtensionsApp.1/Presentation/SecondModel.cs",
-            "MyExtensionsApp.1/Presentation/SecondViewModel.cs",
-            "MyExtensionsApp.1/Models/Entity.cs"
           ]
         },
         {

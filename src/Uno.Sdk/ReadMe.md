@@ -393,8 +393,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Toolkit.WinUI.Material",
       "Uno.Toolkit.WinUI.Material.Markup",
       "Uno.Toolkit.WinUI.Markup",
-      "Uno.Toolkit.Skia.WinUI",
-      "Uno.Toolkit.WinUI.Simple"
+      "Uno.Toolkit.Skia.WinUI"
     ]
   },
   {
@@ -404,9 +403,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
       "Uno.Themes.WinUI.Markup",
-      "Uno.Cupertino.WinUI",
-      "Uno.Simple.WinUI",
-      "Uno.Simple.WinUI.Markup"
+      "Uno.Cupertino.WinUI"
     ]
   },
   {

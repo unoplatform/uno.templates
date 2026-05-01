@@ -45,8 +45,6 @@
       <!--#endif-->
       <!--#elif (useCupertino)-->
       Cupertino;
-      <!--#elif (useSimpleTheme)-->
-      SimpleTheme;
       <!--#endif-->
       <!--#if (useUnoLottie)-->
       Lottie;
