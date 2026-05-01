@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.0-dev.3 |
+| UnoVersion* | 6.6.0-dev.1399 |
 | UnoExtensionsVersion | 7.3.0-dev.4 |
 | UnoToolkitVersion | 8.5.0-dev.54 |
 | UnoThemesVersion | 7.0.0-dev.28 |
@@ -43,7 +43,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.0-dev.3",
+    "version": "6.6.0-dev.1399",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -429,46 +429,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "packages": [
       "Uno.UI.App.Mcp"
     ]
-  },
-  {
-    "group": "AndroidXLeanback",
-    "version": "1.0.0.30",
-    "packages": [
-      "Xamarin.AndroidX.Leanback"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.0.31"
-    }
-  },
-  {
-    "group": "AndroidXCarApp",
-    "version": "1.4.0.2",
-    "packages": [
-      "Xamarin.AndroidX.Car.App"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.3"
-    }
-  },
-  {
-    "group": "AndroidXWear",
-    "version": "1.3.0.16",
-    "packages": [
-      "Xamarin.AndroidX.Wear"
-    ],
-    "versionOverride": {
-      "net10.0": "1.3.0.17"
-    }
-  },
-  {
-    "group": "AndroidXWearTiles",
-    "version": "1.4.0.2",
-    "packages": [
-      "Xamarin.AndroidX.Wear.Tiles"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.3"
-    }
   }
 ]
 ```
