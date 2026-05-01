@@ -53,6 +53,10 @@
       "longName": "toolkit",
       "shortName": "toolkit"
     },
+    "shell": {
+      "longName": "shell",
+      "shortName": "shell"
+    },
     "dependencyInjection": {
       "longName": "dependency-injection",
       "shortName": "di"

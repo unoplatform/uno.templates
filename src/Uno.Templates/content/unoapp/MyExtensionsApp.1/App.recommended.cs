@@ -267,14 +267,14 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
 //+:cnd:noEmit
 #elif (!useAuthentication)
 #if (!enableDeveloperMode)
-        Host = await builder.NavigateAsync<Shell>();
+        Host = await builder.NavigateAsync<$navigationRootType$>();
 #else
 $$EnableDeveloperMode_Region_Navigate$$
             ();
 #endif
 #else
 #if (!enableDeveloperMode)
-        Host = await builder.NavigateAsync<Shell>
+        Host = await builder.NavigateAsync<$navigationRootType$>
 #else
 $$EnableDeveloperMode_Region_Navigate$$
 #endif
@@ -299,7 +299,9 @@ $$EnableDeveloperMode_Region_Navigate$$
     {
 #if (useRegionsNav)
         views.Register(
+#if (shell)
             new ViewMap(ViewModel: typeof($shellRouteViewModel$)),
+#endif
 #if (useAuthentication)
             new ViewMap<LoginPage, $loginRouteViewModel$>(),
 #endif
@@ -311,6 +313,7 @@ $$EnableDeveloperMode_Region_Navigate$$
 #endif
         );
 
+#if (shell)
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
                 Nested:
@@ -325,6 +328,17 @@ $$EnableDeveloperMode_Region_Navigate$$
                 ]
             )
         );
+#else
+        routes.Register(
+#if (useAuthentication)
+            new RouteMap("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
+#endif
+            new RouteMap("Main", View: views.FindByViewModel<$mainRouteViewModel$>(), IsDefault:true)
+#if (useSampleContent)
+            , new RouteMap("Second", View: views.FindByViewModel<$secondRouteViewModel$>())
+#endif
+        );
+#endif
 #endif
     }
 #endif

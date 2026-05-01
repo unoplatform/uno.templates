@@ -100,6 +100,7 @@
 					"tests": "none",
 					"tfm": "net10.0",
 					"toolkit": "false",
+					"shell": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
@@ -143,6 +144,7 @@
 					"tests": "none",
 					"tfm": "net10.0",
 					"toolkit": "true",
+					"shell": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
@@ -233,7 +235,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "sample", "toolkit", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			}
 			,
 			{
@@ -685,6 +687,9 @@
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
+		"shell": {
+			"Icon": "/Assets/Features.Toolkit.svg"
+		},
 		"renderer.skia": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
@@ -779,6 +784,7 @@
 		"navigation",
 		"sample",
 		"toolkit",
+		"shell",
 		"authentication",
 		"vscode",
 		"wasmPwaManifest",
