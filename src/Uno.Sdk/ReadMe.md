@@ -34,6 +34,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
 | AndroidXNavigationVersion | 2.8.9.2 |
 | AndroidXCollectionVersion | 1.5.0.2 |
+| AndroidXLeanbackVersion | 1.0.0.30 |
+| AndroidXCarAppVersion | 1.4.0.2 |
+| AndroidXWearVersion | 1.3.0.16 |
+| AndroidXWearTilesVersion | 1.4.0.1 |
 | MauiVersion** | 9.0.120 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
