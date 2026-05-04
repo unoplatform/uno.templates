@@ -123,7 +123,7 @@
 				"Icon": "/Assets/Template_Recommended.svg",
 				"IsDefault": true,
 				"Parameters": {
-					"appTheme": "simpletheme",
+					"appTheme": "simple",
 					"architecture": "mvux",
 					"authentication": "none",
 					"configuration": "true",
@@ -302,7 +302,7 @@
 				"Title": "",
 				"SectionType": "SingleSelect",
 				"SymbolId": "appTheme",
-				"Choices": [ "material", "fluent", "simpletheme", "DPS" ]
+				"Choices": [ "simple", "material", "fluent", "DPS" ]
 			},
 			//{
 			//    "SectionType": "Color",
@@ -367,7 +367,7 @@
 			"Sequence": 2,
 			"Icon": "/Assets/Theme.Material.svg"
 		},
-		"appTheme.simpletheme": {
+		"appTheme.simple": {
 			"Sequence": 1,
 			"Icon": "/Assets/Theme.Simple.svg"
 		},

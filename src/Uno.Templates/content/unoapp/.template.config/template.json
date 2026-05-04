@@ -250,7 +250,7 @@
           "displayName": "Cupertino"
         },
         {
-          "choice": "simpletheme",
+          "choice": "simple",
           "description": "Use the Simple design theme",
           "displayName": "Simple"
         }
@@ -935,7 +935,7 @@
         "cases": [
           {
             "condition": "(preset == 'recommended')",
-            "value": "simpletheme"
+            "value": "simple"
           },
           {
             "condition": "(preset == 'blank')",
@@ -975,7 +975,7 @@
     "useSimpleTheme": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(appThemeEvaluator == 'simpletheme')"
+      "value": "(appThemeEvaluator == 'simple')"
     },
     "useUnoLottie": {
       "type": "computed",
@@ -1007,7 +1007,7 @@
             "value": "CupertinoSystemBackgroundBrush"
           },
           {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
+            "condition": "(appThemeEvaluator == 'simple')",
             "value": "BackgroundBrush"
           }
         ]
@@ -2064,7 +2064,7 @@
         "evaluator": "C++",
         "cases": [
           {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
+            "condition": "(appThemeEvaluator == 'simple')",
             "value": "\r\n      xmlns:us=\"using:Uno.Simple\""
           },
           {
@@ -2094,11 +2094,11 @@
             "value": "\r\n       xmlns:uc=\"using:Uno.Cupertino\""
           },
           {
-            "condition": "(appThemeEvaluator == 'simpletheme' && (useToolkit == 'true' || useToolkit == true))",
+            "condition": "(appThemeEvaluator == 'simple' && (useToolkit == 'true' || useToolkit == true))",
             "value": "\r\n       xmlns:utus=\"using:Uno.Toolkit.UI.Simple\""
           },
           {
-            "condition": "(appThemeEvaluator == 'simpletheme')",
+            "condition": "(appThemeEvaluator == 'simple')",
             "value": "\r\n       xmlns:us=\"using:Uno.Simple\""
           },
           {
