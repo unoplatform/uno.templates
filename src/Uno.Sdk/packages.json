@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.5.153",
+    "version": "6.5.229",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -95,7 +95,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.18.66",
+    "version": "1.18.72",
     "packages": [
       "Uno.UI.HotDesign"
     ]
