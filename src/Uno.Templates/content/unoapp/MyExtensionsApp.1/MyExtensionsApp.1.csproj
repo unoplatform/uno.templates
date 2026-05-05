@@ -115,6 +115,12 @@
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
+
+  <!-- Pin System.Security.Cryptography.Xml to resolve NU1903 (GHSA-37gx-xxp4-5rgx, GHSA-w3x6-4m5h-cxqf) -->
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" />
+  </ItemGroup>
+
   <!--#if (useUITests)-->
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
