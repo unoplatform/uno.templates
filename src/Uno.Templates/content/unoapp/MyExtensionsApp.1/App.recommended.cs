@@ -275,7 +275,7 @@ $$EnableDeveloperMode_Region_Navigate$$
 #endif
 #else
         Host = await MainWindow.InitializeNavigationAsync(
-            async () => builder.Build(),
+            () => Task.FromResult(builder.Build()),
             initialRoute: "Main"
         );
 #endif
