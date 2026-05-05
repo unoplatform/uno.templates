@@ -280,41 +280,30 @@ $$EnableDeveloperMode_Region_Navigate$$
         );
 #endif
 #else
+        async Task InitialNavigate(IServiceProvider services, INavigator navigator)
+        {
+            var auth = services.GetRequiredService<IAuthenticationService>();
+            var authenticated = await auth.RefreshAsync();
+            if (authenticated)
+            {
+                await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+            }
+            else
+            {
+                await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+            }
+        }
 #if (shell)
 #if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<$navigationRootType$>
 #else
 $$EnableDeveloperMode_Region_Navigate$$
 #endif
-            (initialNavigate: async (services, navigator) =>
-            {
-                var auth = services.GetRequiredService<IAuthenticationService>();
-                var authenticated = await auth.RefreshAsync();
-                if (authenticated)
-                {
-                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
-                }
-                else
-                {
-                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
-                }
-            });
+            (initialNavigate: InitialNavigate);
 #else
         Host = await MainWindow.InitializeNavigationAsync(
-            async () => builder.Build(),
-            initialNavigate: async (services, navigator) =>
-            {
-                var auth = services.GetRequiredService<IAuthenticationService>();
-                var authenticated = await auth.RefreshAsync();
-                if (authenticated)
-                {
-                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
-                }
-                else
-                {
-                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
-                }
-            });
+            () => Task.FromResult(builder.Build()),
+            initialNavigate: InitialNavigate);
 #endif
 #endif
     }
