@@ -4,11 +4,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.0-dev.20 |
+| UnoVersion* | 6.7.0-dev.22 |
 | UnoExtensionsVersion | 7.3.0-dev.7 |
 | UnoToolkitVersion | 8.5.0-dev.54 |
 | UnoThemesVersion | 7.0.0-dev.28 |
-| UnoCSharpMarkupVersion | 6.7.0-dev.3 |
+| UnoCSharpMarkupVersion | 6.7.0-dev.5 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.28000.1839 |
 | MicrosoftLoggingVersion** | 9.0.15 |
 | WindowsCompatibilityVersion** | 9.0.15 |
-| MicrosoftIdentityClientVersion | 4.83.3 |
+| MicrosoftIdentityClientVersion | 4.84.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.4 |
@@ -47,7 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.0-dev.20",
+    "version": "6.7.0-dev.22",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -142,7 +142,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.20.0-dev.43",
+    "version": "1.20.0-dev.49",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -203,7 +203,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.83.3",
+    "version": "4.84.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -352,7 +352,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.7.0-dev.3",
+    "version": "6.7.0-dev.5",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
