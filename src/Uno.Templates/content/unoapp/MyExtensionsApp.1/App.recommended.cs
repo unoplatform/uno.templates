@@ -266,6 +266,7 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
         MainWindow.Activate();
 //+:cnd:noEmit
 #elif (!useAuthentication)
+#if (shell)
 #if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<$navigationRootType$>();
 #else
@@ -273,6 +274,13 @@ $$EnableDeveloperMode_Region_Navigate$$
             ();
 #endif
 #else
+        Host = await MainWindow.InitializeNavigationAsync(
+            async () => builder.Build(),
+            initialRoute: "Main"
+        );
+#endif
+#else
+#if (shell)
 #if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<$navigationRootType$>
 #else
@@ -291,6 +299,23 @@ $$EnableDeveloperMode_Region_Navigate$$
                     await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
                 }
             });
+#else
+        Host = await MainWindow.InitializeNavigationAsync(
+            async () => builder.Build(),
+            initialNavigate: async (services, navigator) =>
+            {
+                var auth = services.GetRequiredService<IAuthenticationService>();
+                var authenticated = await auth.RefreshAsync();
+                if (authenticated)
+                {
+                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+                }
+                else
+                {
+                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+                }
+            });
+#endif
 #endif
     }
 #if (useExtensionsNavigation)
