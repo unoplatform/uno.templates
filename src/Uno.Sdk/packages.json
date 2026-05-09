@@ -344,7 +344,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.5.0-dev.54",
+    "version": "9.0.0-dev.3",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
