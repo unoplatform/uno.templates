@@ -124,7 +124,7 @@
 				"Icon": "/Assets/Template_Recommended.svg",
 				"IsDefault": true,
 				"Parameters": {
-					"appTheme": "simpletheme",
+					"appTheme": "simple",
 					"architecture": "mvux",
 					"authentication": "none",
 					"configuration": "true",
@@ -304,7 +304,7 @@
 				"Title": "",
 				"SectionType": "SingleSelect",
 				"SymbolId": "appTheme",
-				"Choices": [ "material", "fluent", "simpletheme", "DPS" ]
+				"Choices": [ "simple", "material", "fluent", "DPS" ]
 			},
 			//{
 			//    "SectionType": "Color",
@@ -362,16 +362,16 @@
 			"Icon": "/Assets/Theme.Cupertino.svg"
 		},
 		"appTheme.fluent": {
-			"Sequence": 2,
+			"Sequence": 3,
 			"Icon": "/Assets/Theme.Fluent.svg"
 		},
 		"appTheme.material": {
-			"Sequence": 1,
+			"Sequence": 2,
 			"Icon": "/Assets/Theme.Material.svg"
 		},
-		"appTheme.simpletheme": {
-			"Sequence": 3,
-			"Icon": "/Assets/Theme.Cupertino.svg"
+		"appTheme.simple": {
+			"Sequence": 1,
+			"Icon": "/Assets/Theme.Simple.svg"
 		},
 		"architecture.none": {
 			"Sequence": 1,
