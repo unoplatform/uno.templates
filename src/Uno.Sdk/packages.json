@@ -137,22 +137,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.15",
+    "version": "9.0.16",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.7"
+      "net10.0": "10.0.8"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.15",
+    "version": "9.0.16",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.7"
+      "net10.0": "10.0.8"
     }
   },
   {
