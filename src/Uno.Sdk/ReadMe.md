@@ -1,10 +1,10 @@
-﻿# Uno.Sdk
+# Uno.Sdk
 
 The Uno.Sdk powers the Uno Platform Single Project, including the ability to implicitly and easily manage many commonly used NuGet Packages with your Uno Platform application. Below is a table of the MSBuild Properties which you can use to override the default versions provided by this version of the SDK. You will also find the full Package manifest to give you a better idea of the packages' versions, or to better understand which variable to use for the packages that you want to override.
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.0-dev.79 |
+| UnoVersion* | 6.7.0-dev.96 |
 | UnoExtensionsVersion | 7.3.0-dev.17 |
 | UnoToolkitVersion | 9.0.0-dev.3 |
 | UnoThemesVersion | 7.0.0-dev.31 |
@@ -47,7 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.0-dev.79",
+    "version": "6.7.0-dev.96",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
