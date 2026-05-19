@@ -136,22 +136,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.16",
+    "version": "9.0.15",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.8"
+      "net10.0": "10.0.7"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.16",
+    "version": "9.0.15",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.8"
+      "net10.0": "10.0.7"
     }
   },
   {
@@ -372,7 +372,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.3967.48",
+    "version": "1.0.3912.50",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
