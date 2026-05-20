@@ -66,7 +66,7 @@
 			Condition="!Exists('$(TemplateContentFolder)/unoapp/.gitignore')" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
-		<AppendSingleTargetIgnore Filename="$(TemplateContentFolder)/unoapp/.gitignore" />
+		<AppendCustomIgnores Filename="$(TemplateContentFolder)/unoapp/.gitignore" />
 
 		<Copy SourceFiles="@(TemplateFile)" DestinationFiles="$(TemplateContentFolder)/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/GitHub/Install-WindowsSdkISO.cips" DestinationFiles="$(TemplateContentFolder)/unoapp/AzurePipelines/Install-WindowsSdkISO.cips" SkipUnchangedFiles="false" />
@@ -90,7 +90,7 @@
 		<ReplaceFileText Filename="%(_MauiLibTemplateFile.Identity)" MatchExpression="MyExtensionsApp.1.MauiControls" ReplacementText="MyExtensionsApp.1" />
 	</Target>
 
-	<UsingTask TaskName="AppendSingleTargetIgnore" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+	<UsingTask TaskName="AppendCustomIgnores" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
 		<ParameterGroup>
 			<Filename ParameterType="System.String" Required="true" />
 		</ParameterGroup>
@@ -103,7 +103,7 @@
 						Filename,
 						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props" +
 						Environment.NewLine + "# Publish Profiles" + Environment.NewLine + "!**/Properties/PublishProfiles/*.pubxml" +
-						Environment.NewLine + "# C# Dev Kit language-service cache" + Environment.NewLine + "*.lscache"
+						Environment.NewLine + "# C# Dev Kit language-service cache (safe to delete, regenerated automatically)" + Environment.NewLine + "*.lscache"
 						);
 				]]>
 			</Code>
