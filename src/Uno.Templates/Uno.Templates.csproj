@@ -99,12 +99,16 @@
 			<Using Namespace="System.IO" />
 			<Code Type="Fragment" Language="cs">
 				<![CDATA[
-					File.AppendAllText(
-						Filename,
-						Environment.NewLine + "# Single Target Config" + Environment.NewLine + "solution-config.props" +
-						Environment.NewLine + "# Publish Profiles" + Environment.NewLine + "!**/Properties/PublishProfiles/*.pubxml" +
-						Environment.NewLine + "# C# Dev Kit language-service cache (safe to delete, regenerated automatically)" + Environment.NewLine + "*.lscache"
-						);
+					var lines = new[] {
+						"",
+						"# Single Target Config",
+						"solution-config.props",
+						"# Publish Profiles",
+						"!**/Properties/PublishProfiles/*.pubxml",
+						"# C# Dev Kit language-service cache (safe to delete, regenerated automatically)",
+						"*.lscache",
+					};
+					File.AppendAllText(Filename, string.Join(Environment.NewLine, lines));
 				]]>
 			</Code>
 		</Task>
