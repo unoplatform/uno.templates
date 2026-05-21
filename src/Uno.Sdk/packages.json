@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.7.0-dev.155",
+    "version": "6.7.0-dev.197",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -89,14 +89,14 @@
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.133",
+    "version": "1.8.0-dev.134",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.20.0-dev.140",
+    "version": "1.20.0-dev.143",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -157,7 +157,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.84.0",
+    "version": "4.84.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -181,7 +181,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.8.1",
+    "version": "2.9.0-dev.12",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",

@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.0-dev.155 |
+| UnoVersion* | 6.7.0-dev.197 |
 | UnoExtensionsVersion | 7.3.0-dev.65 |
 | UnoToolkitVersion | 9.0.0-dev.4 |
 | UnoThemesVersion | 7.0.0-dev.32 |
@@ -21,7 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | 10.0.28000.1839 |
 | MicrosoftLoggingVersion** | 9.0.16 |
 | WindowsCompatibilityVersion** | 9.0.16 |
-| MicrosoftIdentityClientVersion | 4.84.0 |
+| MicrosoftIdentityClientVersion | 4.84.1 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.4 |
@@ -47,7 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.0-dev.155",
+    "version": "6.7.0-dev.197",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -135,14 +135,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.133",
+    "version": "1.8.0-dev.134",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.20.0-dev.140",
+    "version": "1.20.0-dev.143",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -203,7 +203,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.84.0",
+    "version": "4.84.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -227,7 +227,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoFonts",
-    "version": "2.8.1",
+    "version": "2.9.0-dev.12",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
