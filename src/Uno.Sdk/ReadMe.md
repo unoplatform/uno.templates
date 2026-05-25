@@ -6,8 +6,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 |----------------|:---------------:|
 | UnoVersion* | 6.7.0-dev.211 |
 | UnoExtensionsVersion | 7.3.0-dev.78 |
-| UnoToolkitVersion | 9.0.0-dev.4 |
-| UnoThemesVersion | 7.0.0-dev.33 |
+| UnoToolkitVersion | 9.0.0-dev.5 |
+| UnoThemesVersion | 7.0.0-dev.34 |
 | UnoCSharpMarkupVersion | 6.7.0-dev.16 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -15,7 +15,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.13.0-dev.17 |
-| SkiaSharpVersion | 3.119.2 |
+| SkiaSharpVersion | 3.119.4 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.1839 |
@@ -135,7 +135,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.206",
+    "version": "1.8.0-dev.226",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -149,7 +149,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.2",
+    "version": "3.119.4",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -390,7 +390,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "9.0.0-dev.4",
+    "version": "9.0.0-dev.5",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -403,7 +403,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "7.0.0-dev.33",
+    "version": "7.0.0-dev.34",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
