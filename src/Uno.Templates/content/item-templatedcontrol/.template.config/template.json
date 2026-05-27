@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Templated Control" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.TemplatedControl",
+  "groupIdentity": "Uno.Platform.Item.TemplatedControl",
+  "name": "Uno Platform Templated Control (Item)",
+  "shortName": "uno-templatedcontrol",
+  "sourceName": "CustomControl",
+  "defaultName": "CustomControl",
+  "description": "Adds an Uno Platform lookless Control with a default style in Themes/Generic.xaml.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "rootNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$rootnamespace$",
+      "defaultValue": "UnoApp",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    },
+    "IncludeDefaultStyle": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Generate a default style in Themes/Generic.xaml. Set to false when the project already has a Themes/Generic.xaml you do not want to overwrite."
+    }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!IncludeDefaultStyle)",
+          "exclude": [ "Themes/Generic.xaml" ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CustomControl.cs" },
+    { "path": "Themes/Generic.xaml", "condition": "(IncludeDefaultStyle)" }
+  ]
+}
