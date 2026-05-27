@@ -131,7 +131,7 @@ In `dotnetcli.host.json`, add to the `"symbolInfo"` object:
 ```json
     "shellLayout": {
       "longName": "shell-layout",
-      "shortName": ""
+      "shortName": "shell-layout"
     },
 ```
 
