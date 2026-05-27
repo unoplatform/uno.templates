@@ -85,6 +85,10 @@
       "longName": "navigation",
       "shortName": "nav"
     },
+    "shellLayout": {
+      "longName": "shell-layout",
+      "shortName": "shell-layout"
+    },
     "authentication": {
       "longName": "authentication",
       "shortName": "auth"
