@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Page", "MVUX" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.MvuxPage",
+  "groupIdentity": "Uno.Platform.Item.MvuxPage",
+  "name": "Uno Platform Page with Model (MVUX)",
+  "shortName": "uno-mvux-page",
+  "sourceName": "BlankPage",
+  "defaultName": "BlankPage",
+  "description": "Adds an Uno Platform Page and an Uno.Extensions.Reactive (MVUX) Model.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "rootNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$rootnamespace$",
+      "defaultValue": "UnoApp",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "primaryOutputs": [
+    { "path": "BlankPage.xaml" },
+    { "path": "BlankPage.xaml.cs" },
+    { "path": "BlankPageModel.cs" }
+  ]
+}
