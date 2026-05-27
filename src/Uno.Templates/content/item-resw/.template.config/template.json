@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Resources" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.Resw",
+  "groupIdentity": "Uno.Platform.Item.Resw",
+  "name": "Uno Platform Resources File (.resw)",
+  "shortName": "uno-resw",
+  "sourceName": "Strings",
+  "defaultName": "Resources",
+  "description": "Adds a .resw resource file for localized strings.",
+  "preferNameDirectory": false,
+  "primaryOutputs": [
+    { "path": "Strings.resw" }
+  ]
+}
