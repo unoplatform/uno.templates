@@ -26,6 +26,10 @@ public sealed partial class MainPage : Page
         ContentFrame.Navigate(typeof(Pages.HomePage));
         NavView.SelectedItem = NavView.MenuItems[0];
 #endif
+#if (useTabBarFrame)
+        ContentFrame.Navigate(typeof(Pages.HomePage));
+        Tabs.SelectedIndex = 0;
+#endif
 #endif
 //-:cnd:noEmit
     }
@@ -49,6 +53,21 @@ public sealed partial class MainPage : Page
                     ContentFrame.Navigate(typeof(Pages.AboutPage));
                     break;
             }
+        }
+    }
+#endif
+#if (useTabBarFrame)
+
+    private void Tabs_SelectionChanged(object sender, Uno.Toolkit.UI.TabBarSelectionChangedEventArgs args)
+    {
+        switch (((Uno.Toolkit.UI.TabBar)sender).SelectedIndex)
+        {
+            case 0:
+                ContentFrame.Navigate(typeof(Pages.HomePage));
+                break;
+            case 1:
+                ContentFrame.Navigate(typeof(Pages.AboutPage));
+                break;
         }
     }
 #endif
