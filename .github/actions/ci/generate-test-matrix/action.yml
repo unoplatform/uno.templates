@@ -46,9 +46,11 @@ runs:
             "FrameNavigation;!macOS;unoapp;-skip -preset recommended --navigation blank",
 
             "NavViewFrame;!macOS;unoapp;-skip -preset blank --shell-layout navview",
-            "TabViewFrame;!macOS;unoapp;-skip -preset blank --shell-layout tabbar",
             "NavViewRegions;!macOS;unoapp;-skip -preset recommended -server false --shell-layout navview",
+            "TabBarFrame;!macOS;unoapp;-skip -preset recommended -server false -nav blank --shell-layout tabbar",
             "TabBarRegions;!macOS;unoapp;-skip -preset recommended -server false --shell-layout tabbar",
+            "TabViewFrame;!macOS;unoapp;-skip -preset blank --shell-layout tabview",
+            "TabViewRegions;!macOS;unoapp;-skip -preset recommended -server false --shell-layout tabview",
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"

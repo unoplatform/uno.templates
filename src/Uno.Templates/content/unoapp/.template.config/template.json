@@ -645,7 +645,12 @@
         {
           "choice": "tabbar",
           "displayName": "Tab Bar",
-          "description": "Tab bar shell"
+          "description": "Uno.Toolkit TabBar shell (region-based when navigation is regions, otherwise Frame navigation)"
+        },
+        {
+          "choice": "tabview",
+          "displayName": "Tab View",
+          "description": "WinUI TabView (tabbed documents) shell"
         }
       ]
     },
@@ -2367,30 +2372,45 @@
       "datatype": "bool",
       "value": "shellLayout == 'tabbar'"
     },
+    "useTabViewLayout": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "shellLayout == 'tabview'"
+    },
     "useShellLayout": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useNavViewLayout || useTabBarLayout"
+      "value": "useNavViewLayout || useTabBarLayout || useTabViewLayout"
     },
     "useNavViewFrame": {
       "type": "computed",
       "datatype": "bool",
       "value": "useNavViewLayout && useFrameNav && !useCsharpMarkup"
     },
-    "useTabViewFrame": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "useTabBarLayout && useFrameNav && !useCsharpMarkup"
-    },
     "useNavViewRegions": {
       "type": "computed",
       "datatype": "bool",
       "value": "useNavViewLayout && useRegionsNav && !useCsharpMarkup"
     },
+    "useTabBarFrame": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useTabBarLayout && useFrameNav && useToolkit && !useCsharpMarkup"
+    },
     "useTabBarRegions": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useTabBarLayout && useRegionsNav && !useCsharpMarkup"
+      "value": "useTabBarLayout && useRegionsNav && useToolkit && !useCsharpMarkup"
+    },
+    "useTabViewFrame": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useTabViewLayout && useFrameNav && !useCsharpMarkup"
+    },
+    "useTabViewRegions": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useTabViewLayout && useRegionsNav && !useCsharpMarkup"
     },
     "coreProjectHasProjectReferences": {
       "type": "computed",
@@ -2528,7 +2548,7 @@
           ]
         },
         {
-          "condition": "(!useNavViewFrame)",
+          "condition": "(!(useNavViewFrame || useTabBarFrame))",
           "exclude": [
             "MyExtensionsApp.1/Pages/**"
           ]
