@@ -2375,22 +2375,22 @@
     "useNavViewFrame": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useNavViewLayout && useFrameNav"
+      "value": "useNavViewLayout && useFrameNav && !useCsharpMarkup"
     },
     "useTabViewFrame": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useTabBarLayout && useFrameNav"
+      "value": "useTabBarLayout && useFrameNav && !useCsharpMarkup"
     },
     "useNavViewRegions": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useNavViewLayout && useRegionsNav"
+      "value": "useNavViewLayout && useRegionsNav && !useCsharpMarkup"
     },
     "useTabBarRegions": {
       "type": "computed",
       "datatype": "bool",
-      "value": "useTabBarLayout && useRegionsNav"
+      "value": "useTabBarLayout && useRegionsNav && !useCsharpMarkup"
     },
     "coreProjectHasProjectReferences": {
       "type": "computed",

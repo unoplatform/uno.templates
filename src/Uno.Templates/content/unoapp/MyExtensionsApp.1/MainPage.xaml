@@ -6,6 +6,37 @@
       xmlns:controls="using:MyExtensionsApp._1.MauiControls"
 <!--#endif-->
       Background="{ThemeResource $themeBackgroundBrush$}">
+<!--#if (useNavViewFrame)-->
+  <NavigationView x:Name="NavView"
+                  SelectionChanged="NavView_SelectionChanged"
+                  IsBackButtonVisible="Collapsed"
+                  IsSettingsVisible="True">
+    <NavigationView.MenuItems>
+      <NavigationViewItem Content="Home" Tag="Home" />
+      <NavigationViewItem Content="About" Tag="About" />
+    </NavigationView.MenuItems>
+    <Frame x:Name="ContentFrame" />
+  </NavigationView>
+<!--#elif (useTabViewFrame)-->
+  <TabView>
+    <TabViewItem Header="Home" IsClosable="False">
+      <Grid>
+        <TextBlock Text="Home"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Grid>
+    </TabViewItem>
+    <TabViewItem Header="About" IsClosable="False">
+      <Grid>
+        <TextBlock Text="About"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Grid>
+    </TabViewItem>
+  </TabView>
+<!--#else-->
   <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>
       <StackPanel
@@ -37,4 +68,5 @@
       </StackPanel>
     </Grid>
   </ScrollViewer>
+<!--#endif-->
 </Page>
