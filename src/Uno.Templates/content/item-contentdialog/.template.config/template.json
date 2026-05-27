@@ -9,7 +9,7 @@
   "shortName": "uno-contentdialog",
   "sourceName": "MyContentDialog",
   "defaultName": "MyContentDialog",
-  "description": "Adds an Uno Platform ContentDialog for modal interactions.",
+  "description": "Adds an Uno Platform ContentDialog with XAML or C# Markup.",
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
@@ -24,11 +24,34 @@
       "valueSource": "name",
       "valueTransform": "safe_name",
       "replaces": "$safeitemname$"
-    }
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the dialog.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": { "type": "computed", "value": "(markup == 'csharp')" }
   },
   "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "MyContentDialog.xaml" ],
+          "rename": { "MyContentDialog.xaml.cs": "MyContentDialog.cs" }
+        }
+      ]
+    }
+  ],
   "primaryOutputs": [
-    { "path": "MyContentDialog.xaml" },
-    { "path": "MyContentDialog.xaml.cs" }
+    { "path": "MyContentDialog.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.cs", "condition": "(useCsharpMarkup)" }
   ]
 }
