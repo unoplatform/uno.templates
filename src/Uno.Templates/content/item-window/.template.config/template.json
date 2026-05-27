@@ -9,7 +9,7 @@
   "shortName": "uno-window",
   "sourceName": "BlankWindow",
   "defaultName": "BlankWindow",
-  "description": "Adds an Uno Platform Window that can be activated on its own (e.g. a secondary window).",
+  "description": "Adds an Uno Platform Window with XAML or C# Markup.",
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
@@ -24,11 +24,34 @@
       "valueSource": "name",
       "valueTransform": "safe_name",
       "replaces": "$safeitemname$"
-    }
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the window.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": { "type": "computed", "value": "(markup == 'csharp')" }
   },
   "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "BlankWindow.xaml" ],
+          "rename": { "BlankWindow.xaml.cs": "BlankWindow.cs" }
+        }
+      ]
+    }
+  ],
   "primaryOutputs": [
-    { "path": "BlankWindow.xaml" },
-    { "path": "BlankWindow.xaml.cs" }
+    { "path": "BlankWindow.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankWindow.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankWindow.cs", "condition": "(useCsharpMarkup)" }
   ]
 }
