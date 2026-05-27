@@ -64,6 +64,25 @@
       </utu:TabBar.Items>
     </utu:TabBar>
   </Grid>
+<!--#elif (useTabViewRegions)-->
+  <TabView>
+    <TabViewItem Header="Home" IsClosable="False">
+      <Grid>
+        <TextBlock Text="Home"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Grid>
+    </TabViewItem>
+    <TabViewItem Header="About" IsClosable="False">
+      <Grid>
+        <TextBlock Text="About"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Grid>
+    </TabViewItem>
+  </TabView>
 <!--#elif (useSampleContent)-->
   <ScrollViewer IsTabStop="True">
     <Grid$toolkitSafeArea$>

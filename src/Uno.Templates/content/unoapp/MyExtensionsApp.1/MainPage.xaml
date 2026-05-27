@@ -17,6 +17,23 @@
     </NavigationView.MenuItems>
     <Frame x:Name="ContentFrame" />
   </NavigationView>
+<!--#elif (useTabBarFrame)-->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Frame x:Name="ContentFrame" />
+    <utu:TabBar x:Name="Tabs"
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                SelectionChanged="Tabs_SelectionChanged">
+      <utu:TabBar.Items>
+        <utu:TabBarItem Content="Home" />
+        <utu:TabBarItem Content="About" />
+      </utu:TabBar.Items>
+    </utu:TabBar>
+  </Grid>
 <!--#elif (useTabViewFrame)-->
   <TabView>
     <TabViewItem Header="Home" IsClosable="False">
