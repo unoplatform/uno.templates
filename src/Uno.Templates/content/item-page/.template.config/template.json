@@ -17,7 +17,7 @@
       "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
