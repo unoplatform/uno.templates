@@ -37,9 +37,16 @@ function Test-Items {
     Remove-Item -Recurse -Force $appDir -ErrorAction SilentlyContinue
     New-Item -ItemType Directory -Force $appDir | Out-Null
 
+    # The app/project name must be a valid C# identifier. Using the combo name
+    # directly (e.g. "mvvm-xaml") makes dotnet new infer a hyphenated project
+    # name, which Uno's source generators turn into `namespace mvvm-xaml` and the
+    # build fails. Derive a PascalCase identifier instead.
+    $appName = (($Name -split '[^A-Za-z0-9]') | Where-Object { $_ } |
+        ForEach-Object { $_.Substring(0, 1).ToUpper() + $_.Substring(1) }) -join ''
+
     Push-Location $appDir
     try {
-        Invoke-Dotnet new unoapp -preset $Preset -presentation $Presentation -markup $Markup -platforms desktop -o . --force
+        Invoke-Dotnet new unoapp -preset $Preset -presentation $Presentation -markup $Markup -platforms desktop -n $appName -o . --force
 
         $markupArgs = @("-markup", $Markup)
 
