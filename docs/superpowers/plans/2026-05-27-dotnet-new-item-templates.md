@@ -89,11 +89,11 @@ Modified:
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -231,11 +231,11 @@ git commit -m "feat(templates): add uno-page dotnet new item template"
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -359,11 +359,11 @@ git commit -m "feat(templates): add uno-window dotnet new item template"
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -486,11 +486,11 @@ git commit -m "feat(templates): add uno-usercontrol dotnet new item template"
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -708,11 +708,11 @@ git commit -m "feat(templates): add uno-resourcedictionary dotnet new item templ
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -972,11 +972,11 @@ git commit -m "feat(templates): add uno-resw dotnet new item template"
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1151,11 +1151,11 @@ Replace the contents of `src/Uno.Templates/content/item-page/.template.config/te
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1296,11 +1296,11 @@ Replace `src/Uno.Templates/content/item-window/.template.config/template.json`'s
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1428,11 +1428,11 @@ Replace `src/Uno.Templates/content/item-usercontrol/.template.config/template.js
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1551,11 +1551,11 @@ Replace `src/Uno.Templates/content/item-contentdialog/.template.config/template.
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1697,11 +1697,11 @@ These create a Page **and** its presentation class, with the `DataContext` wired
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
@@ -1844,11 +1844,11 @@ git commit -m "feat(templates): add uno-mvvm-page item template"
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
-      "type": "bind",
-      "binding": "msbuild:RootNamespace",
+      "type": "parameter",
+      "datatype": "string",
       "replaces": "$rootnamespace$",
       "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item."
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
     },
     "safeItemName": {
       "type": "derived",
