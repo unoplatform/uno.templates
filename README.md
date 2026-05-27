@@ -6,4 +6,4 @@ This repository contains the main template for Uno Platform Apps that's availabl
 
 To get started with Uno Platform, [follow our guides](https://aka.platform.uno/get-started)!
 
-The `unoapp` template supports a `--shell-layout` option (NavigationView or TabBar app shells) — see [docs/shell-layouts.md](docs/shell-layouts.md).
+The `unoapp` template supports a `--shell-layout` option (NavigationView, TabBar, or TabView app shells) — see [docs/shell-layouts.md](docs/shell-layouts.md).
