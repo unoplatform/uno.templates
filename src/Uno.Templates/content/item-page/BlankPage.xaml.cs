@@ -1,3 +1,4 @@
+//-:cnd:noEmit
 namespace $rootnamespace$;
 
 /// <summary>
@@ -7,6 +8,16 @@ public sealed partial class $safeitemname$ : Page
 {
     public $safeitemname$()
     {
+//+:cnd:noEmit
+#if useCsharpMarkup
+        this.Content(
+            new StackPanel()
+                .HorizontalAlignment(HorizontalAlignment.Center)
+                .VerticalAlignment(VerticalAlignment.Center)
+                .Children(
+                    new TextBlock().Text("Hello Uno Platform!")));
+#else
         this.InitializeComponent();
+#endif
     }
 }

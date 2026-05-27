@@ -9,7 +9,7 @@
   "shortName": "uno-page",
   "sourceName": "BlankPage",
   "defaultName": "BlankPage",
-  "description": "Adds an Uno Platform Page with XAML markup and code-behind.",
+  "description": "Adds an Uno Platform Page with XAML or C# Markup.",
   "preferNameDirectory": false,
   "symbols": {
     "rootNamespace": {
@@ -24,13 +24,37 @@
       "valueSource": "name",
       "valueTransform": "safe_name",
       "replaces": "$safeitemname$"
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the page.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": {
+      "type": "computed",
+      "value": "(markup == 'csharp')"
     }
   },
-  "forms": {
-    "safe_name": { "identifier": "safe_name" }
-  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "BlankPage.xaml" ],
+          "rename": { "BlankPage.xaml.cs": "BlankPage.cs" }
+        }
+      ]
+    }
+  ],
   "primaryOutputs": [
-    { "path": "BlankPage.xaml" },
-    { "path": "BlankPage.xaml.cs" }
+    { "path": "BlankPage.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankPage.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankPage.cs", "condition": "(useCsharpMarkup)" }
   ]
 }
