@@ -1206,7 +1206,7 @@ Replace `src/Uno.Templates/content/item-page/.template.config/dotnetcli.host.jso
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
     "rootNamespace": { "longName": "root-namespace", "shortName": "ns" },
-    "markup": { "longName": "markup", "shortName": "" }
+    "markup": { "longName": "markup", "shortName": "markup" }
   }
 }
 ```
@@ -1348,7 +1348,7 @@ Replace `src/Uno.Templates/content/item-window/.template.config/dotnetcli.host.j
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
     "rootNamespace": { "longName": "root-namespace", "shortName": "ns" },
-    "markup": { "longName": "markup", "shortName": "" }
+    "markup": { "longName": "markup", "shortName": "markup" }
   }
 }
 ```
@@ -1480,7 +1480,7 @@ Replace `src/Uno.Templates/content/item-usercontrol/.template.config/dotnetcli.h
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
     "rootNamespace": { "longName": "root-namespace", "shortName": "ns" },
-    "markup": { "longName": "markup", "shortName": "" }
+    "markup": { "longName": "markup", "shortName": "markup" }
   }
 }
 ```
@@ -1603,7 +1603,7 @@ Replace `src/Uno.Templates/content/item-contentdialog/.template.config/dotnetcli
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
     "rootNamespace": { "longName": "root-namespace", "shortName": "ns" },
-    "markup": { "longName": "markup", "shortName": "" }
+    "markup": { "longName": "markup", "shortName": "markup" }
   }
 }
 ```
