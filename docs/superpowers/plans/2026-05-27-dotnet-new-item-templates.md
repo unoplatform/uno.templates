@@ -75,7 +75,7 @@ Modified:
 `src/Uno.Templates/content/item-page/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Page" ],
   "tags": { "language": "C#", "type": "item" },
@@ -217,7 +217,7 @@ git commit -m "feat(templates): add uno-page dotnet new item template"
 `src/Uno.Templates/content/item-window/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Window" ],
   "tags": { "language": "C#", "type": "item" },
@@ -345,7 +345,7 @@ git commit -m "feat(templates): add uno-window dotnet new item template"
 `src/Uno.Templates/content/item-usercontrol/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "User Control" ],
   "tags": { "language": "C#", "type": "item" },
@@ -472,7 +472,7 @@ git commit -m "feat(templates): add uno-usercontrol dotnet new item template"
 `src/Uno.Templates/content/item-contentdialog/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Content Dialog" ],
   "tags": { "language": "C#", "type": "item" },
@@ -609,7 +609,7 @@ git commit -m "feat(templates): add uno-contentdialog dotnet new item template"
 `src/Uno.Templates/content/item-resourcedictionary/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Resource Dictionary" ],
   "tags": { "language": "C#", "type": "item" },
@@ -694,7 +694,7 @@ git commit -m "feat(templates): add uno-resourcedictionary dotnet new item templ
 `src/Uno.Templates/content/item-resourcedictionary-codebehind/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Resource Dictionary" ],
   "tags": { "language": "C#", "type": "item" },
@@ -814,7 +814,7 @@ git commit -m "feat(templates): add uno-resourcedictionary-codebehind dotnet new
 `src/Uno.Templates/content/item-resw/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Resources" ],
   "tags": { "language": "C#", "type": "item" },
@@ -958,7 +958,7 @@ git commit -m "feat(templates): add uno-resw dotnet new item template"
 `src/Uno.Templates/content/item-templatedcontrol/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Templated Control" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1137,7 +1137,7 @@ Adds a `markup` choice (`xaml` default, `csharp`) to the code-behind items. With
 Replace the contents of `src/Uno.Templates/content/item-page/.template.config/template.json` with:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Page" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1282,7 +1282,7 @@ git commit -m "feat(templates): add C# Markup variant to uno-page item template"
 Replace `src/Uno.Templates/content/item-window/.template.config/template.json`'s `symbols`, add `sources`, and replace `primaryOutputs` so the file reads:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Window" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1414,7 +1414,7 @@ git commit -m "feat(templates): add C# Markup variant to uno-window item templat
 Replace `src/Uno.Templates/content/item-usercontrol/.template.config/template.json` with:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "User Control" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1537,7 +1537,7 @@ git commit -m "feat(templates): add C# Markup variant to uno-usercontrol item te
 Replace `src/Uno.Templates/content/item-contentdialog/.template.config/template.json` with:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Content Dialog" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1683,7 +1683,7 @@ These create a Page **and** its presentation class, with the `DataContext` wired
 `src/Uno.Templates/content/item-mvvm-page/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Page", "MVVM" ],
   "tags": { "language": "C#", "type": "item" },
@@ -1830,7 +1830,7 @@ git commit -m "feat(templates): add uno-mvvm-page item template"
 `src/Uno.Templates/content/item-mvux-page/.template.config/template.json`:
 ```json
 {
-  "$schema": "https://json.schemastore.org/template",
+  "$schema": "http://json.schemastore.org/template",
   "author": "Uno Platform",
   "classifications": [ "Uno Platform", "Item", "Page", "MVUX" ],
   "tags": { "language": "C#", "type": "item" },
