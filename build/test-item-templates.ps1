@@ -11,10 +11,13 @@ $content = Join-Path $repoRoot "src/Uno.Templates/content"
 
 # $ErrorActionPreference = "Stop" does NOT trap non-zero exit codes from native
 # executables, so every dotnet invocation must be checked explicitly.
+# NOTE: this is a simple (non-advanced) function on purpose. Declaring a param()
+# with [Parameter(...)] would add common parameters (-OutVariable/-OutBuffer/...),
+# and an arg like `-o` would bind to those instead of passing through to dotnet.
+# Using the automatic $args avoids that.
 function Invoke-Dotnet {
-    param([Parameter(ValueFromRemainingArguments = $true)][string[]]$DotnetArgs)
-    & dotnet @DotnetArgs
-    if ($LASTEXITCODE -ne 0) { throw "dotnet $($DotnetArgs -join ' ') failed (exit $LASTEXITCODE)" }
+    & dotnet @args
+    if ($LASTEXITCODE -ne 0) { throw "dotnet $($args -join ' ') failed (exit $LASTEXITCODE)" }
 }
 
 # Install every item template from source.
