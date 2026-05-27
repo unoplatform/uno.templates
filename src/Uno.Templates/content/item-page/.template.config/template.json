@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Page" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.Page",
+  "groupIdentity": "Uno.Platform.Item.Page",
+  "name": "Uno Platform Page (Item)",
+  "shortName": "uno-page",
+  "sourceName": "BlankPage",
+  "defaultName": "BlankPage",
+  "description": "Adds an Uno Platform Page with XAML markup and code-behind.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "rootNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$rootnamespace$",
+      "defaultValue": "UnoApp",
+      "description": "Namespace for the generated item."
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    }
+  },
+  "forms": {
+    "safe_name": { "identifier": "safe_name" }
+  },
+  "primaryOutputs": [
+    { "path": "BlankPage.xaml" },
+    { "path": "BlankPage.xaml.cs" }
+  ]
+}
