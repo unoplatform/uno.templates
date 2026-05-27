@@ -1629,8 +1629,8 @@ public sealed partial class $safeitemname$ : ContentDialog
         this.InitializeComponent();
 #endif
     }
-
 #if (!useCsharpMarkup)
+
     private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
     }
