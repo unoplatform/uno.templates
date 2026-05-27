@@ -22,7 +22,35 @@ public sealed partial class MainPage : Page
             ));
 #else
         this.InitializeComponent();
+#if (useNavViewFrame)
+        ContentFrame.Navigate(typeof(Pages.HomePage));
+        NavView.SelectedItem = NavView.MenuItems[0];
+#endif
 #endif
 //-:cnd:noEmit
     }
+//+:cnd:noEmit
+#if (useNavViewFrame)
+
+    private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    {
+        if (args.IsSettingsSelected)
+        {
+            ContentFrame.Navigate(typeof(Pages.SettingsPage));
+        }
+        else if (args.SelectedItem is NavigationViewItem { Tag: string tag })
+        {
+            switch (tag)
+            {
+                case "Home":
+                    ContentFrame.Navigate(typeof(Pages.HomePage));
+                    break;
+                case "About":
+                    ContentFrame.Navigate(typeof(Pages.AboutPage));
+                    break;
+            }
+        }
+    }
+#endif
+//-:cnd:noEmit
 }
