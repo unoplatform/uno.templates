@@ -89,7 +89,7 @@
   },
   {
     "group": "settings",
-    "version": "1.8.0-dev.292",
+    "version": "1.9.0-dev.8",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -314,7 +314,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.3.0-dev.78",
+    "version": "7.3.0-dev.85",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -344,7 +344,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "9.0.0-dev.6",
+    "version": "9.0.0-dev.8",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
