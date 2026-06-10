@@ -144,7 +144,7 @@
 					"tests": "none",
 					"tfm": "net10.0",
 					"toolkit": "true",
-					"shell": "false",
+					"shell": "true",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
