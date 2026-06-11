@@ -13,16 +13,6 @@ using Microsoft.UI.Xaml.Media;
 #if (!useSkiaRenderer)
 using Com.Nostra13.Universalimageloader.Core;
 #endif
-#if includeAndroidTV
-using Android.Content.PM;
-#endif
-//-:cnd:noEmit
-
-//+:cnd:noEmit
-#if includeAndroidTV
-[assembly: UsesFeature("android.software.leanback", Required = false)]
-[assembly: UsesFeature("android.hardware.touchscreen", Required = false)]
-#endif
 //-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;

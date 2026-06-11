@@ -2525,8 +2525,7 @@
         {
           "condition": "(!useAndroidTV)",
           "exclude": [
-            "MyExtensionsApp.1/Platforms/Android/Resources/drawable-xhdpi/banner.png",
-            "MyExtensionsApp.1/Platforms/Android/Resources/values/Styles.AndroidTV.xml"
+            "MyExtensionsApp.1/Platforms/Android/Resources/drawable-xhdpi/banner.png"
           ]
         },
         {

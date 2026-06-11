@@ -55,18 +55,21 @@ A leanback `IntentFilter` is appended on the activity when `includeAndroidTV` is
 
 ### `Platforms/Android/Main.Android.cs`
 
-Two assembly-level `[UsesFeature]` attributes (leanback + touchscreen, both `Required = false`) are added when `includeAndroidTV` is true, plus `Banner = "@drawable/banner"` on the `[ApplicationAttribute]`.
+`Banner = "@drawable/banner"` is added on the `[ApplicationAttribute]` when `includeAndroidTV` is true. The leanback and touchscreen feature declarations live solely in `AndroidManifest.xml` (see above) so they are not duplicated in the merged manifest.
+
+### `Platforms/Android/Resources/values/Styles.xml`
+
+When `includeAndroidTV` is true, the `AppTheme` style (applied after the splash screen via `postSplashScreenTheme`) gains a transparent `android:colorControlHighlight` item so the Uno-managed `XYFocusKeyboardNavigation` focus visual is the only highlight rendered. This applies app-wide, including any embedded native controls.
 
 ### `MyExtensionsApp.1.csproj`
 
-Conditional `<UnoFeatures>` entries (`AndroidTV`, `AndroidAuto`, `AndroidWear`) are appended so the `Uno.Sdk` resolves the correct AndroidX packages (Leanback / Car.App / Wear + Wear.Tiles).
+Conditional `<UnoFeatures>` entries (`AndroidTV`, `AndroidAuto`, `AndroidWear`) are appended so the `Uno.Sdk` resolves the correct AndroidX packages (Leanback / Car.App / Wear + Wear.Tiles). The conditions use the computed `useAndroidTV` / `useAndroidAuto` / `useAndroidWear` symbols (`platforms == android && include*`) so a CLI invocation without the Android platform cannot stamp a stray feature token.
 
 ### Resources
 
 | File | Included when |
 |---|---|
 | `Resources/drawable-xhdpi/banner.png` (320×180 placeholder) | `includeAndroidTV` |
-| `Resources/values/Styles.AndroidTV.xml` (transparent control highlight) | `includeAndroidTV` |
 | `Resources/xml/automotive_app_desc.xml` | `includeAndroidAuto` |
 
 The placeholder banner is intentionally generic — users are expected to replace it with their own 320×180 banner image (and provide localized variants under `drawable-xhdpi-{lang}` if needed) before publishing.
@@ -80,7 +83,7 @@ The placeholder banner is intentionally generic — users are expected to replac
 ## Validation
 
 1. `dotnet new install` the locally-built `Uno.Templates` package.
-2. Run `dotnet new unoapp -o TVApp -platforms android --include-android-tv true` (and similar for Auto / Wear).
+2. Run `dotnet new unoapp -o TVApp --includeAndroidTV true -platforms android` (and similar for Auto / Wear; `dotnet new` exposes template parameters under their symbol names — no kebab-case aliases are generated — and `-platforms` is greedy, so pass it last).
 3. Verify the generated `AndroidManifest.xml`, `MainActivity.Android.cs`, `Main.Android.cs`, and `csproj` contain the expected stamped entries.
 4. `dotnet build TVApp/TVApp -f net10.0-android` should succeed with the AndroidX packages resolved.
 5. Smoke-deploy to the appropriate emulator (Android TV, Android Auto via DHU, Wear OS) and verify the app launches and surfaces correctly.
