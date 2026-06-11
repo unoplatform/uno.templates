@@ -111,7 +111,10 @@
 					"dspGenerator": "false",
 					"themeService": "false",
 					"continuousIntegration": "none",
-					"renderer": "skia"
+					"renderer": "skia",
+					"includeAndroidTV": "false",
+					"includeAndroidAuto": "false",
+					"includeAndroidWear": "false"
 				},
 				"Features": [
 					".NET 8",
@@ -155,7 +158,10 @@
 					"dspGenerator": "true",
 					"themeService": "true",
 					"continuousIntegration": "none",
-					"renderer": "skia"
+					"renderer": "skia",
+					"includeAndroidTV": "false",
+					"includeAndroidAuto": "false",
+					"includeAndroidWear": "false"
 				},
 				"Features": [
 					".NET 8",
@@ -275,6 +281,11 @@
 				"SymbolId": "platforms",
 				"Title": "Desktop",
 				"SymbolIds": [ "desktop", "windows" ]
+			},
+			{
+				"Title": "Android form factors",
+				"SectionType": "MultiSelect",
+				"SymbolIds": [ "includeAndroidTV", "includeAndroidAuto", "includeAndroidWear" ]
 			}
 		],
 		"Presentation": [
@@ -638,6 +649,33 @@
 				"Value": "Native"
 			}
 		},
+		"includeAndroidTV": {
+			"Icon": "/Assets/Platforms.AndroidTV.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Android TV support."
+				}
+			}
+		},
+		"includeAndroidAuto": {
+			"Icon": "/Assets/Platforms.AndroidAuto.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Android Auto support."
+				}
+			}
+		},
+		"includeAndroidWear": {
+			"Icon": "/Assets/Platforms.AndroidWear.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Wear OS support."
+				}
+			}
+		},
 		"serialization": {
 			"Icon": "/Assets/Extensions.Serialization.svg",
 			"Requires": {
@@ -798,7 +836,10 @@
 		"continuousIntegration",
 		"isCustomized",
 		"mediaPlayerElement",
-		"renderer"
+		"renderer",
+		"includeAndroidTV",
+		"includeAndroidAuto",
+		"includeAndroidWear"
 	],
 	"PackagesToUpdate": [
 		{

@@ -6,6 +6,14 @@
 		<item name="android:windowActionBar">false</item>
 		<item name="windowNoTitle">true</item>
 		<item name="android:windowNoTitle">true</item>
+		<!--#if (includeAndroidTV)-->
+		<!--
+			Disables the native Android control highlight when running on Android TV so the
+			Uno-managed XYFocusKeyboardNavigation focus visual is the only highlight rendered.
+			Note: this applies app-wide, including any embedded native controls.
+		-->
+		<item name="android:colorControlHighlight">@android:color/transparent</item>
+		<!--#endif-->
 	</style>
 
 	<style name="Theme.App.Starting" parent="Theme.SplashScreen">
