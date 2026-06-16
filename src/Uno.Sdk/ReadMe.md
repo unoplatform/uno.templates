@@ -19,6 +19,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.1839 |
+| WinAppSdkBuildToolsWinAppVersion | 0.3.2 |
 | MicrosoftLoggingVersion** | 9.0.17 |
 | WindowsCompatibilityVersion** | 9.0.17 |
 | MicrosoftIdentityClientVersion | 4.84.2 |
