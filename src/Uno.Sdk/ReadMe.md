@@ -62,7 +62,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
       "Uno.WinUI.Runtime.Skia.MacOS",
       "Uno.WinUI.Runtime.Skia.Win32",
-      "Uno.WinUI.Runtime.Skia.Wpf",
       "Uno.WinUI.Runtime.Skia.X11",
       "Uno.WinUI.Svg",
       "Uno.WinUI.WebAssembly",
