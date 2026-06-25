@@ -266,7 +266,7 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
         MainWindow.Activate();
 //+:cnd:noEmit
 #elif (!useAuthentication)
-#if (shell)
+#if (useShell)
 #if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<$navigationRootType$>();
 #else
@@ -293,7 +293,7 @@ $$EnableDeveloperMode_Region_Navigate$$
                 await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
             }
         }
-#if (shell)
+#if (useShell)
 #if (!enableDeveloperMode)
         Host = await builder.NavigateAsync<$navigationRootType$>
 #else
@@ -313,7 +313,7 @@ $$EnableDeveloperMode_Region_Navigate$$
     {
 #if (useRegionsNav)
         views.Register(
-#if (shell)
+#if (useShell)
             new ViewMap(ViewModel: typeof($shellRouteViewModel$)),
 #endif
 #if (useAuthentication)
@@ -327,7 +327,7 @@ $$EnableDeveloperMode_Region_Navigate$$
 #endif
         );
 
-#if (shell)
+#if (useShell)
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
                 Nested:
