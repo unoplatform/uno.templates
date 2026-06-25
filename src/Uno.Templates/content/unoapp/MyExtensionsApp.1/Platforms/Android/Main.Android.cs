@@ -20,6 +20,11 @@ namespace MyExtensionsApp._1.Droid;
 [global::Android.App.ApplicationAttribute(
     Label = "@string/ApplicationName",
     Icon = "@mipmap/icon",
+//+:cnd:noEmit
+#if includeAndroidTV
+    Banner = "@drawable/banner",
+#endif
+//-:cnd:noEmit
     LargeHeap = true,
     HardwareAccelerated = true,
     Theme = "@style/Theme.App.Starting"
