@@ -5,3 +5,5 @@ This repository contains the main template for Uno Platform Apps that's availabl
 [![NuGet](https://badgen.net/nuget/v/Uno.Templates)](https://www.nuget.org/packages/Uno.Templates)
 
 To get started with Uno Platform, [follow our guides](https://aka.platform.uno/get-started)!
+
+The `unoapp` template supports a `--shell-layout` option (NavigationView, TabBar, or TabView app shells) — see [docs/shell-layouts.md](docs/shell-layouts.md).
