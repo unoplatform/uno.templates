@@ -8,7 +8,12 @@
   <ItemGroup>
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
+    <!--#if (useFluentAssertions)-->
     <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
+    <!--#endif-->
+    <!--#if (useShouldly)-->
+    <PackageVersion Include="Shouldly" Version="$Shouldly$" />
+    <!--#endif-->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
     <PackageVersion Include="NUnit" Version="$NUnit$" />
     <PackageVersion Include="NUnit3TestAdapter" Version="$NUnit3TestAdapter$" />

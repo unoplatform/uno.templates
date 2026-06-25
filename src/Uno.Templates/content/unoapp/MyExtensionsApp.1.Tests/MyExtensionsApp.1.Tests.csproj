@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--#if (useFluentAssertions)-->
     <PackageReference Include="FluentAssertions" />
+    <!--#endif-->
+    <!--#if (useShouldly)-->
+    <PackageReference Include="Shouldly" />
+    <!--#endif-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit3TestAdapter" />
