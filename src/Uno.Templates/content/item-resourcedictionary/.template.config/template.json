@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Resource Dictionary" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.ResourceDictionary",
+  "groupIdentity": "Uno.Platform.Item.ResourceDictionary",
+  "name": "Uno Platform Resource Dictionary (Item)",
+  "shortName": "uno-resourcedictionary",
+  "sourceName": "MyDictionary",
+  "defaultName": "MyDictionary",
+  "description": "Adds an Uno Platform ResourceDictionary for shared styles and resources.",
+  "preferNameDirectory": false,
+  "primaryOutputs": [
+    { "path": "MyDictionary.xaml" }
+  ]
+}

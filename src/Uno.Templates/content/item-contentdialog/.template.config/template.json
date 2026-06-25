@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Content Dialog" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.ContentDialog",
+  "groupIdentity": "Uno.Platform.Item.ContentDialog",
+  "name": "Uno Platform Content Dialog (Item)",
+  "shortName": "uno-contentdialog",
+  "sourceName": "MyContentDialog",
+  "defaultName": "MyContentDialog",
+  "description": "Adds an Uno Platform ContentDialog with XAML or C# Markup.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "rootNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$rootnamespace$",
+      "defaultValue": "UnoApp",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the dialog.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": { "type": "computed", "value": "(markup == 'csharp')" }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "MyContentDialog.xaml" ],
+          "rename": { "MyContentDialog.xaml.cs": "MyContentDialog.cs" }
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "MyContentDialog.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.cs", "condition": "(useCsharpMarkup)" }
+  ]
+}
