@@ -9,6 +9,7 @@
     <!--#if (useTestSolutionFolder)-->
     <PackageVersion Include="coverlet.collector" Version="$CoverletCollector$" />
     <PackageVersion Include="FluentAssertions" Version="$FluentAssertions$" />
+    <!--Pinned to this version to prevent unintentional upgrades, later versions than 7.2.0 are under paid licensing-->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="$MicrosoftTestSdk$" />
     <PackageVersion Include="NUnit" Version="$NUnit$" />
     <PackageVersion Include="NUnit3TestAdapter" Version="$NUnit3TestAdapter$" />
