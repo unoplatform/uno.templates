@@ -4,8 +4,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.0-dev.642 |
-| UnoExtensionsVersion | 7.3.0-dev.94 |
+| UnoVersion* | 6.7.0-dev.671 |
+| UnoExtensionsVersion | 7.3.0-dev.97 |
 | UnoToolkitVersion | 9.0.0-dev.9 |
 | UnoThemesVersion | 7.0.0-dev.36 |
 | UnoCSharpMarkupVersion | 6.7.0-dev.16 |
@@ -18,11 +18,11 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 3.119.4 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.28000.1839 |
+| WinAppSdkBuildToolsVersion | 10.0.28000.2270 |
 | WinAppSdkBuildToolsWinAppVersion | 0.4.0 |
 | MicrosoftLoggingVersion** | 9.0.17 |
 | WindowsCompatibilityVersion** | 9.0.17 |
-| MicrosoftIdentityClientVersion | 4.85.1 |
+| MicrosoftIdentityClientVersion | 4.85.2 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.12.0.4 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.0-dev.642",
+    "version": "6.7.0-dev.671",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -142,7 +142,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.20.0-dev.275",
+    "version": "1.20.0-dev.314",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -176,7 +176,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.1839",
+    "version": "10.0.28000.2270",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -203,7 +203,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.85.1",
+    "version": "4.85.2",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -360,7 +360,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "7.3.0-dev.94",
+    "version": "7.3.0-dev.97",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
