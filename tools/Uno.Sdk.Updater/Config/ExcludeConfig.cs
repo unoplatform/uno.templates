@@ -29,7 +29,7 @@
             try
             {
                 using var fs = File.OpenRead(path);
-                using var doc = System.Text.Json.JsonDocument.Parse(fs);
+                using var doc = System.Text.Json.JsonDocument.Parse(fs, new System.Text.Json.JsonDocumentOptions { CommentHandling = System.Text.Json.JsonCommentHandling.Skip, AllowTrailingCommas = true });
                 if (doc.RootElement.TryGetProperty("exclude", out var arr) &&
                     arr.ValueKind == System.Text.Json.JsonValueKind.Array)
                 {
