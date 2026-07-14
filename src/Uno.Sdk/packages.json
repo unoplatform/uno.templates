@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.6.134",
+    "version": "6.6.151",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -96,7 +96,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.19.165",
+    "version": "1.19.167",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -137,22 +137,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.17",
+    "version": "9.0.18",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.9"
+      "net10.0": "10.0.10"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.17",
+    "version": "9.0.18",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.9"
+      "net10.0": "10.0.10"
     }
   },
   {
@@ -306,7 +306,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.6.21",
+    "version": "6.6.23",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -373,14 +373,14 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4022.49",
+    "version": "1.0.4078.44",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
   },
   {
     "group": "AppMcp",
-    "version": "1.2.39",
+    "version": "1.2.40",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
