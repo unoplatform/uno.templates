@@ -55,6 +55,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    needs: verify_dependencies
 
     steps:
     - name: Checkout
@@ -68,6 +69,27 @@ jobs:
 
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
+
+  # Verify every referenced Uno.* package exists on nuget.org BEFORE the build and the
+  # template test matrix run, so a package-availability problem fails the pipeline in
+  # seconds instead of after build + sign + the full test matrix have consumed runners.
+  # Reads the source Uno.Sdk manifest (no build output needed) and runs on push and PRs.
+  # Defined after `build` so its run-summary renders below the Build "NuGet Package Summary";
+  # it still executes first via the `needs: verify_dependencies` on build and generate-test-matrix.
+  verify_dependencies:
+    name: Verify Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ env.CheckoutRef }}
+
+    - name: "Verify Uno.* dependency closure on nuget.org"
+      shell: pwsh
+      run: |
+        ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -ManifestPath src/Uno.Sdk/packages.json -MaxAttempts 3 -RetryDelaySeconds 10 -HttpTimeoutSeconds 30
 
   # Sign the nuget packages
   sign:
@@ -158,6 +180,7 @@ jobs:
   generate-test-matrix:
     runs-on: ubuntu-latest
     name: Generate Test Matrix
+    needs: verify_dependencies
 
     outputs:
       testMatrix: ${{ steps.generate-test-matrix-step.outputs.TestMatrix }}
