@@ -19,7 +19,7 @@ runs:
   - name: Verify package dependencies on nuget.org
     shell: pwsh
     run: |
-        ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -PackagesPath artifacts -MaxAttempts 12 -RetryDelaySeconds 20 -HttpTimeoutSeconds 30
+        ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -PackagesPath artifacts -MaxAttempts 3 -RetryDelaySeconds 20 -HttpTimeoutSeconds 30
 
   - name: NuGet.org Push
     shell: pwsh
