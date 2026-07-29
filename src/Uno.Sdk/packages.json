@@ -130,7 +130,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2526",
+    "version": "10.0.28000.2270",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -344,24 +344,27 @@
   },
   {
     "group": "Toolkit",
-    "version": "8.4.2",
+    "version": "9.0.3",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
       "Uno.Toolkit.WinUI.Material",
       "Uno.Toolkit.WinUI.Material.Markup",
       "Uno.Toolkit.WinUI.Markup",
-      "Uno.Toolkit.Skia.WinUI"
+      "Uno.Toolkit.Skia.WinUI",
+      "Uno.Toolkit.WinUI.Simple"
     ]
   },
   {
     "group": "Themes",
-    "version": "6.1.1",
+    "version": "7.0.3",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
       "Uno.Themes.WinUI.Markup",
-      "Uno.Cupertino.WinUI"
+      "Uno.Cupertino.WinUI",
+      "Uno.Simple.WinUI",
+      "Uno.Simple.WinUI.Markup"
     ]
   },
   {

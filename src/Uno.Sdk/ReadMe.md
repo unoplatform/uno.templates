@@ -6,8 +6,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 |----------------|:---------------:|
 | UnoVersion* | 6.6.184 |
 | UnoExtensionsVersion | 7.2.3 |
-| UnoToolkitVersion | 8.4.2 |
-| UnoThemesVersion | 6.1.1 |
+| UnoToolkitVersion | 9.0.3 |
+| UnoThemesVersion | 7.0.3 |
 | UnoCSharpMarkupVersion | 6.6.31 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -18,7 +18,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 3.119.2 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.28000.2526 |
+| WinAppSdkBuildToolsVersion | 10.0.28000.2270 |
 | MicrosoftLoggingVersion** | 9.0.18 |
 | WindowsCompatibilityVersion** | 9.0.18 |
 | MicrosoftIdentityClientVersion | 4.83.3 |
@@ -172,7 +172,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2526",
+    "version": "10.0.28000.2270",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -386,24 +386,27 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "8.4.2",
+    "version": "9.0.3",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
       "Uno.Toolkit.WinUI.Material",
       "Uno.Toolkit.WinUI.Material.Markup",
       "Uno.Toolkit.WinUI.Markup",
-      "Uno.Toolkit.Skia.WinUI"
+      "Uno.Toolkit.Skia.WinUI",
+      "Uno.Toolkit.WinUI.Simple"
     ]
   },
   {
     "group": "Themes",
-    "version": "6.1.1",
+    "version": "7.0.3",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
       "Uno.Themes.WinUI.Markup",
-      "Uno.Cupertino.WinUI"
+      "Uno.Cupertino.WinUI",
+      "Uno.Simple.WinUI",
+      "Uno.Simple.WinUI.Markup"
     ]
   },
   {
