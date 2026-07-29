@@ -21,6 +21,19 @@ param(
 	[ValidateRange(0, [int]::MaxValue)]
 	[int]$TransitiveDependencyDepth = 1,
 	[switch]$IncludeStableTransitiveVersions,
+	# PR fail-fast pass: verify ONLY prerelease (dev) coordinates on nuget.org, skipping every
+	# stable-versioned dependency (direct or transitive). Dev packages are published to nuget.org
+	# continuously, so a missing one is a genuine error worth failing a PR fast; stable versions may
+	# legitimately be unpublished while a stable release is staged on the internal feed first, and
+	# are gated later — only right before the nuget.org publish. Full-closure (switch off) is used
+	# for the dev-publish (main) path and the pre-prod-publish gate.
+	[switch]$PrereleaseDependenciesOnly,
+	# Report mode (non-blocking): collect missing dependencies but DO NOT throw / fail. Used by the
+	# PR job, which surfaces the result as a resolvable inline comment instead of failing the build.
+	# When -ReportOutputPath is set the missing set is written there as JSON (always, even if empty,
+	# so the consumer is deterministic).
+	[switch]$ReportOnly,
+	[string]$ReportOutputPath = "",
 	[string[]]$StableTransitiveIncludePrefixes = @('Uno.'),
 	[ValidateRange(0, [int]::MaxValue)]
 	[int]$TrackedTransitiveDependencyMaxDepth = 16
@@ -79,24 +92,44 @@ function Test-IsTrackedPackageId {
 	return $false
 }
 
+function Test-IsPrereleaseVersion {
+	# True when the version carries a SemVer prerelease label (contains '-'), e.g. 7.1.0-dev.1.
+	# Stable versions (7.0.3, 10.0.28000.2270) return false, as does a null/blank version.
+	param(
+		[AllowEmptyString()]
+		[AllowNull()]
+		[string]$Version
+	)
+
+	return (-not [string]::IsNullOrWhiteSpace($Version)) -and $Version.Contains('-')
+}
+
 function Test-ShouldVerifyTransitiveDependency {
 	# Whether a discovered transitive dependency must be verified on nuget.org.
 	# Prereleases are always verified. Stable versions are skipped (third-party / BCL
 	# stable packages are assumed present, and verifying the whole closure would be slow
 	# and noisy) unless -IncludeStableTransitiveVersions is set or the id is tracked
 	# (Uno.*), which can point at an unpublished stable.
+	# In the PR fail-fast pass (-PrereleaseDependenciesOnly) stable versions are ALWAYS
+	# skipped — even tracked ones — because a stable dependency may be intentionally
+	# unpublished while a stable release is staged on the internal feed first.
 	param(
 		[Parameter(Mandatory = $true)]
 		[string]$PackageId,
 		[string]$Version,
 		[bool]$IncludeStableTransitiveVersions,
 		[AllowEmptyCollection()]
-		[string[]]$IncludePrefixes
+		[string[]]$IncludePrefixes,
+		[bool]$PrereleaseDependenciesOnly
 	)
 
-	$isStable = -not [string]::IsNullOrWhiteSpace($Version) -and -not $Version.Contains('-')
-	if (-not $isStable) {
+	if (Test-IsPrereleaseVersion -Version $Version) {
 		return $true
+	}
+
+	# Stable version below this point.
+	if ($PrereleaseDependenciesOnly) {
+		return $false
 	}
 
 	if ($IncludeStableTransitiveVersions) {
@@ -267,6 +300,35 @@ function Add-DependencyCheck {
 	})
 }
 
+function Select-ChecksForVerification {
+	# PR fail-fast pass filter: when PrereleaseDependenciesOnly is set, keep only prerelease
+	# (dev) coordinates. Stable-versioned direct dependencies are dropped so a stable release
+	# staged on the internal feed (its stable deps not yet on nuget.org) does not fail a PR.
+	# When the switch is off, the list is returned unchanged (full-closure verification).
+	param(
+		[Parameter(Mandatory = $true)]
+		[AllowEmptyCollection()]
+		[System.Collections.Generic.List[object]]$Checks,
+		[bool]$PrereleaseDependenciesOnly
+	)
+
+	# Return with the unary comma so the List is passed back intact: a bare `return $list`
+	# is enumerated by the pipeline (collapsing an empty list to $null and a single-item list
+	# to a scalar), which would break the caller's List typing and later `.Add()` calls.
+	if (-not $PrereleaseDependenciesOnly) {
+		return ,$Checks
+	}
+
+	$filtered = New-Object System.Collections.Generic.List[object]
+	foreach ($check in $Checks) {
+		if (Test-IsPrereleaseVersion -Version ([string]$check.Version)) {
+			[void]$filtered.Add($check)
+		}
+	}
+
+	return ,$filtered
+}
+
 function Build-DependencySourcesMap {
 	param(
 		[Parameter(Mandatory = $true)]
@@ -321,6 +383,27 @@ function Add-MissingDependencyRecord {
 	if (-not $MissingDependencies[$missingKey].Sources.Contains($Source)) {
 		$MissingDependencies[$missingKey].Sources.Add($Source)
 	}
+}
+
+function ConvertTo-MissingDependencyReport {
+	# Shape the collected missing-dependency records into a plain, serializable list
+	# (Id / Version / Sources), sorted, for the PR report payload. Returned with a unary
+	# comma so an empty result keeps its List typing through the pipeline.
+	param(
+		[Parameter(Mandatory = $true)]
+		[hashtable]$MissingDependencies
+	)
+
+	$report = New-Object System.Collections.Generic.List[object]
+	foreach ($entry in ($MissingDependencies.Values | Sort-Object Id, Version)) {
+		$report.Add([PSCustomObject]@{
+			Id      = $entry.Id
+			Version = $entry.Version
+			Sources = @($entry.Sources)
+		})
+	}
+
+	return ,$report
 }
 
 function Get-ExactDependenciesFromPackageNuspec {
@@ -589,6 +672,9 @@ else {
 	Add-ChecksFromArtifacts -Checks $checks -PackagesPath $PackagesPath -PackageIdFilter $PackageIdFilter
 }
 
+# PR fail-fast pass: drop stable coordinates so only prerelease (dev) dependencies are verified.
+# No-op unless -PrereleaseDependenciesOnly is set (dev-publish / pre-prod-publish verify everything).
+$checks = Select-ChecksForVerification -Checks $checks -PrereleaseDependenciesOnly ([bool]$PrereleaseDependenciesOnly)
 
 $uniqueChecks = @($checks |
 	Sort-Object Id, Version -Unique)
@@ -657,7 +743,7 @@ if ($TransitiveDependencyDepth -gt 0) {
 			$transitiveDependencies = Get-ExactDependenciesFromPackageNuspec -PackageId $coordinate.Id -Version $coordinate.Version -HttpTimeoutSeconds $HttpTimeoutSeconds -MaxAttempts $MaxAttempts -RetryDelaySeconds $RetryDelaySeconds
 			foreach ($transitiveDependency in $transitiveDependencies) {
 				$depId = [string]$transitiveDependency.Id
-				if (-not (Test-ShouldVerifyTransitiveDependency -PackageId $depId -Version ([string]$transitiveDependency.Version) -IncludeStableTransitiveVersions ([bool]$IncludeStableTransitiveVersions) -IncludePrefixes $StableTransitiveIncludePrefixes)) {
+				if (-not (Test-ShouldVerifyTransitiveDependency -PackageId $depId -Version ([string]$transitiveDependency.Version) -IncludeStableTransitiveVersions ([bool]$IncludeStableTransitiveVersions) -IncludePrefixes $StableTransitiveIncludePrefixes -PrereleaseDependenciesOnly ([bool]$PrereleaseDependenciesOnly))) {
 					continue
 				}
 
@@ -722,26 +808,46 @@ foreach ($check in $stillMissing) {
 	Write-Host "Missing dependency '$($check.Id)' version '$($check.Version)' (source: $($check.Source))."
 }
 
+# Report mode always writes the missing set (even when empty) so the PR job can act deterministically.
+if ($ReportOnly -and -not [string]::IsNullOrWhiteSpace($ReportOutputPath)) {
+	$reportPayload = ConvertTo-MissingDependencyReport -MissingDependencies $missingDependencies
+	($reportPayload | ConvertTo-Json -Depth 5 -AsArray) | Set-Content -Path $ReportOutputPath -Encoding utf8
+	Write-Host "ReportOnly: wrote $($reportPayload.Count) missing dependency record(s) to '$ReportOutputPath'."
+}
+
 if ($missingDependencies.Count -gt 0) {
 	$missingList = $missingDependencies.Values |
 		Sort-Object Id, Version |
 		ForEach-Object { "$($_.Id) $($_.Version)" }
 
-	$summaryLines = @(
-		"## NuGet Dependency Verification",
-		"❌ Missing dependencies on nuget.org:"
-	)
-	$summaryLines += ($missingList | ForEach-Object { "- $_" })
-	$summaryLines += "Publish to nuget.org was blocked to avoid unresolved dependencies."
+	if ($ReportOnly) {
+		$summaryLines = @(
+			"## NuGet Dependency Verification",
+			"⚠️ Prerelease (dev) dependencies not yet on nuget.org (informational — not blocking this PR):"
+		)
+		$summaryLines += ($missingList | ForEach-Object { "- $_" })
+		$summaryLines += "These must be published before the dev/prod publish gate will pass."
+		Add-StepSummaryLines -Lines $summaryLines
 
-	Add-StepSummaryLines -Lines $summaryLines
+		Write-Host "ReportOnly: $($missingDependencies.Count) dependency/ies not on nuget.org (not failing)."
+	}
+	else {
+		$summaryLines = @(
+			"## NuGet Dependency Verification",
+			"❌ Missing dependencies on nuget.org:"
+		)
+		$summaryLines += ($missingList | ForEach-Object { "- $_" })
+		$summaryLines += "Publish to nuget.org was blocked to avoid unresolved dependencies."
 
-	$messageLines = @("The following dependencies are not available on nuget.org:")
-	$messageLines += ($missingList | ForEach-Object { " - $_" })
-	$messageLines += "Aborting publish to avoid pushing a package with unresolved dependencies."
-	$message = $messageLines -join [Environment]::NewLine
+		Add-StepSummaryLines -Lines $summaryLines
 
-	throw $message
+		$messageLines = @("The following dependencies are not available on nuget.org:")
+		$messageLines += ($missingList | ForEach-Object { " - $_" })
+		$messageLines += "Aborting publish to avoid pushing a package with unresolved dependencies."
+		$message = $messageLines -join [Environment]::NewLine
+
+		throw $message
+	}
 }
 
 # Safety net for the transitive walk: a coordinate skipped during expansion (not available at
@@ -751,7 +857,7 @@ $unwalkedButAvailable = @(
 	$deferredDuringExpansion | Where-Object { $availabilityCache.ContainsKey($_) -and [bool]$availabilityCache[$_] } | Sort-Object -Unique
 )
 
-if ($unwalkedButAvailable.Count -gt 0) {
+if ($unwalkedButAvailable.Count -gt 0 -and -not $ReportOnly) {
 	$summaryLines = @(
 		"## NuGet Dependency Verification",
 		"❌ Could not fully verify the transitive closure. These coordinates were skipped during dependency-tree expansion (not available at the time) but are now available, so their dependencies were not walked — re-run the check:"
@@ -767,16 +873,20 @@ if ($unwalkedButAvailable.Count -gt 0) {
 	throw $message
 }
 
-$verifiedLines = @($uniqueChecks | Sort-Object Id, Version | ForEach-Object { "- $($_.Id) $($_.Version)" })
-$successSummary = @(
-	"## NuGet Dependency Verification",
-	"✅ All checked package dependencies are available on nuget.org.",
-	"",
-	"<details><summary>Verified dependencies ($($uniqueChecks.Count))</summary>",
-	""
-)
-$successSummary += $verifiedLines
-$successSummary += @("", "</details>")
-Add-StepSummaryLines -Lines $successSummary
+# Success summary only when nothing was missing. In blocking mode a miss already threw above; in
+# report mode the run continues, so this guard prevents a misleading "all available" after a warning.
+if ($missingDependencies.Count -eq 0) {
+	$verifiedLines = @($uniqueChecks | Sort-Object Id, Version | ForEach-Object { "- $($_.Id) $($_.Version)" })
+	$successSummary = @(
+		"## NuGet Dependency Verification",
+		"✅ All checked package dependencies are available on nuget.org.",
+		"",
+		"<details><summary>Verified dependencies ($($uniqueChecks.Count))</summary>",
+		""
+	)
+	$successSummary += $verifiedLines
+	$successSummary += @("", "</details>")
+	Add-StepSummaryLines -Lines $successSummary
 
-Write-Host "All checked dependencies are available on nuget.org."
+	Write-Host "All checked dependencies are available on nuget.org."
+}
