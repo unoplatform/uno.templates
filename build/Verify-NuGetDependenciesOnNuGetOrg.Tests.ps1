@@ -57,6 +57,87 @@ Describe 'Test-ShouldVerifyTransitiveDependency' {
 	It 'verifies stable third-party deps when IncludeStableTransitiveVersions is set' {
 		Test-ShouldVerifyTransitiveDependency -PackageId 'System.Text.Json' -Version '9.0.0' -IncludeStableTransitiveVersions $true -IncludePrefixes $UnoPrefixes | Should -BeTrue
 	}
+
+	It 'in prerelease-only mode still verifies a prerelease dep' {
+		Test-ShouldVerifyTransitiveDependency -PackageId 'Uno.Simple.WinUI' -Version '7.1.0-dev.1' -IncludeStableTransitiveVersions $false -IncludePrefixes $UnoPrefixes -PrereleaseDependenciesOnly $true | Should -BeTrue
+	}
+
+	It 'in prerelease-only mode skips a stable dep even a tracked Uno.* one' {
+		Test-ShouldVerifyTransitiveDependency -PackageId 'Uno.Simple.WinUI' -Version '7.0.3' -IncludeStableTransitiveVersions $false -IncludePrefixes $UnoPrefixes -PrereleaseDependenciesOnly $true | Should -BeFalse
+	}
+
+	It 'prerelease-only overrides IncludeStableTransitiveVersions for a stable dep' {
+		Test-ShouldVerifyTransitiveDependency -PackageId 'System.Text.Json' -Version '9.0.0' -IncludeStableTransitiveVersions $true -IncludePrefixes $UnoPrefixes -PrereleaseDependenciesOnly $true | Should -BeFalse
+	}
+}
+
+Describe 'Test-IsPrereleaseVersion' {
+	It 'is true for a dev / prerelease version' {
+		Test-IsPrereleaseVersion -Version '7.1.0-dev.1' | Should -BeTrue
+		Test-IsPrereleaseVersion -Version '2.9.0-dev.12' | Should -BeTrue
+	}
+
+	It 'is false for a stable version (incl. 4-part build-tools versions)' {
+		Test-IsPrereleaseVersion -Version '7.0.3' | Should -BeFalse
+		Test-IsPrereleaseVersion -Version '10.0.28000.2270' | Should -BeFalse
+	}
+
+	It 'is false for null / blank' {
+		Test-IsPrereleaseVersion -Version $null | Should -BeFalse
+		Test-IsPrereleaseVersion -Version '' | Should -BeFalse
+		Test-IsPrereleaseVersion -Version '   ' | Should -BeFalse
+	}
+}
+
+Describe 'Select-ChecksForVerification' {
+	It 'returns the list unchanged when the switch is off (full closure)' {
+		$checks = [System.Collections.Generic.List[object]]::new()
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.A'; Version = '7.0.3'; Source = 't' })
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.B'; Version = '7.1.0-dev.1'; Source = 't' })
+		$result = Select-ChecksForVerification -Checks $checks -PrereleaseDependenciesOnly $false
+		$result.Count | Should -Be 2
+	}
+
+	It 'keeps only prerelease coordinates when the switch is on' {
+		$checks = [System.Collections.Generic.List[object]]::new()
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.A'; Version = '7.0.3'; Source = 't' })
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.B'; Version = '7.1.0-dev.1'; Source = 't' })
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.C'; Version = '9.0.3'; Source = 't' })
+		$result = Select-ChecksForVerification -Checks $checks -PrereleaseDependenciesOnly $true
+		$result.Count | Should -Be 1
+		$result[0].Id | Should -Be 'Uno.B'
+	}
+
+	It 'returns an empty list when every coordinate is stable (stable-branch PR)' {
+		$checks = [System.Collections.Generic.List[object]]::new()
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.A'; Version = '7.0.3'; Source = 't' })
+		$checks.Add([PSCustomObject]@{ Id = 'Uno.C'; Version = '9.0.3'; Source = 't' })
+		$result = Select-ChecksForVerification -Checks $checks -PrereleaseDependenciesOnly $true
+		$result.Count | Should -Be 0
+	}
+}
+
+Describe 'ConvertTo-MissingDependencyReport' {
+	It 'shapes and sorts missing records (by Id) with their sources' {
+		$missing = @{}
+		$b = [PSCustomObject]@{ Id = 'Uno.B'; Version = '2.0.0-dev.1'; Sources = [System.Collections.Generic.List[string]]::new() }
+		$b.Sources.Add('manifest:packages.json:GroupB')
+		$a = [PSCustomObject]@{ Id = 'Uno.A'; Version = '1.0.0-dev.1'; Sources = [System.Collections.Generic.List[string]]::new() }
+		$a.Sources.Add('manifest:packages.json:GroupA')
+		$missing['Uno.B|2.0.0-dev.1'] = $b
+		$missing['Uno.A|1.0.0-dev.1'] = $a
+
+		$report = ConvertTo-MissingDependencyReport -MissingDependencies $missing
+		$report.Count | Should -Be 2
+		$report[0].Id | Should -Be 'Uno.A'
+		$report[1].Id | Should -Be 'Uno.B'
+		$report[0].Sources[0] | Should -Be 'manifest:packages.json:GroupA'
+	}
+
+	It 'returns an empty list when there are no missing deps' {
+		$report = ConvertTo-MissingDependencyReport -MissingDependencies @{}
+		$report.Count | Should -Be 0
+	}
 }
 
 Describe 'Test-ShouldExpandCoordinate' {
