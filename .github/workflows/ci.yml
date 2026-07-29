@@ -55,7 +55,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: verify_dependencies
 
     steps:
     - name: Checkout
@@ -70,14 +69,18 @@ jobs:
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
 
-  # Verify every referenced Uno.* package exists on nuget.org BEFORE the build and the
-  # template test matrix run, so a package-availability problem fails the pipeline in
-  # seconds instead of after build + sign + the full test matrix have consumed runners.
-  # Reads the source Uno.Sdk manifest (no build output needed) and runs on push and PRs.
-  # Defined after `build` so its run-summary renders below the Build "NuGet Package Summary";
-  # it still executes first via the `needs: verify_dependencies` on build and generate-test-matrix.
-  verify_dependencies:
-    name: Verify Dependencies
+  # The nuget.org dependency verification is a HARD GATE only on the publication paths:
+  #   * dev publish  (push to main)        -> verify_dependencies_dev  (this job) gates publish_dev
+  #   * prod publish (push to release/**)  -> verify_dependencies_prod gates publish_release_nuget_org
+  # On PRs it is NOT a gate: the build restores from the internal feed, so a dev package that is not
+  # yet on nuget.org does not block the PR -- report_dependencies surfaces it as a resolvable comment.
+
+  # Dev-publish gate: before pushing the -dev packages to nuget.org (push to main), verify the FULL
+  # Uno.* dependency closure is already resolvable there. publish_dev depends on this, so a missing
+  # dependency blocks the dev publish (but not the build/tests).
+  verify_dependencies_dev:
+    name: Verify Dependencies (dev publish)
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -90,6 +93,36 @@ jobs:
       shell: pwsh
       run: |
         ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -ManifestPath src/Uno.Sdk/packages.json -MaxAttempts 3 -RetryDelaySeconds 10 -HttpTimeoutSeconds 30
+
+  # Non-blocking PR advisory: surface any prerelease (dev) dependency the manifest references that is
+  # not yet on nuget.org as a resolvable inline PR comment. Never blocks the PR -- the build restores
+  # from the internal feed, and the hard gate lives only on the publish paths. Direct manifest
+  # entries only (depth 0) to keep the PR run cheap.
+  report_dependencies:
+    name: Report Missing Dependencies
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: "Collect dev dependencies missing from nuget.org"
+      shell: pwsh
+      run: |
+        ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -ManifestPath src/Uno.Sdk/packages.json -PrereleaseDependenciesOnly -ReportOnly -ReportOutputPath missing-dependencies.json -TransitiveDependencyDepth 0 -MaxAttempts 3 -RetryDelaySeconds 5 -HttpTimeoutSeconds 30
+
+    - name: "Post resolvable inline comment(s) for missing dev dependencies"
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        ./build/Report-MissingDependenciesOnPr.ps1 -Repository "${{ github.repository }}" -PullNumber ${{ github.event.pull_request.number }} -HeadSha "${{ github.event.pull_request.head.sha }}" -ReportPath missing-dependencies.json
 
   # Sign the nuget packages
   sign:
@@ -122,7 +155,7 @@ jobs:
     name: Publish Dev
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    needs: sign
+    needs: [sign, verify_dependencies_dev]
 
     steps:
     - name: Checkout
@@ -156,13 +189,36 @@ jobs:
       with:
         token: ${{ secrets.UNO_NUGET_FEED_API_KEY }}
 
+  # Ordering gate for the nuget.org (production) publish on a stable release. Stable releases are
+  # built + signed + pushed to the Uno production feed and deeply tested FIRST; only then are the
+  # packages published to nuget.org. This job runs right after the production-feed publish and right
+  # before the nuget.org publish, verifying the FULL Uno.* dependency closure is already on nuget.org
+  # -- so we never push a stable package whose (previously-released) stable dependencies are not yet
+  # public. This enforces the correct order when releasing all the stables in sequence.
+  verify_dependencies_prod:
+    name: Verify Dependencies (pre-publish)
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
+    runs-on: ubuntu-latest
+    needs: publish_release_uno
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ env.CheckoutRef }}
+
+    - name: "Verify Uno.* dependency closure on nuget.org"
+      shell: pwsh
+      run: |
+        ./build/Verify-NuGetDependenciesOnNuGetOrg.ps1 -ManifestPath src/Uno.Sdk/packages.json -MaxAttempts 3 -RetryDelaySeconds 10 -HttpTimeoutSeconds 30
+
   # Publish release packages to nuget.org
   publish_release_nuget_org:
     name: Publish Nuget.org Production
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     environment: Production
-    needs: publish_release_uno
+    needs: verify_dependencies_prod
 
     steps:
     - name: Checkout
@@ -176,11 +232,28 @@ jobs:
     - name: "Tag Release"
       uses: ./.github/actions/ci/tag-release
 
-  # Generate the template tests build matrix
+  # Generate the template tests build matrix.
+  # Gated on the full release path so signing + publication are prioritized for the hosted
+  # runners on a merge build (push to main / release): the matrix waits for build -> sign ->
+  # publish*, then runs. On PRs / schedule / dispatch the publish jobs are skipped, so the
+  # skip-tolerant condition lets the matrix run once `build` finishes (tests prioritized).
+  # `build` is listed explicitly so this never starts before it in any event; the test jobs
+  # also require `build`. always() is required so the condition is evaluated when the publish
+  # jobs are skipped.
   generate-test-matrix:
     runs-on: ubuntu-latest
     name: Generate Test Matrix
-    needs: verify_dependencies
+    needs:
+      - build
+      - publish_dev
+      - publish_release_uno
+      - publish_release_nuget_org
+    if: >-
+      ${{ always()
+      && needs.build.result == 'success'
+      && (needs.publish_dev.result == 'success' || needs.publish_dev.result == 'skipped')
+      && (needs.publish_release_uno.result == 'success' || needs.publish_release_uno.result == 'skipped')
+      && (needs.publish_release_nuget_org.result == 'success' || needs.publish_release_nuget_org.result == 'skipped') }}
 
     outputs:
       testMatrix: ${{ steps.generate-test-matrix-step.outputs.TestMatrix }}
@@ -199,9 +272,16 @@ jobs:
   # Run the test matrix on linux
   linux-template-tests:
     runs-on: ubuntu-latest
-    needs: 
+    needs:
     - generate-test-matrix
     - build
+    # Explicit condition: generate-test-matrix runs via always() and transitively depends on the
+    # publish jobs (skipped on PRs), which would poison this job's implicit success() and skip it.
+    # Run whenever the matrix + build succeeded, regardless of those skipped publish ancestors.
+    if: >-
+      ${{ always()
+      && needs.generate-test-matrix.result == 'success'
+      && needs.build.result == 'success' }}
 
     name: Linux Tests (${{ matrix.groupName }})
 
@@ -230,9 +310,14 @@ jobs:
   # Run the test matrix on Windows
   windows-template-tests:
     runs-on: windows-latest
-    needs: 
+    needs:
     - generate-test-matrix
     - build
+    # See Linux Tests: run whenever the matrix + build succeeded, ignoring skipped publish ancestors.
+    if: >-
+      ${{ always()
+      && needs.generate-test-matrix.result == 'success'
+      && needs.build.result == 'success' }}
 
     name: Windows Tests (${{ matrix.groupName }})
 
@@ -261,9 +346,14 @@ jobs:
   # Run the test matrix on macOS
   macos-template-tests:
     runs-on: macos-15
-    needs: 
+    needs:
     - generate-test-matrix
     - build
+    # See Linux Tests: run whenever the matrix + build succeeded, ignoring skipped publish ancestors.
+    if: >-
+      ${{ always()
+      && needs.generate-test-matrix.result == 'success'
+      && needs.build.result == 'success' }}
 
     name: macOS Tests (${{ matrix.groupName }})
 
