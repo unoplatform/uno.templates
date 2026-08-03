@@ -18,7 +18,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 3.119.2 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.28000.2270 |
+| WinAppSdkBuildToolsVersion | 10.0.28000.2526 |
 | MicrosoftLoggingVersion** | 9.0.18 |
 | WindowsCompatibilityVersion** | 9.0.18 |
 | MicrosoftIdentityClientVersion | 4.83.3 |
@@ -172,7 +172,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2270",
+    "version": "10.0.28000.2526",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -418,7 +418,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4078.44",
+    "version": "1.0.4129.50",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
