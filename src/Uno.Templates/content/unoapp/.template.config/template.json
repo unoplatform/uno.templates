@@ -427,14 +427,14 @@
     },
     "includeAndroidTV": {
       "displayName": "Android TV",
-      "description": "Configures the Android head for Android TV (Leanback launcher, banner, focus highlight overrides). Single APK targets phones and TVs.",
+      "description": "Configures the Android head for Android TV. A single APK targets both phones and TVs.",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
     },
     "includeAndroidAuto": {
       "displayName": "Android Auto",
-      "description": "Configures the Android head for Android Auto / Automotive OS using the AndroidX Car App Library.",
+      "description": "Adds Android Auto / Automotive OS support via the AndroidX Car App Library.",
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false"
