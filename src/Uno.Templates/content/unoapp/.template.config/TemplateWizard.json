@@ -283,7 +283,7 @@
 				"SymbolIds": [ "desktop", "windows" ]
 			},
 			{
-				"Title": "Android form factors",
+				"Title": "Android Devices",
 				"SectionType": "MultiSelect",
 				"SymbolIds": [ "includeAndroidTV", "includeAndroidAuto", "includeAndroidWear" ]
 			}
