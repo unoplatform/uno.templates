@@ -36,27 +36,24 @@ try
     builder.Services.Configure<RouteOptions>(options =>
         options.LowercaseUrls = true);
 
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen(c =>
-    {
-        // Include XML comments for all included assemblies
-        Directory.EnumerateFiles(AppContext.BaseDirectory, "*.xml")
-            .Where(x => x.Contains("MyExtensionsApp._1")
-                && File.Exists(Path.Combine(
-                    AppContext.BaseDirectory,
-                    $"{Path.GetFileNameWithoutExtension(x)}.dll")))
-            .ToList()
-            .ForEach(path => c.IncludeXmlComments(path));
-    });
+    // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+    builder.Services.AddOpenApi();
 
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+        app.MapOpenApi();
+        app.MapScalarApiReference(o =>
+        {
+            o.EnabledClients = [
+                ScalarClient.HttpClient,
+                ScalarClient.Http11,
+                ScalarClient.JQuery,
+                ScalarClient.Xhr
+            ];
+        });
     }
 
     app.UseHttpsRedirection();
