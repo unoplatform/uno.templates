@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.8.0-dev.21 |
+| UnoVersion* | 6.8.0-dev.22 |
 | UnoExtensionsVersion | 7.4.0-dev.3 |
 | UnoToolkitVersion | 9.2.0-dev.15 |
-| UnoThemesVersion | 7.2.0-dev.1 |
+| UnoThemesVersion | 7.2.0-dev.2 |
 | UnoCSharpMarkupVersion | 6.8.0-dev.3 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -20,8 +20,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.7.250909003 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2526 |
 | WinAppSdkBuildToolsWinAppVersion | 0.5.0 |
-| MicrosoftLoggingVersion** | 9.0.18 |
-| WindowsCompatibilityVersion** | 9.0.18 |
+| MicrosoftLoggingVersion** | 9.0.19 |
+| WindowsCompatibilityVersion** | 9.0.19 |
 | MicrosoftIdentityClientVersion | 4.87.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
@@ -35,7 +35,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
 | AndroidXLeanbackVersion | 1.0.0.30 |
 | AndroidXCarAppVersion | 1.4.0.2 |
-| AndroidXWearVersion | 1.3.0.16 |
+| AndroidXWearVersion | 1.3.0.14 |
 | AndroidXWearTilesVersion | 1.4.0.1 |
 | AndroidXNavigationVersion | 2.8.9.2 |
 | AndroidXCollectionVersion | 1.5.0.2 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.8.0-dev.21",
+    "version": "6.8.0-dev.22",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -141,7 +141,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.21.0-dev.2382",
+    "version": "1.21.0-dev.2398",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -189,22 +189,22 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.18",
+    "version": "9.0.19",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.10"
+      "net10.0": "10.0.11"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.18",
+    "version": "9.0.19",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.10"
+      "net10.0": "10.0.11"
     }
   },
   {
@@ -342,12 +342,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXWear",
-    "version": "1.3.0.16",
+    "version": "1.3.0.14",
     "packages": [
       "Xamarin.AndroidX.Wear"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.1"
+      "net10.0": "1.3.0.15"
     }
   },
   {
@@ -449,7 +449,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "7.2.0-dev.1",
+    "version": "7.2.0-dev.2",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
