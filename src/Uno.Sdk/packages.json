@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.21.0-dev.2398",
+    "version": "1.21.0-dev.2411",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -135,7 +135,7 @@
   },
   {
     "group": "WinAppSdkBuildToolsWinApp",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools.WinApp"
     ]
@@ -359,7 +359,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.4.0-dev.3",
+    "version": "7.4.0-dev.7",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
