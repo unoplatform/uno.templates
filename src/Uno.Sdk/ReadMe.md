@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.7.16 |
+| UnoVersion* | 6.7.24 |
 | UnoExtensionsVersion | 7.3.1 |
 | UnoToolkitVersion | 9.1.3 |
 | UnoThemesVersion | 7.1.1 |
@@ -35,7 +35,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
 | AndroidXLeanbackVersion | 1.0.0.30 |
 | AndroidXCarAppVersion | 1.4.0.2 |
-| AndroidXWearVersion | 1.3.0.16 |
+| AndroidXWearVersion | 1.3.0.14 |
 | AndroidXWearTilesVersion | 1.4.0.1 |
 | AndroidXNavigationVersion | 2.8.9.2 |
 | AndroidXCollectionVersion | 1.5.0.2 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.7.16",
+    "version": "6.7.24",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -134,14 +134,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.13.0-dev.19",
+    "version": "1.13.1",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.20.282",
+    "version": "1.20.338",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -342,12 +342,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXWear",
-    "version": "1.3.0.16",
+    "version": "1.3.0.14",
     "packages": [
       "Xamarin.AndroidX.Wear"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.1"
+      "net10.0": "1.3.0.15"
     }
   },
   {
