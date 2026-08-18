@@ -6,6 +6,12 @@
     // (backport status, not in our control: mono/SkiaSharp#4031).
     "SkiaSharp",
     "SvgSkia",
-    "WinAppSdk"
+    "WinAppSdk",
+    // Hot Design held at 1.21.0-dev.2398: builds >= 1.21.0-dev.2411 depend on the unreleased
+    // Uno 6.7 release bits (Uno.WinUI 6.7.16, Themes 7.1.1, Toolkit 9.1.3) which are internal-only
+    // until the 6.7 release ships (unoplatform/private#1105), so publishing fails the nuget.org
+    // dependency check. Studio Live is unaffected (it pins UnoHotDesignVersion itself).
+    // Remove this exclude and re-bump once Uno 6.7 is live on nuget.org.
+    "hotdesign"
   ]
 }
