@@ -46,6 +46,7 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit$" ReplacementText="$(NUnitVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NUnit3TestAdapter$" ReplacementText="$(NUnit3TestAdapterVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$FluentAssertions$" ReplacementText="$(FluentAssertionsVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$Shouldly$" ReplacementText="$(ShouldlyVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
