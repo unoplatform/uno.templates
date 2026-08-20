@@ -40,9 +40,20 @@
 		<false/>
 		-->
 <!--#if (useProtocolRedirect)-->
-		<key>CFBundleURLSchemes</key>
+		<!--
+		iOS only reads custom URL schemes from CFBundleURLTypes - an array of dicts, each holding
+		its own CFBundleURLSchemes. A top-level CFBundleURLSchemes key is ignored, which leaves the
+		sign-in callback with no way back into the app.
+		https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleurltypes
+		-->
+		<key>CFBundleURLTypes</key>
 		<array>
-			<string>myprotocol</string>
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>myprotocol</string>
+				</array>
+			</dict>
 		</array>
 <!--#endif-->
 	</dict>
