@@ -446,6 +446,13 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
+    "includeIosMultiWindow": {
+      "displayName": "Multi-window (iOS)",
+      "description": "Opts the iOS head into the UIKit scene lifecycle by adding a UIApplicationSceneManifest entry and a SceneDelegate, enabling multiple windows on iPadOS.",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "shell": {
       "displayName": "Shell",
       "description": "Includes Shell.xaml as a root navigation container (with ExtendedSplashScreen when Toolkit is enabled)",
@@ -1249,6 +1256,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(platforms == ios)"
+    },
+    "useIosMultiWindow": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "((platforms == ios) && includeIosMultiWindow)"
     },
     "useMobile": {
       "type": "computed",
@@ -2538,6 +2550,12 @@
           "condition": "(platforms != ios)",
           "exclude": [
             "MyExtensionsApp.1/Platforms/iOS/**/*"
+          ]
+        },
+        {
+          "condition": "(!useIosMultiWindow)",
+          "exclude": [
+            "MyExtensionsApp.1/Platforms/iOS/SceneDelegate.iOS.cs"
           ]
         },
         {
