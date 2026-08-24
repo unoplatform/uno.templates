@@ -383,7 +383,7 @@
     },
     "renderer": {
       "displayName": "Renderer",
-      "description": "Controls the renderer used for iOS, Android, and WebAssembly targets",
+      "description": "Controls the renderer used for iOS, Android, and WebAssembly targets. Skia is the only renderer available.",
       "type": "parameter",
       "datatype": "choice",
       "allowMultipleValues": false,
@@ -394,11 +394,6 @@
           "choice": "skia",
           "description": "Use Skia based rendering for mobile and web",
           "displayName": "Skia"
-        },
-        {
-          "choice": "native",
-          "description": "Use native APIs based renderer",
-          "displayName": "Native"
         }
       ]
     },
@@ -406,11 +401,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(renderer == 'skia')"
-    },
-    "useNativeRenderer": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(renderer == 'native')"
     },
     "server": {
       "displayName": "Server",
