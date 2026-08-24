@@ -1,16 +1,23 @@
 name: CI
 
 on:
+  # feature/** are the long-lived major-version branches (e.g. feature/7.0). Without them listed here
+  # a push to such a branch -- and every PR targeting it -- runs no CI at all. They get the full build
+  # plus the template test matrix; the test matrix consumes the local package artifact, not a feed, so
+  # it needs no publish step. Feature branches deliberately have NO publish lane: see the note above
+  # `publish_dev` for why, and how nuget.org stays unreachable from them.
   push:
     branches:
       - main
       - release/**
+      - feature/**
 
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
       - release/**
+      - feature/**
 
   schedule:
     - cron: '0 0 * * *' # Canary
@@ -77,6 +84,13 @@ jobs:
   #     ready to publish the stable packages -- by then the dependency stables are already public.
   # On PRs it is NOT a gate: the build restores from the internal feed, so a dev package not yet on
   # nuget.org does not block the PR -- report_dependencies surfaces it as a resolvable comment.
+  #
+  # Feature branches (feature/**) reach NEITHER publication path, by construction: `publish_dev`
+  # requires github.ref to equal refs/heads/main exactly, and publish_release_uno /
+  # publish_release_nuget_org require a refs/heads/release/ prefix. `sign` is likewise main/release
+  # only, so no feature ref can touch the PackageSign or Production environments either. A dedicated
+  # internal-feed-only preview lane for feature branches is intentionally not part of this workflow
+  # yet -- it needs a confirmed target feed and a credential with push rights to it.
 
   # Non-blocking PR advisory: surface any prerelease (dev) dependency the manifest references that is
   # not yet on nuget.org as a resolvable inline PR comment. Never blocks the PR -- the build restores
