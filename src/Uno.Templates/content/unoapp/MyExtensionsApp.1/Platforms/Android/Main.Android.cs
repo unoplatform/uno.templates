@@ -9,6 +9,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Microsoft.UI.Xaml.Media;
+using Uno.UI.Hosting;
 //+:cnd:noEmit
 #if (!useSkiaRenderer)
 using Com.Nostra13.Universalimageloader.Core;
@@ -41,7 +42,7 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
 #endif
 //-:cnd:noEmit
     public Application(IntPtr javaReference, JniHandleOwnership transfer)
-        : base(() => new App(), javaReference, transfer)
+        : base(javaReference, transfer)
     {
 //+:cnd:noEmit
 #if (!useSkiaRenderer)
@@ -49,6 +50,12 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
 #endif
 //-:cnd:noEmit
     }
+
+    protected override UnoPlatformHost CreateHost() =>
+        UnoPlatformHostBuilder.Create()
+            .App(() => new App())
+            .UseAndroid()
+            .Build();
 
 //+:cnd:noEmit
 #if (!useSkiaRenderer)
