@@ -73,8 +73,7 @@
     "enableQuotelessLiterals": true,
     "defaultValue": "skia",
     "choices": [
-      { "choice": "skia",   "displayName": "Skia" },
-      { "choice": "native", "displayName": "Native" }
+      { "choice": "skia",   "displayName": "Skia" }
     ]
   },
   "useSkiaRenderer": {

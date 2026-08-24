@@ -10,20 +10,7 @@
 			"NavigationId": "Platforms",
 			"Description": "Select which platforms the application is going to target",
 			"Tag": {
-				"Requires": {
-					"renderer": {
-						"RequiredValues": [
-							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
-								"value": "skia",
-								"display": "Skia"
-							}
-						]
-					}
-				}
+				"Value": "Skia"
 			}
 		},
 		{
@@ -242,11 +229,6 @@
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
-			}
-			,
-			{
-				"SectionType": "SingleSelect",
-				"SymbolId": "renderer"
 			}
 		],
 		"Framework": [
@@ -583,39 +565,13 @@
 		"platforms.android": {
 			"Icon": "/Assets/Platforms.Android.svg",
 			"Tag": {
-				"Requires": {
-					"renderer": {
-						"RequiredValues": [
-							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
-								"value": "skia",
-								"display": "Skia"
-							}
-						]
-					}
-				}
+				"Value": "Skia"
 			}
 		},
 		"platforms.ios": {
 			"Icon": "/Assets/Platforms.iOS.svg",
 			"Tag": {
-				"Requires": {
-					"renderer": {
-						"RequiredValues": [
-							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
-								"value": "skia",
-								"display": "Skia"
-							}
-						]
-					}
-				}
+				"Value": "Skia"
 			}
 		},
 		"platforms.desktop": {
@@ -627,20 +583,7 @@
 		"platforms.wasm": {
 			"Icon": "/Assets/Platforms.Wasm.svg",
 			"Tag": {
-				"Requires": {
-					"renderer": {
-						"RequiredValues": [
-							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
-								"value": "skia",
-								"display": "Skia"
-							}
-						]
-					}
-				}
+				"Value": "Skia"
 			}
 		},
 		"platforms.windows": {
@@ -730,9 +673,6 @@
 		},
 		"renderer.skia": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
-		},
-		"renderer.native": {
-			"Icon": "/Assets/Features.NativeRendering.svg"
 		},
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"

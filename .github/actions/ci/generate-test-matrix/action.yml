@@ -17,8 +17,8 @@ runs:
             # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
             # macOS is generally not selected unless building the whole targets list, because of expensive CI
 
-            "NativeRecommended;;unoapp;-skip --renderer native -preset=recommended",
-            "NativeBlank;;unoapp;-skip --renderer native -preset=blank",
+            "SkiaExplicitRecommended;;unoapp;-skip --renderer skia -preset=recommended",
+            "SkiaExplicitBlank;;unoapp;-skip --renderer skia -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
@@ -47,10 +47,10 @@ runs:
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
-            "unolibNative_MacOS;macOS;unolib;--renderer native"
+            "unolibSkia_MacOS;macOS;unolib;--renderer skia"
             "mauilib_Windows;Windows;unomauilib;"
             "unolib_Windows;Windows;unolib;"
-            "unolibNative_Windows;Windows;unolib;--renderer native"
+            "unolibSkia_Windows;Windows;unolib;--renderer skia"
 
             # Disabling this test for now as it was specific to net7
             # https://github.com/unoplatform/uno.templates/issues/22
