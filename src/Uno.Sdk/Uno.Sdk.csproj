@@ -16,6 +16,18 @@
 		<Description>Provides a base SDK for Uno Platform projects.</Description>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<!--
+			Azure DevOps coordinates of the feed the Uno.Sdk.Private package is repacked from.
+			Override with -p:SdkDownloadFeedId=... or the SdkDownloadFeedId environment variable.
+			Known feeds:
+			  e7ce08df-613a-41a3-8449-d42784dd45ce  unoplatformdev (default - main, release/stable/*)
+			  d26abad4-c545-4e56-9ac7-fe42c6311c28  Features (feature/*)
+		-->
+		<SdkDownloadOrganizationId Condition=" '$(SdkDownloadOrganizationId)' == '' ">1dd81cbd-cb35-41de-a570-b0df3571a196</SdkDownloadOrganizationId>
+		<SdkDownloadFeedId Condition=" '$(SdkDownloadFeedId)' == '' ">e7ce08df-613a-41a3-8449-d42784dd45ce</SdkDownloadFeedId>
+	</PropertyGroup>
+
 	<Target Name="DownloadPrivateSdk"
 			BeforeTargets="ExtractSdkAssets">
 		<Error Text="No Sdk Version was found. Please ensure that the Uno.Sdk.Updater is run before building the Uno.Sdk project." Condition="'$(SdkVersion)' == ''" />
@@ -23,10 +35,15 @@
 		<PropertyGroup>
 			<SdkBuildOutputPath>$([System.IO.Path]::Combine($(IntermediateOutputPath), 'sdk'))</SdkBuildOutputPath>
 			<SdkDownloadFolder>$([System.IO.Path]::Combine($(SdkBuildOutputPath), 'downloads'))</SdkDownloadFolder>
-			<SdkDownloadUri>https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/$(SdkPackageId.ToLowerInvariant())/versions/$(SdkVersion)/content</SdkDownloadUri>			<SdkNuGetFile>$([System.IO.Path]::Combine($(SdkDownloadFolder), '$(SdkPackageId.ToLowerInvariant()).$(SdkVersion).nupkg'))</SdkNuGetFile>
+			<SdkDownloadUri>https://pkgs.dev.azure.com/uno-platform/$(SdkDownloadOrganizationId)/_apis/packaging/feeds/$(SdkDownloadFeedId)/nuget/packages/$(SdkPackageId.ToLowerInvariant())/versions/$(SdkVersion)/content</SdkDownloadUri>
+			<SdkNuGetFile>$([System.IO.Path]::Combine($(SdkDownloadFolder), '$(SdkPackageId.ToLowerInvariant()).$(SdkVersion).nupkg'))</SdkNuGetFile>
 		</PropertyGroup>
 
 		<MakeDir Directories="$(SdkDownloadFolder)" />
+
+		<!-- The feeds are disjoint per version range, so name the feed to make a 404 self-explaining. -->
+		<Message Importance="high" Condition="!Exists($(SdkNuGetFile))"
+				 Text="Downloading $(SdkPackageId) $(SdkVersion) from feed $(SdkDownloadFeedId)" />
 
 		<DownloadFile Condition="!Exists($(SdkNuGetFile))"
 					  SourceUrl="$(SdkDownloadUri)"
