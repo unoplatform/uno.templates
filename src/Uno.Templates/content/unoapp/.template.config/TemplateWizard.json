@@ -114,7 +114,8 @@
 					"renderer": "skia",
 					"includeAndroidTV": "false",
 					"includeAndroidAuto": "false",
-					"includeAndroidWear": "false"
+					"includeAndroidWear": "false",
+					"includeIosMultiWindow": "false"
 				},
 				"Features": [
 					".NET 8",
@@ -161,7 +162,8 @@
 					"renderer": "skia",
 					"includeAndroidTV": "false",
 					"includeAndroidAuto": "false",
-					"includeAndroidWear": "false"
+					"includeAndroidWear": "false",
+					"includeIosMultiWindow": "false"
 				},
 				"Features": [
 					".NET 8",
@@ -241,7 +243,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "includeIosMultiWindow", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			}
 			,
 			{
@@ -676,6 +678,15 @@
 				}
 			}
 		},
+		"includeIosMultiWindow": {
+			"Icon": "/Assets/Platforms.iOS.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "ios" ],
+					"MoreInformation": "iOS platform must be selected to enable multi-window support."
+				}
+			}
+		},
 		"serialization": {
 			"Icon": "/Assets/Extensions.Serialization.svg",
 			"Requires": {
@@ -839,7 +850,8 @@
 		"renderer",
 		"includeAndroidTV",
 		"includeAndroidAuto",
-		"includeAndroidWear"
+		"includeAndroidWear",
+		"includeIosMultiWindow"
 	],
 	"PackagesToUpdate": [
 		{
