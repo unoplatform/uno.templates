@@ -12,7 +12,23 @@ namespace Uno.Sdk.Services;
 internal class NuGetApiClient : IDisposable
 {
     private const string UnoWinUIPackageId = "Uno.WinUI";
-    private static PackageValidationRecord _validation = new ();
+
+    /*
+        Azure DevOps coordinates of the feed Uno.Sdk.Private is discovered on and downloaded from.
+        Override with the SdkDownloadFeedId / SdkDownloadOrganizationId environment variables - the
+        same names as the MSBuild properties in src/Uno.Sdk/Uno.Sdk.csproj, so a single variable
+        points both the updater and the repack build at the same feed.
+        Known feeds:
+          e7ce08df-613a-41a3-8449-d42784dd45ce  unoplatformdev (default - main, release/stable/*)
+          d26abad4-c545-4e56-9ac7-fe42c6311c28  Features (feature/*)
+    */
+    private const string DefaultDownloadOrganizationId = "1dd81cbd-cb35-41de-a570-b0df3571a196";
+    private const string DefaultDownloadFeedId = "e7ce08df-613a-41a3-8449-d42784dd45ce";
+
+    private static readonly string _downloadOrganizationId = GetSetting("SdkDownloadOrganizationId", DefaultDownloadOrganizationId);
+    private static readonly string _downloadFeedId = GetSetting("SdkDownloadFeedId", DefaultDownloadFeedId);
+
+    private static PackageValidationRecord _validation = new();
     private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
     private HttpClient PublicNuGetClient { get; } = new HttpClient
@@ -27,9 +43,15 @@ internal class NuGetApiClient : IDisposable
 
     public NuGetVersion? UnoVersion { get; set; }
 
+    private static string GetSetting(string name, string defaultValue)
+    {
+        var value = Environment.GetEnvironmentVariable(name);
+        return string.IsNullOrWhiteSpace(value) ? defaultValue : value;
+    }
+
     public async Task<Stream> DownloadPackageAsync(string packageId, string version)
     {
-        var downloadUrl = $"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_apis/packaging/feeds/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/packages/{packageId}/versions/{version}/content";
+        var downloadUrl = $"/uno-platform/{_downloadOrganizationId}/_apis/packaging/feeds/{_downloadFeedId}/nuget/packages/{packageId}/versions/{version}/content";
         using var response = await PrivateNuGetClient.GetAsync(downloadUrl);
 
         if (!response.IsSuccessStatusCode)
@@ -85,7 +107,7 @@ internal class NuGetApiClient : IDisposable
 
         var validatedOutput = new List<NuGetVersion>();
         Console.WriteLine($"Validating available versions for {packageId}...");
-        foreach(var version in latestVersions)
+        foreach (var version in latestVersions)
         {
             if (await ValidatePackage(packageId, version))
             {
@@ -132,7 +154,7 @@ internal class NuGetApiClient : IDisposable
     }
 
     private bool RequiresValidation(string packageId) =>
-        UnoVersion is not null && 
+        UnoVersion is not null &&
         packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
         !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
 
@@ -187,7 +209,7 @@ internal class NuGetApiClient : IDisposable
             if (unoDependencies.Any())
             {
                 var transitiveDependencies = unoDependencies.ToDictionary(x => x.Attribute("id")!.Value, x => NuGetVersion.Parse(x.Attribute("version")!.Value));
-                foreach((var packageId, var version) in transitiveDependencies)
+                foreach ((var packageId, var version) in transitiveDependencies)
                 {
                     if (_validation.HasBeenChecked(packageId, version))
                     {
@@ -221,7 +243,7 @@ internal class NuGetApiClient : IDisposable
     {
         try
         {
-            var response = await PrivateNuGetClient.GetFromJsonAsync<VersionsResponse>($"/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/e7ce08df-613a-41a3-8449-d42784dd45ce/nuget/v3/flat2/{packageId.ToLowerInvariant()}/index.json");
+            var response = await PrivateNuGetClient.GetFromJsonAsync<VersionsResponse>($"/uno-platform/{_downloadOrganizationId}/_packaging/{_downloadFeedId}/nuget/v3/flat2/{packageId.ToLowerInvariant()}/index.json");
             return response?.Versions ?? [];
         }
         catch
