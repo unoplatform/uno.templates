@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.8.0-dev.87 |
+| UnoVersion* | 6.8.0-dev.101 |
 | UnoExtensionsVersion | 7.4.0-dev.29 |
 | UnoToolkitVersion | 9.2.0-dev.18 |
 | UnoThemesVersion | 8.0.0-dev.3 |
@@ -18,7 +18,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 3.119.2 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 1.7.250909003 |
-| WinAppSdkBuildToolsVersion | 10.0.28000.2526 |
+| WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.6.1 |
 | MicrosoftLoggingVersion** | 9.0.19 |
 | WindowsCompatibilityVersion** | 9.0.19 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.8.0-dev.87",
+    "version": "6.8.0-dev.101",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -141,7 +141,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.21.0-dev.2398",
+    "version": "1.22.0-dev.49",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -175,7 +175,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2526",
+    "version": "10.0.28000.2705",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
