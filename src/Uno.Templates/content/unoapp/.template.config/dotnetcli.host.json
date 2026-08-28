@@ -49,6 +49,10 @@
       "longName": "tests",
       "shortName": "tests"
     },
+    "assertionLibrary": {
+      "longName": "assertion-library",
+      "shortName": "assertion"
+    },
     "toolkit": {
       "longName": "toolkit",
       "shortName": "toolkit"
