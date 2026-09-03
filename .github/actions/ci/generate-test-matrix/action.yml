@@ -147,21 +147,6 @@ runs:
             }
         }
 
-        # generate matrix for net9
-        for ($i = 0; $i -lt $tests.Count; $i++)
-        {
-            $currentGroup += $tests[$i] + " -tfm net9.0";
-
-            if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
-                $newGroup = @{
-                    'groupName' = "Group$($matrixGroups.Count)_net9"
-                    'unocheckArguments' = ''
-                    'validations' = ($currentGroup -join "`r`n")
-                };
-                $matrixGroups += $newGroup;
-                $currentGroup = @()
-            }
-        }
 
         $matrixAsJson = $matrixGroups | ConvertTo-Json -Compress
 
