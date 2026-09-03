@@ -17,7 +17,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoResizetizerVersion | 1.13.0-dev.17 |
 | SkiaSharpVersion | 3.119.2 |
 | SvgSkiaVersion | 3.0.6 |
-| WinAppSdkVersion | 1.7.250909003 |
+| WinAppSdkVersion | 2.4.0 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.6.1 |
 | MicrosoftLoggingVersion** | 9.0.19 |
@@ -168,7 +168,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250909003",
+    "version": "2.4.0",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
