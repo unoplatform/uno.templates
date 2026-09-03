@@ -385,7 +385,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "9.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
-      "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
