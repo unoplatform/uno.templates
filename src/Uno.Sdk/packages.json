@@ -39,7 +39,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.214"
+      "net10.0": "10.1.0-dev.217"
     }
   },
   {
@@ -73,7 +73,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.13.0-dev.17",
+    "version": "1.13.0-dev.18",
     "packages": [
       "Uno.Resizetizer"
     ]
