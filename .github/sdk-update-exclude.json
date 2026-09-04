@@ -6,6 +6,27 @@
     // (backport status, not in our control: mono/SkiaSharp#4031).
     "SkiaSharp",
     "SvgSkia",
-    "WinAppSdk"
+    "WinAppSdk",
+
+    // --- Uno Platform 7.0 freeze ---
+    // Held while 7.0 publishes to nuget.org. The updater cannot tell a 7.0-only release from a
+    // servicing one: IsCompatibleWithUnoWinUI compares the *minimum* Uno.WinUI version a nuspec
+    // declares (a 7.0 package still floors at 6.x), many of these declare no Uno dependency at all,
+    // and Uno.Sdk.* is never validated. The minor+1 bound is skipped on a prerelease Uno.Sdk.Private.
+    // uno-updater.yml auto-merges unattended -> unfreeze per group as each library ships for 7.0.
+    "Themes",
+    "Toolkit",
+    "Extensions",
+    "CSharpMarkup",
+    "Resizetizer",
+    "UnoFonts",
+    "settings",
+    "hotdesign",
+    "AppMcp",
+    "sdkextras",
+    "CoreLogging",
+    "OSLogging",
+    "WasmBootstrap",
+    "Dsp"
   ]
 }
