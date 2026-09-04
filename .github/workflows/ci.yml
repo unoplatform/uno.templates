@@ -1,15 +1,23 @@
 name: CI
 
+# A servicing/* branch continues a previous version line after main has moved on
+# to a newer one, so it builds, signs and publishes dev packages the same way main
+# does. The same pattern is added to the CI triggers, the sign and publish_dev jobs
+# and version.json's publicReleaseRefSpec. It deliberately does NOT reach the
+# publish_release_* jobs, which stay behind the Production approval gates.
+
 on:
   push:
     branches:
       - main
+      - servicing/**
       - release/**
 
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
+      - servicing/**
       - release/**
 
   schedule:
@@ -24,7 +32,7 @@ on:
   
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
-  cancel-in-progress: ${{ !contains(github.ref, 'refs/heads/release/') && !contains(github.ref, 'refs/heads/main')}}
+  cancel-in-progress: ${{ !contains(github.ref, 'refs/heads/release/') && !contains(github.ref, 'refs/heads/servicing/') && !contains(github.ref, 'refs/heads/main')}}
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
@@ -111,7 +119,7 @@ jobs:
   # Sign the nuget packages
   sign:
     name: Sign Package
-    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
+    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/servicing/') || startsWith(github.ref, 'refs/heads/release/')) }}
     runs-on: windows-latest
 
     environment: PackageSign
@@ -137,7 +145,7 @@ jobs:
   # Publish dev packages to uno feed and nuget.org
   publish_dev:
     name: Publish Dev
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/servicing/')) }}
     runs-on: ubuntu-latest
     needs: sign
 
