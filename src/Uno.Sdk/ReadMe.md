@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.8.0-dev.130 |
+| UnoVersion* | 7.0.0-dev.645 |
 | UnoExtensionsVersion | 7.4.0-dev.29 |
 | UnoToolkitVersion | 9.2.0-dev.19 |
 | UnoThemesVersion | 8.0.0-dev.3 |
@@ -15,8 +15,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.13.0-dev.17 |
-| SkiaSharpVersion | 3.119.2 |
-| SvgSkiaVersion | 3.0.6 |
+| SkiaSharpVersion | 4.151.1 |
+| SvgSkiaVersion | 5.2.3 |
 | WinAppSdkVersion | 1.7.250909003 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.6.1 |
@@ -48,11 +48,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.8.0-dev.130",
+    "version": "7.0.0-dev.645",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
-      "Uno.WinUI.Maps",
       "Uno.WinUI.GooglePlay",
       "Uno.WinUI.Foldable",
       "Uno.WinUI.MSAL",
@@ -63,12 +62,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Runtime.Skia.MacOS",
       "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.X11",
-      "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.Skia.Android",
       "Uno.WinUI.Runtime.Skia.AppleUIKit",
       "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
-      "Uno.WinUI.Runtime.WebAssembly",
-      "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.MediaPlayer.Skia.X11",
       "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.WebView.Skia.X11",
@@ -148,7 +144,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.2",
+    "version": "4.151.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -161,7 +157,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -389,7 +385,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "9.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
-      "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
@@ -478,6 +473,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "1.4.0-dev.1",
     "packages": [
       "Uno.UI.App.Mcp"
+    ]
+  },
+  {
+    "group": "MauiCompatibility",
+    "version": "10.0.100",
+    "packages": [
+      "Microsoft.Maui.Controls.Compatibility"
     ]
   }
 ]

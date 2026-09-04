@@ -1,11 +1,12 @@
 {
   "exclude": [
-    // SkiaSharp held at 3.119.2: 3.119.4 ships iOS-26.2 assets that break iOS <26.2 (Xcode <26.2)
-    // builds -> no native libSkiaSharp -> iOS apps fail. See unoplatform/uno#23680, unoplatform/uno.chefs#1750.
-    // Remove this exclude when SkiaSharp 3.119.5 ships (mono/SkiaSharp#3798) or on the v4 move at Uno.Sdk 7.0
-    // (backport status, not in our control: mono/SkiaSharp#4031).
+    // SkiaSharp stays excluded, but for a different reason than on the 6.x branches: Uno Platform 7.0
+    // requires SkiaSharp 4.151.1 (Uno.WinUI 7.0.0-dev.645 nuspec), and the updater cannot make that move
+    // itself -- "SkiaSharp" is in majorUpgradeDisabledGroups (tools/Uno.Sdk.Updater/Program.cs:364), so it
+    // would only ever drag the group along the 3.x line. Left to itself it selects 3.119.4, the very build
+    // the 6.x hold exists to avoid (iOS-26.2 assets break iOS <26.2; unoplatform/uno#23680,
+    // unoplatform/uno.chefs#1750). The v4 version below is therefore set deliberately and by hand.
     "SkiaSharp",
-    "SvgSkia",
     "WinAppSdk"
   ]
 }

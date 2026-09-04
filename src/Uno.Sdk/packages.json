@@ -1,11 +1,10 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.8.0-dev.130",
+    "version": "7.0.0-dev.645",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
-      "Uno.WinUI.Maps",
       "Uno.WinUI.GooglePlay",
       "Uno.WinUI.Foldable",
       "Uno.WinUI.MSAL",
@@ -16,12 +15,9 @@
       "Uno.WinUI.Runtime.Skia.MacOS",
       "Uno.WinUI.Runtime.Skia.Win32",
       "Uno.WinUI.Runtime.Skia.X11",
-      "Uno.WinUI.WebAssembly",
       "Uno.WinUI.Runtime.Skia.Android",
       "Uno.WinUI.Runtime.Skia.AppleUIKit",
       "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
-      "Uno.WinUI.Runtime.WebAssembly",
-      "Uno.WinUI.MediaPlayer.WebAssembly",
       "Uno.WinUI.MediaPlayer.Skia.X11",
       "Uno.WinUI.MediaPlayer.Skia.Win32",
       "Uno.WinUI.WebView.Skia.X11",
@@ -101,7 +97,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.2",
+    "version": "4.151.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -114,7 +110,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -342,7 +338,6 @@
     "version": "9.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
-      "Microsoft.Maui.Controls.Compatibility",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
@@ -431,6 +426,13 @@
     "version": "1.4.0-dev.1",
     "packages": [
       "Uno.UI.App.Mcp"
+    ]
+  },
+  {
+    "group": "MauiCompatibility",
+    "version": "10.0.100",
+    "packages": [
+      "Microsoft.Maui.Controls.Compatibility"
     ]
   }
 ]
