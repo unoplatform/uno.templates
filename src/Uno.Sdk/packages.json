@@ -402,7 +402,7 @@
   },
   {
     "group": "Themes",
-    "version": "8.0.0-dev.3",
+    "version": "7.2.0-dev.5",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
