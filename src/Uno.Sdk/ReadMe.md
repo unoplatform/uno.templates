@@ -4,42 +4,41 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.8.0-dev.130 |
-| UnoExtensionsVersion | 7.4.0-dev.29 |
-| UnoToolkitVersion | 9.2.0-dev.19 |
-| UnoThemesVersion | 8.0.0-dev.3 |
-| UnoCSharpMarkupVersion | 6.8.0-dev.3 |
-| UnoWasmBootstrapVersion** | 9.0.23 |
+| UnoVersion* | 7.0.0-dev.647 |
+| UnoExtensionsVersion | 8.0.0-dev.2 |
+| UnoToolkitVersion | 10.0.0-dev.1 |
+| UnoThemesVersion | 8.0.0-dev.7 |
+| UnoCSharpMarkupVersion | 7.0.0-dev.7 |
+| UnoWasmBootstrapVersion** | 10.1.0-dev.214 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 4.1.1 |
-| UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 1.13.0-dev.17 |
-| SkiaSharpVersion | 3.119.2 |
+| SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
-| WinAppSdkVersion | 1.7.250909003 |
+| WinAppSdkVersion | 2.3.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.6.1 |
-| MicrosoftLoggingVersion** | 9.0.19 |
-| WindowsCompatibilityVersion** | 9.0.19 |
+| MicrosoftLoggingVersion** | 10.0.11 |
+| WindowsCompatibilityVersion** | 10.0.11 |
 | MicrosoftIdentityClientVersion | 4.88.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
-| AndroidMaterialVersion | 1.12.0.4 |
-| AndroidXLegacySupportV4Version | 1.0.0.23 |
+| AndroidMaterialVersion | 1.12.0.5 |
+| AndroidXLegacySupportV4Version | 1.0.0.33 |
 | AndroidXSplashScreenVersion | 1.0.1.14 |
-| AndroidXAppCompatVersion | 1.7.0.7 |
-| AndroidXRecyclerViewVersion | 1.4.0.2 |
-| AndroidXActivityVersion | 1.10.1.2 |
-| AndroidXBrowserVersion | 1.8.0.10 |
-| AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
-| AndroidXLeanbackVersion | 1.0.0.30 |
-| AndroidXCarAppVersion | 1.4.0.2 |
-| AndroidXWearVersion | 1.3.0.14 |
-| AndroidXWearTilesVersion | 1.4.0.1 |
-| AndroidXNavigationVersion | 2.8.9.2 |
-| AndroidXCollectionVersion | 1.5.0.2 |
-| MauiVersion** | 9.0.120 |
+| AndroidXAppCompatVersion | 1.7.1.1 |
+| AndroidXRecyclerViewVersion | 1.4.0.5 |
+| AndroidXActivityVersion | 1.12.4.1 |
+| AndroidXBrowserVersion | 1.8.0.11 |
+| AndroidXSwipeRefreshLayoutVersion | 1.2.0.2 |
+| AndroidXLeanbackVersion | 1.0.0.31 |
+| AndroidXCarAppVersion | 1.4.0.3 |
+| AndroidXWearVersion | 1.4.0.1 |
+| AndroidXWearTilesVersion | 1.4.1 |
+| AndroidXNavigationVersion | 2.9.2.1 |
+| AndroidXCollectionVersion | 1.5.0.5 |
+| MauiVersion** | 10.0.100 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 10.0.
