@@ -21,7 +21,6 @@ jobs:
       matrix:
         branch:
           - main
-          - release/stable/6.5
           - release/stable/6.6
           - release/stable/6.7
 
