@@ -2413,11 +2413,6 @@
       "datatype": "bool",
       "value": "shellLayout == 'tabview'"
     },
-    "useShellLayout": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "useNavViewLayout || useTabBarLayout || useTabViewLayout"
-    },
     "useNavViewFrame": {
       "type": "computed",
       "datatype": "bool",
