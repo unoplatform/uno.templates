@@ -20,9 +20,9 @@ Run any of these from inside your project folder:
 | `dotnet new uno-mvvm-page -n MyPage` | A `Page` + a CommunityToolkit.Mvvm `ViewModel`. |
 | `dotnet new uno-mvux-page -n MyPage` | A `Page` + an Uno.Extensions.Reactive (MVUX) `Model`. |
 
-Pass `--root-namespace <ns>` (or `-ns <ns>`) when generating outside a project
-to control the generated namespace; inside a project it is inferred from the
-project's `RootNamespace`.
+Inside a project the generated namespace is taken from the project's
+`RootNamespace`. Pass `--root-namespace <ns>` (or `-ns <ns>`) to override it, or
+to set it when generating outside a project — otherwise it falls back to `UnoApp`.
 
 > C# Markup items require the host app to have the `CSharpMarkup` UnoFeature
 > (created with `dotnet new unoapp -markup csharp`). The MVVM / MVUX page items

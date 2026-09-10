@@ -12,12 +12,39 @@
   "description": "Adds an Uno Platform Page with XAML or C# Markup.",
   "preferNameDirectory": false,
   "symbols": {
-    "rootNamespace": {
+    "userNamespace": {
       "type": "parameter",
       "datatype": "string",
-      "replaces": "$rootnamespace$",
-      "defaultValue": "UnoApp",
-      "description": "Namespace for the generated item (pass --root-namespace / -ns to override)."
+      "defaultValue": "",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns). Defaults to the host project's RootNamespace."
+    },
+    "msbuildNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace"
+    },
+    "fallbackNamespace": {
+      "type": "generated",
+      "generator": "constant",
+      "parameters": {
+        "value": "UnoApp"
+      }
+    },
+    "projectNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "msbuildNamespace",
+        "fallbackVariableName": "fallbackNamespace"
+      }
+    },
+    "rootNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "userNamespace",
+        "fallbackVariableName": "projectNamespace"
+      },
+      "replaces": "$rootnamespace$"
     },
     "safeItemName": {
       "type": "derived",

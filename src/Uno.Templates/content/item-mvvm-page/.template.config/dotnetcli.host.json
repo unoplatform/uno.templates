@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
-    "rootNamespace": {
+    "userNamespace": {
       "longName": "root-namespace",
       "shortName": "ns"
     }
