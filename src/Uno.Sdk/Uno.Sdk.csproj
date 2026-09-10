@@ -19,7 +19,8 @@
 	<PropertyGroup>
 		<!--
 			Azure DevOps coordinates of the feed the Uno.Sdk.Private package is repacked from.
-			Override with -p:SdkDownloadFeedId=... or the SdkDownloadFeedId environment variable.
+			Both SdkDownloadOrganizationId and SdkDownloadFeedId can be overridden with -p:<name>=...
+			or an environment variable of the same name.
 			Known feeds:
 			  e7ce08df-613a-41a3-8449-d42784dd45ce  unoplatformdev (default - main, release/stable/*)
 			  d26abad4-c545-4e56-9ac7-fe42c6311c28  Features (feature/*)
@@ -42,10 +43,10 @@
 		<MakeDir Directories="$(SdkDownloadFolder)" />
 
 		<!-- The feeds are disjoint per version range, so name the feed to make a 404 self-explaining. -->
-		<Message Importance="high" Condition="!Exists($(SdkNuGetFile))"
+		<Message Importance="high" Condition="!Exists('$(SdkNuGetFile)')"
 				 Text="Downloading $(SdkPackageId) $(SdkVersion) from feed $(SdkDownloadFeedId)" />
 
-		<DownloadFile Condition="!Exists($(SdkNuGetFile))"
+		<DownloadFile Condition="!Exists('$(SdkNuGetFile)')"
 					  SourceUrl="$(SdkDownloadUri)"
 					  DestinationFileName="$(SdkPackageId.ToLowerInvariant()).$(SdkVersion).nupkg"
 					  DestinationFolder="$(SdkDownloadFolder)" />
@@ -59,7 +60,7 @@
 			<SdkNuGetExtractionPath>$([System.IO.Path]::Combine($(SdkBuildOutputPath), 'extract', '$(SdkVersion)'))</SdkNuGetExtractionPath>
 		</PropertyGroup>
 
-		<Unzip Condition="Exists($(SdkNuGetFile)) AND !Exists($(SdkNuGetExtractionPath))"
+		<Unzip Condition="Exists('$(SdkNuGetFile)') AND !Exists('$(SdkNuGetExtractionPath)')"
 			   SourceFiles="$(SdkNuGetFile)"
 			   DestinationFolder="$(SdkNuGetExtractionPath)" />
 	</Target>
