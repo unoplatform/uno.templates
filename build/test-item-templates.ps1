@@ -30,6 +30,21 @@ foreach ($i in $items) {
     Invoke-Dotnet new install (Join-Path $content $i) --force
 }
 
+# The generated namespace comes from a bind to the host project's RootNamespace,
+# so a passing build alone would not catch the binding silently reverting to the
+# "UnoApp" fallback. Assert the namespace explicitly.
+function Assert-Namespace {
+    param([string]$File, [string]$Expected)
+
+    $m = Select-String -Path $File -Pattern '^\s*namespace\s+([A-Za-z0-9_.]+)' | Select-Object -First 1
+    if (-not $m) { throw "No namespace declaration found in $File" }
+
+    $actual = $m.Matches[0].Groups[1].Value
+    if ($actual -ne $Expected) {
+        throw "Expected namespace '$Expected' in $File, found '$actual'"
+    }
+}
+
 function Test-Items {
     param([string]$Name, [string]$Preset, [string]$Presentation, [string]$Markup)
 
@@ -61,6 +76,16 @@ function Test-Items {
 
         if ($Presentation -eq "mvvm") { Invoke-Dotnet new uno-mvvm-page -n SampleMvvmPage }
         if ($Presentation -eq "mvux") { Invoke-Dotnet new uno-mvux-page -n SampleMvuxPage }
+
+        # C# Markup renames BlankPage.xaml.cs to BlankPage.cs, so the code-behind
+        # suffix depends on the markup mode.
+        $codeBehind = if ($Markup -eq "csharp") { ".cs" } else { ".xaml.cs" }
+
+        # Inferred from the host project, and overridable.
+        Assert-Namespace -File "SampleItemPage$codeBehind" -Expected $appName
+
+        Invoke-Dotnet new uno-page -n SampleNamespacedPage -ns "Contoso.Custom" @markupArgs
+        Assert-Namespace -File "SampleNamespacedPage$codeBehind" -Expected "Contoso.Custom"
 
         Invoke-Dotnet build -f net10.0-desktop
         Write-Host "PASS: $Name" -ForegroundColor Green
