@@ -28,7 +28,7 @@ internal class NuGetApiClient : IDisposable
     private static readonly string _downloadOrganizationId = GetSetting("SdkDownloadOrganizationId", DefaultDownloadOrganizationId);
     private static readonly string _downloadFeedId = GetSetting("SdkDownloadFeedId", DefaultDownloadFeedId);
 
-    private static PackageValidationRecord _validation = new();
+    private static readonly PackageValidationRecord _validation = new();
     private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
     private HttpClient PublicNuGetClient { get; } = new HttpClient
