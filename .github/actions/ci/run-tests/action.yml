@@ -122,7 +122,7 @@ runs:
   - name: "Canary Updater"
     uses: ./.github/actions/ci/canary-updater
     with:
-      MergeBranch: false
+      MergeBranch: true
   
   - name: 'OpenJDK (Linux)'
     if: runner.os == 'linux'
