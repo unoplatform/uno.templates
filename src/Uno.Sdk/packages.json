@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.7.103",
+    "version": "6.7.135",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -39,7 +39,7 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.214"
+      "net10.0": "10.1.0-dev.217"
     }
   },
   {
@@ -73,7 +73,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "1.13.0-dev.17",
+    "version": "1.13.0-dev.18",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -142,22 +142,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.19",
+    "version": "9.0.20",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.11"
+      "net10.0": "10.0.12"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.19",
+    "version": "9.0.20",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.11"
+      "net10.0": "10.0.12"
     }
   },
   {
@@ -351,7 +351,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "6.7.19",
+    "version": "6.7.21",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -428,7 +428,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "1.3.4",
+    "version": "1.3.7",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
