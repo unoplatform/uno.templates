@@ -59,10 +59,44 @@ env:
 
 jobs:
 
+  # Hard gate on the stable release lines: a stable Uno.Sdk ships stable pins.
+  #
+  # A release branch is cut from a branch that legitimately carries dev versions, so it inherits
+  # them. Replacing each with a stable version is a manual release-checklist step, and nothing
+  # verified it happened -- while the updater, running unattended with auto-merge, keeps moving
+  # those groups further along the dev line. This makes the step enforced instead of remembered.
+  #
+  # It rejects only what is always wrong on these branches -- a prerelease version in the shipped
+  # manifest -- across every file the updater writes, covering versionOverride entries and the
+  # MSBuild property pins, where such a version most easily hides, and any group added later.
+  #
+  # Skips on main and servicing/*, where prerelease pins are expected. Gates `build`, so a failure
+  # short-circuits the rest of the pipeline.
+  verify_stable_pins:
+    name: Verify Stable Pins
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CheckoutRef }}
+
+    - name: "Verify no prerelease pins on a stable release branch"
+      shell: pwsh
+      run: |
+        # Mirrors env.CheckoutRef so a workflow_dispatch against a stable branch is checked, not skipped.
+        ./build/Verify-StablePins.ps1 -Branch "${{ github.event_name == 'pull_request' && github.base_ref || (github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref) }}"
+
   # Build the nuget packages
   build:
     name: Build
     runs-on: ubuntu-latest
+    # Fail fast: verify_stable_pins is the root of the graph, so a bad pin skips the build, the
+    # sign/publish chain and the whole Linux/Windows/macOS template matrix instead of spending
+    # runners on a manifest that must not ship. It costs seconds, and is a no-op off the stable
+    # release lines.
+    needs: verify_stable_pins
 
     steps:
     - name: Checkout
@@ -374,34 +408,41 @@ jobs:
       - windows-template-tests
 
     steps:
+      # Only 'success' is a pass. The matrix jobs are gated purely on upstream success
+      # (generate-test-matrix + build), so they are never skipped for a legitimate reason such as
+      # a doc-only change -- a skip always means the tests did not run. Reporting that as green
+      # made this job say "All matrix test jobs passed" for a run where nothing executed, which is
+      # exactly the assurance a required check must not give. 'cancelled' is treated the same way.
       - name: Check matrix job results
         run: |
           hasFailed=false
 
-          macos_status="${{ needs.macos-template-tests.result }}"
-          linux_status="${{ needs.linux-template-tests.result }}"
-          windows_status="${{ needs.windows-template-tests.result }}"
+          check_result() {
+            name="$1"
+            status="$2"
 
-          echo "macos-template-tests: $macos_status"
-          if [ "$macos_status" = "failure" ]; then
-            echo "::error::macos-template-tests failed (status: $macos_status)"
-            hasFailed=true
-          fi
+            echo "$name: $status"
 
-          echo "linux-template-tests: $linux_status"
-          if [ "$linux_status" = "failure" ]; then
-            echo "::error::linux-template-tests failed (status: $linux_status)"
-            hasFailed=true
-          fi
+            case "$status" in
+              success)
+                ;;
+              skipped)
+                echo "::error::$name did not run (status: $status). The tests have not passed - they were never executed, most likely because an upstream job failed or was skipped."
+                hasFailed=true
+                ;;
+              *)
+                echo "::error::$name did not succeed (status: $status)"
+                hasFailed=true
+                ;;
+            esac
+          }
 
-          echo "windows-template-tests: $windows_status"
-          if [ "$windows_status" = "failure" ]; then
-            echo "::error::windows-template-tests failed (status: $windows_status)"
-            hasFailed=true
-          fi
+          check_result "macos-template-tests" "${{ needs.macos-template-tests.result }}"
+          check_result "linux-template-tests" "${{ needs.linux-template-tests.result }}"
+          check_result "windows-template-tests" "${{ needs.windows-template-tests.result }}"
 
           if [ "$hasFailed" = "true" ]; then
-            echo "::error::One or more test jobs failed. Blocking merge."
+            echo "::error::One or more test jobs did not pass. Blocking merge."
             exit 1
           fi
 
