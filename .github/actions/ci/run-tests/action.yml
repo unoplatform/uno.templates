@@ -104,11 +104,15 @@ runs:
 
   # Install android 34 as we're running on macos-15, early so that
   # the JDK override does not break the installer
+  #
+  # 'tools' is deliberately not installed: it is obsolete and no longer served by the Android
+  # SDK repository, so sdkmanager reports "Failed to find package 'tools'" and exits 1, which
+  # under `bash -e -o pipefail` aborted this step before any package below was installed.
+  # Nothing here needs it; platform-tools, platforms and build-tools do not depend on it.
   - name: 'Install Android 34'
     if: runner.os == 'macOS'
     shell: bash
     run: |
-      echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'tools'| tr '\r' '\n' | uniq
       echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platform-tools'  | tr '\r' '\n' | uniq
       echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'platforms;android-34' | tr '\r' '\n' | uniq
       echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_HOME --install 'build-tools;35.0.0' | tr '\r' '\n' | uniq
