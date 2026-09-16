@@ -40,9 +40,36 @@
 		<false/>
 		-->
 <!--#if (useProtocolRedirect)-->
-		<key>CFBundleURLSchemes</key>
+		<!--
+		iOS only reads custom URL schemes from CFBundleURLTypes - an array of dicts, each holding
+		its own CFBundleURLSchemes. A top-level CFBundleURLSchemes key is ignored, which leaves the
+		sign-in callback with no way back into the app.
+		https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleurltypes
+		-->
+		<key>CFBundleURLTypes</key>
 		<array>
-			<string>myprotocol</string>
+<!--#if (useMsalAuthentication)-->
+			<!--
+			MSAL's iOS convention is msauth.{BundleId}://auth, and that is what the MSAL provider
+			derives from the running app's bundle identifier. The scheme below is "msauth." plus
+			<ApplicationId> from the csproj, which is what becomes CFBundleIdentifier - if you
+			change one, change the other, and update the redirect URI on the app registration.
+			-->
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>msauth.com.companyname.myextensionsapp</string>
+				</array>
+			</dict>
+<!--#endif-->
+<!--#if (useWebAuthentication || useOidcAuthentication)-->
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>myprotocol</string>
+				</array>
+			</dict>
+<!--#endif-->
 		</array>
 <!--#endif-->
 	</dict>

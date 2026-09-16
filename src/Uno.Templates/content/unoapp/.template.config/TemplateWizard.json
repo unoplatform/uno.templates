@@ -420,12 +420,6 @@
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
-				},
-				"platforms": {
-					"RequiredValues": [
-						"!desktop"
-					],
-					"MoreInformation": "MSAL only supported on iOS, Android, WebAssembly and Windows App SDK"
 				}
 			}
 		},
