@@ -1,58 +1,59 @@
-using System.Text.Json;
 using TemplateTfmSwitchGenerator;
 
-var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
+var checkOnly = args.Any(argument => argument is "--check");
+var repoRoot = RepositoryLayout.FindRoot();
+var outdated = new List<string>();
+
+void Apply(string path, string original, string updated, bool hasBom)
 {
-    WriteIndented = true,
-};
-Platform[] platforms = [
-    new Platform("platforms == android", "platforms != android", "android"),
-    new Platform("platforms == ios", "platforms != ios", "ios"),
-    new Platform("platforms == windows", "platforms != windows", "windows10.0.26100"),
-    new Platform("platforms == wasm", "platforms != wasm", "browserwasm"),
-    new Platform("platforms == desktop", "platforms != desktop", "desktop"),
-    new Platform("useUnitTests == true", "useUnitTests == false", null)
-];
-
-string[] runtimes = ["net9.0", "net10.0"];
-
-var cases = new List<TemplateSwitchCase>();
-foreach (var runtime in runtimes)
-{
-    var results = GenerateTemplateSwitchCases(platforms, runtime);
-    cases.AddRange(results);
-}
-
-var json = JsonSerializer.Serialize(cases, options)
-    .Replace(@"\u0026", "&")
-    .Replace(@"\u0027", "'");
-File.WriteAllText("template.json", json);
-Console.WriteLine(json);
-
-static IEnumerable<TemplateSwitchCase> GenerateTemplateSwitchCases(Platform[] platforms, string runtime)
-{
-    var cases = new List<TemplateSwitchCase>();
-    var initialCondition = $"tfm == '{runtime}' && ";
-    GenerateCases(platforms, 0, initialCondition, "", cases, runtime);
-    return cases;
-}
-
-static void GenerateCases(Platform[] platforms, int index, string currentCondition, string currentTfm, List<TemplateSwitchCase> cases, string runtime)
-{
-    if (index == platforms.Length)
+    if (string.Equals(original, updated, StringComparison.Ordinal))
     {
-        var finalizedCondition = $"({currentCondition.Trim(' ', '&')})";
-        cases.Add(new TemplateSwitchCase(finalizedCondition, currentTfm.TrimEnd(';', ' ')));
         return;
     }
 
-    string trueCondition = platforms[index].TrueCondition;
-    string falseCondition = platforms[index].FalseCondition;
-    string trueTfm = platforms[index].GetTfm(runtime) + ";";
+    outdated.Add(Path.GetRelativePath(repoRoot, path));
 
-    // Include true condition
-    GenerateCases(platforms, index + 1, $"{currentCondition}{trueCondition} && ", $"{currentTfm}{trueTfm}", cases, runtime);
-
-    // Include false condition
-    GenerateCases(platforms, index + 1, $"{currentCondition}{falseCondition} && ", currentTfm, cases, runtime);
+    if (!checkOnly)
+    {
+        TextFile.Write(path, updated, hasBom);
+    }
 }
+
+var templateJsonPath = RepositoryLayout.Resolve(repoRoot, RepositoryLayout.SingleProjectTemplateJson);
+var (templateJson, templateJsonHasBom) = TextFile.Read(templateJsonPath);
+var cases = SwitchCaseGenerator.Generate(TemplateTfms.Platforms, TemplateTfms.Runtimes);
+
+Apply(
+    templateJsonPath,
+    templateJson,
+    TemplateJsonPatcher.PatchSwitchCases(templateJson, TemplateTfms.SingleProjectTfmsSymbol, cases),
+    templateJsonHasBom);
+
+foreach (var mirror in RepositoryLayout.EnumerateWindowsTfmMirrors(repoRoot))
+{
+    var (content, hasBom) = TextFile.Read(mirror);
+    Apply(mirror, content, WindowsTfmRewriter.Rewrite(content, TemplateTfms.WindowsPlatformVersion), hasBom);
+}
+
+Console.WriteLine($"Windows platform version: {TemplateTfms.WindowsPlatformVersion}");
+Console.WriteLine($"Runtimes: {string.Join(", ", TemplateTfms.Runtimes)}");
+Console.WriteLine($"Generated {cases.Count} '{TemplateTfms.SingleProjectTfmsSymbol}' switch cases.");
+
+if (outdated.Count == 0)
+{
+    Console.WriteLine("Template TFMs are up to date.");
+    return 0;
+}
+
+foreach (var file in outdated)
+{
+    Console.WriteLine(checkOnly ? $"  out of date: {file}" : $"  updated: {file}");
+}
+
+if (checkOnly)
+{
+    Console.Error.WriteLine("Template TFMs are out of date. Run 'dotnet run --project tools/TemplateTfmSwitchGenerator' and commit the result.");
+    return 1;
+}
+
+return 0;
