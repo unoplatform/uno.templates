@@ -21,7 +21,8 @@ on:
       - release/**
 
   schedule:
-    - cron: '0 0 * * *' # Canary
+    - cron: '0 0 * * *' # nightly build of the branch this workflow runs on
+    - cron: '0 2 * * *' # canary: canaries/dev against the latest Uno dev packages
 
   workflow_dispatch:
     inputs:
@@ -36,8 +37,15 @@ concurrency:
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-  CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref }}
-  IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
+  # The canary builds canaries/dev against the latest Uno dev packages. GitHub only fires
+  # `schedule` on the default branch, so the scheduled run checks out the canary branch
+  # explicitly; workflow_dispatch can target any ref.
+  #
+  # IsCanaryBranch must agree with what is actually checked out. It used to be derived from
+  # github.ref, which is refs/heads/main on a scheduled run, so it was never true and the
+  # canary updater never ran.
+  CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.event.schedule == '0 2 * * *' && 'refs/heads/canaries/dev' || github.ref }}
+  IsCanaryBranch: ${{ github.event.schedule == '0 2 * * *' || contains(github.ref, 'canaries/') || (github.event_name == 'workflow_dispatch' && contains(github.event.inputs.branch, 'canaries/')) }}
   ValidationUnoCheckVersionNet9: '1.32.23'
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   ValidationDotNetVersion: '9.0.308'
