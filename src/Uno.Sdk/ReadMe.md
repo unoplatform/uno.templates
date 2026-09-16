@@ -247,7 +247,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.Google.Android.Material"
     ],
     "versionOverride": {
-      "net10.0": "1.12.0.5"
+      "net10.0": "1.14.0.6"
     }
   },
   {
@@ -257,7 +257,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Legacy.Support.V4"
     ],
     "versionOverride": {
-      "net10.0": "1.0.0.33"
+      "net10.0": "1.0.0.37"
     }
   },
   {
@@ -267,7 +267,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Core.SplashScreen"
     ],
     "versionOverride": {
-      "net10.0": "1.0.1.14"
+      "net10.0": "1.2.0.3"
     }
   },
   {
@@ -277,7 +277,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.AppCompat"
     ],
     "versionOverride": {
-      "net10.0": "1.7.1.1"
+      "net10.0": "1.8.0"
     }
   },
   {
@@ -287,7 +287,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.RecyclerView"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.3"
+      "net10.0": "1.4.0.6"
     }
   },
   {
@@ -297,7 +297,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Activity"
     ],
     "versionOverride": {
-      "net10.0": "1.10.1.3"
+      "net10.0": "1.13.0.1"
     }
   },
   {
@@ -307,7 +307,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Browser"
     ],
     "versionOverride": {
-      "net10.0": "1.8.0.11"
+      "net10.0": "1.10.0.1"
     }
   },
   {
@@ -317,7 +317,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.SwipeRefreshLayout"
     ],
     "versionOverride": {
-      "net10.0": "1.1.0.29"
+      "net10.0": "1.2.0.3"
     }
   },
   {
@@ -327,7 +327,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Leanback"
     ],
     "versionOverride": {
-      "net10.0": "1.0.0.31"
+      "net10.0": "1.2.0.4"
     }
   },
   {
@@ -337,7 +337,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Car.App.App"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.3"
+      "net10.0": "1.7.0.4"
     }
   },
   {
@@ -347,7 +347,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Wear"
     ],
     "versionOverride": {
-      "net10.0": "1.3.0.15"
+      "net10.0": "1.4.0.2"
     }
   },
   {
@@ -357,7 +357,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Wear.Tiles"
     ],
     "versionOverride": {
-      "net10.0": "1.4.1"
+      "net10.0": "1.6.2"
     }
   },
   {
@@ -370,7 +370,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Navigation.Common"
     ],
     "versionOverride": {
-      "net10.0": "2.9.2.1"
+      "net10.0": "2.9.8.1"
     }
   },
   {
@@ -381,7 +381,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Collection.Ktx"
     ],
     "versionOverride": {
-      "net10.0": "1.5.0.3"
+      "net10.0": "1.6.0.1"
     }
   },
   {
