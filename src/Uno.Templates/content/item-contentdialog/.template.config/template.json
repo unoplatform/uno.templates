@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Content Dialog" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.ContentDialog",
+  "groupIdentity": "Uno.Platform.Item.ContentDialog",
+  "name": "Uno Platform Content Dialog (Item)",
+  "shortName": "uno-contentdialog",
+  "sourceName": "MyContentDialog",
+  "defaultName": "MyContentDialog",
+  "description": "Adds an Uno Platform ContentDialog with XAML or C# Markup.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "userNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns). Defaults to the host project's RootNamespace."
+    },
+    "msbuildNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace"
+    },
+    "fallbackNamespace": {
+      "type": "generated",
+      "generator": "constant",
+      "parameters": {
+        "value": "UnoApp"
+      }
+    },
+    "projectNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "msbuildNamespace",
+        "fallbackVariableName": "fallbackNamespace"
+      }
+    },
+    "rootNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "userNamespace",
+        "fallbackVariableName": "projectNamespace"
+      },
+      "replaces": "$rootnamespace$"
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the dialog.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": { "type": "computed", "value": "(markup == 'csharp')" }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "MyContentDialog.xaml" ],
+          "rename": { "MyContentDialog.xaml.cs": "MyContentDialog.cs" }
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "MyContentDialog.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "MyContentDialog.cs", "condition": "(useCsharpMarkup)" }
+  ]
+}
