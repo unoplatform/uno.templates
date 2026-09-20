@@ -12,7 +12,10 @@ jobs:
       parameters:
         targetPlatform: 'wasm'
 
-    - task: MSBuild@1
+    - task: PowerShell@2
+      displayName: 'Build MyExtensionsApp.1 (Debug)'
       inputs:
-        solution: ./MyExtensionsApp.1/MyExtensionsApp.1.csproj
-        msbuildArguments: '/r'
+        targetType: 'inline'
+        script: 'dotnet build ./MyExtensionsApp.1/MyExtensionsApp.1.csproj --configuration Debug'
+        failOnStderr: true
+        pwsh: true
