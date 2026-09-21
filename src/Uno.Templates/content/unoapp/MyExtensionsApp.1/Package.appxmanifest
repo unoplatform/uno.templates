@@ -21,7 +21,7 @@
     <Application Id="App"
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
-      <uap:VisualElements />
+      <uap:VisualElements BackgroundColor="transparent" />
 <!--#if (useProtocolRedirect)-->
       <Extensions>
       <uap:Extension Category="windows.protocol">
