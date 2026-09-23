@@ -120,7 +120,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "1.13.0-dev.18",
+    "version": "1.13.0-dev.21",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -141,7 +141,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.23.0-dev.106",
+    "version": "1.23.0-dev.131",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -406,7 +406,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "7.4.0-dev.50",
+    "version": "7.4.0-dev.54",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -436,7 +436,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "10.0.0-dev.1",
+    "version": "10.0.0-dev.3",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -475,7 +475,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "1.4.0-dev.3",
+    "version": "1.4.0-dev.5",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
