@@ -213,11 +213,19 @@ static IEnumerable<ManifestGroup> MergeLocalOverridesOnly(IEnumerable<ManifestGr
         }
     }
 
-    // Add brand-new groups that exist in SDK but not locally
     foreach (var sg in sdkManifest)
     {
-        if (!map.ContainsKey(sg.Group))
+        if (!map.TryGetValue(sg.Group, out var existing))
+        {
+            // Add brand-new groups that exist in SDK but not locally
             map[sg.Group] = sg;
+        }
+        else if (sg.Packages.Except(existing.Packages, StringComparer.OrdinalIgnoreCase).Any())
+        {
+            // Pick up packages the SDK added to an existing group (e.g. a new Core package),
+            // otherwise the SDK falls back to nuget.org for them and restore fails.
+            map[sg.Group] = existing with { Packages = existing.Packages.Union(sg.Packages, StringComparer.OrdinalIgnoreCase).ToArray() };
+        }
     }
 
     return map.Values;
