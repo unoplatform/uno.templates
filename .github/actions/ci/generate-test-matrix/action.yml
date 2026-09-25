@@ -148,7 +148,9 @@ runs:
         }
 
         # generate matrix for net9
-        for ($i = 0; $i -lt $tests.Count; $i++)
+        # Disabled: Uno 7.0 packages have no net9.0 assets (NU1202)
+        # https://github.com/unoplatform/uno.templates/issues/2276
+        for ($i = 0; $false -and $i -lt $tests.Count; $i++)
         {
             $currentGroup += $tests[$i] + " -tfm net9.0";
 
