@@ -9,37 +9,37 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoToolkitVersion | 11.0.0-dev.94 |
 | UnoThemesVersion | 9.0.0-dev.26 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
-| UnoWasmBootstrapVersion** | 9.0.23 |
+| UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
-| UnoCoreLoggingSingletonVersion | 4.1.1 |
+| UnoCoreLoggingSingletonVersion | 5.0.0-dev.28 |
 | UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 2.0.0-dev.2 |
-| SkiaSharpVersion | 3.119.2 |
+| SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
-| WinAppSdkVersion | 1.7.250909003 |
+| WinAppSdkVersion | 2.4.0 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.7.0 |
-| MicrosoftLoggingVersion** | 9.0.20 |
+| MicrosoftLoggingVersion** | 10.0.12 |
 | WindowsCompatibilityVersion** | 9.0.20 |
-| MicrosoftIdentityClientVersion | 4.90.0 |
+| MicrosoftIdentityClientVersion | 4.90.1 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
-| AndroidMaterialVersion | 1.12.0.4 |
+| AndroidMaterialVersion | 1.14.0.6 |
 | AndroidXLegacySupportV4Version | 1.0.0.23 |
-| AndroidXSplashScreenVersion | 1.0.1.14 |
-| AndroidXAppCompatVersion | 1.7.0.7 |
-| AndroidXRecyclerViewVersion | 1.4.0.2 |
-| AndroidXActivityVersion | 1.10.1.2 |
-| AndroidXBrowserVersion | 1.8.0.10 |
-| AndroidXSwipeRefreshLayoutVersion | 1.1.0.28 |
-| AndroidXLeanbackVersion | 1.0.0.30 |
-| AndroidXCarAppVersion | 1.4.0.2 |
-| AndroidXWearVersion | 1.3.0.14 |
-| AndroidXWearTilesVersion | 1.4.0.1 |
-| AndroidXNavigationVersion | 2.8.9.2 |
-| AndroidXCollectionVersion | 1.5.0.2 |
-| MauiVersion** | 9.0.120 |
+| AndroidXSplashScreenVersion | 1.2.0.3 |
+| AndroidXAppCompatVersion | 1.8.0 |
+| AndroidXRecyclerViewVersion | 1.4.0.6 |
+| AndroidXActivityVersion | 1.13.0.1 |
+| AndroidXBrowserVersion | 1.10.0.1 |
+| AndroidXSwipeRefreshLayoutVersion | 1.2.0.3 |
+| AndroidXLeanbackVersion | 1.2.0.4 |
+| AndroidXCarAppVersion | 1.7.0.4 |
+| AndroidXWearVersion | 1.4.0.2 |
+| AndroidXWearTilesVersion | 1.6.1 |
+| AndroidXNavigationVersion | 2.9.8.1 |
+| AndroidXCollectionVersion | 1.6.0.1 |
+| MauiVersion** | 10.0.110 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
 \*\* This version may have a different version for .NET 10.0.
@@ -77,14 +77,15 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WasmBootstrap",
-    "version": "9.0.23",
+    "version": "10.0.98",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.217"
+      "net10.0": "10.1.0-dev.217",
+      "net11.0": "10.1.0-dev.217"
     }
   },
   {
@@ -97,7 +98,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CoreLogging",
-    "version": "4.1.1",
+    "version": "5.0.0-dev.28",
     "packages": [
       "Uno.Core.Extensions.Logging.Singleton"
     ]
@@ -146,7 +147,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "3.119.2",
+    "version": "4.151.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.Uno.WinUI",
@@ -166,7 +167,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdk",
-    "version": "1.7.250909003",
+    "version": "2.4.0",
     "packages": [
       "Microsoft.WindowsAppSDK"
     ]
@@ -187,12 +188,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.20",
+    "version": "10.0.12",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.12"
+      "net10.0": "10.0.12",
+      "net11.0": "11.0.0-rc.1.26425.128"
     }
   },
   {
@@ -207,7 +209,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MsalClient",
-    "version": "4.90.0",
+    "version": "4.90.1",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -240,12 +242,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidMaterial",
-    "version": "1.12.0.4",
+    "version": "1.14.0.6",
     "packages": [
       "Xamarin.Google.Android.Material"
     ],
     "versionOverride": {
-      "net10.0": "1.12.0.5"
+      "net10.0": "1.14.0.6"
     }
   },
   {
@@ -260,107 +262,107 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXSplashScreen",
-    "version": "1.0.1.14",
+    "version": "1.2.0.3",
     "packages": [
       "Xamarin.AndroidX.Core.SplashScreen"
     ],
     "versionOverride": {
-      "net10.0": "1.0.1.14"
+      "net10.0": "1.2.0.3"
     }
   },
   {
     "group": "AndroidXAppCompat",
-    "version": "1.7.0.7",
+    "version": "1.8.0",
     "packages": [
       "Xamarin.AndroidX.AppCompat"
     ],
     "versionOverride": {
-      "net10.0": "1.7.1.1"
+      "net10.0": "1.8.0"
     }
   },
   {
     "group": "AndroidXRecyclerView",
-    "version": "1.4.0.2",
+    "version": "1.4.0.6",
     "packages": [
       "Xamarin.AndroidX.RecyclerView"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.3"
+      "net10.0": "1.4.0.6"
     }
   },
   {
     "group": "AndroidXActivity",
-    "version": "1.10.1.2",
+    "version": "1.13.0.1",
     "packages": [
       "Xamarin.AndroidX.Activity"
     ],
     "versionOverride": {
-      "net10.0": "1.10.1.3"
+      "net10.0": "1.13.0.1"
     }
   },
   {
     "group": "AndroidXBrowser",
-    "version": "1.8.0.10",
+    "version": "1.10.0.1",
     "packages": [
       "Xamarin.AndroidX.Browser"
     ],
     "versionOverride": {
-      "net10.0": "1.8.0.11"
+      "net10.0": "1.10.0.1"
     }
   },
   {
     "group": "AndroidXSwipeRefreshLayout",
-    "version": "1.1.0.28",
+    "version": "1.2.0.3",
     "packages": [
       "Xamarin.AndroidX.SwipeRefreshLayout"
     ],
     "versionOverride": {
-      "net10.0": "1.1.0.29"
+      "net10.0": "1.2.0.3"
     }
   },
   {
     "group": "AndroidXLeanback",
-    "version": "1.0.0.30",
+    "version": "1.2.0.4",
     "packages": [
       "Xamarin.AndroidX.Leanback"
     ],
     "versionOverride": {
-      "net10.0": "1.0.0.31"
+      "net10.0": "1.2.0.4"
     }
   },
   {
     "group": "AndroidXCarApp",
-    "version": "1.4.0.2",
+    "version": "1.7.0.4",
     "packages": [
       "Xamarin.AndroidX.Car.App.App"
     ],
     "versionOverride": {
-      "net10.0": "1.4.0.3"
+      "net10.0": "1.7.0.4"
     }
   },
   {
     "group": "AndroidXWear",
-    "version": "1.3.0.14",
+    "version": "1.4.0.2",
     "packages": [
       "Xamarin.AndroidX.Wear"
     ],
     "versionOverride": {
-      "net10.0": "1.3.0.15"
+      "net10.0": "1.4.0.2"
     }
   },
   {
     "group": "AndroidXWearTiles",
-    "version": "1.4.0.1",
+    "version": "1.6.1",
     "packages": [
       "Xamarin.AndroidX.Wear.Tiles"
     ],
     "versionOverride": {
-      "net10.0": "1.4.1"
+      "net10.0": "1.6.1"
     }
   },
   {
     "group": "AndroidXNavigation",
-    "version": "2.8.9.2",
+    "version": "2.9.8.1",
     "packages": [
       "Xamarin.AndroidX.Navigation.UI",
       "Xamarin.AndroidX.Navigation.Fragment",
@@ -368,29 +370,30 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Xamarin.AndroidX.Navigation.Common"
     ],
     "versionOverride": {
-      "net10.0": "2.9.2.1"
+      "net10.0": "2.9.8.1"
     }
   },
   {
     "group": "AndroidXCollection",
-    "version": "1.5.0.2",
+    "version": "1.6.0.1",
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
     ],
     "versionOverride": {
-      "net10.0": "1.5.0.3"
+      "net10.0": "1.6.0.1"
     }
   },
   {
     "group": "Maui",
-    "version": "9.0.120",
+    "version": "10.0.110",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.110"
+      "net10.0": "10.0.110",
+      "net11.0": "11.0.0-rc.1.26451.6"
     }
   },
   {
