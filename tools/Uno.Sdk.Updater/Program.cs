@@ -220,11 +220,11 @@ static IEnumerable<ManifestGroup> MergeLocalOverridesOnly(IEnumerable<ManifestGr
             // Add brand-new groups that exist in SDK but not locally
             map[sg.Group] = sg;
         }
-        else if (sg.Packages.Except(existing.Packages, StringComparer.OrdinalIgnoreCase).Any())
+        else
         {
-            // Pick up packages the SDK added to an existing group (e.g. a new Core package),
-            // otherwise the SDK falls back to nuget.org for them and restore fails.
-            map[sg.Group] = existing with { Packages = existing.Packages.Union(sg.Packages, StringComparer.OrdinalIgnoreCase).ToArray() };
+            // The SDK owns which packages belong to a group: a stale local list misses added
+            // packages (restore falls back to nuget.org) and keeps moved ones (duplicate entries).
+            map[sg.Group] = existing with { Packages = sg.Packages };
         }
     }
 
