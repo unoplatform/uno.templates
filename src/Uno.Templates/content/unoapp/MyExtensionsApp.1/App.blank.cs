@@ -60,11 +60,6 @@ public partial class App : Application
 #endif
 #endif
         MainWindow = new Window();
-//-:cnd:noEmit
-#if DEBUG
-        MainWindow.UseStudio();
-#endif
-//+:cnd:noEmit
 
 #if mauiEmbedding
 //-:cnd:noEmit

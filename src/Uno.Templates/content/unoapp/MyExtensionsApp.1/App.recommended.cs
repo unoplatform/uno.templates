@@ -227,11 +227,6 @@ public partial class App : Application
             );
         MainWindow = builder.Window;
 
-        //-:cnd:noEmit
-#if DEBUG
-        MainWindow.UseStudio();
-#endif
-        //+:cnd:noEmit
         MainWindow.SetWindowIcon();
 
 #if useFrameNav
