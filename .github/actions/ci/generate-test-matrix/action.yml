@@ -125,6 +125,11 @@ runs:
             "DevServerPortExplicit;;unoapp;-skip --devServerPort 12345"
         );
 
+        # Temporary Uno 7.0 bring-up exclusions
+        # Native renderer removed: https://github.com/unoplatform/uno.templates/issues/2278
+        # MAUI embedding AndroidX conflict: https://github.com/unoplatform/uno.templates/issues/2279
+        $tests = $tests | Where-Object { $_ -notmatch '^(NativeBlank|NativeRecommended|Maui\w*|Issue396);' }
+
         $matrixGroups = @()
         $currentGroup = @()
         $groupSize = 8
@@ -148,7 +153,9 @@ runs:
         }
 
         # generate matrix for net9
-        for ($i = 0; $i -lt $tests.Count; $i++)
+        # Disabled: Uno 7.0 packages have no net9.0 assets (NU1202)
+        # https://github.com/unoplatform/uno.templates/issues/2276
+        for ($i = 0; $false -and $i -lt $tests.Count; $i++)
         {
             $currentGroup += $tests[$i] + " -tfm net9.0";
 

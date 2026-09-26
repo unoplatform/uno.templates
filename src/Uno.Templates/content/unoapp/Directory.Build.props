@@ -3,6 +3,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <!-- Temporary until Hot Design ships a build for Uno Platform 7.0: https://github.com/unoplatform/uno.templates/issues/2280 -->
+    <UnoDisableHotDesign>true</UnoDisableHotDesign>
 
     <!--#if (mauiEmbedding)-->
     <!--
