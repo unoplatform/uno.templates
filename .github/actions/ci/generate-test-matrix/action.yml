@@ -129,11 +129,6 @@ runs:
         # Native renderer removed: https://github.com/unoplatform/uno.templates/issues/2278
         # MAUI embedding AndroidX conflict: https://github.com/unoplatform/uno.templates/issues/2279
         $tests = $tests | Where-Object { $_ -notmatch '^(NativeBlank|NativeRecommended|Maui\w*|Issue396);' }
-        # MVUX needs an Uno.Extensions build against 7.0, run those configurations as MVVM:
-        # https://github.com/unoplatform/uno.templates/issues/2277
-        $tests = $tests |
-            Where-Object { $_ -notmatch '-presentation[ =]mvux' } |
-            ForEach-Object { if ($_ -match ';unoapp;' -and $_ -notmatch '-presentation') { "$_ -presentation mvvm" } else { $_ } }
 
         $matrixGroups = @()
         $currentGroup = @()
