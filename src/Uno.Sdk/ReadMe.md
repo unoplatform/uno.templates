@@ -134,7 +134,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.13.4",
+    "version": "1.13.10",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -461,14 +461,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.23.1",
+    "version": "3.0.24",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4191.47",
+    "version": "1.0.4258.31",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
