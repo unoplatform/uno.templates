@@ -53,6 +53,13 @@
         <!--#else-->
         <us:SimpleTheme />
         <!--#endif-->
+        <!--#elif (useFluent)-->
+        <!-- Load the Uno Themes semantic layer mapped onto Fluent -->
+        <uf:FluentTheme />
+        <!--#if (useToolkit)-->
+        <!-- Load Uno.UI.Toolkit resources -->
+        <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
+        <!--#endif-->
         <!--#elif (useToolkit)-->
         <!-- Load Uno.UI.Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
