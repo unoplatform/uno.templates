@@ -338,7 +338,9 @@ runs:
             "-p:UseInterpreter=true",
             "-p:_IsDedupEnabled=false",
             "-p:MtouchInterpreter=all",
-            "-p:TreatWarningsAsErrors=true"
+            "-p:TreatWarningsAsErrors=true",
+            # https://github.com/unoplatform/uno.templates/issues/2283
+            "-p:CustomAfterMicrosoftCommonTargets=${{ github.action_path }}/Graphics3DGL.iOS.Workaround.targets"
           );
 
           if ($IsMacos)
