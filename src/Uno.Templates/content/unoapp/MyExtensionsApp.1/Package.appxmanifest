@@ -22,7 +22,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements />
-<!--#if (useProtocolRedirect)-->
+<!--#if (useWebAuthentication || useOidcAuthentication)-->
       <Extensions>
       <uap:Extension Category="windows.protocol">
         <uap:Protocol Name="myprotocol">
