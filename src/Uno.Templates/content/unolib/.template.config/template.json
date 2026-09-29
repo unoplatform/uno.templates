@@ -76,6 +76,10 @@
         {
           "choice": "skia",
           "displayName": "Skia"
+        },
+        {
+          "choice": "webgpu",
+          "displayName": "WebGPU"
         }
       ]
     },
@@ -83,6 +87,11 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(renderer == 'skia')"
+    },
+    "useWebGpuRenderer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(renderer == 'webgpu')"
     }
   },
   "primaryOutputs": [

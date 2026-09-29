@@ -229,6 +229,10 @@
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+			},
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "renderer"
 			}
 		],
 		"Framework": [
@@ -672,6 +676,9 @@
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
 		"renderer.skia": {
+			"Icon": "/Assets/Features.SkiaRendering.svg"
+		},
+		"renderer.webgpu": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
 		"vscode": {
