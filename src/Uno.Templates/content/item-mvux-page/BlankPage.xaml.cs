@@ -5,6 +5,6 @@ public sealed partial class $safeitemname$ : Page
     public $safeitemname$()
     {
         this.InitializeComponent();
-        this.DataContext = new Bindable$safeitemname$Model();
+        this.DataContext = new $safeitemname$ViewModel();
     }
 }
