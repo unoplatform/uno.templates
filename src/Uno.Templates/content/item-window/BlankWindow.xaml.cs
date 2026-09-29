@@ -10,13 +10,13 @@ public sealed partial class $safeitemname$ : Window
     {
 //+:cnd:noEmit
 #if useCsharpMarkup
-        this.Content(
-            new Grid()
-                .Children(
-                    new TextBlock()
-                        .Text("Hello Uno Platform!")
-                        .HorizontalAlignment(HorizontalAlignment.Center)
-                        .VerticalAlignment(VerticalAlignment.Center)));
+        // Window is not a DependencyObject, so C# Markup has no fluent Content() for it.
+        this.Content = new Grid()
+            .Children(
+                new TextBlock()
+                    .Text("Hello Uno Platform!")
+                    .HorizontalAlignment(HorizontalAlignment.Center)
+                    .VerticalAlignment(VerticalAlignment.Center));
 #else
         this.InitializeComponent();
 #endif
