@@ -2541,6 +2541,12 @@
           ]
         },
         {
+          "condition": "(!useSkiaRenderer)",
+          "exclude": [
+            "MyExtensionsApp.1/Platforms/iOS/SceneDelegate.iOS.cs"
+          ]
+        },
+        {
           "condition": "(!useWasm)",
           "exclude": [
             "MyExtensionsApp.1/Platforms/WebAssembly**/*"
