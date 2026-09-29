@@ -41,6 +41,17 @@ public partial class App : Application
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #endif
+#elif (useSimpleTheme)
+
+#if useToolkit
+        // Load Uno.UI.Toolkit and Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleToolkitTheme()));
+#else
+        // Load Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleTheme()));
+#endif
 #elif (useToolkit)
 
         // Load Uno.UI.Toolkit Resources
@@ -49,11 +60,6 @@ public partial class App : Application
 #endif
 #endif
         MainWindow = new Window();
-//-:cnd:noEmit
-#if DEBUG
-        MainWindow.UseStudio();
-#endif
-//+:cnd:noEmit
 
 #if mauiEmbedding
 //-:cnd:noEmit
@@ -127,8 +133,11 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
         {
 #if __WASM__
             builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
-#elif __IOS__ || __MACCATALYST__
+#elif __IOS__
             builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
+
+            // Log to the Visual Studio Debug console
+            builder.AddConsole();
 #else
             builder.AddConsole();
 #endif

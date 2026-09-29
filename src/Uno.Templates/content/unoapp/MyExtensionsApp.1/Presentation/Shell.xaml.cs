@@ -10,7 +10,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
         this.Content(
             new Border()
                 .Child(
-    #if useToolkit
+    #if useExtendedSplashScreen
                     new ExtendedSplashScreen()
                         .Name(out var splash)
                         .HorizontalAlignment(HorizontalAlignment.Stretch)

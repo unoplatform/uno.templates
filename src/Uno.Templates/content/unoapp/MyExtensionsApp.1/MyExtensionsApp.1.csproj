@@ -31,7 +31,7 @@
     <!--#endif-->
 
     <!--
-      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+      UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features
     -->
     <UnoFeatures>
@@ -45,12 +45,14 @@
       <!--#endif-->
       <!--#elif (useCupertino)-->
       Cupertino;
+      <!--#elif (useSimpleTheme)-->
+      SimpleTheme;
       <!--#endif-->
       <!--#if (useUnoLottie)-->
       Lottie;
       <!--#endif-->
-      <!--#if (mediaElement)-->
-      MediaElement;
+      <!--#if (useMediaPlayerElement)-->
+      MediaPlayerElement;
       <!--#endif-->
       <!--#if (unoSvg)-->
       Svg;
@@ -82,8 +84,16 @@
       <!--#if (useConfiguration)-->
       Configuration;
       <!--#endif-->
-      <!--#if (useHttp)-->
+      <!--#if (useHttpBasic)-->
       Http;
+      Serialization;
+      <!--#endif-->      
+      <!--#if (useHttpRefit)-->
+      HttpRefit;
+      Serialization;
+      <!--#endif-->
+      <!--#if (useHttpKiota)-->
+      HttpKiota;
       Serialization;
       <!--#endif-->
       <!--#if (useLocalization)-->
@@ -101,6 +111,18 @@
       <!--#endif-->
       <!--#if (useThemeService)-->
       ThemeService;
+      <!--#endif-->
+      <!--#if (useSkiaRenderer)-->
+      SkiaRenderer;
+      <!--#endif-->
+      <!--#if (useAndroidTV)-->
+      AndroidTV;
+      <!--#endif-->
+      <!--#if (useAndroidAuto)-->
+      AndroidAuto;
+      <!--#endif-->
+      <!--#if (useAndroidWear)-->
+      AndroidWear;
       <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>

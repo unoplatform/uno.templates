@@ -8,17 +8,27 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Com.Nostra13.Universalimageloader.Core;
 using Microsoft.UI.Xaml.Media;
+using Uno.UI.Hosting;
+//+:cnd:noEmit
+#if (!useSkiaRenderer)
+using Com.Nostra13.Universalimageloader.Core;
+#endif
+//-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;
 
 [global::Android.App.ApplicationAttribute(
     Label = "@string/ApplicationName",
     Icon = "@mipmap/icon",
+//+:cnd:noEmit
+#if useAndroidTV
+    Banner = "@drawable/banner",
+#endif
+//-:cnd:noEmit
     LargeHeap = true,
     HardwareAccelerated = true,
-    Theme = "@style/AppTheme"
+    Theme = "@style/Theme.App.Starting"
 )]
 public class Application : Microsoft.UI.Xaml.NativeApplication
 {
@@ -32,11 +42,23 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
 #endif
 //-:cnd:noEmit
     public Application(IntPtr javaReference, JniHandleOwnership transfer)
-        : base(() => new App(), javaReference, transfer)
+        : base(javaReference, transfer)
     {
+//+:cnd:noEmit
+#if (!useSkiaRenderer)
         ConfigureUniversalImageLoader();
+#endif
+//-:cnd:noEmit
     }
 
+    protected override UnoPlatformHost CreateHost() =>
+        UnoPlatformHostBuilder.Create()
+            .App(() => new App())
+            .UseAndroid()
+            .Build();
+
+//+:cnd:noEmit
+#if (!useSkiaRenderer)
     private static void ConfigureUniversalImageLoader()
     {
         // Create global configuration and initialize ImageLoader with this config
@@ -48,5 +70,7 @@ public class Application : Microsoft.UI.Xaml.NativeApplication
 
         ImageSource.DefaultImageLoader = ImageLoader.Instance.LoadImageAsync;
     }
+#endif
+//-:cnd:noEmit
 }
 

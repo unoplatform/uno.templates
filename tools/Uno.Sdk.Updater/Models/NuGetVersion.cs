@@ -24,7 +24,7 @@ internal readonly struct NuGetVersion : IComparable<NuGetVersion>
     public static NuGetVersion Parse(string originalVersion) =>
         TryParse(originalVersion, out var nugetVersion)
             ? nugetVersion
-            : throw new FormatException("Invalid version format");
+            : throw new FormatException($"Invalid version format (input was [{originalVersion}])");
 
     public static bool TryParse(string? originalVersion, out NuGetVersion nugetVersion)
     {

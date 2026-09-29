@@ -8,7 +8,7 @@
       d:DesignHeight="300"
       d:DesignWidth="400">
   <Border Background="{ThemeResource $themeBackgroundBrush$}">
-<!--#if (useToolkit)-->
+<!--#if (useExtendedSplashScreen)-->
     <utu:ExtendedSplashScreen x:Name="Splash"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"

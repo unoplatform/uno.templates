@@ -3,9 +3,11 @@ namespace MyExtensionsApp._1.Presentation;
 
 public partial record MainModel
 {
+//+:cnd:noEmit
+#if useSampleContent
     private INavigator _navigator;
 
-//+:cnd:noEmit
+#endif
     public MainModel(
 #if useLocalization
         IStringLocalizer localizer,
@@ -18,7 +20,9 @@ public partial record MainModel
 #endif
         INavigator navigator)
     {
+#if useSampleContent
         _navigator = navigator;
+#endif
 #if useAuthentication
         _authentication = authentication;
 #endif
@@ -33,6 +37,7 @@ public partial record MainModel
 
     public string? Title { get; }
 
+#if useSampleContent
     public IState<string> Name => State<string>.Value(this, () => string.Empty);
 #if mauiEmbedding
 
@@ -54,6 +59,7 @@ public partial record MainModel
         var name = await Name;
         await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
     }
+#endif
 
 #if useAuthentication
     public async ValueTask Logout(CancellationToken token)
