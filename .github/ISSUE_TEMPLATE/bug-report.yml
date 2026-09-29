@@ -31,7 +31,6 @@ body:
       options:
         - iOS
         - Android
-        - MacCatalyst
         - WebAssembly
         - Skia
         - Windows (WinAppSdk)

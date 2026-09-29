@@ -1,0 +1,69 @@
+name: "Sign Packages"
+description: "Sign Packages"
+
+inputs:
+  sign-client-id:
+    description: "The client id to use for signing"
+    required: true
+  sign-tenant-id:
+    description: "The tenant id to use for signing"
+    required: true
+  sign-azure-subscription-id:
+    description: "The azure subscription to use for signing"
+    required: true
+  sign-key-vault-url:
+    description: "The key vault url to use for signing"
+    required: true
+  sign-key-vault-cert-id:
+    description: "The key vault certificate id to use for signing"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+
+  - name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+      name: nuget-packages
+      path: artifacts\NuGet
+
+  - name: Setup .NET SDK
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: '9.0.300'
+
+  - name: Setup SignClient
+    shell: pwsh
+    run: dotnet tool install --tool-path . sign --version 0.9.1-beta.25278.1
+
+  # Login to Azure using a ServicePrincipal configured to authenticate against a GitHub Action
+  - name: 'Az CLI login'
+    uses: azure/login@v1
+    with:
+      allow-no-subscriptions: true
+      client-id: ${{ inputs.sign-client-id }}
+      tenant-id: ${{ inputs.sign-tenant-id }}
+      subscription-id: ${{ inputs.sign-azure-subscription-id }}
+
+  # Run the signing command
+  - name: Sign artifacts
+    shell: pwsh
+    run: >
+      ./sign code azure-key-vault
+      artifacts\NuGet\*.nupkg
+      --publisher-name "Uno.Templates"
+      --description "Uno.Templates"
+      --description-url "https://github.com/${{ env.GITHUB_REPOSITORY }}"
+      --azure-key-vault-managed-identity true
+      --azure-key-vault-url "${{ inputs.sign-key-vault-url }}"
+      --azure-key-vault-certificate "${{ inputs.sign-key-vault-cert-id }}"
+      --verbosity information
+
+  - name: Upload Signed Artifacts
+    uses: actions/upload-artifact@v4
+    with:
+      name: NuGet-Signed
+      path: .\artifacts\NuGet

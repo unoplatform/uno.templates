@@ -1,0 +1,10 @@
+<Project>
+	<!--
+		Graphics2DSK references Graphics3DGL without a package dependency, which the net11 iOS CoreTypeMap
+		linker step can't resolve (MT2390). Remove once unoplatform/uno#24770 ships:
+		https://github.com/unoplatform/uno.templates/issues/2283
+	-->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net11.0-ios'))">
+		<_UnoProjectSystemPackageReference Include="Uno.WinUI.Graphics3DGL" ProjectSystem="true" />
+	</ItemGroup>
+</Project>

@@ -21,7 +21,7 @@
 
 	<PropertyGroup>
 		<Description>Templates for creating Uno Platform apps and libraries</Description>
-		<PackageTags>dotnet-new;templates;uno-platform;webassembly;ios;android;uwp;winui;macos;winappsdk</PackageTags>
+		<PackageTags>dotnet-new;templates;uno-platform;webassembly;ios;android;winui;macos;winappsdk</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,8 +35,8 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoSdkVersion" ReplacementText="$(PackageVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet8" ReplacementText="$(UnoWasmBootstrapVersionNet8)"/>
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet9" ReplacementText="$(UnoWasmBootstrapVersionNet9)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet10" ReplacementText="$(UnoWasmBootstrapVersionNet10)"/>
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet11" ReplacementText="$(UnoWasmBootstrapVersionNet11)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultXamarinGoogleAndroidMaterial" ReplacementText="$(XamarinGoogleAndroidMaterialVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoCoreLoggingVersion" ReplacementText="$(UnoCoreLoggingVersion)" />
@@ -58,11 +58,11 @@
 
 		<RemoveDir Directories="$(TemplateContentFolder)" />
 
-		<!-- Ensure we keep the .gitignore up to date with the latest changes to the official VisualStudio.gitignore -->
+		<!-- Ensure we keep the .gitignore up to date with the latest changes to the official .gitignore provided by dotnet templates-->
 		<DownloadFile
 			DestinationFolder="$(TemplateContentFolder)/unoapp"
 			DestinationFileName=".gitignore"
-			SourceUrl="https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore"
+			SourceUrl="https://raw.githubusercontent.com/dotnet/sdk/refs/heads/main/template_feed/Microsoft.DotNet.Common.ItemTemplates/content/Gitignore/.gitignore"
 			Condition="!Exists('$(TemplateContentFolder)/unoapp/.gitignore')" />
 
 		<!-- Add our custom ignore for Single TFM targeting -->
@@ -71,8 +71,6 @@
 		<Copy SourceFiles="@(TemplateFile)" DestinationFiles="$(TemplateContentFolder)/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/GitHub/Install-WindowsSdkISO.cips" DestinationFiles="$(TemplateContentFolder)/unoapp/AzurePipelines/Install-WindowsSdkISO.cips" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1.Server/WeatherForecast.cs" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/WeatherForecast.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1/Models/WeatherForecast.cs" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="content/unoapp/MyExtensionsApp.1.DataContracts/Serialization/WeatherForecastContext.cs" DestinationFiles="$(TemplateContentFolder)/unoapp/MyExtensionsApp.1/Serialization/WeatherForecastContext.cs" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(MauiControlsTemplateFile)" DestinationFiles="$(TemplateContentFolder)/unomauilib/%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" DestinationFiles="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.csproj" SkipUnchangedFiles="false" />
 		<Delete Files="$(TemplateContentFolder)/unomauilib/MyExtensionsApp.1.MauiControls.csproj" />

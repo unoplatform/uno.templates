@@ -15,7 +15,7 @@
   "name": "Uno Platform Class Library",
   "identity": "Uno.Platform.UnoLib",
   "groupIdentity": "Uno.Platform.BlankLibrary",
-  "description": "Template for creating a class library for the Uno Platform that targets WinUI, Android, iOS, MacCatalyst, WebAssembly and Skia",
+  "description": "Template for creating a class library for the Uno Platform that targets WinUI, Android, iOS, WebAssembly and Skia",
   "precedence": "6001",
   "tags": {
     "language": "C#",
@@ -31,9 +31,7 @@
     "8D9F8CF0-E178-402D-8D40-A88B7B5F3D42", // Android
     "91D74A40-E440-42AD-B51F-C2D641C49384", // iOS
     "B445DF73-AC9E-4276-9FBA-7CB5AD5D2518",
-    "3EA9E612-E717-4E55-9034-DE653429FEFD", // WPF
-    "3EA9E612-E717-4E55-9034-C415CD62AF9A", // UWP
-    "2B1FDFB6-C93C-4CA1-A6AB-528C4B3654B9" // UWP
+    "3EA9E612-E717-4E55-9034-DE653429FEFD" // WPF
   ],
   "symbols": {
     "tfm": {
@@ -42,18 +40,18 @@
       "datatype": "choice",
       "enableQuotelessLiterals": true,
       "replaces": "$baseTargetFramework$",
-      "defaultValue": "net9.0",
+      "defaultValue": "net10.0",
       "description": "Select the .NET version of your solution",
       "choices": [
         {
-          "choice": "net8.0",
-          "displayName": ".NET 8.0",
-          "description": "Target .NET 8.0 (Long Term Support)"
+          "choice": "net10.0",
+          "displayName": ".NET 10.0",
+          "description": "Target .NET 10.0 (Long Term Support)"
         },
         {
-          "choice": "net9.0",
-          "displayName": ".NET 9.0",
-          "description": "Target .NET 9.0 (Standard Term Support)"
+          "choice": "net11.0",
+          "displayName": ".NET 11.0",
+          "description": "Target .NET 11.0 (Standard Term Support)"
         }
       ]
     },
@@ -67,7 +65,23 @@
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "true"
-    }
+    },
+    "renderer": {
+    "type": "parameter",
+    "datatype": "choice",
+    "allowMultipleValues": false,
+    "enableQuotelessLiterals": true,
+    "defaultValue": "skia",
+    "choices": [
+      { "choice": "skia",   "displayName": "Skia" },
+      { "choice": "native", "displayName": "Native" }
+    ]
+  },
+  "useSkiaRenderer": {
+    "type": "computed",
+    "datatype": "bool",
+    "value": "(renderer == 'skia')"
+  }
   },
   "primaryOutputs": [
     {

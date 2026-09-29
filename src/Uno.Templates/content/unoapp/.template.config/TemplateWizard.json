@@ -1,4 +1,4 @@
-﻿{
+{
 	"NavigationElements": [
 		{
 			"DisplayText": "Framework",
@@ -8,7 +8,23 @@
 		{
 			"DisplayText": "Platforms",
 			"NavigationId": "Platforms",
-			"Description": "Select which platforms the application is going to target"
+			"Description": "Select which platforms the application is going to target",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		{
 			"DisplayText": "Presentation",
@@ -70,26 +86,35 @@
 					"configuration": "false",
 					"cultures": "es|fr|pt-BR",
 					"dependencyInjection": "false",
-					"http": "false",
+					"http": "none",
 					"localization": "false",
 					"logging": "none",
 					"markup": "xaml",
-					"mediaElement": "false",
+					"mediaPlayerElement": "false",
 					"navigation": "blank",
-					"platforms": "android|ios|maccatalyst|wasm|windows|desktop",
-          "rider": "true",
+					"platforms": "android|ios|wasm|desktop",
+					"rider": "true",
+					"sample": "false",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
-					"tfm": "net9.0",
+					"tfm": "net10.0",
 					"toolkit": "false",
+					"shell": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					"wasmMultiThreading": "false",
+					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+					// and we recently removed .NET 8 option from the template (see PR #1373).
+					// This feature will be re-enabled once multi-threading becomes available again.
+					//"wasmMultiThreading": "false",
 					"dspGenerator": "false",
 					"themeService": "false",
-					"continuousIntegration": "none"
+					"continuousIntegration": "none",
+					"renderer": "skia",
+					"includeAndroidTV": "false",
+					"includeAndroidAuto": "false",
+					"includeAndroidWear": "false"
 				},
 				"Features": [
 					".NET 8",
@@ -102,38 +127,47 @@
 				"Icon": "/Assets/Template_Recommended.svg",
 				"IsDefault": true,
 				"Parameters": {
-					"appTheme": "material",
+					"appTheme": "simple",
 					"architecture": "mvux",
 					"authentication": "none",
 					"configuration": "true",
 					"cultures": "es|fr|pt-BR",
 					"dependencyInjection": "true",
-					"http": "true",
+					"http": "kiota",
 					"localization": "true",
 					"logging": "default",
 					"markup": "xaml",
-					"mediaElement": "false",
+					"mediaPlayerElement": "false",
 					"navigation": "regions",
-					"platforms": "android|ios|maccatalyst|wasm|windows|desktop",
-          "rider": "true",
+					"platforms": "android|ios|wasm|desktop",
+					"rider": "true",
+					"sample": "false",
 					"server": "false",
 					"skipRestore": "true",
 					"tests": "none",
-					"tfm": "net9.0",
+					"tfm": "net10.0",
 					"toolkit": "true",
+					"shell": "false",
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					"wasmMultiThreading": "false",
+					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+					// and we recently removed .NET 8 option from the template (see PR #1373).
+					// This feature will be re-enabled once multi-threading becomes available again.
+					//"wasmMultiThreading": "false",
 					"dspGenerator": "true",
 					"themeService": "true",
-					"continuousIntegration": "none"
+					"continuousIntegration": "none",
+					"renderer": "skia",
+					"includeAndroidTV": "false",
+					"includeAndroidAuto": "false",
+					"includeAndroidWear": "false"
 				},
 				"Features": [
 					".NET 8",
 					"XAML",
 					"MVUX",
-					"Material",
+					"Simple",
 					"Configuration",
 					"Localization",
 					"Testing"
@@ -148,7 +182,7 @@
 				"Icon": "/Assets/Template_Custom.svg"
 			}
 		],
-		"Platforms": [ "Android", "iOS", "WebAssembly", "Windows", "macOS (Catalyst)", "Desktop" ]
+		"Platforms": [ "Android", "iOS", "WebAssembly", "Desktops", "Windows App SDK" ]
 	},
 	"Sections": {
 		"Application": [
@@ -173,7 +207,12 @@
 		"Extensions": [
 			{
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "dependencyInjection", "configuration", "http", "localization", "serialization" ]
+				"SymbolIds": [ "dependencyInjection", "configuration", "localization", "serialization" ]
+			},
+			{
+				"SectionType": "SingleSelect",
+				"Title": "HTTP",
+				"SymbolId": "http"
 			},
 			{
 				"SectionType": "SingleSelect",
@@ -198,7 +237,16 @@
 			{
 				"Title": "",
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+				// and we recently removed .NET 8 option from the template (see PR #1373).
+				// This feature will be re-enabled once multi-threading becomes available again.
+				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
+				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+			}
+			,
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "renderer"
 			}
 		],
 		"Framework": [
@@ -220,7 +268,7 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
 				"Title": "Mobile",
-				"SymbolIds": [ "ios", "android" ]
+				"SymbolIds": [ "android", "ios" ]
 			},
 			{
 				"SectionType": "MultiSelect",
@@ -232,7 +280,12 @@
 				"SectionType": "MultiSelect",
 				"SymbolId": "platforms",
 				"Title": "Desktop",
-				"SymbolIds": [ "windows", "maccatalyst", "desktop" ]
+				"SymbolIds": [ "desktop", "windows" ]
+			},
+			{
+				"Title": "Android Devices",
+				"SectionType": "MultiSelect",
+				"SymbolIds": [ "includeAndroidTV", "includeAndroidAuto", "includeAndroidWear" ]
 			}
 		],
 		"Presentation": [
@@ -262,7 +315,7 @@
 				"Title": "",
 				"SectionType": "SingleSelect",
 				"SymbolId": "appTheme",
-				"Choices": [ "material", "fluent", "DPS" ]
+				"Choices": [ "simple", "material", "fluent", "DPS" ]
 			},
 			//{
 			//    "SectionType": "Color",
@@ -295,11 +348,10 @@
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [
-						"maccatalyst",
 						"ios",
 						"android"
 					],
-					"MoreInformation": "Application ID is only used for mobile (iOS, Android, MacCatalyst) platform"
+					"MoreInformation": "Application ID is only used for mobile (iOS, Android) platforms"
 				}
 			}
 		},
@@ -312,21 +364,25 @@
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "windows" ],
-					"MoreInformation": "Publisher is only required for Windows platform"
+					"MoreInformation": "Publisher is only required for the Windows App SDK platform"
 				}
 			}
 		},
 		"appTheme.cupertino": {
-			"Sequence": 3,
+			"Sequence": 4,
 			"Icon": "/Assets/Theme.Cupertino.svg"
 		},
 		"appTheme.fluent": {
-			"Sequence": 2,
+			"Sequence": 3,
 			"Icon": "/Assets/Theme.Fluent.svg"
 		},
 		"appTheme.material": {
-			"Sequence": 1,
+			"Sequence": 2,
 			"Icon": "/Assets/Theme.Material.svg"
+		},
+		"appTheme.simple": {
+			"Sequence": 1,
+			"Icon": "/Assets/Theme.Simple.svg"
 		},
 		"architecture.none": {
 			"Sequence": 1,
@@ -334,7 +390,7 @@
 			"Requires": {
 				"navigation": {
 					"RequiredValues": [ "blank" ],
-					"MoreInformation": "Navigation needs to be Blank"
+					"MoreInformation": "Navigation needs to be set to Blank"
 				}
 			}
 		},
@@ -367,10 +423,9 @@
 				},
 				"platforms": {
 					"RequiredValues": [
-						"!maccatalyst",
 						"!desktop"
 					],
-					"MoreInformation": "MSAL only supported on iOS, Android, Windows and WASM"
+					"MoreInformation": "MSAL only supported on iOS, Android, WebAssembly and Windows App SDK"
 				}
 			}
 		},
@@ -413,19 +468,52 @@
 		"dependencyInjection": {
 			"Icon": "/Assets/Extensions.DependencyInjection.svg"
 		},
-		"http": {
+		"http.none": {
+			"Icon": "/Assets/Presentation.None.svg",
+			"Sequence": 1
+		  },
+		  "http.basic": {
 			"Icon": "/Assets/Extensions.Http.svg",
+			"Sequence": 2,
 			"Requires": {
 				"dependencyInjection": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
 				},
-				"configuration":{
+				"configuration": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Configuration is required"
 				}
 			}
 		},
+		  "http.kiota": {
+			"Icon": "/Assets/Extensions.Http.Kiota.svg",
+			"Sequence": 3,
+			"Requires": {
+				"dependencyInjection": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Dependency Injection is required"
+				},
+				"configuration": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Configuration is required"
+				}
+			}
+		  },
+		  "http.refit": {
+			"Icon": "/Assets/Extensions.Http.Refit.svg",
+			"Sequence": 4,
+			"Requires": {
+				"dependencyInjection": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Dependency Injection is required"
+				},
+				"configuration": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Configuration is required"
+				}
+			}
+		  },
 		"localization": {
 			"Icon": "/Assets/Extensions.Localization.svg",
 			"Requires": {
@@ -433,7 +521,7 @@
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Dependency Injection is required"
 				},
-				"configuration":{
+				"configuration": {
 					"RequiredValues": [ "true" ],
 					"MoreInformation": "Configuration is required"
 				}
@@ -493,25 +581,100 @@
 			}
 		},
 		"platforms.android": {
-			"Icon": "/Assets/Platforms.Android.svg"
+			"Icon": "/Assets/Platforms.Android.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.ios": {
-
-			"Icon": "/Assets/Platforms.iOS.svg"
+			"Icon": "/Assets/Platforms.iOS.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.desktop": {
-			"Icon": "/Assets/Platforms.Desktop.svg"
-		},
-		"platforms.maccatalyst": {
-
-			"Icon": "/Assets/Platforms.Catalyst.svg"
+			"Icon": "/Assets/Platforms.Desktop.svg",
+			"Tag": {
+				"Value": "Skia"
+			}
 		},
 		"platforms.wasm": {
-			"Icon": "/Assets/Platforms.Wasm.svg"
+			"Icon": "/Assets/Platforms.Wasm.svg",
+			"Tag": {
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "native",
+								"display": "Native"
+							},
+							{
+								"value": "skia",
+								"display": "Skia"
+							}
+						]
+					}
+				}
+			}
 		},
 		"platforms.windows": {
-
-			"Icon": "/Assets/Platforms.Windows.svg"
+			"Icon": "/Assets/Platforms.Windows.svg",
+			"Tag": {
+				"Value": "Native"
+			}
+		},
+		"includeAndroidTV": {
+			"Icon": "/Assets/Platforms.AndroidTV.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Android TV support."
+				}
+			}
+		},
+		"includeAndroidAuto": {
+			"Icon": "/Assets/Platforms.AndroidAuto.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Android Auto support."
+				}
+			}
+		},
+		"includeAndroidWear": {
+			"Icon": "/Assets/Platforms.AndroidWear.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android" ],
+					"MoreInformation": "Android platform must be selected to enable Wear OS support."
+				}
+			}
 		},
 		"serialization": {
 			"Icon": "/Assets/Extensions.Serialization.svg",
@@ -549,16 +712,32 @@
 			"Icon": "/Assets/Framework.NET8.svg"
 		},
 		"tfm.net9.0": {
-			"Sequence": 2,
+			"Sequence": 1,
 			"Icon": "/Assets/Framework.NET9.svg"
+		},
+		"tfm.net10.0": {
+			"Sequence": 2,
+			"Icon": "/Assets/Framework.NET10.svg"
+		},
+		"sample": {
+			"Icon": "/Assets/Features.Toolkit.svg"
 		},
 		"toolkit": {
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
+		"shell": {
+			"Icon": "/Assets/Features.Toolkit.svg"
+		},
+		"renderer.skia": {
+			"Icon": "/Assets/Features.SkiaRendering.svg"
+		},
+		"renderer.native": {
+			"Icon": "/Assets/Features.NativeRendering.svg"
+		},
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"
 		},
-		"mediaElement": {
+		"mediaPlayerElement": {
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
 		"wasmPwaManifest": {
@@ -570,19 +749,22 @@
 				}
 			}
 		},
-		"wasmMultiThreading": {
-			"Icon": "/Assets/Features.WasmMultiThreading.svg",
-			"Requires": {
-				"platforms": {
-					"RequiredValues": [ "wasm" ],
-					"MoreInformation": "WebAssembly platform is required"
-				},
-				"tfm": {
-					"RequiredValues": [ "net8.0" ],
-					"MoreInformation": "Only supported on net8.0"
-				}
-			}
-		},
+		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+		// and we recently removed .NET 8 option from the template (see PR #1373).
+		// This feature will be re-enabled once multi-threading becomes available again.
+		// "wasmMultiThreading": {
+		// 	"Icon": "/Assets/Features.WasmMultiThreading.svg",
+		// 	"Requires": {
+		// 		"platforms": {
+		// 			"RequiredValues": [ "wasm" ],
+		// 			"MoreInformation": "WebAssembly platform is required"
+		// 		},
+		// 		"tfm": {
+		// 			"RequiredValues": [ "net8.0" ],
+		// 			"MoreInformation": "Only supported on net8.0"
+		// 		}
+		// 	}
+		// },
 		"mauiEmbedding": {
 			"Icon": "/Assets/Features.EmbedMAUI.svg"
 		},
@@ -638,17 +820,26 @@
 		"cultures",
 		"logging",
 		"navigation",
+		"sample",
 		"toolkit",
+		"shell",
 		"authentication",
 		"vscode",
 		"wasmPwaManifest",
 		"mauiEmbedding",
-		"wasmMultiThreading",
+		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
+		// and we recently removed .NET 8 option from the template (see PR #1373).
+		// This feature will be re-enabled once multi-threading becomes available again.
+		//"wasmMultiThreading",
 		"dspGenerator",
 		"themeService",
 		"continuousIntegration",
 		"isCustomized",
-		"mediaElement"
+		"mediaPlayerElement",
+		"renderer",
+		"includeAndroidTV",
+		"includeAndroidAuto",
+		"includeAndroidWear"
 	],
 	"PackagesToUpdate": [
 		{
@@ -699,7 +890,7 @@
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",
 			"UsePrerelease": {
-				"tfm": [ "net9.0" ]
+				"tfm": [ "net10.0", "net11.0" ]
 			}
 		},
 		{

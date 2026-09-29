@@ -1,8 +1,8 @@
-using Uno.UI.Runtime.Skia;
+using Uno.UI.Hosting;
 
 namespace MyExtensionsApp._1;
 
-public class Program
+internal class Program
 {
     [STAThread]
     public static void Main(string[] args)
@@ -10,15 +10,15 @@ public class Program
 //+:cnd:noEmit
 #if (!useDependencyInjection && useLoggingFallback)
         App.InitializeLogging();
-
 #endif
 //-:cnd:noEmit
-        var host = SkiaHostBuilder.Create()
+
+        var host = UnoPlatformHostBuilder.Create()
             .App(() => new App())
             .UseX11()
             .UseLinuxFrameBuffer()
             .UseMacOS()
-            .UseWindows()
+            .UseWin32()
             .Build();
 
         host.Run();

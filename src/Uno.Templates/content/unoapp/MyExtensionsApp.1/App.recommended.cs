@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Uno.Resizetizer;
 
 //-:cnd:noEmit
@@ -19,8 +20,10 @@ public partial class App : Application
 
 //+:cnd:noEmit
 #if useFrameNav
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected override void OnLaunched(LaunchActivatedEventArgs args)
 #else
+    [SuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "Uno.Extensions APIs are used in a way that is safe for trimming in this template context.")]
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
 #endif
     {
@@ -43,6 +46,17 @@ public partial class App : Application
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #endif
+#elif (useSimpleTheme)
+
+#if useToolkit
+        // Load Uno.UI.Toolkit and Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleToolkitTheme()));
+#else
+        // Load Simple Theme Resources
+        Resources.Build(r => r.Merged(
+            new  SimpleTheme()));
+#endif
 #elif (useToolkit)
 
         // Load Uno.UI.Toolkit Resources
@@ -64,8 +78,12 @@ public partial class App : Application
 #endif
 //+:cnd:noEmit
 #endif
-//-:cnd:noEmit
+#if useMsalAuthentication
+            .Configure((host, window) => host
+#else
             .Configure(host => host
+#endif   
+//-:cnd:noEmit
 #if DEBUG
                 // Switch to Development environment when running in DEBUG
                 .UseEnvironment(Environments.Development)
@@ -117,21 +135,34 @@ public partial class App : Application
                 // Enable localization (see appsettings.json for supported languages)
                 .UseLocalization()
 #endif
-#if useHttp
+#if (useServer && (useHttpKiota || useHttpRefit))
                 // Register Json serializers (ISerializer and ISerializer)
                 .UseSerialization((context, services) => services
                     .AddContentSerializer(context)
                     .AddJsonTypeInfo(WeatherForecastContext.Default.IImmutableListWeatherForecast))
-                .UseHttp((context, services) => services
-                    // Register HttpClient
+#endif
+#if useHttp
+                .UseHttp((context, services) => {
 //-:cnd:noEmit
 #if DEBUG
-                    // DelegatingHandler will be automatically injected into Refit Client
-                    .AddTransient<DelegatingHandler, DebugHttpHandler>()
+                // DelegatingHandler will be automatically injected
+                services.AddTransient<DelegatingHandler, DebugHttpHandler>();
 #endif
 //+:cnd:noEmit
-                    .AddSingleton<IWeatherCache, WeatherCache>()
-                    .AddRefitClient<IApiClient>(context))
+#if useServer
+#if useHttpRefit
+                services.AddSingleton<IWeatherCache, WeatherCache>();
+                services.AddRefitClient<IApiClient>(context);
+#elif useHttpKiota
+                services.AddSingleton<IWeatherCache, WeatherCache>();
+                services.AddKiotaClient<WeatherServiceClient>(
+                context,
+                options: new EndpointOptions { Url = context.Configuration["ApiClient:Url"]! }
+                );
+#endif
+#endif
+
+})
 #endif
 #if useAuthentication
                 .UseAuthentication(auth =>
@@ -140,7 +171,7 @@ public partial class App : Application
 #elif useOidcAuthentication
     auth.AddOidc(name: "OidcAuthentication")
 #elif useMsalAuthentication
-    auth.AddMsal(name: "MsalAuthentication")
+    auth.AddMsal(window, name: "MsalAuthentication")
 #elif useCustomAuthentication
     auth.AddCustom(custom =>
             custom
@@ -196,11 +227,6 @@ public partial class App : Application
             );
         MainWindow = builder.Window;
 
-//-:cnd:noEmit
-#if DEBUG
-        MainWindow.UseStudio();
-#endif
-//+:cnd:noEmit
         MainWindow.SetWindowIcon();
 
 #if useFrameNav
@@ -235,31 +261,45 @@ $$EnableDeveloperMode_Frame_MainWindowContent$$
         MainWindow.Activate();
 //+:cnd:noEmit
 #elif (!useAuthentication)
+#if (shell)
 #if (!enableDeveloperMode)
-        Host = await builder.NavigateAsync<Shell>();
+        Host = await builder.NavigateAsync<$navigationRootType$>();
 #else
 $$EnableDeveloperMode_Region_Navigate$$
             ();
 #endif
 #else
+        Host = await MainWindow.InitializeNavigationAsync(
+            () => Task.FromResult(builder.Build()),
+            initialRoute: "Main"
+        );
+#endif
+#else
+        async Task InitialNavigate(IServiceProvider services, INavigator navigator)
+        {
+            var auth = services.GetRequiredService<IAuthenticationService>();
+            var authenticated = await auth.RefreshAsync();
+            if (authenticated)
+            {
+                await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+            }
+            else
+            {
+                await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.ClearBackStack);
+            }
+        }
+#if (shell)
 #if (!enableDeveloperMode)
-        Host = await builder.NavigateAsync<Shell>
+        Host = await builder.NavigateAsync<$navigationRootType$>
 #else
 $$EnableDeveloperMode_Region_Navigate$$
 #endif
-            (initialNavigate: async (services, navigator) =>
-            {
-                var auth = services.GetRequiredService<IAuthenticationService>();
-                var authenticated = await auth.RefreshAsync();
-                if (authenticated)
-                {
-                    await navigator.NavigateViewModelAsync<$mainRouteViewModel$>(this, qualifier: Qualifiers.Nested);
-                }
-                else
-                {
-                    await navigator.NavigateViewModelAsync<$loginRouteViewModel$>(this, qualifier: Qualifiers.Nested);
-                }
-            });
+            (initialNavigate: InitialNavigate);
+#else
+        Host = await MainWindow.InitializeNavigationAsync(
+            () => Task.FromResult(builder.Build()),
+            initialNavigate: InitialNavigate);
+#endif
 #endif
     }
 #if (useExtensionsNavigation)
@@ -268,14 +308,21 @@ $$EnableDeveloperMode_Region_Navigate$$
     {
 #if (useRegionsNav)
         views.Register(
+#if (shell)
             new ViewMap(ViewModel: typeof($shellRouteViewModel$)),
+#endif
 #if (useAuthentication)
             new ViewMap<LoginPage, $loginRouteViewModel$>(),
 #endif
+#if (useSampleContent)
             new ViewMap<MainPage, $mainRouteViewModel$>(),
             new DataViewMap<SecondPage, $secondRouteViewModel$, Entity>()
+#else
+            new ViewMap<MainPage, $mainRouteViewModel$>()
+#endif
         );
 
+#if (shell)
         routes.Register(
             new RouteMap("", View: views.FindByViewModel<$shellRouteViewModel$>(),
                 Nested:
@@ -284,10 +331,23 @@ $$EnableDeveloperMode_Region_Navigate$$
                     new ("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
 #endif
                     new ("Main", View: views.FindByViewModel<$mainRouteViewModel$>(), IsDefault:true),
+#if (useSampleContent)
                     new ("Second", View: views.FindByViewModel<$secondRouteViewModel$>()),
+#endif
                 ]
             )
         );
+#else
+        routes.Register(
+#if (useAuthentication)
+            new RouteMap("Login", View: views.FindByViewModel<$loginRouteViewModel$>()),
+#endif
+            new RouteMap("Main", View: views.FindByViewModel<$mainRouteViewModel$>(), IsDefault:true)
+#if (useSampleContent)
+            , new RouteMap("Second", View: views.FindByViewModel<$secondRouteViewModel$>())
+#endif
+        );
+#endif
 #endif
     }
 #endif

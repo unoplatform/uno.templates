@@ -331,3 +331,6 @@ ASALocalRun/
 
 # Preserve Template files
 !**/Uno.Templates/**/Properties/**/*
+
+# Include .csproj.user files from templates
+!src/Uno.Templates/content/**/*.csproj.user

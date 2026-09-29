@@ -20,10 +20,7 @@ public sealed partial class SecondPage : Page
                 .Children(
 #if useToolkit
                 new NavigationBar()
-                    .Content("Second Page")
-                    .MainCommand(new AppBarButton()
-                        .Icon(new BitmapIcon().UriSource(new Uri("ms-appx:///Assets/Images/back.png")))
-                    ),
+                    .Content("Second Page"),
 #else
                 new TextBlock()
                     .Text("Second Page")
