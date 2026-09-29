@@ -288,11 +288,12 @@ jobs:
       with:
         DotNetVersion: ${{ env.DotNetVersion }}
 
+    # Desktop-only build: skip the Android/Java checks (this job doesn't install a JDK).
     - name: 'Uno Check (Linux)'
       shell: pwsh
       run: |
         & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-        uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk
+        uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip openjdk --skip dotnetnewunotemplates --skip unosdk
       env:
         ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
 
