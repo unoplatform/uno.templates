@@ -152,17 +152,15 @@ runs:
             }
         }
 
-        # generate matrix for net9
-        # Disabled: Uno 7.0 packages have no net9.0 assets (NU1202)
-        # https://github.com/unoplatform/uno.templates/issues/2276
-        for ($i = 0; $false -and $i -lt $tests.Count; $i++)
+        # Generate matrix for net11
+        for ($i = 0; $i -lt $tests.Count; $i++)
         {
-            $currentGroup += $tests[$i] + " -tfm net9.0";
+            $currentGroup += $tests[$i] + " -tfm net11.0";
 
             if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
                 $newGroup = @{
-                    'groupName' = "Group$($matrixGroups.Count)_net9"
-                    'unocheckArguments' = ''
+                    'groupName' = "Group$($matrixGroups.Count)_net11"
+                    'unocheckArguments' = '--pre-major'
                     'validations' = ($currentGroup -join "`r`n")
                 };
                 $matrixGroups += $newGroup;

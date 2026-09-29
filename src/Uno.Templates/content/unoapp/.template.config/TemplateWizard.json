@@ -890,7 +890,7 @@
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",
 			"UsePrerelease": {
-				"tfm": [ "net10.0" ]
+				"tfm": [ "net10.0", "net11.0" ]
 			}
 		},
 		{

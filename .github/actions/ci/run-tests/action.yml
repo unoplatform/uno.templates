@@ -48,20 +48,20 @@ runs:
         $ValidationUnoCheckVersion = "invalid"
         $IosRuntimeVersion = ""
 
-        if ($templateArgs -match 'net9.0')
-        {
-          $dotnetVersion = '9.0.308'
-          $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
-          $XcodeVersion = $env:XcodeVersionNet9
-          $IosRuntimeVersion = '26.2'
-        }
-
         if ($templateArgs -match 'net10.0')
         {
           $dotnetVersion = '10.0.100'
           $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
           $XcodeVersion = $env:XcodeVersionNet10
           $IosRuntimeVersion = '26.2'
+        }
+
+        if ($templateArgs -match 'net11.0')
+        {
+          $dotnetVersion = $env:ValidationDotNetVersionNet11
+          $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet11
+          $XcodeVersion = $env:XcodeVersionNet11
+          $IosRuntimeVersion = '26.5'
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
@@ -75,10 +75,11 @@ runs:
         echo "IosRuntimeVersion=$IosRuntimeVersion" >> $env:GITHUB_ENV
     env:
       TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
+      ValidationDotNetVersionNet11: ${{ env.ValidationDotNetVersionNet11 }}
       ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
-      ValidationUnoCheckVersionNet9: ${{ env.ValidationUnoCheckVersionNet9 }}
+      ValidationUnoCheckVersionNet11: ${{ env.ValidationUnoCheckVersionNet11 }}
       XcodeVersionNet10: ${{ env.XcodeVersionNet10 }}
-      XcodeVersionNet9: ${{ env.XcodeVersionNet9 }}
+      XcodeVersionNet11: ${{ env.XcodeVersionNet11 }}
 
   - name: Cache EMSDK
     id: cache-emsdk
@@ -284,15 +285,6 @@ runs:
           continue
         }
 
-        if ($testParams.Contains('net9.0') -and $IsWindows)
-        {
-          if($testName -eq "Issue396")
-          {
-            echo "Skipping $testName ($testParams) on net9.0 Windows because of https://github.com/unoplatform/uno.csharpmarkup/issues/787"
-            continue
-          }
-        }
-
         if ($testParams.Contains('net8.0') -and $IsMacOS -and ($testParams.Contains('-auth msal') -or $testParams.Contains('auth=msal')))
         {
             echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
@@ -302,12 +294,6 @@ runs:
         if ($testParams.Contains('net8.0') -and !$testParams.Contains('--renderer native'))
         {
             echo "Skipping Skia Everywhere test for net8"
-            continue
-        }
-
-        if ($testParams.Contains('net9.0') -and $testName -eq "mauilib_MacOS")
-        {
-            echo "Invalid net9 support: The SupportedOSPlatformVersion value 14.0 in the project file is lower than the minimum value 15.0"
             continue
         }
 
@@ -352,7 +338,9 @@ runs:
             "-p:UseInterpreter=true",
             "-p:_IsDedupEnabled=false",
             "-p:MtouchInterpreter=all",
-            "-p:TreatWarningsAsErrors=true"
+            "-p:TreatWarningsAsErrors=true",
+            # https://github.com/unoplatform/uno.templates/issues/2283
+            "-p:CustomAfterMicrosoftCommonTargets=${{ github.action_path }}/Graphics3DGL.iOS.Workaround.targets"
           );
 
           if ($IsMacos)
