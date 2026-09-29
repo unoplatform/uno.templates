@@ -342,6 +342,13 @@ runs:
             $extraArgs += "-p:ValidateXcodeVersion=false"
           }
 
+          # The WebGpu package sets a relative EM_CACHE outside Windows, which emcc rejects.
+          # Remove once https://github.com/unoplatform/uno/issues/24823 ships.
+          if (!$IsWindows -and $testParams.Contains('--renderer webgpu'))
+          {
+            $extraArgs += "-p:WgpuWasmCacheDir=$PWD/obj/wgpu-wasm-emcache/"
+          }
+
           & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
           if ($LASTEXITCODE -ne 0)
           {
