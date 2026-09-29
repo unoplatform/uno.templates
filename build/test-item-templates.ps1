@@ -63,6 +63,10 @@ function Test-Items {
     try {
         Invoke-Dotnet new unoapp -preset $Preset -presentation $Presentation -markup $Markup -platforms desktop -n $appName -o . --force
 
+        # unoapp emits a solution layout; items must be added inside the project folder,
+        # both to be compiled and for the RootNamespace bind to find the project.
+        Set-Location (Join-Path $appDir $appName)
+
         $markupArgs = @("-markup", $Markup)
 
         Invoke-Dotnet new uno-page -n SampleItemPage @markupArgs
