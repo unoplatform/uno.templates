@@ -2,7 +2,7 @@
 # Generates an Uno app for each presentation framework, adds every item template,
 # then builds the app (Desktop head) to prove the items compile.
 param(
-    [string]$WorkDir = (Join-Path $env:TEMP "uno-item-template-tests")
+    [string]$WorkDir = (Join-Path ([System.IO.Path]::GetTempPath()) "uno-item-template-tests")
 )
 
 $ErrorActionPreference = "Stop"
