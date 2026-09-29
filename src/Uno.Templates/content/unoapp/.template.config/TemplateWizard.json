@@ -213,6 +213,10 @@
 				// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+			},
+			{
+				"SectionType": "SingleSelect",
+				"SymbolId": "renderer"
 			}
 		],
 		"Framework": [
@@ -635,6 +639,9 @@
 			"Icon": "/Assets/Features.Toolkit.svg"
 		},
 		"renderer.skia": {
+			"Icon": "/Assets/Features.SkiaRendering.svg"
+		},
+		"renderer.webgpu": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
 		"vscode": {

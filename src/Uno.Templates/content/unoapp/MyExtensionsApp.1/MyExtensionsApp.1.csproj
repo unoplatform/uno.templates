@@ -110,6 +110,9 @@
       ThemeService;
       <!--#endif-->
       SkiaRenderer;
+      <!--#if (useWebGpuRenderer)-->
+      WebGpu;
+      <!--#endif-->
       <!--#if (useAndroidTV)-->
       AndroidTV;
       <!--#endif-->
