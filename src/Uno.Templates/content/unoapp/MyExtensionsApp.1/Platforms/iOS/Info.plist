@@ -33,7 +33,6 @@
 		<string>Assets.xcassets/icon.appiconset</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
-<!--#if (useSkiaRenderer)-->
 		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>
@@ -51,7 +50,6 @@
 				</array>
 			</dict>
 		</dict>
-<!--#endif-->
 
 		<!--
 		Adjust this to your application's encryption usage.
