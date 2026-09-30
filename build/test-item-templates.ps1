@@ -45,6 +45,24 @@ function Assert-Namespace {
     }
 }
 
+# A green build only proves the items compile if they are actual project inputs
+# (not generated beside the project). Check every new file against the evaluated items.
+function Assert-ProjectInputs {
+    param([string[]]$Files)
+
+    if (-not $Files) { throw "No generated item files found to check" }
+
+    $json = & dotnet msbuild -getItem:Compile -getItem:Page -getItem:PRIResource -p:TargetFramework=net10.0-desktop
+    if ($LASTEXITCODE -ne 0) { throw "dotnet msbuild -getItem failed (exit $LASTEXITCODE)" }
+
+    $items = ($json | Out-String | ConvertFrom-Json).Items
+    $inputs = @($items.Compile) + @($items.Page) + @($items.PRIResource) | ForEach-Object { $_.FullPath }
+
+    foreach ($file in $Files) {
+        if ($inputs -notcontains $file) { throw "$file is not a project input (Compile/Page/PRIResource)" }
+    }
+}
+
 function Test-Items {
     param([string]$Name, [string]$Preset, [string]$Presentation, [string]$Markup)
 
@@ -67,6 +85,7 @@ function Test-Items {
         # both to be compiled and for the RootNamespace bind to find the project.
         Set-Location (Join-Path $appDir $appName)
 
+        $existing = Get-ChildItem -Recurse -File | ForEach-Object FullName
         $markupArgs = @("-markup", $Markup)
 
         Invoke-Dotnet new uno-page -n SampleItemPage @markupArgs
@@ -92,6 +111,11 @@ function Test-Items {
         Assert-Namespace -File "SampleNamespacedPage$codeBehind" -Expected "Contoso.Custom"
 
         Invoke-Dotnet build -f net10.0-desktop
+
+        $generated = Get-ChildItem -Recurse -File -Include *.cs, *.xaml, *.resw |
+            Where-Object { $_.FullName -notmatch '[\\/](obj|bin)[\\/]' -and $existing -notcontains $_.FullName } |
+            ForEach-Object FullName
+        Assert-ProjectInputs -Files $generated
         Write-Host "PASS: $Name" -ForegroundColor Green
     }
     finally {
