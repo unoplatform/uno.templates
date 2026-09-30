@@ -198,110 +198,77 @@
     "version": "1.14.0.6",
     "packages": [
       "Xamarin.Google.Android.Material"
-    ],
-    "versionOverride": {
-      "net10.0": "1.14.0.6"
-    }
+    ]
   },
   {
     "group": "AndroidXSplashScreen",
     "version": "1.2.0.3",
     "packages": [
       "Xamarin.AndroidX.Core.SplashScreen"
-    ],
-    "versionOverride": {
-      "net10.0": "1.2.0.3"
-    }
+    ]
   },
   {
     "group": "AndroidXAppCompat",
     "version": "1.8.0",
     "packages": [
       "Xamarin.AndroidX.AppCompat"
-    ],
-    "versionOverride": {
-      "net10.0": "1.8.0"
-    }
+    ]
   },
   {
     "group": "AndroidXRecyclerView",
     "version": "1.4.0.6",
     "packages": [
       "Xamarin.AndroidX.RecyclerView"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.6"
-    }
+    ]
   },
   {
     "group": "AndroidXActivity",
     "version": "1.13.0.1",
     "packages": [
       "Xamarin.AndroidX.Activity"
-    ],
-    "versionOverride": {
-      "net10.0": "1.13.0.1"
-    }
+    ]
   },
   {
     "group": "AndroidXBrowser",
     "version": "1.10.0.1",
     "packages": [
       "Xamarin.AndroidX.Browser"
-    ],
-    "versionOverride": {
-      "net10.0": "1.10.0.1"
-    }
+    ]
   },
   {
     "group": "AndroidXSwipeRefreshLayout",
     "version": "1.2.0.3",
     "packages": [
       "Xamarin.AndroidX.SwipeRefreshLayout"
-    ],
-    "versionOverride": {
-      "net10.0": "1.2.0.3"
-    }
+    ]
   },
   {
     "group": "AndroidXLeanback",
     "version": "1.2.0.4",
     "packages": [
       "Xamarin.AndroidX.Leanback"
-    ],
-    "versionOverride": {
-      "net10.0": "1.2.0.4"
-    }
+    ]
   },
   {
     "group": "AndroidXCarApp",
     "version": "1.7.0.4",
     "packages": [
       "Xamarin.AndroidX.Car.App.App"
-    ],
-    "versionOverride": {
-      "net10.0": "1.7.0.4"
-    }
+    ]
   },
   {
     "group": "AndroidXWear",
     "version": "1.4.0.2",
     "packages": [
       "Xamarin.AndroidX.Wear"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.2"
-    }
+    ]
   },
   {
     "group": "AndroidXWearTiles",
     "version": "1.6.2",
     "packages": [
       "Xamarin.AndroidX.Wear.Tiles"
-    ],
-    "versionOverride": {
-      "net10.0": "1.6.2"
-    }
+    ]
   },
   {
     "group": "AndroidXNavigation",
@@ -311,10 +278,7 @@
       "Xamarin.AndroidX.Navigation.Fragment",
       "Xamarin.AndroidX.Navigation.Runtime",
       "Xamarin.AndroidX.Navigation.Common"
-    ],
-    "versionOverride": {
-      "net10.0": "2.9.8.1"
-    }
+    ]
   },
   {
     "group": "AndroidXCollection",
@@ -322,10 +286,7 @@
     "packages": [
       "Xamarin.AndroidX.Collection",
       "Xamarin.AndroidX.Collection.Ktx"
-    ],
-    "versionOverride": {
-      "net10.0": "1.6.0.1"
-    }
+    ]
   },
   {
     "group": "Maui",
