@@ -36,7 +36,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXLeanbackVersion | 1.2.0.4 |
 | AndroidXCarAppVersion | 1.7.0.4 |
 | AndroidXWearVersion | 1.4.0.2 |
-| AndroidXWearTilesVersion | 1.6.1 |
+| AndroidXWearTilesVersion | 1.6.2 |
 | AndroidXNavigationVersion | 2.9.8.1 |
 | AndroidXCollectionVersion | 1.6.0.1 |
 | MauiVersion** | 10.0.110 |
@@ -352,12 +352,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AndroidXWearTiles",
-    "version": "1.6.1",
+    "version": "1.6.2",
     "packages": [
       "Xamarin.AndroidX.Wear.Tiles"
     ],
     "versionOverride": {
-      "net10.0": "1.6.1"
+      "net10.0": "1.6.2"
     }
   },
   {
