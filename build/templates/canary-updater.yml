@@ -1,14 +1,33 @@
 parameters:
-  MergeBranch: true
+- name: MergeBranch
+  type: boolean
+  default: true
 
 steps:
   - task: UseDotNet@2
     condition: eq(variables['IsCanaryBranch'], true)
-    displayName: 'Use .NET runtime 8.0.100'
+    displayName: 'Use .NET runtime 9.0.0'
     retryCountOnTaskFailure: 3
     inputs:
       packageType: runtime
       version: 9.0.0
+
+  - ${{ if eq(parameters.MergeBranch, true) }}:
+    # Merge main before any step changes the working tree. git refuses to merge over uncommitted
+    # changes to a file the merge touches, so letting the updater task merge after the global.json
+    # quoting below failed every night once main changed one of those files.
+    - pwsh: |
+        git config user.email "info@platform.uno"
+        git config user.name "Uno DevOps"
+        git fetch --prune origin main
+        $log = git merge origin/main -s recursive -X theirs 2>&1 | Out-String
+        $exitCode = $LASTEXITCODE
+        Write-Host $log
+        Set-Content -Path "$(Agent.TempDirectory)/canary-merge.log" -Value $log
+        if ($exitCode -ne 0) { throw "Failed to merge origin/main (exit code $exitCode)" }
+      condition: eq(variables['IsCanaryBranch'], true)
+      displayName: 'Merge main'
+      workingDirectory: $(Build.SourcesDirectory)
 
   # Adjust all the global.json files so that the AllowPrereleaseNetSdk is quoted to avoid issues with the updater
   # We cannot quote it in the template, as it causes linting issues in vscode, so we replace it here.
@@ -18,14 +37,32 @@ steps:
         }
     condition: eq(variables['IsCanaryBranch'], true)
     displayName: 'Quote AllowPrereleaseNetSdk in global.json'
-      
+
+  - ${{ if eq(parameters.MergeBranch, true) }}:
+    # The updater task below only updates package references found in project files. The Uno
+    # packages of the templates are defined in src/Uno.Sdk/packages.json, which it does not read,
+    # so on its own it never finds anything to update. Pull the latest Uno.Sdk.Private manifest
+    # into packages.json with the tool main's "Update Uno Sdk" workflow uses, so the Uno.Sdk
+    # packed after this template references the latest dev packages.
+    - pwsh: |
+        dotnet run -c Release --project tools/Uno.Sdk.Updater -- --exclude-file .github/sdk-update-exclude.json
+        if ($LASTEXITCODE -ne 0) { throw "Uno.Sdk.Updater failed (exit code $LASTEXITCODE)" }
+        git diff --stat -- src/Uno.Sdk src/Uno.Sdk.Updater.targets
+      condition: eq(variables['IsCanaryBranch'], true)
+      displayName: 'Update Uno.Sdk manifest'
+      workingDirectory: $(Build.SourcesDirectory)
+      env:
+        # The updater targets net8.0, let it run on the newer runtimes the agent has
+        DOTNET_ROLL_FORWARD: Major
+
   - task: unoplatformCanaryUpdater@1
     condition: eq(variables['IsCanaryBranch'], true)
     inputs:
       solution: '$(build.sourcesdirectory)'
       useNuGetOrg: true
       usePrivateFeed: false
-      mergeBranch: ${{ parameters.MergeBranch }}
+      # main is merged by the 'Merge main' step above
+      mergeBranch: false
       branchToMerge: main
       nugetUpdaterVersion: '1.2.10'
       packageAuthor: 'unoplatform,uno platform'
@@ -34,3 +71,47 @@ steps:
       useVersionOverrides: true
       versionOverridesFile: '$(build.sourcesdirectory)/build/templates/versionOverrides.json'
       additionalPublicSources: 'https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json'
+
+  - ${{ if eq(parameters.MergeBranch, true) }}:
+    # Canary.md is written by the updater task, which does not see the Uno.Sdk manifest. Add the
+    # manifest changes, in the same table format, and the merge log, so the summary shows which
+    # package versions the run actually tested.
+    - pwsh: |
+        $summaryFile = "$(Build.ArtifactStagingDirectory)/Canary.md"
+        $manifestPath = 'src/Uno.Sdk/packages.json'
+
+        # Skip the BOM, however the console encoding decoded it
+        function Read-Manifest([string] $json) {
+          $json.Substring($json.IndexOf('[')) | ConvertFrom-Json
+        }
+
+        $before = Read-Manifest (git show "HEAD:$manifestPath" | Out-String)
+        $after = Read-Manifest (Get-Content $manifestPath -Raw)
+
+        $rows = foreach ($group in $after) {
+          $previous = $before | Where-Object group -eq $group.group | Select-Object -First 1
+          $package = @($group.packages)[0]
+          if ($previous -and $package -and $previous.version -ne $group.version) {
+            "|$($group.group) ($package)|[$($previous.version)](https://www.nuget.org/packages/$package/$($previous.version))|[$($group.version)](https://www.nuget.org/packages/$package/$($group.version))|"
+          }
+        }
+
+        $lines = @('', '# Uno.Sdk manifest update', '')
+        if ($rows) {
+          $lines += '## Updated', '', '|Group|Referenced|Updated|', '|-|-|-|'
+          $lines += $rows
+        }
+        else {
+          $lines += 'No Uno.Sdk manifest groups have been updated'
+        }
+
+        $mergeLog = "$(Agent.TempDirectory)/canary-merge.log"
+        if (Test-Path $mergeLog) {
+          $lines += '', '# Merge summary', '```', (Get-Content $mergeLog -Raw).TrimEnd(), '```'
+        }
+
+        Add-Content -Path $summaryFile -Value $lines
+        Get-Content $summaryFile
+      condition: and(succeededOrFailed(), eq(variables['IsCanaryBranch'], true))
+      displayName: 'Add Uno.Sdk manifest to Canary.md'
+      workingDirectory: $(Build.SourcesDirectory)
