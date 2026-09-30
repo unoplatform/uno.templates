@@ -19,19 +19,26 @@ pr:
 variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
-  ValidationUnoCheckVersionNet8: '1.26.4'
-  ValidationUnoCheckVersionNet9: '1.27.4'
-  ValidationDotNetVersion: '8.0.405'
+
+  # Keep the validation versions below in sync with the env block of main's .github/workflows/ci.yml
+  ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
+  # uno-check --pre-major carries the .NET 11 manifest
+  ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
+  ValidationDotNetVersion: '9.0.308'
+  ValidationDotNetVersionNet11: '11.0.100-rc.1.26425.128'
 
   # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
   # compatible version of the bootstrapper
   UnoDisableNet9Validation: true
 
   # Required for WinUI 1.6
-  WindowsSdkPackageVersion: '10.0.19041.38'
+  WindowsSdkPackageVersion: '10.0.19041.57'
 
   # Required for WinAppSDK native AOT, to remove when included in uno.sdk
   AllowUnsafeBlocks: true
+
+  # Reduce the number of downloaded packages
+  RestoreEnablePackagePruning: true
 
 stages:
 - stage: Build
@@ -114,14 +121,10 @@ stages:
     parameters:
       vmImage: 'ubuntu-latest'
       stageVariant: 'linux'
-  - template: .azure-pipelines.TemplateValidation.yml
-    parameters:
-      vmImage: 'macos-15'
-      stageVariant: 'macos15'
-      
-  - template: .azure-pipelines.UnoLibValidation.yml
-  - template: .azure-pipelines.UnoMauiLibValidation.yml
-  - template: .azure-pipelines.UWPValidation.yml
+
+  # macOS is disabled until its steps in templates/package-validation.yml get the Xcode 26.x
+  # setup of main's .github/actions/ci/run-tests (main runs these tests on macos-26).
+  # The unolib and unomauilib templates are validated by the test matrix.
 
 - stage: Prepare
   condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['IsCanaryBranch'], true)))

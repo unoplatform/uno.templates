@@ -40,22 +40,31 @@ steps:
     $templateArgs = '${{ parameters.arguments }}'
     echo "TemplateArgs = '$templateArgs'"
     $dotnetVersion = $env:TargetDotNetVersion
-    $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet8
-    if ($templateArgs -match 'net9.0')
+    $ValidationUnoCheckVersion = "invalid"
+
+    if ($templateArgs -match 'net10.0')
     {
-        $dotnetVersion = '9.0.100'
-        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet9
+        $dotnetVersion = '10.0.100'
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet10
     }
+
+    if ($templateArgs -match 'net11.0')
+    {
+        $dotnetVersion = $env:ValidationDotNetVersionNet11
+        $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet11
+    }
+
     echo "Dotnet Version = '$dotnetVersion'"
     echo "UnoCheck Version = '$ValidationUnoCheckVersion'"
-    
+
     echo "##vso[task.setvariable variable=DotNetVersion]$dotnetVersion"
     echo "##vso[task.setvariable variable=ValidationUnoCheckVersion]$ValidationUnoCheckVersion"
   displayName: Evaluate Template Args
   env:
     TargetDotNetVersion: $(ValidationDotNetVersion)
-    ValidationUnoCheckVersionNet8: $(ValidationUnoCheckVersionNet8)
-    ValidationUnoCheckVersionNet9: $(ValidationUnoCheckVersionNet9)
+    ValidationDotNetVersionNet11: $(ValidationDotNetVersionNet11)
+    ValidationUnoCheckVersionNet10: $(ValidationUnoCheckVersionNet10)
+    ValidationUnoCheckVersionNet11: $(ValidationUnoCheckVersionNet11)
 
 # Install android 34 as we're running on macos-15, early so that
 # the JDK override does not break the installer
@@ -92,13 +101,13 @@ steps:
     sudo dpkg -i packages-microsoft-prod.deb 
     sudo apt-get install apt-transport-https 
     sudo apt-get update 
-    sudo apt-get install -y msopenjdk-11
+    sudo apt-get install -y msopenjdk-17
   displayName: OpenJDK (Linux)
   condition: eq(variables['Agent.OS'], 'Linux')
 
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk  ${{ parameters.unocheckArguments }}
   displayName: Uno Check (Linux)
   condition: eq(variables['Agent.OS'], 'Linux')
   env:
@@ -130,7 +139,7 @@ steps:
 
 - powershell: |
     & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
+    uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip unosdk --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ parameters.unocheckArguments }}
   displayName: Uno Check (Windows)
   condition: eq(variables['Agent.OS'], 'Windows_NT')
   env:
@@ -174,12 +183,13 @@ steps:
         continue
       }
 
+      # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
       $fields = ($validation -split ';').Trim()
 
       if($fields[0])
-      {      
-        $validations.Add($fields[0], @($fields[2],$fields[1]))
-        echo "- $($fields[0]), $($fields[2]) (Filter: $($fields[1]))"
+      {
+        $validations.Add($fields[0], @($fields[3], $fields[1], $fields[2]))
+        echo "- $($fields[0]), $($fields[2]) $($fields[3]) (Filter: $($fields[1]))"
       }
     }
 
@@ -190,6 +200,12 @@ steps:
       $testName = $validation;
       $testParams = $validations[$validation][0];
       $environmentFilter = $validations[$validation][1];
+      $templateName = $validations[$validation][2];
+
+      if($testParams -eq $null)
+      {
+        $testParams = ""
+      }
 
       # Skip testing for the wrong environment
       if($environmentFilter -eq "Windows" -and !$IsWindows)
@@ -204,22 +220,19 @@ steps:
         continue
       }
 
-      if ($testParams.Contains('net9.0') -and $IsWindows)
+      if($environmentFilter -eq "macOS" -and !$IsMacos)
       {
-        if($testName -eq "MauiBlank" -or $testName -eq "MauiRecommended" -or $testName -eq "Issue396")
-        {
-          echo "Skipping $testName ($testParams) on net9.0 Windows because of https://github.com/unoplatform/uno.csharpmarkup/issues/787"
-          continue
-        }
+        echo "Skipping $testName ($testParams) because it's only for macOS"
+        continue
       }
 
-      if ($testParams.Contains('net8.0') -and $IsMacOS -and ($testParams.Contains('-auth msal') -or $testParams.Contains('auth=msal')))
+      if($environmentFilter -eq "!macOS" -and $IsMacos)
       {
-          echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
-          continue
+        echo "Skipping $testName ($testParams) because it's not selected for macOS"
+        continue
       }
 
-      echo "Testing $testName ($testParams)"
+      echo "Testing $testName ($templateName $testParams)"
 
       # Set the progress to report on azdo UI
       $progress = ($currentTest / $validations.Keys.Count) * 100;
@@ -239,7 +252,7 @@ steps:
       }
 
       # Create the app solution
-      & dotnet new unoapp -skip -o $testName $dotnetNewParams
+      & dotnet new $templateName -o $testName $dotnetNewParams
 
       if ($LASTEXITCODE -ne 0)
       {
@@ -249,8 +262,23 @@ steps:
       else
       {
         # Build the app
-        pushd $testName 
-        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog"
+        pushd $testName
+
+        # Disable most costly features to speed up the build
+        $extraArgs=@(
+          "-p:RunAOTCompilation=false",
+          "-p:MtouchUseLlvm=false",
+          "-p:MtouchLink=none",
+          "-p:WasmShellILLinkerEnabled=false",
+          "-p:UseInterpreter=true",
+          "-p:_IsDedupEnabled=false",
+          "-p:MtouchInterpreter=all",
+          "-p:TreatWarningsAsErrors=true",
+          # https://github.com/unoplatform/uno.templates/issues/2283
+          "-p:CustomAfterMicrosoftCommonTargets=$(Build.SourcesDirectory)/.github/actions/ci/run-tests/Graphics3DGL.iOS.Workaround.targets"
+        );
+
+        & dotnet build $testName.sln "/bl:$(System.ArtifactsDirectory)/$testName.$(Agent.OS).$dotnetVersion.binlog" $extraArgs
         if ($LASTEXITCODE -ne 0)
         {
           echo "Build failed for $testName"
