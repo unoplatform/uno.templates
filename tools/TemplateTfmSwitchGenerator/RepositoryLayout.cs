@@ -27,8 +27,16 @@ public static class RepositoryLayout
         throw new InvalidOperationException($"Could not locate the repository root: no '{SingleProjectTemplateJson}' found above the generator.");
     }
 
-    public static string Resolve(string repoRoot, string relativePath) =>
-        Path.GetFullPath(Path.Combine(repoRoot, relativePath.Replace('/', Path.DirectorySeparatorChar)));
+    public static string Resolve(string repoRoot, string relativePath)
+    {
+        var normalized = relativePath.Replace('/', Path.DirectorySeparatorChar);
+        if (Path.IsPathRooted(normalized))
+        {
+            throw new ArgumentException($"Expected a path relative to the repository root, got '{relativePath}'.", nameof(relativePath));
+        }
+
+        return Path.GetFullPath(Path.Combine(repoRoot, normalized));
+    }
 
     /// <summary>
     /// Template content carrying a hand-written Windows TFM. The template.json is excluded
