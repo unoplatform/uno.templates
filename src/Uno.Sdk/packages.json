@@ -204,16 +204,6 @@
     }
   },
   {
-    "group": "AndroidXLegacySupportV4",
-    "version": "1.0.0.23",
-    "packages": [
-      "Xamarin.AndroidX.Legacy.Support.V4"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.0.33"
-    }
-  },
-  {
     "group": "AndroidXSplashScreen",
     "version": "1.2.0.3",
     "packages": [

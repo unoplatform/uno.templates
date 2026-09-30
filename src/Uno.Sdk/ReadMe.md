@@ -26,7 +26,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.14.0.6 |
-| AndroidXLegacySupportV4Version | 1.0.0.23 |
 | AndroidXSplashScreenVersion | 1.2.0.3 |
 | AndroidXAppCompatVersion | 1.8.0 |
 | AndroidXRecyclerViewVersion | 1.4.0.6 |
@@ -248,16 +247,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ],
     "versionOverride": {
       "net10.0": "1.14.0.6"
-    }
-  },
-  {
-    "group": "AndroidXLegacySupportV4",
-    "version": "1.0.0.23",
-    "packages": [
-      "Xamarin.AndroidX.Legacy.Support.V4"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.0.33"
     }
   },
   {
