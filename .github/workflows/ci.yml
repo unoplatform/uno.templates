@@ -256,6 +256,71 @@ jobs:
     - name: "Tag Release"
       uses: ./.github/actions/ci/tag-release
 
+  # Run item-template integration smoke test
+  item-template-smoke-test:
+    name: Item Template Smoke Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CheckoutRef }}
+
+    - name: Free disk space (Linux)
+      uses: ./.github/actions/host-cleanup-linux
+
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-packages
+        path: ${{ github.workspace }}/src/PackageCache
+
+    - name: 'Set Dotnet and UnoCheck Versions'
+      shell: pwsh
+      run: |
+          echo "DotNetVersion=10.0.100" >> $env:GITHUB_ENV
+          echo "ValidationUnoCheckVersion=${{ env.ValidationUnoCheckVersionNet10 }}" >> $env:GITHUB_ENV
+
+    - name: "Install .NET"
+      uses: ./.github/actions/ci/dotnet-install
+      with:
+        DotNetVersion: ${{ env.DotNetVersion }}
+
+    # Desktop-only build: skip the Android/Java checks (this job doesn't install a JDK).
+    - name: 'Uno Check (Linux)'
+      shell: pwsh
+      run: |
+        & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+        uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip openjdk --skip dotnetnewunotemplates --skip unosdk
+      env:
+        ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
+
+    - name: 'Install Project Templates'
+      shell: pwsh
+      run: |
+        dotnet new install "${{ github.workspace }}/src/PackageCache/Uno.Templates*.nupkg"
+
+    # The smoke-test apps are generated in the temp dir, outside this repo's nuget.config, so the
+    # feeds go into the user-level config. Run outside the repo so its feeds aren't seen as duplicates.
+    - name: 'Setup nuget sources'
+      shell: pwsh
+      working-directory: ${{ runner.temp }}
+      run: |
+          $sources = dotnet nuget list source | Out-String
+          if ($sources -notmatch 'nuget_local') {
+            dotnet nuget add source -n nuget_local "${{ github.workspace }}/src/PackageCache"
+          }
+          if ($sources -notmatch '_packaging/unoplatformdev/nuget/v3/index.json') {
+            dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
+          }
+          dotnet nuget list source
+
+    - name: Test item templates
+      shell: pwsh
+      run: pwsh ./build/test-item-templates.ps1
+
   # Generate the template tests build matrix.
   # On a merge build the matrix waits for build -> sign -> publish_dev (main) / publish_release_uno
   # (the internal-feed release publish, the FIRST approval gate), then runs against the published
