@@ -383,7 +383,7 @@
     },
     "renderer": {
       "displayName": "Renderer",
-      "description": "Controls the renderer used for iOS, Android, and WebAssembly targets",
+      "description": "Controls the rendering backend. Skia is always included; WebGPU adds the WebGPU backend alongside it.",
       "type": "parameter",
       "datatype": "choice",
       "allowMultipleValues": false,
@@ -392,13 +392,13 @@
       "choices": [
         {
           "choice": "skia",
-          "description": "Use Skia based rendering for mobile and web",
+          "description": "Use Skia based rendering",
           "displayName": "Skia"
         },
         {
-          "choice": "native",
-          "description": "Use native APIs based renderer",
-          "displayName": "Native"
+          "choice": "webgpu",
+          "description": "Add the WebGPU rendering backend, used alongside Skia",
+          "displayName": "WebGPU"
         }
       ]
     },
@@ -407,10 +407,10 @@
       "datatype": "bool",
       "value": "(renderer == 'skia')"
     },
-    "useNativeRenderer": {
+    "useWebGpuRenderer": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(renderer == 'native')"
+      "value": "(renderer == 'webgpu')"
     },
     "server": {
       "displayName": "Server",

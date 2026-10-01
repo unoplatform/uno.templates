@@ -291,12 +291,6 @@ runs:
             continue
         }
 
-        if ($testParams.Contains('net8.0') -and !$testParams.Contains('--renderer native'))
-        {
-            echo "Skipping Skia Everywhere test for net8"
-            continue
-        }
-
         echo "Testing $testName ($templateName $testParams)"
 
         # Set the progress to report on azdo UI
@@ -346,6 +340,13 @@ runs:
           if ($IsMacos)
           {
             $extraArgs += "-p:ValidateXcodeVersion=false"
+          }
+
+          # The WebGpu package sets a relative EM_CACHE outside Windows, which emcc rejects.
+          # Remove once https://github.com/unoplatform/uno/issues/24823 ships.
+          if (!$IsWindows -and $testParams.Contains('--renderer webgpu'))
+          {
+            $extraArgs += "-p:WgpuWasmCacheDir=$PWD/obj/wgpu-wasm-emcache/"
           }
 
           & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs

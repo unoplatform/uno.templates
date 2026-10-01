@@ -17,8 +17,9 @@ runs:
             # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
             # macOS is generally not selected unless building the whole targets list, because of expensive CI
 
-            "NativeRecommended;;unoapp;-skip --renderer native -preset=recommended",
-            "NativeBlank;;unoapp;-skip --renderer native -preset=blank",
+            "WebGpuRecommended;;unoapp;-skip --renderer webgpu -preset=recommended",
+            "WebGpuBlank;;unoapp;-skip --renderer webgpu -preset=blank",
+            "SkiaExplicitBlank;;unoapp;-skip --renderer skia -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
@@ -47,10 +48,10 @@ runs:
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
-            "unolibNative_MacOS;macOS;unolib;--renderer native"
+            "unolibWebGpu_MacOS;macOS;unolib;--renderer webgpu"
             "mauilib_Windows;Windows;unomauilib;"
             "unolib_Windows;Windows;unolib;"
-            "unolibNative_Windows;Windows;unolib;--renderer native"
+            "unolibWebGpu_Windows;Windows;unolib;--renderer webgpu"
 
             # Disabling this test for now as it was specific to net7
             # https://github.com/unoplatform/uno.templates/issues/22
@@ -126,9 +127,8 @@ runs:
         );
 
         # Temporary Uno 7.0 bring-up exclusions
-        # Native renderer removed: https://github.com/unoplatform/uno.templates/issues/2278
         # MAUI embedding AndroidX conflict: https://github.com/unoplatform/uno.templates/issues/2279
-        $tests = $tests | Where-Object { $_ -notmatch '^(NativeBlank|NativeRecommended|Maui\w*|Issue396);' }
+        $tests = $tests | Where-Object { $_ -notmatch '^(Maui\w*|Issue396);' }
 
         $matrixGroups = @()
         $currentGroup = @()

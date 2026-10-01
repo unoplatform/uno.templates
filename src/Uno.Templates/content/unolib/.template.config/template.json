@@ -67,21 +67,32 @@
       "defaultValue": "true"
     },
     "renderer": {
-    "type": "parameter",
-    "datatype": "choice",
-    "allowMultipleValues": false,
-    "enableQuotelessLiterals": true,
-    "defaultValue": "skia",
-    "choices": [
-      { "choice": "skia",   "displayName": "Skia" },
-      { "choice": "native", "displayName": "Native" }
-    ]
-  },
-  "useSkiaRenderer": {
-    "type": "computed",
-    "datatype": "bool",
-    "value": "(renderer == 'skia')"
-  }
+      "type": "parameter",
+      "datatype": "choice",
+      "allowMultipleValues": false,
+      "enableQuotelessLiterals": true,
+      "defaultValue": "skia",
+      "choices": [
+        {
+          "choice": "skia",
+          "displayName": "Skia"
+        },
+        {
+          "choice": "webgpu",
+          "displayName": "WebGPU"
+        }
+      ]
+    },
+    "useSkiaRenderer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(renderer == 'skia')"
+    },
+    "useWebGpuRenderer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(renderer == 'webgpu')"
+    }
   },
   "primaryOutputs": [
     {
