@@ -57,6 +57,17 @@ public partial class App : Application
         Resources.Build(r => r.Merged(
             new  SimpleTheme()));
 #endif
+#elif (useFluent)
+
+        // Load the Uno Themes semantic layer mapped onto Fluent
+        Resources.Build(r => r.Merged(
+            new FluentTheme()));
+#if useToolkit
+
+        // Load Uno.UI.Toolkit Resources
+        Resources.Build(r => r.Merged(
+            new ToolkitResources()));
+#endif
 #elif (useToolkit)
 
         // Load Uno.UI.Toolkit Resources
