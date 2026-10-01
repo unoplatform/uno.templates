@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1215",
+    "version": "7.0.0-dev.1429",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -72,7 +72,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.2",
+    "version": "2.0.0-dev.14",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -86,14 +86,14 @@
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.10",
+    "version": "2.0.0-dev.14",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.23.0-dev.251",
+    "version": "1.24.0-dev.10",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -310,7 +310,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.55",
+    "version": "8.0.0-dev.56",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -340,7 +340,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.94",
+    "version": "11.0.0-dev.125",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -353,7 +353,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.26",
+    "version": "9.0.0-dev.28",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -372,7 +372,7 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4191.47",
+    "version": "1.0.4258.31",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
