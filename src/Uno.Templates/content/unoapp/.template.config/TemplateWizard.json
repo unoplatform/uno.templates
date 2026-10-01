@@ -91,6 +91,7 @@
 					"logging": "none",
 					"markup": "xaml",
 					"mediaPlayerElement": "false",
+					"webView": "false",
 					"navigation": "blank",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -138,6 +139,7 @@
 					"logging": "default",
 					"markup": "xaml",
 					"mediaPlayerElement": "false",
+					"webView": "false",
 					"navigation": "regions",
 					"platforms": "android|ios|wasm|desktop",
 					"rider": "true",
@@ -241,7 +243,7 @@
 				// and we recently removed .NET 8 option from the template (see PR #1373).
 				// This feature will be re-enabled once multi-threading becomes available again.
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement", "webView" ]
 			}
 			,
 			{
@@ -740,6 +742,9 @@
 		"mediaPlayerElement": {
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
+		"webView": {
+			"Icon": "/Assets/Features.WebView.svg"
+		},
 		"wasmPwaManifest": {
 			"Icon": "/Assets/Features.Wasm.svg",
 			"Requires": {
@@ -836,6 +841,7 @@
 		"continuousIntegration",
 		"isCustomized",
 		"mediaPlayerElement",
+		"webView",
 		"renderer",
 		"includeAndroidTV",
 		"includeAndroidAuto",
