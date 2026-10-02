@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.8.0-dev.187",
+    "version": "6.8.0-dev.197",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -94,7 +94,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.23.0-dev.131",
+    "version": "1.24.0-dev.38",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -389,7 +389,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "10.0.0-dev.3",
+    "version": "10.0.0-dev.4",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -402,7 +402,7 @@
   },
   {
     "group": "Themes",
-    "version": "8.0.0-dev.16",
+    "version": "8.0.0-dev.20",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
