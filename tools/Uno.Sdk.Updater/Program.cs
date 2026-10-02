@@ -389,7 +389,18 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
+    // First-party packages version in lockstep with the Uno major they target, but their
+    // nuspecs cannot prove it: NuGet dependency versions are floors (a package that moved
+    // to the next Uno major keeps its old floor for a while), and several of them
+    // (Uno.Fonts.*, Uno.Resizetizer, Uno.Settings.DevServer, ...) declare no Uno
+    // dependency at all. The Uno.WinUI floor check in the validation gate therefore
+    // cannot detect a package that moved to the next Uno major, and on a prerelease
+    // Uno.Sdk line there is no minor+1 bound either. Hold first-party groups to the
+    // major already pinned in packages.json so they keep taking servicing updates;
+    // moving one to the next Uno major is a deliberate manifest change.
+    // See #2291.
+    var isFirstPartyGroup = group.Packages.All(x => x.StartsWith("Uno.", StringComparison.InvariantCultureIgnoreCase));
+    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group) || isFirstPartyGroup;
     var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
 
     if (string.IsNullOrEmpty(version))
