@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1429",
+    "version": "7.0.0-dev.1467",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -93,7 +93,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.10",
+    "version": "1.24.0-dev.38",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -103,7 +103,6 @@
     "version": "4.151.1",
     "packages": [
       "SkiaSharp.Skottie",
-      "SkiaSharp.Views.Uno.WinUI",
       "SkiaSharp.Views.WinUI",
       "SkiaSharp.NativeAssets.Linux",
       "SkiaSharp.NativeAssets.macOS",
@@ -134,7 +133,7 @@
   },
   {
     "group": "WinAppSdkBuildToolsWinApp",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools.WinApp"
     ]
@@ -310,7 +309,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.56",
+    "version": "8.0.0-dev.72",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -379,7 +378,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.4",
+    "version": "2.0.0-dev.5",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
