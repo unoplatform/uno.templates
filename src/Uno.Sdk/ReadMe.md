@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.1478 |
+| UnoVersion* | 7.0.0-dev.1512 |
 | UnoExtensionsVersion | 8.0.0-dev.72 |
 | UnoToolkitVersion | 11.0.0-dev.127 |
 | UnoThemesVersion | 9.0.0-dev.29 |
@@ -47,7 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.1478",
+    "version": "7.0.0-dev.1512",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -59,16 +59,16 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Svg",
       "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
-      "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
-      "Uno.WinUI.Runtime.Skia.MacOS",
-      "Uno.WinUI.Runtime.Skia.Win32",
-      "Uno.WinUI.Runtime.Skia.X11",
-      "Uno.WinUI.Runtime.Skia.Android",
-      "Uno.WinUI.Runtime.Skia.AppleUIKit",
-      "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
-      "Uno.WinUI.MediaPlayer.Skia.X11",
-      "Uno.WinUI.MediaPlayer.Skia.Win32",
-      "Uno.WinUI.WebView.Skia.X11",
+      "Uno.WinUI.Runtime.Linux.FrameBuffer",
+      "Uno.WinUI.Runtime.MacOS",
+      "Uno.WinUI.Runtime.Win32",
+      "Uno.WinUI.Runtime.X11",
+      "Uno.WinUI.Runtime.Android",
+      "Uno.WinUI.Runtime.AppleUIKit",
+      "Uno.WinUI.Runtime.WebAssembly.Browser",
+      "Uno.WinUI.MediaPlayer.X11",
+      "Uno.WinUI.MediaPlayer.Win32",
+      "Uno.WinUI.WebView.X11",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK",
       "Uno.WinUI.SpellChecking"
@@ -83,8 +83,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.217",
-      "net11.0": "10.1.0-dev.217"
+      "net10.0": "10.1.0-dev.219",
+      "net11.0": "10.1.0-dev.219"
     }
   },
   {
@@ -125,21 +125,21 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "sdkextras",
-    "version": "6.4.0-dev.13",
+    "version": "6.4.0-dev.15",
     "packages": [
       "Uno.Sdk.Extras"
     ]
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.14",
+    "version": "2.0.0-dev.22",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.56",
+    "version": "1.24.0-dev.78",
     "packages": [
       "Uno.UI.HotDesign"
     ]
