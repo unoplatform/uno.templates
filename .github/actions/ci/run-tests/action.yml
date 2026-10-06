@@ -92,17 +92,6 @@ runs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-emsdk-${{ env.ValidationUnoCheckVersion }}
 
-  - name: Cache .NET
-    id: cache-dotnet
-    uses: actions/cache@v4
-    env:
-        cache-name: cache-dotnet-install
-    with:
-        path: ${{ github.workspace }}/.dotnet
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-dotnet-${{ env.ValidationUnoCheckVersion }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-dotnet-${{ env.ValidationUnoCheckVersion }}
-
   # Install android 34 as we're running on macos-15, early so that
   # the JDK override does not break the installer
   #
