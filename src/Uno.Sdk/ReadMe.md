@@ -5,9 +5,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
 | UnoVersion* | 6.8.0-dev.197 |
-| UnoExtensionsVersion | 7.4.0-dev.54 |
-| UnoToolkitVersion | 10.0.0-dev.4 |
-| UnoThemesVersion | 8.0.0-dev.20 |
+| UnoExtensionsVersion | 7.4.0-dev.81 |
+| UnoToolkitVersion | 10.0.0-dev.5 |
+| UnoThemesVersion | 8.0.0-dev.23 |
 | UnoCSharpMarkupVersion | 6.8.0-dev.16 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -86,7 +86,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.217"
+      "net10.0": "10.1.0-dev.219"
     }
   },
   {
@@ -127,7 +127,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "sdkextras",
-    "version": "6.4.0-dev.13",
+    "version": "6.4.0-dev.15",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -141,7 +141,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.38",
+    "version": "1.24.0-dev.102",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -406,7 +406,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "7.4.0-dev.54",
+    "version": "7.4.0-dev.81",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -436,7 +436,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "10.0.0-dev.4",
+    "version": "10.0.0-dev.5",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -449,7 +449,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "8.0.0-dev.20",
+    "version": "8.0.0-dev.23",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
