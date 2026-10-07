@@ -278,7 +278,9 @@ jobs:
       && (needs.publish_release_uno.result == 'success' || needs.publish_release_uno.result == 'skipped') }}
 
     outputs:
-      testMatrix: ${{ steps.generate-test-matrix-step.outputs.TestMatrix }}
+      linuxTestMatrix: ${{ steps.generate-test-matrix-step.outputs.LinuxTestMatrix }}
+      windowsTestMatrix: ${{ steps.generate-test-matrix-step.outputs.WindowsTestMatrix }}
+      macosTestMatrix: ${{ steps.generate-test-matrix-step.outputs.MacOSTestMatrix }}
     
     steps:
     - name: Checkout
@@ -310,7 +312,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.linuxTestMatrix) }}
 
     env:
       UseDotNetNativeToolchain: false
@@ -346,7 +348,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.windowsTestMatrix) }}
 
     env:
       UseDotNetNativeToolchain: false
@@ -382,7 +384,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.generate-test-matrix.outputs.testMatrix) }}
+        include: ${{ fromJson(needs.generate-test-matrix.outputs.macosTestMatrix) }}
 
     env:
       UseDotNetNativeToolchain: false

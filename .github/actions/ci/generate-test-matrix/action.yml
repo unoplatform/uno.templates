@@ -2,9 +2,15 @@ name: "Generate Test Matrix"
 description: "Generate Test Matrix"
 
 outputs:
-    TestMatrix:
-        description: "Test Matrix"
-        value: ${{ steps.buildTestMatrix.outputs.TestMatrix }}
+    LinuxTestMatrix:
+        description: "Linux Test Matrix"
+        value: ${{ steps.buildTestMatrix.outputs.LinuxTestMatrix }}
+    WindowsTestMatrix:
+        description: "Windows Test Matrix"
+        value: ${{ steps.buildTestMatrix.outputs.WindowsTestMatrix }}
+    MacOSTestMatrix:
+        description: "macOS Test Matrix"
+        value: ${{ steps.buildTestMatrix.outputs.MacOSTestMatrix }}
 
 runs:
   using: "composite"
@@ -130,46 +136,45 @@ runs:
         # MAUI embedding AndroidX conflict: https://github.com/unoplatform/uno.templates/issues/2279
         $tests = $tests | Where-Object { $_ -notmatch '^(NativeBlank|NativeRecommended|Maui\w*|Issue396);' }
 
-        $matrixGroups = @()
-        $currentGroup = @()
-        $groupSize = 8
-
-        # Generate matrix for net10
-        for ($i = 0; $i -lt $tests.Count; $i++)
+        # Filter per OS before grouping, so no runner is spent on a group that skips most of its tests.
+        # macOS runners are scarce and queue for a long time, so macOS uses fewer, larger groups.
+        function Get-Matrix([string]$os, [int]$groupSize)
         {
-            $currentGroup += $tests[$i] + " -tfm net10.0";
-        
-            if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
-                $newGroup = @{
-                    'groupName' = "Group$($matrixGroups.Count)_net10"
-                    'unocheckArguments' = ''
-                    'validations' = ($currentGroup -join "`r`n")
-                };
-        
-                $matrixGroups += $newGroup;
-        
-                $currentGroup = @()
+            $osTests = $tests | Where-Object {
+                $filter = ($_ -split ';')[1].Trim()
+                switch ($filter) {
+                    ''        { $true }
+                    '!macOS'  { $os -ne 'macOS' }
+                    default   { $filter -eq $os }
+                }
             }
+
+            $matrixGroups = @()
+
+            foreach ($tfm in @(
+                @{ Name = 'net10'; UnoCheckArguments = '' },
+                @{ Name = 'net11'; UnoCheckArguments = '--pre-major' }))
+            {
+                $groupCount = [Math]::Ceiling($osTests.Count / $groupSize)
+
+                for ($g = 0; $g -lt $groupCount; $g++)
+                {
+                    # Round-robin, so expensive neighbours in the list end up in different groups
+                    $groupTests = for ($i = $g; $i -lt $osTests.Count; $i += $groupCount) { $osTests[$i] + " -tfm $($tfm.Name).0" }
+
+                    $matrixGroups += @{
+                        'groupName' = "Group$($matrixGroups.Count)_$($tfm.Name)"
+                        'unocheckArguments' = $tfm.UnoCheckArguments
+                        'validations' = ($groupTests -join "`r`n")
+                    }
+                }
+            }
+
+            Write-Host "${os}: $($osTests.Count) tests per TFM, $($matrixGroups.Count) jobs"
+
+            return ConvertTo-Json -InputObject $matrixGroups -Compress
         }
 
-        # Generate matrix for net11
-        for ($i = 0; $i -lt $tests.Count; $i++)
-        {
-            $currentGroup += $tests[$i] + " -tfm net11.0";
-
-            if ( ($currentGroup.Count -eq $groupSize) -or ($i -eq ($tests.Count - 1))) {
-                $newGroup = @{
-                    'groupName' = "Group$($matrixGroups.Count)_net11"
-                    'unocheckArguments' = '--pre-major'
-                    'validations' = ($currentGroup -join "`r`n")
-                };
-                $matrixGroups += $newGroup;
-                $currentGroup = @()
-            }
-        }
-
-        $matrixAsJson = $matrixGroups | ConvertTo-Json -Compress
-
-        echo "json: $matrixAsJson"
-
-        echo "TestMatrix=$matrixAsJson" >> $env:GITHUB_OUTPUT
+        echo "LinuxTestMatrix=$(Get-Matrix 'Linux' 8)" >> $env:GITHUB_OUTPUT
+        echo "WindowsTestMatrix=$(Get-Matrix 'Windows' 8)" >> $env:GITHUB_OUTPUT
+        echo "MacOSTestMatrix=$(Get-Matrix 'macOS' 10)" >> $env:GITHUB_OUTPUT
