@@ -380,7 +380,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Extensions.Serialization.Http",
       "Uno.Extensions.Serialization.Refit",
       "Uno.Extensions.Logging.Serilog",
-      "Uno.Extensions.Storage.WinUI"
+      "Uno.Extensions.Storage.WinUI",
+      "Uno.HotTesting.Reactive"
     ]
   },
   {
