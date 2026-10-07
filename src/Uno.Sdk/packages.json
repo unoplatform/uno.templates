@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1512",
+    "version": "7.0.0-dev.1530",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -93,7 +93,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.78",
+    "version": "1.24.0-dev.102",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -378,7 +378,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.5",
+    "version": "2.0.0-dev.6",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
