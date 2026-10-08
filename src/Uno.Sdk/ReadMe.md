@@ -12,7 +12,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0-dev.28 |
-| UnoUniversalImageLoaderVersion | 1.9.37 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 2.0.0-dev.14 |
 | SkiaSharpVersion | 4.151.1 |
@@ -102,14 +101,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Core.Extensions.Logging.Singleton"
     ]
   },
-  {
-    "group": "UniversalImageLoading",
-    "version": "1.9.37",
-    "packages": [
-      "Uno.UniversalImageLoader"
-    ]
   },
-  {
     "group": "Dsp",
     "version": "1.4.0",
     "packages": [

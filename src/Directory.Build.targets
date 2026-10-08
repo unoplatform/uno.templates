@@ -13,7 +13,6 @@
     <XamarinUITestVersion Condition="'$(XamarinUITestVersion)' == ''">4.3.4</XamarinUITestVersion>
 
     <!-- UWP Legacy Templates -->
-    <UnoUniversalImageLoaderVersion Condition="'$(UnoUniversalImageLoaderVersion)' == ''">1.9.36</UnoUniversalImageLoaderVersion>
     <XamarinGoogleAndroidMaterialVersion Condition="'$(XamarinGoogleAndroidMaterialVersion)' == ''">1.10.0.2</XamarinGoogleAndroidMaterialVersion>
   </PropertyGroup>
 
