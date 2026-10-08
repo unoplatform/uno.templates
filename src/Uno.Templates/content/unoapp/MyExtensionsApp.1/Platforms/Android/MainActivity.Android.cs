@@ -25,7 +25,7 @@ namespace MyExtensionsApp._1.Droid;
         Android.Content.Intent.CategoryLeanbackLauncher
     })]
 #endif
-public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
+public class MainActivity : Uno.UI.Runtime.Android.ApplicationActivity
 {
     protected override void OnCreate(Bundle? savedInstanceState)
     {

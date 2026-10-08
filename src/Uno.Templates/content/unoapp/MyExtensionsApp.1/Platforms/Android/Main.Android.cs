@@ -30,7 +30,7 @@ namespace MyExtensionsApp._1.Droid;
     HardwareAccelerated = true,
     Theme = "@style/Theme.App.Starting"
 )]
-public class Application : Microsoft.UI.Xaml.NativeApplication
+public class Application : Uno.UI.Runtime.Android.NativeApplication
 {
 //+:cnd:noEmit
 #if (!useDependencyInjection && useLoggingFallback)
