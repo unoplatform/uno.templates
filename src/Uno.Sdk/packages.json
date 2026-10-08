@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1592",
+    "version": "7.0.0-dev.1646",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.102",
+    "version": "1.24.0-dev.107",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -345,7 +345,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.37",
+    "version": "9.0.0-dev.41",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
