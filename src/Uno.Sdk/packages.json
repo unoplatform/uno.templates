@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1530",
+    "version": "7.0.0-dev.1592",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -37,8 +37,8 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.219",
-      "net11.0": "10.1.0-dev.219"
+      "net10.0": "10.1.0-dev.260",
+      "net11.0": "10.1.0-dev.260"
     }
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "group": "CoreLogging",
-    "version": "5.0.0-dev.28",
+    "version": "5.0.0-dev.34",
     "packages": [
       "Uno.Core.Extensions.Logging.Singleton"
     ]
@@ -332,7 +332,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.127",
+    "version": "11.0.0-dev.137",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -345,7 +345,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.29",
+    "version": "9.0.0-dev.37",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
