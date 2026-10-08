@@ -12,7 +12,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoWasmBootstrapVersion** | $WasmBootstrap$ |
 | UnoLoggingVersion | $OSLogging$ |
 | UnoCoreLoggingSingletonVersion | $CoreLogging$ |
-| UnoUniversalImageLoaderVersion | $UniversalImageLoading$ |
 | UnoDspTasksVersion | $Dsp$ |
 | UnoResizetizerVersion | $Resizetizer$ |
 | SkiaSharpVersion | $SkiaSharp$ |

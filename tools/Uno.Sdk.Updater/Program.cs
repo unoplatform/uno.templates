@@ -363,7 +363,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     string[] stableOnlyGroups = [
         "CoreLogging",
         "OSLogging",
-        "UniversalImageLoading",
         "WasmBootstrap"
     ];
 

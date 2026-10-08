@@ -882,10 +882,6 @@
 		//	"PackageId": "Uno.Resizetizer",
 		//	"Symbol": "unoResizetizerVersion"
 		//},
-		//{
-		//	"PackageId": "Uno.UniversalImageLoader",
-		//	"Symbol": "unoUniversalImageLoaderVersion"
-		//},
 		{
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",

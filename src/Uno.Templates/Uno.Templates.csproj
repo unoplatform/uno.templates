@@ -34,7 +34,6 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWinUIVersion" ReplacementText="$(UnoVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoSdkVersion" ReplacementText="$(PackageVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoExtensionsLoggingVersion" ReplacementText="$(UnoExtensionsLoggingVersion)" />
-		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUniversalImageLoaderVersion" ReplacementText="$(UnoUniversalImageLoaderVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet10" ReplacementText="$(UnoWasmBootstrapVersionNet10)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoWasmBootstrapVersionNet11" ReplacementText="$(UnoWasmBootstrapVersionNet11)"/>
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="DefaultUnoUITestHelpersVersion" ReplacementText="$(UnoUITestHelpersVersion)"/>
