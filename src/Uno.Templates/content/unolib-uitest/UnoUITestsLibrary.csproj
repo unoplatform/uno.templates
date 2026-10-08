@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--#if (useFluentAssertions)-->
     <PackageReference Include="FluentAssertions" VersionOverride="$FluentAssertions$" />
+    <!--#endif-->
+    <!--#if (useShouldly)-->
+    <PackageReference Include="Shouldly" VersionOverride="$Shouldly$" />
+    <!--#endif-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="$MicrosoftTestSdk$" />
     <PackageReference Include="Newtonsoft.Json" VersionOverride="$NewtonsoftJson$" />
     <PackageReference Include="NUnit" VersionOverride="$NUnit$" />
