@@ -4,16 +4,16 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.1530 |
+| UnoVersion* | 7.0.0-dev.1592 |
 | UnoExtensionsVersion | 8.0.0-dev.72 |
-| UnoToolkitVersion | 11.0.0-dev.127 |
-| UnoThemesVersion | 9.0.0-dev.29 |
+| UnoToolkitVersion | 11.0.0-dev.137 |
+| UnoThemesVersion | 9.0.0-dev.37 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
-| UnoCoreLoggingSingletonVersion | 5.0.0-dev.28 |
+| UnoCoreLoggingSingletonVersion | 5.0.0-dev.34 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 2.0.0-dev.14 |
+| UnoResizetizerVersion | 2.0.0-dev.21 |
 | SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 2.5.1 |
@@ -46,7 +46,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.1530",
+    "version": "7.0.0-dev.1592",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -82,8 +82,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.219",
-      "net11.0": "10.1.0-dev.219"
+      "net10.0": "10.1.0-dev.260",
+      "net11.0": "10.1.0-dev.260"
     }
   },
   {
@@ -96,7 +96,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CoreLogging",
-    "version": "5.0.0-dev.28",
+    "version": "5.0.0-dev.34",
     "packages": [
       "Uno.Core.Extensions.Logging.Singleton"
     ]
@@ -110,7 +110,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.14",
+    "version": "2.0.0-dev.21",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -377,7 +377,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.127",
+    "version": "11.0.0-dev.137",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -390,7 +390,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.29",
+    "version": "9.0.0-dev.37",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
