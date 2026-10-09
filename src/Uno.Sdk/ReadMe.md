@@ -4,9 +4,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.1646 |
-| UnoExtensionsVersion | 8.0.0-dev.72 |
-| UnoToolkitVersion | 11.0.0-dev.137 |
+| UnoVersion* | 7.0.0-dev.1656 |
+| UnoExtensionsVersion | 8.0.0-dev.76 |
+| UnoToolkitVersion | 11.0.0-dev.140 |
 | UnoThemesVersion | 9.0.0-dev.41 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
@@ -46,7 +46,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.1646",
+    "version": "7.0.0-dev.1656",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -347,7 +347,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.72",
+    "version": "8.0.0-dev.76",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -372,12 +372,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Extensions.Serialization.Http",
       "Uno.Extensions.Serialization.Refit",
       "Uno.Extensions.Logging.Serilog",
-      "Uno.Extensions.Storage.WinUI"
+      "Uno.Extensions.Storage.WinUI",
+      "Uno.HotTesting.Reactive"
     ]
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.137",
+    "version": "11.0.0-dev.140",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
