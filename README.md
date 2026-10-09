@@ -5,7 +5,7 @@ The `dotnet new` templates for [Uno Platform](https://platform.uno): one C# and 
 [![NuGet Uno.Templates](https://img.shields.io/nuget/v/Uno.Templates?label=Uno.Templates&logo=nuget)](https://www.nuget.org/packages/Uno.Templates)
 [![NuGet Uno.Sdk](https://img.shields.io/nuget/v/Uno.Sdk?label=Uno.Sdk&logo=nuget)](https://www.nuget.org/packages/Uno.Sdk)
 [![CI](https://github.com/unoplatform/uno.templates/actions/workflows/ci.yml/badge.svg)](https://github.com/unoplatform/uno.templates/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/unoplatform/uno.templates)](LICENSE.md)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE.md)
 
 ## Quick start
 
