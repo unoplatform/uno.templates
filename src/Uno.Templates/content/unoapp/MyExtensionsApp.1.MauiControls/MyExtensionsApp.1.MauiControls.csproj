@@ -36,7 +36,9 @@
     <!--#if (useAndroid)-->
     <When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
       <PropertyGroup>
-        <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+        <!-- Keep in sync with the Uno.Sdk's Android floor (Uno.Common.Android.targets).
+             This is a plain Microsoft.NET.Sdk project, so it does not inherit the Uno.Sdk default. -->
+        <SupportedOSPlatformVersion>24.0</SupportedOSPlatformVersion>
       </PropertyGroup>
     </When>
     <!--#endif-->
