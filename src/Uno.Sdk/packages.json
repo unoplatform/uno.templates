@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.1656",
+    "version": "7.0.0-dev.1663",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.21",
+    "version": "2.0.0-dev.36",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -79,14 +79,14 @@
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.22",
+    "version": "2.0.0-dev.23",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.24.0-dev.107",
+    "version": "2.0.0-dev.2",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -372,7 +372,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.6",
+    "version": "2.0.0-dev.7",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
