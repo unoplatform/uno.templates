@@ -27,7 +27,7 @@ The IDE wizards use the same templates as the command line.
 
 | Short name | Name | What it is |
 |---|---|---|
-| `unoapp` | Uno Platform App | The main solution template: a multi-platform app targeting Android, iOS, WebAssembly, Skia Desktop (Windows, macOS, Linux) and Windows App SDK. |
+| `unoapp` | Uno Platform App | The main solution template: a multi-platform app targeting Android, iOS, tvOS, WebAssembly, Skia Desktop (Windows, macOS, Linux) and Windows App SDK. |
 | `unolib` | Uno Platform Class Library | A cross-targeted class library for Uno Platform (WinUI, Android, iOS, WebAssembly and Skia). |
 | `unomauilib` | Uno Platform Maui Embedding Class Library | A library for .NET MAUI controls that you embed inside an Uno Platform app. |
 | `unoapp-uitest` | Uno Platform UI Tests Class Library | A project for UI tests of an Uno Platform app. |
@@ -40,7 +40,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 |---|---|---|---|
 | `--preset` | `-preset` | `blank`, `recommended` | `blank` |
 | `--tfm` | `-tfm` | `net10.0`, `net11.0` | `net10.0` |
-| `--platforms` | `-platforms` | `android`, `ios`, `wasm`, `desktop`, `windows` (repeatable) | `android`, `ios`, `wasm`, `desktop` |
+| `--platforms` | `-platforms` | `android`, `ios`, `tvos`, `wasm`, `desktop`, `windows` (repeatable) | `android`, `ios`, `wasm`, `desktop` |
 | `--renderer` | `-renderer` | `skia`, `native` | `skia` |
 | `--presentation` | `-presentation` | `none`, `mvvm`, `mvux` | depends on preset |
 | `--markup` | `-markup` | `xaml`, `csharp` | `xaml` |
@@ -71,6 +71,9 @@ dotnet new unoapp -o MyApp -preset recommended -markup csharp -theme fluent -too
 
 # Desktop and WebAssembly only, native renderer
 dotnet new unoapp -o MyApp -platforms desktop wasm --renderer native
+
+# The default platforms plus Apple TV
+dotnet new unoapp -o MyApp -platforms android ios tvos wasm desktop
 
 # Recommended app with a server, Kiota HTTP client and OIDC auth
 dotnet new unoapp -o MyApp -preset recommended -server -http kiota -auth oidc
