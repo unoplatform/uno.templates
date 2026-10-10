@@ -29,11 +29,16 @@ body:
       description: Please select the platforms that are affected by this bug.
       multiple: true
       options:
-        - iOS
-        - Android
+        - All platforms
         - WebAssembly
-        - Skia
-        - Windows (WinAppSdk)
+        - Android
+        - iOS
+        - tvOS
+        - Desktop (Windows)
+        - Desktop (macOS)
+        - Desktop (X11)
+        - Desktop (Linux Framebuffer)
+        - Windows App SDK
         - Server
   - type: dropdown
     id: template-platform
