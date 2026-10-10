@@ -263,7 +263,9 @@ jobs:
   # publish is a SECOND, later approval, and tests are meant to run during the window before it, so
   # blocking on it would defeat the point. On PRs / schedule / dispatch the publish jobs are skipped,
   # so the skip-tolerant condition lets the matrix run once `build` finishes.
-  # always() is required so the condition is evaluated when the publish jobs are skipped.
+  # !cancelled() is required so the condition is evaluated when the publish jobs are skipped.
+  # Not always(): a job gated on always() keeps running after the run is cancelled, so a newer
+  # commit's run waits behind it in the concurrency group instead of replacing it.
   generate-test-matrix:
     runs-on: ubuntu-latest
     name: Generate Test Matrix
@@ -272,7 +274,7 @@ jobs:
       - publish_dev
       - publish_release_uno
     if: >-
-      ${{ always()
+      ${{ !cancelled()
       && needs.build.result == 'success'
       && (needs.publish_dev.result == 'success' || needs.publish_dev.result == 'skipped')
       && (needs.publish_release_uno.result == 'success' || needs.publish_release_uno.result == 'skipped') }}
@@ -299,11 +301,11 @@ jobs:
     needs:
     - generate-test-matrix
     - build
-    # Explicit condition: generate-test-matrix runs via always() and transitively depends on the
+    # Explicit condition: generate-test-matrix runs via !cancelled() and transitively depends on the
     # publish jobs (skipped on PRs), which would poison this job's implicit success() and skip it.
     # Run whenever the matrix + build succeeded, regardless of those skipped publish ancestors.
     if: >-
-      ${{ always()
+      ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
       && needs.build.result == 'success' }}
 
@@ -339,7 +341,7 @@ jobs:
     - build
     # See Linux Tests: run whenever the matrix + build succeeded, ignoring skipped publish ancestors.
     if: >-
-      ${{ always()
+      ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
       && needs.build.result == 'success' }}
 
@@ -375,7 +377,7 @@ jobs:
     - build
     # See Linux Tests: run whenever the matrix + build succeeded, ignoring skipped publish ancestors.
     if: >-
-      ${{ always()
+      ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
       && needs.build.result == 'success' }}
 
@@ -406,6 +408,8 @@ jobs:
   test-validation:
     name: Tests Validation
     runs-on: ubuntu-latest
+    # always(), not !cancelled(): this required check must run and fail on a cancelled run, because a
+    # skipped required check counts as passing.
     if: always()
     needs:
       - macos-template-tests
