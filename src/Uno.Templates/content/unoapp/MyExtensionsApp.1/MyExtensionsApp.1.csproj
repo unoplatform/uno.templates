@@ -112,8 +112,9 @@
       <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
-      <!--#if (useSkiaRenderer)-->
       SkiaRenderer;
+      <!--#if (useWebGpuRenderer)-->
+      WebGpu;
       <!--#endif-->
       <!--#if (useAndroidTV)-->
       AndroidTV;
