@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.1663 |
+| UnoVersion* | 7.0.0-dev.2097 |
 | UnoExtensionsVersion | 8.0.0-dev.76 |
 | UnoToolkitVersion | 11.0.0-dev.140 |
 | UnoThemesVersion | 9.0.0-dev.41 |
@@ -46,7 +46,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.1663",
+    "version": "7.0.0-dev.2097",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -56,7 +56,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.WinUI.Foldable",
       "Uno.WinUI.MSAL",
       "Uno.WinUI.Svg",
-      "Uno.WinUI.Lottie",
       "Uno.WinUI.DevServer",
       "Uno.WinUI.Runtime.Linux.FrameBuffer",
       "Uno.WinUI.Runtime.MacOS",
@@ -142,6 +141,9 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
+      "SkiaSharp.NativeAssets.Android",
+      "SkiaSharp.NativeAssets.iOS",
+      "SkiaSharp.NativeAssets.tvOS",
       "SkiaSharp.NativeAssets.Linux",
       "SkiaSharp.NativeAssets.macOS",
       "SkiaSharp.NativeAssets.Win32",
@@ -427,6 +429,19 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "10.0.110",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
+    ]
+  },
+  {
+    "group": "HarfBuzzSharp",
+    "version": "14.2.1.301",
+    "packages": [
+      "HarfBuzzSharp.NativeAssets.Android",
+      "HarfBuzzSharp.NativeAssets.iOS",
+      "HarfBuzzSharp.NativeAssets.tvOS",
+      "HarfBuzzSharp.NativeAssets.Linux",
+      "HarfBuzzSharp.NativeAssets.macOS",
+      "HarfBuzzSharp.NativeAssets.Win32",
+      "HarfBuzzSharp.NativeAssets.WebAssembly"
     ]
   }
 ]
