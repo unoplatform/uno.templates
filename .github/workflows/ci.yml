@@ -75,6 +75,7 @@ jobs:
   verify_stable_pins:
     name: Verify Stable Pins
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout
@@ -92,6 +93,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # Fail fast: verify_stable_pins is the root of the graph, so a bad pin skips the build, the
     # sign/publish chain and the whole Linux/Windows/macOS template matrix instead of spending
     # runners on a manifest that must not ship. It costs seconds, and is a no-op off the stable
@@ -128,6 +130,7 @@ jobs:
     name: Report Missing Dependencies
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       pull-requests: write
@@ -265,6 +268,7 @@ jobs:
   # commit's run waits behind it in the concurrency group instead of replacing it.
   generate-test-matrix:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     name: Generate Test Matrix
     needs:
       - build
@@ -293,6 +297,7 @@ jobs:
   # Run the test matrix on linux
   linux-template-tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 40 # ~2x the slowest green run (21 min, Oct 2026), so a hung job frees its runner
     needs:
     - generate-test-matrix
     - build
@@ -331,6 +336,7 @@ jobs:
   # Run the test matrix on Windows
   windows-template-tests:
     runs-on: windows-latest
+    timeout-minutes: 45 # ~2x the slowest green run (27 min, Oct 2026), so a hung job frees its runner
     needs:
     - generate-test-matrix
     - build
@@ -366,7 +372,12 @@ jobs:
 
   # Run the test matrix on macOS
   macos-template-tests:
+<<<<<<< HEAD
     runs-on: macos-15
+=======
+    runs-on: macos-26
+    timeout-minutes: 60 # ~2x the slowest green run (34 min, Oct 2026), so a hung job frees its runner
+>>>>>>> ed3ac3d (ci: cap PR job durations so a hung job frees its runner)
     needs:
     - generate-test-matrix
     - build
@@ -403,6 +414,7 @@ jobs:
   test-validation:
     name: Tests Validation
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     # always(), not !cancelled(): this required check must run and fail on a cancelled run, because a
     # skipped required check counts as passing.
     if: always()
