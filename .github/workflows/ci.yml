@@ -372,12 +372,8 @@ jobs:
 
   # Run the test matrix on macOS
   macos-template-tests:
-<<<<<<< HEAD
     runs-on: macos-15
-=======
-    runs-on: macos-26
     timeout-minutes: 60 # ~2x the slowest green run (34 min, Oct 2026), so a hung job frees its runner
->>>>>>> ed3ac3d (ci: cap PR job durations so a hung job frees its runner)
     needs:
     - generate-test-matrix
     - build
