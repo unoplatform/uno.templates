@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2270",
+    "version": "7.0.0-dev.2282",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -156,7 +156,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.90.1",
+    "version": "4.91.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -180,7 +180,7 @@
   },
   {
     "group": "UnoFonts",
-    "version": "2.10.0-dev.9",
+    "version": "2.10.0-dev.12",
     "packages": [
       "Uno.Fonts.OpenSans",
       "Uno.Fonts.Fluent",
@@ -304,7 +304,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.76",
+    "version": "8.0.0-dev.83",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -335,7 +335,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.140",
+    "version": "11.0.0-dev.142",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -374,7 +374,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.7",
+    "version": "2.0.0-dev.8",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
