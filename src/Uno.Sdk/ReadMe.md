@@ -4,23 +4,23 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.2282 |
-| UnoExtensionsVersion | 8.0.0-dev.83 |
+| UnoVersion* | 7.0.0-dev.2332 |
+| UnoExtensionsVersion | 8.0.0-dev.85 |
 | UnoToolkitVersion | 11.0.0-dev.142 |
-| UnoThemesVersion | 9.0.0-dev.41 |
+| UnoThemesVersion | 9.0.0-dev.42 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0-dev.34 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 2.0.0-dev.36 |
+| UnoResizetizerVersion | 2.0.0-dev.41 |
 | SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 2.5.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.7.1 |
-| MicrosoftLoggingVersion** | 10.0.12 |
-| WindowsCompatibilityVersion** | 9.0.20 |
+| MicrosoftLoggingVersion** | 10.0.13 |
+| WindowsCompatibilityVersion** | 9.0.21 |
 | MicrosoftIdentityClientVersion | 4.91.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
@@ -46,7 +46,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.2282",
+    "version": "7.0.0-dev.2332",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -81,8 +81,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.260",
-      "net11.0": "10.1.0-dev.260"
+      "net10.0": "10.1.0-dev.282",
+      "net11.0": "10.1.0-dev.282"
     }
   },
   {
@@ -109,7 +109,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.36",
+    "version": "2.0.0-dev.41",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -130,7 +130,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.2",
+    "version": "2.0.0-dev.12",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -180,23 +180,23 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "10.0.12",
+    "version": "10.0.13",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.12",
-      "net11.0": "11.0.0-rc.1.26425.128"
+      "net10.0": "10.0.13",
+      "net11.0": "11.0.0-rc.2.26504.105"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.20",
+    "version": "9.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.12"
+      "net10.0": "10.0.13"
     }
   },
   {
@@ -336,7 +336,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ],
     "versionOverride": {
       "net10.0": "10.0.110",
-      "net11.0": "11.0.0-rc.1.26451.6"
+      "net11.0": "11.0.0-rc.2.26505.5"
     }
   },
   {
@@ -349,7 +349,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.83",
+    "version": "8.0.0-dev.85",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -393,7 +393,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.41",
+    "version": "9.0.0-dev.42",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -419,7 +419,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.8",
+    "version": "2.0.0-dev.14",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
