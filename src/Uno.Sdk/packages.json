@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2333",
+    "version": "7.0.0-dev.2347",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -78,7 +78,7 @@
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.25",
+    "version": "2.0.0-dev.27",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -304,7 +304,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.100",
+    "version": "8.0.0-dev.101",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -348,7 +348,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.42",
+    "version": "9.0.0-dev.44",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
