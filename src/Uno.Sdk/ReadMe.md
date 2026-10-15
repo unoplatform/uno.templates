@@ -400,7 +400,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Themes.WinUI.Markup",
       "Uno.Cupertino.WinUI",
       "Uno.Simple.WinUI",
-      "Uno.Simple.WinUI.Markup"
+      "Uno.Simple.WinUI.Markup",
+      "Uno.Fluent.WinUI"
     ]
   },
   {
