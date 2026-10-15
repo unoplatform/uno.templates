@@ -159,17 +159,26 @@ internal class NuGetApiClient : IDisposable
         namespaceManager.AddNamespace("ns", "http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd");
 
         // Select dependency groups
-        var dependencyGroups = xDocument.XPathSelectElements("//ns:dependencies/ns:group", namespaceManager);
+        var dependencyGroups = xDocument.XPathSelectElements("//ns:dependencies/ns:group", namespaceManager).ToList();
 
+        // A package is compatible with this Uno.Sdk only if every dependency group is:
+        // recording only the first group's result let any later group override the verdict
+        // for the whole package. Packages without dependency groups (e.g. Uno.Fonts.*,
+        // Uno.Resizetizer, Uno.Settings.DevServer) carry no Uno.WinUI floor to check, so
+        // their nuspec cannot place them on an Uno major line at all; their Uno major is
+        // enforced at selection time instead, where first-party groups are held to the
+        // major pinned in packages.json. See #2291.
+        var isCompatible = true;
         foreach (var group in dependencyGroups)
         {
-            if (_validation.HasBeenChecked(packageId, version))
-                continue;
-
-            _validation.AddResult(packageId, version, await IsCompatibleWithUnoWinUI(group));
+            if (!await IsCompatibleWithUnoWinUI(group))
+            {
+                isCompatible = false;
+                break;
+            }
         }
 
-        _validation.AddResult(packageId, version, true);
+        _validation.AddResult(packageId, version, isCompatible);
         return _validation.IsValid(packageId, version);
     }
 
@@ -191,6 +200,14 @@ internal class NuGetApiClient : IDisposable
                 {
                     if (_validation.HasBeenChecked(packageId, version))
                     {
+                        // A transitive dependency that was already checked and found
+                        // incompatible must fail this group as well; skipping it let
+                        // an incompatible dependency pass validation.
+                        if (!_validation.IsValid(packageId, version))
+                        {
+                            return false;
+                        }
+
                         continue;
                     }
                     else if (!await ValidatePackage(packageId, version))
