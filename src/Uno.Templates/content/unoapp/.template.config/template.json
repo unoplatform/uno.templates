@@ -6,6 +6,7 @@
     "Uno Platform",
     "Android",
     "iOS",
+    "tvOS",
     "macOS",
     "Windows",
     "Linux",
@@ -16,7 +17,7 @@
   "name": "Uno Platform App",
   "identity": "Uno.Platform.UnoApp.WinUI.netcoremobile.CSharp",
   "groupIdentity": "Uno.Platform.UnoApp.WinUI.netcoremobile",
-  "description": "Solution template for creating a multi-platform C# & XAML application targeting Android, iOS, WebAssembly, Skia Desktop Windows, macOS, Linux (X11/Framebuffer) and Windows App SDK.",
+  "description": "Solution template for creating a multi-platform C# & XAML application targeting Android, iOS, tvOS, WebAssembly, Skia Desktop Windows, macOS, Linux (X11/Framebuffer) and Windows App SDK.",
   "precedence": "99",
   "tags": {
     "language": "C#",
@@ -274,6 +275,11 @@
           "choice": "ios",
           "displayName": "iOS",
           "description": "Enables the iOS target platform"
+        },
+        {
+          "choice": "tvos",
+          "displayName": "tvOS",
+          "description": "Enables the Apple TV target platform"
         },
         {
           "choice": "wasm",
@@ -1554,515 +1560,1027 @@
         "datatype": "string",
         "cases": [
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-ios;net10.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-ios;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-ios"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-android;net10.0-tvos;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-android;net10.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-windows10.0.26100;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-android;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-android;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-android"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-ios;net10.0-tvos;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-ios;net10.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-windows10.0.26100;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-ios;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-ios;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-ios"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-browserwasm;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-browserwasm;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0-desktop;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net10.0-tvos;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net10.0-tvos;net10.0"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net10.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-windows10.0.26100;net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-windows10.0.26100;net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-windows10.0.26100;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-windows10.0.26100;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-windows10.0.26100;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-browserwasm;net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-browserwasm;net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0-browserwasm;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net10.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net10.0-desktop;net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net10.0-desktop"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net10.0"
           },
           {
-            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": ""
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-ios;net11.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-ios;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-ios"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-android;net11.0-tvos;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-android;net11.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-windows10.0.26100;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-android;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-android;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-android"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-ios;net11.0-tvos;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-ios;net11.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-windows10.0.26100;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-ios;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-ios;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-ios"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-windows10.0.26100"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-browserwasm;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-browserwasm;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0-desktop;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "value": "net11.0-tvos;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "value": "net11.0-tvos;net11.0"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "value": "net11.0-tvos"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-windows10.0.26100;net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-windows10.0.26100;net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-windows10.0.26100;net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-windows10.0.26100;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-windows10.0.26100;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-windows10.0.26100;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms == windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-windows10.0.26100"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-browserwasm;net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-browserwasm;net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0-browserwasm;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms == wasm && platforms != desktop && useUnitTests == false)",
             "value": "net11.0-browserwasm"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == true)",
             "value": "net11.0-desktop;net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms == desktop && useUnitTests == false)",
             "value": "net11.0-desktop"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == true)",
             "value": "net11.0"
           },
           {
-            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != tvos && platforms != windows && platforms != wasm && platforms != desktop && useUnitTests == false)",
             "value": ""
           }
         ]
@@ -2538,6 +3056,12 @@
           "condition": "(platforms != ios)",
           "exclude": [
             "MyExtensionsApp.1/Platforms/iOS/**/*"
+          ]
+        },
+        {
+          "condition": "(platforms != tvos)",
+          "exclude": [
+            "MyExtensionsApp.1/Platforms/tvOS/**/*"
           ]
         },
         {
