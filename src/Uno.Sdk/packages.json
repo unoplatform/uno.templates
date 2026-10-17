@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2347",
+    "version": "7.0.0-dev.2354",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -304,7 +304,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.101",
+    "version": "8.0.0-dev.116",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -335,7 +335,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.143",
+    "version": "11.0.0-dev.144",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -348,7 +348,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.44",
+    "version": "9.0.0-dev.45",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -374,7 +374,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.14",
+    "version": "2.0.0-dev.15",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
