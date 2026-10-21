@@ -152,12 +152,12 @@
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.19",
+    "version": "9.0.21",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.11"
+      "net10.0": "10.0.13"
     }
   },
   {
