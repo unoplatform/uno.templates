@@ -248,11 +248,13 @@ internal class NuGetApiClient : IDisposable
         }
     }
 
-    public async Task<string> GetVersionAsync(string packageId, bool preview, bool majorUpgradeDisabled, string? minimumVersionString = null)
+    public async Task<string> GetVersionAsync(string packageId, bool preview, bool majorUpgradeDisabled, string? minimumVersionString = null, int? maxMajor = null)
     {
-        int? maxMajor = majorUpgradeDisabled && NuGetVersion.TryParse(minimumVersionString, out var pinnedVersion)
-            ? pinnedVersion.Version.Major
-            : null;
+        if (majorUpgradeDisabled && NuGetVersion.TryParse(minimumVersionString, out var pinnedVersion))
+        {
+            maxMajor = pinnedVersion.Version.Major;
+        }
+
         var versions = await GetPackageVersions(packageId, maxMajor);
 
 
