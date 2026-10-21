@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "6.8.0-dev.222",
+    "version": "6.8.0-dev.225",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -87,7 +87,7 @@
   },
   {
     "group": "settings",
-    "version": "1.14.0-dev.10",
+    "version": "1.14.0-dev.18",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -359,7 +359,7 @@
   },
   {
     "group": "Extensions",
-    "version": "7.4.0-dev.85",
+    "version": "7.4.0-dev.103",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -389,7 +389,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "10.0.0-dev.7",
+    "version": "10.0.0-dev.9",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -402,7 +402,7 @@
   },
   {
     "group": "Themes",
-    "version": "8.0.0-dev.25",
+    "version": "8.0.0-dev.27",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
