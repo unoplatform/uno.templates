@@ -44,9 +44,10 @@ internal class NuGetApiClient : IDisposable
 
     internal record VersionsResponse(string[] Versions);
 
-    public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId)
+    public async Task<IEnumerable<NuGetVersion>> GetPackageVersions(string packageId, int? maxMajor = null)
     {
-        if (_cachedVersions.TryGetValue(packageId, out var cachedVersions))
+        var cacheKey = maxMajor is null ? packageId : $"{packageId}|{maxMajor}";
+        if (_cachedVersions.TryGetValue(cacheKey, out var cachedVersions))
         {
             return cachedVersions;
         }
@@ -64,7 +65,11 @@ internal class NuGetApiClient : IDisposable
         var output = new List<NuGetVersion>();
         foreach (var version in allVersions.Distinct())
         {
-            if (NuGetVersion.TryParse(version, out var nugetVersion))
+            // Newer majors are dropped before validation: in preview mode the validation loop below stops at
+            // the first incompatible version, and the newest one is usually the next Uno major (a 7.0 build
+            // on a 6.x line), which would hide every compatible version of the current major.
+            if (NuGetVersion.TryParse(version, out var nugetVersion)
+                && (maxMajor is null || nugetVersion.Version.Major <= maxMajor))
             {
                 output.Add(nugetVersion);
             }
@@ -79,7 +84,7 @@ internal class NuGetApiClient : IDisposable
 
         if (!RequiresValidation(packageId))
         {
-            _cachedVersions[packageId] = latestVersions;
+            _cachedVersions[cacheKey] = latestVersions;
             return latestVersions;
         }
 
@@ -98,7 +103,7 @@ internal class NuGetApiClient : IDisposable
             }
         }
 
-        _cachedVersions[packageId] = validatedOutput;
+        _cachedVersions[cacheKey] = validatedOutput;
         return validatedOutput;
     }
 
@@ -245,17 +250,15 @@ internal class NuGetApiClient : IDisposable
 
     public async Task<string> GetVersionAsync(string packageId, bool preview, bool majorUpgradeDisabled, string? minimumVersionString = null)
     {
-        var versions = await GetPackageVersions(packageId);
+        int? maxMajor = majorUpgradeDisabled && NuGetVersion.TryParse(minimumVersionString, out var pinnedVersion)
+            ? pinnedVersion.Version.Major
+            : null;
+        var versions = await GetPackageVersions(packageId, maxMajor);
 
 
         // https://api.nuget.org/v3-flatcontainer/uno.extensions.hosting.winui/4.2.0-dev.137/uno.extensions.hosting.winui.nuspec
         if (!string.IsNullOrEmpty(minimumVersionString) && NuGetVersion.TryParse(minimumVersionString, out var minimumVersion))
         {
-            if (majorUpgradeDisabled)
-            {
-                versions = versions.Where(v => v.Version.Major <= minimumVersion.Version.Major);
-            }
-
             versions = versions.Where(x => minimumVersion.Version <= x.Version);
 
             if (UnoVersion.HasValue && !UnoVersion.Value.IsPreview)

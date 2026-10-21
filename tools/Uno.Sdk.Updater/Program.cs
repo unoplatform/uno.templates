@@ -381,7 +381,11 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
+    // On this 6.x line, first-party groups also stay on the major they are pinned to: their next majors are
+    // the Uno Platform 7.0 lines, and packages without a Uno.WinUI dependency (Resizetizer, Settings, App.Mcp)
+    // pass the compatibility check. Moving a first-party group to a new major is a manual manifest change.
+    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group)
+        || group.Packages.All(x => x.StartsWith("Uno."));
     var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
 
     if (string.IsNullOrEmpty(version))

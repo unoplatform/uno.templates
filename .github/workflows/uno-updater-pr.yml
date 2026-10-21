@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - release/stable/*
+      - servicing/*
     paths:
       - .github/workflows/uno-updater-pr.yml
       - .github/actions/sdk-update/*
-      - tools/Uno.Sdk.Updater/*
+      - .github/sdk-update-exclude.json
+      - tools/Uno.Sdk.Updater/**
   
 concurrency:
   group: ${{github.workflow}} - ${{github.ref}}
