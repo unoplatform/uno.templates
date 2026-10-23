@@ -23,7 +23,8 @@
     <!--#if (useSerilog)-->
     <PackageReference Include="Serilog.AspNetCore" />
     <!--#endif-->
-    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <!--#if (useWasm)-->
     <PackageReference Include="Uno.Wasm.Bootstrap.Server" />
     <!--#endif -->
