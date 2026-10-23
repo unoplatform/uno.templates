@@ -113,11 +113,6 @@ runs:
     with:
       DotNetVersion: ${{ env.DotNetVersion }}
 
-  - name: "Canary Updater"
-    uses: ./.github/actions/ci/canary-updater
-    with:
-      MergeBranch: false
-  
   - name: 'OpenJDK (Linux)'
     if: runner.os == 'linux'
     shell: bash

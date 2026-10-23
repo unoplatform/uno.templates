@@ -21,7 +21,7 @@ on:
       - release/**
 
   schedule:
-    - cron: '0 0 * * *' # Canary
+    - cron: '0 0 * * *' # Nightly build of main
 
   workflow_dispatch:
     inputs:
@@ -37,7 +37,6 @@ concurrency:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref }}
-  IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   # uno-check --pre-major carries the .NET 11 manifest
   ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
