@@ -20,7 +20,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkVersion | 1.7.250909003 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
 | WinAppSdkBuildToolsWinAppVersion | 0.5.0 |
-| MicrosoftLoggingVersion** | 9.0.20 |
+| MicrosoftLoggingVersion** | 9.0.21 |
 | WindowsCompatibilityVersion** | 9.0.21 |
 | MicrosoftIdentityClientVersion | 4.87.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
@@ -134,7 +134,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.13.4",
+    "version": "1.13.10",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -189,12 +189,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.20",
+    "version": "9.0.21",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.12"
+      "net10.0": "10.0.13"
     }
   },
   {
@@ -461,14 +461,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.23.1",
+    "version": "3.0.24",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4191.47",
+    "version": "1.0.4314.35",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
