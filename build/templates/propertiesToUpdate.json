@@ -1,6 +1,0 @@
-﻿[
-  { "PropertyName": "UnoVersion", "PackageId": "Uno.WinUI" },  
-  { "PropertyName": "UnoExtensionsLoggingVersion", "PackageId": "Uno.Extensions.Logging.WebAssembly.Console" }, 
-  { "PropertyName": "UnoWasmBootstrapVersionNet8", "PackageId": "Uno.Wasm.Bootstrap" }, 
-  { "PropertyName": "UnoUITestHelpersVersion", "PackageId": "Uno.UITest.Helpers" }
-]

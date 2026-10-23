@@ -141,7 +141,7 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 
 ### What CI does
 
-[`ci.yml`](.github/workflows/ci.yml) runs on pushes and PRs to `main`, `servicing/*` and `release/*`, plus a nightly canary run:
+[`ci.yml`](.github/workflows/ci.yml) runs on pushes and PRs to `main`, `servicing/*` and `release/*`, plus a nightly build of `main`:
 
 1. Verifies there are no prerelease pins on stable release branches.
 2. Builds the `Uno.Sdk` and `Uno.Templates` packages.
