@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2420",
+    "version": "7.0.0-dev.2428",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -24,6 +24,7 @@
       "Uno.WinUI.WebView.X11",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK",
+      "Uno.WinUI.Graphics3DWebGpu",
       "Uno.WinUI.SpellChecking"
     ]
   },
@@ -284,13 +285,13 @@
   },
   {
     "group": "Maui",
-    "version": "10.0.110",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.110",
+      "net10.0": "10.0.120",
       "net11.0": "11.0.0-rc.2.26505.5"
     }
   },
@@ -335,7 +336,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.147",
+    "version": "11.0.0-dev.155",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -367,21 +368,21 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4258.31",
+    "version": "1.0.4314.35",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.15",
+    "version": "2.0.0-dev.16",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.110",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]
