@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2428",
+    "version": "7.0.0-dev.2435",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -305,7 +305,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.118",
+    "version": "8.0.0-dev.123",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -375,7 +375,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.16",
+    "version": "2.0.0-dev.17",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
