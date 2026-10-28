@@ -4,10 +4,10 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 6.8.0-dev.222 |
-| UnoExtensionsVersion | 7.4.0-dev.85 |
-| UnoToolkitVersion | 10.0.0-dev.7 |
-| UnoThemesVersion | 8.0.0-dev.25 |
+| UnoVersion* | 6.8.0-dev.255 |
+| UnoExtensionsVersion | 7.4.0-dev.115 |
+| UnoToolkitVersion | 10.0.0-dev.10 |
+| UnoThemesVersion | 8.0.0-dev.27 |
 | UnoCSharpMarkupVersion | 6.8.0-dev.16 |
 | UnoWasmBootstrapVersion** | 9.0.23 |
 | UnoLoggingVersion | 1.7.0 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "6.8.0-dev.222",
+    "version": "6.8.0-dev.255",
     "packages": [
       "Uno.WinUI",
       "Uno.UI.Adapter.Microsoft.Extensions.Logging",
@@ -134,14 +134,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "1.14.0-dev.10",
+    "version": "1.14.0-dev.18",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "1.25.0-dev.4",
+    "version": "1.25.0-dev.6",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -406,7 +406,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Extensions",
-    "version": "7.4.0-dev.85",
+    "version": "7.4.0-dev.115",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -436,7 +436,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Toolkit",
-    "version": "10.0.0-dev.7",
+    "version": "10.0.0-dev.10",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -449,7 +449,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "8.0.0-dev.25",
+    "version": "8.0.0-dev.27",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
