@@ -1,11 +1,15 @@
 # https://github.com/actions/labeler
 
-area/build
-- build/*
+area/build:
+- changed-files:
+  - any-glob-to-any-file: build/**
 
-area/solution-templates
-- src/Uno.Templates/*
+area/solution-templates:
+- changed-files:
+  - any-glob-to-any-file: src/Uno.Templates/**
 
-area/sdk
-- src/Uno.Sdk/*
-- tools/Uno.Sdk.Updater/*
+area/sdk:
+- changed-files:
+  - any-glob-to-any-file:
+    - src/Uno.Sdk/**
+    - tools/Uno.Sdk.Updater/**
