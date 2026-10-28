@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.2494 |
+| UnoVersion* | 7.0.0-dev.2498 |
 | UnoExtensionsVersion | 8.0.0-dev.147 |
 | UnoToolkitVersion | 11.0.0-dev.156 |
 | UnoThemesVersion | 9.0.0-dev.59 |
@@ -17,7 +17,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 2.5.1 |
-| WinAppSdkBuildToolsVersion | 10.0.28000.2705 |
+| WinAppSdkBuildToolsVersion | 10.0.28000.2957 |
 | WinAppSdkBuildToolsWinAppVersion | 0.7.1 |
 | MicrosoftLoggingVersion** | 10.0.14 |
 | WindowsCompatibilityVersion** | 9.0.22 |
@@ -46,7 +46,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.2494",
+    "version": "7.0.0-dev.2498",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -167,7 +167,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2705",
+    "version": "10.0.28000.2957",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -443,6 +443,13 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "HarfBuzzSharp.NativeAssets.macOS",
       "HarfBuzzSharp.NativeAssets.Win32",
       "HarfBuzzSharp.NativeAssets.WebAssembly"
+    ]
+  },
+  {
+    "group": "Reactor",
+    "version": "0.1.0-dev.81",
+    "packages": [
+      "Uno.Microsoft.UI.Reactor"
     ]
   }
 ]
