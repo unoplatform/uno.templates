@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2494",
+    "version": "7.0.0-dev.2498",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -122,7 +122,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2705",
+    "version": "10.0.28000.2957",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -398,6 +398,13 @@
       "HarfBuzzSharp.NativeAssets.macOS",
       "HarfBuzzSharp.NativeAssets.Win32",
       "HarfBuzzSharp.NativeAssets.WebAssembly"
+    ]
+  },
+  {
+    "group": "Reactor",
+    "version": "0.1.0-dev.81",
+    "packages": [
+      "Uno.Microsoft.UI.Reactor"
     ]
   }
 ]
