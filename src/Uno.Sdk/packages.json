@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2428",
+    "version": "7.0.0-dev.2494",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -136,23 +136,23 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "10.0.13",
+    "version": "10.0.14",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13",
-      "net11.0": "11.0.0-rc.2.26504.105"
+      "net10.0": "10.0.14",
+      "net11.0": "11.0.0-rc.3.26522.148"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.21",
+    "version": "9.0.22",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13"
+      "net10.0": "10.0.14"
     }
   },
   {
@@ -305,7 +305,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.118",
+    "version": "8.0.0-dev.147",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -336,7 +336,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.155",
+    "version": "11.0.0-dev.156",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -349,7 +349,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.56",
+    "version": "9.0.0-dev.59",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -375,7 +375,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.16",
+    "version": "2.0.0-dev.18",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -389,7 +389,7 @@
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.2.1.301",
+    "version": "14.2.1.400",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
