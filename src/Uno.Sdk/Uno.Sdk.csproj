@@ -57,8 +57,12 @@
 			<_SdkBinFiles Include="$(SdkNuGetExtractionPath)\**\*.dll"
 				Pack="true"
 				PackagePath="%(RecursiveDir)" />
+			<!-- Other files the targets reference, such as Android's uno-proguard.cfg (not stamped like _SdkFiles). -->
+			<_SdkAssetFiles Include="$(SdkNuGetExtractionPath)\**\*.cfg"
+				Pack="true"
+				PackagePath="%(RecursiveDir)" />
 
-			<None Include="@(_SdkFiles);@(_SdkBinFiles)" />
+			<None Include="@(_SdkFiles);@(_SdkBinFiles);@(_SdkAssetFiles)" />
 		</ItemGroup>
 
 		<ReplaceFileText
