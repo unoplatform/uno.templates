@@ -13,3 +13,7 @@ area/sdk:
   - any-glob-to-any-file:
     - src/Uno.Sdk/**
     - tools/Uno.Sdk.Updater/**
+
+area/automation:
+- changed-files:
+  - any-glob-to-any-file: .github/**
