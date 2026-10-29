@@ -28,6 +28,7 @@ The IDE wizards use the same templates as the command line.
 | Short name | Name | What it is |
 |---|---|---|
 | `unoapp` | Uno Platform App | The main solution template: a multi-platform app targeting Android, iOS, WebAssembly, Skia Desktop (Windows, macOS, Linux) and Windows App SDK. |
+| `unoapp-reactor` | Uno Platform Reactor App | A single-project app built with [Reactor](https://github.com/unoplatform/uno.microsoft-ui-reactor): components and hooks in C#, no XAML. Targets Android, iOS, WebAssembly and Skia Desktop (Windows, macOS, Linux). |
 | `unolib` | Uno Platform Class Library | A cross-targeted class library for Uno Platform (WinUI, Android, iOS, WebAssembly and Skia). |
 | `unomauilib` | Uno Platform Maui Embedding Class Library | A library for .NET MAUI controls that you embed inside an Uno Platform app. |
 | `unoapp-uitest` | Uno Platform UI Tests Class Library | A project for UI tests of an Uno Platform app. |
@@ -58,7 +59,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 
 There are plenty more (dependency injection, configuration, localization and cultures, theme service, SVG, Lottie, MAUI embedding, PWA manifest, VS Code and Rider files...). Defaults marked "depends on preset" change when you pick `-preset recommended`.
 
-The other templates are much smaller. They all take `--tfm`; `unolib` also takes `--renderer` and `--global-json`, and `unomauilib` takes `--android`, `--ios` and `--winappsdk`.
+The other templates are much smaller. They all take `--tfm`; `unoapp-reactor` also takes `--platforms` and `--app-id`, `unolib` takes `--renderer` and `--global-json`, and `unomauilib` takes `--android`, `--ios` and `--winappsdk`.
 
 ### Examples
 
@@ -75,6 +76,9 @@ dotnet new unoapp -o MyApp -platforms desktop wasm --renderer native
 # Recommended app with a server, Kiota HTTP client and OIDC auth
 dotnet new unoapp -o MyApp -preset recommended -server -http kiota -auth oidc
 
+# A Reactor app for desktop and WebAssembly
+dotnet new unoapp-reactor -o MyApp -platforms desktop wasm
+
 # A class library
 dotnet new unolib -o MyLibrary
 ```
@@ -83,7 +87,7 @@ dotnet new unolib -o MyLibrary
 
 | Path | What lives there |
 |---|---|
-| [`src/Uno.Templates`](src/Uno.Templates) | The template pack project (`Uno.Templates.csproj`). The templates themselves are under `content/` (`unoapp`, `unolib`, `unolib-uitest`, `unomauilib`). `reinstall.ps1` builds and installs the pack locally. |
+| [`src/Uno.Templates`](src/Uno.Templates) | The template pack project (`Uno.Templates.csproj`). The templates themselves are under `content/` (`unoapp`, `unoapp-reactor`, `unolib`, `unolib-uitest`, `unomauilib`). `reinstall.ps1` builds and installs the pack locally. |
 | [`src/Uno.Sdk`](src/Uno.Sdk) | The `Uno.Sdk` MSBuild SDK package, including `packages.json`, the version manifest. |
 | [`src/Uno.Templates.sln`](src/Uno.Templates.sln) | Solution for the projects above. |
 | [`tools/Uno.Sdk.Updater`](tools/Uno.Sdk.Updater) | The tool that bumps package versions in `packages.json` and friends. |

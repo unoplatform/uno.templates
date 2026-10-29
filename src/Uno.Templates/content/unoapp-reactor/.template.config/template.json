@@ -1,0 +1,320 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [
+    "Multi-platform",
+    "Uno Platform",
+    "Reactor",
+    "Android",
+    "iOS",
+    "macOS",
+    "Windows",
+    "Linux",
+    "WebAssembly"
+  ],
+  "generatorVersions": "[1.0.0.0-*)",
+  "name": "Uno Platform Reactor App",
+  "identity": "Uno.Platform.UnoApp.Reactor.CSharp",
+  "groupIdentity": "Uno.Platform.UnoApp.Reactor",
+  "description": "Template for creating a multi-platform C# application with Reactor, the declarative, component-based UI framework, targeting Android, iOS, WebAssembly and Skia Desktop (Windows, macOS, Linux).",
+  "precedence": "100",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "unoapp-reactor",
+  "sourceName": "MyReactorApp.1",
+  "defaultName": "ReactorApp",
+  "placeholderFilename": "template-ignore",
+  "preferNameDirectory": true,
+  "symbols": {
+    "sanitizedName": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z\\d:]+",
+            "replacement": "-"
+          }
+        ]
+      }
+    },
+    "appId": {
+      "displayName": "Application ID",
+      "type": "parameter",
+      "datatype": "string",
+      "description": "The application identifier (e.g. com.mycompany.myapp)."
+    },
+    "appIdDefault": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "const",
+            "value": "com.companyname."
+          },
+          {
+            "type": "ref",
+            "value": "sanitizedName"
+          }
+        ]
+      }
+    },
+    "appIdDefaultLower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "appIdDefault",
+        "toLower": true
+      }
+    },
+    "appIdEvaluator": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "appId",
+        "fallbackVariableName": "appIdDefaultLower"
+      },
+      "replaces": "com.companyname.myreactorapp"
+    },
+    "tfm": {
+      "displayName": "Target Framework",
+      "type": "parameter",
+      "datatype": "choice",
+      "enableQuotelessLiterals": true,
+      "defaultValue": "net10.0",
+      "description": "Select the .NET version of your app",
+      "choices": [
+        {
+          "choice": "net10.0",
+          "displayName": ".NET 10.0",
+          "description": "Target .NET 10.0 (Long Term Support)"
+        },
+        {
+          "choice": "net11.0",
+          "displayName": ".NET 11.0",
+          "description": "Target .NET 11.0 (Standard Term Support)"
+        }
+      ]
+    },
+    "platforms": {
+      "displayName": "Platforms",
+      "description": "What platforms would you like to target (separate multiple values with a space)",
+      "type": "parameter",
+      "datatype": "choice",
+      "enableQuotelessLiterals": true,
+      "allowMultipleValues": true,
+      "defaultValue": "android|ios|wasm|desktop",
+      "choices": [
+        {
+          "choice": "android",
+          "displayName": "Android",
+          "description": "Enables the Android target platform"
+        },
+        {
+          "choice": "ios",
+          "displayName": "iOS",
+          "description": "Enables the iOS target platform"
+        },
+        {
+          "choice": "wasm",
+          "displayName": "WebAssembly",
+          "description": "Enables the WebAssembly target platform"
+        },
+        {
+          "choice": "desktop",
+          "displayName": "Desktops",
+          "description": "Enables Skia Desktop Windows, macOS, Linux (X11/Framebuffer)"
+        }
+      ]
+    },
+    "singleProjectTfms": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$SingleProjectTFMs$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == wasm && platforms == desktop)",
+            "value": "net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms == wasm && platforms != desktop)",
+            "value": "net10.0-android;net10.0-ios;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != wasm && platforms == desktop)",
+            "value": "net10.0-android;net10.0-ios;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms == ios && platforms != wasm && platforms != desktop)",
+            "value": "net10.0-android;net10.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == wasm && platforms == desktop)",
+            "value": "net10.0-android;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms == wasm && platforms != desktop)",
+            "value": "net10.0-android;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != wasm && platforms == desktop)",
+            "value": "net10.0-android;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms == android && platforms != ios && platforms != wasm && platforms != desktop)",
+            "value": "net10.0-android"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == wasm && platforms == desktop)",
+            "value": "net10.0-ios;net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms == wasm && platforms != desktop)",
+            "value": "net10.0-ios;net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != wasm && platforms == desktop)",
+            "value": "net10.0-ios;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms == ios && platforms != wasm && platforms != desktop)",
+            "value": "net10.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == wasm && platforms == desktop)",
+            "value": "net10.0-browserwasm;net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms == wasm && platforms != desktop)",
+            "value": "net10.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net10.0' && platforms != android && platforms != ios && platforms != wasm && platforms == desktop)",
+            "value": "net10.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == wasm && platforms == desktop)",
+            "value": "net11.0-android;net11.0-ios;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms == wasm && platforms != desktop)",
+            "value": "net11.0-android;net11.0-ios;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != wasm && platforms == desktop)",
+            "value": "net11.0-android;net11.0-ios;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms == ios && platforms != wasm && platforms != desktop)",
+            "value": "net11.0-android;net11.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == wasm && platforms == desktop)",
+            "value": "net11.0-android;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms == wasm && platforms != desktop)",
+            "value": "net11.0-android;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != wasm && platforms == desktop)",
+            "value": "net11.0-android;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms == android && platforms != ios && platforms != wasm && platforms != desktop)",
+            "value": "net11.0-android"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == wasm && platforms == desktop)",
+            "value": "net11.0-ios;net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms == wasm && platforms != desktop)",
+            "value": "net11.0-ios;net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != wasm && platforms == desktop)",
+            "value": "net11.0-ios;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms == ios && platforms != wasm && platforms != desktop)",
+            "value": "net11.0-ios"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == wasm && platforms == desktop)",
+            "value": "net11.0-browserwasm;net11.0-desktop"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms == wasm && platforms != desktop)",
+            "value": "net11.0-browserwasm"
+          },
+          {
+            "condition": "(tfm == 'net11.0' && platforms != android && platforms != ios && platforms != wasm && platforms == desktop)",
+            "value": "net11.0-desktop"
+          }
+        ]
+      }
+    },
+    "AllowPrereleaseNetSdk": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "$AllowPrereleaseNetSdk$",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "string",
+        "cases": [
+          {
+            "condition": "(tfm == 'net10.0')",
+            "value": "false"
+          },
+          {
+            "condition": "(tfm == 'net11.0')",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    "unoSdkVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "DefaultUnoSdkVersion",
+      "replaces": "$UnoSdkVersion$"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "MyReactorApp.1.csproj"
+    }
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(platforms != android)",
+          "exclude": [
+            "Platforms/Android/**/*"
+          ]
+        },
+        {
+          "condition": "(platforms != ios)",
+          "exclude": [
+            "Platforms/iOS/**/*"
+          ]
+        },
+        {
+          "condition": "(platforms != wasm)",
+          "exclude": [
+            "Platforms/WebAssembly/**/*"
+          ]
+        }
+      ]
+    }
+  ]
+}
