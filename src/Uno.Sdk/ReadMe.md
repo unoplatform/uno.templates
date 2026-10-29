@@ -40,7 +40,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MauiVersion** | 10.0.120 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
-\*\* This version may have a different version for .NET 10.0.
+\*\* This version may have a different version for .NET 11.0.
 
 ```json
 [
@@ -82,8 +82,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.282",
-      "net11.0": "10.1.0-dev.282"
+      "net10.0": "10.1.0-dev.284",
+      "net11.0": "11.1.0-dev.5"
     }
   },
   {
