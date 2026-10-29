@@ -53,7 +53,6 @@ using var sdkZip = new ZipArchive(sdkPackage);
 string? readMePath = null;
 string? packagesJsonPath = null;
 string? relativePackagesJsonPath = null;
-string? description = null;
 string? tags = null;
 bool wroteChanges = false;
 
