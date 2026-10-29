@@ -53,7 +53,6 @@ using var sdkZip = new ZipArchive(sdkPackage);
 string? readMePath = null;
 string? packagesJsonPath = null;
 string? relativePackagesJsonPath = null;
-string? description = null;
 string? tags = null;
 bool wroteChanges = false;
 
@@ -416,8 +415,10 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
                 continue;
             }
 
-            // Explicit VersionOverrides should always allow major upgrades
-            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion);
+            // A target framework override stays on its .NET major (net10.0 -> 10.x): otherwise the net10.0 entries
+            // move to the .NET 11 builds (Uno.Wasm.Bootstrap 11.x; MicrosoftLoggingConsole, WindowsCompatibility and
+            // Maui once .NET 11 ships).
+            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, GetTargetFrameworkMajor(key));
             if (version != versionOverrideString)
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
@@ -442,6 +443,13 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     }
 
     return newGroup;
+}
+
+// "net10.0" -> 10; null for keys that aren't a .NET target framework.
+static int? GetTargetFrameworkMajor(string key)
+{
+    var match = Regex.Match(key, @"^net(\d+)\.\d+");
+    return match.Success ? int.Parse(match.Groups[1].Value) : null;
 }
 
 static void WriteBreak()
