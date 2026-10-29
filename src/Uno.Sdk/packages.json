@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2507",
+    "version": "7.0.0-dev.2509",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -38,7 +38,7 @@
     ],
     "versionOverride": {
       "net10.0": "10.1.0-dev.284",
-      "net11.0": "11.1.0-dev.5"
+      "net11.0": "11.1.0-dev.7"
     }
   },
   {
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.45",
+    "version": "2.0.0-dev.51",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -79,7 +79,7 @@
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.27",
+    "version": "2.0.0-dev.29",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -157,7 +157,7 @@
   },
   {
     "group": "MsalClient",
-    "version": "4.91.1",
+    "version": "4.92.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -305,7 +305,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.147",
+    "version": "8.0.0-dev.150",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -349,7 +349,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.59",
+    "version": "9.0.0-dev.61",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -402,7 +402,7 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.89",
+    "version": "0.1.0-dev.98",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
