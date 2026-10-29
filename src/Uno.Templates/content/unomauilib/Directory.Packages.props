@@ -1,6 +1,8 @@
 <Project>
   <ItemGroup>
     <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <!--#if (tfm != 'net11.0')-->
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <!--#endif-->
   </ItemGroup>
 </Project>

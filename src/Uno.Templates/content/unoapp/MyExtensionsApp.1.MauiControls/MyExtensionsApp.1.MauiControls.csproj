@@ -64,7 +64,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls" />
+    <!--#if (tfm != 'net11.0')-->
+    <!-- Microsoft.Maui.Controls.Compatibility is not shipped for .NET 11 -->
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+    <!--#endif-->
   </ItemGroup>
 
 </Project>

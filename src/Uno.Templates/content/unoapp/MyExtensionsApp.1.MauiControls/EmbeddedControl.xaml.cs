@@ -12,7 +12,7 @@ public partial class EmbeddedControl : ContentView
 #if (!useMauiMvvmOrMvux)
     private int count=0;
 
-    private void CounterClicked(object sender, EventArgs e)
+    private void CounterClicked(object? sender, EventArgs e)
     {
         CounterButton.Text = ++count switch
         {
