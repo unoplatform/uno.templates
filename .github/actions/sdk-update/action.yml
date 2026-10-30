@@ -17,12 +17,18 @@ runs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.407'
+        # nbgv is pre-installed on the runner image as a .NET 10 build, and
+        # `dotnet tool update` won't downgrade it to the pinned toolVersion,
+        # so a .NET 10 runtime must be present or `nbgv get-version` fails
+        # (exit 150). Keep 8.0.407 for the net8.0 Uno.Sdk.Updater tool.
+        dotnet-version: |
+          8.0.407
+          10.0.x
 
     - uses: dotnet/nbgv@f088059084cb5d872e9d1a994433ca6440c2bf72 # v0.4.2
       id: nbgv
       with:
-        toolVersion: 3.6.139
+        toolVersion: 3.10.91
         setAllVars: true
 
     - name: Run Uno Sdk Updater
