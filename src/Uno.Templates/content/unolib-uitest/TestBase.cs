@@ -1,10 +1,4 @@
 ﻿//-:cnd:noEmit
-using System;
-using System.IO;
-using NUnit.Framework;
-using Uno.UITest;
-using Uno.UITest.Selenium;
-using Uno.UITests.Helpers;
 
 namespace UnoUITestsLibrary;
 
