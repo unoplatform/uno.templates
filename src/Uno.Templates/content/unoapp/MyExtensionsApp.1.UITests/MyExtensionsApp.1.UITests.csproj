@@ -14,10 +14,7 @@
     <PackageReference Include="Uno.UITest.Helpers" />
     <PackageReference Include="Xamarin.UITest" />
     <!--#if (useGitHubActions)-->
-    <PackageReference Include="GitHubActionsTestLogger">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="GitHubActionsTestLogger" />
     <!--#endif-->
   </ItemGroup>
 </Project>
