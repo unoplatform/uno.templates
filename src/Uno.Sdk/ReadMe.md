@@ -38,6 +38,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | AndroidXWearTilesVersion | 1.6.2 |
 | AndroidXNavigationVersion | 2.9.8.1 |
 | AndroidXCollectionVersion | 1.6.0.1 |
+| AndroidXFragmentVersion | 1.9.0 |
+| AndroidXLifecycleVersion | 2.11.0.1 |
 | MauiVersion** | 10.0.120 |
 
 \* UnoVersion cannot be changed via MSBuild. You must change the SDK Version to change the UnoVersion.
@@ -330,6 +332,21 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ]
   },
   {
+    "group": "AndroidXFragment",
+    "version": "1.9.0",
+    "packages": [
+      "Xamarin.AndroidX.Fragment",
+      "Xamarin.AndroidX.Fragment.Ktx"
+    ]
+  },
+  {
+    "group": "AndroidXLifecycle",
+    "version": "2.11.0.1",
+    "packages": [
+      "Xamarin.AndroidX.Lifecycle.LiveData"
+    ]
+  },
+  {
     "group": "Maui",
     "version": "10.0.120",
     "packages": [
@@ -451,21 +468,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "0.1.0-dev.115",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
-    ]
-  },
-  {
-    "group": "AndroidXFragment",
-    "version": "1.9.0",
-    "packages": [
-      "Xamarin.AndroidX.Fragment",
-      "Xamarin.AndroidX.Fragment.Ktx"
-    ]
-  },
-  {
-    "group": "AndroidXLifecycle",
-    "version": "2.11.0.1",
-    "packages": [
-      "Xamarin.AndroidX.Lifecycle.LiveData"
     ]
   }
 ]
