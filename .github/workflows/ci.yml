@@ -1,4 +1,5 @@
 name: CI
+run-name: "${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') && 'Canary: newest Uno dev builds' || '' }}"
 
 # A servicing/* branch continues a previous version line after main has moved on
 # to a newer one, so it builds, signs and publishes dev packages the same way main
@@ -21,7 +22,7 @@ on:
       - release/**
 
   schedule:
-    - cron: '0 0 * * *' # Canary
+    - cron: '0 0 * * *' # Nightly canary: main on the newest Uno dev builds (see the build job)
 
   workflow_dispatch:
     inputs:
@@ -29,6 +30,10 @@ on:
         description: 'Branch or ref to run CI on'
         required: true
         default: 'main'
+      canary:
+        description: 'Run as the canary: move the Uno packages to their newest dev builds before building'
+        type: boolean
+        default: false
   
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
@@ -37,6 +42,7 @@ concurrency:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref }}
+  IsCanary: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') }}
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   # uno-check --pre-major carries the .NET 11 manifest
   ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
@@ -91,7 +97,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') && 30 || 15 }}
     # Fail fast: verify_stable_pins is the root of the graph, so a bad pin skips the build, the
     # sign/publish chain and the whole Linux/Windows/macOS template matrix instead of spending
     # runners on a manifest that must not ship. It costs seconds, and is a no-op off the stable
@@ -107,6 +113,33 @@ jobs:
 
     - name: Free disk space (Linux)
       uses: ./.github/actions/host-cleanup-linux
+
+    # Canary (the nightly run, or a manual run with `canary: true`): like the other Uno Platform canaries,
+    # move the Uno packages to their newest dev builds before building, so the whole template matrix runs on
+    # them. It uses the same sdk-update step as the Update Uno Sdk workflow, so packages that aren't Uno's keep
+    # their pins. Nothing is committed, and the sign and publish jobs only run on push.
+    - name: "Canary: save the pinned versions"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: Copy-Item src/Uno.Sdk/packages.json "$env:RUNNER_TEMP/packages.pinned.json"
+
+    - name: "Canary: move the Uno packages to their newest dev builds"
+      if: env.IsCanary == 'true'
+      uses: ./.github/actions/sdk-update
+
+    - name: "Canary: move Uno.UITest.Helpers to its newest build"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: |
+        # The one Uno package outside packages.json: the generated UI test project's version, which
+        # Uno.Templates.csproj reads from UnoUITestHelpersVersion (src/Directory.Build.targets).
+        $latest = (Invoke-RestMethod 'https://api.nuget.org/v3-flatcontainer/uno.uitest.helpers/index.json').versions[-1]
+        "UnoUITestHelpersVersion=$latest" >> $env:GITHUB_ENV
+
+    - name: "Canary: list the versions under test"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: ./build/Write-CanarySummary.ps1 -PinnedManifest "$env:RUNNER_TEMP/packages.pinned.json" >> $env:GITHUB_STEP_SUMMARY
 
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
