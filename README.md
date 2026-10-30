@@ -155,6 +155,18 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 
 If you add or change an option, add a matching entry to the matrix.
 
+### Nightly canary
+
+The nightly run is this repo's canary, like the canaries of the other Uno Platform repos:
+
+1. It starts from `main` and moves the Uno packages to their newest dev builds, with the same `sdk-update` step as the **Update Uno Sdk** workflow (see [Uno.Sdk](#unosdk)). Packages that aren't Uno's keep their pins. `Uno.UITest.Helpers`, the one Uno package outside `packages.json`, moves too.
+2. It builds the packages and runs the whole matrix on them. Nothing is committed or published.
+3. The run is named **Canary: newest Uno dev builds**, and its summary lists every version it tried.
+
+A red canary means a newer Uno dev build breaks the templates, or something outside changed, such as a runner image, the .NET SDK or a workload. Start from the versions in the run summary. The [nightly runs](https://github.com/unoplatform/uno.templates/actions/workflows/ci.yml?query=event%3Aschedule) are listed under Actions.
+
+To try the canary on a branch, run CI manually with `canary: true`. Unlike the other canaries there is no `canaries/dev` branch: the scheduled run always uses `main`'s workflow and applies the update in its workspace, so there is no branch to keep in sync.
+
 ## Contributing
 
 Contributions are welcome. Please:
