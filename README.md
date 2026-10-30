@@ -155,6 +155,11 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 
 If you add or change an option, add a matching entry to the matrix.
 
+There is no separate canary build. Two runs keep checking the templates over time:
+
+- The nightly build of `main` runs this matrix with the versions already pinned, to catch outside changes such as runner images, .NET SDKs or workloads.
+- The **Update Uno Sdk** workflow (see [Uno.Sdk](#unosdk)) moves the pins to the newest Uno dev builds, and each of its PRs runs this matrix before it merges. A breaking Uno dev build shows up as a red update PR, so keep an eye on [open `sdk-update` PRs](https://github.com/unoplatform/uno.templates/pulls?q=is%3Apr+is%3Aopen+label%3Asdk-update).
+
 ## Contributing
 
 Contributions are welcome. Please:
