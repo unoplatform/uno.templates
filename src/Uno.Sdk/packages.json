@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2420",
+    "version": "7.0.0-dev.2526",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -24,6 +24,7 @@
       "Uno.WinUI.WebView.X11",
       "Uno.WinUI.Graphics3DGL",
       "Uno.WinUI.Graphics2DSK",
+      "Uno.WinUI.Graphics3DWebGpu",
       "Uno.WinUI.SpellChecking"
     ]
   },
@@ -36,8 +37,8 @@
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.282",
-      "net11.0": "10.1.0-dev.282"
+      "net10.0": "10.1.0-dev.284",
+      "net11.0": "11.1.0-dev.7"
     }
   },
   {
@@ -64,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.45",
+    "version": "2.0.0-dev.51",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -78,7 +79,7 @@
   },
   {
     "group": "settings",
-    "version": "2.0.0-dev.27",
+    "version": "2.0.0-dev.29",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -121,7 +122,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2705",
+    "version": "10.0.28000.2957",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -135,28 +136,28 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "10.0.13",
+    "version": "10.0.14",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13",
-      "net11.0": "11.0.0-rc.2.26504.105"
+      "net10.0": "10.0.14",
+      "net11.0": "11.0.0-rc.3.26522.148"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.21",
+    "version": "9.0.22",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13"
+      "net10.0": "10.0.14"
     }
   },
   {
     "group": "MsalClient",
-    "version": "4.91.1",
+    "version": "4.92.0",
     "packages": [
       "Microsoft.Identity.Client",
       "Microsoft.Identity.Client.Extensions.Msal"
@@ -283,14 +284,29 @@
     ]
   },
   {
+    "group": "AndroidXFragment",
+    "version": "1.9.0",
+    "packages": [
+      "Xamarin.AndroidX.Fragment",
+      "Xamarin.AndroidX.Fragment.Ktx"
+    ]
+  },
+  {
+    "group": "AndroidXLifecycle",
+    "version": "2.11.0.1",
+    "packages": [
+      "Xamarin.AndroidX.Lifecycle.LiveData"
+    ]
+  },
+  {
     "group": "Maui",
-    "version": "10.0.110",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls",
       "Microsoft.Maui.Graphics"
     ],
     "versionOverride": {
-      "net10.0": "10.0.110",
+      "net10.0": "10.0.120",
       "net11.0": "11.0.0-rc.2.26505.5"
     }
   },
@@ -304,7 +320,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.118",
+    "version": "8.0.0-dev.150",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -335,7 +351,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.147",
+    "version": "11.0.0-dev.157",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -348,7 +364,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.56",
+    "version": "9.0.0-dev.61",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -367,28 +383,28 @@
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4258.31",
+    "version": "1.0.4314.35",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.15",
+    "version": "2.0.0-dev.19",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.110",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.2.1.301",
+    "version": "14.2.1.400",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
@@ -397,6 +413,13 @@
       "HarfBuzzSharp.NativeAssets.macOS",
       "HarfBuzzSharp.NativeAssets.Win32",
       "HarfBuzzSharp.NativeAssets.WebAssembly"
+    ]
+  },
+  {
+    "group": "Reactor",
+    "version": "0.1.0-dev.115",
+    "packages": [
+      "Uno.Microsoft.UI.Reactor"
     ]
   }
 ]

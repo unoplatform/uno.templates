@@ -300,7 +300,9 @@ jobs:
 
   # Run the test matrix on linux
   linux-template-tests:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest is moving to Ubuntu 26.04, where packages.microsoft.com has no
+    # msopenjdk-17 yet, so the run-tests action's 'OpenJDK (Linux)' step fails (exit 100).
+    runs-on: ubuntu-24.04
     timeout-minutes: 40 # ~2x the slowest green run (21 min, Oct 2026), so a hung job frees its runner
     needs:
     - generate-test-matrix
