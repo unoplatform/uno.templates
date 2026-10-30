@@ -113,11 +113,6 @@ runs:
     with:
       DotNetVersion: ${{ env.DotNetVersion }}
 
-  - name: "Canary Updater"
-    uses: ./.github/actions/ci/canary-updater
-    with:
-      MergeBranch: false
-  
   - name: 'OpenJDK (Linux)'
     if: runner.os == 'linux'
     shell: bash
@@ -289,10 +284,9 @@ runs:
 
         echo "Testing $testName ($templateName $testParams)"
 
-        # Set the progress to report on azdo UI
+        # Report the progress in the log
         $progress = ($currentTest / $validations.Keys.Count) * 100;
         echo "Progress: {$progress}"
-        echo "##vso[task.setprogress value=$progress;]$testName"
 
         # Split the string containing parameters with respect for quotes, so parameters can be 
         # passed properly to the dotnet new command. (the string would be interpreted as a single parameter otherwise)
