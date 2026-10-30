@@ -144,6 +144,25 @@ jobs:
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
 
+    - name: "Canary: check the built Uno.Sdk carries the moved versions"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: |
+        # Guards against anything resetting the workspace between the update and the build, which would
+        # make the canary silently test the pinned versions.
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $nupkg = Get-ChildItem artifacts -Filter 'Uno.Sdk.*.nupkg' | Select-Object -First 1
+        $zip = [IO.Compression.ZipFile]::OpenRead($nupkg.FullName)
+        try {
+          $entry = $zip.Entries | Where-Object { $_.FullName -like '*packages.json' } | Select-Object -First 1
+          $reader = [IO.StreamReader]::new($entry.Open())
+          $built = ($reader.ReadToEnd() | ConvertFrom-Json | Where-Object group -eq 'Core').version
+          $reader.Dispose()
+        } finally { $zip.Dispose() }
+        $moved = (Get-Content src/Uno.Sdk/packages.json -Raw | ConvertFrom-Json | Where-Object group -eq 'Core').version
+        if ($built -ne $moved) { throw "The built Uno.Sdk pins Core $built, but the canary moved it to $moved." }
+        "Built Uno.Sdk pins Core $built, as moved by the canary."
+
   # The nuget.org dependency verification is a HARD GATE only on the publication paths, and it runs
   # as the first step (after checkout) INSIDE the publish job itself (not as a separate job):
   #   * dev publish  (push to main)       -> first step of publish_dev
