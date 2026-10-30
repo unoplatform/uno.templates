@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2509",
+    "version": "7.0.0-dev.2526",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -375,7 +375,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.18",
+    "version": "2.0.0-dev.19",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -402,9 +402,24 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.98",
+    "version": "0.1.0-dev.115",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
+    ]
+  },
+  {
+    "group": "AndroidXFragment",
+    "version": "1.9.0",
+    "packages": [
+      "Xamarin.AndroidX.Fragment",
+      "Xamarin.AndroidX.Fragment.Ktx"
+    ]
+  },
+  {
+    "group": "AndroidXLifecycle",
+    "version": "2.11.0.1",
+    "packages": [
+      "Xamarin.AndroidX.Lifecycle.LiveData"
     ]
   }
 ]

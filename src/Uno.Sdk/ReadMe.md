@@ -4,12 +4,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.0-dev.2509 |
+| UnoVersion* | 7.0.0-dev.2526 |
 | UnoExtensionsVersion | 8.0.0-dev.150 |
 | UnoToolkitVersion | 11.0.0-dev.157 |
 | UnoThemesVersion | 9.0.0-dev.61 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
-| UnoReactorVersion | 0.1.0-dev.98 |
+| UnoReactorVersion | 0.1.0-dev.115 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0-dev.34 |
@@ -47,7 +47,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.0-dev.2509",
+    "version": "7.0.0-dev.2526",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -421,7 +421,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.18",
+    "version": "2.0.0-dev.19",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -448,9 +448,24 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.98",
+    "version": "0.1.0-dev.115",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
+    ]
+  },
+  {
+    "group": "AndroidXFragment",
+    "version": "1.9.0",
+    "packages": [
+      "Xamarin.AndroidX.Fragment",
+      "Xamarin.AndroidX.Fragment.Ktx"
+    ]
+  },
+  {
+    "group": "AndroidXLifecycle",
+    "version": "2.11.0.1",
+    "packages": [
+      "Xamarin.AndroidX.Lifecycle.LiveData"
     ]
   }
 ]
