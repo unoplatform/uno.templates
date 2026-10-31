@@ -207,7 +207,7 @@
 		"Extensions": [
 			{
 				"SectionType": "MultiSelect",
-				"SymbolIds": [ "dependencyInjection", "configuration", "localization", "serialization" ]
+				"SymbolIds": [ "dependencyInjection", "configuration", "localization" ]
 			},
 			{
 				"SectionType": "SingleSelect",
@@ -676,15 +676,6 @@
 				}
 			}
 		},
-		"serialization": {
-			"Icon": "/Assets/Extensions.Serialization.svg",
-			"Requires": {
-				"dependencyInjection": {
-					"RequiredValues": [ "true" ],
-					"MoreInformation": "Dependency Injection is required"
-				}
-			}
-		},
 		"server": {
 
 			"Icon": "/Assets/Features.Server.svg"
@@ -698,18 +689,6 @@
 		"tests.unit": {
 
 			"Icon": "/Assets/Test.UnitTest.svg"
-		},
-		"tfm.net6.0": {
-			"Sequence": 1,
-			"Icon": "/Assets/Framework.NET6.svg"
-		},
-		"tfm.net7.0": {
-			"Sequence": 1,
-			"Icon": "/Assets/Framework.NET7.svg"
-		},
-		"tfm.net8.0": {
-			"Sequence": 1,
-			"Icon": "/Assets/Framework.NET8.svg"
 		},
 		"tfm.net10.0": {
 			"Sequence": 1,
