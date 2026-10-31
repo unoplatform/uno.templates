@@ -92,7 +92,7 @@ dotnet new unolib -o MyLibrary
 | [`src/Uno.Templates.sln`](src/Uno.Templates.sln) | Solution for the projects above. |
 | [`tools/Uno.Sdk.Updater`](tools/Uno.Sdk.Updater) | The tool that bumps package versions in `packages.json` and friends. |
 | [`tools/TemplateTfmSwitchGenerator`](tools/TemplateTfmSwitchGenerator) | Generates the per-TFM switch cases used by the template configuration. |
-| [`build`](build) | PowerShell scripts for CI checks (stable pins, NuGet.org dependency verification, signing, Windows SDK install) and updater config in `build/templates`. |
+| [`build`](build) | PowerShell scripts for CI checks (stable pins, NuGet.org dependency verification, wizard icons and options, signing, Windows SDK install) and updater config in `build/templates`. |
 | [`specs`](specs) | Design specs for template changes. |
 | [`.github`](.github) | CI workflows and the composite actions they use. |
 | `version.json` | [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) configuration. |
@@ -148,12 +148,12 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 [`ci.yml`](.github/workflows/ci.yml) runs on pushes and PRs to `main`, `servicing/*` and `release/*`, plus a nightly canary run:
 
 1. Verifies there are no prerelease pins on stable release branches.
-2. Builds the `Uno.Sdk` and `Uno.Templates` packages.
+2. Builds the `Uno.Sdk` and `Uno.Templates` packages. Beside the build, it checks the wizard metadata (the icons `TemplateWizard.json` names, and its options and values against `template.json`) and runs the `build/*.Tests.ps1` script tests: a failure there fails the run, but doesn't hold back the packages.
 3. Signs them, and publishes dev builds from `main` (production publishing sits behind approval gates).
 4. Generates a test matrix ([`generate-test-matrix`](.github/actions/ci/generate-test-matrix/action.yml)): a big list of `dotnet new` argument combinations (presets, platforms, markup, MVVM/MVUX, HTTP flavors, auth modes, themes, MAUI embedding, libraries...).
 5. Runs that matrix on Linux, Windows and macOS: install the freshly built templates, create each project, and build it ([`run-tests`](.github/actions/ci/run-tests/action.yml)).
 
-If you add or change an option, add a matching entry to the matrix.
+If you add or change an option, add a matching entry to the matrix. If the wizard shows it, `TemplateWizard.json` names its icon: add the icon under [`unoapp/.template.config/Assets`](src/Uno.Templates/content/unoapp/.template.config/Assets) in its four theme variants (`Assets/`, `Dark/`, `Disable/` and `DarkDisable/`), and remove the icons nothing names anymore, unless they wait for an option on the script's kept list ([`Test-WizardIcons.ps1`](build/Test-WizardIcons.ps1) checks both). When you rename or remove an option or one of its values, update `TemplateWizard.json` too: the wizards silently skip what `template.json` doesn't define ([`Test-WizardOptions.ps1`](build/Test-WizardOptions.ps1) checks it). The Visual Studio wizard and the Live Wizard take the metadata from the templates package.
 
 ### Nightly canary
 
