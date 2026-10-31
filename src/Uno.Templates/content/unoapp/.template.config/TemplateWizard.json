@@ -679,7 +679,7 @@
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
 		"renderer.webgpu": {
-			"Icon": "/Assets/Features.SkiaRendering.svg"
+			"Icon": "/Assets/Features.WebGpuRendering.svg"
 		},
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"
