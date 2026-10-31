@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2526",
+    "version": "7.0.0-dev.2528",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.31",
+    "version": "2.0.0-dev.38",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -320,7 +320,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.150",
+    "version": "8.0.0-dev.155",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -417,7 +417,7 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.115",
+    "version": "0.1.0-dev.116",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
