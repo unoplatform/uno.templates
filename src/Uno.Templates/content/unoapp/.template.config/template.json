@@ -703,13 +703,6 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
-    "unoLottie": {
-      "displayName": "Uno.WinUI.Lottie",
-      "description": "Include Uno.WinUI.Lottie for Lottie support",
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "false"
-    },
     "dspGenerator": {
       "displayName": "Import Uno DSP",
       "description": "Import a Uno DSP theme file to override Material colors",
@@ -958,11 +951,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(appThemeEvaluator == 'simple')"
-    },
-    "useUnoLottie": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(unoLottie || (useToolkit && appThemeEvaluator == 'fluent'))"
     },
     "useMediaPlayerElement": {
       "type": "computed",

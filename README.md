@@ -57,7 +57,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--continuous-integration` | `-ci` | `none`, `azure`, `github` | `none` |
 | `--skip-restore` | `-skip` | `true`, `false` | `false` |
 
-There are plenty more (dependency injection, configuration, localization and cultures, theme service, SVG, Lottie, MAUI embedding, PWA manifest, VS Code and Rider files...). Defaults marked "depends on preset" change when you pick `-preset recommended`.
+There are plenty more (dependency injection, configuration, localization and cultures, theme service, SVG, MAUI embedding, PWA manifest, VS Code and Rider files...). Defaults marked "depends on preset" change when you pick `-preset recommended`.
 
 The other templates are much smaller. They all take `--tfm`; `unoapp-reactor` also takes `--platforms` and `--app-id`, `unolib` takes `--renderer` and `--global-json`, and `unomauilib` takes `--android`, `--ios` and `--winappsdk`.
 
