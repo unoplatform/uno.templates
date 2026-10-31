@@ -14,7 +14,7 @@ public class Given_MainPage : TestBase
         await Task.Delay(5000);
 
 //+:cnd:noEmit
-#if (useExtensionsNavigation && useSampleContent)
+#if (useSampleNavigation)
 
         // Query for the SecondPageButton and then tap it
         Query xamlButton = q => q.All().Marked("SecondPageButton");
