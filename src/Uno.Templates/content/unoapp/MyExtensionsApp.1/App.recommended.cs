@@ -34,13 +34,13 @@ public partial class App : Application
 #if useMaterial
 
 #if useToolkit
-        // Load Uno.UI.Toolkit and Material Resources
+        // Load Uno Toolkit and Material Resources
         Resources.Build(r => r.Merged(
             new  MaterialToolkitTheme(
                     new Styles.ColorPaletteOverride(),
                     new Styles.MaterialFontsOverride())));
 #else
-        // Load Uno.UI.Toolkit and Material Resources
+        // Load Material Resources
         Resources.Build(r => r.Merged(
             new  MaterialTheme(
                     new Styles.ColorPaletteOverride(),
@@ -49,7 +49,7 @@ public partial class App : Application
 #elif (useSimpleTheme)
 
 #if useToolkit
-        // Load Uno.UI.Toolkit and Simple Theme Resources
+        // Load Uno Toolkit and Simple Theme Resources
         Resources.Build(r => r.Merged(
             new  SimpleToolkitTheme()));
 #else
@@ -59,7 +59,7 @@ public partial class App : Application
 #endif
 #elif (useToolkit)
 
-        // Load Uno.UI.Toolkit Resources
+        // Load Uno Toolkit Resources
         Resources.Build(r => r.Merged(
             new ToolkitResources()));
 #endif
