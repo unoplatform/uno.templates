@@ -101,8 +101,7 @@ runs:
             # https://github.com/unoplatform/uno.templates/issues/500
             "Issue500;!macOS;unoapp;-skip -preset blank -markup csharp -presentation mvux -theme material -di -config -http none -nav regions -log default -server -auth msal"
             # https://github.com/unoplatform/uno.templates/issues/572
-            # Disabled for resizetizer issue https://github.com/unoplatform/uno.templates/issues/1492
-            # "Issue572;!macOS;unoapp;-skip -preset recommended -id com.companyname.TestDuplicatedReference -pub O=TestDuplicatedReference -platforms android -platforms ios -platforms wasm -platforms desktop -theme-service -vscode False -pwa False -theme material -presentation mvvm -config -di -log default -nav regions -http none -loc -server False -tests unit -tests ui -toolkit -dsp"
+            "Issue572;!macOS;unoapp;-skip -preset recommended -id com.companyname.TestDuplicatedReference -pub O=TestDuplicatedReference -platforms android -platforms ios -platforms wasm -platforms desktop -theme-service -vscode False -pwa False -theme material -presentation mvvm -config -di -log default -nav regions -http none -loc -server False -tests unit -tests ui -toolkit -dsp"
             # https://github.com/unoplatform/uno.templates/issues/1553
             "RecommendedNoPresentation;;unoapp;-preset recommended -presentation none"
             "BlankDINavNoPresentation;;unoapp;-presentation none -di -nav regions -config"
@@ -127,6 +126,19 @@ runs:
             "blankServerRefit;;unoapp;-skip -server -http refit"
             "blankServerKiota;;unoapp;-skip -server -http kiota"
             "DevServerPortExplicit;;unoapp;-skip --devServerPort 12345"
+            # The repository files of -ci are the same on every OS, so one OS creates them.
+            "CiGitHub;Linux;unoapp;-skip -ci github"
+            "CiAzure;Linux;unoapp;-skip -ci azure"
+            # The UI test class library (unoapp-uitest) is a plain .NET library: one OS builds it.
+            "UITestLibrary;Linux;unoapp-uitest;"
+            # Options no other test covers. They change the Android head or add an UnoFeature, so one OS builds them.
+            "AndroidDevices;Linux;unoapp;-skip --includeAndroidTV --includeAndroidAuto --includeAndroidWear -platforms android"
+            "CupertinoTheme;Linux;unoapp;-skip -preset recommended -theme cupertino"
+            "Svg;Linux;unoapp;-skip -svg"
+            "MediaPlayerElement;Linux;unoapp;-skip -mpe"
+            # The UI test project, without and with the sample's second page: https://github.com/unoplatform/uno.templates/issues/2338
+            "BlankTests;Linux;unoapp;-skip -tests unit ui"
+            "RecommendedSampleTests;Linux;unoapp;-skip -preset recommended --sample -tests unit ui"
         );
 
         # Temporary Uno 7.0 bring-up exclusions

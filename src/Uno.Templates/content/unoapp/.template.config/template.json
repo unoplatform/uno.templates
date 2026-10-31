@@ -2296,6 +2296,14 @@
       "datatype": "bool",
       "value": "useExtensionsNavigation && useToolkit"
     },
+    // A file condition can't use useSampleContent with &&: when --sample isn't given, the coalesced preset default
+    // reaches it as text, and && throws "Unable to cast object of type 'System.String' to type 'System.Boolean'"
+    // (https://github.com/unoplatform/uno.templates/issues/2338). A computed symbol is a real bool.
+    "useSampleNavigation": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "useExtensionsNavigation && useSampleContent"
+    },
     "useReactiveExtensionsNavigation": {
       "type": "computed",
       "datatype": "bool",
