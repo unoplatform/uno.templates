@@ -114,11 +114,7 @@
 					"includeAndroidTV": "false",
 					"includeAndroidAuto": "false",
 					"includeAndroidWear": "false"
-				},
-				"Features": [
-					".NET 8",
-					"XAML"
-				]
+				}
 			},
 			{
 				"Id": "recommended",
@@ -160,16 +156,7 @@
 					"includeAndroidTV": "false",
 					"includeAndroidAuto": "false",
 					"includeAndroidWear": "false"
-				},
-				"Features": [
-					".NET 8",
-					"XAML",
-					"MVUX",
-					"Simple",
-					"Configuration",
-					"Localization",
-					"Testing"
-				]
+				}
 			},
 			{
 				"Id": "custom",
@@ -312,7 +299,7 @@
 				"Title": "",
 				"SectionType": "SingleSelect",
 				"SymbolId": "appTheme",
-				"Choices": [ "simple", "material", "fluent", "DPS" ]
+				"Choices": [ "simple", "material", "fluent" ]
 			},
 			//{
 			//    "SectionType": "Color",
@@ -813,55 +800,15 @@
 	],
 	"PackagesToUpdate": [
 		{
-			"PackageId": "Uno.WinUI",
-			"Symbol": "unoWinUIVersion"
-		},
-		{
 			"PackageId": "Uno.Sdk",
 			"Symbol": "unoSdkVersion"
 		},
-		{
-			"PackageId": "Uno.Extensions.Core",
-			"Symbol": "unoExtensionsVersion"
-		},
-		//{
-		//	"PackageId": "Uno.Extensions.Logging.OSLog",
-		//	"Symbol": "unoExtensionsLoggingVersion"
-		//},
-		//{
-		//	"PackageId": "SkiaSharp.Views.Uno.WinUI",
-		//	"Symbol": "skiaSharpVersion"
-		//},
-		//{
-		//	"PackageId": "Uno.Core.Extensions.Logging.Singleton",
-		//	"Symbol": "unoCoreExtensionsLoggingVersion"
-		//},
-		{
-			"PackageId": "Uno.Material.WinUI",
-			"Symbol": "unoThemesVersion"
-		},
-		//{
-		//	"PackageId": "Uno.Dsp.Tasks",
-		//	"Symbol": "unoDspTasksVersion"
-		//},
-		{
-			"PackageId": "Uno.Toolkit.WinUI",
-			"Symbol": "unoToolkitVersion"
-		},
-		//{
-		//	"PackageId": "Uno.Resizetizer",
-		//	"Symbol": "unoResizetizerVersion"
-		//},
 		{
 			"PackageId": "Uno.Wasm.Bootstrap",
 			"Symbol": "unoWasmBootstrapVersion",
 			"UsePrerelease": {
 				"tfm": [ "net10.0", "net11.0" ]
 			}
-		},
-		{
-			"PackageId": "Uno.WinUI.Markup",
-			"Symbol": "unoMarkupVersion"
 		},
 		{
 			"PackageId": "Uno.UITest.Helpers",
