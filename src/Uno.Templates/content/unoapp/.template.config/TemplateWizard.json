@@ -104,9 +104,8 @@
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-					// and we recently removed .NET 8 option from the template (see PR #1373).
-					// This feature will be re-enabled once multi-threading becomes available again.
+					// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+					// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 					//"wasmMultiThreading": "false",
 					"dspGenerator": "false",
 					"themeService": "false",
@@ -151,9 +150,8 @@
 					"vscode": "true",
 					"wasmPwaManifest": "true",
 					"mauiEmbedding": "false",
-					// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-					// and we recently removed .NET 8 option from the template (see PR #1373).
-					// This feature will be re-enabled once multi-threading becomes available again.
+					// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+					// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 					//"wasmMultiThreading": "false",
 					"dspGenerator": "true",
 					"themeService": "true",
@@ -237,9 +235,8 @@
 			{
 				"Title": "",
 				"SectionType": "MultiSelect",
-				// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-				// and we recently removed .NET 8 option from the template (see PR #1373).
-				// This feature will be re-enabled once multi-threading becomes available again.
+				// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+				// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			}
@@ -728,19 +725,14 @@
 				}
 			}
 		},
-		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-		// and we recently removed .NET 8 option from the template (see PR #1373).
-		// This feature will be re-enabled once multi-threading becomes available again.
+		// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+		// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 		// "wasmMultiThreading": {
 		// 	"Icon": "/Assets/Features.WasmMultiThreading.svg",
 		// 	"Requires": {
 		// 		"platforms": {
 		// 			"RequiredValues": [ "wasm" ],
 		// 			"MoreInformation": "WebAssembly platform is required"
-		// 		},
-		// 		"tfm": {
-		// 			"RequiredValues": [ "net8.0" ],
-		// 			"MoreInformation": "Only supported on net8.0"
 		// 		}
 		// 	}
 		// },
@@ -806,9 +798,8 @@
 		"vscode",
 		"wasmPwaManifest",
 		"mauiEmbedding",
-		// Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-		// and we recently removed .NET 8 option from the template (see PR #1373).
-		// This feature will be re-enabled once multi-threading becomes available again.
+		// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+		// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 		//"wasmMultiThreading",
 		"dspGenerator",
 		"themeService",
