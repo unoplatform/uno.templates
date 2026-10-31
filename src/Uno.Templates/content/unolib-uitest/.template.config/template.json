@@ -24,9 +24,6 @@
   "defaultName": "UnoApp.UITests",
   "placeholderFilename": "template-ignore",
   "preferNameDirectory": false,
-  "guids": [
-    "99E19497-29A6-4B77-B773-BEC55F9B55DC" // .NET Standard Library
-  ],
   "symbols": {
     "unoUITestHelpersVersion": {
       "type": "parameter",

@@ -129,9 +129,8 @@
       "longName": "default-branch-name",
       "shortName": "branch"
     },
-    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-    // and we recently removed .NET 8 option from the template (see PR #1373).
-    // This feature will be re-enabled once multi-threading becomes available again.
+    // WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+    // https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
     // "wasmMultiThreading": {
     //   "longName": "wasm-multi-threading",
     //   "shortName": "wasm-multi-threading"
@@ -143,9 +142,6 @@
     "unoLottie": {
       "longName": "lottie",
       "shortName": "lottie"
-    },
-    "unoWinUIVersion": {
-      "isHidden": true
     },
     "unoSdkVersion": {
       "isHidden": true

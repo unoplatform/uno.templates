@@ -46,7 +46,6 @@ env:
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   # uno-check --pre-major carries the .NET 11 manifest
   ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
-  ValidationDotNetVersion: '9.0.308'
   ValidationDotNetVersionNet11: '11.0.100-rc.1.26425.128'
   XcodeVersionNet10: '/Applications/Xcode_26.2.app'
   # .NET 11 iOS workload requires Xcode 26.5, which macos-15 images don't have

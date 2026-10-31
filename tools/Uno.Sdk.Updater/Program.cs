@@ -273,14 +273,11 @@ static void CreateSdkProps(string? tags, string unoVersion, string readMePath, s
 
 static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool didWriteChanges)
 {
+    // Only the versions that Uno.Templates.csproj writes into the templates.
     var props = new Dictionary<string, string>
     {
-        { "UnoVersion", GetManifestGroupVersion(manifest, "Core") },
         { "UnoWasmBootstrapVersionNet10", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
         { "UnoWasmBootstrapVersionNet11", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net11.0") },
-        { "UnoExtensionsLoggingVersion", GetManifestGroupVersion(manifest, "OSLogging") },
-        { "UnoCoreLoggingVersion", GetManifestGroupVersion(manifest, "CoreLogging") },
-        { "UnoDspTasksVersion", GetManifestGroupVersion(manifest, "Dsp") },
     };
 
     var targets = CreateMSBuildFile(props);
@@ -316,12 +313,6 @@ static string CreateMSBuildFile(IDictionary<string, string> props, params MsBuil
     }
     builder.AppendLine("</Project>");
     return builder.ToString();
-}
-
-static string GetManifestGroupVersion(IEnumerable<ManifestGroup> manifest, string groupId)
-{
-    var group = manifest.First(x => x.Group == groupId);
-    return group.Version;
 }
 
 static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifest, string groupId, string overrideKey)

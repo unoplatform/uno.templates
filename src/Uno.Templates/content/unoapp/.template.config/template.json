@@ -32,7 +32,6 @@
     "C7433AE2-B1A0-4C1A-887E-5CAA7AAF67A6", // Solution file (SolutionGuid)
     "FAA2C1DE-F859-4053-9573-6245F7E832EF", // src solution folder
     "BACDD33A-304C-46C4-9B00-AC166978D7E0", // (core) library
-    "BA1ACE40-623E-4F42-94BB-11CF4D52C445", // Web solution folder
     "1ADD4B1D-2758-4ED5-963A-FE3F4206BF20", // Server
     "7EF70027-9874-4112-A14F-33F02169CF8A", // Tests Solution folder
     "EB3EB846-D5CB-4140-834F-1CC40A0FD6D0", // Tests
@@ -72,8 +71,7 @@
             "replacement": "-"
           }
         ]
-      },
-      "replaces": "$sanitizedProjectName$"
+      }
     },
     "failBuildOnInvalidProjectName": {
       "type": "generated",
@@ -122,20 +120,6 @@
         "fallbackVariableName": "appIdDefaultLower"
       },
       "replaces": "com.companyname.myextensionsapp"
-    },
-    "identityName": {
-      "type": "generated",
-      "generator": "regex",
-      "parameters": {
-        "source": "name",
-        "steps": [
-          {
-            "regex": "[^a-zA-Z\\d\\.:]+",
-            "replacement": "-"
-          }
-        ]
-      },
-      "replaces": "$identityName$"
     },
     "publisher": {
       "displayName": "Publisher",
@@ -818,9 +802,8 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
-    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-    // and we recently removed .NET 8 option from the template (see PR #1373).
-    // This feature will be re-enabled once multi-threading becomes available again.
+    // WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+    // https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
     // "wasmMultiThreading": {
     //   "displayName": "WASM Multi-Threading",
     //   "description": "Configures application to use multi-threading in WebAssembly",
@@ -862,7 +845,6 @@
     "unoWasmBootstrapVersionDefault": {
       "type": "generated",
       "generator": "switch",
-      "replaces": "$WasmBootstrapServer$",
       "parameters": {
         "evaluator": "C++",
         "datatype": "string",
@@ -931,29 +913,6 @@
       "datatype": "bool",
       "value": "(markup == 'csharp')"
     },
-    "useXaml": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(markup == 'xaml')"
-    },
-    "dspGeneratorOutputType": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$DspGenerator$",
-      "parameters": {
-        "evaluator": "C++",
-        "cases": [
-          {
-            "condition": "(markup == 'xaml')",
-            "value": "Xaml"
-          },
-          {
-            "condition": "(markup == 'csharp')",
-            "value": "CSharp"
-          }
-        ]
-      }
-    },
     "presetAppThemeDefault": {
       "type": "generated",
       "generator": "switch",
@@ -989,11 +948,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(appThemeEvaluator == 'material')"
-    },
-    "useFluent": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(appThemeEvaluator == 'fluent')"
     },
     "useCupertino": {
       "type": "computed",
@@ -1212,9 +1166,8 @@
       "datatype": "bool",
       "value": "(navigationEvaluator != 'blank' && (useMvux || useMvvm))"
     },
-    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-    // and we recently removed .NET 8 option from the template (see PR #1373).
-    // This feature will be re-enabled once multi-threading becomes available again.
+    // WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+    // https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
     // "useWasmMultiThreading": {
     //   "type": "computed",
     //   "datatype": "bool",
@@ -1322,11 +1275,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(server)"
-    },
-    "useAndroidMaterial": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "(useAndroid && !mauiEmbedding)"
     },
     "presetConfigurationDefault": {
       "type": "generated",
@@ -2333,12 +2281,6 @@
       "datatype": "bool",
       "value": "useAuthentication && authentication == 'web'"
     },
-    // MSAL causes an error when used with WinAppSdk when self-contained
-    "useWinAppSdkSelfContained": {
-      "type": "computed",
-      "datatype": "bool",
-      "value": "authentication != 'msal'"
-    },
     "useProtocolRedirect": {
       "type": "computed",
       "datatype": "bool",
@@ -2378,44 +2320,6 @@
       "type": "computed",
       "datatype": "bool",
       "value": "useDependencyInjection && (useConfiguration || useSampleContent)"
-    },
-    "MsftExtensionsLoggingConsoleVersion": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$MsftExtensionsLoggingConsoleVersion$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net10.0')",
-            "value": "10.0.0-preview.7.25380.108"
-          },
-          {
-            "condition": "(tfm == 'net11.0')",
-            "value": "11.0.0-rc.1.26425.128"
-          }
-        ]
-      }
-    },
-    "MsftWindowsCompatibilityVersion": {
-      "type": "generated",
-      "generator": "switch",
-      "replaces": "$MsftWindowsCompatibilityVersion$",
-      "parameters": {
-        "evaluator": "C++",
-        "datatype": "string",
-        "cases": [
-          {
-            "condition": "(tfm == 'net10.0')",
-            "value": "10.0.0-preview.7.25380.108"
-          },
-          {
-            "condition": "(tfm == 'net11.0')",
-            "value": "11.0.0-rc.1.26425.128"
-          }
-        ]
-      }
     },
     "OS": {
       "type": "bind",
