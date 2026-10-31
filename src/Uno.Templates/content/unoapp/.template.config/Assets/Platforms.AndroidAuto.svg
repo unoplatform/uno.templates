@@ -1,0 +1,18 @@
+<svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Car silhouette -->
+  <path d="M5 30 L5 23 L9 15 C9.5 14 10.5 13 12 13 L32 13 C33.5 13 34.5 14 35 15 L39 23 L39 30 Z"
+        stroke="#0095F2" stroke-width="2" stroke-linejoin="round" fill="#0095F2" fill-opacity="0.1"/>
+  <!-- Beltline -->
+  <path d="M8 23 L36 23" stroke="#0095F2" stroke-width="1.5"/>
+  <!-- Wheels -->
+  <circle cx="13" cy="30" r="3" fill="none" stroke="#0095F2" stroke-width="2"/>
+  <circle cx="31" cy="30" r="3" fill="none" stroke="#0095F2" stroke-width="2"/>
+  <!-- Android robot head visible behind windshield (flat/squat proportions) -->
+  <g transform="translate(22, 19)">
+    <line x1="-2.4" y1="-4.2" x2="-1.7" y2="-3" stroke="#0095F2" stroke-width="1" stroke-linecap="round"/>
+    <line x1="2.4" y1="-4.2" x2="1.7" y2="-3" stroke="#0095F2" stroke-width="1" stroke-linecap="round"/>
+    <path d="M-4 -0.5 A 4 2.5 0 0 1 4 -0.5 L 4 1.8 L -4 1.8 Z" fill="#0095F2"/>
+    <circle cx="-1.5" cy="-0.1" r="0.6" fill="#FFFFFF"/>
+    <circle cx="1.5" cy="-0.1" r="0.6" fill="#FFFFFF"/>
+  </g>
+</svg>
