@@ -362,7 +362,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         "SkiaSharp",
         "WasmBootstrap",
         "MicrosoftLoggingConsole",
-        "WindowsCompatibility",
         "Maui",
     ];
 
@@ -407,8 +406,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
             }
 
             // A target framework override stays on its .NET major (net10.0 -> 10.x): otherwise the net10.0 entries
-            // move to the .NET 11 builds (Uno.Wasm.Bootstrap 11.x; MicrosoftLoggingConsole, WindowsCompatibility and
-            // Maui once .NET 11 ships).
+            // move to the .NET 11 builds (Uno.Wasm.Bootstrap 11.x; MicrosoftLoggingConsole and Maui once .NET 11 ships).
             version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, GetTargetFrameworkMajor(key));
             if (version != versionOverrideString)
             {
