@@ -1,6 +1,11 @@
 name: Host Cleanup (Linux)
 description: Reclaims disk space on Linux CI agents by removing unused pre-installed software
 
+inputs:
+  remove-android-sdk:
+    description: 'Remove the pre-installed Android SDK. Pass false for jobs that build Android heads.'
+    default: 'true'
+
 runs:
   using: 'composite'
   steps:
@@ -28,7 +33,9 @@ runs:
         $SUDO rm -rf /opt/microsoft/msedge || true
         $SUDO rm -rf /usr/local/.ghcup || true
         $SUDO rm -rf /usr/lib/mono || true
-        $SUDO rm -rf /usr/local/lib/android || true
+        if [ "${{ inputs.remove-android-sdk }}" = "true" ]; then
+          $SUDO rm -rf /usr/local/lib/android || true
+        fi
         $SUDO rm -rf /opt/ghc || true
         $SUDO rm -rf /opt/hostedtoolcache/CodeQL || true
 

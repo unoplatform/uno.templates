@@ -16,8 +16,11 @@ runs:
   using: "composite"
 
   steps:
+  # Keep the image's Android SDK: the Android heads build against it (see 'Uno Check (Linux)')
   - name: Free disk space (Linux)
     uses: ./.github/actions/host-cleanup-linux
+    with:
+      remove-android-sdk: 'false'
 
   - name: Download Artifacts
     uses: actions/download-artifact@v4
@@ -138,12 +141,15 @@ runs:
       # uno-check can't parse five-part versions such as 17.0.21.0.2 (unoplatform/uno.check#590)
       sudo apt-get install -y msopenjdk-17=17.0.20.1-1
 
+  # androidsdk is skipped, as on macOS and Windows: the image's SDK already has the platforms and
+  # build-tools the Android heads need, and letting --fix download the emulator and cmdline-tools
+  # in every job failed about one run in five on interrupted downloads.
   - name: 'Uno Check (Linux)'
     if: runner.os == 'linux'
     shell: pwsh
     run: |
       & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
-      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip dotnetnewunotemplates --skip unosdk  ${{ inputs.unocheckArguments }}
+      uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip dotnetnewunotemplates --skip unosdk  ${{ inputs.unocheckArguments }}
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
       JAVA_HOME: ${{ env.JAVA_HOME }}
