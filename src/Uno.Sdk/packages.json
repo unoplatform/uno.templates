@@ -87,7 +87,7 @@
   },
   {
     "group": "settings",
-    "version": "1.13.4",
+    "version": "1.13.14",
     "packages": [
       "Uno.Settings.DevServer"
     ]
@@ -128,7 +128,7 @@
   },
   {
     "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2705",
+    "version": "10.0.28000.2957",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools"
     ]
@@ -142,22 +142,22 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "9.0.20",
+    "version": "9.0.22",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.12"
+      "net10.0": "10.0.14"
     }
   },
   {
     "group": "WindowsCompatibility",
-    "version": "9.0.21",
+    "version": "9.0.22",
     "packages": [
       "Microsoft.Windows.Compatibility"
     ],
     "versionOverride": {
-      "net10.0": "10.0.13"
+      "net10.0": "10.0.14"
     }
   },
   {
@@ -414,14 +414,14 @@
   },
   {
     "group": "VlcNativeWindowsAssets",
-    "version": "3.0.23.1",
+    "version": "3.0.24",
     "packages": [
       "VideoLAN.LibVLC.Windows"
     ]
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4191.47",
+    "version": "1.0.4314.35",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
