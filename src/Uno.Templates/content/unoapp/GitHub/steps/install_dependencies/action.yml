@@ -36,7 +36,7 @@ runs:
       run: |
         dotnet tool install -g uno.check
         ("${{ inputs.target-platform }} ".Split(' ') | ForEach-Object {
-          $target = $_.Replace("_win", "").Replace("_macos", "")
+          $target = $_
           if (![string]::IsNullOrEmpty($target)) {
             echo "target: $target"
             uno-check -v --ci --non-interactive --fix --target $target --skip vswin --skip vsmac --skip xcode --skip vswinworkloads --skip androidemulator --skip dotnetnewunotemplates
