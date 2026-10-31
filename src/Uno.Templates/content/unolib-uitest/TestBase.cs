@@ -10,7 +10,7 @@ namespace UnoUITestsLibrary;
 
 public class TestBase
 {
-	private IApp _app;
+	private IApp? _app;
 
 	static TestBase()
 	{
@@ -32,7 +32,7 @@ public class TestBase
 
 	protected IApp App
 	{
-		get => _app;
+		get => _app!;
 		private set
 		{
 			_app = value;
@@ -58,7 +58,7 @@ public class TestBase
 			.Replace(" ", "_")
 			.Replace(".", "_");
 
-		var fileInfo = _app.Screenshot(title);
+		var fileInfo = App.Screenshot(title);
 
 		var fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileInfo.Name);
 		if (fileNameWithoutExt != title && fileInfo.DirectoryName != null)
