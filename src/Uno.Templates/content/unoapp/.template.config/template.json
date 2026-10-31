@@ -802,9 +802,8 @@
       "datatype": "bool",
       "defaultValue": "false"
     },
-    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-    // and we recently removed .NET 8 option from the template (see PR #1373).
-    // This feature will be re-enabled once multi-threading becomes available again.
+    // WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+    // https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
     // "wasmMultiThreading": {
     //   "displayName": "WASM Multi-Threading",
     //   "description": "Configures application to use multi-threading in WebAssembly",
@@ -1167,9 +1166,8 @@
       "datatype": "bool",
       "value": "(navigationEvaluator != 'blank' && (useMvux || useMvvm))"
     },
-    // Temporarily disabling the WASM Multi-Threading option as it is only supported on .NET 8.0,
-    // and we recently removed .NET 8 option from the template (see PR #1373).
-    // This feature will be re-enabled once multi-threading becomes available again.
+    // WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
+    // https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
     // "useWasmMultiThreading": {
     //   "type": "computed",
     //   "datatype": "bool",
