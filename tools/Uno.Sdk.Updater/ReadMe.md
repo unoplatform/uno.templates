@@ -21,7 +21,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | WinAppSdkBuildToolsVersion | $WinAppSdkBuildTools$ |
 | WinAppSdkBuildToolsWinAppVersion | $WinAppSdkBuildToolsWinApp$ |
 | MicrosoftLoggingVersion** | $MicrosoftLoggingConsole$ |
-| WindowsCompatibilityVersion** | $WindowsCompatibility$ |
 | MicrosoftIdentityClientVersion | $MsalClient$ |
 | CommunityToolkitMvvmVersion | $Mvvm$ |
 | PrismVersion | $Prism$ |
