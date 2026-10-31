@@ -302,6 +302,30 @@ runs:
         }
         else
         {
+          # -ci writes pipeline files that this run doesn't execute: at least check that they parse as YAML.
+          if ($testParams -match '(^|\s)(-ci|--continuous-integration)(\s+|=)(?!none\b)') {
+            # -Force: on Linux and macOS, Get-ChildItem skips dot folders such as .github as hidden.
+            $yamlFiles = @(Get-ChildItem $testName -Recurse -File -Force -Include *.yml, *.yaml)
+            if (-not (Get-Command yq -ErrorAction SilentlyContinue)) {
+              echo "::error::yq is needed to check the YAML files that $testName creates"
+              $buildFailures += , "$testName";
+            }
+            elseif ($yamlFiles.Count -eq 0) {
+              echo "::error::$testName created no YAML file to check"
+              $buildFailures += , "$testName";
+            }
+            else {
+              foreach ($yamlFile in $yamlFiles) {
+                & yq '.' $yamlFile.FullName > $null
+                if ($LASTEXITCODE -ne 0) {
+                  echo "::error::$testName created a file that isn't valid YAML: $($yamlFile.FullName)"
+                  $buildFailures += , "$testName";
+                }
+              }
+              echo "$testName created $($yamlFiles.Count) valid YAML files"
+            }
+          }
+
           # Build the app
           pushd $testName
 
@@ -324,7 +348,9 @@ runs:
             $extraArgs += "-p:ValidateXcodeVersion=false"
           }
 
-          & dotnet build $testName.sln "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
+          # No project argument: dotnet build takes the folder's solution, or its only project for the templates
+          # that create no solution (unolib, unomauilib, unoapp-uitest, unoapp-reactor).
+          & dotnet build "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
           if ($LASTEXITCODE -ne 0)
           {
             echo "Build failed for $testName"
