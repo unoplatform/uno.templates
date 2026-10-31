@@ -60,10 +60,6 @@ runs:
             "reactorapp_MacOS;macOS;unoapp-reactor;"
             "reactorapp_Windows;Windows;unoapp-reactor;"
 
-            # Disabling this test for now as it was specific to net7
-            # https://github.com/unoplatform/uno.templates/issues/22
-            # "Issue22;;unoapp;-skip -preset blank -tfm net7.0 -platforms android -platforms ios -platforms windows -platforms wasm -platforms desktop -presentation mvvm -server false -tests none -vscode false -pwa false -di true -nav regions -log none -theme material",
-
             "CustomAuthMvux;!macOS;unoapp;-skip -preset=recommended -auth=custom",
             "CustomAuthMvvm;!macOS;unoapp;-skip -preset=recommended -presentation mvvm -auth=custom",
             "CustomAuthMvuxCSharp;!macOS;unoapp;-skip -preset=recommended -auth=custom -markup csharp",

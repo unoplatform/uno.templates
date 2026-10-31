@@ -47,7 +47,7 @@ runs:
     run: |
         $templateArgs = '${{ inputs.arguments }}'
         echo "TemplateArgs = '$templateArgs'"
-        $dotnetVersion = $env:TargetDotNetVersion
+        $dotnetVersion = "invalid"
         $ValidationUnoCheckVersion = "invalid"
         $IosRuntimeVersion = ""
 
@@ -77,7 +77,6 @@ runs:
         echo "XcodeRoot=$XcodeVersion" >> $env:GITHUB_ENV
         echo "IosRuntimeVersion=$IosRuntimeVersion" >> $env:GITHUB_ENV
     env:
-      TargetDotNetVersion: ${{ env.ValidationDotNetVersion }}
       ValidationDotNetVersionNet11: ${{ env.ValidationDotNetVersionNet11 }}
       ValidationUnoCheckVersionNet10: ${{ env.ValidationUnoCheckVersionNet10 }}
       ValidationUnoCheckVersionNet11: ${{ env.ValidationUnoCheckVersionNet11 }}
@@ -201,7 +200,6 @@ runs:
     run: |
         dotnet nuget add source -n nuget_local ${{ github.workspace }}/src/PackageCache
         dotnet nuget add source -n uno_dev "https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json"
-        dotnet nuget add source -n net8 "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"
 
   - name: 'Test all scenarios'
     shell: pwsh
@@ -274,18 +272,6 @@ runs:
         {
           echo "Skipping $testName ($testParams) because it's not selected for macOS"
           continue
-        }
-
-        if ($testParams.Contains('net8.0') -and $IsMacOS -and ($testParams.Contains('-auth msal') -or $testParams.Contains('auth=msal')))
-        {
-            echo "Skipping flaky $testName ($testParams) on net8.0 macOS because of https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/issues/180"
-            continue
-        }
-
-        if ($testParams.Contains('net8.0') -and !$testParams.Contains('--renderer native'))
-        {
-            echo "Skipping Skia Everywhere test for net8"
-            continue
         }
 
         echo "Testing $testName ($templateName $testParams)"
