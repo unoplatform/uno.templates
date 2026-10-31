@@ -20,9 +20,7 @@
           <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
           <!-- <utum:MaterialToolkitTheme.FontOverrideDictionary>
             <ResourceDictionary>
-              <FontFamily x:Key="MaterialLightFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Light.ttf#Roboto</FontFamily>
-              <FontFamily x:Key="MaterialMediumFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Medium.ttf#Roboto</FontFamily>
-              <FontFamily x:Key="MaterialRegularFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Regular.ttf#Roboto</FontFamily>
+              <FontFamily x:Key="DefaultFontFamily">ms-appx:///Assets/Fonts/MyFont.ttf#MyFont</FontFamily>
             </ResourceDictionary>
           </utum:MaterialToolkitTheme.FontOverrideDictionary> -->
         </utum:MaterialToolkitTheme>
@@ -32,9 +30,7 @@
           <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
           <!-- <um:MaterialTheme.FontOverrideDictionary>
             <ResourceDictionary>
-              <FontFamily x:Key="MaterialLightFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Light.ttf#Roboto</FontFamily>
-              <FontFamily x:Key="MaterialMediumFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Medium.ttf#Roboto</FontFamily>
-              <FontFamily x:Key="MaterialRegularFontFamily">ms-appx:///Uno.Fonts.Roboto/Fonts/Roboto-Regular.ttf#Roboto</FontFamily>
+              <FontFamily x:Key="DefaultFontFamily">ms-appx:///Assets/Fonts/MyFont.ttf#MyFont</FontFamily>
             </ResourceDictionary>
           </um:MaterialTheme.FontOverrideDictionary> -->
         </um:MaterialTheme>
@@ -44,7 +40,7 @@
         <uc:CupertinoFonts />
         <uc:CupertinoResources />
         <!--#if (useToolkit)-->
-        <!-- Load Uno.UI.Toolkit resources -->
+        <!-- Load Uno Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
         <!--#endif-->
         <!--#elif (useSimpleTheme)-->
@@ -54,7 +50,7 @@
         <us:SimpleTheme />
         <!--#endif-->
         <!--#elif (useToolkit)-->
-        <!-- Load Uno.UI.Toolkit resources -->
+        <!-- Load Uno Toolkit resources -->
         <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
         <!--#endif-->
       </ResourceDictionary.MergedDictionaries>
