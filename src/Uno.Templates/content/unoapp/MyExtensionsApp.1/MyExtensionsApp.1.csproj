@@ -48,9 +48,6 @@
       <!--#elif (useSimpleTheme)-->
       SimpleTheme;
       <!--#endif-->
-      <!--#if (useUnoLottie)-->
-      Lottie;
-      <!--#endif-->
       <!--#if (useMediaPlayerElement)-->
       MediaPlayerElement;
       <!--#endif-->
