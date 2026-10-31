@@ -1,4 +1,5 @@
 name: CI
+run-name: "${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') && 'Canary: newest Uno dev builds' || '' }}"
 
 # A servicing/* branch continues a previous version line after main has moved on
 # to a newer one, so it builds, signs and publishes dev packages the same way main
@@ -21,7 +22,7 @@ on:
       - release/**
 
   schedule:
-    - cron: '0 0 * * *' # Canary
+    - cron: '0 0 * * *' # Nightly canary: main on the newest Uno dev builds (see the build job)
 
   workflow_dispatch:
     inputs:
@@ -29,6 +30,10 @@ on:
         description: 'Branch or ref to run CI on'
         required: true
         default: 'main'
+      canary:
+        description: 'Run as the canary: move the Uno packages to their newest dev builds before building'
+        type: boolean
+        default: false
   
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
@@ -37,7 +42,7 @@ concurrency:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref }}
-  IsCanaryBranch: ${{ startsWith(github.ref, 'refs/heads/canaries/') }}
+  IsCanary: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') }}
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   # uno-check --pre-major carries the .NET 11 manifest
   ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
@@ -46,10 +51,6 @@ env:
   XcodeVersionNet10: '/Applications/Xcode_26.2.app'
   # .NET 11 iOS workload requires Xcode 26.5, which macos-15 images don't have
   XcodeVersionNet11: '/Applications/Xcode_26.5.app'
-
-  # https://github.com/unoplatform/Uno.Wasm.Bootstrap/pull/887 remove when upgarding to .NET 9
-  # compatible version of the bootstrapper
-  UnoDisableNet9Validation: true
 
   # Required for WinUI 1.6
   WindowsSdkPackageVersion: '10.0.19041.57'
@@ -96,7 +97,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') && 30 || 15 }}
     # Fail fast: verify_stable_pins is the root of the graph, so a bad pin skips the build, the
     # sign/publish chain and the whole Linux/Windows/macOS template matrix instead of spending
     # runners on a manifest that must not ship. It costs seconds, and is a no-op off the stable
@@ -113,8 +114,54 @@ jobs:
     - name: Free disk space (Linux)
       uses: ./.github/actions/host-cleanup-linux
 
+    # Canary (the nightly run, or a manual run with `canary: true`): like the other Uno Platform canaries,
+    # move the Uno packages to their newest dev builds before building, so the whole template matrix runs on
+    # them. It uses the same sdk-update step as the Update Uno Sdk workflow, so packages that aren't Uno's keep
+    # their pins. Nothing is committed, and the sign and publish jobs only run on push.
+    - name: "Canary: save the pinned versions"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: Copy-Item src/Uno.Sdk/packages.json "$env:RUNNER_TEMP/packages.pinned.json"
+
+    - name: "Canary: move the Uno packages to their newest dev builds"
+      if: env.IsCanary == 'true'
+      uses: ./.github/actions/sdk-update
+
+    - name: "Canary: move Uno.UITest.Helpers to its newest build"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: |
+        # The one Uno package outside packages.json: the generated UI test project's version, which
+        # Uno.Templates.csproj reads from UnoUITestHelpersVersion (src/Directory.Build.targets).
+        $latest = (Invoke-RestMethod 'https://api.nuget.org/v3-flatcontainer/uno.uitest.helpers/index.json').versions[-1]
+        "UnoUITestHelpersVersion=$latest" >> $env:GITHUB_ENV
+
+    - name: "Canary: list the versions under test"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: ./build/Write-CanarySummary.ps1 -PinnedManifest "$env:RUNNER_TEMP/packages.pinned.json" >> $env:GITHUB_STEP_SUMMARY
+
     - name: "Build Package"
       uses: ./.github/actions/ci/build-packages
+
+    - name: "Canary: check the built Uno.Sdk carries the moved versions"
+      if: env.IsCanary == 'true'
+      shell: pwsh
+      run: |
+        # Guards against anything resetting the workspace between the update and the build, which would
+        # make the canary silently test the pinned versions.
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $nupkg = Get-ChildItem artifacts -Filter 'Uno.Sdk.*.nupkg' | Select-Object -First 1
+        $zip = [IO.Compression.ZipFile]::OpenRead($nupkg.FullName)
+        try {
+          $entry = $zip.Entries | Where-Object { $_.FullName -like '*packages.json' } | Select-Object -First 1
+          $reader = [IO.StreamReader]::new($entry.Open())
+          $built = ($reader.ReadToEnd() | ConvertFrom-Json | Where-Object group -eq 'Core').version
+          $reader.Dispose()
+        } finally { $zip.Dispose() }
+        $moved = (Get-Content src/Uno.Sdk/packages.json -Raw | ConvertFrom-Json | Where-Object group -eq 'Core').version
+        if ($built -ne $moved) { throw "The built Uno.Sdk pins Core $built, but the canary moved it to $moved." }
+        "Built Uno.Sdk pins Core $built, as moved by the canary."
 
   # The nuget.org dependency verification is a HARD GATE only on the publication paths, and it runs
   # as the first step (after checkout) INSIDE the publish job itself (not as a separate job):
