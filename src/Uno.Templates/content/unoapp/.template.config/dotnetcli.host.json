@@ -144,9 +144,6 @@
       "longName": "lottie",
       "shortName": "lottie"
     },
-    "unoWinUIVersion": {
-      "isHidden": true
-    },
     "unoSdkVersion": {
       "isHidden": true
     },
