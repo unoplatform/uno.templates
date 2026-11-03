@@ -35,7 +35,15 @@ public static class RepositoryLayout
             throw new ArgumentException($"Expected a path relative to the repository root, got '{relativePath}'.", nameof(relativePath));
         }
 
-        return Path.GetFullPath(Path.Combine(repoRoot, normalized));
+        var root = Path.GetFullPath(repoRoot);
+        var resolved = Path.GetFullPath(Path.Join(root, normalized));
+        var relative = Path.GetRelativePath(root, resolved);
+        if (relative == ".." || relative.StartsWith(".." + Path.DirectorySeparatorChar, StringComparison.Ordinal))
+        {
+            throw new ArgumentException($"'{relativePath}' resolves outside the repository root.", nameof(relativePath));
+        }
+
+        return resolved;
     }
 
     /// <summary>
