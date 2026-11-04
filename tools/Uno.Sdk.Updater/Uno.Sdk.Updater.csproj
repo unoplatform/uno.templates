@@ -18,6 +18,10 @@
 		<PackageReference Include="NuGet.Packaging" Version="6.10.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="Uno.Sdk.Updater.Tests" />
+	</ItemGroup>
+
 	<Target Name="GenerateVersion" BeforeTargets="BeforeCompile">
 
 		<PropertyGroup Condition="'$(Configuration)'=='Debug'">
