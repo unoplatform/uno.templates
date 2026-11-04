@@ -6,6 +6,9 @@
     // (backport status, not in our control: mono/SkiaSharp#4031).
     "SkiaSharp",
     "SvgSkia",
-    "WinAppSdk"
+    "WinAppSdk",
+    // WasmBootstrap held on servicing/6.8: its net10.0 override would follow Uno.Wasm.Bootstrap `main`
+    // (10.1-dev, the Uno Platform 7.0 line). The 6.x version is picked by hand.
+    "WasmBootstrap"
   ]
 }

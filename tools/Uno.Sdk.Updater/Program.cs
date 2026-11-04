@@ -381,7 +381,11 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
+    // On this 6.x line, first-party groups also stay on the major they are pinned to: their next majors are
+    // the Uno Platform 7.0 lines, and packages without a Uno.WinUI dependency (Resizetizer, Settings, App.Mcp)
+    // pass the compatibility check. Moving a first-party group to a new major is a manual manifest change.
+    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group)
+        || group.Packages.All(x => x.StartsWith("Uno."));
     var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
 
     if (string.IsNullOrEmpty(version))
@@ -409,8 +413,9 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
                 continue;
             }
 
-            // Explicit VersionOverrides should always allow major upgrades
-            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion);
+            // A target framework override stays on its .NET major (net10.0 -> 10.x): once .NET 11 ships, the
+            // net10.0 entries (MicrosoftLoggingConsole, WindowsCompatibility, Maui) would otherwise get 11.0.x.
+            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, GetTargetFrameworkMajor(key));
             if (version != versionOverrideString)
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
@@ -435,6 +440,13 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     }
 
     return newGroup;
+}
+
+// "net10.0" -> 10; null for keys that aren't a .NET target framework.
+static int? GetTargetFrameworkMajor(string key)
+{
+    var match = Regex.Match(key, @"^net(\d+)\.\d+");
+    return match.Success ? int.Parse(match.Groups[1].Value) : null;
 }
 
 static void WriteBreak()
