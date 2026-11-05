@@ -139,10 +139,6 @@
       "longName": "svg",
       "shortName": "svg"
     },
-    "unoLottie": {
-      "longName": "lottie",
-      "shortName": "lottie"
-    },
     "unoSdkVersion": {
       "isHidden": true
     },
