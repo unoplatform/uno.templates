@@ -150,10 +150,27 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 1. Verifies there are no prerelease pins on stable release branches.
 2. Builds the `Uno.Sdk` and `Uno.Templates` packages. Beside the build, it checks the wizard metadata (the icons `TemplateWizard.json` names, and its options and values against `template.json`) and runs the `build/*.Tests.ps1` script tests: a failure there fails the run, but doesn't hold back the packages.
 3. Signs them, and publishes dev builds from `main` (production publishing sits behind approval gates).
-4. Generates a test matrix ([`generate-test-matrix`](.github/actions/ci/generate-test-matrix/action.yml)): a big list of `dotnet new` argument combinations (presets, platforms, markup, MVVM/MVUX, HTTP flavors, auth modes, themes, MAUI embedding, libraries...).
+4. Generates a test matrix ([`generate-test-matrix`](.github/actions/ci/generate-test-matrix/action.yml)): a big list of `dotnet new` argument combinations (presets, platforms, markup, MVVM/MVUX, HTTP flavors, auth modes, themes, MAUI embedding, libraries...), of which [`Get-TemplateTestMatrix.ps1`](build/Get-TemplateTestMatrix.ps1) picks what this run needs (see below).
 5. Runs that matrix on Linux, Windows and macOS: install the freshly built templates, create each project, and build it ([`run-tests`](.github/actions/ci/run-tests/action.yml)). For `-ci`, it also checks that the pipeline files it creates are valid YAML.
 
-If you add or change an option, add a matching entry to the matrix. If the wizard shows it, `TemplateWizard.json` names its icon: add the icon under [`unoapp/.template.config/Assets`](src/Uno.Templates/content/unoapp/.template.config/Assets) in its four theme variants (`Assets/`, `Dark/`, `Disable/` and `DarkDisable/`), and remove the icons nothing names anymore, unless they wait for an option on the script's kept list ([`Test-WizardIcons.ps1`](build/Test-WizardIcons.ps1) checks both). When you rename or remove an option or one of its values, update `TemplateWizard.json` too: the wizards silently skip what `template.json` doesn't define ([`Test-WizardOptions.ps1`](build/Test-WizardOptions.ps1) checks it). The Visual Studio wizard and the Live Wizard take the metadata from the templates package.
+#### Which template tests run
+
+The whole matrix costs about 1,000 runner minutes, and macOS runners are shared and scarce, so how much of it runs depends on the change:
+
+| Run | Template tests |
+| --- | --- |
+| PR that changes nothing that ships (docs, specs, `build/`, `tools/`, repo config) | None. The script checks and the package build still run |
+| PR to `main` that changes the templates or the packages | Smoke tests on Linux and Windows, plus any test the PR adds or changes |
+| PR to `main` that changes Apple-specific files, package versions (`src/Uno.Sdk`), or how the tests run | The same, plus the macOS smoke tests |
+| PR to `release/*` or `servicing/*`, or labeled `ci/full-matrix` | Everything |
+| Merge to `main` or `servicing/*` that changes something that ships | Everything. On `main`, a newer merge cancels the tests of an older one and covers them |
+| Push to `release/*`, the nightly canary, a manual run | Everything |
+
+A path that isn't on the script's list of files that don't ship counts as shipped, so a new path gets tested by default. `Tests Validation`, the required check, accepts a skipped OS only when its generated matrix is empty, and the run's summary shows the scope it chose.
+
+**Add the `ci/full-matrix` label when a PR is risky beyond what the smoke tests cover**, such as a new option that changes many generated files: add the label, then re-run the CI jobs. Otherwise the full matrix first runs when the PR merges, and the dev packages publish before those tests finish, so a break it finds has already reached the dev feed.
+
+If you add or change an option, add a matching entry to the matrix, and to the smoke lists in `Get-TemplateTestMatrix.ps1` if it's a main axis of the template. If the wizard shows it, `TemplateWizard.json` names its icon: add the icon under [`unoapp/.template.config/Assets`](src/Uno.Templates/content/unoapp/.template.config/Assets) in its four theme variants (`Assets/`, `Dark/`, `Disable/` and `DarkDisable/`), and remove the icons nothing names anymore, unless they wait for an option on the script's kept list ([`Test-WizardIcons.ps1`](build/Test-WizardIcons.ps1) checks both). When you rename or remove an option or one of its values, update `TemplateWizard.json` too: the wizards silently skip what `template.json` doesn't define ([`Test-WizardOptions.ps1`](build/Test-WizardOptions.ps1) checks it). The Visual Studio wizard and the Live Wizard take the metadata from the templates package.
 
 ### Nightly canary
 
