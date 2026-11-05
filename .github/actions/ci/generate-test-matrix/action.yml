@@ -30,6 +30,8 @@ runs:
             "Recommended;;unoapp;-skip -preset recommended",
             "SkiaOnlyHeads;!macOS;unoapp;-skip -platforms desktop",
             "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios",
+            "TvOSOnlyHead;macOS;unoapp;-skip -platforms tvos",
+            "AppleHeadsRecommended;macOS;unoapp;-skip -preset recommended -platforms ios tvos",
             "RecommendedShell;!macOS;unoapp;-skip -preset recommended --shell",
             "RecommendedShellMarkup;!macOS;unoapp;-skip -preset recommended --shell -markup csharp",
             "RecommendedMarkup;;unoapp;-skip -preset recommended -markup csharp",

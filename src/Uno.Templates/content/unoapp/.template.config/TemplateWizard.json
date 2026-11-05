@@ -267,6 +267,12 @@
 				"SymbolIds": [ "desktop", "windows" ]
 			},
 			{
+				"SectionType": "MultiSelect",
+				"SymbolId": "platforms",
+				"Title": "TV",
+				"SymbolIds": [ "tvos" ]
+			},
+			{
 				"Title": "Android Devices",
 				"SectionType": "MultiSelect",
 				"SymbolIds": [ "includeAndroidTV", "includeAndroidAuto", "includeAndroidWear" ]
@@ -333,9 +339,10 @@
 				"platforms": {
 					"RequiredValues": [
 						"ios",
-						"android"
+						"android",
+						"tvos"
 					],
-					"MoreInformation": "Application ID is only used for mobile (iOS, Android) platforms"
+					"MoreInformation": "Application ID is only used for the iOS, Android and tvOS platforms"
 				}
 			}
 		},
@@ -602,6 +609,12 @@
 				}
 			}
 		},
+		"platforms.tvos": {
+			"Icon": "/Assets/Platforms.tvOS.svg",
+			"Tag": {
+				"Value": "Skia"
+			}
+		},
 		"platforms.desktop": {
 			"Icon": "/Assets/Platforms.Desktop.svg",
 			"Tag": {
@@ -724,7 +737,13 @@
 		// 	}
 		// },
 		"mauiEmbedding": {
-			"Icon": "/Assets/Features.EmbedMAUI.svg"
+			"Icon": "/Assets/Features.EmbedMAUI.svg",
+			"Requires": {
+				"platforms": {
+					"RequiredValues": [ "android", "ios", "wasm", "desktop", "windows", "!tvos" ],
+					"MoreInformation": ".NET MAUI does not support tvOS"
+				}
+			}
 		},
 		"dspGenerator": {
 			"Icon": "/Assets/Features.DSP.svg",
