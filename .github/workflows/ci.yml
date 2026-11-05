@@ -92,6 +92,44 @@ jobs:
         # Mirrors env.CheckoutRef so a workflow_dispatch against a stable branch is checked, not skipped.
         ./build/Verify-StablePins.ps1 -Branch "${{ github.event_name == 'pull_request' && github.base_ref || (github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref) }}"
 
+  # Checks the wizard metadata and tests the build scripts. It runs beside the build rather than in it: these
+  # checks don't change what the packages contain, so a failure must not stop the dev packages from being signed
+  # and published, nor the template matrix. Tests Validation, the required check, still fails with it.
+  check_scripts:
+    name: Check Wizard Metadata and Scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CheckoutRef }}
+
+    # The wizards take each option's icon from the templates package, so a missing or unused icon fails here.
+    - name: Check the wizard icons
+      shell: pwsh
+      run: ./build/Test-WizardIcons.ps1
+
+    # The wizards silently skip an option or a value that template.json doesn't define, so a stale name fails here.
+    - name: Check the wizard options
+      shell: pwsh
+      run: ./build/Test-WizardOptions.ps1
+
+    # The build/*.Tests.ps1 unit tests of these scripts. They run offline, and Pester comes with the runner image.
+    - name: Test the build scripts
+      shell: pwsh
+      run: |
+        if (-not (Get-Module -ListAvailable Pester | Where-Object Version -ge '5.0')) {
+          Install-Module Pester -MinimumVersion 5.0 -Force -Scope CurrentUser
+        }
+        Import-Module Pester -MinimumVersion 5.0
+        $config = New-PesterConfiguration
+        $config.Run.Path = 'build'
+        $config.Run.Exit = $true
+        $config.Output.Verbosity = 'Detailed'
+        Invoke-Pester -Configuration $config
+
   # Build the nuget packages
   build:
     name: Build
@@ -468,6 +506,7 @@ jobs:
     # skipped required check counts as passing.
     if: always()
     needs:
+      - check_scripts
       - macos-template-tests
       - linux-template-tests
       - windows-template-tests
@@ -502,6 +541,7 @@ jobs:
             esac
           }
 
+          check_result "check_scripts" "${{ needs.check_scripts.result }}"
           check_result "macos-template-tests" "${{ needs.macos-template-tests.result }}"
           check_result "linux-template-tests" "${{ needs.linux-template-tests.result }}"
           check_result "windows-template-tests" "${{ needs.windows-template-tests.result }}"
