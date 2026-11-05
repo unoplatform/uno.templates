@@ -73,8 +73,8 @@ dotnet new unoapp -o MyApp -preset recommended -markup csharp -theme fluent -too
 # Desktop and WebAssembly only
 dotnet new unoapp -o MyApp -platforms desktop wasm
 
-# WebGPU first, with Skia as the fallback (WebGPU is experimental)
-dotnet new unoapp -o MyApp --renderer skia webgpu
+# Both backends, tried in the order given: WebGPU first, then Skia (WebGPU is experimental)
+dotnet new unoapp -o MyApp --renderer webgpu skia
 
 # Recommended app with a server, Kiota HTTP client and OIDC auth
 dotnet new unoapp -o MyApp -preset recommended -server -http kiota -auth oidc

@@ -367,7 +367,7 @@
     },
     "renderer": {
       "displayName": "Renderer",
-      "description": "Selects the rendering backends. Choosing both uses WebGPU first, with Skia as the fallback.",
+      "description": "Selects the rendering backends. With both, the app tries them in the order given.",
       "type": "parameter",
       "datatype": "choice",
       "allowMultipleValues": true,
@@ -395,6 +395,24 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(renderer == 'webgpu')"
+    },
+    "skiaBeforeWebGpu": {
+      "type": "generated",
+      "generator": "regexMatch",
+      "dataType": "bool",
+      "parameters": {
+        "source": "renderer",
+        "pattern": "^skia.*webgpu"
+      }
+    },
+    "webGpuBeforeSkia": {
+      "type": "generated",
+      "generator": "regexMatch",
+      "dataType": "bool",
+      "parameters": {
+        "source": "renderer",
+        "pattern": "^webgpu.*skia"
+      }
     },
     "server": {
       "displayName": "Server",

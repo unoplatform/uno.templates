@@ -52,10 +52,13 @@ public class Application : Uno.UI.Runtime.Android.NativeApplication
         UnoPlatformHostBuilder.Create()
             .App(() => new App())
 //+:cnd:noEmit
+#if (skiaBeforeWebGpu)
+            .GraphicsBackend(SkiaBackend.CreateGraphicsProvider())
+#endif
 #if (useWebGpuRenderer)
             .GraphicsBackend(WebGpuBackend.CreateGraphicsProvider())
 #endif
-#if (useWebGpuRenderer && useSkiaRenderer)
+#if (webGpuBeforeSkia)
             .GraphicsBackend(SkiaBackend.CreateGraphicsProvider())
 #endif
 //-:cnd:noEmit

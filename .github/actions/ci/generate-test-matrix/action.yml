@@ -27,6 +27,7 @@ runs:
             "WebGpuBlank;;unoapp;-skip --renderer webgpu -preset=blank",
             "SkiaExplicitBlank;;unoapp;-skip --renderer skia -preset=blank",
             "SkiaWebGpuBlank;;unoapp;-skip --renderer skia webgpu -preset=blank",
+            "WebGpuSkiaBlank;;unoapp;-skip --renderer webgpu skia -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
