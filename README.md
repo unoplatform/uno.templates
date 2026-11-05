@@ -47,6 +47,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--markup` | `-markup` | `xaml`, `csharp` | `xaml` |
 | `--app-theme` | `-theme` | `material`, `fluent`, `cupertino`, `simple` | depends on preset |
 | `--navigation` | `-nav` | `regions`, `blank` | depends on preset |
+| `--shell-layout` | `-shell-layout` | `blank`, `navview`, `tabbar`, `tabview` | `blank` |
 | `--authentication` | `-auth` | `none`, `custom`, `msal`, `oidc`, `Web` | `none` |
 | `--use-http` | `-http` | `none`, `basic`, `refit`, `kiota` | depends on preset |
 | `--logging` | `-log` | `none`, `default`, `serilog` | depends on preset |
@@ -58,6 +59,8 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--skip-restore` | `-skip` | `true`, `false` | `false` |
 
 There are plenty more (dependency injection, configuration, localization and cultures, theme service, SVG, Lottie, MAUI embedding, PWA manifest, VS Code and Rider files...). Defaults marked "depends on preset" change when you pick `-preset recommended`.
+
+`--shell-layout` scaffolds a NavigationView, TabBar or TabView app shell; see [docs/shell-layouts.md](docs/shell-layouts.md).
 
 The other templates are much smaller. They all take `--tfm`; `unoapp-reactor` also takes `--platforms` and `--app-id`, `unolib` takes `--renderer` and `--global-json`, and `unomauilib` takes `--android`, `--ios` and `--winappsdk`.
 
