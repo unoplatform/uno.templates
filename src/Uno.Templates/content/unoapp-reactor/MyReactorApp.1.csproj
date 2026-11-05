@@ -19,10 +19,8 @@
       https://aka.platform.uno/singleproject-features
 
       Reactor references Uno.Microsoft.UI.Reactor, at the version this Uno.Sdk was released with.
-      Reactor apps render with Skia.
     -->
     <UnoFeatures>
-      SkiaRenderer;
       Reactor;
     </UnoFeatures>
   </PropertyGroup>
