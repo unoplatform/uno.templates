@@ -14,9 +14,8 @@
     -->
     
     <UnoFeatures>
+    <!--#if (useSkiaRenderer)-->
       SkiaRenderer;
-    <!--#if (useWebGpuRenderer)-->
-      WebGpu;
     <!--#endif-->
     </UnoFeatures>
   </PropertyGroup>
