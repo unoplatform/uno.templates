@@ -367,10 +367,10 @@
     },
     "renderer": {
       "displayName": "Renderer",
-      "description": "Controls the rendering backend. Skia is always included; WebGPU adds the WebGPU backend alongside it.",
+      "description": "Selects the rendering backends. Choosing both uses WebGPU first, with Skia as the fallback.",
       "type": "parameter",
       "datatype": "choice",
-      "allowMultipleValues": false,
+      "allowMultipleValues": true,
       "enableQuotelessLiterals": true,
       "defaultValue": "skia",
       "choices": [
@@ -381,7 +381,7 @@
         },
         {
           "choice": "webgpu",
-          "description": "Add the WebGPU rendering backend, used alongside Skia",
+          "description": "Use WebGPU based rendering (experimental). Without Skia, the app has no SkiaSharp and no fallback",
           "displayName": "WebGPU"
         }
       ]

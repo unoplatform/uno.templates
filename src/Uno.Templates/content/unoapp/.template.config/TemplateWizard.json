@@ -215,8 +215,9 @@
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			},
 			{
-				"SectionType": "SingleSelect",
-				"SymbolId": "renderer"
+				"SectionType": "MultiSelect",
+				"SymbolId": "renderer",
+				"SymbolIds": [ "skia", "webgpu" ]
 			}
 		],
 		"Framework": [

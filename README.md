@@ -42,7 +42,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--preset` | `-preset` | `blank`, `recommended` | `blank` |
 | `--tfm` | `-tfm` | `net10.0`, `net11.0` | `net10.0` |
 | `--platforms` | `-platforms` | `android`, `ios`, `wasm`, `desktop`, `windows` (repeatable) | `android`, `ios`, `wasm`, `desktop` |
-| `--renderer` | `-renderer` | `skia`, `webgpu` | `skia` |
+| `--renderer` | `-renderer` | `skia`, `webgpu` (repeatable) | `skia` |
 | `--presentation` | `-presentation` | `none`, `mvvm`, `mvux` | depends on preset |
 | `--markup` | `-markup` | `xaml`, `csharp` | `xaml` |
 | `--app-theme` | `-theme` | `material`, `fluent`, `cupertino`, `simple` | depends on preset |
@@ -72,6 +72,9 @@ dotnet new unoapp -o MyApp -preset recommended -markup csharp -theme fluent -too
 
 # Desktop and WebAssembly only
 dotnet new unoapp -o MyApp -platforms desktop wasm
+
+# WebGPU first, with Skia as the fallback (WebGPU is experimental)
+dotnet new unoapp -o MyApp --renderer skia webgpu
 
 # Recommended app with a server, Kiota HTTP client and OIDC auth
 dotnet new unoapp -o MyApp -preset recommended -server -http kiota -auth oidc

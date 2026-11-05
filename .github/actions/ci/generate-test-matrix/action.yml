@@ -26,6 +26,7 @@ runs:
             "WebGpuRecommended;;unoapp;-skip --renderer webgpu -preset=recommended",
             "WebGpuBlank;;unoapp;-skip --renderer webgpu -preset=blank",
             "SkiaExplicitBlank;;unoapp;-skip --renderer skia -preset=blank",
+            "SkiaWebGpuBlank;;unoapp;-skip --renderer skia webgpu -preset=blank",
 
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
@@ -54,10 +55,10 @@ runs:
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
-            "unolibWebGpu_MacOS;macOS;unolib;--renderer webgpu"
+            "unolibNative_MacOS;macOS;unolib;--renderer native"
             "mauilib_Windows;Windows;unomauilib;"
             "unolib_Windows;Windows;unolib;"
-            "unolibWebGpu_Windows;Windows;unolib;--renderer webgpu"
+            "unolibNative_Windows;Windows;unolib;--renderer native"
             "reactorapp_MacOS;macOS;unoapp-reactor;"
             "reactorapp_Windows;Windows;unoapp-reactor;"
 

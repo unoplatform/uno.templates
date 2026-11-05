@@ -109,7 +109,9 @@
       <!--#if (useThemeService)-->
       ThemeService;
       <!--#endif-->
-      SkiaRenderer;
+      <!--#if (useSkiaRenderer)-->
+      Skia;
+      <!--#endif-->
       <!--#if (useWebGpuRenderer)-->
       WebGpu;
       <!--#endif-->

@@ -9,6 +9,14 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Uno.UI.Hosting;
+//+:cnd:noEmit
+#if (useWebGpuRenderer)
+using Uno.UI.Composition.WebGpu;
+#endif
+#if (useWebGpuRenderer && useSkiaRenderer)
+using Uno.UI.Composition.Skia;
+#endif
+//-:cnd:noEmit
 
 namespace MyExtensionsApp._1.Droid;
 
@@ -43,6 +51,14 @@ public class Application : Uno.UI.Runtime.Android.NativeApplication
     protected override UnoPlatformHost CreateHost() =>
         UnoPlatformHostBuilder.Create()
             .App(() => new App())
+//+:cnd:noEmit
+#if (useWebGpuRenderer)
+            .GraphicsBackend(WebGpuBackend.CreateGraphicsProvider())
+#endif
+#if (useWebGpuRenderer && useSkiaRenderer)
+            .GraphicsBackend(SkiaBackend.CreateGraphicsProvider())
+#endif
+//-:cnd:noEmit
             .UseAndroid()
             .Build();
 }
