@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.0-dev.2556",
+    "version": "7.1.0-dev.19",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.0.0-dev.51",
+    "version": "2.0.0-dev.71",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.38",
+    "version": "2.0.0-dev.44",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -320,7 +320,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.0.0-dev.157",
+    "version": "8.0.0-dev.250",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -351,7 +351,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.0.0-dev.157",
+    "version": "11.0.0-dev.160",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -364,7 +364,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.61",
+    "version": "9.0.0-dev.63",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -417,7 +417,7 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.119",
+    "version": "0.1.0-dev.138",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
