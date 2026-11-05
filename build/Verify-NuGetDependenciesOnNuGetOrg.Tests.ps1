@@ -9,6 +9,15 @@
 BeforeAll {
 	. (Join-Path $PSScriptRoot 'Verify-NuGetDependenciesOnNuGetOrg.ps1')
 	$script:UnoPrefixes = @('Uno.')
+
+	# In CI, GITHUB_STEP_SUMMARY is the run's summary page: the failure paths these tests
+	# take would show there as real failures. Tests that check the summary set their own file.
+	$script:StepSummaryPath = $env:GITHUB_STEP_SUMMARY
+	$env:GITHUB_STEP_SUMMARY = $null
+}
+
+AfterAll {
+	$env:GITHUB_STEP_SUMMARY = $script:StepSummaryPath
 }
 
 Describe 'Test-IsTrackedPackageId' {
