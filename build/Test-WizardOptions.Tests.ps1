@@ -180,6 +180,36 @@ Describe 'Test-WizardOptions.ps1' {
 		$result.Errors | Should -Be @("MetaData.platforms.ios (Tag) (Requires) gives 'toolkit' the value 'maybe', which isn't one of its values in template.json")
 	}
 
+	It 'reports a preset that turns on an option without one of its required values' {
+		$wizard = New-Wizard
+		$wizard.MetaData.toolkit.Requires.platforms.RequiredValues = @('ios')
+		$wizard.TemplateTypes.Choices[0].Parameters.toolkit = 'true'
+
+		$result = Invoke-Check (New-Config $wizard)
+
+		$result.Errors | Should -Be @("The blank preset turns on 'toolkit', which requires 'platforms' to be ios, but the preset gives it 'android|desktop'")
+	}
+
+	It 'reports a preset that turns on an option while it selects an excluded value' {
+		$wizard = New-Wizard
+		$wizard.TemplateTypes.Choices[0].Parameters.toolkit = 'true'
+
+		$result = Invoke-Check (New-Config $wizard)
+
+		$result.Errors | Should -Be @("The blank preset turns on 'toolkit', which requires 'platforms' to be !desktop, but the preset gives it 'android|desktop'")
+	}
+
+	It 'accepts a preset that meets the requirements of what it turns on' {
+		$wizard = New-Wizard
+		$wizard.MetaData.toolkit.Requires.platforms.RequiredValues = @('android', '!ios')
+		$wizard.TemplateTypes.Choices[0].Parameters.toolkit = 'true'
+
+		$result = Invoke-Check (New-Config $wizard)
+
+		$result.Threw | Should -BeFalse
+		$result.Errors | Should -BeNullOrEmpty
+	}
+
 	It 'reports a package whose version option does not exist' {
 		$wizard = New-Wizard
 		$wizard.PackagesToUpdate += @{ PackageId = 'Uno.WinUI'; Symbol = 'unoWinUIVersion' }

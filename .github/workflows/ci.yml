@@ -111,7 +111,8 @@ jobs:
       shell: pwsh
       run: ./build/Test-WizardIcons.ps1
 
-    # The wizards silently skip an option or a value that template.json doesn't define, so a stale name fails here.
+    # The wizards silently skip an option or a value that template.json doesn't define, so a stale name fails here,
+    # and so does a preset that turns on an option its own requirements disable.
     - name: Check the wizard options
       shell: pwsh
       run: ./build/Test-WizardOptions.ps1
