@@ -51,9 +51,6 @@ env:
   # .NET 11 iOS workload requires Xcode 26.5, which macos-15 images don't have
   XcodeVersionNet11: '/Applications/Xcode_26.5.app'
 
-  # Required for WinUI 1.6
-  WindowsSdkPackageVersion: '10.0.19041.57'
-
   # Required for WinAppSDK native AOT, to remove when included in uno.sdk
   AllowUnsafeBlocks: true
 
