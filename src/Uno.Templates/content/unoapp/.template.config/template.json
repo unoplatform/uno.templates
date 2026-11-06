@@ -402,6 +402,13 @@
       "datatype": "bool",
       "value": "(renderer == 'webgpu')"
     },
+    "headless": {
+      "displayName": "Headless Host",
+      "description": "Adds the headless host to Debug desktop builds, as a fallback when no display host is available. Only Linux falls back to it: Windows and macOS always use their own host. Requires the Skia renderer.",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
     "server": {
       "displayName": "Server",
       "type": "parameter",
@@ -1176,7 +1183,7 @@
     "useHeadlessHost": {
       "type": "computed",
       "datatype": "bool",
-      "value": "(platforms == desktop && renderer == 'skia')"
+      "value": "(headless && platforms == desktop && renderer == 'skia')"
     },
     "useAndroid": {
       "type": "computed",
