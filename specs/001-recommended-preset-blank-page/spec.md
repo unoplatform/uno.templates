@@ -331,7 +331,7 @@ These existing tests should continue to pass after the changes:
 | `RecommendedNoPresentation` | `-preset recommended -presentation none` | Already tests recommended with no presentation |
 | `BlankDINavNoPresentation` | `-presentation none -di -nav regions -config` | Tests blank + DI + regions + no presentation |
 | `FrameNavigation` | `-skip -preset recommended --navigation blank` | Recommended with frame nav |
-| `NativeRecommended` | `-skip --renderer native -preset=recommended` | Native renderer variant |
+| `WebGpuRecommended` | `-skip --renderer webgpu -preset=recommended` | WebGPU renderer variant |
 
 ### New test scenarios to add
 
