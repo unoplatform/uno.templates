@@ -732,7 +732,7 @@
 			"Icon": "/Assets/Features.MediaElement.svg"
 		},
 		"headless": {
-			"Icon": "/Assets/Features.SkiaRendering.svg",
+			"Icon": "/Assets/Features.Headless.svg",
 			"Requires": {
 				"platforms": {
 					"RequiredValues": [ "desktop" ],
