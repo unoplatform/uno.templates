@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.21",
+    "version": "7.1.0-dev.85",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -72,7 +72,7 @@
   },
   {
     "group": "sdkextras",
-    "version": "6.4.0-dev.15",
+    "version": "6.4.0-dev.22",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.46",
+    "version": "2.0.0-dev.55",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -354,7 +354,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.63",
+    "version": "9.0.0-dev.65",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -380,7 +380,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.19",
+    "version": "2.0.0-dev.20",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -394,7 +394,7 @@
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.2.1.400",
+    "version": "14.4.0",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
@@ -407,7 +407,7 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.160",
+    "version": "0.1.0-dev.174",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
