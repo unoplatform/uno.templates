@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Page", "MVUX" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.MvuxPage",
+  "groupIdentity": "Uno.Platform.Item.MvuxPage",
+  "name": "Uno Platform Page with Model (MVUX)",
+  "shortName": "uno-mvux-page",
+  "sourceName": "BlankPage",
+  "defaultName": "BlankPage",
+  "description": "Adds an Uno Platform Page and an Uno.Extensions.Reactive (MVUX) Model.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "userNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns). Defaults to the host project's RootNamespace."
+    },
+    "msbuildNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace"
+    },
+    "fallbackNamespace": {
+      "type": "generated",
+      "generator": "constant",
+      "parameters": {
+        "value": "UnoApp"
+      }
+    },
+    "projectNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "msbuildNamespace",
+        "fallbackVariableName": "fallbackNamespace"
+      }
+    },
+    "rootNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "userNamespace",
+        "fallbackVariableName": "projectNamespace"
+      },
+      "replaces": "$rootnamespace$"
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "primaryOutputs": [
+    { "path": "BlankPage.xaml" },
+    { "path": "BlankPage.xaml.cs" },
+    { "path": "BlankPageModel.cs" }
+  ]
+}
