@@ -35,6 +35,9 @@
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <!--#endif-->
     <!--#endif-->
+    <!--#if (useHeadlessHost)-->
+    <PackageVersion Include="Uno.WinUI.Runtime.Headless" Version="$(UnoVersion)" />
+    <!--#endif-->
     <!--#if (enableDeveloperMode)-->
     $$EnableDeveloperMode_CPM_PackageVersion$$
     <!--#endif-->

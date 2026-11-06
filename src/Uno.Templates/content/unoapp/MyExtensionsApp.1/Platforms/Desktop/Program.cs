@@ -35,6 +35,16 @@ internal class Program
             .UseLinuxFrameBuffer()
             .UseMacOS()
             .UseWin32()
+//+:cnd:noEmit
+#if (useHeadlessHost)
+//-:cnd:noEmit
+#if DEBUG
+            // Must stay last: it is always supported, so it would shadow any host registered after it.
+            .UseHeadless()
+#endif
+//+:cnd:noEmit
+#endif
+//-:cnd:noEmit
             .Build();
 
         host.Run();

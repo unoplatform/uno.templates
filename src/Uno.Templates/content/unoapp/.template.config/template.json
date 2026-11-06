@@ -1172,6 +1172,12 @@
       "datatype": "bool",
       "value": "(platforms == desktop)"
     },
+    // The headless host only offers a software context, which the WebGPU backend declines.
+    "useHeadlessHost": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(platforms == desktop && renderer == 'skia')"
+    },
     "useAndroid": {
       "type": "computed",
       "datatype": "bool",
