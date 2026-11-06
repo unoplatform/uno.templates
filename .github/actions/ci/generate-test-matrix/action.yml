@@ -22,6 +22,7 @@ runs:
         $tests = @(
             # The format is "TestName;[PlatformFilter];TemplateName;Arguments"
             # macOS is generally not selected unless building the whole targets list, because of expensive CI
+            # build/Get-TemplateTestMatrix.ps1 picks which of these a run needs, and names the PR smoke tests
 
             "NativeRecommended;;unoapp;-skip --renderer native -preset=recommended",
             "NativeBlank;;unoapp;-skip --renderer native -preset=blank",
@@ -110,10 +111,6 @@ runs:
             "BlankMvvmNoNav;;unoapp;-presentation mvvm"
             "RecommendedMvvmNoNav;;unoapp;-preset recommended -presentation mvvm -nav blank"
             # https://github.com/unoplatform/uno.templates/issues/1549
-            "noServerNone;;unoapp;-skip -preset recommended -http none"
-            "noServerBasic;;unoapp;-skip -preset recommended -http basic"
-            "noServerKiota;;unoapp;-skip -preset recommended"
-            "noServerRefit;;unoapp;-skip -preset recommended -http refit"
             "serverKiota;;unoapp;-skip -preset recommended -server"
             "serverNone;;unoapp;-skip -preset recommended -server -http none"
             "serverBasic;;unoapp;-skip -preset recommended -server -http basic"
@@ -146,45 +143,11 @@ runs:
         # MAUI embedding AndroidX conflict: https://github.com/unoplatform/uno.templates/issues/2279
         $tests = $tests | Where-Object { $_ -notmatch '^(NativeBlank|NativeRecommended|Maui\w*|Issue396);' }
 
-        # Filter per OS before grouping, so no runner is spent on a group that skips most of its tests.
-        # macOS runners are scarce and queue for a long time, so macOS uses fewer, larger groups.
-        function Get-Matrix([string]$os, [int]$groupSize)
-        {
-            $osTests = $tests | Where-Object {
-                $filter = ($_ -split ';')[1].Trim()
-                switch ($filter) {
-                    ''        { $true }
-                    '!macOS'  { $os -ne 'macOS' }
-                    default   { $filter -eq $os }
-                }
-            }
-
-            $matrixGroups = @()
-
-            foreach ($tfm in @(
-                @{ Name = 'net10'; UnoCheckArguments = '' },
-                @{ Name = 'net11'; UnoCheckArguments = '--pre-major' }))
-            {
-                $groupCount = [Math]::Ceiling($osTests.Count / $groupSize)
-
-                for ($g = 0; $g -lt $groupCount; $g++)
-                {
-                    # Round-robin, so expensive neighbours in the list end up in different groups
-                    $groupTests = for ($i = $g; $i -lt $osTests.Count; $i += $groupCount) { $osTests[$i] + " -tfm $($tfm.Name).0" }
-
-                    $matrixGroups += @{
-                        'groupName' = "Group$($matrixGroups.Count)_$($tfm.Name)"
-                        'unocheckArguments' = $tfm.UnoCheckArguments
-                        'validations' = ($groupTests -join "`r`n")
-                    }
-                }
-            }
-
-            Write-Host "${os}: $($osTests.Count) tests per TFM, $($matrixGroups.Count) jobs"
-
-            return ConvertTo-Json -InputObject $matrixGroups -Compress
-        }
-
-        echo "LinuxTestMatrix=$(Get-Matrix 'Linux' 8)" >> $env:GITHUB_OUTPUT
-        echo "WindowsTestMatrix=$(Get-Matrix 'Windows' 8)" >> $env:GITHUB_OUTPUT
-        echo "MacOSTestMatrix=$(Get-Matrix 'macOS' 10)" >> $env:GITHUB_OUTPUT
+        ./build/Get-TemplateTestMatrix.ps1 -Tests $tests -EventName $env:EVENT_NAME -Ref $env:REF -BaseRef $env:BASE_REF -BeforeSha $env:BEFORE_SHA -PullRequestNumber $env:PR_NUMBER
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        REF: ${{ github.ref }}
+        BASE_REF: ${{ github.base_ref }}
+        BEFORE_SHA: ${{ github.event.before }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        GH_TOKEN: ${{ github.token }}

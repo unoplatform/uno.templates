@@ -343,7 +343,9 @@ jobs:
     - name: "Tag Release"
       uses: ./.github/actions/ci/tag-release
 
-  # Generate the template tests build matrix.
+  # Generate the template tests build matrix, sized by build/Get-TemplateTestMatrix.ps1: PRs run the smoke
+  # tests, or nothing when nothing that ships changed, and merges, the nightly canary and stable lines run
+  # everything. An empty matrix skips that OS's job, and Tests Validation accepts exactly that skip.
   # On a merge build the matrix waits for build -> sign -> publish_dev (main) / publish_release_uno
   # (the internal-feed release publish, the FIRST approval gate), then runs against the published
   # internal packages. It deliberately does NOT wait for publish_release_nuget_org -- the public
@@ -398,7 +400,14 @@ jobs:
     if: >-
       ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
+      && needs.generate-test-matrix.outputs.linuxTestMatrix != '[]'
       && needs.build.result == 'success' }}
+
+    # A newer merge to main replaces the tests of an older one that hasn't finished: it contains that merge
+    # too, and this way a burst of merges costs one matrix. Only the tests: every merge still publishes.
+    concurrency:
+      group: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && format('template-tests-main-linux-{0}', matrix.groupName) || format('template-tests-{0}-linux-{1}', github.run_id, matrix.groupName) }}
+      cancel-in-progress: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
     name: Linux Tests (${{ matrix.groupName }})
 
@@ -435,7 +444,14 @@ jobs:
     if: >-
       ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
+      && needs.generate-test-matrix.outputs.windowsTestMatrix != '[]'
       && needs.build.result == 'success' }}
+
+    # A newer merge to main replaces the tests of an older one that hasn't finished: it contains that merge
+    # too, and this way a burst of merges costs one matrix. Only the tests: every merge still publishes.
+    concurrency:
+      group: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && format('template-tests-main-windows-{0}', matrix.groupName) || format('template-tests-{0}-windows-{1}', github.run_id, matrix.groupName) }}
+      cancel-in-progress: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
     name: Windows Tests (${{ matrix.groupName }})
 
@@ -472,7 +488,14 @@ jobs:
     if: >-
       ${{ !cancelled()
       && needs.generate-test-matrix.result == 'success'
+      && needs.generate-test-matrix.outputs.macosTestMatrix != '[]'
       && needs.build.result == 'success' }}
+
+    # A newer merge to main replaces the tests of an older one that hasn't finished: it contains that merge
+    # too, and this way a burst of merges costs one matrix. Only the tests: every merge still publishes.
+    concurrency:
+      group: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && format('template-tests-main-macos-{0}', matrix.groupName) || format('template-tests-{0}-macos-{1}', github.run_id, matrix.groupName) }}
+      cancel-in-progress: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
     name: macOS Tests (${{ matrix.groupName }})
 
@@ -507,23 +530,33 @@ jobs:
     if: always()
     needs:
       - check_scripts
+      - generate-test-matrix
       - macos-template-tests
       - linux-template-tests
       - windows-template-tests
 
     steps:
-      # Only 'success' is a pass. The matrix jobs are gated purely on upstream success
-      # (generate-test-matrix + build), so they are never skipped for a legitimate reason such as
-      # a doc-only change -- a skip always means the tests did not run. Reporting that as green
-      # made this job say "All matrix test jobs passed" for a run where nothing executed, which is
-      # exactly the assurance a required check must not give. 'cancelled' is treated the same way.
+      # Only 'success' is a pass, with two exceptions that the run can prove:
+      #  * skipped, when the generated matrix for that OS is empty, because this change doesn't need it.
+      #    Any other skip means the tests never ran, and a required check must not report that as green.
+      #  * cancelled on a push to main, when main has moved on: a newer merge took over these tests.
       - name: Check matrix job results
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
+          REPOSITORY: ${{ github.repository }}
+          MATRIX_RESULT: ${{ needs.generate-test-matrix.result }}
+          MACOS_MATRIX: ${{ needs.generate-test-matrix.outputs.macosTestMatrix }}
+          LINUX_MATRIX: ${{ needs.generate-test-matrix.outputs.linuxTestMatrix }}
+          WINDOWS_MATRIX: ${{ needs.generate-test-matrix.outputs.windowsTestMatrix }}
         run: |
           hasFailed=false
 
           check_result() {
             name="$1"
             status="$2"
+            matrix="$3"
 
             echo "$name: $status"
 
@@ -531,8 +564,21 @@ jobs:
               success)
                 ;;
               skipped)
-                echo "::error::$name did not run (status: $status). The tests have not passed - they were never executed, most likely because an upstream job failed or was skipped."
-                hasFailed=true
+                if [ "$MATRIX_RESULT" = "success" ] && [ "$matrix" = "[]" ]; then
+                  echo "$name is not needed for this change."
+                else
+                  echo "::error::$name did not run (status: $status). The tests have not passed - they were never executed, most likely because an upstream job failed or was skipped."
+                  hasFailed=true
+                fi
+                ;;
+              cancelled)
+                if [ "$EVENT_NAME" = "push" ] && [ "$REF" = "refs/heads/main" ] \
+                  && [ "$(git ls-remote "https://github.com/$REPOSITORY" "$REF" | cut -f1)" != "$SHA" ]; then
+                  echo "::notice::$name was superseded by a newer merge to main, which runs these tests instead."
+                else
+                  echo "::error::$name did not succeed (status: $status)"
+                  hasFailed=true
+                fi
                 ;;
               *)
                 echo "::error::$name did not succeed (status: $status)"
@@ -541,10 +587,10 @@ jobs:
             esac
           }
 
-          check_result "check_scripts" "${{ needs.check_scripts.result }}"
-          check_result "macos-template-tests" "${{ needs.macos-template-tests.result }}"
-          check_result "linux-template-tests" "${{ needs.linux-template-tests.result }}"
-          check_result "windows-template-tests" "${{ needs.windows-template-tests.result }}"
+          check_result "check_scripts" "${{ needs.check_scripts.result }}" ""
+          check_result "macos-template-tests" "${{ needs.macos-template-tests.result }}" "$MACOS_MATRIX"
+          check_result "linux-template-tests" "${{ needs.linux-template-tests.result }}" "$LINUX_MATRIX"
+          check_result "windows-template-tests" "${{ needs.windows-template-tests.result }}" "$WINDOWS_MATRIX"
 
           if [ "$hasFailed" = "true" ]; then
             echo "::error::One or more test jobs did not pass. Blocking merge."
@@ -553,5 +599,5 @@ jobs:
 
       - name: All tests passed
         if: ${{ success() }}
-        run: echo "✅ All matrix test jobs passed."
+        run: echo "✅ All the template tests this change needs passed."
 

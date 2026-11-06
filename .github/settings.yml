@@ -39,6 +39,10 @@ labels:
     color: 5DADE2
     description: Categorizes an issue or PR as relevant to community or interactions
 
+  - name: ci/full-matrix
+    color: 5DADE2
+    description: Runs every template test on this PR, not only the smoke tests. Add it, then re-run the CI jobs
+
   - name: do-not-merge/breaking-change
     color: E74C3C
     description: Categorizes issue or PR as related to breaking change to an existing API
