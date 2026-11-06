@@ -4,12 +4,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.1.0-dev.21 |
+| UnoVersion* | 7.1.0-dev.85 |
 | UnoExtensionsVersion | 8.0.0-dev.250 |
 | UnoToolkitVersion | 11.0.0-dev.160 |
-| UnoThemesVersion | 9.0.0-dev.63 |
+| UnoThemesVersion | 9.0.0-dev.65 |
 | UnoCSharpMarkupVersion | 7.0.0-dev.33 |
-| UnoReactorVersion | 0.1.0-dev.160 |
+| UnoReactorVersion | 0.1.0-dev.174 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.1.0-dev.21",
+    "version": "7.1.0-dev.85",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -119,7 +119,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "sdkextras",
-    "version": "6.4.0-dev.15",
+    "version": "6.4.0-dev.22",
     "packages": [
       "Uno.Sdk.Extras"
     ]
@@ -133,7 +133,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.46",
+    "version": "2.0.0-dev.55",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -401,7 +401,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Themes",
-    "version": "9.0.0-dev.63",
+    "version": "9.0.0-dev.65",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -427,7 +427,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "2.0.0-dev.19",
+    "version": "2.0.0-dev.20",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -441,7 +441,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.2.1.400",
+    "version": "14.4.0",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
@@ -454,7 +454,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.160",
+    "version": "0.1.0-dev.174",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
