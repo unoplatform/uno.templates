@@ -10,6 +10,8 @@ $ErrorActionPreference = "Stop"
 # (Visual Studio, the Live Wizard and Rider) read both files from the templates package, and skip what
 # template.json doesn't define without any error, so a renamed or removed option would just disappear from
 # the wizard. Commented-out entries aren't checked: ConvertFrom-Json drops the comments.
+# Also checks that each preset meets the requirements of the options and choices it turns on: a wizard
+# disables those, so the preset would show an option it can't keep.
 
 $wizard = Get-Content (Join-Path $TemplateConfig "TemplateWizard.json") -Raw | ConvertFrom-Json -AsHashtable
 $symbols = (Get-Content (Join-Path $TemplateConfig "template.json") -Raw | ConvertFrom-Json -AsHashtable).symbols
@@ -105,6 +107,37 @@ foreach ($element in $wizard.NavigationElements) {
 	if ($element.Contains("Tag")) { Test-Requires $element.Tag "The $($element.NavigationId) tab" }
 }
 
+# The values a preset selects for an option: its own, or the template's default when it doesn't set the option.
+function Get-PresetValues([System.Collections.IDictionary]$Card, [string]$Name) {
+	if ($Card.Parameters.Contains($Name)) { return , @("$($Card.Parameters[$Name])".Split("|")) }
+	if ($symbols.Contains($Name) -and $symbols[$Name].Contains("defaultValue")) { return , @("$($symbols[$Name].defaultValue)".Split("|")) }
+	return $null
+}
+
+# The wizards' rule, as in the Visual Studio wizard: an option or a choice is disabled while one of its excluded
+# (!) values is selected, or while none of its required values is. Tag requirements only label a choice.
+foreach ($card in @($wizard.TemplateTypes.Choices | Where-Object { $_.Contains("Parameters") })) {
+	foreach ($key in $wizard.MetaData.Keys) {
+		$entry = $wizard.MetaData[$key]
+		if (-not $entry.Contains("Requires")) { continue }
+		$name, $choice = $key.Split(".", 2)
+		$selected = Get-PresetValues $card $name
+		if ($null -eq $selected -or $selected -cnotcontains $(if ($choice) { $choice } else { "true" })) { continue }
+		foreach ($required in $entry.Requires.Keys) {
+			$values = Get-PresetValues $card $required
+			if ($null -eq $values) { continue }
+			$listed = @($entry.Requires[$required].RequiredValues | ForEach-Object { "$(if ($_ -is [System.Collections.IDictionary]) { $_.value } else { $_ })" })
+			$excluded = @($listed | Where-Object { $_.StartsWith("!") } | ForEach-Object { $_.Substring(1) })
+			$wanted = @($listed | Where-Object { -not $_.StartsWith("!") })
+			$clash = @($values | Where-Object { $excluded -ccontains $_ })
+			$missing = $wanted.Count -gt 0 -and @($values | Where-Object { $wanted -ccontains $_ }).Count -eq 0
+			if ($clash.Count -gt 0 -or $missing) {
+				$problems.Add("The $($card.Id) preset turns on '$key', which requires '$required' to be $($listed -join ' or '), but the preset gives it '$($values -join '|')'")
+			}
+		}
+	}
+}
+
 # isCustomized isn't a template option: Studio sets it itself when the user changes a preset's options.
 foreach ($name in $wizard.ExportableSymbols | Where-Object { $_ -cne "isCustomized" }) { [void](Test-Option $name "ExportableSymbols") }
 foreach ($name in $wizard.ExcludeFromCliCommand) { [void](Test-Option $name "ExcludeFromCliCommand") }
@@ -122,7 +155,7 @@ foreach ($package in $wizard.PackagesToUpdate) {
 
 if ($problems.Count -gt 0) {
 	$problems | ForEach-Object { Write-Host "::error::$_" }
-	throw "TemplateWizard.json names options or values that template.json doesn't define ($($problems.Count) problems)."
+	throw "TemplateWizard.json doesn't match template.json or its own requirements ($($problems.Count) problems)."
 }
 
-Write-Host "TemplateWizard.json only names options and values that template.json defines."
+Write-Host "TemplateWizard.json only names options and values that template.json defines, and its presets meet their requirements."

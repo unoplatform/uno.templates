@@ -149,7 +149,7 @@
 					// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
 					// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 					//"wasmMultiThreading": "false",
-					"dspGenerator": "true",
+					"dspGenerator": "false",
 					"themeService": "true",
 					"continuousIntegration": "none",
 					"renderer": "skia",
