@@ -55,10 +55,8 @@ runs:
 
             "mauilib_MacOS;macOS;unomauilib;"
             "unolib_MacOS;macOS;unolib;"
-            "unolibNative_MacOS;macOS;unolib;--renderer native"
             "mauilib_Windows;Windows;unomauilib;"
             "unolib_Windows;Windows;unolib;"
-            "unolibNative_Windows;Windows;unolib;--renderer native"
             "reactorapp_MacOS;macOS;unoapp-reactor;"
             "reactorapp_Windows;Windows;unoapp-reactor;"
 
