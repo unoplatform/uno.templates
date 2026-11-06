@@ -8,11 +8,13 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Microsoft.UI.Xaml.Media;
 using Uno.UI.Hosting;
 //+:cnd:noEmit
-#if (!useSkiaRenderer)
-using Com.Nostra13.Universalimageloader.Core;
+#if (useWebGpuRenderer)
+using Uno.UI.Composition.WebGpu;
+#endif
+#if (useWebGpuRenderer && useSkiaRenderer)
+using Uno.UI.Composition.Skia;
 #endif
 //-:cnd:noEmit
 
@@ -44,33 +46,19 @@ public class Application : Uno.UI.Runtime.Android.NativeApplication
     public Application(IntPtr javaReference, JniHandleOwnership transfer)
         : base(javaReference, transfer)
     {
-//+:cnd:noEmit
-#if (!useSkiaRenderer)
-        ConfigureUniversalImageLoader();
-#endif
-//-:cnd:noEmit
     }
 
     protected override UnoPlatformHost CreateHost() =>
         UnoPlatformHostBuilder.Create()
             .App(() => new App())
-            .UseAndroid()
-            .Build();
-
 //+:cnd:noEmit
-#if (!useSkiaRenderer)
-    private static void ConfigureUniversalImageLoader()
-    {
-        // Create global configuration and initialize ImageLoader with this config
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration
-            .Builder(Context)
-            .Build();
-
-        ImageLoader.Instance.Init(config);
-
-        ImageSource.DefaultImageLoader = ImageLoader.Instance.LoadImageAsync;
-    }
+#if (useWebGpuRenderer)
+            .GraphicsBackend(WebGpuBackend.CreateGraphicsProvider())
+#endif
+#if (useWebGpuRenderer && useSkiaRenderer)
+            .GraphicsBackend(SkiaBackend.CreateGraphicsProvider())
 #endif
 //-:cnd:noEmit
+            .UseAndroid()
+            .Build();
 }
-

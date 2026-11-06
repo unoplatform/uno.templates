@@ -14,12 +14,12 @@
 					"renderer": {
 						"RequiredValues": [
 							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
 								"value": "skia",
 								"display": "Skia"
+							},
+							{
+								"value": "webgpu",
+								"display": "WebGPU"
 							}
 						]
 					}
@@ -226,11 +226,11 @@
 				// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
 				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
-			}
-			,
+			},
 			{
-				"SectionType": "SingleSelect",
-				"SymbolId": "renderer"
+				"SectionType": "MultiSelect",
+				"SymbolId": "renderer",
+				"SymbolIds": [ "skia", "webgpu" ]
 			}
 		],
 		"Framework": [
@@ -578,12 +578,12 @@
 					"renderer": {
 						"RequiredValues": [
 							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
 								"value": "skia",
 								"display": "Skia"
+							},
+							{
+								"value": "webgpu",
+								"display": "WebGPU"
 							}
 						]
 					}
@@ -597,12 +597,12 @@
 					"renderer": {
 						"RequiredValues": [
 							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
 								"value": "skia",
 								"display": "Skia"
+							},
+							{
+								"value": "webgpu",
+								"display": "WebGPU"
 							}
 						]
 					}
@@ -618,7 +618,20 @@
 		"platforms.desktop": {
 			"Icon": "/Assets/Platforms.Desktop.svg",
 			"Tag": {
-				"Value": "Skia"
+				"Requires": {
+					"renderer": {
+						"RequiredValues": [
+							{
+								"value": "skia",
+								"display": "Skia"
+							},
+							{
+								"value": "webgpu",
+								"display": "WebGPU"
+							}
+						]
+					}
+				}
 			}
 		},
 		"platforms.wasm": {
@@ -628,12 +641,12 @@
 					"renderer": {
 						"RequiredValues": [
 							{
-								"value": "native",
-								"display": "Native"
-							},
-							{
 								"value": "skia",
 								"display": "Skia"
+							},
+							{
+								"value": "webgpu",
+								"display": "WebGPU"
 							}
 						]
 					}
@@ -707,8 +720,8 @@
 		"renderer.skia": {
 			"Icon": "/Assets/Features.SkiaRendering.svg"
 		},
-		"renderer.native": {
-			"Icon": "/Assets/Features.NativeRendering.svg"
+		"renderer.webgpu": {
+			"Icon": "/Assets/Features.WebGpuRendering.svg"
 		},
 		"vscode": {
 			"Icon": "/Assets/Features.VSCode.svg"
