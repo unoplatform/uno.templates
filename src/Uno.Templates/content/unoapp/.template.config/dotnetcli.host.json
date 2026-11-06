@@ -109,6 +109,10 @@
       "longName": "media-player-element",
       "shortName": "mpe"
     },
+    "webView": {
+      "longName": "web-view",
+      "shortName": "webview"
+    },
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
