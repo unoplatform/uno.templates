@@ -453,6 +453,21 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ]
   },
   {
+    "group": "UnoMaui",
+    "version": "0.1.0-dev.1",
+    "packages": [
+      "Uno.Maui.Embedding",
+      "Uno.Maui.Handlers"
+    ]
+  },
+  {
+    "group": "UnoRetarget",
+    "version": "0.1.0-dev.1",
+    "packages": [
+      "Uno.WinUI.Retarget"
+    ]
+  },
+  {
     "group": "Reactor",
     "version": "0.1.0-dev.177",
     "packages": [
