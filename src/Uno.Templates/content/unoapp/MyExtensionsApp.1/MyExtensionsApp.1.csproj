@@ -67,7 +67,7 @@
       LoggingSerilog;
       <!--#endif-->
       <!--#if (mauiEmbedding)-->
-      MauiEmbedding;
+      MauiNativeEmbedding;
       <!--#endif-->
       <!--#if (useMvux)-->
       MVUX;
