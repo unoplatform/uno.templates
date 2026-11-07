@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.85",
+    "version": "7.1.0-dev.90",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -407,7 +407,7 @@
   },
   {
     "group": "Reactor",
-    "version": "0.1.0-dev.174",
+    "version": "0.1.0-dev.177",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
