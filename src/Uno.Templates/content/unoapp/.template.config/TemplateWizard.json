@@ -155,7 +155,7 @@
 					// and we recently removed .NET 8 option from the template (see PR #1373).
 					// This feature will be re-enabled once multi-threading becomes available again.
 					//"wasmMultiThreading": "false",
-					"dspGenerator": "true",
+					"dspGenerator": "false",
 					"themeService": "true",
 					"continuousIntegration": "none",
 					"renderer": "skia",
