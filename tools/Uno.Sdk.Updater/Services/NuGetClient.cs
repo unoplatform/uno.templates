@@ -9,13 +9,13 @@ using Uno.Sdk.Updater.Utils;
 
 namespace Uno.Sdk.Services;
 
-internal class NuGetApiClient : IDisposable
+internal class NuGetApiClient(HttpMessageHandler? publicNuGetHandler = null) : IDisposable
 {
     private const string UnoWinUIPackageId = "Uno.WinUI";
     private static PackageValidationRecord _validation = new ();
     private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
-    private HttpClient PublicNuGetClient { get; } = new HttpClient
+    private HttpClient PublicNuGetClient { get; } = new HttpClient(publicNuGetHandler ?? new HttpClientHandler())
     {
         BaseAddress = new Uri("https://api.nuget.org")
     };
@@ -141,7 +141,7 @@ internal class NuGetApiClient : IDisposable
         packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
         !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
 
-    private async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
+    internal async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
     {
         if (_validation.HasBeenChecked(packageId, version))
         {
@@ -189,19 +189,19 @@ internal class NuGetApiClient : IDisposable
             var unoDependencies = dependencies.Where(x => x.Attribute("id")?.Value.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) ?? false);
 
             // Check for Transitive Dependency
-            if (unoDependencies.Any())
+            foreach (var dependency in unoDependencies)
             {
-                var transitiveDependencies = unoDependencies.ToDictionary(x => x.Attribute("id")!.Value, x => NuGetVersion.Parse(x.Attribute("version")!.Value));
-                foreach((var packageId, var version) in transitiveDependencies)
+                var packageId = dependency.Attribute("id")!.Value;
+                var versionRange = dependency.Attribute("version")?.Value;
+                if (!NuGetVersion.TryParseMinimumVersion(versionRange, out var version))
                 {
-                    if (_validation.HasBeenChecked(packageId, version))
-                    {
-                        continue;
-                    }
-                    else if (!await ValidatePackage(packageId, version))
-                    {
-                        return false;
-                    }
+                    Console.WriteLine($"Skipping validation of {packageId}: no usable lower bound in version range '{versionRange}'.");
+                    continue;
+                }
+
+                if (!await ValidatePackage(packageId, version))
+                {
+                    return false;
                 }
             }
 

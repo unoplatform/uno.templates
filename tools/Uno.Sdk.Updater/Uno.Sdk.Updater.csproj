@@ -11,6 +11,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="Uno.Sdk.Updater.Tests" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Update="ReadMe.md" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 

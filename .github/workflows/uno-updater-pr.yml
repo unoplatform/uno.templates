@@ -8,7 +8,8 @@ on:
     paths:
       - .github/workflows/uno-updater-pr.yml
       - .github/actions/sdk-update/*
-      - tools/Uno.Sdk.Updater/*
+      - tools/Uno.Sdk.Updater/**
+      - tools/Uno.Sdk.Updater.Tests/**
   
 concurrency:
   group: ${{github.workflow}} - ${{github.ref}}
@@ -25,3 +26,6 @@ jobs:
 
     - name: "Sdk Update"
       uses: ./.github/actions/sdk-update
+
+    - name: "Test Sdk Updater"
+      run: dotnet test tools/Uno.Sdk.Updater.Tests
