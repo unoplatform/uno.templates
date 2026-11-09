@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" VersionOverride="$FluentAssertions$" />
+    <!--Pinned to this version to prevent unintentional upgrades, later versions than 7.2.0 are under paid licensing-->
     <PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="$MicrosoftTestSdk$" />
     <PackageReference Include="Newtonsoft.Json" VersionOverride="$NewtonsoftJson$" />
     <PackageReference Include="NUnit" VersionOverride="$NUnit$" />
