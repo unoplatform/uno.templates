@@ -198,11 +198,7 @@ internal class NuGetApiClient : IDisposable
                 }
 
                 var packageId = dependency.Attribute("id")!.Value;
-                if (_validation.HasBeenChecked(packageId, version))
-                {
-                    continue;
-                }
-                else if (!await ValidatePackage(packageId, version))
+                if (!await ValidatePackage(packageId, version))
                 {
                     return false;
                 }
