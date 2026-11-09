@@ -11,6 +11,7 @@ public class NuGetVersionTests
     [DataRow("[0.1.0-dev.1]", "0.1.0-dev.1", DisplayName = "Exact version")]
     [DataRow("[1.2.3,2.0.0)", "1.2.3", DisplayName = "Bounded range")]
     [DataRow("(1.2.3,)", "1.2.3", DisplayName = "Exclusive lower bound")]
+    [DataRow("[1.2.3+sha]", "1.2.3", DisplayName = "Build metadata")]
     public void TryParseMinimumVersion_ReturnsLowerBound(string range, string expected)
     {
         Assert.IsTrue(NuGetVersion.TryParseMinimumVersion(range, out var version));

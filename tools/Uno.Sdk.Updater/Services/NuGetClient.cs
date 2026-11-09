@@ -9,13 +9,13 @@ using Uno.Sdk.Updater.Utils;
 
 namespace Uno.Sdk.Services;
 
-internal class NuGetApiClient : IDisposable
+internal class NuGetApiClient(HttpMessageHandler? publicNuGetHandler = null) : IDisposable
 {
     private const string UnoWinUIPackageId = "Uno.WinUI";
     private static PackageValidationRecord _validation = new ();
     private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
 
-    private HttpClient PublicNuGetClient { get; } = new HttpClient
+    private HttpClient PublicNuGetClient { get; } = new HttpClient(publicNuGetHandler ?? new HttpClientHandler())
     {
         BaseAddress = new Uri("https://api.nuget.org")
     };
@@ -141,7 +141,7 @@ internal class NuGetApiClient : IDisposable
         packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
         !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
 
-    private async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
+    internal async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
     {
         if (_validation.HasBeenChecked(packageId, version))
         {
