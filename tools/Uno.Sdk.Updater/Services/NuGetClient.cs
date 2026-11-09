@@ -191,13 +191,14 @@ internal class NuGetApiClient : IDisposable
             // Check for Transitive Dependency
             foreach (var dependency in unoDependencies)
             {
-                // Without a lower bound there is no specific version to validate.
-                if (!NuGetVersion.TryParseMinimumVersion(dependency.Attribute("version")?.Value, out var version))
+                var packageId = dependency.Attribute("id")!.Value;
+                var versionRange = dependency.Attribute("version")?.Value;
+                if (!NuGetVersion.TryParseMinimumVersion(versionRange, out var version))
                 {
+                    Console.WriteLine($"Skipping validation of {packageId}: no usable lower bound in version range '{versionRange}'.");
                     continue;
                 }
 
-                var packageId = dependency.Attribute("id")!.Value;
                 if (!await ValidatePackage(packageId, version))
                 {
                     return false;

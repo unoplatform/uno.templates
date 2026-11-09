@@ -64,7 +64,7 @@ internal readonly struct NuGetVersion : IComparable<NuGetVersion>
         return versionRange is not null &&
             VersionRange.TryParse(versionRange, out var range) &&
             range.MinVersion is not null &&
-            TryParse(range.MinVersion.OriginalVersion, out nugetVersion);
+            TryParse(range.MinVersion.ToNormalizedString(), out nugetVersion);
     }
 
     public int CompareTo(NuGetVersion other)
