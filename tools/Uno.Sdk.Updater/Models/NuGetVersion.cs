@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using NuGet.Versioning;
 
 namespace Uno.Sdk.Models;
 
@@ -54,6 +55,16 @@ internal readonly struct NuGetVersion : IComparable<NuGetVersion>
         }
 
         return false;
+    }
+
+    // Nuspec dependencies are version ranges: "1.0" means at least 1.0 and "[1.0]" exactly 1.0.
+    public static bool TryParseMinimumVersion(string? versionRange, out NuGetVersion nugetVersion)
+    {
+        nugetVersion = default;
+        return versionRange is not null &&
+            VersionRange.TryParse(versionRange, out var range) &&
+            range.MinVersion is not null &&
+            TryParse(range.MinVersion.OriginalVersion, out nugetVersion);
     }
 
     public int CompareTo(NuGetVersion other)

@@ -189,19 +189,22 @@ internal class NuGetApiClient : IDisposable
             var unoDependencies = dependencies.Where(x => x.Attribute("id")?.Value.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) ?? false);
 
             // Check for Transitive Dependency
-            if (unoDependencies.Any())
+            foreach (var dependency in unoDependencies)
             {
-                var transitiveDependencies = unoDependencies.ToDictionary(x => x.Attribute("id")!.Value, x => NuGetVersion.Parse(x.Attribute("version")!.Value));
-                foreach((var packageId, var version) in transitiveDependencies)
+                // Without a lower bound there is no specific version to validate.
+                if (!NuGetVersion.TryParseMinimumVersion(dependency.Attribute("version")?.Value, out var version))
                 {
-                    if (_validation.HasBeenChecked(packageId, version))
-                    {
-                        continue;
-                    }
-                    else if (!await ValidatePackage(packageId, version))
-                    {
-                        return false;
-                    }
+                    continue;
+                }
+
+                var packageId = dependency.Attribute("id")!.Value;
+                if (_validation.HasBeenChecked(packageId, version))
+                {
+                    continue;
+                }
+                else if (!await ValidatePackage(packageId, version))
+                {
+                    return false;
                 }
             }
 
