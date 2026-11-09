@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.90",
+    "version": "7.1.0-dev.115",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.55",
+    "version": "2.0.0-dev.61",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -129,7 +129,7 @@
   },
   {
     "group": "WinAppSdkBuildToolsWinApp",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "packages": [
       "Microsoft.Windows.SDK.BuildTools.WinApp"
     ]
