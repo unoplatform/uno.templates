@@ -12,6 +12,10 @@ param(
 	# Branch the manifest is destined for. Enforcement only applies to stable release branches;
 	# main and servicing lines are expected to carry dev pins.
 	[string]$Branch = "",
+	# Prerelease pins a stable release ships on purpose, each with its reason, such as a dependency
+	# that has no stable version yet. Matched by group and field, so the version itself can still
+	# move; any other prerelease pin fails.
+	[string]$AllowedPrereleasesPath = "build/Verify-StablePins.AllowedPrereleases.json",
 	# Validate regardless of branch (used by the Pester tests and for local runs).
 	[switch]$Force
 )
@@ -103,6 +107,95 @@ function Get-PrereleasePins {
 
 <#
 .SYNOPSIS
+	Reads the allowed prerelease pins: one entry per group and field, each with its reason.
+.DESCRIPTION
+	For an MSBuild property file, the group is the file name and the field the property name, as
+	Get-MSBuildPinnedVersions records them. An entry without a reason is rejected, so every
+	exception says why it ships.
+#>
+function Get-AllowedPrereleases {
+	param([Parameter(Mandatory)][AllowEmptyString()][string]$Json)
+
+	if ([string]::IsNullOrWhiteSpace($Json)) {
+		return ,@()
+	}
+
+	$entries = @($Json | ConvertFrom-Json)
+	foreach ($entry in $entries) {
+		foreach ($name in 'group', 'field', 'reason') {
+			if (-not ($entry.PSObject.Properties.Name -contains $name) -or [string]::IsNullOrWhiteSpace($entry.$name)) {
+				throw "Every allowed prerelease needs a '$name': $($entry | ConvertTo-Json -Compress)"
+			}
+		}
+	}
+
+	# Comma operator: see Get-ManifestPinnedVersions.
+	return ,$entries
+}
+
+<#
+.SYNOPSIS
+	Splits prerelease pins into the ones the allowed list accepts and the ones that fail.
+.OUTPUTS
+	An object with Accepted (each pin with the Reason of its entry) and Rejected.
+#>
+function Split-PrereleasePins {
+	param(
+		[Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Pins,
+		[Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Allowed
+	)
+
+	$accepted = @()
+	$rejected = @()
+
+	foreach ($pin in $Pins) {
+		$entry = $Allowed | Where-Object { $_.group -eq $pin.Group -and $_.field -eq $pin.Field } | Select-Object -First 1
+
+		if ($null -ne $entry) {
+			$accepted += [pscustomobject]@{
+				Group   = $pin.Group
+				Field   = $pin.Field
+				Version = $pin.Version
+				Reason  = $entry.reason
+			}
+		}
+		else {
+			$rejected += $pin
+		}
+	}
+
+	return [pscustomobject]@{
+		Accepted = $accepted
+		Rejected = $rejected
+	}
+}
+
+<#
+.SYNOPSIS
+	Returns the allowed entries that matched no prerelease pin.
+.DESCRIPTION
+	Such an entry is out of date, for instance once the dependency ships a stable version. It is
+	reported rather than failed, so a forgotten clean-up never blocks a release.
+#>
+function Get-UnusedAllowedPrereleases {
+	param(
+		[Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Allowed,
+		[Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Accepted
+	)
+
+	$unused = @()
+	foreach ($entry in $Allowed) {
+		if (-not ($Accepted | Where-Object { $_.Group -eq $entry.group -and $_.Field -eq $entry.field })) {
+			$unused += $entry
+		}
+	}
+
+	# Comma operator: see Get-ManifestPinnedVersions.
+	return ,$unused
+}
+
+<#
+.SYNOPSIS
 	Reads the version-bearing MSBuild properties out of a .props/.targets file.
 .DESCRIPTION
 	Matches any element whose name contains 'Version' (UnoVersion, SdkVersion,
@@ -188,8 +281,16 @@ if ($MyInvocation.InvocationName -ne '.') {
 	$manifestJson = Get-Content -Raw -Path $ManifestPath
 	$manifest = $manifestJson | ConvertFrom-Json
 
+	$allowed = @()
+	if (Test-Path $AllowedPrereleasesPath) {
+		$allowed = Get-AllowedPrereleases -Json (Get-Content -Raw -Path $AllowedPrereleasesPath)
+	}
+	$accepted = @()
+
 	$pins = Get-ManifestPinnedVersions -Manifest $manifest
-	$prerelease = Get-PrereleasePins -Pins $pins
+	$split = Split-PrereleasePins -Pins (Get-PrereleasePins -Pins $pins) -Allowed $allowed
+	$prerelease = $split.Rejected
+	$accepted += $split.Accepted
 
 	$failed = $false
 
@@ -203,7 +304,11 @@ if ($MyInvocation.InvocationName -ne '.') {
 		Write-Host "A stable Uno.Sdk ships stable pins. A release branch inherits whatever dev versions the"
 		Write-Host "branch it was cut from carried, so each one has to be moved to a stable version before the"
 		Write-Host "release: the previous stable when nothing changed, or a new or bumped stable when the"
-		Write-Host "release needs one."
+		Write-Host "release needs one. A prerelease the release ships on purpose, because no stable version"
+		Write-Host "exists yet, goes in $AllowedPrereleasesPath with its reason."
+	}
+	elseif ($split.Accepted.Count -gt 0) {
+		Write-Host "OK: the $($pins.Count) pins in $ManifestPath are stable, apart from $($split.Accepted.Count) allowed prerelease pin(s)."
 	}
 	else {
 		Write-Host "OK: all $($pins.Count) pins in $ManifestPath are stable."
@@ -215,7 +320,9 @@ if ($MyInvocation.InvocationName -ne '.') {
 		}
 
 		$propertyPins = Get-MSBuildPinnedVersions -Content (Get-Content -Raw -Path $propertyFile) -SourceName (Split-Path -Leaf $propertyFile)
-		$propertyPrerelease = Get-PrereleasePins -Pins $propertyPins
+		$propertySplit = Split-PrereleasePins -Pins (Get-PrereleasePins -Pins $propertyPins) -Allowed $allowed
+		$propertyPrerelease = $propertySplit.Rejected
+		$accepted += $propertySplit.Accepted
 
 		if ($propertyPrerelease.Count -gt 0) {
 			$failed = $true
@@ -224,9 +331,21 @@ if ($MyInvocation.InvocationName -ne '.') {
 				Write-Host "::error file=$propertyFile::$($pin.Field) = $($pin.Version)"
 			}
 		}
+		elseif ($propertySplit.Accepted.Count -gt 0) {
+			Write-Host "OK: the $($propertyPins.Count) pins in $propertyFile are stable, apart from $($propertySplit.Accepted.Count) allowed prerelease pin(s)."
+		}
 		else {
 			Write-Host "OK: all $($propertyPins.Count) pins in $propertyFile are stable."
 		}
+	}
+
+	# Shown on every run, so an exception stays visible until it is removed.
+	foreach ($pin in $accepted) {
+		Write-Host "::warning::Allowed prerelease pin: $($pin.Group) -> $($pin.Field) = $($pin.Version). $($pin.Reason)"
+	}
+
+	foreach ($entry in (Get-UnusedAllowedPrereleases -Allowed $allowed -Accepted $accepted)) {
+		Write-Host "::warning file=$AllowedPrereleasesPath::$($entry.group) -> $($entry.field) is allowed, but it no longer pins a prerelease version: remove it."
 	}
 
 	if (Test-Path $ReadMePath) {
