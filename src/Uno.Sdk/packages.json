@@ -1,436 +1,436 @@
-﻿[
-  {
-    "group": "Core",
-    "version": "6.7.424",
-    "packages": [
-      "Uno.WinUI",
-      "Uno.UI.Adapter.Microsoft.Extensions.Logging",
-      "Uno.WinUI.Maps",
-      "Uno.WinUI.GooglePlay",
-      "Uno.WinUI.Foldable",
-      "Uno.WinUI.MSAL",
-      "Uno.WinUI.Svg",
-      "Uno.WinUI.Lottie",
-      "Uno.WinUI.DevServer",
-      "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
-      "Uno.WinUI.Runtime.Skia.MacOS",
-      "Uno.WinUI.Runtime.Skia.Win32",
-      "Uno.WinUI.Runtime.Skia.X11",
-      "Uno.WinUI.WebAssembly",
-      "Uno.WinUI.Runtime.Skia.Android",
-      "Uno.WinUI.Runtime.Skia.AppleUIKit",
-      "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
-      "Uno.WinUI.Runtime.WebAssembly",
-      "Uno.WinUI.MediaPlayer.WebAssembly",
-      "Uno.WinUI.MediaPlayer.Skia.X11",
-      "Uno.WinUI.MediaPlayer.Skia.Win32",
-      "Uno.WinUI.WebView.Skia.X11",
-      "Uno.WinUI.Graphics3DGL",
-      "Uno.WinUI.Graphics2DSK",
-      "Uno.WinUI.SpellChecking"
-    ]
-  },
-  {
-    "group": "WasmBootstrap",
-    "version": "9.0.23",
-    "packages": [
-      "Uno.Wasm.Bootstrap",
-      "Uno.Wasm.Bootstrap.DevServer",
-      "Uno.Wasm.Bootstrap.Server"
-    ],
-    "versionOverride": {
-      "net10.0": "10.0.98"
-    }
-  },
-  {
-    "group": "OSLogging",
-    "version": "1.7.0",
-    "packages": [
-      "Uno.Extensions.Logging.OSLog",
-      "Uno.Extensions.Logging.WebAssembly.Console"
-    ]
-  },
-  {
-    "group": "CoreLogging",
-    "version": "4.1.1",
-    "packages": [
-      "Uno.Core.Extensions.Logging.Singleton"
-    ]
-  },
-  {
-    "group": "UniversalImageLoading",
-    "version": "1.9.37",
-    "packages": [
-      "Uno.UniversalImageLoader"
-    ]
-  },
-  {
-    "group": "Dsp",
-    "version": "1.4.0",
-    "packages": [
-      "Uno.Dsp.Tasks"
-    ]
-  },
-  {
-    "group": "Resizetizer",
-    "version": "1.12.7",
-    "packages": [
-      "Uno.Resizetizer"
-    ]
-  },
-  {
-    "group": "sdkextras",
-    "version": "6.3.1",
-    "packages": [
-      "Uno.Sdk.Extras"
-    ]
-  },
-  {
-    "group": "settings",
-    "version": "1.13.32",
-    "packages": [
-      "Uno.Settings.DevServer"
-    ]
-  },
-  {
-    "group": "hotdesign",
-    "version": "1.23.60",
-    "packages": [
-      "Uno.UI.HotDesign"
-    ]
-  },
-  {
-    "group": "SkiaSharp",
-    "version": "3.119.2",
-    "packages": [
-      "SkiaSharp.Skottie",
-      "SkiaSharp.Views.Uno.WinUI",
-      "SkiaSharp.Views.WinUI",
-      "SkiaSharp.NativeAssets.Linux",
-      "SkiaSharp.NativeAssets.macOS",
-      "SkiaSharp.NativeAssets.Win32",
-      "SkiaSharp.NativeAssets.WebAssembly"
-    ]
-  },
-  {
-    "group": "SvgSkia",
-    "version": "3.0.6",
-    "packages": [
-      "Svg.Skia"
-    ]
-  },
-  {
-    "group": "WinAppSdk",
-    "version": "1.7.250909003",
-    "packages": [
-      "Microsoft.WindowsAppSDK"
-    ]
-  },
-  {
-    "group": "WinAppSdkBuildTools",
-    "version": "10.0.28000.2957",
-    "packages": [
-      "Microsoft.Windows.SDK.BuildTools"
-    ]
-  },
-  {
-    "group": "WinAppSdkBuildToolsWinApp",
-    "version": "0.5.0",
-    "packages": [
-      "Microsoft.Windows.SDK.BuildTools.WinApp"
-    ]
-  },
-  {
-    "group": "MicrosoftLoggingConsole",
-    "version": "9.0.22",
-    "packages": [
-      "Microsoft.Extensions.Logging.Console"
-    ],
-    "versionOverride": {
-      "net10.0": "10.0.14"
-    }
-  },
-  {
-    "group": "WindowsCompatibility",
-    "version": "9.0.22",
-    "packages": [
-      "Microsoft.Windows.Compatibility"
-    ],
-    "versionOverride": {
-      "net10.0": "10.0.14"
-    }
-  },
-  {
-    "group": "MsalClient",
-    "version": "4.87.0",
-    "packages": [
-      "Microsoft.Identity.Client",
-      "Microsoft.Identity.Client.Extensions.Msal"
-    ]
-  },
-  {
-    "group": "Mvvm",
-    "version": "8.4.2",
-    "packages": [
-      "CommunityToolkit.Mvvm"
-    ]
-  },
-  {
-    "group": "Prism",
-    "version": "9.0.537",
-    "packages": [
-      "Prism.DryIoc.Uno.WinUI",
-      "Prism.Uno.WinUI",
-      "Prism.Uno.WinUI.Markup"
-    ]
-  },
-  {
-    "group": "UnoFonts",
-    "version": "2.10.1",
-    "packages": [
-      "Uno.Fonts.OpenSans",
-      "Uno.Fonts.Fluent",
-      "Uno.Fonts.Roboto"
-    ]
-  },
-  {
-    "group": "AndroidMaterial",
-    "version": "1.12.0.4",
-    "packages": [
-      "Xamarin.Google.Android.Material"
-    ],
-    "versionOverride": {
-      "net10.0": "1.12.0.5"
-    }
-  },
-  {
-    "group": "AndroidXLegacySupportV4",
-    "version": "1.0.0.23",
-    "packages": [
-      "Xamarin.AndroidX.Legacy.Support.V4"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.0.33"
-    }
-  },
-  {
-    "group": "AndroidXSplashScreen",
-    "version": "1.0.1.14",
-    "packages": [
-      "Xamarin.AndroidX.Core.SplashScreen"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.1.14"
-    }
-  },
-  {
-    "group": "AndroidXAppCompat",
-    "version": "1.7.0.7",
-    "packages": [
-      "Xamarin.AndroidX.AppCompat"
-    ],
-    "versionOverride": {
-      "net10.0": "1.7.1.1"
-    }
-  },
-  {
-    "group": "AndroidXRecyclerView",
-    "version": "1.4.0.2",
-    "packages": [
-      "Xamarin.AndroidX.RecyclerView"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.3"
-    }
-  },
-  {
-    "group": "AndroidXActivity",
-    "version": "1.10.1.2",
-    "packages": [
-      "Xamarin.AndroidX.Activity"
-    ],
-    "versionOverride": {
-      "net10.0": "1.10.1.3"
-    }
-  },
-  {
-    "group": "AndroidXBrowser",
-    "version": "1.8.0.10",
-    "packages": [
-      "Xamarin.AndroidX.Browser"
-    ],
-    "versionOverride": {
-      "net10.0": "1.8.0.11"
-    }
-  },
-  {
-    "group": "AndroidXSwipeRefreshLayout",
-    "version": "1.1.0.28",
-    "packages": [
-      "Xamarin.AndroidX.SwipeRefreshLayout"
-    ],
-    "versionOverride": {
-      "net10.0": "1.1.0.29"
-    }
-  },
-  {
-    "group": "AndroidXLeanback",
-    "version": "1.0.0.30",
-    "packages": [
-      "Xamarin.AndroidX.Leanback"
-    ],
-    "versionOverride": {
-      "net10.0": "1.0.0.31"
-    }
-  },
-  {
-    "group": "AndroidXCarApp",
-    "version": "1.4.0.2",
-    "packages": [
-      "Xamarin.AndroidX.Car.App.App"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.0.3"
-    }
-  },
-  {
-    "group": "AndroidXWear",
-    "version": "1.3.0.14",
-    "packages": [
-      "Xamarin.AndroidX.Wear"
-    ],
-    "versionOverride": {
-      "net10.0": "1.3.0.15"
-    }
-  },
-  {
-    "group": "AndroidXWearTiles",
-    "version": "1.4.0.1",
-    "packages": [
-      "Xamarin.AndroidX.Wear.Tiles"
-    ],
-    "versionOverride": {
-      "net10.0": "1.4.1"
-    }
-  },
-  {
-    "group": "AndroidXNavigation",
-    "version": "2.8.9.2",
-    "packages": [
-      "Xamarin.AndroidX.Navigation.UI",
-      "Xamarin.AndroidX.Navigation.Fragment",
-      "Xamarin.AndroidX.Navigation.Runtime",
-      "Xamarin.AndroidX.Navigation.Common"
-    ],
-    "versionOverride": {
-      "net10.0": "2.9.2.1"
-    }
-  },
-  {
-    "group": "AndroidXCollection",
-    "version": "1.5.0.2",
-    "packages": [
-      "Xamarin.AndroidX.Collection",
-      "Xamarin.AndroidX.Collection.Ktx"
-    ],
-    "versionOverride": {
-      "net10.0": "1.5.0.3"
-    }
-  },
-  {
-    "group": "Maui",
-    "version": "9.0.120",
-    "packages": [
-      "Microsoft.Maui.Controls",
-      "Microsoft.Maui.Controls.Compatibility",
-      "Microsoft.Maui.Graphics"
-    ],
-    "versionOverride": {
-      "net10.0": "10.0.90"
-    }
-  },
-  {
-    "group": "CSharpMarkup",
-    "version": "6.7.25",
-    "packages": [
-      "Uno.WinUI.Markup",
-      "Uno.Extensions.Markup.Generators"
-    ]
-  },
-  {
-    "group": "Extensions",
-    "version": "7.4.1",
-    "packages": [
-      "Uno.Extensions.Authentication.WinUI",
-      "Uno.Extensions.Authentication.MSAL.WinUI",
-      "Uno.Extensions.Authentication.Oidc.WinUI",
-      "Uno.Extensions.Configuration",
-      "Uno.Extensions.Core.WinUI",
-      "Uno.Extensions.Hosting.WinUI",
-      "Uno.Extensions.Http.WinUI",
-      "Uno.Extensions.Http.Refit",
-      "Uno.Extensions.Http.Kiota",
-      "Uno.Extensions.Localization.WinUI",
-      "Uno.Extensions.Logging.WinUI",
-      "Uno.Extensions.Maui.WinUI",
-      "Uno.Extensions.Maui.WinUI.Markup",
-      "Uno.Extensions.Maui.WinUI.Runtime.Skia",
-      "Uno.Extensions.Navigation.WinUI",
-      "Uno.Extensions.Navigation.WinUI.Markup",
-      "Uno.Extensions.Navigation.Toolkit.WinUI",
-      "Uno.Extensions.Reactive.WinUI",
-      "Uno.Extensions.Reactive.Messaging",
-      "Uno.Extensions.Reactive.WinUI.Markup",
-      "Uno.Extensions.Serialization.Http",
-      "Uno.Extensions.Serialization.Refit",
-      "Uno.Extensions.Logging.Serilog",
-      "Uno.Extensions.Storage.WinUI"
-    ]
-  },
-  {
-    "group": "Toolkit",
-    "version": "10.0.2",
-    "packages": [
-      "Uno.Toolkit.WinUI",
-      "Uno.Toolkit.WinUI.Cupertino",
-      "Uno.Toolkit.WinUI.Material",
-      "Uno.Toolkit.WinUI.Material.Markup",
-      "Uno.Toolkit.WinUI.Markup",
-      "Uno.Toolkit.Skia.WinUI",
-      "Uno.Toolkit.WinUI.Simple"
-    ]
-  },
-  {
-    "group": "Themes",
-    "version": "8.0.1",
-    "packages": [
-      "Uno.Material.WinUI",
-      "Uno.Material.WinUI.Markup",
-      "Uno.Themes.WinUI.Markup",
-      "Uno.Cupertino.WinUI",
-      "Uno.Simple.WinUI",
-      "Uno.Simple.WinUI.Markup"
-    ]
-  },
-  {
-    "group": "VlcNativeWindowsAssets",
-    "version": "3.0.24",
-    "packages": [
-      "VideoLAN.LibVLC.Windows"
-    ]
-  },
-  {
-    "group": "MicrosoftWebView2",
-    "version": "1.0.4314.35",
-    "packages": [
-      "Microsoft.Web.WebView2"
-    ]
-  },
-  {
-    "group": "AppMcp",
-    "version": "1.3.13",
-    "packages": [
-      "Uno.UI.App.Mcp"
-    ]
-  }
-]
+| UnoCSharpMarkupVersion | 6.7.27 |﻿[
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Core",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "6.7.424",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.UI.Adapter.Microsoft.Extensions.Logging",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Maps",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.GooglePlay",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Foldable",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.MSAL",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Svg",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Lottie",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.DevServer",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.Linux.FrameBuffer",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.MacOS",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.Win32",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.X11",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.WebAssembly",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.Android",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.AppleUIKit",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.Skia.WebAssembly.Browser",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Runtime.WebAssembly",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.MediaPlayer.WebAssembly",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.MediaPlayer.Skia.X11",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.MediaPlayer.Skia.Win32",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.WebView.Skia.X11",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Graphics3DGL",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Graphics2DSK",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.SpellChecking"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "WasmBootstrap",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "9.0.23",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Wasm.Bootstrap",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Wasm.Bootstrap.DevServer",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Wasm.Bootstrap.Server"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "10.0.98"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "OSLogging",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.7.0",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Logging.OSLog",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Logging.WebAssembly.Console"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "CoreLogging",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "4.1.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Core.Extensions.Logging.Singleton"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "UniversalImageLoading",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.9.37",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.UniversalImageLoader"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Dsp",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.4.0",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Dsp.Tasks"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Resizetizer",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.12.7",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Resizetizer"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "sdkextras",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "6.3.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Sdk.Extras"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "settings",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.13.32",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Settings.DevServer"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "hotdesign",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.23.60",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.UI.HotDesign"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "SkiaSharp",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "3.119.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.Skottie",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.Views.Uno.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.Views.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.NativeAssets.Linux",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.NativeAssets.macOS",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.NativeAssets.Win32",
+| UnoCSharpMarkupVersion | 6.7.27 |      "SkiaSharp.NativeAssets.WebAssembly"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "SvgSkia",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "3.0.6",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Svg.Skia"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "WinAppSdk",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.7.250909003",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.WindowsAppSDK"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "WinAppSdkBuildTools",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "10.0.28000.2957",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Windows.SDK.BuildTools"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "WinAppSdkBuildToolsWinApp",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "0.5.0",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Windows.SDK.BuildTools.WinApp"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "MicrosoftLoggingConsole",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "9.0.22",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Extensions.Logging.Console"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "10.0.14"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "WindowsCompatibility",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "9.0.22",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Windows.Compatibility"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "10.0.14"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "MsalClient",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "4.87.0",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Identity.Client",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Identity.Client.Extensions.Msal"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Mvvm",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "8.4.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "CommunityToolkit.Mvvm"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Prism",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "9.0.537",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Prism.DryIoc.Uno.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Prism.Uno.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Prism.Uno.WinUI.Markup"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "UnoFonts",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "2.10.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Fonts.OpenSans",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Fonts.Fluent",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Fonts.Roboto"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidMaterial",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.12.0.4",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.Google.Android.Material"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.12.0.5"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXLegacySupportV4",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.0.0.23",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Legacy.Support.V4"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.0.0.33"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXSplashScreen",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.0.1.14",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Core.SplashScreen"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.0.1.14"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXAppCompat",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.7.0.7",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.AppCompat"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.7.1.1"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXRecyclerView",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.4.0.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.RecyclerView"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.4.0.3"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXActivity",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.10.1.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Activity"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.10.1.3"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXBrowser",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.8.0.10",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Browser"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.8.0.11"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXSwipeRefreshLayout",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.1.0.28",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.SwipeRefreshLayout"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.1.0.29"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXLeanback",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.0.0.30",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Leanback"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.0.0.31"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXCarApp",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.4.0.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Car.App.App"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.4.0.3"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXWear",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.3.0.14",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Wear"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.3.0.15"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXWearTiles",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.4.0.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Wear.Tiles"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.4.1"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXNavigation",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "2.8.9.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Navigation.UI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Navigation.Fragment",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Navigation.Runtime",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Navigation.Common"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "2.9.2.1"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AndroidXCollection",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.5.0.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Collection",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Xamarin.AndroidX.Collection.Ktx"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "1.5.0.3"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Maui",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "9.0.120",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Maui.Controls",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Maui.Controls.Compatibility",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Maui.Graphics"
+| UnoCSharpMarkupVersion | 6.7.27 |    ],
+| UnoCSharpMarkupVersion | 6.7.27 |    "versionOverride": {
+| UnoCSharpMarkupVersion | 6.7.27 |      "net10.0": "10.0.90"
+| UnoCSharpMarkupVersion | 6.7.27 |    }
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "CSharpMarkup",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "6.7.27",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Markup.Generators"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Extensions",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "7.4.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Authentication.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Authentication.MSAL.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Authentication.Oidc.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Configuration",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Core.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Hosting.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Http.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Http.Refit",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Http.Kiota",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Localization.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Logging.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Maui.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Maui.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Maui.WinUI.Runtime.Skia",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Navigation.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Navigation.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Navigation.Toolkit.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Reactive.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Reactive.Messaging",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Reactive.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Serialization.Http",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Serialization.Refit",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Logging.Serilog",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Extensions.Storage.WinUI"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Toolkit",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "10.0.2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI.Cupertino",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI.Material",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI.Material.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.Skia.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Toolkit.WinUI.Simple"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "Themes",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "8.0.1",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Material.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Material.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Themes.WinUI.Markup",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Cupertino.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Simple.WinUI",
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.Simple.WinUI.Markup"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "VlcNativeWindowsAssets",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "3.0.24",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "VideoLAN.LibVLC.Windows"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "MicrosoftWebView2",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.0.4314.35",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Microsoft.Web.WebView2"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  },
+| UnoCSharpMarkupVersion | 6.7.27 |  {
+| UnoCSharpMarkupVersion | 6.7.27 |    "group": "AppMcp",
+| UnoCSharpMarkupVersion | 6.7.27 |    "version": "1.3.15",
+| UnoCSharpMarkupVersion | 6.7.27 |    "packages": [
+| UnoCSharpMarkupVersion | 6.7.27 |      "Uno.UI.App.Mcp"
+| UnoCSharpMarkupVersion | 6.7.27 |    ]
+| UnoCSharpMarkupVersion | 6.7.27 |  }
+| UnoCSharpMarkupVersion | 6.7.27 |]
