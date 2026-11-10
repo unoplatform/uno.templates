@@ -133,7 +133,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "2.0.0-dev.61",
+    "version": "2.0.1",
     "packages": [
       "Uno.UI.HotDesign"
     ]
