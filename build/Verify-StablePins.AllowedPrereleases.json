@@ -1,1 +1,6 @@
-[]
+[
+  { "group": "Maui", "field": "versionOverride[net11.0]", "reason": ".NET 11 is not GA yet: MAUI for net11.0 ships as a release candidate until then." },
+  { "group": "MicrosoftLoggingConsole", "field": "versionOverride[net11.0]", "reason": ".NET 11 is not GA yet: Microsoft.Extensions.Logging.Console for net11.0 ships as a release candidate until then." },
+  { "group": "UnoMaui", "field": "version", "reason": "Uno.Maui (the MauiEmbedding Uno Feature) ships as a preview in Uno.Sdk 7.0." },
+  { "group": "UnoRetarget", "field": "version", "reason": "Uno.WinUI.Retarget ships with the Uno.Maui preview, at the same version." }
+]
