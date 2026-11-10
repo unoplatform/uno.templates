@@ -111,7 +111,7 @@ Package versions come from [`src/Uno.Sdk/packages.json`](src/Uno.Sdk/packages.js
 
 - The **Update Uno Sdk** workflow ([`uno-updater.yml`](.github/workflows/uno-updater.yml)) runs every 6 hours, uses [`tools/Uno.Sdk.Updater`](tools/Uno.Sdk.Updater) to refresh the manifest for `main` and the supported release branches, and opens a pull request with auto-merge enabled.
 - [`uno-updater-pr.yml`](.github/workflows/uno-updater-pr.yml) runs the same update on PRs that touch the updater itself.
-- On stable release branches, CI rejects prerelease pins (`build/Verify-StablePins.ps1`).
+- On stable release branches, CI rejects prerelease pins (`build/Verify-StablePins.ps1`). A prerelease the release ships on purpose, because no stable version exists yet, is listed with its reason in [`build/Verify-StablePins.AllowedPrereleases.json`](build/Verify-StablePins.AllowedPrereleases.json) on that branch, and every CI run shows it as a warning.
 
 If you need a different version in your own app, you can override it with an MSBuild property. The [Uno.Sdk ReadMe](src/Uno.Sdk/ReadMe.md) lists every property and its current default.
 
@@ -153,7 +153,7 @@ Pass `-skip` (`--skip-restore`) to skip the restore when you only want to look a
 
 [`ci.yml`](.github/workflows/ci.yml) runs on pushes and PRs to `main`, `servicing/*` and `release/*`, plus a nightly canary run:
 
-1. Verifies there are no prerelease pins on stable release branches.
+1. Verifies there are no prerelease pins on stable release branches, apart from the allowed ones.
 2. Builds the `Uno.Sdk` and `Uno.Templates` packages. Beside the build, it checks the wizard metadata (the icons `TemplateWizard.json` names, its options and values against `template.json`, and that each preset meets the requirements of what it turns on) and runs the `build/*.Tests.ps1` script tests: a failure there fails the run, but doesn't hold back the packages.
 3. Signs them, and publishes dev builds from `main` (production publishing sits behind approval gates).
 4. Generates a test matrix ([`generate-test-matrix`](.github/actions/ci/generate-test-matrix/action.yml)): a big list of `dotnet new` argument combinations (presets, platforms, markup, MVVM/MVUX, HTTP flavors, auth modes, themes, MAUI embedding, libraries...).

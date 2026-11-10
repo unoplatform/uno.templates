@@ -69,6 +69,8 @@ jobs:
   # It rejects only what is always wrong on these branches -- a prerelease version in the shipped
   # manifest -- across every file the updater writes, covering versionOverride entries and the
   # MSBuild property pins, where such a version most easily hides, and any group added later.
+  # A prerelease the release ships on purpose (no stable version exists yet) is listed with its
+  # reason in build/Verify-StablePins.AllowedPrereleases.json on that branch, and shown as a warning.
   #
   # Skips on main and servicing/*, where prerelease pins are expected. Gates `build`, so a failure
   # short-circuits the rest of the pipeline.
