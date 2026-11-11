@@ -386,7 +386,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         version = "0.0.0.0";
     }
 
-    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version) < NuGetVersion.Parse(group.Version) ? group.Version : version;
+    version = !string.IsNullOrEmpty(group.Version) && NuGetVersion.Parse(version).IsOlderThan(NuGetVersion.Parse(group.Version)) ? group.Version : version;
     var newGroup = group with { Version = version };
 
     if (group.Version != newGroup.Version)
@@ -408,10 +408,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
             // A target framework override stays on its .NET major (net10.0 -> 10.x): otherwise the net10.0 entries
             // move to the .NET 11 builds (Uno.Wasm.Bootstrap 11.x; MicrosoftLoggingConsole and Maui once .NET 11 ships).
             version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, GetTargetFrameworkMajor(key));
-            if (version != versionOverrideString)
-            {
-                Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
-            }
 
             if (!NuGetVersion.TryParse(version, out var parsedVersion))
             {
@@ -419,10 +415,17 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
                 // Fall back to the local override as a safe default
                 version = versionOverride.OriginalVersion;
             }
-            else if (parsedVersion < versionOverride)
+            else if (parsedVersion.IsOlderThan(versionOverride))
             {
-                // Keep the local override (e.g., 10.0.0-preview) if the feed returns a lower version (e.g., 9.x)
+                // Keep the local override (e.g., 10.0.0-preview) if the feed returns a lower version (e.g., 9.x).
+                // A release candidate pin still moves to its release (11.0.0-rc.3 -> 11.0.0).
                 version = versionOverride.OriginalVersion;
+            }
+
+            // Logged after the checks above, which can put the local override back
+            if (version != versionOverrideString)
+            {
+                Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
 
             updatedOverrides.Add(key, version);
