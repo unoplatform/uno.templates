@@ -25,4 +25,19 @@ public class NuGetVersionTests
     [DataRow("not-a-version", DisplayName = "Malformed")]
     public void TryParseMinimumVersion_WithoutLowerBound_ReturnsFalse(string? range) =>
         Assert.IsFalse(NuGetVersion.TryParseMinimumVersion(range, out _));
+
+    [TestMethod]
+    [DataRow("11.0.0-rc.3.26522.148", "11.0.0", true, DisplayName = "Release candidate before its release")]
+    [DataRow("11.0.0", "11.0.0-rc.3.26522.148", false, DisplayName = "Release after its release candidate")]
+    [DataRow("11.0.0-rc.2.26505.5", "11.0.0-rc.3.26522.148", true, DisplayName = "Older release candidate")]
+    [DataRow("10.0.130", "11.0.0-rc.2.26505.5", true, DisplayName = "Lower version")]
+    [DataRow("11.0.10", "11.0.0", false, DisplayName = "Higher version")]
+    [DataRow("11.0.0", "11.0.0", false, DisplayName = "Same version")]
+    public void IsOlderThan_FollowsReleaseOrder(string version, string other, bool expected) =>
+        Assert.AreEqual(expected, NuGetVersion.Parse(version).IsOlderThan(NuGetVersion.Parse(other)));
+
+    // The version windows rely on this order: a preview of the next version stays above a stable cap.
+    [TestMethod]
+    public void CompareTo_RanksPreviewAfterItsRelease() =>
+        Assert.IsTrue(NuGetVersion.Parse("7.1.0-dev.5") > NuGetVersion.Parse("7.1.0"));
 }
