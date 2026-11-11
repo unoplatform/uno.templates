@@ -10,9 +10,10 @@
 		<array>
 			<string>arm64</string>
 		</array>
+		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>
-			<true/>
+			<false/>
 			<key>UISceneConfigurations</key>
 			<dict>
 				<key>UIWindowSceneSessionRoleApplication</key>
