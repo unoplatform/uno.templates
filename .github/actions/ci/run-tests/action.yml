@@ -371,7 +371,7 @@ runs:
           }
 
           # No project argument: dotnet build takes the folder's solution, or its only project for the templates
-          # that create no solution (unolib, unomauilib, unoapp-uitest, unoapp-reactor).
+          # that create no solution (unolib, unomauilib, unoapp-uitest).
           & dotnet build "/bl:${{ github.workspace }}/artifacts/logs/$testName.${{ runner.os }}.$dotnetVersion.binlog" $extraArgs
           if ($LASTEXITCODE -ne 0)
           {
