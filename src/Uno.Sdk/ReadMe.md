@@ -189,7 +189,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ],
     "versionOverride": {
       "net10.0": "10.0.15",
-      "net11.0": "11.0.0-rc.3.26522.148"
+      "net11.0": "11.0.0"
     }
   },
   {

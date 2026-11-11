@@ -33,6 +33,23 @@
 		<string>Assets.xcassets/icon.appiconset</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
+		<key>UIApplicationSceneManifest</key>
+		<dict>
+			<key>UIApplicationSupportsMultipleScenes</key>
+			<false/>
+			<key>UISceneConfigurations</key>
+			<dict>
+				<key>UIWindowSceneSessionRoleApplication</key>
+				<array>
+					<dict>
+						<key>UISceneConfigurationName</key>
+						<string>__UNO_DEFAULT_SCENE_CONFIGURATION__</string>
+						<key>UISceneDelegateClassName</key>
+						<string>SceneDelegate</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
 
 		<!--
 		Adjust this to your application's encryption usage.
