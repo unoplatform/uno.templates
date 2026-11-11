@@ -64,7 +64,7 @@ runs:
           $dotnetVersion = $env:ValidationDotNetVersionNet11
           $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet11
           $XcodeVersion = $env:XcodeVersionNet11
-          $IosRuntimeVersion = '26.5'
+          $IosRuntimeVersion = '27.2'
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
@@ -331,7 +331,6 @@ runs:
 
           # Disable most costly features to speed up the build
           $extraArgs=@(
-            "-p:RunAOTCompilation=false",
             "-p:MtouchUseLlvm=false",
             "-p:MtouchLink=none",
             "-p:WasmShellILLinkerEnabled=false",
@@ -346,6 +345,21 @@ runs:
           if ($IsMacos)
           {
             $extraArgs += "-p:ValidateXcodeVersion=false"
+          }
+
+          # RunAOTCompilation is a Mono AOT property, so only the net10 builds (Mono) get it.
+          # .NET 11 mobile runs on CoreCLR: the Android workload stops the build when the property is set at all,
+          # even to false (XA1044), and the fix is to remove it:
+          # https://learn.microsoft.com/dotnet/android/messages/xa1044
+          # On CoreCLR, ReadyToRun replaces Mono AOT. It's off in Debug, which these builds use, so the net11 builds
+          # need no replacement (PublishReadyToRun=false only matters for Release builds):
+          # https://learn.microsoft.com/dotnet/android/building-apps/build-properties#publishreadytorun
+          # WASM AOT is opt-in (WasmShellMonoRuntimeExecutionMode=InterpreterAndAOT), so WASM doesn't need it either.
+          # Same change in the Uno Platform template tests:
+          # https://github.com/unoplatform/uno/commit/835a2bd3bcc086ea53f1ae26987eb8b249b025cc
+          if ($testParams -notmatch 'net11\.0')
+          {
+            $extraArgs += "-p:RunAOTCompilation=false"
           }
 
           # No project argument: dotnet build takes the folder's solution, or its only project for the templates
