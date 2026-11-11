@@ -321,7 +321,7 @@
           },
           {
             "condition": "(tfm == 'net11.0')",
-            "value": "true"
+            "value": "false"
           }
         ]
       }
