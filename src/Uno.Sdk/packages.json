@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.150",
+    "version": "7.1.0-dev.161",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -30,14 +30,14 @@
   },
   {
     "group": "WasmBootstrap",
-    "version": "10.0.98",
+    "version": "10.1.1",
     "packages": [
       "Uno.Wasm.Bootstrap",
       "Uno.Wasm.Bootstrap.DevServer",
       "Uno.Wasm.Bootstrap.Server"
     ],
     "versionOverride": {
-      "net10.0": "10.1.0-dev.284",
+      "net10.0": "10.1.1",
       "net11.0": "11.1.0-dev.7"
     }
   },
@@ -65,7 +65,7 @@
   },
   {
     "group": "Resizetizer",
-    "version": "2.1.0-dev.3",
+    "version": "2.1.0-dev.5",
     "packages": [
       "Uno.Resizetizer"
     ]
@@ -136,12 +136,12 @@
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "10.0.14",
+    "version": "10.0.15",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.14",
+      "net10.0": "10.0.15",
       "net11.0": "11.0.0-rc.3.26522.148"
     }
   },
