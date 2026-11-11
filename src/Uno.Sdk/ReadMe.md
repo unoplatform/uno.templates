@@ -4,23 +4,23 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.1.0-dev.115 |
-| UnoExtensionsVersion | 8.0.0-dev.250 |
-| UnoToolkitVersion | 11.0.0-dev.160 |
-| UnoThemesVersion | 9.0.0-dev.65 |
-| UnoCSharpMarkupVersion | 7.0.0-dev.33 |
-| UnoReactorVersion | 0.1.0-dev.177 |
+| UnoVersion* | 7.0.32 |
+| UnoExtensionsVersion | 8.0.1 |
+| UnoToolkitVersion | 11.0.1 |
+| UnoThemesVersion | 9.0.1 |
+| UnoCSharpMarkupVersion | 7.0.1 |
+| UnoReactorVersion | 0.1.1 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0 |
 | UnoDspTasksVersion | 1.4.0 |
-| UnoResizetizerVersion | 2.0.0-dev.71 |
+| UnoResizetizerVersion | 2.0.1 |
 | SkiaSharpVersion | 4.151.1 |
 | SvgSkiaVersion | 3.0.6 |
 | WinAppSdkVersion | 2.5.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2957 |
 | WinAppSdkBuildToolsWinAppVersion | 0.8.0 |
-| MicrosoftLoggingVersion** | 10.0.14 |
+| MicrosoftLoggingVersion** | 10.0.15 |
 | MicrosoftIdentityClientVersion | 4.92.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
 | PrismVersion | 9.0.537 |
@@ -183,12 +183,12 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftLoggingConsole",
-    "version": "10.0.14",
+    "version": "10.0.15",
     "packages": [
       "Microsoft.Extensions.Logging.Console"
     ],
     "versionOverride": {
-      "net10.0": "10.0.14",
+      "net10.0": "10.0.15",
       "net11.0": "11.0.0-rc.3.26522.148"
     }
   },
@@ -434,14 +434,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.120",
+    "version": "10.0.130",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.4.0",
+    "version": "14.4.0.100",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
@@ -454,7 +454,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoMaui",
-    "version": "0.1.0-dev.2",
+    "version": "0.1.0-dev.4",
     "packages": [
       "Uno.Maui.Embedding",
       "Uno.Maui.Handlers"
@@ -462,7 +462,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoRetarget",
-    "version": "0.1.0-dev.2",
+    "version": "0.1.0-dev.4",
     "packages": [
       "Uno.WinUI.Retarget"
     ]
