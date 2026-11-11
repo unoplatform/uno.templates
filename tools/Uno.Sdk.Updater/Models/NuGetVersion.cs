@@ -94,6 +94,25 @@ internal readonly struct NuGetVersion : IComparable<NuGetVersion>
         return 0; // Both are non-preview, and versions are equal
     }
 
+    // Whether the feed version is older than a local pin, so the pin stays. Unlike CompareTo, a preview comes before
+    // the stable with the same numbers (11.0.0-rc.3 is older than 11.0.0). CompareTo keeps its order because the
+    // version windows rely on it (MinVersion/MaxVersion, the stable-line cap in GetVersionAsync).
+    public bool IsOlderThan(NuGetVersion other)
+    {
+        var versionComparison = Version.CompareTo(other.Version);
+        if (versionComparison != 0)
+        {
+            return versionComparison < 0;
+        }
+
+        if (IsPreview != other.IsPreview)
+        {
+            return IsPreview;
+        }
+
+        return IsPreview && ComparePreviewTags(PreviewTag, other.PreviewTag) < 0;
+    }
+
     private static int ComparePreviewTags(string? preview1, string? preview2)
     {
         if (preview1 == null && preview2 == null) return 0;
