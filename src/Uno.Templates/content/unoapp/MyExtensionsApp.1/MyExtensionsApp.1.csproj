@@ -47,6 +47,8 @@
       Cupertino;
       <!--#elif (useSimpleTheme)-->
       SimpleTheme;
+      <!--#elif (useFluent)-->
+      FluentTheme;
       <!--#endif-->
       <!--#if (useMediaPlayerElement)-->
       MediaPlayerElement;
