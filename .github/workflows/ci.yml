@@ -45,11 +45,11 @@ env:
   IsCanary: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') }}
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
   # uno-check --pre-major carries the .NET 11 manifest
-  ValidationUnoCheckVersionNet11: '1.35.0-dev.107'
-  ValidationDotNetVersionNet11: '11.0.100-rc.1.26425.128'
+  ValidationUnoCheckVersionNet11: '1.35.0-dev.119'
+  ValidationDotNetVersionNet11: '11.0.100'
   XcodeVersionNet10: '/Applications/Xcode_26.2.app'
-  # .NET 11 iOS workload requires Xcode 26.5, which macos-15 images don't have
-  XcodeVersionNet11: '/Applications/Xcode_26.5.app'
+  # The .NET 11 GA iOS workload (27.2) requires Xcode 27.2, which only the xcode-27 image has (macos-26 tops out at 26.x)
+  XcodeVersionNet11: '/Applications/Xcode_27.2.app'
 
   # Required for WinAppSDK native AOT, to remove when included in uno.sdk
   AllowUnsafeBlocks: true
@@ -463,7 +463,8 @@ jobs:
 
   # Run the test matrix on macOS
   macos-template-tests:
-    runs-on: macos-26
+    # net11 groups need Xcode 27.2 (xcode-27 image, public preview); net10 groups stay on Xcode 26.2 (macos-26)
+    runs-on: ${{ endsWith(matrix.groupName, '_net11') && 'xcode-27' || 'macos-26' }}
     timeout-minutes: 60 # ~2x the slowest green run (34 min, Oct 2026), so a hung job frees its runner
     needs:
     - generate-test-matrix

@@ -64,7 +64,7 @@ runs:
           $dotnetVersion = $env:ValidationDotNetVersionNet11
           $ValidationUnoCheckVersion = $env:ValidationUnoCheckVersionNet11
           $XcodeVersion = $env:XcodeVersionNet11
-          $IosRuntimeVersion = '26.5'
+          $IosRuntimeVersion = '27.2'
         }
 
         echo "Dotnet Version = '$dotnetVersion'"
