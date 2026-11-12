@@ -434,7 +434,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.130",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]

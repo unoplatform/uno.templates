@@ -387,7 +387,7 @@
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.130",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]
