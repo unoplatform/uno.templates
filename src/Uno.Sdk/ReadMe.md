@@ -434,7 +434,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.120",
+    "version": "10.0.130",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]
@@ -454,7 +454,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoMaui",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.5",
     "packages": [
       "Uno.Maui.Embedding",
       "Uno.Maui.Handlers"
@@ -462,7 +462,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoRetarget",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.5",
     "packages": [
       "Uno.WinUI.Retarget"
     ]
