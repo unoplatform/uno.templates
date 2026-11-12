@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.0.32",
+    "version": "7.0.65",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -38,7 +38,7 @@
     ],
     "versionOverride": {
       "net10.0": "10.1.1",
-      "net11.0": "11.0.9"
+      "net11.0": "11.0.11"
     }
   },
   {
@@ -79,21 +79,21 @@
   },
   {
     "group": "settings",
-    "version": "2.0.1",
+    "version": "2.0.6",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "2.0.1",
+    "version": "2.0.4",
     "packages": [
       "Uno.UI.HotDesign"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "4.151.1",
+    "version": "4.156.0",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
@@ -108,7 +108,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -302,7 +302,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "7.0.1",
+    "version": "7.0.3",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -380,14 +380,14 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.0.1",
+    "version": "2.0.3",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.130",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]

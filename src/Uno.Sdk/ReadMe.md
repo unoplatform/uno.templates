@@ -4,19 +4,19 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.0.32 |
+| UnoVersion* | 7.0.65 |
 | UnoExtensionsVersion | 8.0.1 |
 | UnoToolkitVersion | 11.0.1 |
 | UnoThemesVersion | 9.0.1 |
-| UnoCSharpMarkupVersion | 7.0.1 |
+| UnoCSharpMarkupVersion | 7.0.3 |
 | UnoReactorVersion | 0.1.1 |
 | UnoWasmBootstrapVersion** | 10.0.98 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 2.0.1 |
-| SkiaSharpVersion | 4.151.1 |
-| SvgSkiaVersion | 3.0.6 |
+| SkiaSharpVersion | 4.156.0 |
+| SvgSkiaVersion | 5.2.3 |
 | WinAppSdkVersion | 2.5.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2957 |
 | WinAppSdkBuildToolsWinAppVersion | 0.8.0 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.0.32",
+    "version": "7.0.65",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -85,7 +85,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     ],
     "versionOverride": {
       "net10.0": "10.1.1",
-      "net11.0": "11.0.9"
+      "net11.0": "11.0.11"
     }
   },
   {
@@ -126,21 +126,21 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "settings",
-    "version": "2.0.1",
+    "version": "2.0.6",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "2.0.1",
+    "version": "2.0.4",
     "packages": [
       "Uno.UI.HotDesign"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "4.151.1",
+    "version": "4.156.0",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
@@ -155,7 +155,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -349,7 +349,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "CSharpMarkup",
-    "version": "7.0.1",
+    "version": "7.0.3",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -427,14 +427,14 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "AppMcp",
-    "version": "2.0.1",
+    "version": "2.0.3",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
   },
   {
     "group": "MauiCompatibility",
-    "version": "10.0.130",
+    "version": "10.0.120",
     "packages": [
       "Microsoft.Maui.Controls.Compatibility"
     ]

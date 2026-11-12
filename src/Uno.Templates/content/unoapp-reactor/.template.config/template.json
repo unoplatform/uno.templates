@@ -286,6 +286,31 @@
       "datatype": "text",
       "defaultValue": "DefaultUnoSdkVersion",
       "replaces": "$UnoSdkVersion$"
+    },
+    "devServerPort": {
+      "displayName": "Dev Server Port",
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": ""
+    },
+    "useProvidedDevServerPort": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(devServerPort != '')"
+    },
+    "devServerPortEffective": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "devServerPort",
+        "fallbackVariableName": "devServerPortGenerated"
+      },
+      "replaces": "$DevServerPort$"
+    },
+    "devServerPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "condition": "(!useProvidedDevServerPort)"
     }
   },
   "primaryOutputs": [
@@ -296,6 +321,11 @@
   "sources": [
     {
       "modifiers": [
+        {
+          "include": [
+            "MyReactorApp.1.csproj.user"
+          ]
+        },
         {
           "condition": "(platforms != android)",
           "exclude": [
