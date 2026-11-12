@@ -122,17 +122,25 @@ runs:
       sudo rm -fR /usr/lib/jvm
       sudo apt-get install apt-transport-https 
       sudo apt-get update 
-      # uno-check can't parse five-part versions such as 17.0.21.0.2 (unoplatform/uno.check#590)
-      sudo apt-get install -y msopenjdk-17=17.0.20.1-1
+      if [[ "$DotNetVersion" == 11.* ]]; then
+        # uno-check 1.35 requires OpenJDK 21.0.12 or later, and reads five-part versions such as
+        # 21.0.13.0.2 (unoplatform/uno.check#593)
+        sudo apt-get install -y msopenjdk-21=21.0.13.0.2-1
+      else
+        # uno-check 1.33 can't parse five-part versions such as 17.0.21.0.2 (unoplatform/uno.check#590)
+        sudo apt-get install -y msopenjdk-17=17.0.20.1-1
+      fi
 
   # androidsdk is skipped, as on macOS and Windows: the image's SDK already has the platforms and
   # build-tools the Android heads need, and letting --fix download the emulator and cmdline-tools
   # in every job failed about one run in five on interrupted downloads.
+  # The uno-check installs (here, macOS and Windows) name the Uno internal feed: a uno-check stable is
+  # there before nuget.org, and nuget.config's second 'unoplatformdev' entry replaces that feed.
   - name: 'Uno Check (Linux)'
     if: runner.os == 'linux'
     shell: pwsh
     run: |
-      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion --add-source https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json
       uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip dotnetnewunotemplates --skip unosdk  ${{ inputs.unocheckArguments }}
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
@@ -142,7 +150,7 @@ runs:
     if: runner.os == 'macOS'
     shell: pwsh
     run: |
-      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion --add-source https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json
       uno-check -v --ci --non-interactive --fix --skip androidemulator --skip androidsdk --skip androidemulator --skip gtk3 --skip xcode --skip vswin --skip unosdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}
@@ -178,7 +186,7 @@ runs:
     if: runner.os == 'windows'
     shell: pwsh
     run: |
-      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion
+      & dotnet tool install --global Uno.Check --version $env:ValidationUnoCheckVersion --add-source https://pkgs.dev.azure.com/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/_packaging/unoplatformdev/nuget/v3/index.json
       uno-check -v --ci --non-interactive --fix --skip xcode --skip gtk3 --skip vswin --skip openjdk --skip androidemulator --skip unosdk --skip androidsdk --skip vsmac --skip dotnetnewunotemplates  ${{ inputs.unocheckArguments }}
     env:
       ValidationUnoCheckVersion: ${{ env.ValidationUnoCheckVersion }}

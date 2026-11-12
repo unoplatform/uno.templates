@@ -44,8 +44,8 @@ env:
   CheckoutRef: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.ref }}
   IsCanary: ${{ (github.event_name == 'schedule' || github.event.inputs.canary == 'true') }}
   ValidationUnoCheckVersionNet10: '1.33.0-dev.30'
-  # uno-check --pre-major carries the .NET 11 manifest
-  ValidationUnoCheckVersionNet11: '1.35.0-dev.119'
+  # uno-check --pre-major: the .NET 11 manifest without Mac Catalyst, as Uno 7 has no Mac Catalyst head
+  ValidationUnoCheckVersionNet11: '1.35.3'
   ValidationDotNetVersionNet11: '11.0.100'
   XcodeVersionNet10: '/Applications/Xcode_26.2.app'
   # The .NET 11 GA iOS workload (27.2) requires Xcode 27.2, which only the xcode-27 image has (macos-26 tops out at 26.x)
