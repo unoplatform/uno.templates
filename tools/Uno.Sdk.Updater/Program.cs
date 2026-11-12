@@ -339,10 +339,8 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         Console.WriteLine($"Setting Core group to: {unoVersion.OriginalVersion}");
         return group with { Version = unoVersion };
     }
-    // Skip AndroidX packages to avoid Java misalignment
-    else if (group.Packages.Any(x => x.StartsWith("Xamarin"))
-        // Skip Maui on Release branch to avoid AndroidX package misalignment
-        || (!unoVersion.IsPreview && group.Group == "Maui"))
+    // AndroidX packages, and both MAUI groups on release branches (see UpdatePolicy)
+    else if (UpdatePolicy.IsHeldToAvoidJavaMisalignment(group, unoVersion.IsPreview))
     {
         Console.WriteLine($"Skipping '{group.Group}' to avoid Java misalignment.");
         return group;
@@ -354,15 +352,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
         "CoreLogging",
         "OSLogging",
         "WasmBootstrap"
-    ];
-
-    // Those groups have major versions update disabled
-    // as they are generally containing breaking changes.
-    string[] majorUpgradeDisabledGroups = [
-        "SkiaSharp",
-        "WasmBootstrap",
-        "MicrosoftLoggingConsole",
-        "Maui",
     ];
 
     if (stableOnlyGroups.Any(x => x == group.Group))
@@ -377,7 +366,7 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     var packageId = group.Packages.FirstOrDefault(x => x.Contains("WinUI", StringComparison.InvariantCultureIgnoreCase) && x.Contains("Uno", StringComparison.InvariantCultureIgnoreCase)) ??
         group.Packages.First();
 
-    var noMajorUpgrade = majorUpgradeDisabledGroups.Any(x => x == group.Group);
+    var noMajorUpgrade = UpdatePolicy.MajorUpgradeDisabledGroups.Any(x => x == group.Group);
     var version = await client.GetVersionAsync(packageId, preview, noMajorUpgrade, group.Version);
 
     if (string.IsNullOrEmpty(version))
