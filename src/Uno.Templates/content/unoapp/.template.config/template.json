@@ -1179,7 +1179,8 @@
       "datatype": "bool",
       "value": "(platforms == desktop)"
     },
-    // The headless host only offers a software context, which the WebGPU backend declines.
+    // The headless host only offers a software context, which the WebGPU backend declines
+    // (see doc/articles/features/using-skia-headless.md in unoplatform/uno).
     "useHeadlessHost": {
       "type": "computed",
       "datatype": "bool",

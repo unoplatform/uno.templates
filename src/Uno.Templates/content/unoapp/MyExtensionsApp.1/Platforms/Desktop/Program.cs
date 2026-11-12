@@ -40,6 +40,7 @@ internal class Program
 //-:cnd:noEmit
 #if DEBUG
             // Must stay last: it is always supported, so it would shadow any host registered after it.
+            // Needs the Skia renderer: https://platform.uno/docs/articles/features/using-skia-headless.html
             .UseHeadless()
 #endif
 //+:cnd:noEmit
