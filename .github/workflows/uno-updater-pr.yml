@@ -10,7 +10,9 @@ on:
       - .github/actions/sdk-update/*
       - tools/Uno.Sdk.Updater/**
       - tools/Uno.Sdk.Updater.Tests/**
-  
+      # The tests also check the manifest (UpdatePolicyTests), so updater PRs, which change it, run them too
+      - src/Uno.Sdk/packages.json
+
 concurrency:
   group: ${{github.workflow}} - ${{github.ref}}
   cancel-in-progress: true
