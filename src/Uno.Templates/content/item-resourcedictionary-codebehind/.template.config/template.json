@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Resource Dictionary" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.ResourceDictionaryCodeBehind",
+  "groupIdentity": "Uno.Platform.Item.ResourceDictionaryCodeBehind",
+  "name": "Uno Platform Resource Dictionary with code-behind (Item)",
+  "shortName": "uno-resourcedictionary-codebehind",
+  "sourceName": "MyResourceDictionary",
+  "defaultName": "MyResourceDictionary",
+  "description": "Adds an Uno Platform ResourceDictionary with a code-behind partial class.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "userNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns). Defaults to the host project's RootNamespace."
+    },
+    "msbuildNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace"
+    },
+    "fallbackNamespace": {
+      "type": "generated",
+      "generator": "constant",
+      "parameters": {
+        "value": "UnoApp"
+      }
+    },
+    "projectNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "msbuildNamespace",
+        "fallbackVariableName": "fallbackNamespace"
+      }
+    },
+    "rootNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "userNamespace",
+        "fallbackVariableName": "projectNamespace"
+      },
+      "replaces": "$rootnamespace$"
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "primaryOutputs": [
+    { "path": "MyResourceDictionary.xaml" },
+    { "path": "MyResourceDictionary.xaml.cs" }
+  ]
+}
