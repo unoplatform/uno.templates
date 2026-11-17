@@ -11,6 +11,7 @@ on:
       - .github/actions/sdk-update/*
       - .github/sdk-update-exclude.json
       - tools/Uno.Sdk.Updater/**
+      - tools/Uno.Sdk.Updater.Tests/**
   
 concurrency:
   group: ${{github.workflow}} - ${{github.ref}}
@@ -27,3 +28,6 @@ jobs:
 
     - name: "Sdk Update"
       uses: ./.github/actions/sdk-update
+
+    - name: "Sdk Updater Tests"
+      run: dotnet test tools/Uno.Sdk.Updater.Tests

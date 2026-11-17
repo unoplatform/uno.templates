@@ -13,7 +13,18 @@ internal class NuGetApiClient : IDisposable
 {
     private const string UnoWinUIPackageId = "Uno.WinUI";
     private static PackageValidationRecord _validation = new ();
-    private static Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
+    private readonly Dictionary<string, IEnumerable<NuGetVersion>> _cachedVersions = [];
+    private readonly Func<string, IEnumerable<string>>? _versionSource;
+
+    public NuGetApiClient()
+    {
+    }
+
+    // For tests: the versions of each package come from versionSource instead of the NuGet feeds.
+    internal NuGetApiClient(Func<string, IEnumerable<string>> versionSource)
+    {
+        _versionSource = versionSource;
+    }
 
     private HttpClient PublicNuGetClient { get; } = new HttpClient
     {
@@ -53,13 +64,20 @@ internal class NuGetApiClient : IDisposable
         }
 
         var allVersions = new List<string>();
-        var publicVersions = await GetPublicPackageVersions(packageId);
-        allVersions.AddRange(publicVersions);
-
-        if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
+        if (_versionSource is not null)
         {
-            var privateVersions = await GetPrivatePackageVersions(packageId);
-            allVersions.AddRange(privateVersions);
+            allVersions.AddRange(_versionSource(packageId));
+        }
+        else
+        {
+            var publicVersions = await GetPublicPackageVersions(packageId);
+            allVersions.AddRange(publicVersions);
+
+            if (!UnoVersion.HasValue || !UnoVersion.Value.IsPreview)
+            {
+                var privateVersions = await GetPrivatePackageVersions(packageId);
+                allVersions.AddRange(privateVersions);
+            }
         }
 
         var output = new List<NuGetVersion>();
