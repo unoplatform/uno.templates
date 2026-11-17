@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.1.0-dev.173 |
+| UnoVersion* | 7.1.0-dev.286 |
 | UnoExtensionsVersion | 8.1.0-dev.3 |
 | UnoToolkitVersion | 11.1.0-dev.3 |
 | UnoThemesVersion | 9.1.0-dev.3 |
@@ -15,8 +15,8 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoCoreLoggingSingletonVersion | 5.0.0 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 2.1.0-dev.5 |
-| SkiaSharpVersion | 4.151.1 |
-| SvgSkiaVersion | 3.0.6 |
+| SkiaSharpVersion | 4.156.1 |
+| SvgSkiaVersion | 5.2.3 |
 | WinAppSdkVersion | 2.5.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2957 |
 | WinAppSdkBuildToolsWinAppVersion | 0.8.0 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.1.0-dev.173",
+    "version": "7.1.0-dev.286",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -140,7 +140,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SkiaSharp",
-    "version": "4.151.1",
+    "version": "4.156.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
@@ -155,7 +155,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -441,7 +441,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.4.0.100",
+    "version": "14.4.0.101",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",

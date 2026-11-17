@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.173",
+    "version": "7.1.0-dev.286",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -93,7 +93,7 @@
   },
   {
     "group": "SkiaSharp",
-    "version": "4.151.1",
+    "version": "4.156.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
@@ -108,7 +108,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -394,7 +394,7 @@
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.4.0.100",
+    "version": "14.4.0.101",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
