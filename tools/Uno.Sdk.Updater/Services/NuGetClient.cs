@@ -141,6 +141,22 @@ internal class NuGetApiClient(HttpMessageHandler? publicNuGetHandler = null) : I
         packageId.Contains("Uno", StringComparison.InvariantCultureIgnoreCase) &&
         !packageId.StartsWith("Uno.Sdk", StringComparison.InvariantCultureIgnoreCase);
 
+    // The source commit a package was built from (<repository commit="..."> in its nuspec on nuget.org),
+    // or null when nuget.org doesn't have that version or its nuspec doesn't record a commit.
+    internal async Task<string?> GetRepositoryCommitAsync(string packageId, string version)
+    {
+        var id = packageId.ToLowerInvariant();
+        using var response = await PublicNuGetClient.GetAsync($"/v3-flatcontainer/{id}/{version.ToLowerInvariant()}/{id}.nuspec");
+        if (!response.IsSuccessStatusCode)
+        {
+            return null;
+        }
+
+        // Match by local name: nuspecs use different schema namespaces (SkiaSharp's is 2012/06).
+        var nuspec = XDocument.Parse(await response.Content.ReadAsStringAsync());
+        return nuspec.Descendants().FirstOrDefault(e => e.Name.LocalName == "repository")?.Attribute("commit")?.Value;
+    }
+
     internal async Task<bool> ValidatePackage(string packageId, NuGetVersion version)
     {
         if (_validation.HasBeenChecked(packageId, version))

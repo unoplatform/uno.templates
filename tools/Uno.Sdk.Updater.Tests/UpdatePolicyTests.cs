@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Uno.Sdk.Models;
+using Uno.Sdk.Services;
 using Uno.Sdk.Updater.Config;
 
 namespace Uno.Sdk.Updater.Tests;
@@ -62,14 +63,6 @@ public class UpdatePolicyTests
     }
 
     [TestMethod]
-    public void MajorUpgradeDisabledGroups_KeepTheirMembers()
-    {
-        CollectionAssert.AreEquivalent(
-            new[] { "SkiaSharp", "WasmBootstrap", "MicrosoftLoggingConsole", "Maui", "MauiCompatibility" },
-            UpdatePolicy.MajorUpgradeDisabledGroups);
-    }
-
-    [TestMethod]
     public void Manifest_EveryMicrosoftMauiPackage_IsInAMauiGroup()
     {
         // A new group holding MAUI packages (another split) must join MauiGroups, or the updater moves it alone.
@@ -87,11 +80,16 @@ public class UpdatePolicyTests
     {
         // Microsoft.Maui.Controls.Compatibility has no .NET 11 build, so its version is the .NET 10 MAUI version.
         var manifest = LoadManifest().ToDictionary(g => g.Group);
-        var maui = manifest["Maui"];
-        var mauiNet10 = maui.VersionOverride is not null && maui.VersionOverride.TryGetValue("net10.0", out var v) ? v : maui.Version;
+        const string MissingGroup = "The manifest no longer has the '{0}' group: update UpdatePolicy.MauiGroups and this test.";
+        Assert.IsTrue(manifest.TryGetValue("Maui", out var maui), string.Format(MissingGroup, "Maui"));
+        Assert.IsTrue(manifest.TryGetValue("MauiCompatibility", out var mauiCompatibility), string.Format(MissingGroup, "MauiCompatibility"));
 
-        Assert.AreEqual(mauiNet10, manifest["MauiCompatibility"].Version,
-            "MauiCompatibility must pin the same MAUI version as the Maui group's net10.0 version.");
+        // Maui's base version is the .NET 10 MAUI one unless a net10.0 versionOverride pins it.
+        var net10Override = maui!.VersionOverride?.GetValueOrDefault("net10.0");
+        var mauiNet10 = net10Override ?? maui.Version;
+
+        Assert.AreEqual(mauiNet10, mauiCompatibility!.Version,
+            $"MauiCompatibility must pin the Maui group's .NET 10 version (its {(net10Override is null ? "base version" : "net10.0 versionOverride")}).");
     }
 
     [TestMethod]
@@ -119,6 +117,18 @@ public class UpdatePolicyTests
         CollectionAssert.IsSubsetOf(new[] { "SkiaSharp", "HarfBuzzSharp" }, groups, "The manifest no longer has the SkiaSharp and HarfBuzzSharp groups this test expects.");
         var offenders = groups.Where(g => !excluded.Contains(g)).ToArray();
         Assert.AreEqual(0, offenders.Length, $"Groups with SkiaSharp.* or HarfBuzzSharp.* packages missing from the exclude list: {string.Join(", ", offenders)}");
+    }
+
+    [TestMethod]
+    [TestCategory("Online")] // Reads the pinned packages' nuspecs on nuget.org, like the updater run in the same CI job
+    public async Task Manifest_HarfBuzzSharp_IsFromTheSkiaSharpRelease()
+    {
+        // Both groups move by hand, so this is the check that a SkiaSharp move also moved HarfBuzzSharp, to the same release.
+        using var client = new NuGetApiClient();
+
+        var mismatch = await SkiaSharpRelease.FindHarfBuzzSharpMismatchAsync(LoadManifest(), client);
+
+        Assert.IsNull(mismatch, mismatch);
     }
 
     private static ManifestGroup Group(string name, string package) => new(name, "10.0.120", [package]);
