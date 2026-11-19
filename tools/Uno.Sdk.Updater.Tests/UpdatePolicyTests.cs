@@ -94,21 +94,57 @@ public class UpdatePolicyTests
             "MauiCompatibility must pin the same MAUI version as the Maui group's net10.0 version.");
     }
 
+    [TestMethod]
+    public void ExcludeList_HoldsHarfBuzzSharp_WithSkiaSharp()
+    {
+        // HarfBuzzSharp ships with each SkiaSharp release (14.4.0.200 is SkiaSharp 4.157.0's), and SkiaSharp moves by hand
+        // with Uno core. Left to the updater, HarfBuzzSharp moved alone to the newest release's (uno.templates#2441).
+        var excluded = LoadExcludeList();
+
+        Assert.IsTrue(excluded.Contains("SkiaSharp"), "SkiaSharp is no longer in the exclude list: check HarfBuzzSharp too.");
+        Assert.IsTrue(excluded.Contains("HarfBuzzSharp"), "HarfBuzzSharp must be excluded while SkiaSharp is: it ships with each SkiaSharp release.");
+    }
+
+    [TestMethod]
+    public void Manifest_EverySkiaSharpReleaseGroup_IsExcluded()
+    {
+        // A new group holding SkiaSharp or HarfBuzzSharp packages (another split) must join the exclude list,
+        // or the updater moves it alone, past the SkiaSharp release Uno core ships.
+        var excluded = LoadExcludeList();
+        var groups = LoadManifest()
+            .Where(g => g.Packages.Any(p => p.StartsWith("SkiaSharp.", StringComparison.Ordinal) || p.StartsWith("HarfBuzzSharp.", StringComparison.Ordinal)))
+            .Select(g => g.Group)
+            .ToArray();
+
+        CollectionAssert.IsSubsetOf(new[] { "SkiaSharp", "HarfBuzzSharp" }, groups, "The manifest no longer has the SkiaSharp and HarfBuzzSharp groups this test expects.");
+        var offenders = groups.Where(g => !excluded.Contains(g)).ToArray();
+        Assert.AreEqual(0, offenders.Length, $"Groups with SkiaSharp.* or HarfBuzzSharp.* packages missing from the exclude list: {string.Join(", ", offenders)}");
+    }
+
     private static ManifestGroup Group(string name, string package) => new(name, "10.0.120", [package]);
 
     private static IEnumerable<ManifestGroup> LoadManifest()
     {
-        // The test runs from tools/Uno.Sdk.Updater.Tests/bin/...: walk up to the repository's Uno.Sdk manifest.
+        var path = FindRepoFile("src", "Uno.Sdk", "packages.json");
+        return JsonSerializer.Deserialize<ManifestGroup[]>(File.ReadAllText(path))
+            ?? throw new InvalidOperationException($"Could not read {path}");
+    }
+
+    // The exclude list the updater workflow passes with --exclude-file (.github/actions/sdk-update/action.yml)
+    private static HashSet<string> LoadExcludeList() => ExcludeConfig.Load(FindRepoFile(".github", "sdk-update-exclude.json"));
+
+    private static string FindRepoFile(params string[] relativePath)
+    {
+        // The test runs from tools/Uno.Sdk.Updater.Tests/bin/...: walk up to the repository root.
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            var path = Path.Combine(dir.FullName, "src", "Uno.Sdk", "packages.json");
+            var path = Path.Combine([dir.FullName, .. relativePath]);
             if (File.Exists(path))
             {
-                return JsonSerializer.Deserialize<ManifestGroup[]>(File.ReadAllText(path))
-                    ?? throw new InvalidOperationException($"Could not read {path}");
+                return path;
             }
         }
 
-        throw new FileNotFoundException("src/Uno.Sdk/packages.json was not found above the test directory.");
+        throw new FileNotFoundException($"{string.Join('/', relativePath)} was not found above the test directory.");
     }
 }
