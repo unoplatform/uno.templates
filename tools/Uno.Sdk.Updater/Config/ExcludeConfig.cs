@@ -5,14 +5,14 @@
     {
         public static string? ExcludeFilePath { get; set; }
 
-        private static readonly Lazy<HashSet<string>> _excluded = new(() => Load());
+        private static readonly Lazy<HashSet<string>> _excluded = new(() => Load(ExcludeFilePath));
         public static HashSet<string> Excluded => _excluded.Value;
 
-        private static HashSet<string> Load()
+        // Internal so the tests read the real exclude file the way the updater does (comments, trailing commas)
+        internal static HashSet<string> Load(string? path)
         {
             var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            var path = ExcludeFilePath;
             if (string.IsNullOrWhiteSpace(path))
                 return set; // no exclusions when not provided
 
