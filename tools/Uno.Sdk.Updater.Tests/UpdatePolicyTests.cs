@@ -125,26 +125,27 @@ public class UpdatePolicyTests
 
     private static IEnumerable<ManifestGroup> LoadManifest()
     {
-        var path = FindRepoFile("src", "Uno.Sdk", "packages.json");
+        var path = FindRepoFile("src/Uno.Sdk/packages.json");
         return JsonSerializer.Deserialize<ManifestGroup[]>(File.ReadAllText(path))
             ?? throw new InvalidOperationException($"Could not read {path}");
     }
 
     // The exclude list the updater workflow passes with --exclude-file (.github/actions/sdk-update/action.yml)
-    private static HashSet<string> LoadExcludeList() => ExcludeConfig.Load(FindRepoFile(".github", "sdk-update-exclude.json"));
+    private static HashSet<string> LoadExcludeList() => ExcludeConfig.Load(FindRepoFile(".github/sdk-update-exclude.json"));
 
-    private static string FindRepoFile(params string[] relativePath)
+    private static string FindRepoFile(string relativePath)
     {
         // The test runs from tools/Uno.Sdk.Updater.Tests/bin/...: walk up to the repository root.
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            var path = Path.Combine([dir.FullName, .. relativePath]);
+            // Path.Join, not Path.Combine: it never drops the directory, even for a rooted relativePath
+            var path = Path.Join(dir.FullName, relativePath);
             if (File.Exists(path))
             {
                 return path;
             }
         }
 
-        throw new FileNotFoundException($"{string.Join('/', relativePath)} was not found above the test directory.");
+        throw new FileNotFoundException($"{relativePath} was not found above the test directory.");
     }
 }
