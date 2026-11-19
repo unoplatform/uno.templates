@@ -4,8 +4,13 @@
     // Uno core sets the managed SkiaSharp floor; this manifest pins the native assets. Moved alone, they break apps:
     // - core moved past these pins -> restore fails (NU1605 downgrade of SkiaSharp.NativeAssets.*);
     // - these pins moved past core -> managed and native SkiaSharp on different milestones -> crash at startup.
-    // Example: SkiaSharp 4.156.1 reached core in unoplatform/uno#26542 (7.1.0-dev.286), so both moved together here.
+    // HarfBuzzSharp ships with each SkiaSharp release and Uno core sets its floor too, so it moves with SkiaSharp,
+    // to the HarfBuzzSharp of the same SkiaSharp release. Left to the updater, it takes the newest release's.
+    // The updater tests check that both pins are from one SkiaSharp release (Manifest_HarfBuzzSharp_IsFromTheSkiaSharpRelease).
+    // Example: SkiaSharp 4.156.1 and its HarfBuzzSharp 14.4.0.101 reached Uno core in unoplatform/uno#26542
+    // (7.1.0-dev.286), so they moved together with core here in unoplatform/uno.templates#2439.
     "SkiaSharp",
+    "HarfBuzzSharp",
     "SvgSkia",
     "WinAppSdk"
   ]
