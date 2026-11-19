@@ -9,7 +9,36 @@ using Uno.Sdk.Updater;
 using Uno.Sdk.Updater.Config;
 using Uno.Sdk.Updater.Utils;
 
-const string UnoSdkPackageId = "Uno.Sdk.Private";
+const string UnoSdkPackageId = SdkFiles.SdkPackageId;
+
+// Offline modes, no download: check (CI) or rewrite the files the updater derives from packages.json
+// (ReadMe.md, Uno.Sdk.Updater.props, Uno.Sdk.Updater.targets).
+var readMeTemplatePath = Path.Join(LocalFileSystem.UnoSdkUpdaterDirectory, SdkFiles.ReadMeFileName);
+if (Environment.GetCommandLineArgs().Contains("--verify", StringComparer.OrdinalIgnoreCase))
+{
+    var drift = SdkFiles.FindDrift(LocalFileSystem.UnoSdkDirectory, LocalFileSystem.TemplatesSourceDirectory, readMeTemplatePath);
+    if (drift.Count == 0)
+    {
+        Console.WriteLine("The Uno.Sdk files match packages.json.");
+        return;
+    }
+
+    foreach (var message in drift)
+    {
+        Console.Error.WriteLine($"::error::{message}");
+    }
+
+    Console.Error.WriteLine("These files are written by the Uno.Sdk updater: don't edit them by hand. To rebuild them from packages.json, run:");
+    Console.Error.WriteLine("  dotnet run --project tools/Uno.Sdk.Updater -- --regenerate");
+    Environment.Exit(1);
+}
+
+if (Environment.GetCommandLineArgs().Contains("--regenerate", StringComparer.OrdinalIgnoreCase))
+{
+    var written = SdkFiles.Regenerate(LocalFileSystem.UnoSdkDirectory, LocalFileSystem.TemplatesSourceDirectory, readMeTemplatePath);
+    Console.WriteLine(written.Count == 0 ? "The Uno.Sdk files already match packages.json." : $"Rewrote: {string.Join(", ", written)}");
+    return;
+}
 
 Console.WriteLine("Starting the Uno.Sdk Updater");
 Console.WriteLine($"Base Version: {UpdaterBuildContext.TemplateVersion}");
@@ -133,16 +162,7 @@ if (wroteChanges && (string.IsNullOrEmpty(readMePath) || !File.Exists(readMePath
 if (!string.IsNullOrEmpty(readMePath) && File.Exists(readMePath) &&
     !string.IsNullOrEmpty(packagesJsonPath) && File.Exists(packagesJsonPath))
 {
-    var readMe = File.ReadAllText(readMePath);
-    var manifestJson = File.ReadAllText(packagesJsonPath);
-    var manifest = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(manifestJson) ?? [];
-
-    foreach (var group in manifest)
-    {
-        readMe = Regex.Replace(readMe, Regex.Escape($"${group.Group}$"), group.Version);
-    }
-
-    readMe = Regex.Replace(readMe, Regex.Escape("$PackagesJson$"), manifestJson);
+    var readMe = SdkFiles.BuildReadMe(File.ReadAllText(readMePath), File.ReadAllText(packagesJsonPath));
 
     Console.WriteLine("Updated the ReadMe with the versions used by this pack of the Uno.Sdk.");
     WriteIfDifferent(readMePath, readMe, ref wroteChanges);
@@ -162,73 +182,16 @@ else
 Console.WriteLine("Finished Uno.Sdk update.");
 
 static IEnumerable<ManifestGroup> MergeLocalManifest(IEnumerable<ManifestGroup> sdkManifest, string packagesJsonPath)
-{
-    var localManifest = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(File.ReadAllText(packagesJsonPath))
-            ?? throw new InvalidOperationException("Unable to parse the packages.json from the Sdk.");
-    var mergedManifest = new List<ManifestGroup>(localManifest);
-    foreach (var group in sdkManifest)
-    {
-        if (mergedManifest.Any(x => x.Group == group.Group))
-        {
-            continue;
-        }
-
-        mergedManifest.Add(group);
-    }
-
-    return mergedManifest;
-}
+    => ManifestMerge.MergeLocalManifest(sdkManifest, ReadLocalManifest(packagesJsonPath));
 
 // Keep local versions as baseline. Only ensure local VersionOverride are present,
 // and bring in any brand-new groups that exist in the SDK manifest.
 static IEnumerable<ManifestGroup> MergeLocalOverridesOnly(IEnumerable<ManifestGroup> sdkManifest, string packagesJsonPath)
-{
-    var local = JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(File.ReadAllText(packagesJsonPath))
-               ?? throw new InvalidOperationException($"Unable to parse local packages.json at '{packagesJsonPath}'.");
+    => ManifestMerge.MergeLocalOverridesOnly(sdkManifest, ReadLocalManifest(packagesJsonPath));
 
-    // Start from LOCAL manifest -> prevents downgrades of existing groups
-    var map = local.ToDictionary(g => g.Group, g => g, StringComparer.OrdinalIgnoreCase);
-
-    // Keep local versions as the baseline to prevent downgrades.
-    // For groups that have local VersionOverride entries, merge them over the
-    // existing overrides in the map (local wins). This preserves any SDK overrides
-    // that local did not specify, and ensures a case-insensitive dictionary.
-    foreach (var lg in local)
-    {
-        if (lg.VersionOverride is { Count: > 0 } && map.TryGetValue(lg.Group, out var existing))
-        {
-            // Start from existing overrides so we don't drop SDK-provided keys
-            var merged = existing.VersionOverride is null
-                ? new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-                : new Dictionary<string, string>(existing.VersionOverride, StringComparer.OrdinalIgnoreCase);
-
-            foreach (var kv in lg.VersionOverride)
-            {
-                // Local overrides win (overwrite)
-                merged[kv.Key] = kv.Value;
-            }
-
-            map[lg.Group] = existing with { VersionOverride = merged };
-        }
-    }
-
-    foreach (var sg in sdkManifest)
-    {
-        if (!map.TryGetValue(sg.Group, out var existing))
-        {
-            // Add brand-new groups that exist in SDK but not locally
-            map[sg.Group] = sg;
-        }
-        else
-        {
-            // The SDK owns which packages belong to a group: a stale local list misses added
-            // packages (restore falls back to nuget.org) and keeps moved ones (duplicate entries).
-            map[sg.Group] = existing with { Packages = sg.Packages };
-        }
-    }
-
-    return map.Values;
-}
+static IEnumerable<ManifestGroup> ReadLocalManifest(string packagesJsonPath)
+    => JsonSerializer.Deserialize<IEnumerable<ManifestGroup>>(File.ReadAllText(packagesJsonPath))
+        ?? throw new InvalidOperationException($"Unable to parse local packages.json at '{packagesJsonPath}'.");
 
 static void WriteIfDifferent(string filePath, string content, ref bool didWriteChanges)
 {
@@ -246,84 +209,18 @@ static void WriteIfDifferent(string filePath, string content, ref bool didWriteC
 
 static void CreateSdkProps(string? tags, string unoVersion, string readMePath, string packagesJsonPath, string relativePackagesJsonPath, ref bool didWriteChanges)
 {
-    var props = new Dictionary<string, string>
-    {
-        { "PackageTags", tags ?? string.Empty },
-        { "SdkPackageId", UnoSdkPackageId },
-        { "SdkVersion", unoVersion },
-        { "PackageReadmeFile", Path.GetFileName(readMePath) }
-    };
-
-    var readMe = new MsBuildItem(Path.GetRelativePath(LocalFileSystem.UnoSdkDirectory, readMePath), new Dictionary<string, string>
-    {
-        { "Pack", bool.TrueString },
-        { "PackagePath", Path.GetFileName(readMePath) }
-    });
-
-    var packagesJson = new MsBuildItem(Path.GetRelativePath(LocalFileSystem.UnoSdkDirectory, packagesJsonPath), new Dictionary<string, string>
-    {
-        { "Pack", bool.TrueString },
-        { "PackagePath", relativePackagesJsonPath }
-    });
-
     Console.WriteLine("Creating Sdk Updater Props for the Uno.Sdk");
-    var nuspecTargets = CreateMSBuildFile(props, readMe, packagesJson);
-    WriteIfDifferent(Path.Combine(LocalFileSystem.UnoSdkDirectory, "Uno.Sdk.Updater.props"), nuspecTargets, ref didWriteChanges);
+    var nuspecTargets = SdkFiles.BuildSdkProps(tags, unoVersion);
+    WriteIfDifferent(Path.Combine(LocalFileSystem.UnoSdkDirectory, SdkFiles.UpdaterPropsFileName), nuspecTargets, ref didWriteChanges);
 }
 
 static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool didWriteChanges)
 {
-    // Only the versions that Uno.Templates.csproj writes into the templates.
-    var props = new Dictionary<string, string>
-    {
-        { "UnoWasmBootstrapVersionNet10", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
-        { "UnoWasmBootstrapVersionNet11", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net11.0") },
-    };
-
-    var targets = CreateMSBuildFile(props);
+    var targets = SdkFiles.BuildUpdaterTargets(manifest);
 
     Console.WriteLine("Creating Uno.Sdk.Updater.targets for the Templates to sync with the Sdk Versions.");
-    var outputPath = Path.Combine(LocalFileSystem.TemplatesSourceDirectory, "Uno.Sdk.Updater.targets");
+    var outputPath = Path.Combine(LocalFileSystem.TemplatesSourceDirectory, SdkFiles.UpdaterTargetsFileName);
     WriteIfDifferent(outputPath, targets, ref didWriteChanges);
-}
-
-static string CreateMSBuildFile(IDictionary<string, string> props, params MsBuildItem[] items)
-{
-    var builder = new StringBuilder();
-    builder.AppendLine("<Project>");
-    builder.AppendLine("  <!-- This file is generated by the Uno.Sdk.Updater. Do not make manual changes. -->");
-    builder.AppendLine("  <PropertyGroup>");
-
-    foreach ((var key, var value) in props)
-    {
-        builder.AppendLine($"    <{key}>{value}</{key}>");
-    }
-
-    builder.AppendLine("  </PropertyGroup>");
-
-    if (items.Length != 0)
-    {
-        builder.AppendLine();
-        builder.AppendLine("  <ItemGroup>");
-        foreach (var item in items)
-        {
-            builder.AppendLine($"    {item.ToXml()}");
-        }
-        builder.AppendLine("  </ItemGroup>");
-    }
-    builder.AppendLine("</Project>");
-    return builder.ToString();
-}
-
-static string GetManifestGroupVersionOverride(IEnumerable<ManifestGroup> manifest, string groupId, string overrideKey)
-{
-    var group = manifest.First(x => x.Group == groupId);
-    if (group.VersionOverride is not null && group.VersionOverride.Count != 0)
-    {
-        return group.VersionOverride[overrideKey];
-    }
-
-    throw new InvalidOperationException($"No Version Overrides were found for {groupId} or the key {overrideKey}.");
 }
 
 static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion unoVersion, NuGetApiClient client)

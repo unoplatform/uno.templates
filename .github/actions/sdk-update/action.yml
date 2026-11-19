@@ -28,3 +28,8 @@ runs:
     - name: Run Uno Sdk Updater
       shell: pwsh
       run: dotnet run -c Release --project tools/Uno.Sdk.Updater -- --exclude-file "${{ inputs['exclude-file'] }}"
+
+    # The ReadMe, Uno.Sdk.Updater.props and Uno.Sdk.Updater.targets must match the packages.json just written.
+    - name: Check the Uno.Sdk files match packages.json
+      shell: pwsh
+      run: dotnet run -c Release --no-build --project tools/Uno.Sdk.Updater -- --verify
