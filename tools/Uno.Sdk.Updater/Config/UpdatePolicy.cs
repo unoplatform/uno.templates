@@ -19,6 +19,6 @@ internal static class UpdatePolicy
     // - AndroidX packages, on every branch
     // - MAUI, on release branches (a stable Uno version), as a new MAUI also moves its AndroidX dependencies
     internal static bool IsHeldToAvoidJavaMisalignment(ManifestGroup group, bool isPreviewUno)
-        => group.Packages.Any(x => x.StartsWith("Xamarin"))
+        => group.Packages.Any(x => x.StartsWith("Xamarin", StringComparison.Ordinal))
             || (!isPreviewUno && MauiGroups.Contains(group.Group));
 }
