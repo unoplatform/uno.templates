@@ -66,13 +66,17 @@ public class SkiaSharpReleaseTests
     // Serves nuget.org flat-container nuspecs, in the 2012/06 schema namespace that SkiaSharp's packages use
     private sealed class NuspecHandler((string Id, string Version, string Commit)[] packages) : HttpMessageHandler
     {
+        // HttpClient owns and disposes the response it gets back
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            => Task.FromResult(CreateResponse(request));
+
+        private HttpResponseMessage CreateResponse(HttpRequestMessage request)
         {
             foreach ((var id, var version, var commit) in packages)
             {
                 if (request.RequestUri?.AbsolutePath == $"/v3-flatcontainer/{id}/{version}/{id}.nuspec")
                 {
-                    return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                    return new HttpResponseMessage(HttpStatusCode.OK)
                     {
                         Content = new StringContent($"""
                             <?xml version="1.0" encoding="utf-8"?>
@@ -84,11 +88,11 @@ public class SkiaSharpReleaseTests
                               </metadata>
                             </package>
                             """)
-                    });
+                    };
                 }
             }
 
-            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
     }
 }
