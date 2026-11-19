@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.173",
+    "version": "7.1.0-dev.296",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -38,7 +38,7 @@
     ],
     "versionOverride": {
       "net10.0": "10.1.1",
-      "net11.0": "11.1.0-dev.7"
+      "net11.0": "11.1.0-dev.9"
     }
   },
   {
@@ -79,21 +79,21 @@
   },
   {
     "group": "settings",
-    "version": "2.1.0-dev.3",
+    "version": "2.1.0-dev.10",
     "packages": [
       "Uno.Settings.DevServer"
     ]
   },
   {
     "group": "hotdesign",
-    "version": "2.1.0-dev.3",
+    "version": "2.1.0-dev.43",
     "packages": [
       "Uno.UI.HotDesign"
     ]
   },
   {
     "group": "SkiaSharp",
-    "version": "4.151.1",
+    "version": "4.156.1",
     "packages": [
       "SkiaSharp.Skottie",
       "SkiaSharp.Views.WinUI",
@@ -108,7 +108,7 @@
   },
   {
     "group": "SvgSkia",
-    "version": "3.0.6",
+    "version": "5.2.3",
     "packages": [
       "Svg.Skia"
     ]
@@ -302,7 +302,7 @@
   },
   {
     "group": "CSharpMarkup",
-    "version": "7.1.0-dev.3",
+    "version": "7.1.0-dev.5",
     "packages": [
       "Uno.WinUI.Markup",
       "Uno.Extensions.Markup.Generators"
@@ -310,7 +310,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.1.0-dev.3",
+    "version": "8.1.0-dev.10",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
@@ -341,7 +341,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.1.0-dev.3",
+    "version": "11.1.0-dev.4",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -354,7 +354,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.1.0-dev.3",
+    "version": "9.1.0-dev.4",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -380,7 +380,7 @@
   },
   {
     "group": "AppMcp",
-    "version": "2.1.0-dev.1",
+    "version": "2.1.0-dev.2",
     "packages": [
       "Uno.UI.App.Mcp"
     ]
@@ -394,7 +394,7 @@
   },
   {
     "group": "HarfBuzzSharp",
-    "version": "14.4.0.100",
+    "version": "14.4.0.101",
     "packages": [
       "HarfBuzzSharp.NativeAssets.Android",
       "HarfBuzzSharp.NativeAssets.iOS",
@@ -407,7 +407,7 @@
   },
   {
     "group": "UnoMaui",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.5",
     "packages": [
       "Uno.Maui.Embedding",
       "Uno.Maui.Handlers"
@@ -415,14 +415,14 @@
   },
   {
     "group": "UnoRetarget",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.5",
     "packages": [
       "Uno.WinUI.Retarget"
     ]
   },
   {
     "group": "Reactor",
-    "version": "0.2.0-dev.5",
+    "version": "0.2.0-dev.8",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
     ]
