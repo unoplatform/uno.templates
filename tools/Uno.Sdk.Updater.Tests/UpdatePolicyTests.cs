@@ -97,8 +97,8 @@ public class UpdatePolicyTests
     [TestMethod]
     public void ExcludeList_HoldsHarfBuzzSharp_WithSkiaSharp()
     {
-        // HarfBuzzSharp ships with each SkiaSharp release (14.4.0.200 is SkiaSharp 4.157.0's), and SkiaSharp moves by hand
-        // with Uno core. Left to the updater, HarfBuzzSharp moved alone to the newest release's (uno.templates#2441).
+        // HarfBuzzSharp ships with each SkiaSharp release, and SkiaSharp moves by hand with Uno core.
+        // Left to the updater, HarfBuzzSharp moves alone to the newest SkiaSharp release's.
         var excluded = LoadExcludeList();
 
         Assert.IsTrue(excluded.Contains("SkiaSharp"), "SkiaSharp is no longer in the exclude list: check HarfBuzzSharp too.");
