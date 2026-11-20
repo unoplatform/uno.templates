@@ -33,6 +33,8 @@ The IDE wizards use the same templates as the command line.
 | `unomauilib` | Uno Platform Maui Embedding Class Library | A library for .NET MAUI controls that you embed inside an Uno Platform app. |
 | `unoapp-uitest` | Uno Platform UI Tests Class Library | A project for UI tests of an Uno Platform app. |
 
+There are also item templates you can add to an existing project (Page, Window, UserControl, ContentDialog, ResourceDictionary, .resw, TemplatedControl, MVVM/MVUX pages); see [docs/item-templates.md](docs/item-templates.md).
+
 ## Options
 
 Run `dotnet new unoapp --help` for the full list. These are the ones you will reach for most:
