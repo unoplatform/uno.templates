@@ -133,6 +133,12 @@
     <DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
   </PropertyGroup>
   <!--#endif-->
+  <!--#if (useHeadlessHost)-->
+
+  <ItemGroup Condition="'$(Configuration)'=='Debug' and $(TargetFramework.Contains('-desktop'))">
+    <PackageReference Include="Uno.WinUI.Runtime.Headless" />
+  </ItemGroup>
+  <!--#endif-->
   <!--#if (enableDeveloperMode)-->
 
   <ItemGroup>

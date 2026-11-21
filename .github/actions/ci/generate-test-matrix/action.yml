@@ -31,6 +31,7 @@ runs:
             "DefaultArgs;;unoapp;-skip ",
             "Recommended;;unoapp;-skip -preset recommended",
             "SkiaOnlyHeads;!macOS;unoapp;-skip -platforms desktop",
+            "HeadlessHost;!macOS;unoapp;-skip -platforms desktop --headless",
             "MobileOnlyHeads;!macOS;unoapp;-skip -platforms android ios",
             "TvOSOnlyHead;macOS;unoapp;-skip -platforms tvos",
             "AppleHeadsRecommended;macOS;unoapp;-skip -preset recommended -platforms ios tvos",
