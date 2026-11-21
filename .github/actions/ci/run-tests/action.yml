@@ -123,12 +123,13 @@ runs:
       sudo apt-get install apt-transport-https 
       sudo apt-get update 
       if [[ "$DotNetVersion" == 11.* ]]; then
-        # uno-check 1.35 requires OpenJDK 21.0.12 or later, and reads five-part versions such as
-        # 21.0.13.0.2 (unoplatform/uno.check#593)
-        sudo apt-get install -y msopenjdk-21=21.0.13.0.2-1
+        # uno-check 1.35.29 requires OpenJDK 21.0.13.1 or later, the first build with the Java4Shell
+        # fix (CVE-2026-114938, unoplatform/uno.check#633)
+        sudo apt-get install -y msopenjdk-21=21.0.13.1-1
       else
-        # uno-check 1.33 can't parse five-part versions such as 17.0.21.0.2 (unoplatform/uno.check#590)
-        sudo apt-get install -y msopenjdk-17=17.0.20.1-1
+        # uno-check 1.33 can't parse five-part versions such as 17.0.21.0.2 (unoplatform/uno.check#590).
+        # 17.0.21.1 has the Java4Shell fix (CVE-2026-114938).
+        sudo apt-get install -y msopenjdk-17=17.0.21.1-1
       fi
 
   # androidsdk is skipped, as on macOS and Windows: the image's SDK already has the platforms and
