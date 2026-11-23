@@ -4,7 +4,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 
 | MSBuild Property | Default Version |
 |----------------|:---------------:|
-| UnoVersion* | 7.1.0-dev.494 |
+| UnoVersion* | 7.1.0-dev.560 |
 | UnoExtensionsVersion | 8.1.0-dev.12 |
 | UnoToolkitVersion | 11.1.0-dev.10 |
 | UnoThemesVersion | 9.1.0-dev.8 |
@@ -48,7 +48,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 [
   {
     "group": "Core",
-    "version": "7.1.0-dev.494",
+    "version": "7.1.0-dev.560",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -133,7 +133,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "hotdesign",
-    "version": "2.2.0-dev.42",
+    "version": "2.2.0-dev.52",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -420,7 +420,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4314.35",
+    "version": "1.0.4370.26",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
