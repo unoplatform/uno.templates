@@ -96,6 +96,7 @@
 					"rider": "true",
 					"sample": "false",
 					"server": "false",
+					"aspire": "false",
 					"skipRestore": "true",
 					"tests": "none",
 					"tfm": "net10.0",
@@ -138,6 +139,7 @@
 					"rider": "true",
 					"sample": "false",
 					"server": "false",
+					"aspire": "false",
 					"skipRestore": "true",
 					"tests": "none",
 					"tfm": "net10.0",
@@ -225,7 +227,7 @@
 				// WASM multithreading stays off until WebAssembly threads work in Uno Platform apps: re-enable it once
 				// https://github.com/unoplatform/uno-private/issues/1339 is done (see https://github.com/unoplatform/uno.templates/issues/848).
 				//"SymbolIds": [ "toolkit", "mauiEmbedding", "server", "wasmMultiThreading", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaElement" ]
-				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
+				"SymbolIds": [ "sample", "toolkit", "shell", "mauiEmbedding", "server", "aspire", "wasmPwaManifest", "vscode", "enableDeveloperMode", "mediaPlayerElement" ]
 			},
 			{
 				"SectionType": "MultiSelect",
@@ -690,6 +692,19 @@
 
 			"Icon": "/Assets/Features.Server.svg"
 		},
+		"aspire": {
+			"Icon": "/Assets/Features.Aspire.svg",
+			"Requires": {
+				"dependencyInjection": {
+					"RequiredValues": [ "true" ],
+					"MoreInformation": "Dependency Injection is required"
+				},
+				"platforms": {
+					"RequiredValues": [ "desktop", "wasm" ],
+					"MoreInformation": "Desktop or WebAssembly platform is required"
+				}
+			}
+		},
 		"tests": {
 			"NoValue": "none"
 		},
@@ -803,6 +818,7 @@
 		"platforms",
 		"tests",
 		"server",
+		"aspire",
 		"dependencyInjection",
 		"configuration",
 		"http",

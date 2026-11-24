@@ -1,6 +1,20 @@
 {
   "version": "2.0.0",
   "tasks": [
+//#if (useAspire)
+    {
+      "label": "build-apphost",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/MyExtensionsApp.1.AppHost/MyExtensionsApp.1.AppHost.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+//#endif
 //#if (useWasm)
     {
       "label": "build-wasm",

@@ -43,6 +43,10 @@
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$CoverletCollector$" ReplacementText="$(CoverletCollectorVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$NewtonsoftJson$" ReplacementText="$(NewtonsoftJsonVersion)" />
 		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$XamarinUITest$" ReplacementText="$(XamarinUITestVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$AspireVersion$" ReplacementText="$(AspireVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$AspireServiceDefaultsExtensionsVersion$" ReplacementText="$(AspireServiceDefaultsExtensionsVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$AspireServiceDefaultsOpenTelemetryVersion$" ReplacementText="$(AspireServiceDefaultsOpenTelemetryVersion)" />
+		<ReplaceFileText Filename="%(_VersionableFile.Identity)" MatchExpression="$UnoExtensionsVersion$" ReplacementText="$(UnoExtensionsVersion)" />
 	</Target>
 
 	<Target Name="PrepareTemplateFiles" BeforeTargets="ReplaceVersions" AfterTargets="DownloadTemplatePackages;ExtractPackages">

@@ -5,6 +5,9 @@ using System.Text.Json.Serialization.Metadata;
 #if (useSerilog)
 using Serilog;
 #endif
+#if (useSerilog && useAspireServer)
+using Serilog.Extensions.Logging;
+#endif
 #if (useWasm)
 using Uno.Wasm.Bootstrap.Server;
 #endif
@@ -15,14 +18,30 @@ using MyExtensionsApp._1.DataContracts.Serialization;
 try
 {
 #if (useSerilog)
+#if (useAspireServer)
+    // Serilog replaces the logging providers: forwarding to them sends the logs to the Aspire dashboard too.
+    var providers = new LoggerProviderCollection();
+#endif
     Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
             .WriteTo.File(Path.Combine("App_Data", "Logs", "log.txt"))
+#if (useAspireServer)
+            .WriteTo.Providers(providers)
+#endif
             .CreateLogger();
 #endif
     var builder = WebApplication.CreateBuilder(args);
-#if (useSerilog)
+#if (useSerilog && useAspireServer)
+    SerilogHostBuilderExtensions.UseSerilog(builder.Host, providers: providers);
+#elif (useSerilog)
     SerilogHostBuilderExtensions.UseSerilog(builder.Host);
+#endif
+#if (useAspireServer)
+    // Telemetry and health checks for the Aspire dashboard
+    builder.AddServiceDefaults();
+#if (useWasm)
+    builder.Services.AddCors();
+#endif
 #endif
 
 #if (useHttp && useServer)
@@ -58,6 +77,14 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+#if (useAspireServer && useWasm)
+
+    // The AppHost sets the origin of its WebAssembly head; without it, no cross-origin call is allowed.
+    if (app.Configuration["Cors:Origin"] is { } origin)
+    {
+        app.UseCors(policy => policy.WithOrigins(origin).AllowAnyHeader().AllowAnyMethod());
+    }
+#endif
 
     app.UseHttpsRedirection();
 #if useWasm
@@ -68,6 +95,9 @@ try
 
 #if useServer
     app.MapWeatherApi();
+#endif
+#if (useAspireServer)
+    app.MapDefaultEndpoints();
 #endif
     app.UseStaticFiles();
 

@@ -37,6 +37,10 @@
       "longName": "server",
       "shortName": "server"
     },
+    "aspire": {
+      "longName": "aspire",
+      "shortName": "aspire"
+    },
     "renderer": {
       "longName": "renderer",
       "shortName": "renderer"
