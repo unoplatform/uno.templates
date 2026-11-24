@@ -22,7 +22,11 @@
       <TextBlock Text="{Binding Entity.Name}"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
+<!--#if (useMaterial || useSimpleTheme)-->
+        Margin="{StaticResource Space100Thickness}" />
+<!--#else-->
         Margin="8" />
+<!--#endif-->
 <!--#if (!useToolkit)-->
       <Button Content="Back to Main Page"
         HorizontalAlignment="Left"

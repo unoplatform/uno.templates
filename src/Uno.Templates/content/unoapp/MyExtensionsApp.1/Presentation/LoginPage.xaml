@@ -23,7 +23,11 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           Width="200"
+<!--#if (useMaterial || useSimpleTheme)-->
+          Spacing="{StaticResource Space200}">
+<!--#else-->
           Spacing="16">
+<!--#endif-->
 <!--#if (useCustomAuthentication)-->
       <TextBox Text="{Binding Username, Mode=TwoWay}"
           PlaceholderText="Username"
