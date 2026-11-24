@@ -3,5 +3,6 @@
   <PropertyGroup>
     <UnoWasmBootstrapVersionNet10>10.1.1</UnoWasmBootstrapVersionNet10>
     <UnoWasmBootstrapVersionNet11>11.1.0-dev.9</UnoWasmBootstrapVersionNet11>
+    <UnoExtensionsVersion>8.1.0-dev.12</UnoExtensionsVersion>
   </PropertyGroup>
 </Project>
