@@ -420,7 +420,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "MicrosoftWebView2",
-    "version": "1.0.4314.35",
+    "version": "1.0.4370.26",
     "packages": [
       "Microsoft.Web.WebView2"
     ]
@@ -454,7 +454,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoMaui",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.6",
     "packages": [
       "Uno.Maui.Embedding",
       "Uno.Maui.Handlers"
@@ -462,7 +462,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
   },
   {
     "group": "UnoRetarget",
-    "version": "0.1.0-dev.4",
+    "version": "0.1.0-dev.6",
     "packages": [
       "Uno.WinUI.Retarget"
     ]
