@@ -141,7 +141,8 @@ A rounded, filled or outlined container is a `utu:CardContentControl` (`FilledCa
 <!-- Do -->    <utu:CardContentControl Style="{StaticResource FilledCardContentControlStyle}"><TextBlock Text="Order 1042" /></utu:CardContentControl>
 ```
 <!--#endif-->
-<!--#if (useToolkit && useExtensionsNavigation)-->
+<!--#if (useToolkit)-->
+<!--#if (useExtensionsNavigation)-->
 
 ### Back navigation [BACKBAR]
 
@@ -151,6 +152,7 @@ A page with a back action uses `utu:NavigationBar`; back navigation and the Andr
 <!-- Don't --> <Button uen:Navigation.Request="-" Content="Back" />
 <!-- Do -->    <utu:NavigationBar Content="Details" />
 ```
+<!--#endif-->
 <!--#endif-->
 
 ### Sheets, drawers and overlays [OVERLAY]
