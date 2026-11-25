@@ -64,7 +64,11 @@
   <Grid$toolkitSafeArea$>
     <TextBlock Text="Hello Uno Platform!"
                AutomationProperties.AutomationId="HelloTextBlock"
-               FontSize="20"
+<!--#if (useMaterial || useSimpleTheme)-->
+               Style="{StaticResource TitleLarge}"
+<!--#else-->
+               Style="{StaticResource SubtitleTextBlockStyle}"
+<!--#endif-->
                HorizontalAlignment="Center"
                VerticalAlignment="Center" />
   </Grid>
