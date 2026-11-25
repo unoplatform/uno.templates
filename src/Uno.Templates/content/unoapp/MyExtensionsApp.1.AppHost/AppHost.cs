@@ -7,7 +7,7 @@ var api = builder.AddDotnetProject("api", "../MyExtensionsApp.1.Server/MyExtensi
 
 #endif
 // See https://platform.uno/docs/articles/external/uno.extensions/doc/Learn/Aspire/HowTo-Aspire.html
-var app = builder.AddUnoApp("app", "../MyExtensionsApp.1/MyExtensionsApp.1.csproj");
+var app = builder.AddUnoProject("app", "../MyExtensionsApp.1/MyExtensionsApp.1.csproj");
 #if (useDesktop)
 
 #if (useAspireServer)
