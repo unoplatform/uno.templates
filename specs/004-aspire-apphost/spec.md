@@ -24,7 +24,7 @@ The option does not need the Server: without one, the AppHost starts the app alo
 
 | Project or file | When | Notes |
 |---|---|---|
-| `MyExtensionsApp.1.AppHost` | `useAspire` | `AppHost.cs`, `https` and `http` launch profiles on ports generated per project, as Aspire's own template does. Adds the app with `AddUnoApp`, a desktop head when `desktop` is a platform, and a WebAssembly head when `wasm` is, started from the dashboard. With the Server, adds it as `api`, gives each head a reference to it, and passes the WebAssembly head's origin to it. |
+| `MyExtensionsApp.1.AppHost` | `useAspire` | `AppHost.cs`, `https` and `http` launch profiles on ports generated per project, as Aspire's own template does. Adds the app with `AddUnoProject`, a desktop head when `desktop` is a platform, and a WebAssembly head when `wasm` is, started from the dashboard. With the Server, adds it as `api`, gives each head a reference to it, and passes the WebAssembly head's origin to it. |
 | `aspire.config.json` | `useAspire` | Points `aspire run` at the AppHost. |
 | `MyExtensionsApp.1.ServiceDefaults` | `useAspireServer` | Aspire's standard service defaults: OpenTelemetry, health checks, service discovery, resilience. |
 | IDE run configurations | `useAspire` | An AppHost launch target in Rider (`rider`) and VS Code (`vscode`), using the `https` profile. |
