@@ -72,6 +72,9 @@
       <!--#if (useMvux)-->
       MVUX;
       <!--#endif-->
+      <!--#if (useHotTesting)-->
+      HotTesting;
+      <!--#endif-->
       <!--#if (usePrism)-->
       Prism;
       <!--#endif-->

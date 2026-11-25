@@ -741,6 +741,38 @@
         "fallbackVariableName": "presetDspDefault"
       }
     },
+    "hotTesting": {
+      "displayName": "Hot Testing",
+      "description": "Include Uno Hot Testing, for tests written inside the app project (Debug builds only)",
+      "type": "parameter",
+      "datatype": "bool"
+    },
+    "presetHotTestingDefault": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+        "evaluator": "C++",
+        "datatype": "bool",
+        "cases": [
+          {
+            "condition": "(preset == 'recommended')",
+            "value": "true"
+          },
+          {
+            "condition": "(preset == 'blank')",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    "useHotTesting": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "hotTesting",
+        "fallbackVariableName": "presetHotTestingDefault"
+      }
+    },
     "continuousIntegration": {
       "displayName": "Continuous Integration",
       "description": "Configures continuous integration support for the solution",
