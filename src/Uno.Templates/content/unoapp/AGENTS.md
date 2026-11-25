@@ -128,9 +128,13 @@ Before writing a custom control, use the control that ships with the platform or
 
 - Rating: `RatingControl`. Progress: `ProgressBar`, `ProgressRing`. Pager dots: `PipsPager`. On/off: `ToggleSwitch`.
 <!--#if (useToolkit)-->
-- Card: `utu:CardContentControl`. Back bar: `utu:NavigationBar`. Chips: `utu:Chip`, `utu:ChipGroup`. Tabs: `utu:TabBar`.
+- Back bar: `utu:NavigationBar`. Chips: `utu:Chip`, `utu:ChipGroup`. Tabs: `utu:TabBar`.
+<!--#if (useMaterial || useSimpleTheme)-->
+- Card: `utu:CardContentControl`.
+<!--#endif-->
 <!--#endif-->
 <!--#if (useToolkit)-->
+<!--#if (useMaterial || useSimpleTheme)-->
 
 ### Cards [CARD]
 
@@ -140,6 +144,7 @@ A rounded, filled or outlined container is a `utu:CardContentControl` (`FilledCa
 <!-- Don't --> <Border CornerRadius="8" Background="{ThemeResource SurfaceBrush}"><TextBlock Text="Order 1042" /></Border>
 <!-- Do -->    <utu:CardContentControl Style="{StaticResource FilledCardContentControlStyle}"><TextBlock Text="Order 1042" /></utu:CardContentControl>
 ```
+<!--#endif-->
 <!--#endif-->
 <!--#if (useToolkit)-->
 <!--#if (useExtensionsNavigation)-->
