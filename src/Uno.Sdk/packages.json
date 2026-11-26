@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.586",
+    "version": "7.1.0-dev.597",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -86,7 +86,7 @@
   },
   {
     "group": "hotdesign",
-    "version": "2.2.0-dev.102",
+    "version": "2.2.0-dev.111",
     "packages": [
       "Uno.UI.HotDesign"
     ]
@@ -310,7 +310,7 @@
   },
   {
     "group": "Extensions",
-    "version": "8.1.0-dev.12",
+    "version": "8.1.0-dev.13",
     "packages": [
       "Uno.Extensions.Authentication.WinUI",
       "Uno.Extensions.Authentication.MSAL.WinUI",
