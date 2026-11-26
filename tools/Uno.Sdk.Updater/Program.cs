@@ -415,8 +415,13 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
 
             // A target framework override stays on its .NET major (net10.0 -> 10.x): once .NET 11 ships, the
             // net10.0 entries (MicrosoftLoggingConsole, WindowsCompatibility, Maui) would otherwise get 11.0.x.
-            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, GetTargetFrameworkMajor(key));
-            if (version != versionOverrideString)
+            version = await client.GetVersionAsync(packageId, versionOverride.IsPreview, false, versionOverride.OriginalVersion, TargetFrameworkOverride.GetMaxMajor(key, versionOverride));
+            if (string.IsNullOrEmpty(version))
+            {
+                Console.WriteLine($"No version found for '{group.Group}' - '{key}', keeping '{versionOverrideString}'.");
+                version = versionOverrideString;
+            }
+            else if (version != versionOverrideString)
             {
                 Console.WriteLine($"Updated Version Override for '{group.Group}' - '{key}' to '{version}'.");
             }
@@ -440,13 +445,6 @@ static async Task<ManifestGroup> UpdateGroup(ManifestGroup group, NuGetVersion u
     }
 
     return newGroup;
-}
-
-// "net10.0" -> 10; null for keys that aren't a .NET target framework.
-static int? GetTargetFrameworkMajor(string key)
-{
-    var match = Regex.Match(key, @"^net(\d+)\.\d+");
-    return match.Success ? int.Parse(match.Groups[1].Value) : null;
 }
 
 static void WriteBreak()
