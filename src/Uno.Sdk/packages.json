@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.597",
+    "version": "7.1.0-dev.631",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -341,7 +341,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.1.0-dev.15",
+    "version": "11.1.0-dev.19",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -354,7 +354,7 @@
   },
   {
     "group": "Themes",
-    "version": "9.1.0-dev.9",
+    "version": "9.1.0-dev.10",
     "packages": [
       "Uno.Material.WinUI",
       "Uno.Material.WinUI.Markup",
@@ -425,6 +425,13 @@
     "version": "0.2.0-dev.8",
     "packages": [
       "Uno.Microsoft.UI.Reactor"
+    ]
+  },
+  {
+    "group": "hottesting",
+    "version": "0.1.0-dev.205",
+    "packages": [
+      "Uno.HotTesting"
     ]
   }
 ]
