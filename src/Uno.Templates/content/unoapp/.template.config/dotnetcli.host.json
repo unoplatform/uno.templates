@@ -109,6 +109,10 @@
       "longName": "media-player-element",
       "shortName": "mpe"
     },
+    "headless": {
+      "longName": "headless",
+      "shortName": ""
+    },
     "skipRestore": {
       "longName": "skip-restore",
       "shortName": "skip"
