@@ -121,6 +121,10 @@
       "longName": "dsp",
       "shortName": "dsp"
     },
+    "hotTesting": {
+      "longName": "hot-testing",
+      "shortName": "hot-testing"
+    },
     "continuousIntegration": {
       "longName": "continuous-integration",
       "shortName": "ci"
