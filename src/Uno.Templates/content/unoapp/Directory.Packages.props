@@ -22,6 +22,21 @@
     <!--#if (useAspNetCoreSerilogPackage)-->
     <PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
     <!--#endif-->
+    <!--#if (useAspire)-->
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="$AspireVersion$" />
+    <PackageVersion Include="Aspire.Hosting.Dotnet" Version="$AspireVersion$" />
+    <!-- Keep in step with the Uno.Extensions version of the Uno.Sdk in global.json. -->
+    <PackageVersion Include="Uno.Extensions.Aspire.Hosting" Version="$UnoExtensionsVersion$" />
+    <!--#endif-->
+    <!--#if (useAspireServer)-->
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="$AspireServiceDefaultsExtensionsVersion$" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="$AspireServiceDefaultsExtensionsVersion$" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="$AspireServiceDefaultsOpenTelemetryVersion$" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="$AspireServiceDefaultsOpenTelemetryVersion$" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="$AspireServiceDefaultsOpenTelemetryVersion$" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="$AspireServiceDefaultsOpenTelemetryVersion$" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="$AspireServiceDefaultsOpenTelemetryVersion$" />
+    <!--#endif-->
     <!--#if (useServer)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <!--#endif-->

@@ -96,6 +96,9 @@
       HttpKiota;
       Serialization;
       <!--#endif-->
+      <!--#if (useAspire)-->
+      Aspire;
+      <!--#endif-->
       <!--#if (useLocalization)-->
       Localization;
       <!--#endif-->

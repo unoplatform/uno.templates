@@ -143,6 +143,9 @@ runs:
             # The UI test project, without and with the sample's second page: https://github.com/unoplatform/uno.templates/issues/2338
             "BlankTests;Linux;unoapp;-skip -tests unit ui"
             "RecommendedSampleTests;Linux;unoapp;-skip -preset recommended --sample -tests unit ui"
+            # Aspire adds an AppHost and an UnoFeature, with and without the Server: one OS builds them.
+            "AspireServer;Linux;unoapp;-skip -preset recommended -server -aspire"
+            "AspireBlank;Linux;unoapp;-skip -aspire"
         );
 
         # Temporary Uno 7.0 bring-up exclusions

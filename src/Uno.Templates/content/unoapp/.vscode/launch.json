@@ -81,5 +81,19 @@
       "stopAtEntry": false
     },
 //#endif
+//#if (useAspire)
+    {
+      "name": "Aspire AppHost (https)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-apphost",
+      "program": "${workspaceFolder}/MyExtensionsApp.1.AppHost/bin/Debug/$baseTargetFramework$/MyExtensionsApp.1.AppHost.dll",
+      "args": [],
+      "launchSettingsProfile": "https",
+      "cwd": "${workspaceFolder}/MyExtensionsApp.1.AppHost",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+//#endif
   ]
 }

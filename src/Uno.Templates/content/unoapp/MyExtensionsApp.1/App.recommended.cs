@@ -135,6 +135,10 @@ public partial class App : Application
                 // Enable localization (see appsettings.json for supported languages)
                 .UseLocalization()
 #endif
+#if useAspire
+                // Service discovery, resilience and telemetry when started from the Aspire AppHost
+                .UseServiceDefaults()
+#endif
 #if (useServer && (useHttpKiota || useHttpRefit))
                 // Register Json serializers (ISerializer and ISerializer)
                 .UseSerialization((context, services) => services

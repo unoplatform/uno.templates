@@ -17,6 +17,9 @@
     <!--#if (useDataContracts)-->
     <ProjectReference Include="..\MyExtensionsApp.1.DataContracts\MyExtensionsApp.1.DataContracts.csproj" />
     <!--#endif -->
+    <!--#if (useAspireServer)-->
+    <ProjectReference Include="..\MyExtensionsApp.1.ServiceDefaults\MyExtensionsApp.1.ServiceDefaults.csproj" />
+    <!--#endif -->
   </ItemGroup>
 
   <ItemGroup>

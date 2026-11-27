@@ -39,7 +39,10 @@
     "7229D034-7DBE-4FD7-B0E4-38D617571F93", // UITests
     "F5EAE47C-F7DF-4D61-8A30-92251720AC4B", // Mobile Application Id
     "5ED31500-DF01-462D-9436-EC2EDCAA1965", // DataContracts
-    "85978B6F-B8F7-4FFC-A392-37A1FD49E0C2" // MauiControls
+    "85978B6F-B8F7-4FFC-A392-37A1FD49E0C2", // MauiControls
+    "7DA628CC-5762-46FB-9590-BC9E00F88728", // AppHost
+    "84E7DE58-63A7-41CF-9475-210F3611E77E", // ServiceDefaults
+    "FC96BFAE-96C6-4D52-BA63-34DA90D61065" // AppHost UserSecretsId
   ],
   "symbols": {
     "preset": {
@@ -408,6 +411,13 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Includes a Server project for an API & host for the WebAssembly project"
+    },
+    "aspire": {
+      "displayName": "Aspire",
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Includes an Aspire AppHost with a dashboard for logs, traces and metrics"
     },
     "toolkit": {
       "displayName": "Toolkit",
@@ -1055,6 +1065,10 @@
         "datatype": "bool",
         "cases": [
           {
+            "condition": "(aspire)",
+            "value": "true"
+          },
+          {
             "condition": "(preset == 'recommended')",
             "value": "true"
           },
@@ -1301,6 +1315,16 @@
       "type": "computed",
       "datatype": "bool",
       "value": "(server)"
+    },
+    "useAspire": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(aspire && useDependencyInjection && (platforms == desktop || platforms == wasm))"
+    },
+    "useAspireServer": {
+      "type": "computed",
+      "datatype": "bool",
+      "value": "(useAspire && useServer)"
     },
     "presetConfigurationDefault": {
       "type": "generated",
@@ -2903,6 +2927,42 @@
       "type": "generated",
       "generator": "port",
       "condition": "(!useProvidedDevServerPort)"
+    },
+    "aspireHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 17000, "high": 17300 },
+      "replaces": "$AspireHttpsPort$"
+    },
+    "aspireHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 15000, "high": 15300 },
+      "replaces": "$AspireHttpPort$"
+    },
+    "aspireOtlpHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 21000, "high": 21300 },
+      "replaces": "$AspireOtlpHttpsPort$"
+    },
+    "aspireOtlpHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 19000, "high": 19300 },
+      "replaces": "$AspireOtlpHttpPort$"
+    },
+    "aspireResourceHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 22000, "high": 22300 },
+      "replaces": "$AspireResourceHttpsPort$"
+    },
+    "aspireResourceHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": { "low": 20000, "high": 20300 },
+      "replaces": "$AspireResourceHttpPort$"
     }
   },
   "primaryOutputs": [
@@ -2916,6 +2976,14 @@
     {
       "condition": "useServer",
       "path": "MyExtensionsApp.1.Server\\MyExtensionsApp.1.Server.csproj"
+    },
+    {
+      "condition": "useAspire",
+      "path": "MyExtensionsApp.1.AppHost\\MyExtensionsApp.1.AppHost.csproj"
+    },
+    {
+      "condition": "useAspireServer",
+      "path": "MyExtensionsApp.1.ServiceDefaults\\MyExtensionsApp.1.ServiceDefaults.csproj"
     },
     {
       "condition": "useDataContracts",
@@ -3018,6 +3086,19 @@
           "condition": "(!useServer)",
           "exclude": [
             "MyExtensionsApp.1.Server/**/*"
+          ]
+        },
+        {
+          "condition": "(!useAspire)",
+          "exclude": [
+            "MyExtensionsApp.1.AppHost/**/*",
+            "aspire.config.json"
+          ]
+        },
+        {
+          "condition": "(!useAspireServer)",
+          "exclude": [
+            "MyExtensionsApp.1.ServiceDefaults/**/*"
           ]
         },
         {

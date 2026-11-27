@@ -278,6 +278,9 @@ static void CreateUpdaterTargets(IEnumerable<ManifestGroup> manifest, ref bool d
     {
         { "UnoWasmBootstrapVersionNet10", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net10.0") },
         { "UnoWasmBootstrapVersionNet11", GetManifestGroupVersionOverride(manifest, "WasmBootstrap", "net11.0") },
+        // The Aspire AppHost isn't an Uno.Sdk project: its Uno.Extensions package gets this version from the template.
+        { "UnoExtensionsVersion", manifest.FirstOrDefault(x => x.Group == "Extensions")?.Version
+            ?? throw new InvalidOperationException("No Extensions group was found in the Uno.Sdk manifest.") },
     };
 
     var targets = CreateMSBuildFile(props);
