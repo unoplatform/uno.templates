@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.631",
+    "version": "7.1.0-dev.634",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
@@ -341,7 +341,7 @@
   },
   {
     "group": "Toolkit",
-    "version": "11.1.0-dev.19",
+    "version": "11.1.0-dev.22",
     "packages": [
       "Uno.Toolkit.WinUI",
       "Uno.Toolkit.WinUI.Cupertino",
@@ -429,7 +429,7 @@
   },
   {
     "group": "hottesting",
-    "version": "0.1.0-dev.205",
+    "version": "0.1.0-dev.210",
     "packages": [
       "Uno.HotTesting"
     ]
