@@ -54,6 +54,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--server` | `-server` | `true`, `false` | `false` |
 | `--toolkit` | `-toolkit` | `true`, `false` | depends on preset |
 | `--dsp` | `-dsp` | `true`, `false` | depends on preset |
+| `--hot-testing` | `-hot-testing` | `true`, `false` | depends on preset |
 | `--continuous-integration` | `-ci` | `none`, `azure`, `github` | `none` |
 | `--skip-restore` | `-skip` | `true`, `false` | `false` |
 
