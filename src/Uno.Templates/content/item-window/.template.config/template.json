@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Uno Platform",
+  "classifications": [ "Uno Platform", "Item", "Window" ],
+  "tags": { "language": "C#", "type": "item" },
+  "identity": "Uno.Platform.Item.Window",
+  "groupIdentity": "Uno.Platform.Item.Window",
+  "name": "Uno Platform Window (Item)",
+  "shortName": "uno-window",
+  "sourceName": "BlankWindow",
+  "defaultName": "BlankWindow",
+  "description": "Adds an Uno Platform Window with XAML or C# Markup.",
+  "preferNameDirectory": false,
+  "symbols": {
+    "userNamespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "description": "Namespace for the generated item (pass --root-namespace / -ns). Defaults to the host project's RootNamespace."
+    },
+    "msbuildNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace"
+    },
+    "fallbackNamespace": {
+      "type": "generated",
+      "generator": "constant",
+      "parameters": {
+        "value": "UnoApp"
+      }
+    },
+    "projectNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "msbuildNamespace",
+        "fallbackVariableName": "fallbackNamespace"
+      }
+    },
+    "rootNamespace": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "userNamespace",
+        "fallbackVariableName": "projectNamespace"
+      },
+      "replaces": "$rootnamespace$"
+    },
+    "safeItemName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "safe_name",
+      "replaces": "$safeitemname$"
+    },
+    "markup": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "xaml",
+      "description": "The UI markup language for the window.",
+      "choices": [
+        { "choice": "xaml", "description": "XAML markup with code-behind" },
+        { "choice": "csharp", "description": "C# Markup (single file)" }
+      ]
+    },
+    "useCsharpMarkup": { "type": "computed", "value": "(markup == 'csharp')" }
+  },
+  "forms": { "safe_name": { "identifier": "safe_name" } },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCsharpMarkup)",
+          "exclude": [ "BlankWindow.xaml" ],
+          "rename": { "BlankWindow.xaml.cs": "BlankWindow.cs" }
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "BlankWindow.xaml", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankWindow.xaml.cs", "condition": "(!useCsharpMarkup)" },
+    { "path": "BlankWindow.cs", "condition": "(useCsharpMarkup)" }
+  ]
+}
