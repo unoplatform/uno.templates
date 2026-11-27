@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Uno.Sdk.Models;
 using Uno.Sdk.Services;
@@ -133,29 +132,8 @@ public class UpdatePolicyTests
 
     private static ManifestGroup Group(string name, string package) => new(name, "10.0.120", [package]);
 
-    private static IEnumerable<ManifestGroup> LoadManifest()
-    {
-        var path = FindRepoFile("src/Uno.Sdk/packages.json");
-        return JsonSerializer.Deserialize<ManifestGroup[]>(File.ReadAllText(path))
-            ?? throw new InvalidOperationException($"Could not read {path}");
-    }
+    private static IEnumerable<ManifestGroup> LoadManifest() => RepoFiles.LoadManifest();
 
     // The exclude list the updater workflow passes with --exclude-file (.github/actions/sdk-update/action.yml)
-    private static HashSet<string> LoadExcludeList() => ExcludeConfig.Load(FindRepoFile(".github/sdk-update-exclude.json"));
-
-    private static string FindRepoFile(string relativePath)
-    {
-        // The test runs from tools/Uno.Sdk.Updater.Tests/bin/...: walk up to the repository root.
-        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
-        {
-            // Path.Join, not Path.Combine: it never drops the directory, even for a rooted relativePath
-            var path = Path.Join(dir.FullName, relativePath);
-            if (File.Exists(path))
-            {
-                return path;
-            }
-        }
-
-        throw new FileNotFoundException($"{relativePath} was not found above the test directory.");
-    }
+    private static HashSet<string> LoadExcludeList() => ExcludeConfig.Load(RepoFiles.Find(".github/sdk-update-exclude.json"));
 }
