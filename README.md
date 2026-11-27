@@ -14,7 +14,7 @@ dotnet new install Uno.Templates
 dotnet new unoapp -o MyApp
 ```
 
-That gives you a blank multi-platform app. Want the full "production-ready" setup (navigation, DI, configuration, localization, HTTP, logging, tests...)? Add `-preset recommended`.
+That gives you a blank multi-platform app. Want the full "production-ready" setup (navigation, DI, configuration, localization, HTTP, logging...)? Add `-preset recommended`.
 
 New to Uno Platform? The [Get Started guide](https://aka.platform.uno/get-started) walks you through installing everything you need. You can also create projects from the IDE:
 
@@ -50,7 +50,7 @@ Run `dotnet new unoapp --help` for the full list. These are the ones you will re
 | `--authentication` | `-auth` | `none`, `custom`, `msal`, `oidc`, `Web` | `none` |
 | `--use-http` | `-http` | `none`, `basic`, `refit`, `kiota` | depends on preset |
 | `--logging` | `-log` | `none`, `default`, `serilog` | depends on preset |
-| `--tests` | `-tests` | `none`, `unit`, `ui` | depends on preset |
+| `--tests` | `-tests` | `none`, `unit`, `ui` | `none` |
 | `--server` | `-server` | `true`, `false` | `false` |
 | `--toolkit` | `-toolkit` | `true`, `false` | depends on preset |
 | `--dsp` | `-dsp` | `true`, `false` | depends on preset |
