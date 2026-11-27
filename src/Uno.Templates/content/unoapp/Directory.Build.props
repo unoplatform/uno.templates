@@ -23,4 +23,11 @@
     <NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
     <!--#endif-->
   </PropertyGroup>
+  <ItemGroup>
+    <!--#if (useGitHubActions)-->
+    <PackageReference Update="GitHubActionsTestLogger"
+                      PrivateAssets="all"
+                      IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <!--#endif-->
+  </ItemGroup>
 </Project>
