@@ -23,7 +23,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | $MicrosoftLoggingConsole$ |
 | MicrosoftIdentityClientVersion | $MsalClient$ |
 | CommunityToolkitMvvmVersion | $Mvvm$ |
-| PrismVersion | $Prism$ |
 | AndroidMaterialVersion | $AndroidMaterial$ |
 | AndroidXSplashScreenVersion | $AndroidXSplashScreen$ |
 | AndroidXAppCompatVersion | $AndroidXAppCompat$ |

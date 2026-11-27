@@ -23,7 +23,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | MicrosoftLoggingVersion** | 10.0.15 |
 | MicrosoftIdentityClientVersion | 4.92.0 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
-| PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.14.0.6 |
 | AndroidXSplashScreenVersion | 1.2.0.3 |
 | AndroidXAppCompatVersion | 1.8.0 |
@@ -205,15 +204,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "8.4.2",
     "packages": [
       "CommunityToolkit.Mvvm"
-    ]
-  },
-  {
-    "group": "Prism",
-    "version": "9.0.537",
-    "packages": [
-      "Prism.DryIoc.Uno.WinUI",
-      "Prism.Uno.WinUI",
-      "Prism.Uno.WinUI.Markup"
     ]
   },
   {
