@@ -743,7 +743,7 @@
     },
     "hotTesting": {
       "displayName": "Hot Testing",
-      "description": "Include Uno Hot Testing, for tests written inside the app project (Debug builds only)",
+      "description": "Includes Uno Hot Testing, for tests written inside the app project (Debug builds only)",
       "type": "parameter",
       "datatype": "bool"
     },
