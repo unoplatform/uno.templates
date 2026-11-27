@@ -10,20 +10,30 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoThemesVersion | 9.1.0-dev.10 |
 | UnoCSharpMarkupVersion | 7.1.0-dev.5 |
 | UnoReactorVersion | 0.2.0-dev.8 |
+| UnoMauiVersion | 0.1.0-dev.6 |
+| UnoRetargetVersion | 0.1.0-dev.6 |
 | UnoWasmBootstrapVersion** | 10.1.1 |
 | UnoLoggingVersion | 1.7.0 |
 | UnoCoreLoggingSingletonVersion | 5.0.0 |
 | UnoDspTasksVersion | 1.4.0 |
 | UnoResizetizerVersion | 2.1.0-dev.5 |
+| UnoFontsVersion | 2.11.0-dev.5 |
+| UnoSdkExtrasVersion | 6.5.0-dev.3 |
+| UnoSettingsVersion | 2.1.0-dev.17 |
+| UnoHotDesignVersion | 2.2.0-dev.111 |
+| UnoHotTestingVersion | 0.1.0-dev.210 |
+| UnoAppMcpVersion | 2.1.0-dev.2 |
 | SkiaSharpVersion | 4.156.1 |
+| HarfBuzzSharpVersion | 14.4.0.101 |
 | SvgSkiaVersion | 5.2.3 |
 | WinAppSdkVersion | 2.5.1 |
 | WinAppSdkBuildToolsVersion | 10.0.28000.2957 |
 | WinAppSdkBuildToolsWinAppVersion | 0.8.0 |
 | MicrosoftLoggingVersion** | 10.0.15 |
 | MicrosoftIdentityClientVersion | 4.92.0 |
+| MicrosoftWebView2Version | 1.0.4370.26 |
+| VlcNativeWindowsAssetsVersion | 3.0.24 |
 | CommunityToolkitMvvmVersion | 8.4.2 |
-| PrismVersion | 9.0.537 |
 | AndroidMaterialVersion | 1.14.0.6 |
 | AndroidXSplashScreenVersion | 1.2.0.3 |
 | AndroidXAppCompatVersion | 1.8.0 |
@@ -205,15 +215,6 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
     "version": "8.4.2",
     "packages": [
       "CommunityToolkit.Mvvm"
-    ]
-  },
-  {
-    "group": "Prism",
-    "version": "9.0.537",
-    "packages": [
-      "Prism.DryIoc.Uno.WinUI",
-      "Prism.Uno.WinUI",
-      "Prism.Uno.WinUI.Markup"
     ]
   },
   {

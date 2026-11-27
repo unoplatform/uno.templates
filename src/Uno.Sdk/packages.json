@@ -161,15 +161,6 @@
     ]
   },
   {
-    "group": "Prism",
-    "version": "9.0.537",
-    "packages": [
-      "Prism.DryIoc.Uno.WinUI",
-      "Prism.Uno.WinUI",
-      "Prism.Uno.WinUI.Markup"
-    ]
-  },
-  {
     "group": "UnoFonts",
     "version": "2.11.0-dev.5",
     "packages": [
