@@ -21,6 +21,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoSdkExtrasVersion | $sdkextras$ |
 | UnoSettingsVersion | $settings$ |
 | UnoHotDesignVersion | $hotdesign$ |
+| UnoHotTestingVersion | $hottesting$ |
 | UnoAppMcpVersion | $AppMcp$ |
 | SkiaSharpVersion | $SkiaSharp$ |
 | HarfBuzzSharpVersion | $HarfBuzzSharp$ |
