@@ -3413,6 +3413,23 @@
     }
   ],
   "SpecialCustomOperations": {
+    "**/AGENTS.md": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": [ "<!--#if" ],
+            "endif": [ "<!--#endif" ],
+            "actionableIf": [ "<!--#if" ],
+            "actionableElse": [ "<!--#else" ],
+            "actionableElseif": [ "<!--#elseif", "<!--#elif" ],
+            "trim": true,
+            "wholeLine": true,
+            "evaluator": "C++"
+          }
+        }
+      ]
+    },
     "**.appxmanifest": {
       "operations": [
         {
