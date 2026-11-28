@@ -1008,7 +1008,7 @@
           },
           {
             "condition": "(appThemeEvaluator == 'fluent')",
-            "value": "ApplicationPageBackgroundThemeBrush"
+            "value": "BackgroundBrush"
           },
           {
             "condition": "(appTheme == 'cupertino')",
@@ -2617,7 +2617,8 @@
         "cases": [
           {
             "condition": "(appThemeEvaluator == 'fluent')",
-            "value": ""
+            "value": "
+       xmlns:uf=\"using:Uno.Fluent\""
           },
           {
             "condition": "(appThemeEvaluator == 'material')",
