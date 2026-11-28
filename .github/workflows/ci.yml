@@ -116,6 +116,21 @@ jobs:
       shell: pwsh
       run: ./build/Test-WizardOptions.ps1
 
+    # src/Uno.Sdk/ReadMe.md, src/Uno.Sdk/Uno.Sdk.Updater.props and src/Uno.Sdk.Updater.targets are written by the
+    # Uno.Sdk updater from src/Uno.Sdk/packages.json. The updater rebuilds them offline with its own code and fails on
+    # any difference, so a hand edit or a partial update can't ship. Fix: dotnet run --project tools/Uno.Sdk.Updater -- --regenerate
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.407'
+
+    - name: Check the Uno.Sdk files match packages.json
+      shell: pwsh
+      env:
+        # The updater's build requires it; the check itself doesn't use the version.
+        NBGV_SemVer2: 0.0.0-verify
+      run: dotnet run -c Release --project tools/Uno.Sdk.Updater -- --verify
+
     # The build/*.Tests.ps1 unit tests of these scripts. They run offline, and Pester comes with the runner image.
     - name: Test the build scripts
       shell: pwsh
