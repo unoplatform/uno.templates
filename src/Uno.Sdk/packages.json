@@ -1,7 +1,7 @@
 ﻿[
   {
     "group": "Core",
-    "version": "7.1.0-dev.634",
+    "version": "7.1.0-dev.650",
     "packages": [
       "Uno.WinUI",
       "Uno.WinUI.Composition.Skia",
