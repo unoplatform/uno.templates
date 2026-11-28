@@ -23,7 +23,11 @@
       <StackPanel Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+<!--#if (useMaterial || useSimpleTheme)-->
+            Spacing="{StaticResource Space200}">
+<!--#else-->
             Spacing="16">
+<!--#endif-->
 <!--#if (mauiEmbedding)-->
 <!--#if (useNonMauiPlatforms)-->
         <maui:Grid>
@@ -60,7 +64,11 @@
   <Grid$toolkitSafeArea$>
     <TextBlock Text="Hello Uno Platform!"
                AutomationProperties.AutomationId="HelloTextBlock"
-               FontSize="20"
+<!--#if (useMaterial || useSimpleTheme)-->
+               Style="{StaticResource TitleLarge}"
+<!--#else-->
+               Style="{StaticResource SubtitleTextBlockStyle}"
+<!--#endif-->
                HorizontalAlignment="Center"
                VerticalAlignment="Center" />
   </Grid>
