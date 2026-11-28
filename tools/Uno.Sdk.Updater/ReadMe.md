@@ -10,6 +10,7 @@ The Uno.Sdk powers the Uno Platform Single Project, including the ability to imp
 | UnoThemesVersion | $Themes$ |
 | UnoCSharpMarkupVersion | $CSharpMarkup$ |
 | UnoReactorVersion | $Reactor$ |
+| UnoHotTestingVersion | $hottesting$ |
 | UnoWasmBootstrapVersion** | $WasmBootstrap$ |
 | UnoLoggingVersion | $OSLogging$ |
 | UnoCoreLoggingSingletonVersion | $CoreLogging$ |
